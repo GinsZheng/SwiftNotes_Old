@@ -22,12 +22,5 @@ class UIPageControlPage: UIViewController {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
 }
 
