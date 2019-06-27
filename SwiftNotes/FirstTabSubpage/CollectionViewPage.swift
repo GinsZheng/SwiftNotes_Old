@@ -1,5 +1,5 @@
 //
-//  UICollectionViewPage.swift
+//  CollectionViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UICollectionViewPage: UIViewController {
+class CollectionViewPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

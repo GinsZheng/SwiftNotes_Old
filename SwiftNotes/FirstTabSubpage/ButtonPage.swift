@@ -1,5 +1,5 @@
 //
-//  UIButtonPage.swift
+//  ButtonPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UIButtonPage: UIViewController {
+class ButtonPage: UIViewController {
     
     @objc func pushToGeneralSubpage() {
         self.pushFromSecondaryPage(toTarget: GeneralSubpage())
@@ -28,7 +28,7 @@ class UIButtonPage: UIViewController {
         
         let ghostButton = UIButton(type: .system)
         view.addSubview(ghostButton)
-        ghostButton.makeConstraintsToLeftTopRight(left: 20, top: 20, topRelativeView: wordButton.snp.bottom, right: -20, height: 44)
+        ghostButton.makeConstraintsToLeftTopRightRelative(left: 20, topRelativeView: wordButton.snp.bottom, topOffset: 20, right: -20, height: 44)
         ghostButton.setTitle("Ghost Button", for: .normal)
         ghostButton.setTitleColor(UIColor.hex(mainColor), for: .normal)
         ghostButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular) // 这里设置UILabel的颜色值将无效
@@ -38,7 +38,7 @@ class UIButtonPage: UIViewController {
         
         let solidButton = UIButton(type: .custom)
         view.addSubview(solidButton)
-        solidButton.makeConstraintsToLeftTopRight(left: 20, top: 20, topRelativeView: ghostButton.snp.bottom, right: -20, height: 44)
+        solidButton.makeConstraintsToLeftTopRightRelative(left: 20, topRelativeView: ghostButton.snp.bottom, topOffset: 20, right: -20, height: 44)
         solidButton.setTitle("Solid Button", for: .normal)
         solidButton.setTitleColor(UIColor.white, for: .normal)
         solidButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
@@ -50,14 +50,14 @@ class UIButtonPage: UIViewController {
         
         let iconButton = UIButton(type: .custom)
         view.addSubview(iconButton)
-        iconButton.makeConstraintsToCenterXTop(centerX: view, top: 20, topRelativeView: solidButton.snp.bottom, width: 26, height: 26)
+        iconButton.makeConstraintsToCenterXTopRelative(centerX: view, topRelativeView: solidButton.snp.bottom, topOffset: 20 , width: 26, height: 26)
         iconButton.setImage(UIImage(named: "mine-item"), for: .normal)
         iconButton.adjustsImageWhenHighlighted = false
         iconButton.addTarget(self, action: #selector(pushToGeneralSubpage), for: .touchUpInside)
         
         let iconButton2 = UIButton(type: .system)
         view.addSubview(iconButton2)
-        iconButton2.makeConstraintsToCenterXTop(centerX: view, top: 20, topRelativeView: iconButton.snp.bottom, width: 26, height: 26)
+        iconButton2.makeConstraintsToCenterXTopRelative(centerX: view, topRelativeView: iconButton.snp.bottom, topOffset: 20, width: 26, height: 26)
         iconButton2.setImage(UIImage(named: "mine-item"), for: .normal)
         iconButton2.tintColor = UIColor.hex(mainColor)
         iconButton2.addTarget(self, action: #selector(pushToGeneralSubpage), for: .touchUpInside)

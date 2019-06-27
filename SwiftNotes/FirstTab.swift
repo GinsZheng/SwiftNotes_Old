@@ -10,9 +10,34 @@ import UIKit
 
 class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let controlList = ["Label", "Button", "Segment Control", "Text Field", "Slider", "Switch", "Page Control", "Stepper", "Stack View", "Table View", "Image View", "Scroll View", "Date Picker", "Picker View", "View"]
+    let controlPage = [LabelPage(), ButtonPage(), SegmentControlPage(), TextFieldPage(), SliderPage(), SwitchPage(), PageControlPage(), StepperPage(), StackViewPage(), TableViewPage(), ImageViewPage(), ScrollViewPage(), DatePickerPage(), PickerViewPage(), ViewPage()]
+
     
-    let controlList = ["Label", "Button", "Segment Control", "Text Field", "Slider", "Switch", "Page Control", "Stepper", "Stack View", "Table View", "Image View", "Scroll View", "Date Picker", "Picker View"]
-    let controlPage = [UILabelPage(), UIButtonPage(), UISegmentControlPage(), UITextFieldPage(), UISliderPage(), UISwitchPage(), UIPageControlPage(), UIStepperPage(), UIStackViewPage(), UITableViewPage(), UIImageViewPage(), UIScrollViewPage(), UIDatePickerPage(), UIPickerViewPage()]
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.white
+        
+        let scrollView = UIScrollView()
+        view.addSubview(scrollView)
+        scrollView.makeConstraintsToLeftTop(left: 0, top: navBarHeight, width: view, height: getSafeAreaHeight(self))
+        
+        let viewContainer = UIView()
+        scrollView.addSubview(viewContainer)
+        viewContainer.makeConstraintsToLeftTop(left: 0, top: 0, width: scrollView, height: scrollView)
+        viewContainer.backgroundColor = UIColor.red
+
+        let table = UITableView()
+        viewContainer.addSubview(table)
+        table.makeConstraintsToLeftTop(left: 0, top: 0, width: screenWidth, height: 56*controlList.count)
+        table.makeConstraintsToBottom(bottom: viewContainer)
+        table.dataSource = self
+        table.delegate = self
+        table.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        table.separatorColor = UIColor.hex("1A000820")
+        
+    }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return controlList.count
@@ -35,29 +60,4 @@ class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-        
-        let table = UITableView()
-        view.addSubview(table)
-        table.makeConstraintsToLeftTopRight(left: 0, top: navBarHeight, right: 0, height: 56*controlList.count)
-        table.dataSource = self
-        table.delegate = self
-        table.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        table.separatorColor = UIColor.hex("1A000820")
-        
-        
-        
-    
-        
-        
-
-        
-    }
-
-    
 }
-

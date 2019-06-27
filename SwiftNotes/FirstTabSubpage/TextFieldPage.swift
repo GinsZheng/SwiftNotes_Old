@@ -1,5 +1,5 @@
 //
-//  UITextFieldPage.swift
+//  TextFieldPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UITextFieldPage: UIViewController {
+class TextFieldPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

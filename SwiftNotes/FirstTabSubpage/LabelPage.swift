@@ -1,5 +1,5 @@
 //
-//  UILabelPage.swift
+//  LabelPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UILabelPage: UIViewController {
+class LabelPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +17,7 @@ class UILabelPage: UIViewController {
         let label = createUILabel(parentView: view, text: "hello UILabel")
         label.setFontStyle(color: "222", size: 34) // 文字要先设字号再布局
         label.makeConstraintsToLeftTop(left: 20, top: 100)
+        
         label.backgroundColor = UIColor.hex(mainColor)
     }
     

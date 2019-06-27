@@ -1,5 +1,5 @@
 //
-//  UIStepperPage.swift
+//  TextViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class UIStepperPage: UIViewController {
+class TextViewPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        let stepper = UIStepper()
+        
     }
     
     

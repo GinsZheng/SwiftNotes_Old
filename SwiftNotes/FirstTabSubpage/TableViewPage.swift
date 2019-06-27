@@ -1,5 +1,5 @@
 //
-//  UITableViewPage.swift
+//  TableViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UITableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     let controlList = ["Label", "Button", "Text Field", "Switch", "Table View"]

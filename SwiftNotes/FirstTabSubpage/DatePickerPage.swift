@@ -1,5 +1,5 @@
 //
-//  UITextViewPage.swift
+//  DatePickerPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UITextViewPage: UIViewController {
+class DatePickerPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
