@@ -16,13 +16,13 @@ class TextViewPage: UIViewController {
         
         let textView = UITextView()
         textView.set(parentView: view)
-        textView.makeConstraintsToLeftTop(left: 20, top: 100, width: screenWidth - 40, height: 300)
+        textView.makeConstraintsToLeftTop(left: 20, top: 100, width: ScreenWidth - 40, height: 300)
         textView.text = "Hehedahehedahehedahehedahehedahehedahehedahehedahehedahehedaheheda"
         textView.setFontStyle(color: "222", size: 17)
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)
         
         textView.clearsOnInsertion = true
-        textView.backgroundColor = UIColor.hex(gray1)
+        textView.backgroundColor = UIColor.hex(colorF5F6F8)
 
         
     }

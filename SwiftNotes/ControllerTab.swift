@@ -1,5 +1,5 @@
 //
-//  ThirdTab.swift
+//  ControllerTab.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/10.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThirdTab: UIViewController {
+class ControllerTab: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,26 +8,15 @@
 
 import UIKit
 
+
 class ForthTab: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let slider = UISlider()
-        let acitvityIndicator = UIActivityIndicatorView()
-        let progress = UIProgressView()
-        let pageControl = UIPageControl()
-        let stepper = UIStepper()
-        let stackView = UIStackView()
-        let imageView = UIImageView()
-        let collectionView = UICollectionView()
-        let textView = UITextView()
-        let scrollView = UIScrollView()
-        let datePicker = UIDatePicker()
-        let pickerView = UIPickerView()
-//        let webkitView = webview
+
+        
     }
-    
-    
+
 }
 

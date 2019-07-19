@@ -43,7 +43,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         let table = UITableView()
         view.addSubview(table)
-        table.makeConstraintsToLeftTopRight(left: 0, top: navBarHeight, right: 0, height: 500)
+        table.makeConstraintsToLeftTopRight(left: 0, top: NavBarHeight, right: 0, height: 500)
         table.dataSource = self
         table.delegate = self
         table.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)

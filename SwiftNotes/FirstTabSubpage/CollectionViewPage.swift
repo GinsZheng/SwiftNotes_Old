@@ -16,7 +16,7 @@
 //    
 //    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //        let cell = UICollectionViewCell()
-//        cell.backgroundColor = UIColor.hex(mainColor)
+//        cell.backgroundColor = UIColor.hex(color2C9EFF)
 //
 //        return cell
 //    }
@@ -28,9 +28,9 @@
 //        
 ////        let collection = UICollectionView()
 ////        collection.set(parentView: view)
-////        collection.makeConstraintsToLeftTop(left: 20, top: 100, width: screenWidth - 40, height: 500)
+////        collection.makeConstraintsToLeftTop(left: 20, top: 100, width: ScreenWidth - 40, height: 500)
 ////
-////        collection.backgroundColor = UIColor.hex(gray1)
+////        collection.backgroundColor = UIColor.hex(colorPageBackground)
 //        
 //    }
 //    

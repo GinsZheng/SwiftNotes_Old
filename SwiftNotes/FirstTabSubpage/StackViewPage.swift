@@ -25,8 +25,8 @@ class StackViewPage: UIViewController {
         
         let stack = UIStackView(arrangedSubviews: [stackBlock1, stackBlock2, stackBlock3])
         stack.set(parentView: view)
-        stack.makeConstraintsToLeftTop(left: 20, top: 100, width: screenWidth-40, height: 100)
-        stack.backgroundColor = UIColor.hex(gray1)
+        stack.makeConstraintsToLeftTop(left: 20, top: 100, width: ScreenWidth-40, height: 100)
+        stack.backgroundColor = UIColor.hex(colorF5F6F8)
         stack.alignment = .fill
         stack.distribution = .fillEqually
         stack.spacing = 10

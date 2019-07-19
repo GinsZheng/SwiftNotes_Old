@@ -16,7 +16,7 @@ class ScrollViewPage: UIViewController {
         
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        scrollView.makeConstraintsToLeftTop(left: 0, top: navBarHeight, width: view, height: 400)
+        scrollView.makeConstraintsToLeftTop(left: 0, top: NavBarHeight, width: view, height: 400)
         
         let viewContainer = UIView()
         scrollView.addSubview(viewContainer)
@@ -24,7 +24,7 @@ class ScrollViewPage: UIViewController {
         viewContainer.backgroundColor = UIColor.red
         
         let image = createUIImageView(parentView: viewContainer, imageName: "iPhoneX")
-        image.makeConstraintsToLeftTop(left: 0, top: 0, width: screenWidth, height: 1000)
+        image.makeConstraintsToLeftTop(left: 0, top: 0, width: ScreenWidth, height: 1000)
         image.makeConstraintsToBottom(bottom: viewContainer)
         
         

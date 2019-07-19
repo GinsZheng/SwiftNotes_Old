@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let controlList = ["Label", "Button", "Segment Control", "Text Field", "Slider", "Switch", "Page Control", "Stepper", "Stack View", "Table View", "Image View", "Text View","Scroll View", "Date Picker", "Picker View", "View"]
     let controlPage = [LabelPage(), ButtonPage(), SegmentControlPage(), TextFieldPage(), SliderPage(), SwitchPage(), PageControlPage(), StepperPage(), StackViewPage(), TableViewPage(), ImageViewPage(), TextViewPage(), ScrollViewPage(), DatePickerPage(), PickerViewPage(), ViewPage()]
@@ -20,7 +20,7 @@ class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        scrollView.makeConstraintsToLeftTop(left: 0, top: navBarHeight, width: view, height: getSafeAreaHeight(self))
+        scrollView.makeConstraintsToLeftTop(left: 0, top: NavBarHeight, width: view, height: getSafeAreaHeight(self))
         
         let viewContainer = UIView()
         scrollView.addSubview(viewContainer)
@@ -29,7 +29,7 @@ class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         let table = UITableView()
         viewContainer.addSubview(table)
-        table.makeConstraintsToLeftTop(left: 0, top: 0, width: screenWidth, height: 56*controlList.count)
+        table.makeConstraintsToLeftTop(left: 0, top: 0, width: ScreenWidth, height: 56*controlList.count)
         table.makeConstraintsToBottom(bottom: viewContainer)
         table.dataSource = self
         table.delegate = self

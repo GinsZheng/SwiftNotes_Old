@@ -19,7 +19,9 @@ class LabelPage: UIViewController {
         label.setFontStyle(color: "222", size: 34) // 文字要先设字号再布局
         label.makeConstraintsToLeftTop(left: 20, top: 100)
         
-        label.backgroundColor = UIColor.hex(mainColor)
+        label.backgroundColor = UIColor.hex(color2C9EFF)
+        
+        
     }
     
 }

@@ -1,5 +1,5 @@
 //
-//  SecondTab.swift
+//  ModelTab.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/10.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondTab: UIViewController {
+class ModelTab: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
