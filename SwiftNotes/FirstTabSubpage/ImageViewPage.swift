@@ -19,8 +19,12 @@ class ImageViewPage: UIViewController {
         image.makeConstraintsToLeftTopRight(left: 20, top: 100, right: -20, height: 300)
         image.image = UIImage(named: "iPhoneX")
         
-        image.addBorder(color: orange, borderWidth: 1)
         image.contentMode = .scaleAspectFill
+        image.layer.masksToBounds = true
+        image.setCornerRadius(8)
+        
+        image.addBorder(color: orange, borderWidth: 1)
+
         
     }
     

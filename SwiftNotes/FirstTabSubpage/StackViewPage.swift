@@ -14,11 +14,26 @@ class StackViewPage: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        let stack = UIStackView()
-        view.addSubview(stack)
-        stack.makeConstraintsToLeftTopRight(left: 20, top: 100, right: 20, height: 100)
-        stack.backgroundColor = UIColor.hex(gray1)
+        let stackBlock1 = UIView()
+        stackBlock1.backgroundColor = UIColor.red
         
+        let stackBlock2 = UIView()
+        stackBlock2.backgroundColor = UIColor.cyan
+        
+        let stackBlock3 = UIView()
+        stackBlock3.backgroundColor = UIColor.blue
+        
+        let stack = UIStackView(arrangedSubviews: [stackBlock1, stackBlock2, stackBlock3])
+        stack.set(parentView: view)
+        stack.makeConstraintsToLeftTop(left: 20, top: 100, width: screenWidth-40, height: 100)
+        stack.backgroundColor = UIColor.hex(gray1)
+        stack.alignment = .fill
+        stack.distribution = .fillEqually
+        stack.spacing = 10
+        
+        let stackBlock4 = UIView()
+        stackBlock4.backgroundColor = UIColor.orange
+        stack.addArrangedSubview(stackBlock4)
     }
     
     

@@ -23,7 +23,8 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
-        let cellTitle = createUILabel(parentView: cell.contentView, text: controlList[indexPath.row])
+        let cellTitle = UILabel()
+        cellTitle.set(parentView: cell.contentView, text: controlList[indexPath.row])
         cellTitle.makeConstraintsToLeftCenterY(left: 20, centerY: cell.contentView)
         
         return cell

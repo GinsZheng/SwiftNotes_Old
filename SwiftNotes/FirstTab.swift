@@ -10,8 +10,8 @@ import UIKit
 
 class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controlList = ["Label", "Button", "Segment Control", "Text Field", "Slider", "Switch", "Page Control", "Stepper", "Stack View", "Table View", "Image View", "Scroll View", "Date Picker", "Picker View", "View"]
-    let controlPage = [LabelPage(), ButtonPage(), SegmentControlPage(), TextFieldPage(), SliderPage(), SwitchPage(), PageControlPage(), StepperPage(), StackViewPage(), TableViewPage(), ImageViewPage(), ScrollViewPage(), DatePickerPage(), PickerViewPage(), ViewPage()]
+    let controlList = ["Label", "Button", "Segment Control", "Text Field", "Slider", "Switch", "Page Control", "Stepper", "Stack View", "Table View", "Image View", "Text View","Scroll View", "Date Picker", "Picker View", "View"]
+    let controlPage = [LabelPage(), ButtonPage(), SegmentControlPage(), TextFieldPage(), SliderPage(), SwitchPage(), PageControlPage(), StepperPage(), StackViewPage(), TableViewPage(), ImageViewPage(), TextViewPage(), ScrollViewPage(), DatePickerPage(), PickerViewPage(), ViewPage()]
 
     
     override func viewDidLoad() {
@@ -49,7 +49,8 @@ class FirstTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
-        let cellTitle = createUILabel(parentView: cell.contentView, text: controlList[indexPath.row])
+        let cellTitle = UILabel()
+        cellTitle.set(parentView: cell.contentView, text: controlList[indexPath.row])
         cellTitle.makeConstraintsToLeftCenterY(left: 20, centerY: cell.contentView)
         
         return cell

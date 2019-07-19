@@ -15,7 +15,7 @@ class ViewPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let myView = UIView()
-        view.addSubview(myView)
+        myView.set(parentView: view)
         myView.makeConstraintsToLeftTop(left: 20, top: 100, width: 200, height: 100)
         
         myView.backgroundColor = UIColor.hex(gray1)
