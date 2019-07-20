@@ -51,8 +51,3 @@ let colorFFF = "FFF"
 //let colorOrange = colorF7AD18
 //
 //let colorBarBackground = color202C9EFF
-//let color
-//
-//let colorShadow = color26133660
-//let colorPageBackground = colorF5F6F8
-//

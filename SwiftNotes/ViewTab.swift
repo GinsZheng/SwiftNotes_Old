@@ -10,8 +10,8 @@ import UIKit
 
 class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controlList = ["Label", "Button", "Segment Control", "Text Field", "Slider", "Switch", "Page Control", "Stepper", "Stack View", "Table View", "Image View", "Text View","Scroll View", "Date Picker", "Picker View", "View"]
-    let controlPage = [LabelPage(), ButtonPage(), SegmentControlPage(), TextFieldPage(), SliderPage(), SwitchPage(), PageControlPage(), StepperPage(), StackViewPage(), TableViewPage(), ImageViewPage(), TextViewPage(), ScrollViewPage(), DatePickerPage(), PickerViewPage(), ViewPage()]
+    let controlList = ["Button", "Date Picker", "Image View", "Label", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Switch", "Table View", "Text Field", "Text View", "View"]
+    let controlPage = [ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), ViewPage()]
 
     
     override func viewDidLoad() {
@@ -25,7 +25,6 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let viewContainer = UIView()
         scrollView.addSubview(viewContainer)
         viewContainer.makeConstraintsToLeftTop(left: 0, top: 0, width: scrollView, height: scrollView)
-        viewContainer.backgroundColor = UIColor.red
 
         let table = UITableView()
         viewContainer.addSubview(table)

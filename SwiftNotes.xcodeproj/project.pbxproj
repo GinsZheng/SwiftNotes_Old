@@ -28,7 +28,6 @@
 		7A019CD122BA7E690034C5A3 /* StepperPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019CD022BA7E690034C5A3 /* StepperPage.swift */; };
 		7A019CD322BA7F1C0034C5A3 /* StackViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019CD222BA7F1C0034C5A3 /* StackViewPage.swift */; };
 		7A019CD522BA7F610034C5A3 /* ImageViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019CD422BA7F610034C5A3 /* ImageViewPage.swift */; };
-		7A019CD722BA7F9B0034C5A3 /* CollectionViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019CD622BA7F9B0034C5A3 /* CollectionViewPage.swift */; };
 		7A019CD922BA7FB10034C5A3 /* TextViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019CD822BA7FB10034C5A3 /* TextViewPage.swift */; };
 		7A019CDB22BA7FDB0034C5A3 /* ScrollViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019CDA22BA7FDB0034C5A3 /* ScrollViewPage.swift */; };
 		7A019CDD22BA80110034C5A3 /* DatePickerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019CDC22BA80110034C5A3 /* DatePickerPage.swift */; };
@@ -220,7 +219,6 @@
 		7A019CD022BA7E690034C5A3 /* StepperPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperPage.swift; sourceTree = "<group>"; };
 		7A019CD222BA7F1C0034C5A3 /* StackViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewPage.swift; sourceTree = "<group>"; };
 		7A019CD422BA7F610034C5A3 /* ImageViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewPage.swift; sourceTree = "<group>"; };
-		7A019CD622BA7F9B0034C5A3 /* CollectionViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewPage.swift; sourceTree = "<group>"; };
 		7A019CD822BA7FB10034C5A3 /* TextViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPage.swift; sourceTree = "<group>"; };
 		7A019CDA22BA7FDB0034C5A3 /* ScrollViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewPage.swift; sourceTree = "<group>"; };
 		7A019CDC22BA80110034C5A3 /* DatePickerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPage.swift; sourceTree = "<group>"; };
@@ -292,38 +290,37 @@
 				7A019C5B22AEA8DE0034C5A3 /* CreateUIView.swift */,
 				7A019C5E22AEA8DE0034C5A3 /* GlobalFunction.swift */,
 				7A019C5D22AEA8DE0034C5A3 /* GlobalVariables.swift */,
-				7AA63AD222E214DE00EAA214 /* Colors.swift */,
 				7A019C5C22AEA8DE0034C5A3 /* MakeConstraints.swift */,
 				7A019C5A22AEA8DE0034C5A3 /* SetColorInHex.swift */,
 				7A019C5F22AEA8DE0034C5A3 /* UIKitExtension.swift */,
+				7AA63AD222E214DE00EAA214 /* Colors.swift */,
 				7A019CB622B566230034C5A3 /* GeneralSubpage.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
 		};
-		7A019C9322B004130034C5A3 /* FirstTabSubpage */ = {
+		7A019C9322B004130034C5A3 /* ViewTabSubpage */ = {
 			isa = PBXGroup;
 			children = (
-				7A019C9622B3E4BF0034C5A3 /* LabelPage.swift */,
 				7A019C9422B004410034C5A3 /* ButtonPage.swift */,
-				7A019CA522B55FF40034C5A3 /* SegmentControlPage.swift */,
-				7A019C9822B3E6D40034C5A3 /* TextFieldPage.swift */,
-				7A019CBD22B7F0050034C5A3 /* SliderPage.swift */,
-				7A019C9A22B3E7880034C5A3 /* SwitchPage.swift */,
-				7A019CCE22BA7E2D0034C5A3 /* PageControlPage.swift */,
-				7A019CD022BA7E690034C5A3 /* StepperPage.swift */,
-				7A019CD222BA7F1C0034C5A3 /* StackViewPage.swift */,
-				7A019C9C22B3E8060034C5A3 /* TableViewPage.swift */,
-				7A019CD422BA7F610034C5A3 /* ImageViewPage.swift */,
-				7A019CD622BA7F9B0034C5A3 /* CollectionViewPage.swift */,
-				7A019CD822BA7FB10034C5A3 /* TextViewPage.swift */,
-				7A019CDA22BA7FDB0034C5A3 /* ScrollViewPage.swift */,
 				7A019CDC22BA80110034C5A3 /* DatePickerPage.swift */,
+				7A019CD422BA7F610034C5A3 /* ImageViewPage.swift */,
+				7A019C9622B3E4BF0034C5A3 /* LabelPage.swift */,
+				7A019CCE22BA7E2D0034C5A3 /* PageControlPage.swift */,
 				7A019CDE22BA80370034C5A3 /* PickerViewPage.swift */,
-				7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */,
+				7A019CDA22BA7FDB0034C5A3 /* ScrollViewPage.swift */,
+				7A019CA522B55FF40034C5A3 /* SegmentControlPage.swift */,
+				7A019CBD22B7F0050034C5A3 /* SliderPage.swift */,
+				7A019CD222BA7F1C0034C5A3 /* StackViewPage.swift */,
+				7A019CD022BA7E690034C5A3 /* StepperPage.swift */,
+				7A019C9A22B3E7880034C5A3 /* SwitchPage.swift */,
+				7A019C9C22B3E8060034C5A3 /* TableViewPage.swift */,
+				7A019C9822B3E6D40034C5A3 /* TextFieldPage.swift */,
+				7A019CD822BA7FB10034C5A3 /* TextViewPage.swift */,
 				7A8923C122C1FFB7005196B6 /* ViewPage.swift */,
+				7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */,
 			);
-			path = FirstTabSubpage;
+			path = ViewTabSubpage;
 			sourceTree = "<group>";
 		};
 		7A27505922ABA25600C8A474 = {
@@ -356,12 +353,12 @@
 				7A019C5222AEA1F60034C5A3 /* ControllerTab.swift */,
 				7A019C5422AEA2040034C5A3 /* ModelTab.swift */,
 				7A019C5622AEA2170034C5A3 /* ForthTab.swift */,
-				7A019C9322B004130034C5A3 /* FirstTabSubpage */,
-				7AA638A422E2096E00EAA214 /* SecondTabSubpage */,
+				7A019C9322B004130034C5A3 /* ViewTabSubpage */,
+				7AA638A422E2096E00EAA214 /* ControllerTabSubpage */,
 				7A27506922ABA25600C8A474 /* Main.storyboard */,
 				7A27506C22ABA25A00C8A474 /* Assets.xcassets */,
-				7A27507122ABA25A00C8A474 /* Info.plist */,
 				7A27506E22ABA25A00C8A474 /* LaunchScreen.storyboard */,
+				7A27507122ABA25A00C8A474 /* Info.plist */,
 			);
 			path = SwiftNotes;
 			sourceTree = "<group>";
@@ -384,13 +381,13 @@
 			path = SwiftNotesUITests;
 			sourceTree = "<group>";
 		};
-		7AA638A422E2096E00EAA214 /* SecondTabSubpage */ = {
+		7AA638A422E2096E00EAA214 /* ControllerTabSubpage */ = {
 			isa = PBXGroup;
 			children = (
 				7AA638B422E209D100EAA214 /* plistPage.swift */,
 				7A8E5E7422E1C139004E6E4B /* Books.plist */,
 			);
-			path = SecondTabSubpage;
+			path = ControllerTabSubpage;
 			sourceTree = "<group>";
 		};
 		7AFF389522AF821800AC4958 /* Products */ = {
@@ -700,7 +697,6 @@
 				7A019C6122AEA8DE0034C5A3 /* CreateUIView.swift in Sources */,
 				7A019C9722B3E4BF0034C5A3 /* LabelPage.swift in Sources */,
 				7A019CD322BA7F1C0034C5A3 /* StackViewPage.swift in Sources */,
-				7A019CD722BA7F9B0034C5A3 /* CollectionViewPage.swift in Sources */,
 				7A019CDB22BA7FDB0034C5A3 /* ScrollViewPage.swift in Sources */,
 				7A27506822ABA25600C8A474 /* ViewTab.swift in Sources */,
 				7A019CBE22B7F0050034C5A3 /* SliderPage.swift in Sources */,
