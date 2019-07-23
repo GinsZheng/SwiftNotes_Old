@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7A019C5322AEA1F60034C5A3 /* ControllerTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5222AEA1F60034C5A3 /* ControllerTab.swift */; };
 		7A019C5522AEA2040034C5A3 /* ModelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5422AEA2040034C5A3 /* ModelTab.swift */; };
-		7A019C5722AEA2170034C5A3 /* ForthTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5622AEA2170034C5A3 /* ForthTab.swift */; };
+		7A019C5722AEA2170034C5A3 /* TestTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5622AEA2170034C5A3 /* TestTab.swift */; };
 		7A019C6022AEA8DE0034C5A3 /* SetColorInHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5A22AEA8DE0034C5A3 /* SetColorInHex.swift */; };
 		7A019C6122AEA8DE0034C5A3 /* CreateUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5B22AEA8DE0034C5A3 /* CreateUIView.swift */; };
 		7A019C6222AEA8DE0034C5A3 /* MakeConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5C22AEA8DE0034C5A3 /* MakeConstraints.swift */; };
@@ -200,7 +200,7 @@
 /* Begin PBXFileReference section */
 		7A019C5222AEA1F60034C5A3 /* ControllerTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerTab.swift; sourceTree = "<group>"; };
 		7A019C5422AEA2040034C5A3 /* ModelTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTab.swift; sourceTree = "<group>"; };
-		7A019C5622AEA2170034C5A3 /* ForthTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForthTab.swift; sourceTree = "<group>"; };
+		7A019C5622AEA2170034C5A3 /* TestTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTab.swift; sourceTree = "<group>"; };
 		7A019C5A22AEA8DE0034C5A3 /* SetColorInHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetColorInHex.swift; path = ../../MySwift/General/SetColorInHex.swift; sourceTree = "<group>"; };
 		7A019C5B22AEA8DE0034C5A3 /* CreateUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateUIView.swift; path = ../../MySwift/General/CreateUIView.swift; sourceTree = "<group>"; };
 		7A019C5C22AEA8DE0034C5A3 /* MakeConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeConstraints.swift; path = ../../MySwift/General/MakeConstraints.swift; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 				7A27506722ABA25600C8A474 /* ViewTab.swift */,
 				7A019C5222AEA1F60034C5A3 /* ControllerTab.swift */,
 				7A019C5422AEA2040034C5A3 /* ModelTab.swift */,
-				7A019C5622AEA2170034C5A3 /* ForthTab.swift */,
+				7A019C5622AEA2170034C5A3 /* TestTab.swift */,
 				7A019C9322B004130034C5A3 /* ViewTabSubpage */,
 				7AA638A422E2096E00EAA214 /* ControllerTabSubpage */,
 				7A27506922ABA25600C8A474 /* Main.storyboard */,
@@ -700,7 +700,7 @@
 				7A019CDB22BA7FDB0034C5A3 /* ScrollViewPage.swift in Sources */,
 				7A27506822ABA25600C8A474 /* ViewTab.swift in Sources */,
 				7A019CBE22B7F0050034C5A3 /* SliderPage.swift in Sources */,
-				7A019C5722AEA2170034C5A3 /* ForthTab.swift in Sources */,
+				7A019C5722AEA2170034C5A3 /* TestTab.swift in Sources */,
 				7A019CDF22BA80370034C5A3 /* PickerViewPage.swift in Sources */,
 				7A019CD522BA7F610034C5A3 /* ImageViewPage.swift in Sources */,
 				7AA638B522E209D100EAA214 /* plistPage.swift in Sources */,

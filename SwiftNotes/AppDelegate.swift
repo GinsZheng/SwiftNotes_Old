@@ -21,25 +21,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewTab = ViewTab()
         let controllerTab = ControllerTab()
         let modelTab = ModelTab()
-        let forthTab = ForthTab()
+        let testTab = TestTab()
         
         // 创建导航控制器
         let firstNav = UINavigationController(rootViewController: viewTab)
         let secondNav = UINavigationController(rootViewController: controllerTab)
         let thirdNav = UINavigationController(rootViewController: modelTab)
-        let forthNav = UINavigationController(rootViewController: forthTab)
+        let forthNav = UINavigationController(rootViewController: testTab)
         
         // 设置tabBar各图标
         viewTab.tabBarItem.image = UIImage(named: "tab-discovery")
         controllerTab.tabBarItem.image = UIImage(named: "tab-saved")
         modelTab.tabBarItem.image = UIImage(named: "tab-tickets")
-        forthTab.tabBarItem.image = UIImage(named: "tab-mine")
+        testTab.tabBarItem.image = UIImage(named: "tab-mine")
         
         // 设置tatabBar各标题
         viewTab.tabBarItem.title = "View"
         controllerTab.tabBarItem.title = "Controller"
         modelTab.tabBarItem.title = "Model"
-        forthTab.tabBarItem.title = "试验区"
+        testTab.tabBarItem.title = "Test"
         
         // 把tabBar实例添加到UITabBarController，并设置样式
         let tabBar = UITabBarController()
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         
         // 设置启动时显示的tab
-        tabBar.selectedIndex = 0
+        tabBar.selectedIndex = 3
         
         
         

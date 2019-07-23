@@ -21,7 +21,7 @@ class ImageViewPage: UIViewController {
         
         image.contentMode = .scaleAspectFill
         image.layer.masksToBounds = true
-        image.setCornerRadius(8)
+        image.setCornerRadius(radius: 8)
         
         image.addBorder(color: colorF7AD18, borderWidth: 1)
 

@@ -21,16 +21,16 @@ class ControllerTab: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        scrollView.makeConstraintsToLeftTop(left: 0, top: NavBarHeight, width: view, height: getSafeAreaHeight(self))
+//        scrollView.makeConstraintsToLeftTop(left: 0, top: kNavBarHeight, width: view, height: getSafeAreaHeight(self))
         
         let viewContainer = UIView()
         scrollView.addSubview(viewContainer)
-        viewContainer.makeConstraintsToLeftTop(left: 0, top: 0, width: scrollView, height: scrollView)
+//        viewContainer.makeConstraintsToLeftTop(left: 0, top: 0, width: scrollView, height: scrollView)
         
         let table = UITableView()
         viewContainer.addSubview(table)
-        table.makeConstraintsToLeftTop(left: 0, top: 0, width: ScreenWidth, height: 56*controllerList.count)
-        table.makeConstraintsToBottom(bottom: viewContainer)
+//        table.makeConstraintsToLeftTop(left: 0, top: 0, width: kScreenWidth, height: 56*controllerList.count)
+//        table.makeConstraintsToBottom(bottom: viewContainer)
         table.dataSource = self
         table.delegate = self
         table.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
@@ -51,7 +51,7 @@ class ControllerTab: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
         let cellTitle = UILabel()
         cellTitle.set(parentView: cell.contentView, text: controllerList[indexPath.row])
-        cellTitle.makeConstraintsToLeftCenterY(left: 20, centerY: cell.contentView)
+//        cellTitle.makeConstraintsToLeftCenterY(left: 20, centerY: cell.contentView)
         
         return cell
     }

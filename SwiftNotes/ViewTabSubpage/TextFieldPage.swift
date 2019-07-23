@@ -8,15 +8,22 @@
 
 import UIKit
 
-class TextFieldPage: UIViewController {
+class TextFieldPage: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        let textField = createUITextField(parentView: view, placeholder: "I'm placeholder")
+        let textField = UITextField()
+        textField.set(parentView: view, placeholder: "Input something")
         textField.makeConstraintsToLeftTop(left: 20, top: 100, width: 335, height: 44)
+        textField.delegate = self
     }
     
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(textField.text!)
+        return true
+    }
 }
+
