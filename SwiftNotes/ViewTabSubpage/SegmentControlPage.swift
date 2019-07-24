@@ -19,7 +19,7 @@ class SegmentControlPage: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        let segmentControl = UISegmentedControl(items: ["firstSegment", "secondSegment"])
+        let segmentControl = UISegmentedControl(items: ["FirstSegment", "SecondSegment"])
         view.addSubview(segmentControl)
         segmentControl.makeConstraints(left: 20, top: 100, right: 20, height: 36)
         segmentControl.selectedSegmentIndex = 0

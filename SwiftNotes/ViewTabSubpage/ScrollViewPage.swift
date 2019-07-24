@@ -17,14 +17,10 @@ class ScrollViewPage: UIViewController {
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
         scrollView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: 400)
+        scrollView.contentSize = CGSize(width: kScreenWidth, height: kScreenWidth/375*812)
         
-        let viewContainer = UIView()
-        scrollView.addSubview(viewContainer)
-        viewContainer.makeConstraints(left: 0, top: 0, width: scrollView.width, height: scrollView.height)
-        viewContainer.backgroundColor = UIColor.hex(colorF5F6F8)
-        
-        let image = createUIImageView(parentView: viewContainer, imageName: "iPhoneX")
-        image.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: 1000)
+        let image = createUIImageView(parentView: scrollView, imageName: "iPhoneX")
+        image.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: kScreenWidth/375*812)
         
         
     }

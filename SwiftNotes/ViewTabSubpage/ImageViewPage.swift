@@ -23,7 +23,7 @@ class ImageViewPage: UIViewController {
         image.layer.masksToBounds = true
         image.setCornerRadius(radius: 8)
         
-        image.addBorder(color: colorF7AD18, borderWidth: 1)
+        image.addBorder(color: color2C9EFF, borderWidth: 1)
 
         
     }
