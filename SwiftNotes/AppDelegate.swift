@@ -30,10 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let forthNav = UINavigationController(rootViewController: testTab)
         
         // 设置tabBar各图标
-        viewTab.tabBarItem.image = UIImage(named: "tab-discovery")
-        controllerTab.tabBarItem.image = UIImage(named: "tab-saved")
-        modelTab.tabBarItem.image = UIImage(named: "tab-tickets")
-        testTab.tabBarItem.image = UIImage(named: "tab-mine")
+        viewTab.tabBarItem.image = UIImage(named: "tab_discovery")
+        controllerTab.tabBarItem.image = UIImage(named: "tab_saved")
+        modelTab.tabBarItem.image = UIImage(named: "tab_tickets")
+        testTab.tabBarItem.image = UIImage(named: "tab_mine")
         
         // 设置tatabBar各标题
         viewTab.tabBarItem.title = "View"
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         
         // 设置启动时显示的tab
-        tabBar.selectedIndex = 3
+        tabBar.selectedIndex = 0
         
         
         

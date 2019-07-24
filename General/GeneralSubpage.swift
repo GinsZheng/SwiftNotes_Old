@@ -16,8 +16,9 @@ class GeneralSubpage: UIViewController {
         
         let label = UILabel()
         label.set(parentView: view, text: "General SubPage")
-        label.makeConstraintsToCenterXCenterY(center: view)
         label.setFontStyle(color: "222", size: 34)
+        label.makeConstraints(center: view)
+        
     }
     
     

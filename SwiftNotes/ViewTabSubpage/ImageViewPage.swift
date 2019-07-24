@@ -16,7 +16,7 @@ class ImageViewPage: UIViewController {
         
         let image = UIImageView()
         view.addSubview(image)
-        image.makeConstraintsToLeftTopRight(left: 20, top: 100, right: -20, height: 300)
+        image.makeConstraints(left: 20, top: 100, right: 20, height: 300)
         image.image = UIImage(named: "iPhoneX")
         
         image.contentMode = .scaleAspectFill

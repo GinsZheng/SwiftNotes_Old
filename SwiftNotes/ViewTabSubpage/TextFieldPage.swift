@@ -16,7 +16,7 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
         
         let textField = UITextField()
         textField.set(parentView: view, placeholder: "Input something")
-        textField.makeConstraintsToLeftTop(left: 20, top: 100, width: 335, height: 44)
+        textField.makeConstraints(left: 20, top: 100, width: 335, height: 44)
         textField.delegate = self
     }
     

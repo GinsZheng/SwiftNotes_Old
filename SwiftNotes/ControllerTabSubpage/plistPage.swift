@@ -23,7 +23,7 @@ class plistPage: UIViewController {
         // feedback
         let label = UILabel()
         label.set(parentView: view, text: firstBook)
-        label.makeConstraintsToLeftTop(left: 20, top: 100)
+        label.makeConstraints(left: 20, top: 100)
     }
     
 }

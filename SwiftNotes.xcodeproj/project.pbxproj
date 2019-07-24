@@ -35,7 +35,6 @@
 		7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27506522ABA25600C8A474 /* AppDelegate.swift */; };
 		7A27506822ABA25600C8A474 /* ViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27506722ABA25600C8A474 /* ViewTab.swift */; };
 		7A27506B22ABA25600C8A474 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A27506922ABA25600C8A474 /* Main.storyboard */; };
-		7A27506D22ABA25A00C8A474 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A27506C22ABA25A00C8A474 /* Assets.xcassets */; };
 		7A27507022ABA25A00C8A474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A27506E22ABA25A00C8A474 /* LaunchScreen.storyboard */; };
 		7A27507B22ABA25B00C8A474 /* SwiftNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27507A22ABA25B00C8A474 /* SwiftNotesTests.swift */; };
 		7A27508622ABA25B00C8A474 /* SwiftNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27508522ABA25B00C8A474 /* SwiftNotesUITests.swift */; };
@@ -44,6 +43,8 @@
 		7A8E5E8622E1CEB9004E6E4B /* WebViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */; };
 		7AA638B522E209D100EAA214 /* plistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA638B422E209D100EAA214 /* plistPage.swift */; };
 		7AA63AD322E214DE00EAA214 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA63AD222E214DE00EAA214 /* Colors.swift */; };
+		7AAB0AE422E8A6AE0058F38F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AAB0AE322E8A6AE0058F38F /* Assets.xcassets */; };
+		7AAB0EB722E8B45D0058F38F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AAB0EB622E8B45D0058F38F /* Images.xcassets */; };
 		7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; };
 		7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AFF38D322AF828300AC4958 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38B322AF821C00AC4958 /* SnapKit.framework */; };
@@ -227,7 +228,6 @@
 		7A27506522ABA25600C8A474 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A27506722ABA25600C8A474 /* ViewTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTab.swift; sourceTree = "<group>"; };
 		7A27506A22ABA25600C8A474 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		7A27506C22ABA25A00C8A474 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A27506F22ABA25A00C8A474 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A27507122ABA25A00C8A474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A27507622ABA25B00C8A474 /* SwiftNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,6 +241,8 @@
 		7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPage.swift; sourceTree = "<group>"; };
 		7AA638B422E209D100EAA214 /* plistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plistPage.swift; sourceTree = "<group>"; };
 		7AA63AD222E214DE00EAA214 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		7AAB0AE322E8A6AE0058F38F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7AAB0EB622E8B45D0058F38F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-alamofire5/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		7AFF38AD22AF821C00AC4958 /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = "SnapKit-develop/SnapKit.xcodeproj"; sourceTree = "<group>"; };
 		7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
@@ -356,9 +358,10 @@
 				7A019C9322B004130034C5A3 /* ViewTabSubpage */,
 				7AA638A422E2096E00EAA214 /* ControllerTabSubpage */,
 				7A27506922ABA25600C8A474 /* Main.storyboard */,
-				7A27506C22ABA25A00C8A474 /* Assets.xcassets */,
 				7A27506E22ABA25A00C8A474 /* LaunchScreen.storyboard */,
 				7A27507122ABA25A00C8A474 /* Info.plist */,
+				7AAB0AE322E8A6AE0058F38F /* Assets.xcassets */,
+				7AAB0EB622E8B45D0058F38F /* Images.xcassets */,
 			);
 			path = SwiftNotes;
 			sourceTree = "<group>";
@@ -662,8 +665,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A27507022ABA25A00C8A474 /* LaunchScreen.storyboard in Resources */,
-				7A27506D22ABA25A00C8A474 /* Assets.xcassets in Resources */,
+				7AAB0EB722E8B45D0058F38F /* Images.xcassets in Resources */,
 				7A8E5E7522E1C139004E6E4B /* Books.plist in Resources */,
+				7AAB0AE422E8A6AE0058F38F /* Assets.xcassets in Resources */,
 				7A27506B22ABA25600C8A474 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

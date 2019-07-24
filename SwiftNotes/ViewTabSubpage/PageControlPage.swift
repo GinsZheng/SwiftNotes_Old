@@ -16,7 +16,7 @@ class PageControlPage: UIViewController {
         
         let pageControl = UIPageControl()
         view.addSubview(pageControl)
-        pageControl.makeConstraintsToLeftTopRight(left: 50, top: 100, right: -50, height: 44)
+        pageControl.makeConstraints(left: 50, top: 100, right: -50, height: 44)
         pageControl.numberOfPages = 5
         pageControl.hidesForSinglePage = true
     }

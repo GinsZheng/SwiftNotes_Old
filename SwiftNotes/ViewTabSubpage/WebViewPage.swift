@@ -11,10 +11,15 @@ import WebKit
 
 class WebViewPage: UIViewController {
     
+    var webView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
+        let url = URL(string: "https://www.apple.com/")
+        let request = URLRequest(url: url!)
+        webView.load(request)
         
     }
     

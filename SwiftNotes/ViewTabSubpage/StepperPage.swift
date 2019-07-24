@@ -20,7 +20,7 @@ class StepperPage: UIViewController {
         
         let stepper = UIStepper()
         view.addSubview(stepper)
-        stepper.makeConstraintsToLeftTop(left: 20, top: 100, width: 200, height: 36)
+        stepper.makeConstraints(left: 20, top: 100, width: 200, height: 36)
         stepper.addTarget(self, action: #selector(printValue(_:)), for: .touchUpInside)
         
     }
