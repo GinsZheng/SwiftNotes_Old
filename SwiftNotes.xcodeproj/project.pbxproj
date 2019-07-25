@@ -290,8 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				7A019C5B22AEA8DE0034C5A3 /* CreateUIView.swift */,
-				7A019C5E22AEA8DE0034C5A3 /* GlobalFunction.swift */,
 				7A019C5D22AEA8DE0034C5A3 /* GlobalVariables.swift */,
+				7A019C5E22AEA8DE0034C5A3 /* GlobalFunction.swift */,
 				7A019C5C22AEA8DE0034C5A3 /* MakeConstraints.swift */,
 				7A019C5A22AEA8DE0034C5A3 /* SetColorInHex.swift */,
 				7A019C5F22AEA8DE0034C5A3 /* UIKitExtension.swift */,

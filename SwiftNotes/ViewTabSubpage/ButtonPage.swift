@@ -18,6 +18,12 @@ class ButtonPage: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
+        if self.tabBarController?.hidesBottomBarWhenPushed == false {
+            print("Right")
+        } else {
+            print("Nope")
+        }
+        
         let wordButton = UIButton(type: .system)
         view.addSubview(wordButton)
         wordButton.makeConstraints(left: 20, top: 100, right: 20, height: 44)

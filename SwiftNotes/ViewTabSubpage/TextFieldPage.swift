@@ -15,8 +15,8 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
         view.backgroundColor = UIColor.white
         
         let textField = UITextField()
-        textField.set(parentView: view, placeholder: "Input something")
-        textField.makeConstraints(left: 20, top: 100, width: 335, height: 44)
+        textField.set(superview: view, placeholder: "Input something")
+        textField.makeConstraints(left: 20, top: 100, width: kScreenWidth, height: 44)
         textField.delegate = self
     }
     

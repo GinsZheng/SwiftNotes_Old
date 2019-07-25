@@ -25,7 +25,7 @@ class ControllerTab: UIViewController, UITableViewDelegate, UITableViewDataSourc
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight*CGFloat(controllerList.count))
         
         let table = UITableView()
-        table.set(parentView: scrollView)
+        table.set(superview: scrollView)
         table.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: scrollView.height)
         table.dataSource = self
         table.delegate = self
@@ -47,7 +47,7 @@ class ControllerTab: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
         cell.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
         let cellTitle = UILabel()
-        cellTitle.set(parentView: cell, text: controllerList[indexPath.row])
+        cellTitle.set(superview: cell, text: controllerList[indexPath.row])
         cellTitle.makeConstraints(left: 20, centerY: cell)
         
         return cell

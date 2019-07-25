@@ -15,9 +15,10 @@ class GeneralSubpage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let label = UILabel()
-        label.set(parentView: view, text: "General SubPage")
+        label.set(superview: view, text: "General SubPage")
         label.setFontStyle(color: "222", size: 34)
         label.makeConstraints(center: view)
+        
         
     }
     

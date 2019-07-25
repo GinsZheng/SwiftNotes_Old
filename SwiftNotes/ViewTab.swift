@@ -10,22 +10,22 @@ import UIKit
 
 class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controlList = ["Button", "Date Picker", "Image View", "Label", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Switch", "Table View", "Text Field", "Text View", "View"]
-    let controlPage = [ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), ViewPage()]
+    let controlList = ["Button", "Date Picker", "Image View", "Label", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Switch", "Table View", "Text Field", "Text View", "View", "Web View"]
+    let controlPage = [ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), ViewPage(), WebViewPage()]
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        
+
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        scrollView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: getSafeAreaHeight(self))
+        scrollView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: self.getSafeAreaHeight())
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight*CGFloat(controlList.count))
         
         let viewContainer = UIView()
         scrollView.addSubview(viewContainer)
-        viewContainer.makeConstraints(left: 0, top: 0, width: scrollView.width, height: scrollView.height)
+        viewContainer.makeConstraints(left: 0, top: 0, width: scrollView.width, height: CGFloat(56*controlList.count))
 
         let table = UITableView()
         viewContainer.addSubview(table)
@@ -43,11 +43,11 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
         
         let cellTitle = UILabel()
-        cellTitle.set(parentView: cell, text: controlList[indexPath.row])
+        cellTitle.set(superview: cell, text: controlList[indexPath.row])
         cellTitle.makeConstraints(left: 20, centerY: cell)
         
         let next = UIImageView()
-        next.set(parentView: cell, imageName: "discovery_next")
+        next.set(superview: cell, imageName: "discovery_next")
         next.makeConstraints(right: 20, centerY: cell, width: 16, height: 16)
         
         return cell

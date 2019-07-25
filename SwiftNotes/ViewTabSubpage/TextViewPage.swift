@@ -15,7 +15,7 @@ class TextViewPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let textView = UITextView()
-        textView.set(parentView: view)
+        textView.set(superview: view)
         textView.makeConstraints(left: 20, top: 100, width: kScreenWidth - 40, height: 300)
         textView.text = "Hehedahehedahehedahehedahehedahehedahehedahehedahehedahehedaheheda"
         textView.setFontStyle(color: "222", size: 17)

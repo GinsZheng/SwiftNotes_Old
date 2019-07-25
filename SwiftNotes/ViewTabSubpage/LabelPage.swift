@@ -15,7 +15,7 @@ class LabelPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let label = UILabel()
-        label.set(parentView: view, text: "hello UILabel")
+        label.set(superview: view, text: "hello UILabel")
         label.setFontStyle(color: "222", size: 34) // 文字要先设字号再布局
         label.makeConstraints(left: 20, top: 100)
         

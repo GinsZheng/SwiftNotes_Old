@@ -27,7 +27,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
         
         let cellTitle = UILabel()
-        cellTitle.set(parentView: cell, text: controlList[indexPath.row])
+        cellTitle.set(superview: cell, text: controlList[indexPath.row])
         cellTitle.makeConstraints(left: 20, centerY: cell)
         
         return cell
@@ -45,7 +45,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         view.backgroundColor = UIColor.white
         
         let table = UITableView()
-        table.set(parentView: view)
+        table.set(superview: view)
         table.makeConstraints(left: 0, top: kNavBarHeight, right: 0, height: kCellHeight * CGFloat(controlList.count))
         table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(controlList.count))
         table.dataSource = self

@@ -15,13 +15,8 @@ class TestTab: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-//        let myView = UIView()
-//        myView.makeConstraints(left: 20, top: 100, width: 100, height: 100)
-//        myView.set(parentView: view)
-//        myView.backgroundColor = UIColor.hex("2c9eff")
-//        myView.centerX = 100
         let myLabel = UILabel()
-        myLabel.set(parentView: view, text: "hehedahehedaheheda")
+        myLabel.set(superview: view, text: "hehedahehedaheheda")
         myLabel.makeConstraints(left: 20, top: 200)
         myLabel.backgroundColor = UIColor.hex("ccc")
 
