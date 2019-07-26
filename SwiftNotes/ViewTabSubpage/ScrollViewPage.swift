@@ -19,9 +19,9 @@ class ScrollViewPage: UIViewController {
         scrollView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: 400)
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kScreenWidth/375*812)
         
-        let image = createUIImageView(parentView: scrollView, imageName: "iPhoneX")
+        let image = UIImageView()
+        image.set(superview: scrollView, imageName: "iPhoneX")
         image.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: kScreenWidth/375*812)
-        
         
     }
     

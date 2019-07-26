@@ -11,7 +11,6 @@
 		7A019C5522AEA2040034C5A3 /* ModelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5422AEA2040034C5A3 /* ModelTab.swift */; };
 		7A019C5722AEA2170034C5A3 /* TestTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5622AEA2170034C5A3 /* TestTab.swift */; };
 		7A019C6022AEA8DE0034C5A3 /* SetColorInHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5A22AEA8DE0034C5A3 /* SetColorInHex.swift */; };
-		7A019C6122AEA8DE0034C5A3 /* CreateUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5B22AEA8DE0034C5A3 /* CreateUIView.swift */; };
 		7A019C6222AEA8DE0034C5A3 /* MakeConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5C22AEA8DE0034C5A3 /* MakeConstraints.swift */; };
 		7A019C6322AEA8DE0034C5A3 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5D22AEA8DE0034C5A3 /* GlobalVariables.swift */; };
 		7A019C6422AEA8DE0034C5A3 /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A019C5E22AEA8DE0034C5A3 /* GlobalFunction.swift */; };
@@ -38,6 +37,7 @@
 		7A27507022ABA25A00C8A474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A27506E22ABA25A00C8A474 /* LaunchScreen.storyboard */; };
 		7A27507B22ABA25B00C8A474 /* SwiftNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27507A22ABA25B00C8A474 /* SwiftNotesTests.swift */; };
 		7A27508622ABA25B00C8A474 /* SwiftNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27508522ABA25B00C8A474 /* SwiftNotesUITests.swift */; };
+		7A6540E922E9B7E00003613A /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6540E822E9B7E00003613A /* TestPage.swift */; };
 		7A8923C222C1FFB7005196B6 /* ViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8923C122C1FFB7005196B6 /* ViewPage.swift */; };
 		7A8E5E7522E1C139004E6E4B /* Books.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A8E5E7422E1C139004E6E4B /* Books.plist */; };
 		7A8E5E8622E1CEB9004E6E4B /* WebViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */; };
@@ -203,7 +203,6 @@
 		7A019C5422AEA2040034C5A3 /* ModelTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTab.swift; sourceTree = "<group>"; };
 		7A019C5622AEA2170034C5A3 /* TestTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTab.swift; sourceTree = "<group>"; };
 		7A019C5A22AEA8DE0034C5A3 /* SetColorInHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetColorInHex.swift; path = ../../MySwift/General/SetColorInHex.swift; sourceTree = "<group>"; };
-		7A019C5B22AEA8DE0034C5A3 /* CreateUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateUIView.swift; path = ../../MySwift/General/CreateUIView.swift; sourceTree = "<group>"; };
 		7A019C5C22AEA8DE0034C5A3 /* MakeConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MakeConstraints.swift; path = ../../MySwift/General/MakeConstraints.swift; sourceTree = "<group>"; };
 		7A019C5D22AEA8DE0034C5A3 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlobalVariables.swift; path = ../../MySwift/General/GlobalVariables.swift; sourceTree = "<group>"; };
 		7A019C5E22AEA8DE0034C5A3 /* GlobalFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlobalFunction.swift; path = ../../MySwift/General/GlobalFunction.swift; sourceTree = "<group>"; };
@@ -236,6 +235,7 @@
 		7A27508122ABA25B00C8A474 /* SwiftNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A27508522ABA25B00C8A474 /* SwiftNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNotesUITests.swift; sourceTree = "<group>"; };
 		7A27508722ABA25B00C8A474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A6540E822E9B7E00003613A /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
 		7A8923C122C1FFB7005196B6 /* ViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPage.swift; sourceTree = "<group>"; };
 		7A8E5E7422E1C139004E6E4B /* Books.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Books.plist; sourceTree = "<group>"; };
 		7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPage.swift; sourceTree = "<group>"; };
@@ -289,14 +289,12 @@
 		7A019B9522AE9ED70034C5A3 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				7A019C5B22AEA8DE0034C5A3 /* CreateUIView.swift */,
 				7A019C5D22AEA8DE0034C5A3 /* GlobalVariables.swift */,
 				7A019C5E22AEA8DE0034C5A3 /* GlobalFunction.swift */,
 				7A019C5C22AEA8DE0034C5A3 /* MakeConstraints.swift */,
 				7A019C5A22AEA8DE0034C5A3 /* SetColorInHex.swift */,
 				7A019C5F22AEA8DE0034C5A3 /* UIKitExtension.swift */,
 				7AA63AD222E214DE00EAA214 /* Colors.swift */,
-				7A019CB622B566230034C5A3 /* GeneralSubpage.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -331,6 +329,7 @@
 				7A27506422ABA25600C8A474 /* SwiftNotes */,
 				7A019B2322ABA46E0034C5A3 /* Libraries */,
 				7A019B9522AE9ED70034C5A3 /* General */,
+				7A6540E722E9B7890003613A /* LearningPage */,
 				7A27507922ABA25B00C8A474 /* SwiftNotesTests */,
 				7A27508422ABA25B00C8A474 /* SwiftNotesUITests */,
 				7A27506322ABA25600C8A474 /* Products */,
@@ -382,6 +381,15 @@
 				7A27508722ABA25B00C8A474 /* Info.plist */,
 			);
 			path = SwiftNotesUITests;
+			sourceTree = "<group>";
+		};
+		7A6540E722E9B7890003613A /* LearningPage */ = {
+			isa = PBXGroup;
+			children = (
+				7A019CB622B566230034C5A3 /* GeneralSubpage.swift */,
+				7A6540E822E9B7E00003613A /* TestPage.swift */,
+			);
+			path = LearningPage;
 			sourceTree = "<group>";
 		};
 		7AA638A422E2096E00EAA214 /* ControllerTabSubpage */ = {
@@ -698,7 +706,7 @@
 				7A019C9B22B3E7880034C5A3 /* SwitchPage.swift in Sources */,
 				7A019CB722B566230034C5A3 /* GeneralSubpage.swift in Sources */,
 				7A019C6522AEA8DE0034C5A3 /* UIKitExtension.swift in Sources */,
-				7A019C6122AEA8DE0034C5A3 /* CreateUIView.swift in Sources */,
+				7A6540E922E9B7E00003613A /* TestPage.swift in Sources */,
 				7A019C9722B3E4BF0034C5A3 /* LabelPage.swift in Sources */,
 				7A019CD322BA7F1C0034C5A3 /* StackViewPage.swift in Sources */,
 				7A019CDB22BA7FDB0034C5A3 /* ScrollViewPage.swift in Sources */,

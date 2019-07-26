@@ -10,6 +10,7 @@ import UIKit
 
 class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
     let controlList = ["Button", "Date Picker", "Image View", "Label", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Switch", "Table View", "Text Field", "Text View", "View", "Web View"]
     let controlPage = [ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), ViewPage(), WebViewPage()]
 
@@ -44,11 +45,11 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: controlList[indexPath.row])
-        cellTitle.makeConstraints(left: 20, centerY: cell)
+        cellTitle.makeConstraints(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
         next.set(superview: cell, imageName: "discovery_next")
-        next.makeConstraints(right: 20, centerY: cell, width: 16, height: 16)
+        next.makeConstraints(right: 20, centerY: cell.centerY, width: 16, height: 16)
         
         return cell
     }
@@ -67,3 +68,4 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+

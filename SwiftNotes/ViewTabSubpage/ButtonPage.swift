@@ -18,12 +18,6 @@ class ButtonPage: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        if self.tabBarController?.hidesBottomBarWhenPushed == false {
-            print("Right")
-        } else {
-            print("Nope")
-        }
-        
         let wordButton = UIButton(type: .system)
         view.addSubview(wordButton)
         wordButton.makeConstraints(left: 20, top: 100, right: 20, height: 44)
@@ -56,7 +50,7 @@ class ButtonPage: UIViewController {
         
         let iconButton = UIButton(type: .custom)
         view.addSubview(iconButton)
-        iconButton.makeConstraints(centerX: view, top: solidButton.bottom + 20, width: 44, height: 44)
+        iconButton.makeConstraints(centerX: view.centerX, top: solidButton.bottom + 20, width: 44, height: 44)
         iconButton.setImage(UIImage(named: "mine_item"), for: .normal)
         iconButton.adjustsImageWhenHighlighted = false
         iconButton.addTarget(self, action: #selector(pushToGeneralSubpage), for: .touchUpInside)
@@ -65,7 +59,7 @@ class ButtonPage: UIViewController {
         
         let iconButton2 = UIButton(type: .system)
         view.addSubview(iconButton2)
-        iconButton2.makeConstraints(centerX: view, top: iconButton.bottom + 20, width: 44, height: 44)
+        iconButton2.makeConstraints(centerX: view.centerX, top: iconButton.bottom + 20, width: 44, height: 44)
         iconButton2.setImage(UIImage(named: "mine_item"), for: .normal)
         iconButton2.tintColor = UIColor.hex(color2C9EFF)
         iconButton2.addTarget(self, action: #selector(pushToGeneralSubpage), for: .touchUpInside)

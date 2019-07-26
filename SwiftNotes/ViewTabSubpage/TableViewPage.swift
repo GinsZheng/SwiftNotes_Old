@@ -28,7 +28,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: controlList[indexPath.row])
-        cellTitle.makeConstraints(left: 20, centerY: cell)
+        cellTitle.makeConstraints(left: 20, centerY: cell.centerY)
         
         return cell
     }

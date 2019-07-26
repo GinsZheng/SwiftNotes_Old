@@ -9,10 +9,10 @@
 
 // All color values
 // Colorful
-let color2C9EFF = "2C9EFF"
-let colorFF5349 = "FF5349"
-let color25BE3C = "25BE3C"
-let colorF7AD18 = "F7AD18"
+let color2C9EFF = "2C9EFF" // 蓝
+let colorFF5349 = "FF5349" // 红
+let color25BE3C = "25BE3C" // 绿
+let colorF7AD18 = "F7AD18" // 橙
 
 // Main color extension
 let color202C9EFF = "202C9EFF"
@@ -38,8 +38,11 @@ let colorCCC = "CCC"
 let colorF0F1F3 = "F0F1F3"
 let colorF5F6F8 = "F5F6F8"
 let colorFFF = "FFF"
+let colorEEE = "EEE"
 
-
+// Button Pressed
+let color278DE5 = "278DE5" // 2C9EFF +10%黑
+let colorDCDCDE = "DCDCDE" // F5F6F8 +10%黑
 
 
 

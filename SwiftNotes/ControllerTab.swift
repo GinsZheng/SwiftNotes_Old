@@ -48,7 +48,7 @@ class ControllerTab: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: controllerList[indexPath.row])
-        cellTitle.makeConstraints(left: 20, centerY: cell)
+        cellTitle.makeConstraints(left: 20, centerY: cell.centerY)
         
         return cell
     }

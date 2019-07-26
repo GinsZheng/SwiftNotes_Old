@@ -19,7 +19,8 @@ class TestTab: UIViewController {
         myLabel.set(superview: view, text: "hehedahehedaheheda")
         myLabel.makeConstraints(left: 20, top: 200)
         myLabel.backgroundColor = UIColor.hex("ccc")
-
+        
+        
     }
 
 }
