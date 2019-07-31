@@ -30,6 +30,7 @@ let color26133660 = "26133660"
 
 // grays
 let color222 = "222"
+let color333 = "333"
 let color666 = "666"
 let color999 = "999"
 let colorCCC = "CCC"
@@ -39,11 +40,15 @@ let colorF0F1F3 = "F0F1F3"
 let colorF5F6F8 = "F5F6F8"
 let colorFFF = "FFF"
 let colorEEE = "EEE"
+let colorDDD = "DDD"
 
 // Button Pressed
 let color278DE5 = "278DE5" // 2C9EFF +10%黑
 let colorDCDCDE = "DCDCDE" // F5F6F8 +10%黑
 
+
+let color212C9EFF = "212C9EFF" // 2C9EFF 13%
+let color3B2C9EFF = "3B2C9EFF" // 2C9EFF 23%
 
 
 // ———————————————————————————————

@@ -39,6 +39,8 @@
 		7A27508622ABA25B00C8A474 /* SwiftNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27508522ABA25B00C8A474 /* SwiftNotesUITests.swift */; };
 		7A6540E922E9B7E00003613A /* TestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6540E822E9B7E00003613A /* TestPage.swift */; };
 		7A8923C222C1FFB7005196B6 /* ViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8923C122C1FFB7005196B6 /* ViewPage.swift */; };
+		7A89657222F1ECCF002A2479 /* DecoratorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89657122F1ECCF002A2479 /* DecoratorPage.swift */; };
+		7A89658622F1EEA1002A2479 /* ProtocolPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89658522F1EEA1002A2479 /* ProtocolPage.swift */; };
 		7A8E5E7522E1C139004E6E4B /* Books.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A8E5E7422E1C139004E6E4B /* Books.plist */; };
 		7A8E5E8622E1CEB9004E6E4B /* WebViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */; };
 		7AA638B522E209D100EAA214 /* plistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA638B422E209D100EAA214 /* plistPage.swift */; };
@@ -237,6 +239,8 @@
 		7A27508722ABA25B00C8A474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A6540E822E9B7E00003613A /* TestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPage.swift; sourceTree = "<group>"; };
 		7A8923C122C1FFB7005196B6 /* ViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPage.swift; sourceTree = "<group>"; };
+		7A89657122F1ECCF002A2479 /* DecoratorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratorPage.swift; sourceTree = "<group>"; };
+		7A89658522F1EEA1002A2479 /* ProtocolPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolPage.swift; sourceTree = "<group>"; };
 		7A8E5E7422E1C139004E6E4B /* Books.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Books.plist; sourceTree = "<group>"; };
 		7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPage.swift; sourceTree = "<group>"; };
 		7AA638B422E209D100EAA214 /* plistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plistPage.swift; sourceTree = "<group>"; };
@@ -396,6 +400,8 @@
 			isa = PBXGroup;
 			children = (
 				7AA638B422E209D100EAA214 /* plistPage.swift */,
+				7A89657122F1ECCF002A2479 /* DecoratorPage.swift */,
+				7A89658522F1EEA1002A2479 /* ProtocolPage.swift */,
 				7A8E5E7422E1C139004E6E4B /* Books.plist */,
 			);
 			path = ControllerTabSubpage;
@@ -710,10 +716,12 @@
 				7A019C9722B3E4BF0034C5A3 /* LabelPage.swift in Sources */,
 				7A019CD322BA7F1C0034C5A3 /* StackViewPage.swift in Sources */,
 				7A019CDB22BA7FDB0034C5A3 /* ScrollViewPage.swift in Sources */,
+				7A89658622F1EEA1002A2479 /* ProtocolPage.swift in Sources */,
 				7A27506822ABA25600C8A474 /* ViewTab.swift in Sources */,
 				7A019CBE22B7F0050034C5A3 /* SliderPage.swift in Sources */,
 				7A019C5722AEA2170034C5A3 /* TestTab.swift in Sources */,
 				7A019CDF22BA80370034C5A3 /* PickerViewPage.swift in Sources */,
+				7A89657222F1ECCF002A2479 /* DecoratorPage.swift in Sources */,
 				7A019CD522BA7F610034C5A3 /* ImageViewPage.swift in Sources */,
 				7AA638B522E209D100EAA214 /* plistPage.swift in Sources */,
 				7A019C9922B3E6D40034C5A3 /* TextFieldPage.swift in Sources */,

@@ -11,8 +11,8 @@ import UIKit
 
 class ControllerTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controllerList = ["Plist"]
-    let controllerPage = [plistPage()]
+    let controllerList = ["Plist", "Decorator", "Protocol"]
+    let controllerPage = [plistPage(), DecoratorPage(), ProtocolPage()]
     
     
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class ControllerTab: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        scrollView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: 56)
+        scrollView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: kCellHeight*CGFloat(controllerList.count))
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight*CGFloat(controllerList.count))
         
         let table = UITableView()
