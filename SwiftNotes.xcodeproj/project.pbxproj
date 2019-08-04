@@ -41,6 +41,9 @@
 		7A8923C222C1FFB7005196B6 /* ViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8923C122C1FFB7005196B6 /* ViewPage.swift */; };
 		7A89657222F1ECCF002A2479 /* DecoratorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89657122F1ECCF002A2479 /* DecoratorPage.swift */; };
 		7A89658622F1EEA1002A2479 /* ProtocolPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89658522F1EEA1002A2479 /* ProtocolPage.swift */; };
+		7A8965AC22F543DD002A2479 /* NumberFormatterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8965AB22F543DD002A2479 /* NumberFormatterPage.swift */; };
+		7A8965AE22F59FB7002A2479 /* AnimationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8965AD22F59FB7002A2479 /* AnimationPage.swift */; };
+		7A8965B022F5DE7B002A2479 /* LongPressCopyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8965AF22F5DE7B002A2479 /* LongPressCopyPage.swift */; };
 		7A8E5E7522E1C139004E6E4B /* Books.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A8E5E7422E1C139004E6E4B /* Books.plist */; };
 		7A8E5E8622E1CEB9004E6E4B /* WebViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */; };
 		7AA638B522E209D100EAA214 /* plistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA638B422E209D100EAA214 /* plistPage.swift */; };
@@ -49,8 +52,6 @@
 		7AAB0EB722E8B45D0058F38F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7AAB0EB622E8B45D0058F38F /* Images.xcassets */; };
 		7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; };
 		7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7AFF38D322AF828300AC4958 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38B322AF821C00AC4958 /* SnapKit.framework */; };
-		7AFF38D422AF828300AC4958 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38B322AF821C00AC4958 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38A022AF821800AC4958 /* Alamofire.framework */; };
 		7AFF38D822AF828300AC4958 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38A022AF821800AC4958 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -119,20 +120,6 @@
 			remoteGlobalIDString = E4202FE01B667AA100C997FB;
 			remoteInfo = "Alamofire watchOS";
 		};
-		7AFF38B222AF821C00AC4958 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7AFF38AD22AF821C00AC4958 /* SnapKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEBCC9D819CC627D0083B827;
-			remoteInfo = SnapKit;
-		};
-		7AFF38B422AF821C00AC4958 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7AFF38AD22AF821C00AC4958 /* SnapKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EEBCC9E219CC627E0083B827;
-			remoteInfo = "SnapKit Tests";
-		};
 		7AFF38C122AF822000AC4958 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */;
@@ -193,7 +180,6 @@
 			files = (
 				7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */,
 				7AFF38D822AF828300AC4958 /* Alamofire.framework in Embed Frameworks */,
-				7AFF38D422AF828300AC4958 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -241,6 +227,9 @@
 		7A8923C122C1FFB7005196B6 /* ViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPage.swift; sourceTree = "<group>"; };
 		7A89657122F1ECCF002A2479 /* DecoratorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratorPage.swift; sourceTree = "<group>"; };
 		7A89658522F1EEA1002A2479 /* ProtocolPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolPage.swift; sourceTree = "<group>"; };
+		7A8965AB22F543DD002A2479 /* NumberFormatterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterPage.swift; sourceTree = "<group>"; };
+		7A8965AD22F59FB7002A2479 /* AnimationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPage.swift; sourceTree = "<group>"; };
+		7A8965AF22F5DE7B002A2479 /* LongPressCopyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressCopyPage.swift; sourceTree = "<group>"; };
 		7A8E5E7422E1C139004E6E4B /* Books.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Books.plist; sourceTree = "<group>"; };
 		7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPage.swift; sourceTree = "<group>"; };
 		7AA638B422E209D100EAA214 /* plistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plistPage.swift; sourceTree = "<group>"; };
@@ -248,7 +237,6 @@
 		7AAB0AE322E8A6AE0058F38F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7AAB0EB622E8B45D0058F38F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-alamofire5/Alamofire.xcodeproj"; sourceTree = "<group>"; };
-		7AFF38AD22AF821C00AC4958 /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = "SnapKit-develop/SnapKit.xcodeproj"; sourceTree = "<group>"; };
 		7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,7 +247,6 @@
 			files = (
 				7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */,
 				7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */,
-				7AFF38D322AF828300AC4958 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */,
-				7AFF38AD22AF821C00AC4958 /* SnapKit.xcodeproj */,
 				7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */,
 			);
 			path = Libraries;
@@ -323,6 +309,7 @@
 				7A019CD822BA7FB10034C5A3 /* TextViewPage.swift */,
 				7A8923C122C1FFB7005196B6 /* ViewPage.swift */,
 				7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */,
+				7A8965AD22F59FB7002A2479 /* AnimationPage.swift */,
 			);
 			path = ViewTabSubpage;
 			sourceTree = "<group>";
@@ -402,6 +389,8 @@
 				7AA638B422E209D100EAA214 /* plistPage.swift */,
 				7A89657122F1ECCF002A2479 /* DecoratorPage.swift */,
 				7A89658522F1EEA1002A2479 /* ProtocolPage.swift */,
+				7A8965AB22F543DD002A2479 /* NumberFormatterPage.swift */,
+				7A8965AF22F5DE7B002A2479 /* LongPressCopyPage.swift */,
 				7A8E5E7422E1C139004E6E4B /* Books.plist */,
 			);
 			path = ControllerTabSubpage;
@@ -417,15 +406,6 @@
 				7AFF38A822AF821800AC4958 /* Alamofire.framework */,
 				7AFF38AA22AF821800AC4958 /* Alamofire tvOS Tests.xctest */,
 				7AFF38AC22AF821800AC4958 /* Alamofire.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7AFF38AE22AF821C00AC4958 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7AFF38B322AF821C00AC4958 /* SnapKit.framework */,
-				7AFF38B522AF821C00AC4958 /* SnapKit Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -541,10 +521,6 @@
 					ProjectRef = 7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */;
 				},
 				{
-					ProductGroup = 7AFF38AE22AF821C00AC4958 /* Products */;
-					ProjectRef = 7AFF38AD22AF821C00AC4958 /* SnapKit.xcodeproj */;
-				},
-				{
 					ProductGroup = 7AFF38B722AF822000AC4958 /* Products */;
 					ProjectRef = 7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */;
 				},
@@ -606,20 +582,6 @@
 			fileType = wrapper.framework;
 			path = Alamofire.framework;
 			remoteRef = 7AFF38AB22AF821800AC4958 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7AFF38B322AF821C00AC4958 /* SnapKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SnapKit.framework;
-			remoteRef = 7AFF38B222AF821C00AC4958 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7AFF38B522AF821C00AC4958 /* SnapKit Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SnapKit Tests.xctest";
-			remoteRef = 7AFF38B422AF821C00AC4958 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */ = {
@@ -709,16 +671,19 @@
 			files = (
 				7A019C9522B004410034C5A3 /* ButtonPage.swift in Sources */,
 				7A019CDD22BA80110034C5A3 /* DatePickerPage.swift in Sources */,
+				7A8965AE22F59FB7002A2479 /* AnimationPage.swift in Sources */,
 				7A019C9B22B3E7880034C5A3 /* SwitchPage.swift in Sources */,
 				7A019CB722B566230034C5A3 /* GeneralSubpage.swift in Sources */,
 				7A019C6522AEA8DE0034C5A3 /* UIKitExtension.swift in Sources */,
 				7A6540E922E9B7E00003613A /* TestPage.swift in Sources */,
+				7A8965B022F5DE7B002A2479 /* LongPressCopyPage.swift in Sources */,
 				7A019C9722B3E4BF0034C5A3 /* LabelPage.swift in Sources */,
 				7A019CD322BA7F1C0034C5A3 /* StackViewPage.swift in Sources */,
 				7A019CDB22BA7FDB0034C5A3 /* ScrollViewPage.swift in Sources */,
 				7A89658622F1EEA1002A2479 /* ProtocolPage.swift in Sources */,
 				7A27506822ABA25600C8A474 /* ViewTab.swift in Sources */,
 				7A019CBE22B7F0050034C5A3 /* SliderPage.swift in Sources */,
+				7A8965AC22F543DD002A2479 /* NumberFormatterPage.swift in Sources */,
 				7A019C5722AEA2170034C5A3 /* TestTab.swift in Sources */,
 				7A019CDF22BA80370034C5A3 /* PickerViewPage.swift in Sources */,
 				7A89657222F1ECCF002A2479 /* DecoratorPage.swift in Sources */,
