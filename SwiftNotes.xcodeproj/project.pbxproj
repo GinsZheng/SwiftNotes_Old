@@ -43,7 +43,7 @@
 		7A89658622F1EEA1002A2479 /* ProtocolPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89658522F1EEA1002A2479 /* ProtocolPage.swift */; };
 		7A8965AC22F543DD002A2479 /* NumberFormatterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8965AB22F543DD002A2479 /* NumberFormatterPage.swift */; };
 		7A8965AE22F59FB7002A2479 /* AnimationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8965AD22F59FB7002A2479 /* AnimationPage.swift */; };
-		7A8965B022F5DE7B002A2479 /* LongPressCopyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8965AF22F5DE7B002A2479 /* LongPressCopyPage.swift */; };
+		7A8965B022F5DE7B002A2479 /* MenuControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8965AF22F5DE7B002A2479 /* MenuControllerPage.swift */; };
 		7A8E5E7522E1C139004E6E4B /* Books.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A8E5E7422E1C139004E6E4B /* Books.plist */; };
 		7A8E5E8622E1CEB9004E6E4B /* WebViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */; };
 		7AA638B522E209D100EAA214 /* plistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA638B422E209D100EAA214 /* plistPage.swift */; };
@@ -229,7 +229,7 @@
 		7A89658522F1EEA1002A2479 /* ProtocolPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolPage.swift; sourceTree = "<group>"; };
 		7A8965AB22F543DD002A2479 /* NumberFormatterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatterPage.swift; sourceTree = "<group>"; };
 		7A8965AD22F59FB7002A2479 /* AnimationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationPage.swift; sourceTree = "<group>"; };
-		7A8965AF22F5DE7B002A2479 /* LongPressCopyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressCopyPage.swift; sourceTree = "<group>"; };
+		7A8965AF22F5DE7B002A2479 /* MenuControllerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuControllerPage.swift; sourceTree = "<group>"; };
 		7A8E5E7422E1C139004E6E4B /* Books.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Books.plist; sourceTree = "<group>"; };
 		7A8E5E8522E1CEB9004E6E4B /* WebViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPage.swift; sourceTree = "<group>"; };
 		7AA638B422E209D100EAA214 /* plistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plistPage.swift; sourceTree = "<group>"; };
@@ -390,7 +390,7 @@
 				7A89657122F1ECCF002A2479 /* DecoratorPage.swift */,
 				7A89658522F1EEA1002A2479 /* ProtocolPage.swift */,
 				7A8965AB22F543DD002A2479 /* NumberFormatterPage.swift */,
-				7A8965AF22F5DE7B002A2479 /* LongPressCopyPage.swift */,
+				7A8965AF22F5DE7B002A2479 /* MenuControllerPage.swift */,
 				7A8E5E7422E1C139004E6E4B /* Books.plist */,
 			);
 			path = ControllerTabSubpage;
@@ -676,7 +676,7 @@
 				7A019CB722B566230034C5A3 /* GeneralSubpage.swift in Sources */,
 				7A019C6522AEA8DE0034C5A3 /* UIKitExtension.swift in Sources */,
 				7A6540E922E9B7E00003613A /* TestPage.swift in Sources */,
-				7A8965B022F5DE7B002A2479 /* LongPressCopyPage.swift in Sources */,
+				7A8965B022F5DE7B002A2479 /* MenuControllerPage.swift in Sources */,
 				7A019C9722B3E4BF0034C5A3 /* LabelPage.swift in Sources */,
 				7A019CD322BA7F1C0034C5A3 /* StackViewPage.swift in Sources */,
 				7A019CDB22BA7FDB0034C5A3 /* ScrollViewPage.swift in Sources */,
