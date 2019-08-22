@@ -24,24 +24,23 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         scrollView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: self.getSafeAreaHeight())
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight*CGFloat(controlList.count))
         
-        let viewContainer = UIView()
-        scrollView.addSubview(viewContainer)
-        viewContainer.makeConstraints(left: 0, top: 0, width: scrollView.width, height: CGFloat(56*controlList.count))
-
+        
         let table = UITableView()
-        viewContainer.addSubview(table)
-        table.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: CGFloat(56*controlList.count))
+        table.set(superview: scrollView)
+        table.makeConstraints(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
+        table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(controlList.count))
         table.dataSource = self
         table.delegate = self
-        table.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        table.separatorColor = UIColor.hex("1A000820")
+        table.separatorColor = UIColor.hex(colorNoColor)
         
     }
 
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
         cell.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
+        cell.addSeparator(leftInset: 20, rightInset: 0)
         
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: controlList[indexPath.row])

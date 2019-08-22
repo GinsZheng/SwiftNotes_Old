@@ -21,7 +21,7 @@ class LabelPage: UIViewController {
         
         label.backgroundColor = UIColor.hex(color2C9EFF)
         
-        
     }
     
 }
+

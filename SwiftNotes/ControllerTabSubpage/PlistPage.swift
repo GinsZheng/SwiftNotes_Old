@@ -9,7 +9,7 @@
 
 import UIKit
 
-class plistPage: UIViewController {
+class PlistPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

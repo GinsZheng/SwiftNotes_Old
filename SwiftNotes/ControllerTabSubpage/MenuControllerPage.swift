@@ -66,5 +66,12 @@ class InteractiveUILabel: UILabel {
     @objc func pasteText() {
         self.text = UIPasteboard.general.string
     }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(copyText) {
+            return true
+        }
+        return false
+    }
 
 }

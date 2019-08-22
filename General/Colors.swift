@@ -50,12 +50,5 @@ let colorDCDCDE = "DCDCDE" // F5F6F8 +10%黑
 let color212C9EFF = "212C9EFF" // 2C9EFF 13%
 let color3B2C9EFF = "3B2C9EFF" // 2C9EFF 23%
 
-
-// ———————————————————————————————
-// Colors in defferent situation
-//let colorMain = color2C9EFF
-//let colorRed = colorFF5349
-//let colorGreen = color25BE3C
-//let colorOrange = colorF7AD18
-//
-//let colorBarBackground = color202C9EFF
+// No color
+let colorNoColor = "00000000"
