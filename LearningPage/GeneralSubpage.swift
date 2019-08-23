@@ -19,11 +19,6 @@ class GeneralSubpage: UIViewController {
         label.setFontStyle(color: "222", size: 34)
         label.makeConstraints(center: view)
         
-        let myView = UIView()
-        myView.set(superview: view)
-        myView.makeConstraints(left: 0, bottom: kSafeAreaInsets.bottom, width: kScreenWidth, height: 300)
-        myView.backgroundColor = UIColor.hex("2c9eff")
-        print(kSafeAreaInsets.bottom)
     }
     
     
