@@ -24,7 +24,6 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         scrollView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: self.getSafeAreaHeight())
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight*CGFloat(controlList.count))
         
-        pow(2, 10)
         let table = UITableView()
         table.set(superview: scrollView)
         table.makeConstraints(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
@@ -33,7 +32,6 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         table.delegate = self
         table.separatorColor = UIColor.hex(cNoColor)
         
-        pow(2, 10)
     }
 
     
