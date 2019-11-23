@@ -22,6 +22,12 @@ class SwiftNotesTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let myHeight = kScreenHeight
+        XCTAssert(myHeight == 896)
+        
+        let testPage = TestPage()
+        let textInTestPage = testPage.mytext
+        XCTAssert(textInTestPage == "heheda")
     }
 
     func testPerformanceExample() {

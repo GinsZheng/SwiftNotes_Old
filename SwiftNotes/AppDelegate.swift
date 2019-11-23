@@ -18,28 +18,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // 创建 tabBar 实例
-        let firstTab = FirstTab()
-        let secondTab = SecondTab()
-        let thirdTab = ThirdTab()
-        let forthTab = ForthTab()
+        let viewTab = ViewTab()
+        let controllerTab = ControllerTab()
+        let modelTab = ModelTab()
+        let testTab = TestTab()
         
         // 创建导航控制器
-        let firstNav = UINavigationController(rootViewController: firstTab)
-        let secondNav = UINavigationController(rootViewController: secondTab)
-        let thirdNav = UINavigationController(rootViewController: thirdTab)
-        let forthNav = UINavigationController(rootViewController: forthTab)
+        let firstNav = UINavigationController(rootViewController: viewTab)
+        let secondNav = UINavigationController(rootViewController: controllerTab)
+        let thirdNav = UINavigationController(rootViewController: modelTab)
+        let forthNav = UINavigationController(rootViewController: testTab)
         
         // 设置tabBar各图标
-        firstTab.tabBarItem.image = UIImage(named: "tab-discovery")
-        secondTab.tabBarItem.image = UIImage(named: "tab-saved")
-        thirdTab.tabBarItem.image = UIImage(named: "tab-tickets")
-        forthTab.tabBarItem.image = UIImage(named: "tab-mine")
+        viewTab.tabBarItem.image = UIImage(named: "tab_discovery")
+        controllerTab.tabBarItem.image = UIImage(named: "tab_saved")
+        modelTab.tabBarItem.image = UIImage(named: "tab_tickets")
+        testTab.tabBarItem.image = UIImage(named: "tab_mine")
         
         // 设置tatabBar各标题
-        firstTab.tabBarItem.title = "基本元素"
-        secondTab.tabBarItem.title = "未知"
-        thirdTab.tabBarItem.title = "待定"
-        forthTab.tabBarItem.title = "试验区"
+        viewTab.tabBarItem.title = "View"
+        controllerTab.tabBarItem.title = "Controller"
+        modelTab.tabBarItem.title = "Model"
+        testTab.tabBarItem.title = "Test"
         
         // 把tabBar实例添加到UITabBarController，并设置样式
         let tabBar = UITabBarController()
@@ -54,8 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 设置启动时显示的tab
         tabBar.selectedIndex = 0
-        
-        
+
         
         return true
     }
@@ -83,5 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+//    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+//        if Growing.handle(url) {
+//            return true
+//        }
+//        return false
+//    }
 }
 
