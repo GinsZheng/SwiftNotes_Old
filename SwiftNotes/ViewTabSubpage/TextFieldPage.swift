@@ -16,7 +16,7 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
         
         let textField = UITextField()
         textField.set(superview: view, placeholder: "Input something")
-        textField.makeConstraints(left: 20, top: 100, width: kScreenWidth, height: 44)
+        textField.setFrame(left: 20, top: 100, width: kScreenWidth, height: 44)
         textField.delegate = self
     }
     

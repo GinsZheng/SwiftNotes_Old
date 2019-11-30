@@ -11,7 +11,7 @@
 		7A2161152389857700D5A93A /* SetColorInHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21610D2389857700D5A93A /* SetColorInHex.swift */; };
 		7A2161162389857700D5A93A /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21610E2389857700D5A93A /* UIKitExtension.swift */; };
 		7A2161182389857700D5A93A /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161102389857700D5A93A /* GlobalFunction.swift */; };
-		7A2161192389857700D5A93A /* MakeConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161112389857700D5A93A /* MakeConstraints.swift */; };
+		7A2161192389857700D5A93A /* SetFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161112389857700D5A93A /* SetFrame.swift */; };
 		7A21611A2389857700D5A93A /* GlobalClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161122389857700D5A93A /* GlobalClass.swift */; };
 		7A21611B2389857700D5A93A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161132389857700D5A93A /* Colors.swift */; };
 		7A2161262389868500D5A93A /* ViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161222389868500D5A93A /* ViewTab.swift */; };
@@ -57,7 +57,8 @@
 		7A3647F5238AB287000BBECD /* SQLiteBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F4238AB287000BBECD /* SQLiteBasic.swift */; };
 		7A3647F7238AC230000BBECD /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F6238AC230000BBECD /* SQLiteManager.swift */; };
 		7A3647F9238AD062000BBECD /* SQLInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* SQLInstance.swift */; };
-		7A3647FB238AE16C000BBECD /* Tables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FA238AE16C000BBECD /* Tables.swift */; };
+		7A3647FD238C33ED000BBECD /* JSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* JSONPage.swift */; };
+		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
 		7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; };
 		7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38A022AF821800AC4958 /* Alamofire.framework */; };
@@ -270,7 +271,7 @@
 		7A21610D2389857700D5A93A /* SetColorInHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetColorInHex.swift; sourceTree = "<group>"; };
 		7A21610E2389857700D5A93A /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		7A2161102389857700D5A93A /* GlobalFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
-		7A2161112389857700D5A93A /* MakeConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeConstraints.swift; sourceTree = "<group>"; };
+		7A2161112389857700D5A93A /* SetFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetFrame.swift; sourceTree = "<group>"; };
 		7A2161122389857700D5A93A /* GlobalClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalClass.swift; sourceTree = "<group>"; };
 		7A2161132389857700D5A93A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7A2161222389868500D5A93A /* ViewTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTab.swift; sourceTree = "<group>"; };
@@ -322,7 +323,8 @@
 		7A3647F4238AB287000BBECD /* SQLiteBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteBasic.swift; sourceTree = "<group>"; };
 		7A3647F6238AC230000BBECD /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		7A3647F8238AD062000BBECD /* SQLInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLInstance.swift; sourceTree = "<group>"; };
-		7A3647FA238AE16C000BBECD /* Tables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tables.swift; sourceTree = "<group>"; };
+		7A3647FC238C33ED000BBECD /* JSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPage.swift; sourceTree = "<group>"; };
+		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-alamofire5/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -373,7 +375,7 @@
 				7A2161102389857700D5A93A /* GlobalFunction.swift */,
 				7A3647F6238AC230000BBECD /* SQLiteManager.swift */,
 				7A21610C2389857700D5A93A /* GlobalVariables.swift */,
-				7A2161112389857700D5A93A /* MakeConstraints.swift */,
+				7A2161112389857700D5A93A /* SetFrame.swift */,
 				7A21610D2389857700D5A93A /* SetColorInHex.swift */,
 				7A21610E2389857700D5A93A /* UIKitExtension.swift */,
 			);
@@ -413,7 +415,6 @@
 				7A216145238986AF00D5A93A /* SliderPage.swift */,
 				7A216146238986AF00D5A93A /* TextViewPage.swift */,
 				7A216147238986AF00D5A93A /* StackViewPage.swift */,
-				7A216148238986AF00D5A93A /* AnimationPage.swift */,
 				7A216149238986AF00D5A93A /* WebViewPage.swift */,
 				7A21614A238986AF00D5A93A /* DatePickerPage.swift */,
 				7A21614B238986AF00D5A93A /* PageControlPage.swift */,
@@ -424,6 +425,8 @@
 				7A216150238986AF00D5A93A /* StepperPage.swift */,
 				7A216151238986AF00D5A93A /* PickerViewPage.swift */,
 				7A216152238986AF00D5A93A /* ImageViewPage.swift */,
+				7A216148238986AF00D5A93A /* AnimationPage.swift */,
+				7A36487523926CC8000BBECD /* StylesPage.swift */,
 			);
 			path = ViewTabSubpage;
 			sourceTree = "<group>";
@@ -509,7 +512,7 @@
 			children = (
 				7A3647F4238AB287000BBECD /* SQLiteBasic.swift */,
 				7A3647F8238AD062000BBECD /* SQLInstance.swift */,
-				7A3647FA238AE16C000BBECD /* Tables.swift */,
+				7A3647FC238C33ED000BBECD /* JSONPage.swift */,
 			);
 			path = ModelTabSubpage;
 			sourceTree = "<group>";
@@ -853,13 +856,12 @@
 				7A216159238986AF00D5A93A /* StackViewPage.swift in Sources */,
 				7A2161162389857700D5A93A /* UIKitExtension.swift in Sources */,
 				7A2161272389868500D5A93A /* ModelTab.swift in Sources */,
-				7A2161192389857700D5A93A /* MakeConstraints.swift in Sources */,
+				7A2161192389857700D5A93A /* SetFrame.swift in Sources */,
 				7A21613F238986AA00D5A93A /* GeneralSubpage.swift in Sources */,
 				7A216161238986AF00D5A93A /* SegmentControlPage.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
 				7A21611A2389857700D5A93A /* GlobalClass.swift in Sources */,
-				7A3647FB238AE16C000BBECD /* Tables.swift in Sources */,
 				7A2161282389868500D5A93A /* TestTab.swift in Sources */,
 				7A2161142389857700D5A93A /* GlobalVariables.swift in Sources */,
 				7A216155238986AF00D5A93A /* ScrollViewPage.swift in Sources */,
@@ -872,12 +874,14 @@
 				7A2161352389869D00D5A93A /* MenuControllerPage.swift in Sources */,
 				7A2161152389857700D5A93A /* SetColorInHex.swift in Sources */,
 				7A3647F7238AC230000BBECD /* SQLiteManager.swift in Sources */,
+				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,
 				7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */,
 				7A3647F9238AD062000BBECD /* SQLInstance.swift in Sources */,
 				7A2161372389869D00D5A93A /* PlistPage.swift in Sources */,
 				7A2161182389857700D5A93A /* GlobalFunction.swift in Sources */,
+				7A3647FD238C33ED000BBECD /* JSONPage.swift in Sources */,
 				7A216158238986AF00D5A93A /* TextViewPage.swift in Sources */,
 				7A216157238986AF00D5A93A /* SliderPage.swift in Sources */,
 				7A2161262389868500D5A93A /* ViewTab.swift in Sources */,

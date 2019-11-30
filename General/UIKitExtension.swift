@@ -15,14 +15,14 @@ extension UIView {
         superview.addSubview(self)
     }
     
-    func addShadow(color: String, x: CGFloat, y: CGFloat, radius: CGFloat) {
+    func setShadow(color: String, x: CGFloat, y: CGFloat, radius: CGFloat) {
         self.layer.shadowColor = UIColor.hex(color).cgColor
         self.layer.shadowOpacity = 1
         self.layer.shadowOffset = CGSize(width: x, height: y)
         self.layer.shadowRadius = radius
     }
     
-    func addBorder(color: String, borderWidth: CGFloat) {
+    func setBorder(color: String, borderWidth: CGFloat) {
         self.layer.borderColor = UIColor.hex(color).cgColor
         self.layer.borderWidth = borderWidth
     }
@@ -32,22 +32,27 @@ extension UIView {
         self.layer.masksToBounds = true
     }
     
+    func setCornerRadiusWithoutMask(radius: CGFloat) {
+        self.layer.cornerRadius = radius
+    }
+    
     func setCornerRadius(radius: CGFloat, corners: UIRectCorner) {
         let maskPath = UIBezierPath.init(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize.init(width: radius, height: radius))
-        let maskLayer = CAShapeLayer()
+        let maskLayer = CAShapeLayer.init()
         maskLayer.frame = self.bounds
         maskLayer.path = maskPath.cgPath
         self.layer.mask = maskLayer
+        
     }
-    
+
     func setBackgroundColor(color: String) {
         self.backgroundColor = UIColor.hex(color)
     }
     
-    func addSeparator(leftInset: CGFloat, rightInset: CGFloat, color: String = "1A000820") {
+    func setSeparator(leftInset: CGFloat, rightInset: CGFloat, color: String = "1A000820") {
         let separator = UIView()
         self.addSubview(separator)
-        separator.makeConstraints(left: leftInset, bottom: 0, width: kScreenWidth - leftInset - rightInset, height: kSeparatorHeight)
+        separator.setFrame(left: leftInset, bottom: 0, width: kScreenWidth - leftInset - rightInset, height: kSeparatorHeight)
         separator.backgroundColor = UIColor.hex(color)
     }
     
@@ -138,7 +143,7 @@ extension UILabel {
         superview.addSubview(self)
     }
     
-    func setFontStyle(color: String, size: CGFloat, weight: UIFont.Weight = UIFont.Weight.regular) {
+    func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = UIFont.Weight.regular) {
         self.font = UIFont.systemFont(ofSize: size, weight: weight)
         self.textColor = UIColor.hex(color)
     }
@@ -189,7 +194,7 @@ extension UITextView {
         superview.addSubview(self)
     }
     
-    func setFontStyle(color: String, size: CGFloat, weight: UIFont.Weight = UIFont.Weight.regular) {
+    func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = UIFont.Weight.regular) {
         self.font = UIFont.systemFont(ofSize: size, weight: weight)
         self.textColor = UIColor.hex(color)
     }
@@ -249,16 +254,20 @@ extension UIButton {
 
 
 extension UIViewController {
-    // push指从右向左滑入页面
+    // depreciated ➤ push指从右向左滑入页面
     func pushFromRootPage(toTarget: UIViewController) {
         self.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(toTarget, animated: true)
         self.hidesBottomBarWhenPushed = false
     }
     
-    // push from secondary or deeper page
+    // depreciated ➤ push from secondary or deeper page
     func pushFromSecondaryPage(toTarget: UIViewController) {
         self.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(toTarget, animated: true)
+    }
+    
+    func push(toTarget: UIViewController) {
         self.navigationController?.pushViewController(toTarget, animated: true)
     }
     
@@ -267,6 +276,9 @@ extension UIViewController {
     }
     
     // present()为从下向上滑入页面，dismiss()为从向上向下滑出页面
+    func present(toTarget: UIViewController) {
+        self.navigationController?.present(toTarget, animated: true, completion: {})
+    }
     
     func hideNavBar() {
         self.navigationController?.navigationBar.isHidden = true

@@ -14,7 +14,7 @@ class SQLiteManager: NSObject {
     
     private var db: Connection?
     
-    func getTable(tableName: String) -> Table {
+    func getDB() -> Connection {
         
         if db == nil {
             
@@ -25,11 +25,11 @@ class SQLiteManager: NSObject {
             db?.busyTimeout = 5.0
             
         }
+        return db!
         
-        let table = Tables.getTable(db: db!, tableName: tableName)
-        
-        return table
     }
+    
+    
     
     
 }

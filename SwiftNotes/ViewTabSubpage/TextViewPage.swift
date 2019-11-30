@@ -16,9 +16,9 @@ class TextViewPage: UIViewController {
         
         let textView = UITextView()
         textView.set(superview: view)
-        textView.makeConstraints(left: 20, top: 100, width: kScreenWidth - 40, height: 300)
+        textView.setFrame(left: 20, top: 100, width: kScreenWidth - 40, height: 300)
         textView.text = "Hehedahehedahehedahehedahehedahehedahehedahehedahehedahehedaheheda"
-        textView.setFontStyle(color: "222", size: 17)
+        textView.setFontStyle(size: 17, color: "222")
         textView.textContainerInset = UIEdgeInsets(top: 0, left: -6, bottom: 0, right: 6)
         
         textView.clearsOnInsertion = true

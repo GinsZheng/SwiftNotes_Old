@@ -30,7 +30,7 @@ class SQLiteBasic: UIViewController {
         let id = Expression<Int64>("id")
         let name = Expression<String?>("name")
         let email = Expression<String>("email")
-
+        
         try! db.run(users.create(temporary: false, ifNotExists: true, withoutRowid: false, block: { (t) in
             
             t.column(id, primaryKey: true)
@@ -62,7 +62,7 @@ class SQLiteBasic: UIViewController {
         
         // 查
         for user in try! db.prepare(users) {
-            print("id: \(user[id]), name: \(user[name]), email: \(user[email])")
+            print("id: \(user[id]), name: \(user[name] ?? "无名"), email: \(user[email])")
             // id: 1, name: Optional("Alice"), email: alice@mac.com
         }
         // SELECT * FROM "users"
@@ -82,10 +82,6 @@ class SQLiteBasic: UIViewController {
         for email in ["betty@icloud.com", "cathy@icloud.com"] {
             try! stmt.run(email)
         }
-        
-        db.totalChanges    // 3
-        db.changes         // 1
-        db.lastInsertRowid // 3
         
         for row in try! db.prepare("SELECT id, email FROM users") {
             print("id: \(row[0]), email: \(row[1])")

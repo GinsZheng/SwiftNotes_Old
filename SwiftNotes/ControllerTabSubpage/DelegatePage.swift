@@ -18,11 +18,11 @@ class DelegatePage: UIViewController, NameEditorDelegate {
         view.backgroundColor = UIColor.white
 
         label.set(superview: view, text: "这行文字将通过下个页面编辑")
-        label.setFontStyle(color: c2C9EFF, size: 24)
-        label.makeConstraints(left: 20, top: 100, width: kScreenWidth - 40, height: 60)
+        label.setFontStyle(size: 24, color: c2C9EFF)
+        label.setFrame(left: 20, top: 100, width: kScreenWidth - 40, height: 60)
 
         button.set(superview: view)
-        button.makeConstraints(left: 20, top: 164, width: kScreenWidth - 40, height: 44)
+        button.setFrame(left: 20, top: 164, width: kScreenWidth - 40, height: 44)
         button.backgroundColor = UIColor.hex(cF5F6F8)
         button.setCornerRadius(radius: 4)
         button.setTitle("下一页", for: .normal)
@@ -56,7 +56,7 @@ class NameEditorPage: UIViewController {
         view.backgroundColor = UIColor.white
 
         nameTextField.set(superview: view, placeholder: "请输入")
-        nameTextField.makeConstraints(left: 20, top: 100, right: 20, height: 44)
+        nameTextField.setFrame(left: 20, top: 100, right: 20, height: 44)
         nameTextField.setBackgroundColor(color: cF5F6F8)
         nameTextField.setCornerRadius(radius: 4)
         nameTextField.text = ""

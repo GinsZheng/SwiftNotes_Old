@@ -23,7 +23,7 @@ class PlistPage: UIViewController {
         // feedback
         let label = UILabel()
         label.set(superview: view, text: firstBook)
-        label.makeConstraints(left: 20, top: 100)
+        label.setFrame(left: 20, top: 100)
     }
     
 }

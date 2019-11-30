@@ -18,11 +18,11 @@ class AnimationPage: UIViewController {
         view.backgroundColor = UIColor.white
 
         myView.set(superview: view)
-        myView.makeConstraints(centerX: view.centerX, top: 100, width: 100, height: 100)
+        myView.setFrame(centerX: view.centerX, top: 100, width: 100, height: 100)
         myView.backgroundColor = UIColor.hex(c2C9EFF)
         
         view.addSubview(solidButton)
-        solidButton.makeConstraints(left: 20, bottom: 80, width: kScreenWidth - 40, height: 44)
+        solidButton.setFrame(left: 20, bottom: 80, width: kScreenWidth - 40, height: 44)
         solidButton.setTitle("Start Animation", for: .normal)
         solidButton.setTitleColor(UIColor.white, for: .normal)
         solidButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
@@ -36,14 +36,6 @@ class AnimationPage: UIViewController {
         }
     
     @objc func startAnimation() {
-//        UIView.animate(withDuration: 4) {
-//            self.myView.backgroundColor = UIColor.hex(cF7AD18)
-//            self.myView.alpha = 0.5
-//            self.myView.x = 20
-//            self.myView.y = 300
-//            self.myView.width = 335
-//            self.myView.height = 150
-//        }
         
         UIView.animate(withDuration: 4, delay: 0.4, options: [.autoreverse], animations: {
             self.myView.backgroundColor = UIColor.hex(cF7AD18)

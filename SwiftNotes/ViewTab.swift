@@ -11,8 +11,8 @@ import UIKit
 class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    let controlList = ["Button", "Date Picker", "Image View", "Label", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Switch", "Table View", "Text Field", "Text View", "View", "Web View", "Animation"]
-    let controlPage = [ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), ViewPage(), WebViewPage(), AnimationPage()]
+    let controlList = ["Button", "Date Picker", "Image View", "Label", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Switch", "Table View", "Text Field", "Text View", "View", "Web View", "Animation", "Styles"]
+    let controlPage = [ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), ViewPage(), WebViewPage(), AnimationPage(), StylesPage()]
 
     
     override func viewDidLoad() {
@@ -21,12 +21,12 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         let scrollView = UIScrollView()
         view.addSubview(scrollView)
-        scrollView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: self.getSafeAreaHeight())
+        scrollView.setFrame(left: 0, top: kNavBarHeight, width: kScreenWidth, height: self.getSafeAreaHeight())
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight*CGFloat(controlList.count))
         
         let table = UITableView()
         table.set(superview: scrollView)
-        table.makeConstraints(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
+        table.setFrame(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
         table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(controlList.count))
         table.dataSource = self
         table.delegate = self
@@ -38,16 +38,16 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
-        cell.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
-        cell.addSeparator(leftInset: 20, rightInset: 0)
+        cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
+        cell.setSeparator(leftInset: 20, rightInset: 0)
         
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: controlList[indexPath.row])
-        cellTitle.makeConstraints(left: 20, centerY: cell.centerY)
+        cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
         next.set(superview: cell, imageName: "discovery_next")
-        next.makeConstraints(right: 20, centerY: cell.centerY, width: 16, height: 16)
+        next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
         
         return cell
     }

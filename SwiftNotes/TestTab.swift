@@ -23,18 +23,18 @@ class TestTab: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         iPAddTextField.set(superview: view, placeholder: "sendMsg")
-        iPAddTextField.makeConstraints(left: 20, top: 100, right: 20, height: 44)
+        iPAddTextField.setFrame(left: 20, top: 100, right: 20, height: 44)
         iPAddTextField.text = "49.235.144.204"
         
         portTextField.set(superview: view, placeholder: "port")
-        portTextField.makeConstraints(left: 20, top: 160, right: 20, height: 44)
+        portTextField.setFrame(left: 20, top: 160, right: 20, height: 44)
         portTextField.text = "5000"
         
         sendMessage.set(superview: view, text: "Type assage here to send")
-        sendMessage.makeConstraints(left: 20, top: 300, right: 20, height: 44)
+        sendMessage.setFrame(left: 20, top: 300, right: 20, height: 44)
         
         messageTextView.set(superview: view, text: "Receiving Massage")
-        messageTextView.makeConstraints(left: 20, top: 350, right: 20, height: 500)
+        messageTextView.setFrame(left: 20, top: 350, right: 20, height: 500)
         
     }
     

@@ -16,7 +16,7 @@ class SwitchPage: UIViewController {
         
         let mySwitch = UISwitch()
         view.addSubview(mySwitch)
-        mySwitch.makeConstraints(left: 20, top: 100, width: 50, height: 30)
+        mySwitch.setFrame(left: 20, top: 100, width: 50, height: 30)
         
         mySwitch.onTintColor = UIColor.hex("2c9eff")
         mySwitch.setOn(true, animated: false)

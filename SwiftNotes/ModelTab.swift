@@ -10,8 +10,8 @@ import UIKit
 
 class ModelTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controllerList = ["SQLiteBasic", "SQLInstance"]
-    let controllerPage = [SQLiteBasic(), SQLInstance()]
+    let controllerList = ["SQLiteBasic", "SQLInstance","JSON"]
+    let controllerPage = [SQLiteBasic(), SQLInstance(), JSONPage()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class ModelTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         let table = UITableView()
         table.set(superview: view)
-        table.makeConstraints(left: 0, top: kNavBarHeight, right: 0, height: getSafeAreaHeight())
+        table.setFrame(left: 0, top: kNavBarHeight, right: 0, height: getSafeAreaHeight())
         table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(controllerList.count))
         table.dataSource = self
         table.delegate = self
@@ -39,16 +39,16 @@ class ModelTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
-        cell.makeConstraints(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
-        cell.addSeparator(leftInset: 20, rightInset: 0)
+        cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
+        cell.setSeparator(leftInset: 20, rightInset: 0)
         
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: controllerList[indexPath.row])
-        cellTitle.makeConstraints(left: 20, centerY: cell.centerY)
+        cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
         next.set(superview: cell, imageName: "discovery_next")
-        next.makeConstraints(right: 20, centerY: cell.centerY, width: 16, height: 16)
+        next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
         
         return cell
     }

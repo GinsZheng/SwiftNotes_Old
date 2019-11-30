@@ -17,7 +17,7 @@ class WebViewPage: UIViewController {
         super.viewWillAppear(animated)
         view.setBackgroundColor(color: cFFF)
         
-        self.progressView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: 2)
+        self.progressView.setFrame(left: 0, top: kNavBarHeight, width: kScreenWidth, height: 2)
         self.progressView.isHidden = false
         UIView.animate(withDuration: 1.0) {
             self.progressView.progress = 0.0
@@ -28,7 +28,7 @@ class WebViewPage: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(webView)
-        webView.makeConstraints(left: 0, top: kNavBarHeight, width: kScreenWidth, height: kHeightWithoutNavBar)
+        webView.setFrame(left: 0, top: kNavBarHeight, width: kScreenWidth, height: kHeightWithoutNavBar)
         webView.navigationDelegate = self
         
         let url = "https://www.apple.com"
