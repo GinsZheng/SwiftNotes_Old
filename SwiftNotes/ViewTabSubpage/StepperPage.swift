@@ -22,7 +22,7 @@ class StepperPage: UIViewController {
         view.addSubview(stepper)
         stepper.setFrame(left: 20, top: 100, width: 200, height: 36)
         stepper.addTarget(self, action: #selector(printValue(_:)), for: .touchUpInside)
-        
+            
     }
     
     

@@ -15,6 +15,11 @@ extension UIView {
         superview.addSubview(self)
     }
     
+    func set(superview: UIView, backgroundColor: String) {
+        superview.addSubview(self)
+        self.setBackgroundColor(color: backgroundColor)
+    }
+    
     func setShadow(color: String, x: CGFloat, y: CGFloat, radius: CGFloat) {
         self.layer.shadowColor = UIColor.hex(color).cgColor
         self.layer.shadowOpacity = 1
@@ -148,11 +153,13 @@ extension UILabel {
         self.textColor = UIColor.hex(color)
     }
     
-    func setLineHeight(lineHeight: CGFloat = 1.4/1.2, text: String) {
+//    func setLineHeight(multiple: CGFloat = 1.4) {
+    func setLineHeight() {
         let paragraph = NSMutableParagraphStyle()
-        paragraph.lineHeightMultiple = lineHeight
+        paragraph.lineHeightMultiple = 1.4 / 1.2
+        paragraph.lineSpacing = self.font.pointSize * 0.2
         let attributes = [NSAttributedString.Key.paragraphStyle: paragraph]
-        self.attributedText = NSAttributedString(string: text, attributes: attributes)
+        self.attributedText = NSAttributedString(string: self.text ?? "", attributes: attributes)
     }
     
     func getLabelWidth() -> CGFloat {
@@ -160,13 +167,6 @@ extension UILabel {
         let size = CGSize(width: CGFloat(MAXFLOAT), height: self.frame.size.height)
         let textSize = labelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: self.font!], context: nil).size
         return CGFloat(Int(textSize.width) + 1)
-    }
-    
-    func getLabelHeight(width: CGFloat) -> CGFloat {
-        _ = self.text! as NSString
-        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
-        let height = self.sizeThatFits(size).height
-        return CGFloat(Int(height))
     }
     
     func getLabelWidth(withMaxWidth maxWidth: CGFloat) -> CGFloat {
@@ -180,8 +180,15 @@ extension UILabel {
         return labelWidth
     }
     
+    func getLabelHeight(withWidth width: CGFloat) -> CGFloat {
+        _ = self.text! as NSString
+        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+        let height = self.sizeThatFits(size).height
+        return CGFloat(Int(height) + 1)
+    }
+    
     func getDefaultLineheight() -> CGFloat {
-        return self.font.pointSize * 1.4
+        return round(self.font.pointSize * 1.4)
     }
 }
 
@@ -199,9 +206,9 @@ extension UITextView {
         self.textColor = UIColor.hex(color)
     }
     
-    func setLineHeight(lineHeight: CGFloat = 1.4/1.2, text: String) {
+    func setLineHeight(lineHeight: CGFloat = 1.4, text: String) {
         let paragraph = NSMutableParagraphStyle()
-        paragraph.lineHeightMultiple = lineHeight
+        paragraph.lineHeightMultiple = lineHeight / 1.2
         let attributes = [NSAttributedString.Key.paragraphStyle: paragraph]
         self.attributedText = NSAttributedString(string: text, attributes: attributes)
     }
@@ -215,6 +222,33 @@ extension UITextField {
     func set(superview: UIView, placeholder: String) {
         self.placeholder = placeholder
         superview.addSubview(self)
+    }
+    
+    var placeholderColor:UIColor {
+        get{
+            let color =   self.value(forKeyPath: "_placeholderLabel.textColor")
+            if(color == nil){
+                return UIColor.white;
+            }
+            return color as! UIColor;
+        } set{
+            self.setValue(newValue, forKeyPath: "_placeholderLabel.textColor")
+        }
+    }
+    
+    func setTextLeftPadding(left: CGFloat) {
+        self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: left, height: self.height))
+        self.leftViewMode = .always
+    }
+    
+    func setTextRightPadding(right: CGFloat) {
+        self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: right, height: self.height))
+        self.rightViewMode = .always
+    }
+    
+    func setTextPadding(left: CGFloat, right: CGFloat) {
+        self.setTextLeftPadding(left: left)
+        self.setTextRightPadding(right: right)
     }
 }
 
@@ -249,7 +283,10 @@ extension UIImage {
 
     
 extension UIButton {
-    
+    func set(superview: UIView, target: Any?, action: Selector, forEvent: UIControl.Event = UIControl.Event.touchUpInside) {
+        superview.addSubview(self)
+        self.addTarget(target, action: action, for: forEvent)
+    }
 }
 
 
@@ -271,13 +308,17 @@ extension UIViewController {
         self.navigationController?.pushViewController(toTarget, animated: true)
     }
     
-    func backToSuperPage() {
+    func pop() {
         self.navigationController?.popViewController(animated: true)
     }
     
     // present()为从下向上滑入页面，dismiss()为从向上向下滑出页面
-    func present(toTarget: UIViewController) {
-        self.navigationController?.present(toTarget, animated: true, completion: {})
+    func present(toTarget: UIViewController, completion: @escaping () -> Void = {}) {
+        self.present(toTarget, animated: true, completion: completion)
+    }
+    
+    func unpresent(completion: @escaping () -> Void = {}) {
+        self.dismiss(animated: true, completion: completion)
     }
     
     func hideNavBar() {

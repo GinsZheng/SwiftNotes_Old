@@ -11,31 +11,22 @@ import UIKit
 
 class TestTab: UIViewController {
     
-    let iPAddTextField = UITextField()
-    let portTextField = UITextField()
-    let sendMessage = UITextView()
-    let messageTextView = UITextView()
-    let connectButton = UIButton(type: .system)
-    let closeButton = UIButton(type: .system)
-    let sendButton = UIButton(type: .system)
-    
+
+    let label = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        iPAddTextField.set(superview: view, placeholder: "sendMsg")
-        iPAddTextField.setFrame(left: 20, top: 100, right: 20, height: 44)
-        iPAddTextField.text = "49.235.144.204"
+
+
+        label.set(superview: view, text: "在在在在")
+        label.setFontStyle(size: 150, color: "222") // 文字要先设字号再布局
+        label.numberOfLines = 0
+        label.setLineHeight()
+        label.setFrame(left: 20, top: 100, width: 374, height: label.getLabelHeight(withWidth: kScreenWidth - 40))
+        label.setBackgroundColor(color: cCCC)
         
-        portTextField.set(superview: view, placeholder: "port")
-        portTextField.setFrame(left: 20, top: 160, right: 20, height: 44)
-        portTextField.text = "5000"
         
-        sendMessage.set(superview: view, text: "Type assage here to send")
-        sendMessage.setFrame(left: 20, top: 300, right: 20, height: 44)
-        
-        messageTextView.set(superview: view, text: "Receiving Massage")
-        messageTextView.setFrame(left: 20, top: 350, right: 20, height: 500)
-        
+        print(label.getLabelHeight(withWidth: kScreenWidth - 40))
     }
     
     

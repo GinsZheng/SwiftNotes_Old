@@ -16,7 +16,7 @@ class StylesPage: UIViewController {
         
         // 设置部分圆角
         let myView = UIView()
-        myView.setBackgroundColor(color: c2C9EFF)
+        myView.setBackgroundColor(color: cBlue_2C9EFF)
         myView.set(superview: view)
         myView.setFrame(left: 20, top: 100, width: 200, height: 66)
         myView.setCornerRadius(radius: 16, corners: [.topRight, .bottomRight])

@@ -15,13 +15,13 @@ class StackViewPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let stackBlock1 = UIView()
-        stackBlock1.backgroundColor = UIColor.hex(cFF5349)
+        stackBlock1.backgroundColor = UIColor.hex(cRed_FF5349)
         
         let stackBlock2 = UIView()
-        stackBlock2.backgroundColor = UIColor.hex(cF7AD18)
+        stackBlock2.backgroundColor = UIColor.hex(cOrange_F7AD18)
         
         let stackBlock3 = UIView()
-        stackBlock3.backgroundColor = UIColor.hex(c2C9EFF)
+        stackBlock3.backgroundColor = UIColor.hex(cBlue_2C9EFF)
         
         let stack = UIStackView(arrangedSubviews: [stackBlock1, stackBlock2, stackBlock3])
         stack.set(superview: view)
@@ -32,7 +32,7 @@ class StackViewPage: UIViewController {
         stack.spacing = 20
         
         let stackBlock4 = UIView()
-        stackBlock4.backgroundColor = UIColor.hex(c25BE3C)
+        stackBlock4.backgroundColor = UIColor.hex(cGreen_25BE3C)
         stack.addArrangedSubview(stackBlock4)
     }
     

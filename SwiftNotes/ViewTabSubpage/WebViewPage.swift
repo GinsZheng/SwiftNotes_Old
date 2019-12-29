@@ -42,7 +42,7 @@ class WebViewPage: UIViewController {
     // 进度条
     lazy var progressView: UIProgressView = {
         let progress = UIProgressView()
-        progress.progressTintColor = UIColor.hex(c2C9EFF)
+        progress.progressTintColor = UIColor.hex(cBlue_2C9EFF)
         progress.trackTintColor = .clear
         return progress
     }()

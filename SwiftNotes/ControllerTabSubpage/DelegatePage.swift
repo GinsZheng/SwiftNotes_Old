@@ -18,7 +18,7 @@ class DelegatePage: UIViewController, NameEditorDelegate {
         view.backgroundColor = UIColor.white
 
         label.set(superview: view, text: "这行文字将通过下个页面编辑")
-        label.setFontStyle(size: 24, color: c2C9EFF)
+        label.setFontStyle(size: 24, color: cBlue_2C9EFF)
         label.setFrame(left: 20, top: 100, width: kScreenWidth - 40, height: 60)
 
         button.set(superview: view)

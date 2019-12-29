@@ -19,50 +19,45 @@ class ButtonPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let wordButton = UIButton(type: .system)
-        view.addSubview(wordButton)
+        wordButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         wordButton.setFrame(left: 20, top: 100, right: 20, height: 44)
         wordButton.setTitle("Word Button", for: .normal)
-        wordButton.setTitleColor(UIColor.hex(c2C9EFF), for: .normal)
-        wordButton.titleLabel?.setFontStyle(size: 17, color: c2C9EFF)
-        wordButton.addTarget(self, action: #selector(pushToGeneralSubpage), for: .touchUpInside)
+        wordButton.setTitleColor(UIColor.hex(cBlue_2C9EFF), for: .normal)
+        wordButton.titleLabel?.setFontStyle(size: 17, color: cBlue_2C9EFF)
         
         let ghostButton = UIButton(type: .system)
-        view.addSubview(ghostButton)
+        ghostButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         ghostButton.setFrame(left: 20, top: wordButton.bottom + 20, right: 20, height: 44)
         ghostButton.setTitle("Ghost Button", for: .normal)
-        ghostButton.setTitleColor(UIColor.hex(c2C9EFF), for: .normal)
+        ghostButton.setTitleColor(UIColor.hex(cBlue_2C9EFF), for: .normal)
         ghostButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .regular) // 这里设置UILabel的颜色值将无效
-        ghostButton.setBorder(color: c2C9EFF, borderWidth: 0.5)
+        ghostButton.setBorder(color: cBlue_2C9EFF, borderWidth: 0.5)
         ghostButton.setCornerRadius(radius: 4)
-        ghostButton.addTarget(self, action: #selector(pushToGeneralSubpage), for: .touchUpInside)
         
         let solidButton = UIButton(type: .custom)
-        view.addSubview(solidButton)
+        solidButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         solidButton.setFrame(left: 20, top: ghostButton.bottom + 20, right: 20, height: 44)
         solidButton.setTitle("Solid Button", for: .normal)
         solidButton.setTitleColor(UIColor.white, for: .normal)
         solidButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        solidButton.setBackgroundImage(getImageWithColor(color: c2C9EFF), for: .normal)
+        solidButton.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
         solidButton.setBackgroundImage(getImageWithColor(color: "992c9eff"), for: .highlighted)
         solidButton.setBackgroundImage(getImageWithColor(color: "662c9eff"), for: .disabled)
         solidButton.setCornerRadius(radius: 4)
-        solidButton.addTarget(self, action: #selector(pushToGeneralSubpage), for: .touchUpInside)
         
         let iconButton = UIButton(type: .custom)
-        view.addSubview(iconButton)
+        iconButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         iconButton.setFrame(centerX: view.centerX, top: solidButton.bottom + 20, width: 44, height: 44)
         iconButton.setImage(UIImage(named: "mine_item"), for: .normal)
         iconButton.adjustsImageWhenHighlighted = false
-        iconButton.addTarget(self, action: #selector(pushToGeneralSubpage), for: .touchUpInside)
         iconButton.backgroundColor = UIColor.hex(cF5F6F8)
         iconButton.setCornerRadius(radius: 22)
         
         let iconButton2 = UIButton(type: .system)
-        view.addSubview(iconButton2)
+        iconButton2.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         iconButton2.setFrame(centerX: view.centerX, top: iconButton.bottom + 20, width: 44, height: 44)
         iconButton2.setImage(UIImage(named: "mine_item"), for: .normal)
-        iconButton2.tintColor = UIColor.hex(c2C9EFF)
-        iconButton2.addTarget(self, action: #selector(pushToGeneralSubpage), for: .touchUpInside)
+        iconButton2.tintColor = UIColor.hex(cBlue_2C9EFF)
         
         
     }

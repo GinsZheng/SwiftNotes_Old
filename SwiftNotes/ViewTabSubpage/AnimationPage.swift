@@ -19,14 +19,14 @@ class AnimationPage: UIViewController {
 
         myView.set(superview: view)
         myView.setFrame(centerX: view.centerX, top: 100, width: 100, height: 100)
-        myView.backgroundColor = UIColor.hex(c2C9EFF)
+        myView.backgroundColor = UIColor.hex(cBlue_2C9EFF)
         
         view.addSubview(solidButton)
         solidButton.setFrame(left: 20, bottom: 80, width: kScreenWidth - 40, height: 44)
         solidButton.setTitle("Start Animation", for: .normal)
         solidButton.setTitleColor(UIColor.white, for: .normal)
         solidButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        solidButton.setBackgroundImage(getImageWithColor(color: c2C9EFF), for: .normal)
+        solidButton.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
         solidButton.setBackgroundImage(getImageWithColor(color: "992c9eff"), for: .highlighted)
         solidButton.setBackgroundImage(getImageWithColor(color: "662c9eff"), for: .disabled)
         solidButton.setCornerRadius(radius: 4)
@@ -38,7 +38,7 @@ class AnimationPage: UIViewController {
     @objc func startAnimation() {
         
         UIView.animate(withDuration: 4, delay: 0.4, options: [.autoreverse], animations: {
-            self.myView.backgroundColor = UIColor.hex(cF7AD18)
+            self.myView.backgroundColor = UIColor.hex(cOrange_F7AD18)
             self.myView.alpha = 0.5
             self.myView.y = 300
             self.myView.width = 335
@@ -46,7 +46,7 @@ class AnimationPage: UIViewController {
             self.myView.centerX = self.view.centerX
 
         }) { (_) in
-            self.myView.backgroundColor = UIColor.hex(c2C9EFF)
+            self.myView.backgroundColor = UIColor.hex(cBlue_2C9EFF)
             self.myView.alpha = 1
             self.myView.y = 100
             self.myView.width = 100

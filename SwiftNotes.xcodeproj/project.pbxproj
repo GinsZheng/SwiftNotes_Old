@@ -52,6 +52,7 @@
 		7A27507022ABA25A00C8A474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A27506E22ABA25A00C8A474 /* LaunchScreen.storyboard */; };
 		7A27507B22ABA25B00C8A474 /* SwiftNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27507A22ABA25B00C8A474 /* SwiftNotesTests.swift */; };
 		7A27508622ABA25B00C8A474 /* SwiftNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27508522ABA25B00C8A474 /* SwiftNotesUITests.swift */; };
+		7A31324F2392A6680008298C /* ClassPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31324E2392A6680008298C /* ClassPage.swift */; };
 		7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; };
 		7A3647F0238AB1D1000BBECD /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A3647F5238AB287000BBECD /* SQLiteBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F4238AB287000BBECD /* SQLiteBasic.swift */; };
@@ -319,6 +320,7 @@
 		7A27508122ABA25B00C8A474 /* SwiftNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A27508522ABA25B00C8A474 /* SwiftNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNotesUITests.swift; sourceTree = "<group>"; };
 		7A27508722ABA25B00C8A474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A31324E2392A6680008298C /* ClassPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPage.swift; sourceTree = "<group>"; };
 		7A3647C9238AB178000BBECD /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		7A3647F4238AB287000BBECD /* SQLiteBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteBasic.swift; sourceTree = "<group>"; };
 		7A3647F6238AC230000BBECD /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
@@ -392,6 +394,7 @@
 				7A21612F2389869D00D5A93A /* DelegatePage.swift */,
 				7A2161302389869D00D5A93A /* PlistPage.swift */,
 				7A2161312389869D00D5A93A /* ProtocolPage.swift */,
+				7A31324E2392A6680008298C /* ClassPage.swift */,
 			);
 			path = ControllerTabSubpage;
 			sourceTree = "<group>";
@@ -409,22 +412,22 @@
 			isa = PBXGroup;
 			children = (
 				7A216141238986AF00D5A93A /* ButtonPage.swift */,
-				7A216142238986AF00D5A93A /* LabelPage.swift */,
-				7A216143238986AF00D5A93A /* ScrollViewPage.swift */,
-				7A216144238986AF00D5A93A /* SwitchPage.swift */,
-				7A216145238986AF00D5A93A /* SliderPage.swift */,
-				7A216146238986AF00D5A93A /* TextViewPage.swift */,
-				7A216147238986AF00D5A93A /* StackViewPage.swift */,
-				7A216149238986AF00D5A93A /* WebViewPage.swift */,
 				7A21614A238986AF00D5A93A /* DatePickerPage.swift */,
+				7A216152238986AF00D5A93A /* ImageViewPage.swift */,
+				7A216147238986AF00D5A93A /* StackViewPage.swift */,
+				7A216142238986AF00D5A93A /* LabelPage.swift */,
 				7A21614B238986AF00D5A93A /* PageControlPage.swift */,
+				7A216151238986AF00D5A93A /* PickerViewPage.swift */,
+				7A216143238986AF00D5A93A /* ScrollViewPage.swift */,
+				7A21614F238986AF00D5A93A /* SegmentControlPage.swift */,
+				7A216145238986AF00D5A93A /* SliderPage.swift */,
+				7A216150238986AF00D5A93A /* StepperPage.swift */,
+				7A216144238986AF00D5A93A /* SwitchPage.swift */,
 				7A21614C238986AF00D5A93A /* TableViewPage.swift */,
 				7A21614D238986AF00D5A93A /* TextFieldPage.swift */,
+				7A216146238986AF00D5A93A /* TextViewPage.swift */,
 				7A21614E238986AF00D5A93A /* ViewPage.swift */,
-				7A21614F238986AF00D5A93A /* SegmentControlPage.swift */,
-				7A216150238986AF00D5A93A /* StepperPage.swift */,
-				7A216151238986AF00D5A93A /* PickerViewPage.swift */,
-				7A216152238986AF00D5A93A /* ImageViewPage.swift */,
+				7A216149238986AF00D5A93A /* WebViewPage.swift */,
 				7A216148238986AF00D5A93A /* AnimationPage.swift */,
 				7A36487523926CC8000BBECD /* StylesPage.swift */,
 			);
@@ -875,6 +878,7 @@
 				7A2161152389857700D5A93A /* SetColorInHex.swift in Sources */,
 				7A3647F7238AC230000BBECD /* SQLiteManager.swift in Sources */,
 				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
+				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,
 				7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */,
