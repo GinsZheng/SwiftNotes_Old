@@ -153,11 +153,9 @@ extension UILabel {
         self.textColor = UIColor.hex(color)
     }
     
-//    func setLineHeight(multiple: CGFloat = 1.4) {
-    func setLineHeight() {
+    func setLineHeight(multiple: CGFloat = 1.4) {
         let paragraph = NSMutableParagraphStyle()
-        paragraph.lineHeightMultiple = 1.4 / 1.2
-        paragraph.lineSpacing = self.font.pointSize * 0.2
+        paragraph.lineHeightMultiple = multiple / 1.2
         let attributes = [NSAttributedString.Key.paragraphStyle: paragraph]
         self.attributedText = NSAttributedString(string: self.text ?? "", attributes: attributes)
     }
@@ -189,6 +187,12 @@ extension UILabel {
     
     func getDefaultLineheight() -> CGFloat {
         return round(self.font.pointSize * 1.4)
+    }
+    
+    func setAsMultipleLines(numberOfLines: Int, lineMultiple: CGFloat = 1.4) {
+        self.numberOfLines = 0
+        self.lineBreakMode = .byWordWrapping
+        self.setLineHeight(multiple: lineMultiple)
     }
 }
 
