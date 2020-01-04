@@ -14,6 +14,10 @@ class ButtonPage: UIViewController {
         self.pushFromSecondaryPage(toTarget: GeneralSubpage())
     }
     
+    @objc func pushWithParameter(_ button: UIButton) {
+        self.pushFromSecondaryPage(toTarget: GeneralSubpage())
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -26,7 +30,7 @@ class ButtonPage: UIViewController {
         wordButton.titleLabel?.setFontStyle(size: 17, color: cBlue_2C9EFF)
         
         let ghostButton = UIButton(type: .system)
-        ghostButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
+        ghostButton.set(superview: view, target: self, action: #selector(pushWithParameter(_:)))
         ghostButton.setFrame(left: 20, top: wordButton.bottom + 20, right: 20, height: 44)
         ghostButton.setTitle("Ghost Button", for: .normal)
         ghostButton.setTitleColor(UIColor.hex(cBlue_2C9EFF), for: .normal)
