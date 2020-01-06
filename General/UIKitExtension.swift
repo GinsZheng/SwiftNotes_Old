@@ -148,9 +148,10 @@ extension UILabel {
         superview.addSubview(self)
     }
     
-    func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = UIFont.Weight.regular) {
+    func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = UIFont.Weight.regular, alignment: NSTextAlignment = .left) {
         self.font = UIFont.systemFont(ofSize: size, weight: weight)
         self.textColor = UIColor.hex(color)
+        self.textAlignment = alignment
     }
     
     func setLineHeight(multiple: CGFloat = 1.4) {

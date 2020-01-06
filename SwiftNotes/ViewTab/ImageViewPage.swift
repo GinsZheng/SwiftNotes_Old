@@ -24,7 +24,6 @@ class ImageViewPage: UIViewController {
         image.setCornerRadius(radius: 8)
         
         image.setBorder(color: cBlue_2C9EFF, borderWidth: 1)
-
         
     }
     

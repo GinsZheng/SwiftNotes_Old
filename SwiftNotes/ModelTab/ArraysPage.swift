@@ -10,8 +10,8 @@ import UIKit
 
 class ArraysPage: UIViewController {
     
-    // 多元素数组，用于多参数遍历
-    var multipleElementArray: [(UIButton, UIImageView)] = []
+    // 多参数遍历
+    var multipleElementArray: [(Int, String)] = [(1001, "Gins"), (1002, "Jack"), (1002, "Jane")]
     
     // 带着下标遍历
     var arrayWithSubscript = ["a", "b", "c"]
@@ -20,6 +20,12 @@ class ArraysPage: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
+        // 多参数遍历
+        for (id, name) in multipleElementArray {
+            print("\(name)的学号是\(id)")
+        }
+        
+        // 带着下标遍历
         for (index, char) in arrayWithSubscript.enumerated() {
             print("第\(index)个元素对应的值是\(char)")
         }
