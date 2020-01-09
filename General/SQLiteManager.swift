@@ -30,14 +30,7 @@ class SQLiteManager: NSObject {
     }
     
     
-    
-    
 }
-
-
-
-
-
 
 
 let type_column = Expression<Int>("type")

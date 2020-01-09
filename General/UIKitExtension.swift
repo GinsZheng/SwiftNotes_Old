@@ -49,7 +49,7 @@ extension UIView {
         self.layer.mask = maskLayer
         
     }
-
+    
     func setBackgroundColor(color: String) {
         self.backgroundColor = UIColor.hex(color)
     }
@@ -144,6 +144,7 @@ extension UIView {
 extension UILabel {
     
     func set(superview: UIView, text: String) {
+        self.setKern(wordSpace: -0.4)
         self.text = text
         superview.addSubview(self)
     }
@@ -152,11 +153,12 @@ extension UILabel {
         self.font = UIFont.systemFont(ofSize: size, weight: weight)
         self.textColor = UIColor.hex(color)
         self.textAlignment = alignment
+        
     }
     
     func setLineHeight(multiple: CGFloat = 1.4) {
         let paragraph = NSMutableParagraphStyle()
-        paragraph.lineHeightMultiple = multiple / 1.2
+        paragraph.lineHeightMultiple = multiple / 1.194
         let attributes = [NSAttributedString.Key.paragraphStyle: paragraph]
         self.attributedText = NSAttributedString(string: self.text ?? "", attributes: attributes)
     }
@@ -179,7 +181,7 @@ extension UILabel {
         return labelWidth
     }
     
-    func getLabelHeight(withWidth width: CGFloat) -> CGFloat {
+    func getTextHeight(withWidth width: CGFloat) -> CGFloat {
         _ = self.text! as NSString
         let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         let height = self.sizeThatFits(size).height
@@ -195,38 +197,79 @@ extension UILabel {
         self.lineBreakMode = .byWordWrapping
         self.setLineHeight(multiple: lineMultiple)
     }
+    
+    func setKern(wordSpace: CGFloat) {
+        guard let content = self.text else {return}
+        let attributedString : NSMutableAttributedString = NSMutableAttributedString(string: content)
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: wordSpace, range: NSMakeRange(0, (content.count)))
+        self.attributedText = attributedString
+    }
+    
 }
 
 
 
 extension UITextView {
     
-    func set(superview: UIView, text: String) {
+    func set(superview: UIView, text: String, maxLines: Int, lineHeight: CGFloat = 1.4, kern: CGFloat = -0.4, interaction: Bool = false) {
         self.text = text
+        setLineHeightAndKern(lineHeight: lineHeight, kern: kern)
+        self.isUserInteractionEnabled = interaction
         superview.addSubview(self)
+        self.textContainer.maximumNumberOfLines = maxLines
+        self.textContainer.lineBreakMode = .byTruncatingTail
     }
     
-    func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = UIFont.Weight.regular) {
+    func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = UIFont.Weight.regular, alignment: NSTextAlignment = .left) {
         self.font = UIFont.systemFont(ofSize: size, weight: weight)
         self.textColor = UIColor.hex(color)
+        self.textAlignment = alignment
+        self.textContainerInset = UIEdgeInsets(top: -0.10*(size), left: -5, bottom: -0.10*(size), right: -5)
     }
     
-    func setLineHeight(lineHeight: CGFloat = 1.4, text: String) {
+    func setLineHeight(multiple: CGFloat = 1.4) {
         let paragraph = NSMutableParagraphStyle()
-        paragraph.lineHeightMultiple = lineHeight / 1.2
+        paragraph.lineHeightMultiple = multiple / 1.194
         let attributes = [NSAttributedString.Key.paragraphStyle: paragraph]
-        self.attributedText = NSAttributedString(string: text, attributes: attributes)
+        self.attributedText = NSAttributedString(string: self.text ?? "", attributes: attributes)
     }
+    
+    func setKern(wordSpace: CGFloat) {
+        guard let content = self.text else {return}
+        let attributedString : NSMutableAttributedString = NSMutableAttributedString(string: content)
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: wordSpace, range: NSMakeRange(0, (content.count)))
+        self.attributedText = attributedString
+    }
+    
+    func setLineHeightAndKern(lineHeight: CGFloat = 1.4, kern: CGFloat = -0.4) {
+        guard let content = self.text else {return}
+        let attributedString : NSMutableAttributedString = NSMutableAttributedString(string: content)
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineHeightMultiple = lineHeight / 1.194
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraph, range: NSMakeRange(0, (content.count)))
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: kern, range: NSMakeRange(0, (content.count)))
+        self.attributedText = attributedString
+    }
+    
+    func getTextHeight(withWidth width: CGFloat) -> CGFloat {
+        _ = self.text! as NSString
+        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+        let height = self.sizeThatFits(size).height
+        return CGFloat(Int(height) + 1)
+    }
+    
 
+    
 }
 
 
 
 extension UITextField {
     
-    func set(superview: UIView, placeholder: String) {
+    func set(superview: UIView, placeholder: String, delegate: UITextFieldDelegate) {
         self.placeholder = placeholder
         superview.addSubview(self)
+        self.delegate = delegate
     }
     
     var placeholderColor:UIColor {
@@ -286,7 +329,7 @@ extension UIImage {
     }
 }
 
-    
+
 extension UIButton {
     func set(superview: UIView, target: Any?, action: Selector, forEvent: UIControl.Event = UIControl.Event.touchUpInside) {
         superview.addSubview(self)

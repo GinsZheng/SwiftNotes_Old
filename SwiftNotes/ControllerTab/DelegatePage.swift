@@ -45,7 +45,7 @@ class DelegatePage: UIViewController, NameEditorDelegate {
 
 
 
-class NameEditorPage: UIViewController {
+class NameEditorPage: UIViewController, UITextFieldDelegate {
 
     var oldName: String?
     weak var delegate: NameEditorDelegate?
@@ -55,7 +55,7 @@ class NameEditorPage: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
 
-        nameTextField.set(superview: view, placeholder: "请输入")
+        nameTextField.set(superview: view, placeholder: "请输入", delegate: self)
         nameTextField.setFrame(left: 20, top: 100, right: 20, height: 44)
         nameTextField.setBackgroundColor(color: cF5F6F8)
         nameTextField.setCornerRadius(radius: 4)
