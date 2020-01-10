@@ -10,17 +10,30 @@ import UIKit
 
 class LabelPage: UIViewController {
     
+    let label = UILabel()
+    let label2 = UILabel()
+    let label3 = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+
         
-        let label = UILabel()
-        label.set(superview: view, text: "hello UILabel")
-        label.setFontStyle(size: 34, color: "222") // 文字要先设字号再布局
-        label.setFrame(left: 20, top: 100)
-        
+        label.set(superview: view, text: "在在在在在在在在在在在在在在在在")
+        label.setFontStyle(size: 24, color: c222)
+        label.setFrame(left: 20, top: 100, width: 384)
+        label.setBackgroundColor(color: cF0F1F3)
         label.backgroundColor = UIColor.hex(cBlue_2C9EFF)
+
+        label2.set(superview: view, text: "在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在")
+        label2.setFontStyle(size: 12, color: c222)
+        label2.setFrame(left: 20, top: 200, width: 384)
+        label2.setBackgroundColor(color: cF0F1F3)
         
+        label3.set(superview: view, text: "在在在在")
+        label3.setFontStyle(size: 96, color: c222)
+        label3.setFrame(left: 20, top: 300, width: 384)
+        label3.setBackgroundColor(color: cF0F1F3)
     }
     
 }

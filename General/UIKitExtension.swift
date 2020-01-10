@@ -144,7 +144,6 @@ extension UIView {
 extension UILabel {
     
     func set(superview: UIView, text: String) {
-        self.setKern(wordSpace: -0.4)
         self.text = text
         superview.addSubview(self)
     }
@@ -153,7 +152,6 @@ extension UILabel {
         self.font = UIFont.systemFont(ofSize: size, weight: weight)
         self.textColor = UIColor.hex(color)
         self.textAlignment = alignment
-        
     }
     
     func setLineHeight(multiple: CGFloat = 1.4) {
@@ -211,9 +209,9 @@ extension UILabel {
 
 extension UITextView {
     
-    func set(superview: UIView, text: String, maxLines: Int, lineHeight: CGFloat = 1.4, kern: CGFloat = -0.4, interaction: Bool = false) {
+    func set(superview: UIView, text: String, maxLines: Int, lineHeight: CGFloat = 1.4, interaction: Bool = false) {
         self.text = text
-        setLineHeightAndKern(lineHeight: lineHeight, kern: kern)
+        setLineHeight(multiple: lineHeight)
         self.isUserInteractionEnabled = interaction
         superview.addSubview(self)
         self.textContainer.maximumNumberOfLines = maxLines
@@ -377,9 +375,10 @@ extension UIViewController {
         return self.tabBarController?.tabBar.bounds.size.height ?? 0
     }
     
-    func getSafeAreaHeight() -> CGFloat {
-        return kScreenHeight - kNavBarHeight - self.getTabBarHeight()
+    func getSafeAreaHeight(inset: CGFloat = 0) -> CGFloat {
+        return kScreenHeight - kNavBarHeight - self.getTabBarHeight() - inset
     }
+    
 }
 
 

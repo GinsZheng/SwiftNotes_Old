@@ -15,7 +15,7 @@ class ScrollViewPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let scrollView = UIScrollView()
-        view.addSubview(scrollView)
+        scrollView.set(superview: view)
         scrollView.setFrame(left: 0, top: kNavBarHeight, width: kScreenWidth, height: 400)
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kScreenWidth/375*812)
         

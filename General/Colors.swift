@@ -25,11 +25,12 @@ let cBlue_2C9EFF_13 = "212C9EFF"
 let cBlue_2C9EFF_23 = "3B2C9EFF"
 let cBlue_2C9EFF_40 = "662C9EFF"
 let cBlue_2C9EFF_60 = "992C9EFF"
+let c278DE5 = "278DE5" // 2C9EFF 按钮按下
 
 // No color
 let cNoColor = "00000000"
 
-// grays
+// grays common
 let cFFF = "FFF"
 let c000 = "000"
 let c222 = "222"
@@ -37,7 +38,7 @@ let c666 = "666"
 let c999 = "999"
 let cCCC = "CCC"
 
-// grays seldom
+// grays special
 let c111 = "111"
 let c333 = "333"
 let c444 = "444"
@@ -50,18 +51,14 @@ let cDDD = "DDD"
 let cEEE = "EEE"
 
 // more grays
-let cF0F1F3 = "F0F1F3"
-let cF2F3F5 = "F2F3F5"
-let cF5F6F8 = "F5F6F8"
 let c000_45 = "73000000"
 let c000820_10_division = "1A000820"
 let c04040F_20_mask = "3304040F"
 let c04040F_40_mask = "6604040F"
 let c04040F_60_mask = "9904040F"
 let c133660_15_shadow = "26133660"
-
-
-// Button Pressed
-let c278DE5 = "278DE5" // 2C9EFF +10%黑
-let cDCDCDE = "DCDCDE" // F5F6F8 +10%黑
+let cDDDEE0 = "DDDEE0" // F0F1F3 按钮按下
+let cF0F1F3 = "F0F1F3"
+let cF2F3F5 = "F2F3F5"
+let cF5F6F8 = "F5F6F8"
 

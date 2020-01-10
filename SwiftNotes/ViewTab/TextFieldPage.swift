@@ -26,8 +26,6 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
         textField2.delegate = self
         textField2.keyboardType = .numberPad
         
-        // 交互事件
-        // .allEditingEvents 所有编辑事件，用于表单检查(按钮禁用)
     }
     
     

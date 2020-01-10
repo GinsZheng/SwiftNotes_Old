@@ -10,51 +10,64 @@ import UIKit
 
 
 class TestTab: UIViewController {
+
+
     
-    
-    let label = UILabel()
-    let textView = UITextView()
-    
+    let solidButton = UIButton(type: .custom)
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        label.set(superview: view, text: "在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在")
-        label.setFontStyle(size: 20, color: cBlue_2C9EFF) // 文字要先设字号再布局
-        label.setFrame(left: 20, top: 100, width: kScreenWidth - 40, height: label.getTextHeight(withWidth: kScreenWidth - 40))
-        label.setBackgroundColor(color: cCCC)
+        
+
+
+        solidButton.set(superview: view)
+        solidButton.setFrame(left: 20, top: 100, right: 20, height: 44)
+        solidButton.setTitle("Solid Button", for: .normal)
+        solidButton.setTitleColor(UIColor.white, for: .normal)
+        solidButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        solidButton.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
+        solidButton.setBackgroundImage(getImageWithColor(color: "992c9eff"), for: .highlighted)
+        solidButton.setBackgroundImage(getImageWithColor(color: "662c9eff"), for: .disabled)
+        solidButton.setCornerRadius(radius: 4)
+        
+        solidButton.addTarget(self, action: #selector(pushToGeneralPage), for: .touchUpInside)
+
         
         
-        textView.set(superview: view, text: "在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在", maxLines: 0)
-        textView.setFontStyle(size: 20, color: c222)
-        textView.setFrame(left: 20, top: 400, width: kScreenWidth - 40, height: 28*3)
-        textView.setBackgroundColor(color: cCCC)
-        textView.isUserInteractionEnabled = false
-        
+        /*
+         
+         UIControl.Evert 交互事件：
+         触摸事件：
+         TouchDown    表示控件边界内任何地方发生的按下（手指触到屏幕）事件。
+         TouchUpInside    表示控件便捷内任何地方发生抬起来（手指离开屏幕）事件
+         TouchUpOutside    表示手指完全落在控件的边界外的事件
+         TouchDragEnter    表示拖拽进入控件边界内的事件
+         TouchDragExit    表示拖拽移出控件边界内的事件
+         TouchCancel    表示取消当前的一个触摸的系统事件
+         AllTouchEvents    表示用于捕捉一切触摸事件
+         
+         值事件：
+         ValueChanged    表示控件的值发生变化后出发的事件，如UITextField的text发生变化。
+         
+         编辑事件：
+         EditingDidBegin    表示TextField控件内部的触摸开始事件，表示TextField开始编辑状态（获得焦点）
+         EditingDidEnd    表示TextField控件外部的触摸结束事件，表示TextField结束编辑状态（失去焦点）
+         EditingChanged    表示TextField的内容编辑修改时触发的事件
+         EditingDidEndOnExit    表示结束编辑会话事件，但不一定是控件的外边界触摸事件
+         AllEditingEvents    表示用于捕捉任意编辑事件
+         ApplicationReserved    表示应用程序的特定事件
+         SystemReserved    表示系统（内部的框架）特定事件
+         PrimaryActionTriggered    表示semantic action
+         AllEnvnts    表示用于捕捉任何触摸、值、编辑、应用程序、系统事件
+         
+         
+         */
+
+
     }
-    
-    
+
+    @objc func pushToGeneralPage() {
+        self.push(toTarget: GeneralSubpage())
+    }
+
 }
-
-
-
-
-
-
-//
-//@IBDesignable class PaddingLabel: UILabel {
-//
-//    @IBInspectable var topInset: CGFloat = 30
-//    @IBInspectable var bottomInset: CGFloat = 30
-//    @IBInspectable var leftInset: CGFloat = 0.0
-//    @IBInspectable var rightInset: CGFloat = 0.0
-//
-//    override func drawText(in rect: CGRect) {
-//        let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-//        super.drawText(in: rect.inset(by: insets))
-//    }
-//
-//    override var intrinsicContentSize: CGSize {
-//        let size = super.intrinsicContentSize
-//        return CGSize(width: size.width + leftInset + rightInset,
-//                      height: size.height + topInset + bottomInset)
-//    }
-//}

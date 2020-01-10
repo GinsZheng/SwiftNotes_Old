@@ -61,6 +61,8 @@
 		7A3647FD238C33ED000BBECD /* JSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* JSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
 		7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B5D3B23C05A150079A931 /* ArraysPage.swift */; };
+		7A9C729B23C7308000CF5663 /* SwiftyJSONTests.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C728623C7307F00CF5663 /* SwiftyJSONTests.json */; };
+		7AF5BBBD23C86DBD002464D7 /* ControllerNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5BBBC23C86DBD002464D7 /* ControllerNote.swift */; };
 		7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; };
 		7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38A022AF821800AC4958 /* Alamofire.framework */; };
@@ -329,6 +331,8 @@
 		7A3647FC238C33ED000BBECD /* JSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7A7B5D3B23C05A150079A931 /* ArraysPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysPage.swift; sourceTree = "<group>"; };
+		7A9C728623C7307F00CF5663 /* SwiftyJSONTests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = SwiftyJSONTests.json; path = ../../../../../../Src/src_Text.Text/SwiftyJSONTests.json; sourceTree = "<group>"; };
+		7AF5BBBC23C86DBD002464D7 /* ControllerNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerNote.swift; sourceTree = "<group>"; };
 		7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-alamofire5/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -390,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				7A2161252389868500D5A93A /* ControllerTab.swift */,
+				7AF5BBBC23C86DBD002464D7 /* ControllerNote.swift */,
 				7A21612B2389869D00D5A93A /* DecoratorPage.swift */,
 				7A21612C2389869D00D5A93A /* Books.plist */,
 				7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */,
@@ -465,6 +470,7 @@
 			children = (
 				7A27506522ABA25600C8A474 /* AppDelegate.swift */,
 				7A2161242389868500D5A93A /* TestTab.swift */,
+				7A9C728623C7307F00CF5663 /* SwiftyJSONTests.json */,
 				7A216140238986AF00D5A93A /* ViewTab */,
 				7A21612A2389869D00D5A93A /* ControllerTab */,
 				7A3647F3238AB268000BBECD /* ModelTab */,
@@ -828,6 +834,7 @@
 				7A27506D22ABA25A00C8A474 /* Assets.xcassets in Resources */,
 				7A27506B22ABA25600C8A474 /* Main.storyboard in Resources */,
 				7A2161332389869D00D5A93A /* Books.plist in Resources */,
+				7A9C729B23C7308000CF5663 /* SwiftyJSONTests.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -857,6 +864,7 @@
 				7A21615B238986AF00D5A93A /* WebViewPage.swift in Sources */,
 				7A21611B2389857700D5A93A /* Colors.swift in Sources */,
 				7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */,
+				7AF5BBBD23C86DBD002464D7 /* ControllerNote.swift in Sources */,
 				7A3647F5238AB287000BBECD /* SQLiteBasic.swift in Sources */,
 				7A216153238986AF00D5A93A /* ButtonPage.swift in Sources */,
 				7A2161362389869D00D5A93A /* DelegatePage.swift in Sources */,

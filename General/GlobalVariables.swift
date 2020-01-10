@@ -19,5 +19,4 @@ let kCellHeight: CGFloat = 56
 let kSeparatorHeight = 1 / UIScreen.main.scale
 let kSafeAreaInsets = UIApplication.shared.delegate?.window??.safeAreaInsets ?? UIEdgeInsets.zero
 
-let kMyGod = 44
             
