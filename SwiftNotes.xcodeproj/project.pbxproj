@@ -55,14 +55,13 @@
 		7A31324F2392A6680008298C /* ClassPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31324E2392A6680008298C /* ClassPage.swift */; };
 		7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; };
 		7A3647F0238AB1D1000BBECD /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7A3647F5238AB287000BBECD /* SQLiteBasic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F4238AB287000BBECD /* SQLiteBasic.swift */; };
-		7A3647F7238AC230000BBECD /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F6238AC230000BBECD /* SQLiteManager.swift */; };
+		7A3647F5238AB287000BBECD /* SQLitePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F4238AB287000BBECD /* SQLitePage.swift */; };
 		7A3647F9238AD062000BBECD /* SQLInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* SQLInstance.swift */; };
 		7A3647FD238C33ED000BBECD /* JSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* JSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
 		7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B5D3B23C05A150079A931 /* ArraysPage.swift */; };
 		7A9C729B23C7308000CF5663 /* SwiftyJSONTests.json in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C728623C7307F00CF5663 /* SwiftyJSONTests.json */; };
-		7AF5BBBD23C86DBD002464D7 /* ControllerNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5BBBC23C86DBD002464D7 /* ControllerNote.swift */; };
+		7AF5BBBD23C86DBD002464D7 /* UIControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5BBBC23C86DBD002464D7 /* UIControlEvent.swift */; };
 		7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; };
 		7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38A022AF821800AC4958 /* Alamofire.framework */; };
@@ -325,14 +324,14 @@
 		7A27508722ABA25B00C8A474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A31324E2392A6680008298C /* ClassPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPage.swift; sourceTree = "<group>"; };
 		7A3647C9238AB178000BBECD /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
-		7A3647F4238AB287000BBECD /* SQLiteBasic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteBasic.swift; sourceTree = "<group>"; };
-		7A3647F6238AC230000BBECD /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
+		7A3647F4238AB287000BBECD /* SQLitePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLitePage.swift; sourceTree = "<group>"; };
 		7A3647F8238AD062000BBECD /* SQLInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLInstance.swift; sourceTree = "<group>"; };
 		7A3647FC238C33ED000BBECD /* JSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7A7B5D3B23C05A150079A931 /* ArraysPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysPage.swift; sourceTree = "<group>"; };
 		7A9C728623C7307F00CF5663 /* SwiftyJSONTests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = SwiftyJSONTests.json; path = ../../../../../../Src/src_Text.Text/SwiftyJSONTests.json; sourceTree = "<group>"; };
-		7AF5BBBC23C86DBD002464D7 /* ControllerNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerNote.swift; sourceTree = "<group>"; };
+		7AC3B73F23CA05B3004DB044 /* SwiftyJSONTests.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SwiftyJSONTests.json; sourceTree = "<group>"; };
+		7AF5BBBC23C86DBD002464D7 /* UIControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlEvent.swift; sourceTree = "<group>"; };
 		7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-alamofire5/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -381,7 +380,6 @@
 				7A2161132389857700D5A93A /* Colors.swift */,
 				7A2161122389857700D5A93A /* GlobalClass.swift */,
 				7A2161102389857700D5A93A /* GlobalFunction.swift */,
-				7A3647F6238AC230000BBECD /* SQLiteManager.swift */,
 				7A21610C2389857700D5A93A /* GlobalVariables.swift */,
 				7A2161112389857700D5A93A /* SetFrame.swift */,
 				7A21610D2389857700D5A93A /* SetColorInHex.swift */,
@@ -390,21 +388,15 @@
 			path = General;
 			sourceTree = "<group>";
 		};
-		7A21612A2389869D00D5A93A /* ControllerTab */ = {
+		7A21612A2389869D00D5A93A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				7A2161252389868500D5A93A /* ControllerTab.swift */,
-				7AF5BBBC23C86DBD002464D7 /* ControllerNote.swift */,
-				7A21612B2389869D00D5A93A /* DecoratorPage.swift */,
-				7A21612C2389869D00D5A93A /* Books.plist */,
-				7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */,
-				7A21612E2389869D00D5A93A /* MenuControllerPage.swift */,
-				7A21612F2389869D00D5A93A /* DelegatePage.swift */,
-				7A2161302389869D00D5A93A /* PlistPage.swift */,
-				7A2161312389869D00D5A93A /* ProtocolPage.swift */,
-				7A31324E2392A6680008298C /* ClassPage.swift */,
+				7AFED65C23C97C8F0079456D /* ControlllerCells */,
+				7AC3B73C23CA04D9004DB044 /* ControllerSupports */,
+				7AFED64723C97C770079456D /* ControllerNotes */,
 			);
-			path = ControllerTab;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		7A21613B238986AA00D5A93A /* LearningPage */ = {
@@ -416,31 +408,15 @@
 			path = LearningPage;
 			sourceTree = "<group>";
 		};
-		7A216140238986AF00D5A93A /* ViewTab */ = {
+		7A216140238986AF00D5A93A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				7A2161222389868500D5A93A /* ViewTab.swift */,
-				7A216141238986AF00D5A93A /* ButtonPage.swift */,
-				7A21614A238986AF00D5A93A /* DatePickerPage.swift */,
-				7A216152238986AF00D5A93A /* ImageViewPage.swift */,
-				7A216147238986AF00D5A93A /* StackViewPage.swift */,
-				7A216142238986AF00D5A93A /* LabelPage.swift */,
-				7A21614B238986AF00D5A93A /* PageControlPage.swift */,
-				7A216151238986AF00D5A93A /* PickerViewPage.swift */,
-				7A216143238986AF00D5A93A /* ScrollViewPage.swift */,
-				7A21614F238986AF00D5A93A /* SegmentControlPage.swift */,
-				7A216145238986AF00D5A93A /* SliderPage.swift */,
-				7A216150238986AF00D5A93A /* StepperPage.swift */,
-				7A216144238986AF00D5A93A /* SwitchPage.swift */,
-				7A21614C238986AF00D5A93A /* TableViewPage.swift */,
-				7A21614D238986AF00D5A93A /* TextFieldPage.swift */,
-				7A216146238986AF00D5A93A /* TextViewPage.swift */,
-				7A21614E238986AF00D5A93A /* ViewPage.swift */,
-				7A216149238986AF00D5A93A /* WebViewPage.swift */,
-				7A216148238986AF00D5A93A /* AnimationPage.swift */,
-				7A36487523926CC8000BBECD /* StylesPage.swift */,
+				7AC3B73E23CA057E004DB044 /* ViewCells */,
+				7AC3B74023CA05E4004DB044 /* ViewSupports */,
+				7AC3B74123CA05EE004DB044 /* ViewNotes */,
 			);
-			path = ViewTab;
+			path = View;
 			sourceTree = "<group>";
 		};
 		7A27505922ABA25600C8A474 = {
@@ -471,9 +447,9 @@
 				7A27506522ABA25600C8A474 /* AppDelegate.swift */,
 				7A2161242389868500D5A93A /* TestTab.swift */,
 				7A9C728623C7307F00CF5663 /* SwiftyJSONTests.json */,
-				7A216140238986AF00D5A93A /* ViewTab */,
-				7A21612A2389869D00D5A93A /* ControllerTab */,
-				7A3647F3238AB268000BBECD /* ModelTab */,
+				7A216140238986AF00D5A93A /* View */,
+				7A21612A2389869D00D5A93A /* Controller */,
+				7A3647F3238AB268000BBECD /* Model */,
 				7A21613B238986AA00D5A93A /* LearningPage */,
 				7A27506922ABA25600C8A474 /* Main.storyboard */,
 				7A27506C22ABA25A00C8A474 /* Assets.xcassets */,
@@ -517,16 +493,111 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7A3647F3238AB268000BBECD /* ModelTab */ = {
+		7A3647F3238AB268000BBECD /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				7A2161232389868500D5A93A /* ModelTab.swift */,
-				7A3647F4238AB287000BBECD /* SQLiteBasic.swift */,
-				7A3647F8238AD062000BBECD /* SQLInstance.swift */,
+				7AC3B73A23CA04AF004DB044 /* ModelCells */,
+				7AC3B73B23CA04C5004DB044 /* ModelSupports */,
+				7AC3B73D23CA0503004DB044 /* ModelNotes */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7AC3B73A23CA04AF004DB044 /* ModelCells */ = {
+			isa = PBXGroup;
+			children = (
+				7A3647F4238AB287000BBECD /* SQLitePage.swift */,
 				7A3647FC238C33ED000BBECD /* JSONPage.swift */,
 				7A7B5D3B23C05A150079A931 /* ArraysPage.swift */,
 			);
-			path = ModelTab;
+			path = ModelCells;
+			sourceTree = "<group>";
+		};
+		7AC3B73B23CA04C5004DB044 /* ModelSupports */ = {
+			isa = PBXGroup;
+			children = (
+				7AC3B73F23CA05B3004DB044 /* SwiftyJSONTests.json */,
+				7A3647F8238AD062000BBECD /* SQLInstance.swift */,
+			);
+			path = ModelSupports;
+			sourceTree = "<group>";
+		};
+		7AC3B73C23CA04D9004DB044 /* ControllerSupports */ = {
+			isa = PBXGroup;
+			children = (
+				7A21612C2389869D00D5A93A /* Books.plist */,
+			);
+			path = ControllerSupports;
+			sourceTree = "<group>";
+		};
+		7AC3B73D23CA0503004DB044 /* ModelNotes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelNotes;
+			sourceTree = "<group>";
+		};
+		7AC3B73E23CA057E004DB044 /* ViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				7A216141238986AF00D5A93A /* ButtonPage.swift */,
+				7A21614A238986AF00D5A93A /* DatePickerPage.swift */,
+				7A216152238986AF00D5A93A /* ImageViewPage.swift */,
+				7A216147238986AF00D5A93A /* StackViewPage.swift */,
+				7A216142238986AF00D5A93A /* LabelPage.swift */,
+				7A21614B238986AF00D5A93A /* PageControlPage.swift */,
+				7A216151238986AF00D5A93A /* PickerViewPage.swift */,
+				7A216143238986AF00D5A93A /* ScrollViewPage.swift */,
+				7A21614F238986AF00D5A93A /* SegmentControlPage.swift */,
+				7A216145238986AF00D5A93A /* SliderPage.swift */,
+				7A216150238986AF00D5A93A /* StepperPage.swift */,
+				7A216144238986AF00D5A93A /* SwitchPage.swift */,
+				7A21614C238986AF00D5A93A /* TableViewPage.swift */,
+				7A21614D238986AF00D5A93A /* TextFieldPage.swift */,
+				7A216146238986AF00D5A93A /* TextViewPage.swift */,
+				7A21614E238986AF00D5A93A /* ViewPage.swift */,
+				7A216149238986AF00D5A93A /* WebViewPage.swift */,
+				7A216148238986AF00D5A93A /* AnimationPage.swift */,
+				7A36487523926CC8000BBECD /* StylesPage.swift */,
+			);
+			path = ViewCells;
+			sourceTree = "<group>";
+		};
+		7AC3B74023CA05E4004DB044 /* ViewSupports */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewSupports;
+			sourceTree = "<group>";
+		};
+		7AC3B74123CA05EE004DB044 /* ViewNotes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewNotes;
+			sourceTree = "<group>";
+		};
+		7AFED64723C97C770079456D /* ControllerNotes */ = {
+			isa = PBXGroup;
+			children = (
+				7AF5BBBC23C86DBD002464D7 /* UIControlEvent.swift */,
+			);
+			path = ControllerNotes;
+			sourceTree = "<group>";
+		};
+		7AFED65C23C97C8F0079456D /* ControlllerCells */ = {
+			isa = PBXGroup;
+			children = (
+				7A21612B2389869D00D5A93A /* DecoratorPage.swift */,
+				7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */,
+				7A21612E2389869D00D5A93A /* MenuControllerPage.swift */,
+				7A21612F2389869D00D5A93A /* DelegatePage.swift */,
+				7A2161302389869D00D5A93A /* PlistPage.swift */,
+				7A2161312389869D00D5A93A /* ProtocolPage.swift */,
+				7A31324E2392A6680008298C /* ClassPage.swift */,
+			);
+			path = ControlllerCells;
 			sourceTree = "<group>";
 		};
 		7AFF389522AF821800AC4958 /* Products */ = {
@@ -864,8 +935,8 @@
 				7A21615B238986AF00D5A93A /* WebViewPage.swift in Sources */,
 				7A21611B2389857700D5A93A /* Colors.swift in Sources */,
 				7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */,
-				7AF5BBBD23C86DBD002464D7 /* ControllerNote.swift in Sources */,
-				7A3647F5238AB287000BBECD /* SQLiteBasic.swift in Sources */,
+				7AF5BBBD23C86DBD002464D7 /* UIControlEvent.swift in Sources */,
+				7A3647F5238AB287000BBECD /* SQLitePage.swift in Sources */,
 				7A216153238986AF00D5A93A /* ButtonPage.swift in Sources */,
 				7A2161362389869D00D5A93A /* DelegatePage.swift in Sources */,
 				7A216159238986AF00D5A93A /* StackViewPage.swift in Sources */,
@@ -888,7 +959,6 @@
 				7A21615D238986AF00D5A93A /* PageControlPage.swift in Sources */,
 				7A2161352389869D00D5A93A /* MenuControllerPage.swift in Sources */,
 				7A2161152389857700D5A93A /* SetColorInHex.swift in Sources */,
-				7A3647F7238AC230000BBECD /* SQLiteManager.swift in Sources */,
 				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,

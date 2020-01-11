@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArraysPage: UIViewController {
+class ArrayPage: UIViewController {
     
     // 多参数遍历
     var multipleElementArray: [(Int, String)] = [(1001, "Gins"), (1002, "Jack"), (1002, "Jane")]

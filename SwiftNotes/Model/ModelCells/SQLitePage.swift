@@ -1,5 +1,5 @@
 //
-//  SQLInstance.swift
+//  SQLite.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/11/24.
@@ -9,15 +9,16 @@
 import UIKit
 import SQLite
 
-class SQLInstance: UIViewController {
-    
-    let db = SQLiteManager().getDB()
+class SQLitePage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
         
+        
     }
+    
+    
 }
 
