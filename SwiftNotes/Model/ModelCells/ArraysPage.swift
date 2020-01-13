@@ -10,6 +10,13 @@ import UIKit
 
 class ArrayPage: UIViewController {
     
+    // 创建数组
+    var array1 = [String]() // 写法1
+    var array2:[String] = [] // 写法2
+    var array3 = Array(repeating: 1, count: 5)
+
+    
+    
     // 多参数遍历
     var multipleElementArray: [(Int, String)] = [(1001, "Gins"), (1002, "Jack"), (1002, "Jane")]
     
@@ -19,6 +26,10 @@ class ArrayPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        
+        // 调用
+        let firstElement = array3[0]
+        print("firstElement: \(firstElement)")
         
         // 多参数遍历
         for (id, name) in multipleElementArray {

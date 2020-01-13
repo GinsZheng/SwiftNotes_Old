@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7A2161142389857700D5A93A /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21610C2389857700D5A93A /* GlobalVariables.swift */; };
+		7A2161142389857700D5A93A /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21610C2389857700D5A93A /* Variables.swift */; };
 		7A2161152389857700D5A93A /* SetColorInHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21610D2389857700D5A93A /* SetColorInHex.swift */; };
 		7A2161162389857700D5A93A /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21610E2389857700D5A93A /* UIKitExtension.swift */; };
-		7A2161182389857700D5A93A /* GlobalFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161102389857700D5A93A /* GlobalFunction.swift */; };
+		7A2161182389857700D5A93A /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161102389857700D5A93A /* Function.swift */; };
 		7A2161192389857700D5A93A /* SetFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161112389857700D5A93A /* SetFrame.swift */; };
-		7A21611A2389857700D5A93A /* GlobalClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161122389857700D5A93A /* GlobalClass.swift */; };
+		7A21611A2389857700D5A93A /* Class.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161122389857700D5A93A /* Class.swift */; };
 		7A21611B2389857700D5A93A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161132389857700D5A93A /* Colors.swift */; };
 		7A2161262389868500D5A93A /* ViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161222389868500D5A93A /* ViewTab.swift */; };
 		7A2161272389868500D5A93A /* ModelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161232389868500D5A93A /* ModelTab.swift */; };
@@ -53,11 +53,16 @@
 		7A27507B22ABA25B00C8A474 /* SwiftNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27507A22ABA25B00C8A474 /* SwiftNotesTests.swift */; };
 		7A27508622ABA25B00C8A474 /* SwiftNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27508522ABA25B00C8A474 /* SwiftNotesUITests.swift */; };
 		7A31324F2392A6680008298C /* ClassPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31324E2392A6680008298C /* ClassPage.swift */; };
+		7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33086823CC48A30021BA5B /* RequestPage.swift */; };
+		7A33088A23CC66850021BA5B /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A75C27B23CC430C00F9376D /* HandyJSON.framework */; };
+		7A33088B23CC66850021BA5B /* HandyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A75C27B23CC430C00F9376D /* HandyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A3308BF23CC67360021BA5B /* HandyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */; };
+		7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3308C223CC6DAD0021BA5B /* Styles.swift */; };
 		7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; };
 		7A3647F0238AB1D1000BBECD /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A3647F5238AB287000BBECD /* SQLitePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F4238AB287000BBECD /* SQLitePage.swift */; };
 		7A3647F9238AD062000BBECD /* SQLiteInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* SQLiteInstance.swift */; };
-		7A3647FD238C33ED000BBECD /* JSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* JSONPage.swift */; };
+		7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
 		7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B5D3B23C05A150079A931 /* ArraysPage.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
@@ -140,6 +145,62 @@
 			proxyType = 1;
 			remoteGlobalIDString = EE247AD21C3F04ED00AE3E12;
 			remoteInfo = "SQLite iOS";
+		};
+		7A75C27A23CC430C00F9376D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 21520C441D3341B200F53111;
+			remoteInfo = "HandyJSON iOS";
+		};
+		7A75C27C23CC430C00F9376D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 21520C5B1D3344A900F53111;
+			remoteInfo = HandyJSONDemo;
+		};
+		7A75C27E23CC430C00F9376D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 217B046D1D571B9F0035A8E2;
+			remoteInfo = "HandyJSON iOS Tests";
+		};
+		7A75C28023CC430C00F9376D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 393E0F9B1DA1650E00B3BC12;
+			remoteInfo = "HandyJSON watchOS";
+		};
+		7A75C28223CC430C00F9376D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 393E0FB11DA2441E00B3BC12;
+			remoteInfo = "HandyJSON tvOS";
+		};
+		7A75C28423CC430C00F9376D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 393E0FB91DA2441E00B3BC12;
+			remoteInfo = "HandyJSON tvOS Tests";
+		};
+		7A75C28623CC430C00F9376D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 393E0FE11DA2494F00B3BC12;
+			remoteInfo = "HandyJSON macOS";
+		};
+		7A75C28823CC430C00F9376D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 393E0FE91DA2494F00B3BC12;
+			remoteInfo = "HandyJSON macOS Tests";
 		};
 		7AFF389F22AF821800AC4958 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -263,6 +324,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */,
+				7A33088B23CC66850021BA5B /* HandyJSON.framework in Embed Frameworks */,
 				7AFF38D822AF828300AC4958 /* Alamofire.framework in Embed Frameworks */,
 				7A3647F0238AB1D1000BBECD /* SQLite.framework in Embed Frameworks */,
 			);
@@ -272,12 +334,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7A21610C2389857700D5A93A /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		7A21610C2389857700D5A93A /* Variables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		7A21610D2389857700D5A93A /* SetColorInHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetColorInHex.swift; sourceTree = "<group>"; };
 		7A21610E2389857700D5A93A /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
-		7A2161102389857700D5A93A /* GlobalFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalFunction.swift; sourceTree = "<group>"; };
+		7A2161102389857700D5A93A /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		7A2161112389857700D5A93A /* SetFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetFrame.swift; sourceTree = "<group>"; };
-		7A2161122389857700D5A93A /* GlobalClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalClass.swift; sourceTree = "<group>"; };
+		7A2161122389857700D5A93A /* Class.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Class.swift; sourceTree = "<group>"; };
 		7A2161132389857700D5A93A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7A2161222389868500D5A93A /* ViewTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTab.swift; sourceTree = "<group>"; };
 		7A2161232389868500D5A93A /* ModelTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTab.swift; sourceTree = "<group>"; };
@@ -325,11 +387,15 @@
 		7A27508522ABA25B00C8A474 /* SwiftNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNotesUITests.swift; sourceTree = "<group>"; };
 		7A27508722ABA25B00C8A474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A31324E2392A6680008298C /* ClassPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPage.swift; sourceTree = "<group>"; };
+		7A33086823CC48A30021BA5B /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
+		7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyJSONPage.swift; sourceTree = "<group>"; };
+		7A3308C223CC6DAD0021BA5B /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		7A3647C9238AB178000BBECD /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		7A3647F4238AB287000BBECD /* SQLitePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLitePage.swift; sourceTree = "<group>"; };
 		7A3647F8238AD062000BBECD /* SQLiteInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteInstance.swift; sourceTree = "<group>"; };
-		7A3647FC238C33ED000BBECD /* JSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPage.swift; sourceTree = "<group>"; };
+		7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
+		7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HandyJSON.xcodeproj; path = "HandyJSON-master/HandyJSON.xcodeproj"; sourceTree = "<group>"; };
 		7A7B5D3B23C05A150079A931 /* ArraysPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysPage.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
 		7AC3B74423CA21D1004DB044 /* ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadData.swift; sourceTree = "<group>"; };
@@ -345,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */,
+				7A33088A23CC66850021BA5B /* HandyJSON.framework in Frameworks */,
 				7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */,
 				7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */,
 			);
@@ -370,6 +437,7 @@
 		7A019B2322ABA46E0034C5A3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */,
 				7A3647C9238AB178000BBECD /* SQLite.xcodeproj */,
 				7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */,
 				7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */,
@@ -381,11 +449,12 @@
 			isa = PBXGroup;
 			children = (
 				7A2161132389857700D5A93A /* Colors.swift */,
-				7A2161122389857700D5A93A /* GlobalClass.swift */,
-				7A2161102389857700D5A93A /* GlobalFunction.swift */,
-				7A21610C2389857700D5A93A /* GlobalVariables.swift */,
+				7A2161122389857700D5A93A /* Class.swift */,
+				7A2161102389857700D5A93A /* Function.swift */,
+				7A21610C2389857700D5A93A /* Variables.swift */,
 				7A2161112389857700D5A93A /* SetFrame.swift */,
 				7A21610D2389857700D5A93A /* SetColorInHex.swift */,
+				7A3308C223CC6DAD0021BA5B /* Styles.swift */,
 				7A21610E2389857700D5A93A /* UIKitExtension.swift */,
 				7AC3B74623CA24D5004DB044 /* FileManager.swift */,
 			);
@@ -432,6 +501,7 @@
 				7A27507922ABA25B00C8A474 /* SwiftNotesTests */,
 				7A27508422ABA25B00C8A474 /* SwiftNotesUITests */,
 				7A27506322ABA25600C8A474 /* Products */,
+				7A33088923CC66850021BA5B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -482,6 +552,13 @@
 			path = SwiftNotesUITests;
 			sourceTree = "<group>";
 		};
+		7A33088923CC66850021BA5B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7A3647CA238AB178000BBECD /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,12 +584,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		7A75C27023CC430B00F9376D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A75C27B23CC430C00F9376D /* HandyJSON.framework */,
+				7A75C27D23CC430C00F9376D /* HandyJSONDemo.app */,
+				7A75C27F23CC430C00F9376D /* HandyJSON iOS Tests.xctest */,
+				7A75C28123CC430C00F9376D /* HandyJSON.framework */,
+				7A75C28323CC430C00F9376D /* HandyJSON.framework */,
+				7A75C28523CC430C00F9376D /* HandyJSON tvOS Tests.xctest */,
+				7A75C28723CC430C00F9376D /* HandyJSON.framework */,
+				7A75C28923CC430C00F9376D /* HandyJSON macOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		7AC3B73A23CA04AF004DB044 /* ModelCells */ = {
 			isa = PBXGroup;
 			children = (
 				7A3647F4238AB287000BBECD /* SQLitePage.swift */,
-				7A3647FC238C33ED000BBECD /* JSONPage.swift */,
+				7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */,
+				7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */,
 				7A7B5D3B23C05A150079A931 /* ArraysPage.swift */,
+				7A33086823CC48A30021BA5B /* RequestPage.swift */,
 			);
 			path = ModelCells;
 			sourceTree = "<group>";
@@ -732,6 +826,10 @@
 					ProjectRef = 7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */;
 				},
 				{
+					ProductGroup = 7A75C27023CC430B00F9376D /* Products */;
+					ProjectRef = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
+				},
+				{
 					ProductGroup = 7A3647CA238AB178000BBECD /* Products */;
 					ProjectRef = 7A3647C9238AB178000BBECD /* SQLite.xcodeproj */;
 				},
@@ -797,6 +895,62 @@
 			fileType = wrapper.framework;
 			path = SQLite.framework;
 			remoteRef = 7A3647E6238AB179000BBECD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A75C27B23CC430C00F9376D /* HandyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = HandyJSON.framework;
+			remoteRef = 7A75C27A23CC430C00F9376D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A75C27D23CC430C00F9376D /* HandyJSONDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = HandyJSONDemo.app;
+			remoteRef = 7A75C27C23CC430C00F9376D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A75C27F23CC430C00F9376D /* HandyJSON iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "HandyJSON iOS Tests.xctest";
+			remoteRef = 7A75C27E23CC430C00F9376D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A75C28123CC430C00F9376D /* HandyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = HandyJSON.framework;
+			remoteRef = 7A75C28023CC430C00F9376D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A75C28323CC430C00F9376D /* HandyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = HandyJSON.framework;
+			remoteRef = 7A75C28223CC430C00F9376D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A75C28523CC430C00F9376D /* HandyJSON tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "HandyJSON tvOS Tests.xctest";
+			remoteRef = 7A75C28423CC430C00F9376D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A75C28723CC430C00F9376D /* HandyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = HandyJSON.framework;
+			remoteRef = 7A75C28623CC430C00F9376D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A75C28923CC430C00F9376D /* HandyJSON macOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "HandyJSON macOS Tests.xctest";
+			remoteRef = 7A75C28823CC430C00F9376D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7AFF38A022AF821800AC4958 /* Alamofire.framework */ = {
@@ -949,11 +1103,12 @@
 				7A2161192389857700D5A93A /* SetFrame.swift in Sources */,
 				7A21613F238986AA00D5A93A /* GeneralSubpage.swift in Sources */,
 				7A216161238986AF00D5A93A /* SegmentControlPage.swift in Sources */,
+				7A3308BF23CC67360021BA5B /* HandyJSONPage.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
-				7A21611A2389857700D5A93A /* GlobalClass.swift in Sources */,
+				7A21611A2389857700D5A93A /* Class.swift in Sources */,
 				7A2161282389868500D5A93A /* TestTab.swift in Sources */,
-				7A2161142389857700D5A93A /* GlobalVariables.swift in Sources */,
+				7A2161142389857700D5A93A /* Variables.swift in Sources */,
 				7A216155238986AF00D5A93A /* ScrollViewPage.swift in Sources */,
 				7A216156238986AF00D5A93A /* SwitchPage.swift in Sources */,
 				7A216154238986AF00D5A93A /* LabelPage.swift in Sources */,
@@ -968,12 +1123,14 @@
 				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
+				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,
 				7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */,
 				7A3647F9238AD062000BBECD /* SQLiteInstance.swift in Sources */,
 				7A2161372389869D00D5A93A /* PlistPage.swift in Sources */,
-				7A2161182389857700D5A93A /* GlobalFunction.swift in Sources */,
-				7A3647FD238C33ED000BBECD /* JSONPage.swift in Sources */,
+				7A2161182389857700D5A93A /* Function.swift in Sources */,
+				7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */,
+				7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */,
 				7A216158238986AF00D5A93A /* TextViewPage.swift in Sources */,
 				7A216157238986AF00D5A93A /* SliderPage.swift in Sources */,
 				7A2161262389868500D5A93A /* ViewTab.swift in Sources */,

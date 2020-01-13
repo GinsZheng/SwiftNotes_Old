@@ -10,8 +10,8 @@ import UIKit
 
 class ModelTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controllerList = ["SQLite", "JSON", "Array"]
-    let controllerPage = [SQLitePage(), JSONPage(), ArrayPage()]
+    let controllerList = ["SQLite", "SwiftyJSON", "HandyJSON", "Array", "Request"]
+    let controllerPage = [SQLitePage(), SwiftyJSONPage(), HandyJSONPage(), ArrayPage(), RequestPage(), ]
     
     override func viewDidLoad() {
         super.viewDidLoad()

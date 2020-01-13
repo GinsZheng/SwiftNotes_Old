@@ -415,3 +415,13 @@ extension UIImageView {
     }
 }
 
+
+extension UITableView {
+    func set(superview: UIView, delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+        superview.addSubview(self)
+        self.delegate = delegate
+        self.dataSource = dataSource
+        self.separatorColor = .hex(cNoColor)
+    }
+    
+}

@@ -25,12 +25,9 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight*CGFloat(controlList.count))
         
         let table = UITableView()
-        table.set(superview: scrollView)
+        table.set(superview: scrollView, delegate: self, dataSource: self)
         table.setFrame(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
         table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(controlList.count))
-        table.dataSource = self
-        table.delegate = self
-        table.separatorColor = UIColor.hex(cNoColor)
         
     }
 

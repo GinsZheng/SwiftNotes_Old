@@ -1,22 +1,42 @@
 //
-//  TableViewPage.swift
+//  RequestPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2019/6/14.
-//  Copyright © 2019 GinsMac. All rights reserved.
+//  Created by GinsMac on 2020/1/13.
+//  Copyright © 2020 GinsMac. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import Alamofire
+import SwiftyJSON
 
-class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RequestPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var slidesTitle = [String]()
+    var slidesType = [String]()
     
-    let controlList = ["Label", "Button", "Text Field", "Switch", "Table View"]
-    var cardHeight: CGFloat = 0
+    let table = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        
+        let url = "https://httpbin.org/json"
+        AF.request(url).responseJSON { (response) in
+            if let value = response.result.value {
+                let jsonData3 = JSON(value)
+                let model3 = Model3(jsonData: jsonData3)
+                self.slidesTitle = model3.slidesTitle
+                self.slidesType = model3.slidesType
+                print("Model3 slidesTitle \(model3.slidesTitle)")
+                
+                self.table.set(superview: self.view, delegate: self, dataSource: self)
+                self.table.setFrame(left: 0, top: kNavBarHeight, right: 0, height: self.getSafeAreaHeight())
+                self.table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(self.slidesTitle.count))
+            }
+            
+        }
         
         
     }
@@ -29,25 +49,23 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.selectionStyle = .none // 无按下效果
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: controlList[indexPath.row])
+        cellTitle.set(superview: cell, text: slidesTitle[indexPath.row])
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
         next.set(superview: cell, imageName: "discovery_next")
         next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
         
-        cardHeight = 56
-        
         return cell
     }
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return controlList.count
+        return slidesTitle.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cardHeight
+        return 56
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -56,10 +74,3 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
 }
-
-/*
- TableViewCell内容超出Frame：
-    TableViewCell内容超出Frame时，以投影超出为例，可以完整显示，不会被裁切，
-    但在滑动列表后，会出现投影被裁切的情况，些时把背景颜色设置为透明即可解决
-    (可能)扩展而言：只要不设置 maskToBounds 属性，所有的视图都可以超出控件边界
- */
