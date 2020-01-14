@@ -10,16 +10,12 @@ import UIKit
 
 
 class TestTab: UIViewController {
-
-
     
     let solidButton = UIButton(type: .custom)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
-
         solidButton.set(superview: view)
         solidButton.setFrame(left: 20, top: 100, right: 20, height: 44)
         solidButton.setTitle("Solid Button", for: .normal)
@@ -32,8 +28,6 @@ class TestTab: UIViewController {
         
         solidButton.addTarget(self, action: #selector(pushToGeneralPage), for: .touchUpInside)
 
-        
-        
 
     }
 
@@ -42,3 +36,4 @@ class TestTab: UIViewController {
     }
 
 }
+

@@ -28,7 +28,7 @@ class WebViewPage: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(webView)
-        webView.setFrame(left: 0, top: kNavBarHeight, width: kScreenWidth, height: kHeightWithoutNavBar)
+        webView.setFrame(left: 0, top: kNavBarHeight, width: kScreenWidth, height: kHeightUnderNavBar)
         webView.navigationDelegate = self
         
         let url = "https://www.apple.com"
@@ -82,7 +82,7 @@ extension WebViewPage: WKNavigationDelegate{
         /// 弹出提示框点击确定返回
         let alertView = UIAlertController.init(title: "提示", message: "加载失败", preferredStyle: .alert)
         let okAction = UIAlertAction.init(title:"确定", style: .default) { okAction in
-            _=self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
         alertView.addAction(okAction)
         self.present(alertView, animated: true, completion: nil)

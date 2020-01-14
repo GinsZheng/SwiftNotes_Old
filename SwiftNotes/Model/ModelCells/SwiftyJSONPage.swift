@@ -29,8 +29,8 @@ class SwiftyJSONPage: UIViewController {
         
         
         // 解析本地文件
-        let fileData = FileManager.readLocalFile(fileNameStr: "TestJSON", type: "json")
-        let jsonData2 = JSON(fileData ?? "")
+        let jsonFile = FileManager.readLocalFile(fileNameStr: "TestJSON", type: "json")
+        let jsonData2 = JSON(jsonFile ?? "")
         let model2 = Model2(jsonData: jsonData2)
         print("Model2 id \(model2.id)")
         

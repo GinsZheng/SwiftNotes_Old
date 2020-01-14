@@ -38,6 +38,8 @@ extension UIView {
     
 }
 
+
+
 extension UILabel {
     func setStyle34pt222Med() {
         self.setFontStyle(size: 34, color: c222, weight: .medium)
@@ -68,11 +70,15 @@ extension UILabel {
     }
 }
 
+
+
 extension UITextView {
     func setStyle12pt999() {
         self.setFontStyle(size: 12, color: c999)
     }
 }
+
+
 
 extension UITextField {
     func setStyleOneLineTextField() {
@@ -81,6 +87,8 @@ extension UITextField {
         self.setTextPadding(left: 12, right: 12)
     }
 }
+
+
 
 extension UIButton {
     func setStyleCloseBtn() {
@@ -103,6 +111,16 @@ extension UIButton {
         
     }
     
+    func setStyleSolidBtn(title: String) {
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(.hex(cFFF), for: .normal)
+        self.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
+        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
+        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_40), for: .disabled)
+        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_60), for: .highlighted)
+        self.setCornerRadius(radius: 8)
+    }
+    
     func setStyleAddItemBarBtn() {
         self.setTitle("添加一个学习项目", for: .normal)
         self.setTitleColor(.hex(cAAA), for: .normal)
@@ -115,17 +133,9 @@ extension UIButton {
         self.setBackgroundImage(getImageWithColor(color: cDDDEE0), for: .highlighted)
         self.setCornerRadius(radius: 8)
     }
-    
-    func setStyleSolidBtn(title: String) {
-        self.setTitle(title, for: .normal)
-        self.setTitleColor(.hex(cFFF), for: .normal)
-        self.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
-        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
-        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_40), for: .disabled)
-        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_60), for: .highlighted)
-        self.setCornerRadius(radius: 8)
-    }
 }
+
+
 
 extension UIStackView {
     func setStyleColorCircleStack(spacing: CGFloat) {
@@ -134,3 +144,42 @@ extension UIStackView {
         self.spacing = spacing
     }
 }
+
+
+
+// SwiftNotes
+extension UIButton {
+    func setStyleWordButton(title: String, titleSize: CGFloat = 17, titleColor: String = cThemeWord, titleWeight: UIFont.Weight = .medium) {
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(UIColor.hex(titleColor), for: .normal)
+        self.titleLabel?.font = .systemFont(ofSize: titleSize, weight: titleWeight)
+    }
+    
+    func setStyleGhostButton(title: String, titleSize: CGFloat = 17, titleColor: String = cThemeWord, titleWeight: UIFont.Weight = .medium, borderColor: String = cThemeBorder, borderWidth: CGFloat = 0.5, cornerRadius: CGFloat = kButtonRadius) {
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(UIColor.hex(titleColor), for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight) // 这里设置UILabel的颜色值将无效
+        self.setBorder(color: cThemeBorder, borderWidth: borderWidth)
+        self.setCornerRadius(radius: cornerRadius)
+    }
+    
+    func setStyleSolidButton(title: String, titleSize: CGFloat = 17, titleColor: String = cFFF, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(.hex(titleColor), for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight)
+        self.setBackgroundImage(getImageWithColor(color: cThemeFill), for: .normal)
+        self.setBackgroundImage(getImageWithColor(color: cThemeHightlightedFill), for: .highlighted)
+        self.setBackgroundImage(getImageWithColor(color: cThemeDisabledFill), for: .disabled)
+        self.setCornerRadius(radius: cornerRadius)
+    }
+    
+    func setStyleSystemIconButton(imageName: String) {
+        self.tintColor = .hex(c222)
+        self.setImage(UIImage(named: imageName), for: .normal)
+    }
+    
+    func setStyleCustomIconButton(imageName: String) {
+        self.setImage(UIImage(named: imageName), for: .normal)
+    }
+}
+

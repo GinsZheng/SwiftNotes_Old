@@ -28,7 +28,7 @@ class SQLiteManager: NSObject {
     
 }
 
-class ItemsModel: SQLiteManager {
+class ItemsSQL: SQLiteManager {
     
     private var itemsTable: Table?
     let rowid = Expression<Int>("id")

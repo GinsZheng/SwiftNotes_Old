@@ -148,7 +148,7 @@ extension UILabel {
         superview.addSubview(self)
     }
     
-    func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = UIFont.Weight.regular, alignment: NSTextAlignment = .left) {
+    func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = .regular, alignment: NSTextAlignment = .left) {
         self.font = UIFont.systemFont(ofSize: size, weight: weight)
         self.textColor = UIColor.hex(color)
         self.textAlignment = alignment
@@ -309,23 +309,77 @@ extension UIImageView {
 }
 
 
+
 extension UIImage {
-    
-    func changeColor(color:UIColor) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
-        let context = UIGraphicsGetCurrentContext()
-        context?.translateBy(x: 0, y: self.size.height)
-        context?.scaleBy(x: 1.0, y: -1.0)
-        context?.setBlendMode(.normal)
-        let rect = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
-        context?.clip(to: rect, mask: self.cgImage!);
-        color.setFill()
-        context?.fill(rect)
+   /* 限定图片的大小 */
+    func resize(width:CGFloat, height:CGFloat) -> UIImage {
+        let myImageSize = CGSize(width: width, height: height)
+        UIGraphicsBeginImageContextWithOptions(myImageSize, false, 0.0)
+        let myImageRect = CGRect(x: 0, y: 0, width: myImageSize.width, height: myImageSize.height)
+        self.draw(in: myImageRect)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+      }
+
+    /*  压缩图片，最大为1M  */
+    func compressImage(maxImageSize: CGFloat, maxSizeWithKB: CGFloat) -> NSData {
+        var maxImgWithKB = maxSizeWithKB
+        var maxImgSize = maxImageSize
+
+        if maxImgWithKB <= 0 {
+            maxImgWithKB = 1024
+        }
+
+        if maxImgSize <= 0 {
+            maxImgSize = 1024
+        }
+
+        // 调整分辨率
+        var newSize = CGSize(width: self.size.width, height: self.size.height)
+        let tempHeight = newSize.height / maxImgSize
+        let tempWidth = newSize.width / maxImgSize
+
+        if (tempWidth > 1.0 && tempWidth > tempHeight) {
+            newSize = CGSize(width: self.size.width / tempWidth, height: self.size.height / tempHeight)
+        } else if (tempHeight > 1.0 && tempWidth < tempHeight) {
+            newSize = CGSize(width: self.size.width / tempHeight, height: self.size.width / tempHeight)
+        }
+
+        UIGraphicsBeginImageContext(newSize)
+        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage!
-    }
+
+        // 调整大小
+        var imageData = newImage!.jpegData(compressionQuality: 1.0)
+        var sizeOriginKB = CGFloat(imageData!.count) / 1024
+
+        var resizeRate: CGFloat = 0.9
+        while (sizeOriginKB > maxImgWithKB && resizeRate > 1.0) {
+            imageData = newImage!.jpegData(compressionQuality: resizeRate)
+            sizeOriginKB = CGFloat(imageData!.count) / 1024
+            resizeRate -= 0.1
+        }
+
+        return imageData! as NSData
+      }
+
+
+    /*图片着色*/
+    func setOverlay(color: UIColor, blendMode: CGBlendMode) -> UIImage {
+        let drawRect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        color.setFill()
+        UIRectFill(drawRect)
+        draw(in: drawRect, blendMode: blendMode, alpha: 1.0)
+        let tintedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return tintedImage
+      }
+
 }
+
 
 
 extension UIButton {

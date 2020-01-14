@@ -8,21 +8,37 @@
 
 import UIKit
 import SQLite
+import HandyJSON
 
 class SQLitePage: UIViewController {
     
-    let itemsModel = ItemsModel()
+    let itemsSQL = ItemsSQL()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        itemsModel.insert(tempId: 2, tempName: "name2", tempResume: "", tempTotalProgress: 500, tempColor: 1)
-        let result = itemsModel.search(select: [itemsModel.rowid, itemsModel.name])
-        // let result = itemsModel.search() // Select * From table
+        
+//        let itemsModel = ItemsModel()
+//        itemsModel.rowid = 
+        
+        itemsSQL.insert(tempId: 1, tempName: "name1", tempResume: "", tempTotalProgress: 500, tempColor: 1)
+        
+        let result = itemsSQL.search(select: [itemsSQL.rowid])
+        // let result = itemsSQL.search() // Select * From table
         print(result)
         
     }
     
     
+}
+
+class ItemsModel: HandyJSON {
+    var rowid: [Int] = []
+    var name: [String] = []
+    var resume: [String] = []
+    var totalProgress: [Int] = []
+    var color: [Int] = []
+
+    required init() {}
 }

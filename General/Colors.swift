@@ -11,6 +11,7 @@
 // 颜色格式："c" + [有彩色颜色名] + 颜色值 + [不透明度] + [使用场景]
 // 其中，c与后续元素直接连接，其他元素用“_”连接
 
+
 // Colorful
 let cBlue_2C9EFF = "2C9EFF"
 let cRed_FF5349 = "FF5349"
@@ -62,3 +63,10 @@ let cF0F1F3 = "F0F1F3"
 let cF2F3F5 = "F2F3F5"
 let cF5F6F8 = "F5F6F8"
 
+
+// ThemeColor
+let cThemeWord = cBlue_2C9EFF
+let cThemeFill = cBlue_2C9EFF
+let cThemeBorder = cThemeFill
+let cThemeHightlightedFill = cBlue_2C9EFF_60
+let cThemeDisabledFill = cBlue_2C9EFF_40
