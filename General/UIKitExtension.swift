@@ -306,6 +306,16 @@ extension UIImageView {
         self.image = UIImage(named: imageName)
         superview.addSubview(self)
     }
+    
+    func set(superview: UIView, image: UIImage) {
+        self.image = image
+        superview.addSubview(self)
+    }
+    
+    func setStyleImageView(cornerRadius: CGFloat, conteneMode: UIView.ContentMode = .scaleAspectFill) {
+        self.setCornerRadius(radius: cornerRadius)
+        self.contentMode = conteneMode
+    }
 }
 
 

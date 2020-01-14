@@ -147,7 +147,9 @@ extension UIStackView {
 
 
 
+// ————————————————
 // SwiftNotes
+
 extension UIButton {
     func setStyleWordButton(title: String, titleSize: CGFloat = 17, titleColor: String = cThemeWord, titleWeight: UIFont.Weight = .medium) {
         self.setTitle(title, for: .normal)
@@ -183,3 +185,10 @@ extension UIButton {
     }
 }
 
+
+extension UIImageView {
+    func setStyleNote() {
+        self.setStyleImageView(cornerRadius: 8)
+        self.setBorder(color: cBlue_2C9EFF, borderWidth: 1)
+    }
+}
