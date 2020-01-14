@@ -28,7 +28,7 @@ class SQLiteManager: NSObject {
     
 }
 
-class ItemsSQL: SQLiteManager {
+class ItemsTable: SQLiteManager {
     
     private var itemsTable: Table?
     let rowid = Expression<Int>("id")
@@ -119,13 +119,13 @@ class ItemsSQL: SQLiteManager {
         if let l = limit {
             if let o = offset{
                 query = query.limit(l, offset: o)
-            }else {
+            } else {
                 query = query.limit(l)
             }
         }
-        
+
         let result = try! getDB().prepare(query)
         return Array(result)
-        
     }
+    
 }
