@@ -60,7 +60,8 @@ class SQLitePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         getNameArray(result: result)
         
         // delete
-        itemsTable.delete(id: 4)
+        // itemsTable.delete(id: 4)
+        itemsTable.delete(filter: itemsTable.id == 4)
         getNameArray(result: result)
 
         // search
