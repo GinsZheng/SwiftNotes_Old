@@ -19,7 +19,7 @@ class HandyJSONPage: UIViewController {
         
         // 解析变量
         let jsonString = "{\"doubleOptional\":1.1,\"stringImplicitlyUnwrapped\":\"hello\",\"int\":1}"
-        if let jsonData = HandyModel1.deserialize(from: jsonString) {
+        if let jsonData = HandySwiftyModel1.deserialize(from: jsonString) {
             print(jsonData.int)
             print(jsonData.double)
             print(jsonData.stringImplicitlyUnwrapped)
@@ -29,13 +29,13 @@ class HandyJSONPage: UIViewController {
 //        let jsonFile = FileManager.readLocalFile(fileNameStr: "TestJSON", type: "json")
 //        let str = String(data: jsonFile as! Data, encoding: .utf8)
 //
-//        if let jsonData2 = HandyModel2.deserialize(from: str) {
+//        if let jsonData2 = HandySwiftyModel2.deserialize(from: str) {
 //            print(jsonData2.id)
 //        }
 
         
         // 序列化
-        let model1 = HandyModel1()
+        let model1 = HandySwiftyModel1()
         model1.int = 1
         model1.double = 2.2
         model1.stringImplicitlyUnwrapped = "heihei"
@@ -53,7 +53,7 @@ class HandyJSONPage: UIViewController {
 
 
 
-class HandyModel1: HandyJSON {
+class HandySwiftyModel1: HandyJSON {
     var int: Int = 0
     var double: Double = 0.0
     var stringImplicitlyUnwrapped = ""

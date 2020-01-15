@@ -13,9 +13,9 @@ import SwiftyJSON
 
 class SQLitePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let itemsTable = ItemsTable()
+    let model = ModelInstance()
     var name = [String]()
-    lazy var result = itemsTable.search() // Select * From table
+    lazy var result = model.search() // Select * From table
     
     let tableView = UITableView()
     
@@ -52,16 +52,16 @@ class SQLitePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         
         // insert
-        itemsTable.insert(item: insertJSON)
+        model.insert(item: insertJSON)
         getNameArray(result: result)
         
         // update
-        itemsTable.update(id: 4, item: updateJSON)
+        model.update(id: 4, item: updateJSON)
         getNameArray(result: result)
         
         // delete
-        // itemsTable.delete(id: 4)
-        itemsTable.delete(filter: itemsTable.id == 4)
+        // model.delete(id: 4)
+        model.delete(filter: model.id == 4)
         getNameArray(result: result)
 
         // search
@@ -73,9 +73,9 @@ class SQLitePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func getNameArray(result: [Row]) {
         name = []
-        self.result = itemsTable.search()
+        self.result = model.search()
         for item in result {
-            name.append(item[itemsTable.name])
+            name.append(item[model.name])
         }
         print(name)
     }

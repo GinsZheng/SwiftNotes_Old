@@ -62,9 +62,10 @@
 		7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; };
 		7A3647F0238AB1D1000BBECD /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A3647F5238AB287000BBECD /* SQLitePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F4238AB287000BBECD /* SQLitePage.swift */; };
-		7A3647F9238AD062000BBECD /* SQLiteInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* SQLiteInstance.swift */; };
+		7A3647F9238AD062000BBECD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* Model.swift */; };
 		7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
+		7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76EF6223CF17B400350087 /* SQLiteManager.swift */; };
 		7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B5D3B23C05A150079A931 /* ArraysPage.swift */; };
 		7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A871E7923CE122A007CCA90 /* TryPage.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
@@ -405,10 +406,11 @@
 		7A3308C223CC6DAD0021BA5B /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		7A3647C9238AB178000BBECD /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		7A3647F4238AB287000BBECD /* SQLitePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLitePage.swift; sourceTree = "<group>"; };
-		7A3647F8238AD062000BBECD /* SQLiteInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteInstance.swift; sourceTree = "<group>"; };
+		7A3647F8238AD062000BBECD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HandyJSON.xcodeproj; path = "HandyJSON-master/HandyJSON.xcodeproj"; sourceTree = "<group>"; };
+		7A76EF6223CF17B400350087 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		7A7B5D3B23C05A150079A931 /* ArraysPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysPage.swift; sourceTree = "<group>"; };
 		7A871E7923CE122A007CCA90 /* TryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryPage.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				7A21610C2389857700D5A93A /* Constant.swift */,
 				7A2161112389857700D5A93A /* SetFrame.swift */,
 				7A21610D2389857700D5A93A /* SetColorInHex.swift */,
+				7A76EF6223CF17B400350087 /* SQLiteManager.swift */,
 				7A3308C223CC6DAD0021BA5B /* Styles.swift */,
 				7A21610E2389857700D5A93A /* UIKitExtension.swift */,
 			);
@@ -631,7 +634,7 @@
 		7AC3B73B23CA04C5004DB044 /* ModelSupports */ = {
 			isa = PBXGroup;
 			children = (
-				7A3647F8238AD062000BBECD /* SQLiteInstance.swift */,
+				7A3647F8238AD062000BBECD /* Model.swift */,
 				7AC3B73F23CA05B3004DB044 /* TestJSON.json */,
 			);
 			path = ModelSupports;
@@ -1151,6 +1154,7 @@
 				7A3308BF23CC67360021BA5B /* HandyJSONPage.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
+				7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */,
 				7A21611A2389857700D5A93A /* Class.swift in Sources */,
 				7A2161282389868500D5A93A /* TestTab.swift in Sources */,
 				7A2161142389857700D5A93A /* Constant.swift in Sources */,
@@ -1173,7 +1177,7 @@
 				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,
 				7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */,
-				7A3647F9238AD062000BBECD /* SQLiteInstance.swift in Sources */,
+				7A3647F9238AD062000BBECD /* Model.swift in Sources */,
 				7A2161372389869D00D5A93A /* PlistPage.swift in Sources */,
 				7A2161182389857700D5A93A /* Function.swift in Sources */,
 				7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */,

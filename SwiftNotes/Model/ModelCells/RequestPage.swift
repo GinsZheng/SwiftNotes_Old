@@ -26,10 +26,10 @@ class RequestPage: UIViewController, UITableViewDelegate, UITableViewDataSource 
         AF.request(url).responseJSON { (response) in
             if let value = response.result.value {
                 let jsonData3 = JSON(value)
-                let model3 = Model3(jsonData: jsonData3)
+                let model3 = SwiftyModel3(jsonData: jsonData3)
                 self.slidesTitle = model3.slidesTitle
                 self.slidesType = model3.slidesType
-                print("Model3 slidesTitle \(model3.slidesTitle)")
+                print("SwiftyModel3 slidesTitle \(model3.slidesTitle)")
                 
                 self.table.set(superview: self.view, delegate: self, dataSource: self)
                 self.table.setFrame(left: 0, top: kNavBarHeight, right: 0, height: self.getSafeAreaHeight())
