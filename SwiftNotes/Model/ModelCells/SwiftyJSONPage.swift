@@ -23,7 +23,7 @@ class SwiftyJSONPage: UIViewController {
                                         "build_num": 12,
                                         "room_num": 588,
                                         "area_address":"浙江省温州市鹿城区五马街道"]
-        let jsonData = JSON(baseInfo)
+        let jsonData = JSON(baseInfo) // 先序列化再解析
         let model = Model(jsonData: jsonData)
         print("Model name \(model.build_name)")
         
@@ -44,6 +44,15 @@ class SwiftyJSONPage: UIViewController {
                 print("Model3 slidesTitle \(model3.slidesTitle)")
             }
         }
+        
+        
+        
+        /*
+         序列化：解析的第一步就是完成序列化，如：
+         let jsonData = JSON(baseInfo)
+         let jsonData2 = JSON(jsonFile ?? "")
+         let jsonData3 = JSON(value)
+         */
 
     }
     

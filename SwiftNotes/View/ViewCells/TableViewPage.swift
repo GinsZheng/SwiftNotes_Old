@@ -10,15 +10,18 @@ import UIKit
 
 class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     let controlList = ["Label", "Button", "Text Field", "Switch", "Table View"]
     var cardHeight: CGFloat = 0
+    
+    let tableView = UITableView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        
+        tableView.set(superview: view, delegate: self, dataSource: self)
+        tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
     }
     
     
@@ -26,7 +29,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
         cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
         cell.setSeparator(leftInset: 20, rightInset: 0)
-        cell.selectionStyle = .none // 无按下效果
+        // cell.selectionStyle = .none // 无按下效果
         
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: controlList[indexPath.row])
@@ -35,8 +38,6 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let next = UIImageView()
         next.set(superview: cell, imageName: "discovery_next")
         next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
-        
-        cardHeight = 56
         
         return cell
     }
@@ -47,7 +48,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cardHeight
+        return 56
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

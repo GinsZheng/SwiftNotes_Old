@@ -53,7 +53,7 @@ let cEEE = "EEE"
 
 // more grays
 let c000_45 = "73000000"
-let c000820_10_division = "1A000820"
+let c000820_10_separator = "1A000820"
 let c04040F_20_mask = "3304040F"
 let c04040F_40_mask = "6604040F"
 let c04040F_60_mask = "9904040F"

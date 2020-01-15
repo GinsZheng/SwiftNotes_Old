@@ -54,7 +54,7 @@ extension UIView {
         self.backgroundColor = UIColor.hex(color)
     }
     
-    func setSeparator(leftInset: CGFloat, rightInset: CGFloat, color: String = "1A000820") {
+    func setSeparator(leftInset: CGFloat, rightInset: CGFloat, color: String = c000820_10_separator) {
         let separator = UIView()
         self.addSubview(separator)
         separator.setFrame(left: leftInset, bottom: 0, width: kScreenWidth - leftInset - rightInset, height: kSeparatorHeight)
