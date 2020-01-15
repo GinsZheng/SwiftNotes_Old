@@ -19,7 +19,7 @@ class DelegatePage: UIViewController, NameEditorDelegate {
 
         label.set(superview: view, text: "这行文字将通过下个页面编辑")
         label.setFontStyle(size: 24, color: cBlue_2C9EFF)
-        label.setFrame(left: 20, top: 100, width: kScreenWidth - 40, height: 60)
+        label.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 60)
 
         button.set(superview: view)
         button.setFrame(left: 20, top: 164, width: kScreenWidth - 40, height: 44)
@@ -56,7 +56,7 @@ class NameEditorPage: UIViewController, UITextFieldDelegate {
         view.backgroundColor = UIColor.white
 
         nameTextField.set(superview: view, placeholder: "请输入", delegate: self)
-        nameTextField.setFrame(left: 20, top: 100, right: 20, height: 44)
+        nameTextField.setFrame(left: 20, top: 20, right: 20, height: 44)
         nameTextField.setBackgroundColor(color: cF5F6F8)
         nameTextField.setCornerRadius(radius: 4)
         nameTextField.text = ""

@@ -14,10 +14,10 @@ extension UIColor {
             return UIColor.clear;
         }
         
-        var r: UInt32 = 0x0
-        var g: UInt32 = 0x0
-        var b: UInt32 = 0x0
-        var a: UInt32 = 0x0
+        var r: UInt64 = 0x0
+        var g: UInt64 = 0x0
+        var b: UInt64 = 0x0
+        var a: UInt64 = 0x0
         var range = NSRange.init()
         
         if cstr.length == 3 {
@@ -31,9 +31,9 @@ extension UIColor {
             //b
             range.location = 2
             let bStr1 = cstr.substring(with: range)
-            Scanner.init(string: rStr1).scanHexInt32(&r)
-            Scanner.init(string: gStr1).scanHexInt32(&g)
-            Scanner.init(string: bStr1).scanHexInt32(&b)
+            Scanner.init(string: rStr1).scanHexInt64(&r)
+            Scanner.init(string: gStr1).scanHexInt64(&g)
+            Scanner.init(string: bStr1).scanHexInt64(&b)
             return UIColor(red: CGFloat(r * 16 + r) / 255.0, green: CGFloat(g * 16 + g) / 255.0, blue: CGFloat(b * 16 + b) / 255.0, alpha: CGFloat(1))
         } else if cstr.length == 6 {
             range.length = 2
@@ -46,9 +46,9 @@ extension UIColor {
             //b
             range.location = 4
             let bStr = cstr.substring(with: range)
-            Scanner.init(string: rStr).scanHexInt32(&r)
-            Scanner.init(string: gStr).scanHexInt32(&g)
-            Scanner.init(string: bStr).scanHexInt32(&b)
+            Scanner.init(string: rStr).scanHexInt64(&r)
+            Scanner.init(string: gStr).scanHexInt64(&g)
+            Scanner.init(string: bStr).scanHexInt64(&b)
             return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
         } else {
             range.length = 2
@@ -65,10 +65,10 @@ extension UIColor {
             range.location = 6
             let bStr = cstr.substring(with: range)
 
-            Scanner.init(string: aStr).scanHexInt32(&a)
-            Scanner.init(string: rStr).scanHexInt32(&r)
-            Scanner.init(string: gStr).scanHexInt32(&g)
-            Scanner.init(string: bStr).scanHexInt32(&b)
+            Scanner.init(string: aStr).scanHexInt64(&a)
+            Scanner.init(string: rStr).scanHexInt64(&r)
+            Scanner.init(string: gStr).scanHexInt64(&g)
+            Scanner.init(string: bStr).scanHexInt64(&b)
             return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(a) / 255.0)
         }
         

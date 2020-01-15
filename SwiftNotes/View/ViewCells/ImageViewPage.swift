@@ -17,7 +17,7 @@ class ImageViewPage: UIViewController {
         let image = UIImageView()
         image.set(superview: view, imageName: "iPhoneX")
         image.setStyleNote()
-        image.setFrame(left: 20, top: 100, right: 20, height: 300)
+        image.setFrame(left: 20, top: 20, right: 20, height: 300)
         
 
 

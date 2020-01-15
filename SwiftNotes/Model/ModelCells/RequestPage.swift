@@ -32,7 +32,7 @@ class RequestPage: UIViewController, UITableViewDelegate, UITableViewDataSource 
                 print("SwiftyModel3 slidesTitle \(model3.slidesTitle)")
                 
                 self.table.set(superview: self.view, delegate: self, dataSource: self)
-                self.table.setFrame(left: 0, top: kNavBarHeight, right: 0, height: self.getSafeAreaHeight())
+                self.table.setFrame(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
                 self.table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(self.slidesTitle.count))
             }
             

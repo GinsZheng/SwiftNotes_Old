@@ -17,7 +17,7 @@ class MenuControllerPage: UIViewController {
         let label = InteractiveUILabel()
         label.set(superview: view, text: "heheda")
         label.setFontStyle(size: 17, color: c222)
-        label.setFrame(left: 20, top: 100)
+        label.setFrame(left: 20, top: 20)
         
         
     }

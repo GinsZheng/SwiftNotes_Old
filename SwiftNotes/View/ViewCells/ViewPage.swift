@@ -15,9 +15,8 @@ class ViewPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let myView = UIView()
-        myView.set(superview: view)
-        myView.setFrame(left: 20, top: 100, width: 200, height: 100)
-        myView.backgroundColor = UIColor.hex(cF5F6F8)
+        myView.set(superview: view, backgroundColor: cF5F6F8)
+        myView.setFrame(left: 20, top: 20, width: 200, height: 100)
         
         
         let myView2 = UIView()

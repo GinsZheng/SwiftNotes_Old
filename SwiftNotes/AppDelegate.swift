@@ -24,10 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let testTab = TestTab()
         
         // 创建导航控制器
-        let firstNav = UINavigationController(rootViewController: viewTab)
-        let secondNav = UINavigationController(rootViewController: controllerTab)
-        let thirdNav = UINavigationController(rootViewController: modelTab)
-        let forthNav = UINavigationController(rootViewController: testTab)
+        let firstNav = rootNavController(rootViewController: viewTab)
+        let secondNav = rootNavController(rootViewController: controllerTab)
+        let thirdNav = rootNavController(rootViewController: modelTab)
+        let forthNav = rootNavController(rootViewController: testTab)
         
         // 设置tabBar各图标
         viewTab.tabBarItem.image = UIImage(named: "tab_discovery")

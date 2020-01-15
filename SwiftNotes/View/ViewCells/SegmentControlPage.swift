@@ -21,7 +21,7 @@ class SegmentControlPage: UIViewController {
         
         let segmentControl = UISegmentedControl(items: ["FirstSegment", "SecondSegment"])
         view.addSubview(segmentControl)
-        segmentControl.setFrame(left: 20, top: 100, right: 20, height: 36)
+        segmentControl.setFrame(left: 20, top: 20, right: 20, height: 36)
         segmentControl.selectedSegmentIndex = 0
         segmentControl.addTarget(self, action: #selector(showSelectedSegment(_:)), for: .valueChanged) // 按钮传参的情况，传的是控件本身
         

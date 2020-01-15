@@ -26,7 +26,7 @@ class NumberFormatterPage: UIViewController {
 // ———————— String(format)格式化
         
         floatFormat.set(superview: view)
-        floatFormat.setFrame(left: 20, top: 100, width: 300, height: 44)
+        floatFormat.setFrame(left: 20, top: 20, width: 300, height: 44)
         floatFormat.text = String(format: "%.2f", float)
         // %：指其后跟随的参数数值。多个 % 对应多个参数，与Python一样。
         // f：指浮点数的格式化，.2f 指保留2位小数

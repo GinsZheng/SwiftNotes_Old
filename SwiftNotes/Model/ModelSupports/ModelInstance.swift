@@ -27,7 +27,6 @@ class ModelInstance: SQLiteManager {
         }
         return table!
     }
-
     
     // 增
     func insert(item: JSON) {

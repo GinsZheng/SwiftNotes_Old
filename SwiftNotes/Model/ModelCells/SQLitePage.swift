@@ -34,19 +34,23 @@ class SQLitePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let exampleTotalProgress = 100
         let exampleColor = 0
         
-        let insertRow: [String: Any] = ["id": exampleId,
-                                         "name": exampleName,
-                                         "resume": exampleResume,
-                                         "totalProgress": exampleTotalProgress,
-                                         "color": exampleColor]
+        let insertRow: [String: Any] = [
+            "id": exampleId,
+             "name": exampleName,
+             "resume": exampleResume,
+             "totalProgress": exampleTotalProgress,
+             "color": exampleColor
+        ]
         let insertJSON = JSON(insertRow)
         
         exampleName = "name0"
-        let updataRow: [String: Any] = ["id": exampleId,
-                                        "name": exampleName,
-                                        "resume": exampleResume,
-                                        "totalProgress": exampleTotalProgress,
-                                        "color": exampleColor]
+        let updataRow: [String: Any] = [
+            "id": exampleId,
+            "name": exampleName,
+            "resume": exampleResume,
+            "totalProgress": exampleTotalProgress,
+            "color": exampleColor
+        ]
         let updateJSON = JSON(updataRow)
         
         

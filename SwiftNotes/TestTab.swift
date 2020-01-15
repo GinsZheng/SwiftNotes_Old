@@ -13,8 +13,11 @@ class TestTab: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.setBackgroundColor(color: cFFF)
+        self.title = "Test"
 
-
+        
+        
     }
 
 }

@@ -18,16 +18,13 @@ class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        self.title = "View" // 导航栏标题
 
-        let scrollView = UIScrollView()
-        view.addSubview(scrollView)
-        scrollView.setFrame(left: 0, top: kNavBarHeight, width: kScreenWidth, height: self.getSafeAreaHeight())
-        scrollView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight*CGFloat(controlList.count))
         
         let table = UITableView()
-        table.set(superview: scrollView, delegate: self, dataSource: self)
+        table.set(superview: view, delegate: self, dataSource: self)
         table.setFrame(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
-        table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(controlList.count))
+
         
     }
 

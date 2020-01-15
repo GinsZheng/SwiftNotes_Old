@@ -486,6 +486,12 @@ extension UITableView {
         self.delegate = delegate
         self.dataSource = dataSource
         self.separatorColor = .hex(cNoColor)
+        setAutoHeight()
+    }
+    
+    func setAutoHeight() {
+        self.estimatedRowHeight = 44.0
+        self.rowHeight = UITableView.automaticDimension
     }
     
 }

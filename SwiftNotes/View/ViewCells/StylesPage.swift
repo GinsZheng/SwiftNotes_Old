@@ -18,7 +18,7 @@ class StylesPage: UIViewController {
         let myView = UIView()
         myView.setBackgroundColor(color: cBlue_2C9EFF)
         myView.set(superview: view)
-        myView.setFrame(left: 20, top: 100, width: 200, height: 66)
+        myView.setFrame(left: 20, top: 20, width: 200, height: 66)
         myView.setCornerRadius(radius: 16, corners: [.topRight, .bottomRight])
         // 关键点：setCornerRadius一定要在setFrame之后
     }

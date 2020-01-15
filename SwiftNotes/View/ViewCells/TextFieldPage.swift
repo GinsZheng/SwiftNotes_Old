@@ -16,14 +16,12 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
         
         let textField = UITextField()
         textField.set(superview: view, placeholder: "Input something", delegate: self)
-        textField.setFrame(left: 20, top: 100, width: kScreenWidth, height: 44)
-        textField.delegate = self
+        textField.setFrame(left: 20, top: 20, width: kScreenWidth, height: 44)
         textField.addTarget(self, action: #selector(checkInputtedValue), for: .allEditingEvents)
         
         let textField2 = UITextField()
         textField2.set(superview: view, placeholder: "NumberPad", delegate: self)
         textField2.setFrame(left: 20, top: 160, width: kScreenWidth, height: 44)
-        textField2.delegate = self
         textField2.keyboardType = .numberPad
         
     }

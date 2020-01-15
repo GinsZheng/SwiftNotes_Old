@@ -25,7 +25,7 @@ class ButtonPage: UIViewController {
         let wordButton = UIButton(type: .system)
         wordButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         wordButton.setStyleWordButton(title: "Word Button")
-        wordButton.setFrame(left: 20, top: 100, right: 20, height: 44)
+        wordButton.setFrame(left: 20, top: 20, right: 20, height: 44)
         
         let ghostButton = UIButton(type: .system)
         ghostButton.set(superview: view, target: self, action: #selector(pushWithParameter(_:)))

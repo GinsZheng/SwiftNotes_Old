@@ -16,14 +16,11 @@ class ModelTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
+        self.title = "Model"
         
         let table = UITableView()
-        table.set(superview: view)
-        table.setFrame(left: 0, top: kNavBarHeight, right: 0, height: getSafeAreaHeight())
-        table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(controllerList.count))
-        table.dataSource = self
-        table.delegate = self
-        table.separatorColor = UIColor.hex(cNoColor)
+        table.set(superview: view, delegate: self, dataSource: self)
+        table.setFrame(left: 0, top: 0, right: 0, height: getSafeAreaHeight())
         
     }
     

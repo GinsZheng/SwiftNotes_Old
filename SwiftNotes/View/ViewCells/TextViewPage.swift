@@ -17,13 +17,11 @@ class TextViewPage: UIViewController {
           super.viewDidLoad()
           view.backgroundColor = UIColor.white
           
-          textView.set(superview: view)
-          textView.setFrame(left: 20, top: 100, width: kScreenWidth - 40, height: 100)
-          textView.text = "Hehedahehedahehedahehedahehedahehedahehedahehedahehedahehedaheheda"
+          textView.set(superview: view, text: "Hehedahehedahehedahehedahehedahehedahehedahehedahehedahehedaheheda", maxLines: 2)
+          textView.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 100)
           textView.setFontStyle(size: 17, color: "222")
-          textView.textContainerInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 5)
           textView.clearsOnInsertion = true
-          textView.backgroundColor = UIColor.hex(cF5F6F8)
+          textView.backgroundColor = .hex(cF5F6F8)
           
           textViewWitoutInteraction.set(superview: view, text: "在在在在在在在在在", maxLines: 0)
           textViewWitoutInteraction.setFontStyle(size: 400, color: c222)

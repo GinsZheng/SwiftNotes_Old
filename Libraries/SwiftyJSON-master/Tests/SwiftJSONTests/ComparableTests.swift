@@ -330,7 +330,7 @@ class ComparableTests: XCTestCase {
         XCTAssertTrue(jsonL1 >= jsonR1)
         XCTAssertTrue(jsonL1 <= jsonR1)
         XCTAssertFalse(jsonL1 >= [:])
-        XCTAssertFalse(jsonR1 <= ["999": "aaaa"])
+        XCTAssertFalse(jsonR1 <= [c999: "aaaa"])
         XCTAssertFalse(jsonL1 > [")(*&^": 1234567])
         XCTAssertFalse(jsonR1 < ["MNHH": "JUYTR"])
     }

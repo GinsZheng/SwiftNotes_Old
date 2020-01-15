@@ -18,7 +18,7 @@ class AnimationPage: UIViewController {
         view.backgroundColor = UIColor.white
 
         myView.set(superview: view)
-        myView.setFrame(centerX: view.centerX, top: 100, width: 100, height: 100)
+        myView.setFrame(centerX: view.centerX, top: 20, width: 100, height: 100)
         myView.backgroundColor = UIColor.hex(cBlue_2C9EFF)
         
         view.addSubview(solidButton)

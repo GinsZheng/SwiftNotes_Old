@@ -21,9 +21,8 @@ class LabelPage: UIViewController {
         
         label.set(superview: view, text: "在在在在在在在在在在在在在在在在")
         label.setFontStyle(size: 24, color: c222)
-        label.setFrame(left: 20, top: 100, width: 384)
+        label.setFrame(left: 20, top: 20, width: 384)
         label.setBackgroundColor(color: cF0F1F3)
-        label.backgroundColor = UIColor.hex(cBlue_2C9EFF)
 
         label2.set(superview: view, text: "在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在")
         label2.setFontStyle(size: 12, color: c222)
