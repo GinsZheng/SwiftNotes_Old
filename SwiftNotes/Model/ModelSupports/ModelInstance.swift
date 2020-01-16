@@ -79,19 +79,9 @@ class ModelInstance: SQLiteManager {
         Expression<Int>("color")
         ], order: [Expressible] = [Expression<Int>("id").asc], limit: Int? = nil, offset: Int? = nil) -> [Row] {
         
-        var query = getTable().select(select).order(order)
-        if let f = filter {
-            query = query.filter(f)
-        }
-        if let l = limit {
-            if let o = offset{
-                query = query.limit(l, offset: o)
-            } else {
-                query = query.limit(l)
-            }
-        }
-        let result = try! getDB().prepare(query)
-        return Array(result)
+        let query = getTable().select(select).order(order)
+        return super.search(query, filter: filter, select: select, order: order, limit: limit, offset: offset)
+
     }
     
 }
