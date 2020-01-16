@@ -10,7 +10,7 @@ import SQLite
 import SwiftyJSON
 
 class ModelInstance: SQLiteManager {
-    
+    // 模型只需修改字段名及数据类型
     let id = Expression<Int>("id")
     let name = Expression<String>("name")
     let resume = Expression<String>("resume")
@@ -71,7 +71,7 @@ class ModelInstance: SQLiteManager {
     }
     
     // 查
-    override func search(filter: Expression<Bool>? = nil, select: [Expressible] = [
+    func search(filter: Expression<Bool>? = nil, select: [Expressible] = [
         Expression<Int>("id"),
         Expression<String>("name"),
         Expression<String>("resume"),
@@ -79,8 +79,23 @@ class ModelInstance: SQLiteManager {
         Expression<Int>("color")
         ], order: [Expressible] = [Expression<Int>("id").asc], limit: Int? = nil, offset: Int? = nil) -> [Row] {
         
-        let result = super.search(select: select, order: order, limit: limit, offset: offset)
+        var query = getTable().select(select).order(order)
+        if let f = filter {
+            query = query.filter(f)
+        }
+        if let l = limit {
+            if let o = offset{
+                query = query.limit(l, offset: o)
+            } else {
+                query = query.limit(l)
+            }
+        }
+        let result = try! getDB().prepare(query)
         return Array(result)
     }
     
 }
+
+
+
+

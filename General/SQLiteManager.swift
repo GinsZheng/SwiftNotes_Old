@@ -62,21 +62,19 @@ class SQLiteManager: NSObject {
         }
     }
     
-    func search(filter: Expression<Bool>? = nil, select: [Expressible], order: [Expressible], limit: Int?, offset: Int?) -> [Row] {
-        
-        var query = table!.select(select).order(order)
+    func search(_ query: QueryType, filter: Expression<Bool>? = nil, select: [Expressible], order: [Expressible] = [Expression<Int>("id").asc], limit: Int? = nil, offset: Int? = nil) -> [Row] {
+        var filtratedQuery = query
         if let f = filter {
-            query = query.filter(f)
+            filtratedQuery = filtratedQuery.filter(f)
         }
         if let l = limit {
             if let o = offset{
-                query = query.limit(l, offset: o)
+                filtratedQuery = filtratedQuery.limit(l, offset: o)
             } else {
-                query = query.limit(l)
+                filtratedQuery = filtratedQuery.limit(l)
             }
         }
-
-        let result = try! getDB().prepare(query)
+        let result = try! getDB().prepare(filtratedQuery)
         return Array(result)
     }
 }

@@ -19,6 +19,7 @@ class GeneralSubpage: UIViewController {
         label.setFontStyle(size: 34, color: "222")
         label.setFrame(center: view)
         
+        
     }
     
     
