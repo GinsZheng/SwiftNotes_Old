@@ -25,10 +25,10 @@ class StackViewPage: UIViewController {
         
         let stack = UIStackView(arrangedSubviews: [stackBlock1, stackBlock2, stackBlock3])
         stack.set(superview: view)
+        stack.setStyleStackView(spacing: 20)
         stack.setFrame(left: 20, top: 20, width: kScreenWidth-40, height: 100)
-        stack.alignment = .fill
-        stack.distribution = .fillEqually
-        stack.spacing = 20
+        
+        // 使用UIStackView时，放在其中的UIView的frame信息无效，UILabel有效
         
         let stackBlock4 = UIView()
         stackBlock4.backgroundColor = UIColor.hex(cGreen_25BE3C)

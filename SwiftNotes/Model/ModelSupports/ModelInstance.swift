@@ -81,7 +81,6 @@ class ModelInstance: SQLiteManager {
         
         let query = getTable().select(select).order(order)
         return super.search(query, filter: filter, select: select, order: order, limit: limit, offset: offset)
-
     }
     
 }

@@ -49,12 +49,24 @@ extension UILabel {
         self.setFontStyle(size: 24, color: c222, weight: .medium)
     }
     
+    func setStyle24pt222MedCenter() {
+        self.setFontStyle(size: 24, color: c222, weight: .medium, alignment: .center)
+    }
+    
+    func setStyle24pt222MedRight() {
+        self.setFontStyle(size: 24, color: c222, weight: .medium, alignment: .right)
+    }
+    
     func setStyle18pt222Med() {
         self.setFontStyle(size: 18, color: c222, weight: .medium)
     }
     
     func setStyle17pt999() {
         self.setFontStyle(size: 17, color: c999)
+    }
+    
+    func setStyle12pt222() {
+        self.setFontStyle(size: 12, color: c222)
     }
     
     func setStyle12pt999() {

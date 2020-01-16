@@ -203,6 +203,17 @@ extension UILabel {
         self.attributedText = attributedString
     }
     
+    func setMultiStyle(specialText: String, size: CGFloat, color: String, weight: UIFont.Weight = .regular) {
+        let string = self.text ?? ""
+        let ranStr = specialText
+        let attrstring:NSMutableAttributedString = NSMutableAttributedString(string:string)
+        let str = NSString(string: string)
+        let theRange = str.range(of: ranStr)
+        attrstring.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.hex(color), range: theRange)
+        attrstring.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: size, weight: weight), range: theRange)
+        self.attributedText = attrstring
+    }
+    
 }
 
 
@@ -494,4 +505,12 @@ extension UITableView {
         self.rowHeight = UITableView.automaticDimension
     }
     
+}
+
+extension UIStackView {
+    func setStyleStackView(spacing: CGFloat, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fillEqually) {
+        self.spacing = spacing
+        self.alignment = alignment
+        self.distribution = distribution
+    }
 }
