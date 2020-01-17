@@ -63,7 +63,7 @@ class ViewController: UIViewController {
     }
 
     func serialization() {
-        let model = Model()
+        let model = BasicModel()
         model.id = 1
         model.aInt = 100
         model.aStr = "string data"

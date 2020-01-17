@@ -61,14 +61,16 @@
 		7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3308C223CC6DAD0021BA5B /* Styles.swift */; };
 		7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; };
 		7A3647F0238AB1D1000BBECD /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7A3647F5238AB287000BBECD /* SQLitePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F4238AB287000BBECD /* SQLitePage.swift */; };
-		7A3647F9238AD062000BBECD /* ModelInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* ModelInstance.swift */; };
+		7A3647F5238AB287000BBECD /* BasicModelPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F4238AB287000BBECD /* BasicModelPage.swift */; };
+		7A3647F9238AD062000BBECD /* BasicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* BasicModel.swift */; };
 		7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
 		7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76EF6223CF17B400350087 /* SQLiteManager.swift */; };
 		7A782D6B23CF20DA00E09ED0 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A782D6A23CF20D900E09ED0 /* NavViewController.swift */; };
 		7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B5D3B23C05A150079A931 /* ArraysPage.swift */; };
 		7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A871E7923CE122A007CCA90 /* TryPage.swift */; };
+		7A8A7EAF23D1A7F50067D9C3 /* JoinedModelPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */; };
+		7A94609123D1A6AB00936DE7 /* JoinedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* JoinedModel.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
 		7AC3B74523CA21D1004DB044 /* ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74423CA21D1004DB044 /* ReadData.swift */; };
 		7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74623CA24D5004DB044 /* FileManager.swift */; };
@@ -406,8 +408,8 @@
 		7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyJSONPage.swift; sourceTree = "<group>"; };
 		7A3308C223CC6DAD0021BA5B /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		7A3647C9238AB178000BBECD /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
-		7A3647F4238AB287000BBECD /* SQLitePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLitePage.swift; sourceTree = "<group>"; };
-		7A3647F8238AD062000BBECD /* ModelInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelInstance.swift; sourceTree = "<group>"; };
+		7A3647F4238AB287000BBECD /* BasicModelPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModelPage.swift; sourceTree = "<group>"; };
+		7A3647F8238AD062000BBECD /* BasicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModel.swift; sourceTree = "<group>"; };
 		7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HandyJSON.xcodeproj; path = "HandyJSON-master/HandyJSON.xcodeproj"; sourceTree = "<group>"; };
@@ -415,6 +417,8 @@
 		7A782D6A23CF20D900E09ED0 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		7A7B5D3B23C05A150079A931 /* ArraysPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysPage.swift; sourceTree = "<group>"; };
 		7A871E7923CE122A007CCA90 /* TryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryPage.swift; sourceTree = "<group>"; };
+		7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedModelPage.swift; sourceTree = "<group>"; };
+		7A94609023D1A6AB00936DE7 /* JoinedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedModel.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
 		7AC3B74423CA21D1004DB044 /* ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadData.swift; sourceTree = "<group>"; };
 		7AC3B74623CA24D5004DB044 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
@@ -625,7 +629,8 @@
 		7AC3B73A23CA04AF004DB044 /* ModelCells */ = {
 			isa = PBXGroup;
 			children = (
-				7A3647F4238AB287000BBECD /* SQLitePage.swift */,
+				7A3647F4238AB287000BBECD /* BasicModelPage.swift */,
+				7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */,
 				7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */,
 				7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */,
 				7A7B5D3B23C05A150079A931 /* ArraysPage.swift */,
@@ -637,7 +642,8 @@
 		7AC3B73B23CA04C5004DB044 /* ModelSupports */ = {
 			isa = PBXGroup;
 			children = (
-				7A3647F8238AD062000BBECD /* ModelInstance.swift */,
+				7A3647F8238AD062000BBECD /* BasicModel.swift */,
+				7A94609023D1A6AB00936DE7 /* JoinedModel.swift */,
 				7AC3B73F23CA05B3004DB044 /* TestJSON.json */,
 			);
 			path = ModelSupports;
@@ -1146,7 +1152,7 @@
 				7A782D6B23CF20DA00E09ED0 /* NavViewController.swift in Sources */,
 				7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */,
 				7AF5BBBD23C86DBD002464D7 /* UIControlEvent.swift in Sources */,
-				7A3647F5238AB287000BBECD /* SQLitePage.swift in Sources */,
+				7A3647F5238AB287000BBECD /* BasicModelPage.swift in Sources */,
 				7A216153238986AF00D5A93A /* ButtonPage.swift in Sources */,
 				7A2161362389869D00D5A93A /* DelegatePage.swift in Sources */,
 				7A216159238986AF00D5A93A /* StackViewPage.swift in Sources */,
@@ -1159,6 +1165,7 @@
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
 				7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */,
+				7A94609123D1A6AB00936DE7 /* JoinedModel.swift in Sources */,
 				7A21611A2389857700D5A93A /* Mix.swift in Sources */,
 				7A2161282389868500D5A93A /* TestTab.swift in Sources */,
 				7A2161142389857700D5A93A /* Constant.swift in Sources */,
@@ -1177,11 +1184,12 @@
 				7A0A7BF823CD5E88009F3BF6 /* ImagePage.swift in Sources */,
 				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
+				7A8A7EAF23D1A7F50067D9C3 /* JoinedModelPage.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
 				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,
 				7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */,
-				7A3647F9238AD062000BBECD /* ModelInstance.swift in Sources */,
+				7A3647F9238AD062000BBECD /* BasicModel.swift in Sources */,
 				7A2161372389869D00D5A93A /* PlistPage.swift in Sources */,
 				7A2161182389857700D5A93A /* Function.swift in Sources */,
 				7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */,

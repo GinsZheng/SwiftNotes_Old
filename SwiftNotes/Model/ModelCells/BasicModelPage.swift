@@ -11,9 +11,10 @@ import SQLite
 import SwiftyJSON
 
 
-class SQLitePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let model = ModelInstance()
+    let model = BasicModel()
+    
     var name = [String]()
     lazy var result = model.search() // Select * From table
     
@@ -27,9 +28,10 @@ class SQLitePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.set(superview: view, delegate: self, dataSource: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
         
+        // model的基本操作：增删改查
         // 示例值
-        let exampleId = "4"
-        var exampleName = "name4"
+        let exampleId = 4
+        var exampleName = "name9"
         let exampleResume = ""
         let exampleTotalProgress = 100
         let exampleColor = 0
@@ -43,7 +45,7 @@ class SQLitePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         ]
         let insertJSON = JSON(insertRow)
         
-        exampleName = "name0"
+        exampleName = "name4"
         let updataRow: [String: Any] = [
             "id": exampleId,
             "name": exampleName,
@@ -52,7 +54,6 @@ class SQLitePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
             "color": exampleColor
         ]
         let updateJSON = JSON(updataRow)
-        
         
         
         // insert
@@ -73,6 +74,10 @@ class SQLitePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // 注：打印结果有错位，大概率是因为返回速度不同，
         // getNameArray的遍历数据库比delete等直接print慢一些
+        
+        // SQLite尝试
+        print(model.searchInSQLCount() ?? 0)
+        
     }
     
     func getNameArray(result: [Row]) {

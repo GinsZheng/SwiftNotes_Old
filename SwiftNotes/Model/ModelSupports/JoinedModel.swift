@@ -1,5 +1,13 @@
 //
-//  ModelInstance.swift
+//  JoindModelIns.swift
+//  SwiftNotes
+//
+//  Created by GinsMac on 2020/1/17.
+//  Copyright © 2020 GinsMac. All rights reserved.
+//
+
+//
+//  Model.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/11/24.
@@ -9,21 +17,21 @@
 import SQLite
 import SwiftyJSON
 
-class ModelInstance: SQLiteManager {
+class JoinedModel: SQLiteManager {
     // 模型只需修改字段名及数据类型
     let id = Expression<Int>("id")
-    let name = Expression<String>("name")
-    let resume = Expression<String>("resume")
-    let totalProgress = Expression<Int>("totalProgress")
-    let color = Expression<Int>("color")
+    let currentProgress = Expression<Int>("currentProgress")
+    let startTime = Expression<String>("startTime")
+    let endTime = Expression<String>("endTime")
+    let itemId = Expression<Int>("itemId")
     
     func getTable() -> Table {
-        table = super.getTable(tableName: "items") { (t) in
+        table = super.getTable(tableName: "progress") { (t) in
             t.column(id, primaryKey: true)
-            t.column(name)
-            t.column(resume)
-            t.column(totalProgress)
-            t.column(color)
+            t.column(currentProgress)
+            t.column(startTime)
+            t.column(endTime)
+            t.column(itemId)
         }
         return table!
     }
@@ -33,10 +41,10 @@ class ModelInstance: SQLiteManager {
         
         let values = getTable().insert(
             id <- item["id"].intValue,
-            name <- item["name"].stringValue,
-            resume <- item["resume"].stringValue,
-            totalProgress <- item["totalProgress"].intValue,
-            color <- item["color"].intValue
+            currentProgress <- item["currentProgress"].intValue,
+            startTime <- item["startTime"].stringValue,
+            endTime <- item["endTime"].stringValue,
+            itemId <- item["itemId"].intValue
         )
         super.insert(values)
     }
@@ -62,10 +70,10 @@ class ModelInstance: SQLiteManager {
         
         let updatedData = getTable().filter(id == rowid)
         let values = updatedData.update(
-            name <- item["name"].stringValue,
-            resume <- item["resume"].stringValue,
-            totalProgress <- item["totalProgress"].intValue,
-            color <- item["color"].intValue
+            currentProgress <- item["currentProgress"].intValue,
+            startTime <- item["startTime"].stringValue,
+            endTime <- item["endTime"].stringValue,
+            itemId <- item["itemId"].intValue
         )
         super.update(values)
     }
@@ -73,18 +81,17 @@ class ModelInstance: SQLiteManager {
     // 查
     func search(filter: Expression<Bool>? = nil, select: [Expressible] = [
         Expression<Int>("id"),
-        Expression<String>("name"),
-        Expression<String>("resume"),
-        Expression<Int>("totalProgress"),
-        Expression<Int>("color")
+        Expression<String>("currentProgress"),
+        Expression<String>("startTime"),
+        Expression<Int>("endTime"),
+        Expression<Int>("itemId")
         ], order: [Expressible] = [Expression<Int>("id").asc], limit: Int? = nil, offset: Int? = nil) -> [Row] {
         
         let query = getTable().select(select).order(order)
         return super.search(query, filter: filter, select: select, order: order, limit: limit, offset: offset)
     }
     
+
+    
 }
-
-
-
 

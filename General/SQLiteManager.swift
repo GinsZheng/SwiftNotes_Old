@@ -75,6 +75,7 @@ class SQLiteManager: NSObject {
             }
         }
         let result = try! getDB().prepare(filtratedQuery)
+        print("查询结果：")
         return Array(result)
     }
 }

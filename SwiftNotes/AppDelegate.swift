@@ -48,12 +48,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tabBar.tabBar.barTintColor = UIColor.white
         tabBar.tabBar.shadowImage = getImageWithColor(color: "f5f6f8")
         
+        let tabShadow = UIImageView()
+        tabShadow.set(superview: tabBar.tabBar, imageName: "tab_shadow")
+        tabShadow.setFrame(left: 0, top: -10, right: 0, height: 10)
+        
         // 将window的一级页面设置为tabBar
         self.window?.rootViewController = tabBar
         self.window?.backgroundColor = UIColor.white
         
         // 设置启动时显示的tab
-        tabBar.selectedIndex = 3
+        tabBar.selectedIndex = 2
 
         
         
