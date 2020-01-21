@@ -52,6 +52,7 @@ let cDDD = "DDD"
 let cEEE = "EEE"
 
 // more grays
+let c000_5_border = "0d000000"
 let c000_45 = "73000000"
 let c000820_10_separator = "1A000820"
 let c04040F_20_mask = "3304040F"
@@ -70,3 +71,5 @@ let cThemeFill = cBlue_2C9EFF
 let cThemeBorder = cThemeFill
 let cThemeHightlightedFill = cBlue_2C9EFF_60
 let cThemeDisabledFill = cBlue_2C9EFF_40
+let cShadowColor = c133660_15_shadow
+let cSeparatorColor = c000820_10_separator

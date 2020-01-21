@@ -11,19 +11,27 @@ import UIKit
 
 class TestTab: UIViewController {
 
-    let textViewWitoutInteraction = UILabel()
+    let myView = UIView()
+    let header = UILabel()
+    let subtitle = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)
         self.title = "Test"
         
+        myView.set(superview: view, backgroundColor: cFFF)
+        myView.setShadow(color: "40133660", x: 0, y: 4, radius: 20)
+        myView.setCornerRadiusWithoutMask(radius: 8)
+        myView.setFrame(centerX: view.centerX, top: 100, width: 180, height: 58)
         
-        textViewWitoutInteraction.set(superview: view, text: "在在在在在在在在在")
-        textViewWitoutInteraction.numberOfLines = 0
-        textViewWitoutInteraction.setLineHeight(multiple: 2.8)
-        textViewWitoutInteraction.setFontStyle(size: 100, color: c222)
-        textViewWitoutInteraction.setBackgroundColor(color: cBlue_2C9EFF_13)
+        header.set(superview: myView, text: "iOS投影扩散值: 20")
+        header.setFontStyle(size: 15, color: c222, weight: .medium)
+        header.setFrame(left: 10, top: 8)
+        
+        subtitle.set(superview: myView, text: "ShadowRadius：20")
+        subtitle.setFontStyle(size: 12, color: c999)
+        subtitle.setFrame(left: 10, top: 34)
     }
 
 }

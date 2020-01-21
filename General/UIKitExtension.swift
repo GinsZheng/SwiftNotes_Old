@@ -20,11 +20,11 @@ extension UIView {
         self.setBackgroundColor(color: backgroundColor)
     }
     
-    func setShadow(color: String, x: CGFloat, y: CGFloat, radius: CGFloat) {
+    func setShadow(color: String = cShadowColor, x: CGFloat = 0, y: CGFloat, radius: CGFloat) {
         self.layer.shadowColor = UIColor.hex(color).cgColor
         self.layer.shadowOpacity = 1
         self.layer.shadowOffset = CGSize(width: x, height: y)
-        self.layer.shadowRadius = radius
+        self.layer.shadowRadius = radius / 2.1
     }
     
     func setBorder(color: String, borderWidth: CGFloat) {

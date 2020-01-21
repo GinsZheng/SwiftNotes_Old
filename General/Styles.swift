@@ -11,7 +11,7 @@ import UIKit
 extension UIView {
     
     func setStyleCellShadow() {
-        self.setShadow(color: c133660_15_shadow, x: 0, y: 4, radius: 9)
+        self.setShadow(color: c133660_15_shadow, x: 0, y: 4, radius: 20)
         self.setBackgroundColor(color: cFFF)
         self.setCornerRadiusWithoutMask(radius: 8)
     }
@@ -34,6 +34,13 @@ extension UIView {
     func setStylePresentView() {
         self.setBackgroundColor(color: cFFF)
         self.setCornerRadius(radius: 16, corners: [.topLeft, .topRight])
+    }
+    
+    func setStyleChartBg() {
+        self.setBackgroundColor(color: cFFF)
+        self.setShadow(color: c133660_15_shadow, x: 0, y: 2, radius: 10)
+        self.setCornerRadiusWithoutMask(radius: 8)
+        self.setBorder(color: c000_5_border, borderWidth: kSeparatorHeight)
     }
     
 }
@@ -184,6 +191,10 @@ extension UIButton {
         self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_40), for: .disabled)
         self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_60), for: .highlighted)
         self.setCornerRadius(radius: 8)
+    }
+    
+    func setStyleGhostBtn(title: String) {
+        self.setStyleGhostButton(title: title, borderWidth: 1, cornerRadius: 8)
     }
     
     func setStyleAddItemBarBtn() {
