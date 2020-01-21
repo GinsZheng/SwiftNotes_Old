@@ -72,9 +72,10 @@
 		7A8A7EAF23D1A7F50067D9C3 /* JoinedModelPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */; };
 		7A94609123D1A6AB00936DE7 /* JoinedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* JoinedModel.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
-		7AC3B74523CA21D1004DB044 /* ReadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74423CA21D1004DB044 /* ReadData.swift */; };
+		7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */; };
 		7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74623CA24D5004DB044 /* FileManager.swift */; };
-		7AF5BBBD23C86DBD002464D7 /* UIControlEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5BBBC23C86DBD002464D7 /* UIControlEvent.swift */; };
+		7AC56A0A23D4395C00538975 /* FrameNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC56A0923D4395C00538975 /* FrameNote.swift */; };
+		7AF5BBBD23C86DBD002464D7 /* UIControlEventNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */; };
 		7AF9FD8B23CEAEA9009D20B5 /* MMKV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF9FD7C23CEAE91009D20B5 /* MMKV.framework */; };
 		7AF9FD8C23CEAEA9009D20B5 /* MMKV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AF9FD7C23CEAE91009D20B5 /* MMKV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; };
@@ -420,9 +421,10 @@
 		7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedModelPage.swift; sourceTree = "<group>"; };
 		7A94609023D1A6AB00936DE7 /* JoinedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedModel.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
-		7AC3B74423CA21D1004DB044 /* ReadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadData.swift; sourceTree = "<group>"; };
+		7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataNote.swift; sourceTree = "<group>"; };
 		7AC3B74623CA24D5004DB044 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
-		7AF5BBBC23C86DBD002464D7 /* UIControlEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlEvent.swift; sourceTree = "<group>"; };
+		7AC56A0923D4395C00538975 /* FrameNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameNote.swift; sourceTree = "<group>"; };
+		7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlEventNote.swift; sourceTree = "<group>"; };
 		7AF9FD6523CEAE91009D20B5 /* MMKV.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMKV.xcodeproj; path = MMKV/iOS/MMKV/MMKV.xcodeproj; sourceTree = "<group>"; };
 		7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-alamofire5/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 		7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
@@ -660,7 +662,7 @@
 		7AC3B73D23CA0503004DB044 /* ModelNotes */ = {
 			isa = PBXGroup;
 			children = (
-				7AC3B74423CA21D1004DB044 /* ReadData.swift */,
+				7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */,
 			);
 			path = ModelNotes;
 			sourceTree = "<group>";
@@ -702,6 +704,7 @@
 		7AC3B74123CA05EE004DB044 /* ViewNotes */ = {
 			isa = PBXGroup;
 			children = (
+				7AC56A0923D4395C00538975 /* FrameNote.swift */,
 			);
 			path = ViewNotes;
 			sourceTree = "<group>";
@@ -718,7 +721,7 @@
 		7AFED64723C97C770079456D /* ControllerNotes */ = {
 			isa = PBXGroup;
 			children = (
-				7AF5BBBC23C86DBD002464D7 /* UIControlEvent.swift */,
+				7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */,
 			);
 			path = ControllerNotes;
 			sourceTree = "<group>";
@@ -1151,7 +1154,7 @@
 				7A21611B2389857700D5A93A /* Colors.swift in Sources */,
 				7A782D6B23CF20DA00E09ED0 /* NavViewController.swift in Sources */,
 				7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */,
-				7AF5BBBD23C86DBD002464D7 /* UIControlEvent.swift in Sources */,
+				7AF5BBBD23C86DBD002464D7 /* UIControlEventNote.swift in Sources */,
 				7A3647F5238AB287000BBECD /* BasicModelPage.swift in Sources */,
 				7A216153238986AF00D5A93A /* ButtonPage.swift in Sources */,
 				7A2161362389869D00D5A93A /* DelegatePage.swift in Sources */,
@@ -1172,7 +1175,7 @@
 				7A216155238986AF00D5A93A /* ScrollViewPage.swift in Sources */,
 				7A216156238986AF00D5A93A /* SwitchPage.swift in Sources */,
 				7A216154238986AF00D5A93A /* LabelPage.swift in Sources */,
-				7AC3B74523CA21D1004DB044 /* ReadData.swift in Sources */,
+				7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */,
 				7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */,
 				7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */,
 				7A21615C238986AF00D5A93A /* DatePickerPage.swift in Sources */,
@@ -1183,6 +1186,7 @@
 				7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */,
 				7A0A7BF823CD5E88009F3BF6 /* ImagePage.swift in Sources */,
 				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
+				7AC56A0A23D4395C00538975 /* FrameNote.swift in Sources */,
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
 				7A8A7EAF23D1A7F50067D9C3 /* JoinedModelPage.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,

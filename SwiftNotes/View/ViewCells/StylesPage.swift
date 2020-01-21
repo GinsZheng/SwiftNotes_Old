@@ -26,3 +26,5 @@ class StylesPage: UIViewController {
     
 }
 
+
+// 设置区块时(div)，应当把区块宽设置成屏幕宽，可以减少很多计算量，并统一数值

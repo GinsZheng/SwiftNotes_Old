@@ -165,6 +165,11 @@ extension UIView {
     func resetHeight(height: CGFloat) {
         self.frame.size.height = height
     }
+    
+    func resetFrame(right: CGFloat) {
+        self.frame.origin.x = self.superview!.width - self.width - right
+    }
+    
 
 }
 

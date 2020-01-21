@@ -93,6 +93,23 @@ extension UIView {
         }
     }
     
+    
+    var left: CGFloat {
+        get {
+            return self.frame.origin.x
+        } set {
+            self.frame.origin.x = newValue
+        }
+    }
+    
+    var top: CGFloat {
+        get {
+            return self.frame.origin.y
+        } set {
+            self.frame.origin.y = newValue
+        }
+    }
+    
     var centerX: CGFloat {
         get {
             return self.center.x
@@ -112,12 +129,16 @@ extension UIView {
     var right: CGFloat {
         get {
             return x + width
+        } set {
+            self.frame.origin.x = self.superview!.width - self.width - newValue
         }
     }
     
     var bottom: CGFloat {
         get {
             return y + height
+        } set {
+            self.frame.origin.y = self.superview!.height - self.height - newValue
         }
     }
     
@@ -179,13 +200,6 @@ extension UILabel {
         return labelWidth
     }
     
-    func getTextHeight(withWidth width: CGFloat) -> CGFloat {
-        _ = self.text! as NSString
-        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
-        let height = self.sizeThatFits(size).height
-        return CGFloat(Int(height) + 1)
-    }
-    
     func getDefaultLineheight() -> CGFloat {
         return round(self.font.pointSize * 1.4)
     }
@@ -203,7 +217,7 @@ extension UILabel {
         self.attributedText = attributedString
     }
     
-    func setMultiStyle(specialText: String, size: CGFloat, color: String, weight: UIFont.Weight = .regular) {
+    func setMultiStyle(specialText: String, size: CGFloat, color: String, weight: UIFont.Weight = .regular, baselineOffset: CGFloat) {
         let string = self.text ?? ""
         let ranStr = specialText
         let attrstring:NSMutableAttributedString = NSMutableAttributedString(string:string)
@@ -211,6 +225,7 @@ extension UILabel {
         let theRange = str.range(of: ranStr)
         attrstring.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.hex(color), range: theRange)
         attrstring.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: size, weight: weight), range: theRange)
+        attrstring.addAttribute(NSAttributedString.Key.baselineOffset, value: baselineOffset, range: theRange)
         self.attributedText = attrstring
     }
     
@@ -220,20 +235,20 @@ extension UILabel {
 
 extension UITextView {
     
-    func set(superview: UIView, text: String, maxLines: Int, lineHeight: CGFloat = 1.4, interaction: Bool = false) {
+    func set(superview: UIView, text: String, maxLines: Int, interaction: Bool = false) {
         self.text = text
-        setLineHeight(multiple: lineHeight)
         self.isUserInteractionEnabled = interaction
         superview.addSubview(self)
         self.textContainer.maximumNumberOfLines = maxLines
         self.textContainer.lineBreakMode = .byTruncatingTail
     }
     
-    func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = UIFont.Weight.regular, alignment: NSTextAlignment = .left) {
+    func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = UIFont.Weight.regular, alignment: NSTextAlignment = .left, lineHeight: CGFloat = 1.4) {
+        self.setLineHeight(multiple: lineHeight)
         self.font = UIFont.systemFont(ofSize: size, weight: weight)
         self.textColor = UIColor.hex(color)
         self.textAlignment = alignment
-        self.textContainerInset = UIEdgeInsets(top: -0.10*(size), left: -5, bottom: -0.10*(size), right: -5)
+        self.textContainerInset = UIEdgeInsets(top: -0.5*size*(lineHeight - 1.194), left: -5, bottom: 0, right: -5)
     }
     
     func setLineHeight(multiple: CGFloat = 1.4) {
@@ -264,6 +279,7 @@ extension UITextView {
         _ = self.text! as NSString
         let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         let height = self.sizeThatFits(size).height
+        print(height)
         return CGFloat(Int(height) + 1)
     }
     

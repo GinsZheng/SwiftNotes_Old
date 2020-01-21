@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor.white
         
         // 设置启动时显示的tab
-        tabBar.selectedIndex = 2
+        tabBar.selectedIndex = 3
 
         
         

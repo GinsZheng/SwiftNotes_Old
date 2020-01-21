@@ -83,16 +83,7 @@ class BasicModel: SQLiteManager {
         return super.search(query, filter: filter, select: select, order: order, limit: limit, offset: offset)
     }
     
-//    // 联表查
-//    func searchJoinTable(_ table: SQLite.QueryType, on condition: SQLite.Expression<Bool>) -> [Row] {
-//
-//        let query = getTable().join(table, on: condition)
-//        let result = try! getDB().prepare(query)
-//        print("联表查询：\(Array(result))")
-//        return Array(result)
-//    }
-    
-    // 联表查
+    // ??联表查
     func searchJoinTable(_ table: SQLite.QueryType, on condition: SQLite.Expression<Bool>) {
 
         let query = getTable().join(table, on: condition)
@@ -100,6 +91,18 @@ class BasicModel: SQLiteManager {
         print("联表查询：\(Array(result))")
         // 联表查询后得到什么类型的结果？
     }
+    
+    // SQL语句查询
+    func searchInSQL() {
+        let stmt = try! getDB().prepare("SELECT id, name, totalProgress FROM items")
+        for row in stmt {
+            for (index, columnName) in stmt.columnNames.enumerated() {
+                print ("\(columnName):\(row[index]!)")
+            }
+        }
+        
+    }
+
     
 }
 

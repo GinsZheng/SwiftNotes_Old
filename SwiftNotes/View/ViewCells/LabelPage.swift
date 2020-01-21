@@ -26,7 +26,7 @@ class LabelPage: UIViewController {
 
         label2.set(superview: view, text: "在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在")
         label2.setFontStyle(size: 12, color: c222)
-        label2.setFrame(left: 20, top: 200, width: 384)
+        label2.setFrame(left: 20, top: 50, width: 384)
         label2.setBackgroundColor(color: cF0F1F3)
         
         label3.set(superview: view, text: "在在在在")
