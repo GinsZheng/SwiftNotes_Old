@@ -79,3 +79,13 @@ class SQLiteManager: NSObject {
         return Array(result)
     }
 }
+
+
+extension SQLiteManager {
+    
+    func getCount() -> Binding {
+        let result = try! getDB().scalar("SELECT count(*) FROM items")
+        return result ?? 0
+    }
+    
+}

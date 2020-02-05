@@ -75,8 +75,11 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
         // 注：打印结果有错位，大概率是因为返回速度不同，
         // getNameArray的遍历数据库比delete等直接print慢一些
         
+        // printId
+        model.printId()
+        
         // SQLite尝试
-        print(model.searchInSQLCount() ?? 0)
+        print(model.getCount())
         
     }
     

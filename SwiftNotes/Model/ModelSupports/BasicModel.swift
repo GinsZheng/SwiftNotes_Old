@@ -17,6 +17,7 @@ class BasicModel: SQLiteManager {
     let totalProgress = Expression<Int>("totalProgress")
     let color = Expression<Int>("color")
     
+    
     func getTable() -> Table {
         table = super.getTable(tableName: "items") { (t) in
             t.column(id, primaryKey: true)
@@ -27,6 +28,7 @@ class BasicModel: SQLiteManager {
         }
         return table!
     }
+    
     
     // 增
     func insert(item: JSON) {
@@ -41,10 +43,12 @@ class BasicModel: SQLiteManager {
         super.insert(values)
     }
     
+    
     // 删单条
     func delete(id rowid: Int) {
         delete(filter: id == rowid)
     }
+    
     
     // 按条件删除
     func delete(filter: Expression<Bool>? = nil) {
@@ -56,6 +60,7 @@ class BasicModel: SQLiteManager {
         super.delete(deleteRows)
         // filter为nil时，全部删除
     }
+    
     
     // 改
     func update(id rowid: Int, item: JSON) {
@@ -70,6 +75,7 @@ class BasicModel: SQLiteManager {
         super.update(values)
     }
     
+    
     // 查
     func search(filter: Expression<Bool>? = nil, select: [Expressible] = [
         Expression<Int>("id"),
@@ -83,6 +89,7 @@ class BasicModel: SQLiteManager {
         return super.search(query, filter: filter, select: select, order: order, limit: limit, offset: offset)
     }
     
+    
     // ??联表查
     func searchJoinTable(_ table: SQLite.QueryType, on condition: SQLite.Expression<Bool>) {
 
@@ -92,6 +99,7 @@ class BasicModel: SQLiteManager {
         // 联表查询后得到什么类型的结果？
     }
     
+    
     // SQL语句查询
     func searchInSQL() {
         let stmt = try! getDB().prepare("SELECT id, name, totalProgress FROM items")
@@ -100,7 +108,6 @@ class BasicModel: SQLiteManager {
                 print ("\(columnName):\(row[index]!)")
             }
         }
-        
     }
 
     
@@ -108,11 +115,6 @@ class BasicModel: SQLiteManager {
 
 
 extension BasicModel {
-    // SQL语句查询
-    func searchInSQLCount() -> Binding? {
-        let result = try! getDB().scalar("SELECT count(*) FROM items")
-        return result
-    }
     
     func searchInSQL() -> Statement? {
         let result = try! getDB().prepare("SELECT * FROM items")
@@ -124,5 +126,15 @@ extension BasicModel {
         print(ids)
         return result
     }
+    
+    func printId() {
+        var idList: [Int] = []
+        let result = self.search()
+        for item in result {
+            idList.append(item[self.id])
+        }
+        print("id列表：\(idList)")
+    }
+    
 }
 
