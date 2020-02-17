@@ -53,6 +53,7 @@
 		7A27507022ABA25A00C8A474 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A27506E22ABA25A00C8A474 /* LaunchScreen.storyboard */; };
 		7A27507B22ABA25B00C8A474 /* SwiftNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27507A22ABA25B00C8A474 /* SwiftNotesTests.swift */; };
 		7A27508622ABA25B00C8A474 /* SwiftNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27508522ABA25B00C8A474 /* SwiftNotesUITests.swift */; };
+		7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */; };
 		7A31324F2392A6680008298C /* ClassPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31324E2392A6680008298C /* ClassPage.swift */; };
 		7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33086823CC48A30021BA5B /* RequestPage.swift */; };
 		7A33088A23CC66850021BA5B /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A75C27B23CC430C00F9376D /* HandyJSON.framework */; };
@@ -65,6 +66,7 @@
 		7A3647F9238AD062000BBECD /* BasicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* BasicModel.swift */; };
 		7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
+		7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A64873F23FAE319006B6FC1 /* LoadingPage.swift */; };
 		7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A65113A23D6A332005E4FD4 /* UIClass.swift */; };
 		7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76EF6223CF17B400350087 /* SQLiteManager.swift */; };
 		7A782D6B23CF20DA00E09ED0 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A782D6A23CF20D900E09ED0 /* NavViewController.swift */; };
@@ -388,6 +390,7 @@
 		7A27508122ABA25B00C8A474 /* SwiftNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A27508522ABA25B00C8A474 /* SwiftNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftNotesUITests.swift; sourceTree = "<group>"; };
 		7A27508722ABA25B00C8A474 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate2Page.swift; sourceTree = "<group>"; };
 		7A31324E2392A6680008298C /* ClassPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPage.swift; sourceTree = "<group>"; };
 		7A33086823CC48A30021BA5B /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
 		7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyJSONPage.swift; sourceTree = "<group>"; };
@@ -397,6 +400,7 @@
 		7A3647F8238AD062000BBECD /* BasicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModel.swift; sourceTree = "<group>"; };
 		7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
+		7A64873F23FAE319006B6FC1 /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		7A65113A23D6A332005E4FD4 /* UIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIClass.swift; sourceTree = "<group>"; };
 		7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HandyJSON.xcodeproj; path = "HandyJSON-master/HandyJSON.xcodeproj"; sourceTree = "<group>"; };
 		7A76EF6223CF17B400350087 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
@@ -613,12 +617,12 @@
 		7AC3B73A23CA04AF004DB044 /* ModelCells */ = {
 			isa = PBXGroup;
 			children = (
-				7A3647F4238AB287000BBECD /* BasicModelPage.swift */,
-				7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */,
-				7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */,
-				7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */,
 				7A7B5D3B23C05A150079A931 /* ArraysPage.swift */,
+				7A3647F4238AB287000BBECD /* BasicModelPage.swift */,
+				7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */,
+				7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */,
 				7A33086823CC48A30021BA5B /* RequestPage.swift */,
+				7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */,
 			);
 			path = ModelCells;
 			sourceTree = "<group>";
@@ -703,14 +707,16 @@
 		7AFED65C23C97C8F0079456D /* ControlllerCells */ = {
 			isa = PBXGroup;
 			children = (
+				7A31324E2392A6680008298C /* ClassPage.swift */,
 				7A21612B2389869D00D5A93A /* DecoratorPage.swift */,
-				7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */,
-				7A21612E2389869D00D5A93A /* MenuControllerPage.swift */,
 				7A21612F2389869D00D5A93A /* DelegatePage.swift */,
+				7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */,
+				7A64873F23FAE319006B6FC1 /* LoadingPage.swift */,
+				7A21612E2389869D00D5A93A /* MenuControllerPage.swift */,
+				7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */,
 				7A2161302389869D00D5A93A /* PlistPage.swift */,
 				7A2161312389869D00D5A93A /* ProtocolPage.swift */,
 				7A871E7923CE122A007CCA90 /* TryPage.swift */,
-				7A31324E2392A6680008298C /* ClassPage.swift */,
 			);
 			path = ControlllerCells;
 			sourceTree = "<group>";
@@ -1123,6 +1129,7 @@
 				7A216161238986AF00D5A93A /* SegmentControlPage.swift in Sources */,
 				7A3308BF23CC67360021BA5B /* HandyJSONPage.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
+				7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */,
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
 				7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */,
 				7A94609123D1A6AB00936DE7 /* JoinedModel.swift in Sources */,
@@ -1158,6 +1165,7 @@
 				7A216158238986AF00D5A93A /* TextViewPage.swift in Sources */,
 				7A216157238986AF00D5A93A /* SliderPage.swift in Sources */,
 				7A2161262389868500D5A93A /* ViewTab.swift in Sources */,
+				7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */,
 				7A2161322389869D00D5A93A /* DecoratorPage.swift in Sources */,
 				7A21613E238986AA00D5A93A /* TestPage.swift in Sources */,
 				7A216160238986AF00D5A93A /* ViewPage.swift in Sources */,

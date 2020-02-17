@@ -6,8 +6,16 @@
 //  Copyright © 2019 GinsMac. All rights reserved.
 //
 
+
 import UIKit
 
+// 0.协议
+protocol NameEditorDelegate: NSObjectProtocol {
+    func fetchName(name: String)
+}
+
+// 受托人
+// 1.继承协议类A
 class DelegatePage: UIViewController, NameEditorDelegate {
 
     let label = UILabel()
@@ -21,22 +29,22 @@ class DelegatePage: UIViewController, NameEditorDelegate {
         label.setFontStyle(size: 24, color: cBlue_2C9EFF)
         label.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 60)
 
-        button.set(superview: view)
-        button.setFrame(left: 20, top: 164, width: kScreenWidth - 40, height: 44)
-        button.backgroundColor = UIColor.hex(cF5F6F8)
-        button.setCornerRadius(radius: 4)
-        button.setTitle("下一页", for: .normal)
-        button.setTitleColor(UIColor.hex(c222), for: .normal)
-        button.addTarget(self, action: #selector(editName), for: .touchUpInside)
+        // 2.受托的触发条件
+        button.set(superview: view, target: self, action: #selector(editName))
+        button.setStyleSolidBtn(title: "下一页")
+        button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
 
     }
 
+    // 受托
     @objc func editName() {
-        let nameEditorPage = NameEditorPage()
-        nameEditorPage.delegate = self
-        self.pushFromSecondaryPage(toTarget: nameEditorPage)
+        let nameEditorPage = NameEditorPage() // 3.类A，实例化委托人-类B
+        nameEditorPage.delegate = self // 4.让类B实例.delegate = self，表示接受类B的委托
+        self.pushFromSecondaryPage(toTarget: nameEditorPage) // 5.Push的时候，
+        // toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
+        // 而不是NameEditorPage(),是一个大坑
     }
-
+    // 6.遵循协议的函数，里面写了具体的类A要做的事
     func fetchName(name: String) {
         self.label.text = name
     }
@@ -44,28 +52,45 @@ class DelegatePage: UIViewController, NameEditorDelegate {
 }
 
 
-
+// 委托人
 class NameEditorPage: UIViewController, UITextFieldDelegate {
 
     var oldName: String?
-    weak var delegate: NameEditorDelegate?
     let nameTextField = UITextField()
+    let button = UIButton()
+    // 7.定义委托变量delegate
+    weak var delegate: NameEditorDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
 
         nameTextField.set(superview: view, placeholder: "请输入", delegate: self)
+        nameTextField.setStyleOneLineTextField()
         nameTextField.setFrame(left: 20, top: 20, right: 20, height: 44)
-        nameTextField.setBackgroundColor(color: cF5F6F8)
-        nameTextField.setCornerRadius(radius: 4)
-        nameTextField.text = ""
+
+        // 8.委托的触发条件
+        button.set(superview: view, target: self, action: #selector(refreshSuperView))
+        button.setStyleSolidBtn(title: "返回")
+        button.setFrame(left: 20, top: 84, right: 20, height: 44)
 
         if oldName != nil {
             nameTextField.text = oldName!
         }
     }
-
+    
+    @objc func refreshSuperView() {
+        let name = nameTextField.text
+        if name != "" {
+            // 9.委托开始，委托的事为fetchName
+            if delegate != nil {
+                delegate!.fetchName(name: name!)
+            }
+        }
+        self.pop()
+    }
+    
+    // 本函数与 refreshSuperView 做一样的事，二者选一个即可
     override func viewWillDisappear(_ animated: Bool) {
         let name = nameTextField.text
         if name != "" {
@@ -75,10 +100,11 @@ class NameEditorPage: UIViewController, UITextFieldDelegate {
         }
     }
 
+    // 10.内存管理
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    // 11.析构
     deinit {
         print("释放")
     }
@@ -87,15 +113,13 @@ class NameEditorPage: UIViewController, UITextFieldDelegate {
 
 
 
-protocol NameEditorDelegate: NSObjectProtocol {
-    func fetchName(name: String)
-}
 
 
 // 设置代理步骤：以反向传值为例
 // 定义一个协议，以实现两个类的传值通信
-// 接收值的类A，实例化传值的类B，让类B实例.delegate = self，即类A成为受托人
+// 类A成为受托人，类B为委托人
+// 在接收值的类A，实例化传值的类B，让类B实例.delegate = self，实现类A的受托
 // 接收值的类A，遵循协议，这样可调用协议内的方法，实现值的获取、操作
-// 传值的类B，定义weak变量：delegate，遵循协议，以调用协议内的方法
+// 传值的类B，定义weak变量：delegate
 // 传值的类B，在某触发条件下，执行delegate的方法
 // 传值的类B，最后做内存管理和析构

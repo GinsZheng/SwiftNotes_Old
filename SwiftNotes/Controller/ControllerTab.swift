@@ -11,8 +11,8 @@ import UIKit
 
 class ControllerTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controllerList = ["Plist", "Decorator", "Protocol", "Number Formatter", "Menu Controller", "Delegate", "class"]
-    let controllerPage = [PlistPage(), DecoratorPage(), ProtocolPage(), NumberFormatterPage(), MenuControllerPage(), DelegatePage(), ClassPage()]
+    let controllerList = ["Class", "Decorator", "Delegate", "Delegate2", "Loading", "Menu Controller", "Number Formatter", "Plist", "Protocol", "Try"]
+    let controllerPage = [ClassPage(), DecoratorPage(), DelegatePage(), Delegate2Page(), LoadingPage(), MenuControllerPage(), NumberFormatterPage(), PlistPage(), ProtocolPage(), TryPage()]
     
     override func viewDidLoad() {
         super.viewDidLoad()

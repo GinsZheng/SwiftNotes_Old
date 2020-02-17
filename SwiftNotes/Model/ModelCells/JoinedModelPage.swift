@@ -39,7 +39,6 @@ class JoinedModelPage: UIViewController {
         
         joinedModel.insert(item: insertJSON)
         
-        joinedModel.search()
         
         let basicTable = basicModel.getTable()
         let id = Expression<Int>("id")
