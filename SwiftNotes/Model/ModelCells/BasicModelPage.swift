@@ -79,7 +79,7 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
         model.printId()
         
         // SQLite尝试
-        print(model.getCount())
+        print(model.getCount(tableName: "items"))
         
     }
     

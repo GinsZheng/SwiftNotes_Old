@@ -37,5 +37,7 @@ class LoadingPage: UIViewController {
  */
 
 /*
-viewDidLoad
-*/
+ viewDidLoad 只会加载一次
+ viewWillAppear 每次回到页面就会重新加载(包括返回、标签切换)，但不包括 unpresent 方式返回页面
+ viewDidAppear 同上
+ */

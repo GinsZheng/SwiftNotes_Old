@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7A0A7BF823CD5E88009F3BF6 /* ImagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0A7BF723CD5E88009F3BF6 /* ImagePage.swift */; };
+		7A1EF03C23FAEF4B00BDEEBF /* ReloadDataPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */; };
+		7A1EF03E23FAF0E100BDEEBF /* ReloadDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EF03D23FAF0E100BDEEBF /* ReloadDataModel.swift */; };
 		7A2161142389857700D5A93A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21610C2389857700D5A93A /* Constant.swift */; };
 		7A2161152389857700D5A93A /* SetColorInHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21610D2389857700D5A93A /* SetColorInHex.swift */; };
 		7A2161162389857700D5A93A /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21610E2389857700D5A93A /* UIKitExtension.swift */; };
@@ -338,6 +340,8 @@
 
 /* Begin PBXFileReference section */
 		7A0A7BF723CD5E88009F3BF6 /* ImagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePage.swift; sourceTree = "<group>"; };
+		7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataPage.swift; sourceTree = "<group>"; };
+		7A1EF03D23FAF0E100BDEEBF /* ReloadDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataModel.swift; sourceTree = "<group>"; };
 		7A21610C2389857700D5A93A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		7A21610D2389857700D5A93A /* SetColorInHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetColorInHex.swift; sourceTree = "<group>"; };
 		7A21610E2389857700D5A93A /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
@@ -641,6 +645,7 @@
 			isa = PBXGroup;
 			children = (
 				7A21612C2389869D00D5A93A /* Books.plist */,
+				7A1EF03D23FAF0E100BDEEBF /* ReloadDataModel.swift */,
 				7A65113A23D6A332005E4FD4 /* UIClass.swift */,
 			);
 			path = ControllerSupports;
@@ -716,6 +721,7 @@
 				7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */,
 				7A2161302389869D00D5A93A /* PlistPage.swift */,
 				7A2161312389869D00D5A93A /* ProtocolPage.swift */,
+				7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */,
 				7A871E7923CE122A007CCA90 /* TryPage.swift */,
 			);
 			path = ControlllerCells;
@@ -1156,8 +1162,10 @@
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
 				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,
+				7A1EF03E23FAF0E100BDEEBF /* ReloadDataModel.swift in Sources */,
 				7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */,
 				7A3647F9238AD062000BBECD /* BasicModel.swift in Sources */,
+				7A1EF03C23FAEF4B00BDEEBF /* ReloadDataPage.swift in Sources */,
 				7A2161372389869D00D5A93A /* PlistPage.swift in Sources */,
 				7A2161182389857700D5A93A /* Function.swift in Sources */,
 				7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */,

@@ -1,13 +1,5 @@
 //
-//  JoindModelIns.swift
-//  SwiftNotes
-//
-//  Created by GinsMac on 2020/1/17.
-//  Copyright © 2020 GinsMac. All rights reserved.
-//
-
-//
-//  Model.swift
+//  ReloadDataModel.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/11/24.
@@ -17,21 +9,15 @@
 import SQLite
 import SwiftyJSON
 
-class JoinedModel: SQLiteManager {
-    // 模型只需修改字段名、数据类型，及表名
+class ReloadDataModel: SQLiteManager {
+    // 模型只需修改字段名及数据类型，及表名
     let id = Expression<Int>("id")
-    let currentProgress = Expression<Int>("currentProgress")
-    let startTime = Expression<String>("startTime")
-    let endTime = Expression<String>("endTime")
-    let itemId = Expression<Int>("itemId")
-    
+    let name = Expression<String>("name")
+
     func getTable() -> Table {
-        table = super.getTable(tableName: "progress") { (t) in
+        table = super.getTable(tableName: "reloadData") { (t) in
             t.column(id, primaryKey: true)
-            t.column(currentProgress)
-            t.column(startTime)
-            t.column(endTime)
-            t.column(itemId)
+            t.column(name)
         }
         return table!
     }
@@ -41,10 +27,7 @@ class JoinedModel: SQLiteManager {
         
         let values = getTable().insert(
             id <- item["id"].intValue,
-            currentProgress <- item["currentProgress"].intValue,
-            startTime <- item["startTime"].stringValue,
-            endTime <- item["endTime"].stringValue,
-            itemId <- item["itemId"].intValue
+            name <- item["name"].stringValue
         )
         super.insert(values)
     }
@@ -70,10 +53,7 @@ class JoinedModel: SQLiteManager {
         
         let updatedData = getTable().filter(id == rowid)
         let values = updatedData.update(
-            currentProgress <- item["currentProgress"].intValue,
-            startTime <- item["startTime"].stringValue,
-            endTime <- item["endTime"].stringValue,
-            itemId <- item["itemId"].intValue
+            name <- item["name"].stringValue
         )
         super.update(values)
     }
@@ -81,17 +61,26 @@ class JoinedModel: SQLiteManager {
     // 查
     func search(filter: Expression<Bool>? = nil, select: [Expressible] = [
         Expression<Int>("id"),
-        Expression<String>("currentProgress"),
-        Expression<String>("startTime"),
-        Expression<Int>("endTime"),
-        Expression<Int>("itemId")
+        Expression<String>("name")
         ], order: [Expressible] = [Expression<Int>("id").asc], limit: Int? = nil, offset: Int? = nil) -> [Row] {
         
         let query = getTable().select(select).order(order)
         return super.search(query, filter: filter, select: select, order: order, limit: limit, offset: offset)
     }
     
+}
 
+
+extension ReloadDataModel {
+    
+    func printId() {
+        var idList: [Int] = []
+        let result = self.search()
+        for item in result {
+            idList.append(item[self.id])
+        }
+        print("id列表：\(idList)")
+    }
     
 }
 
