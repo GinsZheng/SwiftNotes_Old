@@ -15,6 +15,7 @@ let kScreenWidth = UIScreen.main.bounds.size.width
 let kStatusBarHeight = UIApplication.shared.statusBarFrame.size.height
 let kNavBarHeight = kStatusBarHeight + 44
 let kHeightUnderNavBar = kScreenHeight - kNavBarHeight
+let kScale = UIScreen.main.scale
 let kSeparatorHeight = 1 / UIScreen.main.scale
 let kSafeAreaInsets = UIApplication.shared.delegate?.window??.safeAreaInsets ?? UIEdgeInsets.zero
 

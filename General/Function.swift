@@ -20,6 +20,14 @@ func getImageWithColor(color: String) -> UIImage {
     return image!
 }
 
+func getImageFromView(view:UIView) -> UIImage{
+    UIGraphicsBeginImageContextWithOptions(view.size, false, kScale)
+    view.layer.render(in: UIGraphicsGetCurrentContext()!)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return image!
+}
+
 
 // 按比例布局的因子
 func s(_ number: CGFloat) -> CGFloat {

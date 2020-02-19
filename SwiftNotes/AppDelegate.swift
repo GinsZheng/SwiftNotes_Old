@@ -51,13 +51,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabShadow = UIImageView()
         tabShadow.set(superview: tabBar.tabBar, imageName: "tab_shadow")
         tabShadow.setFrame(left: 0, top: -10, right: 0, height: 10)
+        // 标签栏为49pt高，49pt之上加1px分隔线。所以：
+        // 如果想遮住标签栏，应当把标签栏实际高度设置为50pt
         
         // 将window的一级页面设置为tabBar
         self.window?.rootViewController = tabBar
         self.window?.backgroundColor = UIColor.white
         
         // 设置启动时显示的tab
-        tabBar.selectedIndex = 1
+        tabBar.selectedIndex = 3
 
         
         
