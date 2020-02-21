@@ -344,12 +344,38 @@ extension UIImageView {
         self.contentMode = conteneMode
     }
     
+    // 拉伸图片中部，需写在setFrame之后
     func stretchMiddle(imageName: String, left: CGFloat, top: CGFloat, right: CGFloat, bottom: CGFloat) {
         let image = UIImage(named: imageName)?.resizableImage(withCapInsets: UIEdgeInsets(top: top, left: left, bottom: bottom, right: right), resizingMode: .stretch)
         self.image = image
     }
     
-    
+    // 五段式拉伸：图片从左到右分五段，拉伸2、4两段
+    func stretchLeftAndRight(imageName: String, left: CGFloat, top: CGFloat, right: CGFloat, bottom: CGFloat, middleFixedWidth: CGFloat, imageWidth: CGFloat, ratio: CGFloat) {
+        // ratio 如：ratio = 2 指：左边拉伸宽度/右边拉伸宽度 = 2
+        // ratio = 2时，需要设计图上拉伸区域的比例也是 2:1
+        let iW = imageWidth
+        let sW = self.width
+        let L = left
+        let R = right
+        let M = middleFixedWidth
+        let r = ratio
+        let LB = (iW - L - M - R) / (1 + 1/r) // leftWidthBeforeStretch
+        let LA = (sW - L - M - R) / (1 + 1/r) // leftWidthAfterStretch
+        let RA = (sW - L - M - R) / (1 + r) // rightWidthAfterStretch
+        
+        let middleImageView = UIImageView()
+        middleImageView.setFrame(left: 0, top: 0, width: sW - (LA - LB), height: self.height)
+        let middleImage = UIImage(named: imageName)?.resizableImage(withCapInsets: UIEdgeInsets(top: top, left: L + LB + M, bottom: bottom, right: right), resizingMode: .stretch) // 左边固定，拉伸右边
+        print(L + LB + M)
+        middleImageView.image = middleImage
+        let translatedMiddleImage = getImageFromView(view: middleImageView)
+
+        let finalImage = translatedMiddleImage.resizableImage(withCapInsets: UIEdgeInsets(top: top, left: left, bottom: bottom, right: R + RA + M), resizingMode: .stretch) // 右边固定，拉伸左边
+        self.image = finalImage
+        
+    }
+        
     func downloadedFrom(url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in

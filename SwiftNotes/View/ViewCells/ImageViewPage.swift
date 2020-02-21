@@ -19,10 +19,10 @@ class ImageViewPage: UIViewController {
         image.setStyleNote()
         image.setFrame(left: 20, top: 20, right: 20, height: 300)
         
-        let stretchImage = UIImageView()
-        stretchImage.set(superview: view)
-        stretchImage.setFrame(left: 20, top: 340, width: 300, height: 300)
-        stretchImage.stretchMiddle(imageName: "stretchRect", left: 15, top: 15, right: 15, bottom: 15)
+        let stretchMiddleImage = UIImageView()
+        stretchMiddleImage.set(superview: view)
+        stretchMiddleImage.setFrame(left: 20, top: 340, width: 78, height: 84)
+        stretchMiddleImage.stretchMiddle(imageName: "stretchRect", left: 15, top: 15, right: 15, bottom: 15)
         /*
          以九宫格为参考，九宫格各区域：
          1  2  3
@@ -34,6 +34,16 @@ class ImageViewPage: UIViewController {
          如left = 15，表示竖线左边(1/4/7)不提拉伸区域宽度为15pt
          */
         
+        let stretchLeftAndRightImage = UIImageView()
+        stretchLeftAndRightImage.set(superview: view)
+        stretchLeftAndRightImage.setFrame(left: 20, top: stretchMiddleImage.bottom + 20, width: kScreenWidth - 40, height: 84)
+        stretchLeftAndRightImage.stretchLeftAndRight(imageName: "stretchNotEqual", left: 0, top: 0, right: 0, bottom: 0, middleFixedWidth: 78, imageWidth: 232, ratio: 0.5)
+        
+        
+        let stretchFiveSegmentImage = UIImageView()
+        stretchFiveSegmentImage.set(superview: view)
+        stretchFiveSegmentImage.setFrame(left: 20, top: stretchLeftAndRightImage.bottom + 20, width: kScreenWidth - 40, height: 84)
+        stretchFiveSegmentImage.stretchLeftAndRight(imageName: "stretchFiveSegment", left: 10, top: 10, right: 10, bottom: 10, middleFixedWidth: 78, imageWidth: 222, ratio: 0.5)
     }
     
     

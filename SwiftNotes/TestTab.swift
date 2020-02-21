@@ -93,31 +93,6 @@ class TestTab: UIViewController {
 //        finalImage.setFrame(left: 20, top: 400, width: 280, height: 280)
         
         
-        let middleImageView = UIImageView()
-        middleImageView.set(superview: view)
-        middleImageView.setFrame(left: 20, top: 0, width: (335/2 + 76/2 + 52), height: 84)
-        let middleImage = UIImage(named: "stretchLeftAndRight")?.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 76 + 52, bottom: 0, right: 0), resizingMode: .stretch)
-        middleImageView.image = middleImage
-        
-        let imageTrans = getImageFromView(view: middleImageView)
-        
-        let finalImageView = UIImageView()
-        finalImageView.set(superview: view)
-        finalImageView.setFrame(left: 20, top: 200, width: 335, height: 84)
-        let finalImage = imageTrans.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 335/2 + 76/2), resizingMode: .stretch)
-        finalImageView.image = finalImage
-        
-        let imga = UIImageView()
-        imga.set(superview: view)
-        imga.setFrame(left: 20, top: 0, width: 335, height: 84)
-        imga.stretchLeftAndRight()
-    }
-
-}
-
-extension UIImageView {
-    func stretchLeftAndRight() {
-        // 过渡图的宽 = 拉伸后全图宽/2 + 中间不拉伸区域宽/2 + 左边(或右边)拉伸区域的拉伸前宽
 //        let middleImageView = UIImageView()
 //        middleImageView.set(superview: view)
 //        middleImageView.setFrame(left: 20, top: 0, width: (335/2 + 76/2 + 52), height: 84)
@@ -125,6 +100,13 @@ extension UIImageView {
 //        middleImageView.image = middleImage
 //
 //        let imageTrans = getImageFromView(view: middleImageView)
+//
+//        let finalImageView = UIImageView()
+//        finalImageView.set(superview: view)
+//        finalImageView.setFrame(left: 20, top: 200, width: 335, height: 84)
+//        let finalImage = imageTrans.resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 335/2 + 76/2), resizingMode: .stretch)
+//        finalImageView.image = finalImage
         
     }
+    
 }
