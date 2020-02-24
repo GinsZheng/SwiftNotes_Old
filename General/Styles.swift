@@ -11,7 +11,7 @@ import UIKit
 extension UIView {
     
     func setStyleCellShadow() {
-        self.setShadow(color: c133660_15_shadow, x: 0, y: 4, radius: 20)
+        self.setShadow(color: c133660_15_shadow, x: 0, y: 4, radius: 18)
         self.setBackgroundColor(color: cFFF)
         self.setCornerRadiusWithoutMask(radius: 8)
     }

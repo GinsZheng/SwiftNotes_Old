@@ -279,7 +279,6 @@ extension UITextView {
         _ = self.text! as NSString
         let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         let height = self.sizeThatFits(size).height
-        print(height)
         return CGFloat(Int(height) + 1)
     }
     
@@ -367,7 +366,6 @@ extension UIImageView {
         let middleImageView = UIImageView()
         middleImageView.setFrame(left: 0, top: 0, width: sW - (LA - LB), height: self.height)
         let middleImage = UIImage(named: imageName)?.resizableImage(withCapInsets: UIEdgeInsets(top: top, left: L + LB + M, bottom: bottom, right: right), resizingMode: .stretch) // 左边固定，拉伸右边
-        print(L + LB + M)
         middleImageView.image = middleImage
         let translatedMiddleImage = getImageFromView(view: middleImageView)
 
