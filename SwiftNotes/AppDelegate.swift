@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -21,48 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 将window的一级页面设置为tabBar
         self.window?.rootViewController = tabBarController
         self.window?.backgroundColor = UIColor.white
-        
-//        // 创建 tabBar 实例
-//        let viewTab = ViewTab()
-//        let controllerTab = ControllerTab()
-//        let modelTab = ModelTab()
-//        let testTab = TestTab()
-//
-//        // 创建导航控制器
-//        let firstNav = rootNavController(rootViewController: viewTab)
-//        let secondNav = rootNavController(rootViewController: controllerTab)
-//        let thirdNav = rootNavController(rootViewController: modelTab)
-//        let forthNav = rootNavController(rootViewController: testTab)
-//
-//        // 设置tabBar各图标
-//        viewTab.tabBarItem.image = UIImage(named: "tab_discovery")
-//        controllerTab.tabBarItem.image = UIImage(named: "tab_saved")
-//        modelTab.tabBarItem.image = UIImage(named: "tab_tickets")
-//        testTab.tabBarItem.image = UIImage(named: "tab_mine")
-//
-//        // 设置tatabBar各标题
-//        viewTab.tabBarItem.title = "View"
-//        controllerTab.tabBarItem.title = "Controller"
-//        modelTab.tabBarItem.title = "Model"
-//        testTab.tabBarItem.title = "Test"
-//
-//        // 把tabBar实例添加到UITabBarController，并设置样式
-//        let tabBar = UITabBarController()
-//        tabBar.viewControllers = [firstNav, secondNav, thirdNav, forthNav]
-//        tabBar.tabBar.isTranslucent = false
-//        tabBar.tabBar.barTintColor = UIColor.white
-//        tabBar.tabBar.shadowImage = getImageWithColor(color: "f5f6f8")
-//
-//        let tabShadow = UIImageView()
-//        tabShadow.set(superview: tabBar.tabBar, imageName: "tab_shadow")
-//        tabShadow.setFrame(left: 0, top: -10, right: 0, height: 10)
-//        // 标签栏为49pt高，49pt之上加1px分隔线。所以：
-//        // 如果想遮住标签栏，应当把标签栏实际高度设置为50pt
-//
-//        // 设置启动时显示的tab
-//        tabBar.selectedIndex = 0
-        
-        
+
         
         return true
     }
