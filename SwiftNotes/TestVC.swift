@@ -9,7 +9,7 @@
 import UIKit
 
 
-class TestTab: UIViewController {
+class TestVC: UIViewController {
 
     let pickerView = UIPickerView()
     

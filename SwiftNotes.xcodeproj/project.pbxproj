@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A114CB8240570420058E70A /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A114CB7240570420058E70A /* pop.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7A1EF03C23FAEF4B00BDEEBF /* ReloadDataPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */; };
 		7A1EF03E23FAF0E100BDEEBF /* ReloadDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EF03D23FAF0E100BDEEBF /* ReloadDataModel.swift */; };
 		7A2161142389857700D5A93A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21610C2389857700D5A93A /* Constant.swift */; };
@@ -16,10 +17,10 @@
 		7A2161192389857700D5A93A /* SetFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161112389857700D5A93A /* SetFrame.swift */; };
 		7A21611A2389857700D5A93A /* Mix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161122389857700D5A93A /* Mix.swift */; };
 		7A21611B2389857700D5A93A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161132389857700D5A93A /* Colors.swift */; };
-		7A2161262389868500D5A93A /* ViewTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161222389868500D5A93A /* ViewTab.swift */; };
-		7A2161272389868500D5A93A /* ModelTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161232389868500D5A93A /* ModelTab.swift */; };
-		7A2161282389868500D5A93A /* TestTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161242389868500D5A93A /* TestTab.swift */; };
-		7A2161292389868500D5A93A /* ControllerTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161252389868500D5A93A /* ControllerTab.swift */; };
+		7A2161262389868500D5A93A /* ViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161222389868500D5A93A /* ViewVC.swift */; };
+		7A2161272389868500D5A93A /* ModelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161232389868500D5A93A /* ModelVC.swift */; };
+		7A2161282389868500D5A93A /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161242389868500D5A93A /* TestVC.swift */; };
+		7A2161292389868500D5A93A /* ControllerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2161252389868500D5A93A /* ControllerVC.swift */; };
 		7A2161322389869D00D5A93A /* DecoratorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21612B2389869D00D5A93A /* DecoratorPage.swift */; };
 		7A2161332389869D00D5A93A /* Books.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A21612C2389869D00D5A93A /* Books.plist */; };
 		7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */; };
@@ -80,7 +81,7 @@
 		7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74623CA24D5004DB044 /* FileManager.swift */; };
 		7AC56A0A23D4395C00538975 /* FrameNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC56A0923D4395C00538975 /* FrameNote.swift */; };
 		7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD300024042A5100D300A6 /* TabBarController.swift */; };
-		7ACD303324042C9D00D300A6 /* ESTabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACD303224042C9300D300A6 /* ESTabBarController.framework */; };
+		7ACD303324042C9D00D300A6 /* ESTabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACD303224042C9300D300A6 /* ESTabBarController.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		7ACD303424042C9D00D300A6 /* ESTabBarController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACD303224042C9300D300A6 /* ESTabBarController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AF5BBBD23C86DBD002464D7 /* UIControlEventNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */; };
 		7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; };
@@ -356,6 +357,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A114CB7240570420058E70A /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = ESTabBarController/ESTabBarControllerExample/ESTabBarControllerExample/Framework/pop.framework; sourceTree = "<group>"; };
 		7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataPage.swift; sourceTree = "<group>"; };
 		7A1EF03D23FAF0E100BDEEBF /* ReloadDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataModel.swift; sourceTree = "<group>"; };
 		7A21610C2389857700D5A93A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -365,10 +367,10 @@
 		7A2161112389857700D5A93A /* SetFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetFrame.swift; sourceTree = "<group>"; };
 		7A2161122389857700D5A93A /* Mix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mix.swift; sourceTree = "<group>"; };
 		7A2161132389857700D5A93A /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		7A2161222389868500D5A93A /* ViewTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewTab.swift; sourceTree = "<group>"; };
-		7A2161232389868500D5A93A /* ModelTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelTab.swift; sourceTree = "<group>"; };
-		7A2161242389868500D5A93A /* TestTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTab.swift; sourceTree = "<group>"; };
-		7A2161252389868500D5A93A /* ControllerTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerTab.swift; sourceTree = "<group>"; };
+		7A2161222389868500D5A93A /* ViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewVC.swift; sourceTree = "<group>"; };
+		7A2161232389868500D5A93A /* ModelVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelVC.swift; sourceTree = "<group>"; };
+		7A2161242389868500D5A93A /* TestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
+		7A2161252389868500D5A93A /* ControllerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerVC.swift; sourceTree = "<group>"; };
 		7A21612B2389869D00D5A93A /* DecoratorPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecoratorPage.swift; sourceTree = "<group>"; };
 		7A21612C2389869D00D5A93A /* Books.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Books.plist; sourceTree = "<group>"; };
 		7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatterPage.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				7A33088A23CC66850021BA5B /* HandyJSON.framework in Frameworks */,
 				7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */,
 				7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */,
+				7A114CB8240570420058E70A /* pop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +476,7 @@
 		7A019B2322ABA46E0034C5A3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				7A114CB7240570420058E70A /* pop.framework */,
 				7ACD302A24042C9300D300A6 /* ESTabBarControllerExample.xcodeproj */,
 				7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */,
 				7A3647C9238AB178000BBECD /* SQLite.xcodeproj */,
@@ -503,7 +507,7 @@
 		7A21612A2389869D00D5A93A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7A2161252389868500D5A93A /* ControllerTab.swift */,
+				7A2161252389868500D5A93A /* ControllerVC.swift */,
 				7AFED65C23C97C8F0079456D /* ControlllerCells */,
 				7AC3B73C23CA04D9004DB044 /* ControllerSupports */,
 				7AFED64723C97C770079456D /* ControllerNotes */,
@@ -523,7 +527,7 @@
 		7A216140238986AF00D5A93A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7A2161222389868500D5A93A /* ViewTab.swift */,
+				7A2161222389868500D5A93A /* ViewVC.swift */,
 				7AC3B73E23CA057E004DB044 /* ViewCells */,
 				7AC3B74023CA05E4004DB044 /* ViewSupports */,
 				7AC3B74123CA05EE004DB044 /* ViewNotes */,
@@ -559,7 +563,7 @@
 			children = (
 				7A27506522ABA25600C8A474 /* AppDelegate.swift */,
 				7ACD300024042A5100D300A6 /* TabBarController.swift */,
-				7A2161242389868500D5A93A /* TestTab.swift */,
+				7A2161242389868500D5A93A /* TestVC.swift */,
 				7A216140238986AF00D5A93A /* View */,
 				7A21612A2389869D00D5A93A /* Controller */,
 				7A3647F3238AB268000BBECD /* Model */,
@@ -616,7 +620,7 @@
 		7A3647F3238AB268000BBECD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7A2161232389868500D5A93A /* ModelTab.swift */,
+				7A2161232389868500D5A93A /* ModelVC.swift */,
 				7AC3B73A23CA04AF004DB044 /* ModelCells */,
 				7AC3B73B23CA04C5004DB044 /* ModelSupports */,
 				7AC3B73D23CA0503004DB044 /* ModelNotes */,
@@ -1164,7 +1168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A2161382389869D00D5A93A /* ProtocolPage.swift in Sources */,
-				7A2161292389868500D5A93A /* ControllerTab.swift in Sources */,
+				7A2161292389868500D5A93A /* ControllerVC.swift in Sources */,
 				7A21615B238986AF00D5A93A /* WebViewPage.swift in Sources */,
 				7A21611B2389857700D5A93A /* Colors.swift in Sources */,
 				7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */,
@@ -1176,7 +1180,7 @@
 				7A2161362389869D00D5A93A /* DelegatePage.swift in Sources */,
 				7A216159238986AF00D5A93A /* StackViewPage.swift in Sources */,
 				7A2161162389857700D5A93A /* UIKitExtension.swift in Sources */,
-				7A2161272389868500D5A93A /* ModelTab.swift in Sources */,
+				7A2161272389868500D5A93A /* ModelVC.swift in Sources */,
 				7A2161192389857700D5A93A /* SetFrame.swift in Sources */,
 				7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */,
 				7A21613F238986AA00D5A93A /* GeneralSubpage.swift in Sources */,
@@ -1188,7 +1192,7 @@
 				7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */,
 				7A94609123D1A6AB00936DE7 /* JoinedModel.swift in Sources */,
 				7A21611A2389857700D5A93A /* Mix.swift in Sources */,
-				7A2161282389868500D5A93A /* TestTab.swift in Sources */,
+				7A2161282389868500D5A93A /* TestVC.swift in Sources */,
 				7A2161142389857700D5A93A /* Constant.swift in Sources */,
 				7A216155238986AF00D5A93A /* ScrollViewPage.swift in Sources */,
 				7A216156238986AF00D5A93A /* SwitchPage.swift in Sources */,
@@ -1219,7 +1223,7 @@
 				7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */,
 				7A216158238986AF00D5A93A /* TextViewPage.swift in Sources */,
 				7A216157238986AF00D5A93A /* SliderPage.swift in Sources */,
-				7A2161262389868500D5A93A /* ViewTab.swift in Sources */,
+				7A2161262389868500D5A93A /* ViewVC.swift in Sources */,
 				7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */,
 				7A2161322389869D00D5A93A /* DecoratorPage.swift in Sources */,
 				7A21613E238986AA00D5A93A /* TestPage.swift in Sources */,

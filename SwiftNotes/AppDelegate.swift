@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
 
     var window: UIWindow?
 
@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let tabBarController = TabBarController.getTabBar()
+//        let tabBarController = TabBarController.getTabBarWithButton(delegate: self)
         // 将window的一级页面设置为tabBar
         self.window?.rootViewController = tabBarController
         self.window?.backgroundColor = UIColor.white

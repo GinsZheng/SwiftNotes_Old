@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     let controlList = ["Button", "Date Picker", "Image View", "Label", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Switch", "Table View", "Text Field", "Text View", "View", "Web View", "Animation", "Styles"]

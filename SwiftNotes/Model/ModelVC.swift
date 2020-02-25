@@ -1,23 +1,22 @@
 //
-//  ControllerTab.swift
+//  ModelVC.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/10.
 //  Copyright © 2019 GinsMac. All rights reserved.
 //
 
-
 import UIKit
 
-class ControllerTab: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ModelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controllerList = ["Class", "Decorator", "Delegate", "Delegate2", "Loading", "Menu Controller", "Number Formatter", "Plist", "Protocol", "Reload Data", "Try"]
-    let controllerPage = [ClassPage(), DecoratorPage(), DelegatePage(), Delegate2Page(), LoadingPage(), MenuControllerPage(), NumberFormatterPage(), PlistPage(), ProtocolPage(), ReloadDataPage(), TryPage()]
+    let controllerList = ["Array", "Basic Model", "HandyJSON", "Joined Model", "Request", "SwiftyJSON"]
+    let controllerPage = [ArrayPage(), BasicModelPage(), HandyJSONPage(), JoinedModelPage(), RequestPage(), SwiftyJSONPage()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        self.title = "Controller"
+        self.title = "Model"
         
         let table = UITableView()
         table.set(superview: view, delegate: self, dataSource: self)
