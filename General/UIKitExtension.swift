@@ -504,6 +504,11 @@ extension UIViewController {
         self.present(toTarget, animated: true, completion: completion)
     }
     
+    func presentFullScreen(toTarget: UIViewController, animated: Bool = true, completion: @escaping () -> Void = {}) {
+        toTarget.modalPresentationStyle = .fullScreen
+        self.present(toTarget, animated: animated, completion: completion)
+    }
+    
     func unpresent(completion: @escaping () -> Void = {}) {
         self.dismiss(animated: true, completion: completion)
     }

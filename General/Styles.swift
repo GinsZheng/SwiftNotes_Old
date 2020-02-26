@@ -251,6 +251,14 @@ extension UIButton {
         self.setCornerRadius(radius: cornerRadius)
     }
     
+    func setStyleSolidButton2(title: String, titleSize: CGFloat = 17, titleColor: String = cFFF, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(.hex(titleColor), for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight)
+        self.setBackgroundImage(getImageWithColor(color: cThemeFill), for: .normal)
+        self.setCornerRadius(radius: cornerRadius)
+    }
+    
     func setStyleSystemIconButton(imageName: String) {
         self.tintColor = .hex(c222)
         self.setImage(UIImage(named: imageName), for: .normal)

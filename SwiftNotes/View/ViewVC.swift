@@ -62,3 +62,9 @@ class ViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
 }
+
+/*
+ 在VC下，可以给某按钮操作设置以下属性，实现tab切换
+ self.tabBarController?.selectedIndex = 2
+ 
+ */
