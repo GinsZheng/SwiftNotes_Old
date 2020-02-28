@@ -43,7 +43,7 @@ class TabBarController {
         // 如果想遮住标签栏，应当把标签栏实际高度设置为50pt
         
         // 设置启动时显示的tab
-        tabBarController.selectedIndex = 0
+        tabBarController.selectedIndex = 3
         
         return tabBarController
         
@@ -105,7 +105,7 @@ class TabBarController {
         addingBtn.isUserInteractionEnabled = false
 
         // 设置启动时显示的tab
-        tabBarController.selectedIndex = 0
+        tabBarController.selectedIndex = 3
         
         
         return tabBarController

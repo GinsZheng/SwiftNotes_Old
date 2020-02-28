@@ -61,6 +61,24 @@ extension UIView {
         separator.backgroundColor = UIColor.hex(color)
     }
     
+    func setGradientLayer(colors: [CGColor]?, locations: [NSNumber]?, startPoint: CGPoint, endPoint: CGPoint) {
+        /* eg:
+         colors: [UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF5349).cgColor]
+         locations: [0, 0.3, 1]
+         startPoint: CGPoint.init(x: 0, y: 0)
+         endPoint: CGPoint.init(x: 1, y: 1)
+         */
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = colors
+        gradientLayer.locations = locations
+        gradientLayer.startPoint = startPoint
+        gradientLayer.endPoint  = endPoint
+        gradientLayer.frame = CGRect.init(x: 0, y: 0, width: self.width, height: self.height)
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    
     var x: CGFloat {
         get {
             return self.frame.origin.x
@@ -509,8 +527,8 @@ extension UIViewController {
         self.present(toTarget, animated: animated, completion: completion)
     }
     
-    func unpresent(completion: @escaping () -> Void = {}) {
-        self.dismiss(animated: true, completion: completion)
+    func unpresent(animated: Bool = true, completion: @escaping () -> Void = {}) {
+        self.dismiss(animated: animated, completion: completion)
     }
     
     func hideNavBar() {

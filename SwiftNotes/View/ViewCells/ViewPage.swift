@@ -16,15 +16,18 @@ class ViewPage: UIViewController {
         
         let myView = UIView()
         myView.set(superview: view, backgroundColor: cF5F6F8)
-        myView.setFrame(left: 20, top: 20, width: 200, height: 100)
+        myView.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 100)
         
+        let multiCornersView = UIView()
+        multiCornersView.setBackgroundColor(color: cBlue_2C9EFF)
+        multiCornersView.set(superview: view)
+        multiCornersView.setFrame(left: 20, top: myView.bottom + 20, width: kScreenWidth - 40, height: 66)
+        multiCornersView.setCornerRadius(radius: 16, corners: [.topRight, .bottomRight])
         
-        let myView2 = UIView()
-        myView2.setBackgroundColor(color: cBlue_2C9EFF)
-        myView2.set(superview: view)
-        myView2.setFrame(left: 20, top: 220, width: 200, height: 66)
-        myView2.setCornerRadius(radius: 16, corners: [.topRight, .bottomRight])
-        
+        let gradientView = UIView()
+        gradientView.set(superview: view)
+        gradientView.setFrame(left: 20, top: multiCornersView.bottom + 20, width: kScreenWidth - 40, height: 100)
+        gradientView.setGradientLayer(colors: [UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF5349).cgColor], locations: [0, 0.3, 1], startPoint: CGPoint.init(x: 0, y: 0), endPoint: CGPoint.init(x: 1, y: 1))
         
         
     }

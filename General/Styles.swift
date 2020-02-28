@@ -40,7 +40,7 @@ extension UIView {
         self.setBackgroundColor(color: cFFF)
         self.setShadow(color: c133660_15_shadow, x: 0, y: 2, radius: 10)
         self.setCornerRadiusWithoutMask(radius: 8)
-        self.setBorder(color: c000_5_border, borderWidth: kSeparatorHeight)
+        self.setBorder(color: c000_5, borderWidth: kSeparatorHeight)
     }
     
 }
@@ -72,8 +72,16 @@ extension UILabel {
         self.setFontStyle(size: 17, color: c888, weight: .medium)
     }
     
+    func setStyle17pt222() {
+        self.setFontStyle(size: 17, color: c222)
+    }
+    
     func setStyle17pt999() {
         self.setFontStyle(size: 17, color: c999)
+    }
+    
+    func setStyle15ptFFF80Center() {
+        self.setFontStyle(size: 15, color: cFFF_80, alignment: .center)
     }
     
     func setStyle14pt999() {
@@ -88,12 +96,20 @@ extension UILabel {
         self.setFontStyle(size: 12, color: c999)
     }
     
+    func setStyle12ptFFF45Center() {
+        self.setFontStyle(size: 12, color: cFFF_45, alignment: .center)
+    }
+    
     func setStyle12pt999MedRight() {
         self.setFontStyle(size: 12, color: c999, weight: .medium, alignment: .right)
     }
     
     func setStyle12ptFFFMedCenter() {
         self.setFontStyle(size: 12, color: cFFF, weight: .medium, alignment: .center)
+    }
+    
+    func setStyle80ptFFF80ThinCenter() {
+        self.setFontStyle(size: 80, color: cFFF_80, weight: .thin, alignment: .center)
     }
 }
 
@@ -259,9 +275,11 @@ extension UIButton {
         self.setCornerRadius(radius: cornerRadius)
     }
     
-    func setStyleSystemIconButton(imageName: String) {
+    func setStyleSystemIconButton(imageName: String, backgroundImage: UIImage = getImageWithColor(color: cNoColor), cornerRadius: CGFloat = 0) {
         self.tintColor = .hex(c222)
         self.setImage(UIImage(named: imageName), for: .normal)
+        self.setBackgroundImage(backgroundImage, for: .normal)
+        self.setCornerRadius(radius: cornerRadius)
     }
     
     func setStyleCustomIconButton(imageName: String) {

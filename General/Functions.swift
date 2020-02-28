@@ -37,3 +37,22 @@ func s(_ number: CGFloat) -> CGFloat {
 func u(_ number: CGFloat) -> CGFloat {
     return number / kScreenWidth * 375
 }
+
+
+//时间戳转成字符串
+func getTimeStrWithTimeStamp(timeInterval:TimeInterval, dateFormat:String = "yyyy/M/d HH:mm:ss") -> String {
+    let date:NSDate = NSDate.init(timeIntervalSince1970: timeInterval)
+    let formatter = DateFormatter.init()
+    formatter.dateFormat = dateFormat
+    return formatter.string(from: date as Date)
+}
+
+//字符串转时间戳
+func getTimeStampWithTimeStr(timeStr: String, dateFormat:String) -> String {
+    let format = DateFormatter.init()
+    format.dateStyle = .medium
+    format.timeStyle = .short
+    format.dateFormat = dateFormat
+    let date = format.date(from: timeStr)
+    return String(date!.timeIntervalSince1970)
+}
