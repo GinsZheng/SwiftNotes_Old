@@ -14,9 +14,9 @@ class TabBarController {
 
     static func getTabBar() -> ESTabBarController {
         let tabBarController = ESTabBarController()
-        let v1 = ViewVC()
-        let v2 = ControllerVC()
-        let v3 = ModelVC()
+        let v1 = ViewListVC()
+        let v2 = ControllerListVC()
+        let v3 = ModelListVC()
         let v4 = TestVC()
         
         v1.tabBarItem = ESTabBarItem.init(title: "View", image: UIImage(named: "tab_discovery"), selectedImage: UIImage(named: "tab_discovery_s"))
@@ -77,9 +77,9 @@ class TabBarController {
             }
         }
         
-        let v1 = ViewVC()
-        let v2 = ControllerVC()
-        let v3 = ModelVC()
+        let v1 = ViewListVC()
+        let v2 = ControllerListVC()
+        let v3 = ModelListVC()
         let v4 = TestVC()
         let v0 = GeneralSubpage()
         

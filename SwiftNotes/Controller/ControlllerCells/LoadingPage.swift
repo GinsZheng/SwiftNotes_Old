@@ -41,3 +41,10 @@ class LoadingPage: UIViewController {
  viewWillAppear 每次回到页面就会重新加载(包括返回、标签切换)，但不包括 unpresent 方式返回页面
  viewDidAppear 同上
  */
+
+/*
+ 与viewWillAppear平行：
+ 1. touchesBegan       点击即触发
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {}
+ 
+ */

@@ -1,5 +1,5 @@
 //
-//  ModelVC.swift
+//  ModelListVC.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/10.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModelVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let controllerList = ["Array", "Basic Model", "HandyJSON", "Joined Model", "Request", "SwiftyJSON", "Time"]
     let controllerPage = [ArrayPage(), BasicModelPage(), HandyJSONPage(), JoinedModelPage(), RequestPage(), SwiftyJSONPage(), TimePage()]

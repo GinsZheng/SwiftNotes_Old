@@ -1,5 +1,5 @@
 //
-//  ControllerVC.swift
+//  ControllerListVC.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/10.
@@ -9,7 +9,7 @@
 
 import UIKit
 
-class ControllerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ControllerListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let controllerList = ["Class", "Decorator", "Delegate", "Delegate2", "Loading", "Menu Controller", "Number Formatter", "Plist", "Protocol", "Reload Data", "Try"]
     let controllerPage = [ClassPage(), DecoratorPage(), DelegatePage(), Delegate2Page(), LoadingPage(), MenuControllerPage(), NumberFormatterPage(), PlistPage(), ProtocolPage(), ReloadDataPage(), TryPage()]

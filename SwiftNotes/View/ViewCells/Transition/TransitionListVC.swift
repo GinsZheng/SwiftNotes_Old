@@ -12,16 +12,16 @@ import Hero
 
 class TransitionPage: UIViewController {
     
-    let titleArray: Array<String> = [
+    let titleArray = [
         "简单实例1",
         "简单实例2",
         "简单实例3"
     ]
     
-    let viewControllerArray: Array<UIViewController> = [
-        ViewController_1A(),
-        ViewController_2A(),
-        ViewController_3A()
+    let viewControllerArray = [
+        Transition1FromVC(),
+        Transition2FromVC(),
+        ViewController_2A()
     ]
 
     override func viewDidLoad() {
@@ -29,41 +29,38 @@ class TransitionPage: UIViewController {
         view.backgroundColor = .white
         
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 15
-        layout.itemSize = CGSize(width: self.view.bounds.width - 30, height: 70)
+        layout.minimumLineSpacing = 20
+        layout.itemSize = CGSize(width: kScreenWidth - 40, height: 56)
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
+        collectionView.set(superview: view)
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
-        self.view.addSubview(collectionView)
-        
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
 }
 
-extension TransitionPage:UICollectionViewDataSource,UICollectionViewDelegate{
+extension TransitionPage: UICollectionViewDataSource,UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.titleArray.count
+        return titleArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+        cell.setBackgroundColor(color: cFFF)
         cell.layer.cornerRadius = 10
-        cell.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4).cgColor
-        cell.layer.shadowRadius = 5
-        cell.layer.shadowOpacity = 5
-        cell.layer.shadowOffset = CGSize(width: 3, height: 5)
+        cell.setShadow(y: 2, radius: 12)
         
         let titleLabel = UILabel()
-        titleLabel.text = self.titleArray[indexPath.item]
-        titleLabel.frame = CGRect(x: 50, y: 0, width: 100, height: 70)
-        cell.contentView.addSubview(titleLabel)
+        titleLabel.set(superview: cell.contentView, text: titleArray[indexPath.item])
+        titleLabel.setStyle17pt222()
+        titleLabel.setFrame(left: 15, centerY: cell.contentView.centerY)
         
         return cell
     }
@@ -72,5 +69,6 @@ extension TransitionPage:UICollectionViewDataSource,UICollectionViewDelegate{
         let vc = self.viewControllerArray[indexPath.item]
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
 }
 
