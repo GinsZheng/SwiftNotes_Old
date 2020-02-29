@@ -11,8 +11,8 @@ import UIKit
 class ViewVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    let controlList = ["Button", "Date Picker", "Image View", "Label", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Switch", "Table View", "Text Field", "Text View", "View", "Web View", "Animation", "Styles"]
-    let controlPage = [ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), ViewPage(), WebViewPage(), AnimationPage(), StylesPage()]
+    let controlList = ["Animation", "Button", "Date Picker", "Image View", "Label", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Styles", "Switch", "Table View", "Text Field", "Text View", "Transition", "View", "Web View"]
+    let controlPage = [AnimationPage(), ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), StylesPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), TransitionPage(), ViewPage(), WebViewPage()]
     
     
     override func viewDidLoad() {
