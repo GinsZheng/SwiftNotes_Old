@@ -13,15 +13,13 @@ import Hero
 class TransitionPage: UIViewController {
     
     let titleArray = [
-        "简单实例1",
-        "简单实例2",
-        "简单实例3"
+        "神奇移动",
+        "渐隐渐现",
     ]
     
     let viewControllerArray = [
         Transition1FromVC(),
         Transition2FromVC(),
-        ViewController_2A()
     ]
 
     override func viewDidLoad() {

@@ -10,8 +10,8 @@ import UIKit
 
 class ModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controllerList = ["Array", "Basic Model", "HandyJSON", "Joined Model", "Request", "SwiftyJSON", "Time"]
-    let controllerPage = [ArrayPage(), BasicModelPage(), HandyJSONPage(), JoinedModelPage(), RequestPage(), SwiftyJSONPage(), TimePage()]
+    let controllerList = ["Array", "Basic Model", "Joined Model", "Request", "SwiftyJSON", "Time"]
+    let controllerPage = [ArrayPage(), BasicModelPage(), JoinedModelPage(), RequestPage(), SwiftyJSONPage(), TimePage()]
     
     override func viewDidLoad() {
         super.viewDidLoad()

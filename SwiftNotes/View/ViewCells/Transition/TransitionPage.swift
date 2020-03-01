@@ -73,7 +73,8 @@ class Transition1ToVC: UIViewController {
         // 设置新增的whiteView的始态，只需在数组中加入有差异的部分：
         // translate(y:500) - 设置view是从y = 500的位置向y = 300的位置移动，
         // useGlobalCoordinateSpace设置为独立的View(不设置的话效果差)
-        whiteView.hero.modifiers = [.translate(y:500), .useGlobalCoordinateSpace]
+        // 数组内常用的动画，见底部笔记
+        whiteView.hero.modifiers = [.translate(y: 500), .useGlobalCoordinateSpace]
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -84,7 +85,7 @@ class Transition1ToVC: UIViewController {
 
 
 
-// 转场3 渐隐渐现
+// 转场2 渐隐渐现
 class Transition2FromVC: UIViewController {
     
     let button = UIButton()
@@ -94,11 +95,10 @@ class Transition2FromVC: UIViewController {
         view.backgroundColor = .white
         
         button.set(superview: view, target: self, action: #selector(goNext))
-        button.setStyleSolidBtn(title: "反复横跳")
+        button.setStyleSolidBtn(title: "渐隐渐现")
         button.setCornerRadius(radius: 50)
-        button.setFrame(left: 50, top: 200, width: 100, height: 100)
+        button.setFrame(centerX: view.centerX, top: 200, width: 100, height: 100)
         
-        button.hero.id = "button"
     }
     
     @objc func goNext() {
@@ -111,108 +111,49 @@ class Transition2FromVC: UIViewController {
 class Transition2ToVC: UIViewController {
     
     let button = UIButton()
+    let blackView = UIView()
+    let bgImage = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        button.set(superview: view, target: self, action: #selector(goBack))
-        button.setStyleSolidBtn(title: "反复横跳")
-        button.setCornerRadius(radius: 50)
-        button.setFrame(right: 50, top: 288, width: 100, height: 100)
         
-        button.hero.id = "button"
+        blackView.set(superview: view, backgroundColor: c000_97)
+        blackView.setFrame(allEdges: 0)
+        
+        bgImage.set(superview: view, imageName: "adding_background")
+        bgImage.setStyleImageView(cornerRadius: 0)
+        bgImage.setFrame(allEdges: 0)
+        
+        blackView.hero.modifiers = [.opacity(0), .duration(1), .useGlobalCoordinateSpace]
+        bgImage.hero.modifiers = [.opacity(0), .duration(1), .delay(0.5), .useGlobalCoordinateSpace]
         
     }
     
-    @objc func goBack() {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.unpresent()
     }
     
-    
 }
 
-
-
-// 转场3 fromView
-// 所有的注释部分是与第一个页面的对比与提示
-class ViewController_2A: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        let grayView = UIView()
-        grayView.frame = CGRect(x: 50, y: 120, width: 50, height: 50)
-        grayView.layer.cornerRadius = 25
-        grayView.backgroundColor = .lightGray
-        self.view.addSubview(grayView)
-        
-        grayView.hero.id = "grayView"
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let toVC = ViewController_2B()
-        toVC.hero.isEnabled = true
-        toVC.modalPresentationStyle = .fullScreen
-        self.present(toVC, animated: true, completion: nil)
-    }
-}
-
-// 转场2 toView
-class ViewController_2B: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
-    
-    var collectionView: UICollectionView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        
-        let grayView = UIView()
-        grayView.frame = CGRect(x: 70, y: 180, width: 300, height: 50)
-        grayView.layer.cornerRadius = 15
-        grayView.backgroundColor = .lightGray
-        self.view.addSubview(grayView)
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 15
-        layout.minimumInteritemSpacing = 15
-        layout.itemSize = CGSize(width: 60, height: 60)
-        layout.scrollDirection = .vertical
-        
-        collectionView = UICollectionView(frame: CGRect(x: 90, y: 270, width: 260, height: 300), collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        self.view.addSubview(collectionView)
-        
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        /*-------------主要--------------*/
-        grayView.hero.id = "grayView"
-        collectionView.hero.modifiers = [.cascade]      //层叠应用增加子视图的延迟修饰符(添加子视图动画时会有延迟加载)
-        /*------------------------------*/
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.layer.cornerRadius = 10
-        cell.backgroundColor = .hex(cF0F1F3)
-        
-        /*-------------主要--------------*/
-        cell.hero.modifiers = [.fade,.scale(0.5)]   //在添加cell时为其添加动画[.fade(淡入淡出的效果),.scale(0.5)放大倍数为0.5]
-        /*------------------------------*/
-        
-        return cell
-    }
-}
+/*
+ whiteView.hero.modifiers = [.translate(y:500), .useGlobalCoordinateSpace]
+ 
+ .translate 为动画参数，等位的有：
+ 
+ 动画参数：
+ .scale(x: CGFloat = 1, y: CGFloat = 1, z: CGFloat = 1)
+ .scale(_ xy: CGFloat) // 等比例缩放
+ .translate(x: CGFloat = 0, y: CGFloat = 0, z: CGFloat = 0) // 平移
+ .rotate(x: CGFloat = 0, y: CGFloat = 0, z: CGFloat = 0)
+ .opacity(_ opacity: CGFloat)
+ .backgroundColor(_ backgroundColor: UIColor)
+ .cornerRadius(_ cornerRadius: CGFloat)
+ 
+ 时长等属性
+ .duration(_ duration: TimeInterval)
+ .delay(_ delay: TimeInterval)
+ 
+ 
+ */

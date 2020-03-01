@@ -82,6 +82,7 @@ let c000_80 = "CC000000"
 let c000_85 = "D9000000"
 let c000_90 = "E5000000"
 let c000_95 = "F2000000"
+let c000_97 = "F7000000"
 
 // translucent white
 let cFFF_5 = "0DFFFFFF"

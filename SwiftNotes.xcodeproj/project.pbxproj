@@ -61,9 +61,6 @@
 		7A2AC43F240A8AD800B95E43 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; };
 		7A31324F2392A6680008298C /* ClassPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31324E2392A6680008298C /* ClassPage.swift */; };
 		7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33086823CC48A30021BA5B /* RequestPage.swift */; };
-		7A33088A23CC66850021BA5B /* HandyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A75C27B23CC430C00F9376D /* HandyJSON.framework */; };
-		7A33088B23CC66850021BA5B /* HandyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A75C27B23CC430C00F9376D /* HandyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7A3308BF23CC67360021BA5B /* HandyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */; };
 		7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3308C223CC6DAD0021BA5B /* Styles.swift */; };
 		7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; };
 		7A3647F0238AB1D1000BBECD /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -194,62 +191,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = A121AC451CA35C79005A31D1;
 			remoteInfo = "SQLite watchOS";
-		};
-		7A75C27A23CC430C00F9376D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 21520C441D3341B200F53111;
-			remoteInfo = "HandyJSON iOS";
-		};
-		7A75C27C23CC430C00F9376D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 21520C5B1D3344A900F53111;
-			remoteInfo = HandyJSONDemo;
-		};
-		7A75C27E23CC430C00F9376D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 217B046D1D571B9F0035A8E2;
-			remoteInfo = "HandyJSON iOS Tests";
-		};
-		7A75C28023CC430C00F9376D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 393E0F9B1DA1650E00B3BC12;
-			remoteInfo = "HandyJSON watchOS";
-		};
-		7A75C28223CC430C00F9376D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 393E0FB11DA2441E00B3BC12;
-			remoteInfo = "HandyJSON tvOS";
-		};
-		7A75C28423CC430C00F9376D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 393E0FB91DA2441E00B3BC12;
-			remoteInfo = "HandyJSON tvOS Tests";
-		};
-		7A75C28623CC430C00F9376D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 393E0FE11DA2494F00B3BC12;
-			remoteInfo = "HandyJSON macOS";
-		};
-		7A75C28823CC430C00F9376D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 393E0FE91DA2494F00B3BC12;
-			remoteInfo = "HandyJSON macOS Tests";
 		};
 		7A9DA3FA240A901100AFB585 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -402,7 +343,6 @@
 			files = (
 				7AEE56182406CA5A001B868A /* ESTabBarController.framework in Embed Frameworks */,
 				7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */,
-				7A33088B23CC66850021BA5B /* HandyJSON.framework in Embed Frameworks */,
 				7A9DA3FF240A902600AFB585 /* SnapKit.framework in Embed Frameworks */,
 				7AFF38D822AF828300AC4958 /* Alamofire.framework in Embed Frameworks */,
 				7A3647F0238AB1D1000BBECD /* SQLite.framework in Embed Frameworks */,
@@ -474,7 +414,6 @@
 		7A2AC40E240A8ABB00B95E43 /* Hero.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Hero.xcodeproj; path = Hero/Hero.xcodeproj; sourceTree = "<group>"; };
 		7A31324E2392A6680008298C /* ClassPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPage.swift; sourceTree = "<group>"; };
 		7A33086823CC48A30021BA5B /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
-		7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyJSONPage.swift; sourceTree = "<group>"; };
 		7A3308C223CC6DAD0021BA5B /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		7A3647C9238AB178000BBECD /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		7A3647F4238AB287000BBECD /* BasicModelPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModelPage.swift; sourceTree = "<group>"; };
@@ -483,7 +422,6 @@
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7A64873F23FAE319006B6FC1 /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		7A65113A23D6A332005E4FD4 /* UIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIClass.swift; sourceTree = "<group>"; };
-		7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HandyJSON.xcodeproj; path = "HandyJSON-master/HandyJSON.xcodeproj"; sourceTree = "<group>"; };
 		7A76EF6223CF17B400350087 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		7A782D6A23CF20D900E09ED0 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		7A7B5D3B23C05A150079A931 /* ArraysPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysPage.swift; sourceTree = "<group>"; };
@@ -510,7 +448,6 @@
 			files = (
 				7A2AC43F240A8AD800B95E43 /* Hero.framework in Frameworks */,
 				7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */,
-				7A33088A23CC66850021BA5B /* HandyJSON.framework in Frameworks */,
 				7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */,
 				7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */,
 				7AEE56172406CA5A001B868A /* ESTabBarController.framework in Frameworks */,
@@ -543,7 +480,6 @@
 				7A2AC40E240A8ABB00B95E43 /* Hero.xcodeproj */,
 				7AEE560E2406CA47001B868A /* ESTabBarControllerExample.xcodeproj */,
 				7A114CB7240570420058E70A /* pop.framework */,
-				7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */,
 				7A3647C9238AB178000BBECD /* SQLite.xcodeproj */,
 				7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */,
 				7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */,
@@ -705,21 +641,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		7A75C27023CC430B00F9376D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7A75C27B23CC430C00F9376D /* HandyJSON.framework */,
-				7A75C27D23CC430C00F9376D /* HandyJSONDemo.app */,
-				7A75C27F23CC430C00F9376D /* HandyJSON iOS Tests.xctest */,
-				7A75C28123CC430C00F9376D /* HandyJSON.framework */,
-				7A75C28323CC430C00F9376D /* HandyJSON.framework */,
-				7A75C28523CC430C00F9376D /* HandyJSON tvOS Tests.xctest */,
-				7A75C28723CC430C00F9376D /* HandyJSON.framework */,
-				7A75C28923CC430C00F9376D /* HandyJSON macOS Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		7A89B2B1240AB9A7004688FD /* Transition */ = {
 			isa = PBXGroup;
 			children = (
@@ -743,7 +664,6 @@
 			children = (
 				7A7B5D3B23C05A150079A931 /* ArraysPage.swift */,
 				7A3647F4238AB287000BBECD /* BasicModelPage.swift */,
-				7A3308BE23CC67360021BA5B /* HandyJSONPage.swift */,
 				7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */,
 				7A2AC3712409105F00B95E43 /* TimePage.swift */,
 				7A33086823CC48A30021BA5B /* RequestPage.swift */,
@@ -988,10 +908,6 @@
 					ProjectRef = 7AEE560E2406CA47001B868A /* ESTabBarControllerExample.xcodeproj */;
 				},
 				{
-					ProductGroup = 7A75C27023CC430B00F9376D /* Products */;
-					ProjectRef = 7A75C26F23CC430B00F9376D /* HandyJSON.xcodeproj */;
-				},
-				{
 					ProductGroup = 7A2AC40F240A8ABB00B95E43 /* Products */;
 					ProjectRef = 7A2AC40E240A8ABB00B95E43 /* Hero.xcodeproj */;
 				},
@@ -1100,62 +1016,6 @@
 			fileType = wrapper.framework;
 			path = SQLite.framework;
 			remoteRef = 7A3647E6238AB179000BBECD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7A75C27B23CC430C00F9376D /* HandyJSON.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = HandyJSON.framework;
-			remoteRef = 7A75C27A23CC430C00F9376D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7A75C27D23CC430C00F9376D /* HandyJSONDemo.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = HandyJSONDemo.app;
-			remoteRef = 7A75C27C23CC430C00F9376D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7A75C27F23CC430C00F9376D /* HandyJSON iOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "HandyJSON iOS Tests.xctest";
-			remoteRef = 7A75C27E23CC430C00F9376D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7A75C28123CC430C00F9376D /* HandyJSON.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = HandyJSON.framework;
-			remoteRef = 7A75C28023CC430C00F9376D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7A75C28323CC430C00F9376D /* HandyJSON.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = HandyJSON.framework;
-			remoteRef = 7A75C28223CC430C00F9376D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7A75C28523CC430C00F9376D /* HandyJSON tvOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "HandyJSON tvOS Tests.xctest";
-			remoteRef = 7A75C28423CC430C00F9376D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7A75C28723CC430C00F9376D /* HandyJSON.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = HandyJSON.framework;
-			remoteRef = 7A75C28623CC430C00F9376D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		7A75C28923CC430C00F9376D /* HandyJSON macOS Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "HandyJSON macOS Tests.xctest";
-			remoteRef = 7A75C28823CC430C00F9376D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7A9DA3FB240A901100AFB585 /* SnapKit.framework */ = {
@@ -1339,7 +1199,6 @@
 				7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */,
 				7A21613F238986AA00D5A93A /* GeneralSubpage.swift in Sources */,
 				7A216161238986AF00D5A93A /* SegmentControlPage.swift in Sources */,
-				7A3308BF23CC67360021BA5B /* HandyJSONPage.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
 				7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */,
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
