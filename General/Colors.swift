@@ -113,3 +113,5 @@ let cThemeHightlightedFill = cBlue_2C9EFF_60
 let cThemeDisabledFill = cBlue_2C9EFF_40
 let cShadowColor = c133660_15_shadow
 let cSeparatorColor = c000820_10_separator
+let cMainBlack = c222
+

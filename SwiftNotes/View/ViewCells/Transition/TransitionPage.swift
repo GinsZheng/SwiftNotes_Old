@@ -70,7 +70,7 @@ class Transition1ToVC: UIViewController {
         grayView.hero.id = "grayView"
         blueView.hero.id = "blueView"
         
-        // 设置新增的whiteView的始态，只需在数组中加入有差异的部分：
+        // 4. 设置新增的whiteView的始态，只需在数组中加入有差异的部分：
         // translate(y:500) - 设置view是从y = 500的位置向y = 300的位置移动，
         // useGlobalCoordinateSpace设置为独立的View(不设置的话效果差)
         // 数组内常用的动画，见底部笔记
@@ -78,7 +78,6 @@ class Transition1ToVC: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // 4. 设置反向动画
         self.dismiss(animated: true, completion: nil)
     }
 }

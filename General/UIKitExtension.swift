@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 extension UIView {
-    
-    func set(superview: UIView) {
+    /* @objc
+     1.加上@objc后，extesion中的函数才可被子类override
+     2.加上@objc修饰后的类型,可以直接供Objective-C调用
+     */
+    @objc func set(superview: UIView) {
         superview.addSubview(self)
     }
     
@@ -308,20 +311,22 @@ extension UITextView {
 
 extension UITextField {
     
-    func set(superview: UIView, placeholder: String, delegate: UITextFieldDelegate) {
+    func set(superview: UIView, placeholder: String, delegate: UITextFieldDelegate?, textColor: String = cMainBlack, isUserInteractionEnabled: Bool = true) {
         self.placeholder = placeholder
-        superview.addSubview(self)
         self.delegate = delegate
+        self.textColor = .hex(textColor)
+        self.isUserInteractionEnabled = isUserInteractionEnabled
+        superview.addSubview(self)
     }
     
     var placeholderColor:UIColor {
-        get{
+        get {
             let color =   self.value(forKeyPath: "_placeholderLabel.textColor")
             if(color == nil){
                 return UIColor.white;
             }
             return color as! UIColor;
-        } set{
+        } set {
             self.setValue(newValue, forKeyPath: "_placeholderLabel.textColor")
         }
     }
@@ -527,8 +532,8 @@ extension UIViewController {
         self.present(toTarget, animated: animated, completion: completion)
     }
     
-    func unpresent(animated: Bool = true, completion: @escaping () -> Void = {}) {
-        self.dismiss(animated: animated, completion: completion)
+    func dismiss(completion: @escaping () -> Void = {}) {
+        self.dismiss(animated: true, completion: completion)
     }
     
     func hideNavBar() {

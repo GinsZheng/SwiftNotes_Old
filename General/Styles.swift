@@ -10,8 +10,14 @@ import UIKit
 
 extension UIView {
     
-    func setStyleCellShadow() {
+    func setStyleCellShadow18() {
         self.setShadow(color: c133660_15_shadow, x: 0, y: 4, radius: 18)
+        self.setBackgroundColor(color: cFFF)
+        self.setCornerRadiusWithoutMask(radius: 8)
+    }
+    
+    func setStyleCellShadow16() {
+        self.setShadow(color: c133660_15_shadow, x: 0, y: 4, radius: 16)
         self.setBackgroundColor(color: cFFF)
         self.setCornerRadiusWithoutMask(radius: 8)
     }
@@ -80,8 +86,16 @@ extension UILabel {
         self.setFontStyle(size: 17, color: c999)
     }
     
+    func setStyle17ptCCC() {
+        self.setFontStyle(size: 17, color: cCCC)
+    }
+    
     func setStyle15ptFFF80Center() {
         self.setFontStyle(size: 15, color: cFFF_80, alignment: .center)
+    }
+    
+    func setStyle14pt888() {
+        self.setFontStyle(size: 14, color: c888)
     }
     
     func setStyle14pt999() {

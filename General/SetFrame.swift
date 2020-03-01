@@ -134,24 +134,32 @@ extension UIView {
     
     // 常用其他约束
     func setFrame(left: CGFloat, top: CGFloat, right: CGFloat, bottom: CGFloat) {
-        self.frame.origin.x = left
-        self.frame.origin.y = top
         self.frame.size.width = self.superview!.width - left - right
         self.frame.size.height = self.superview!.height - top - bottom
+        self.frame.origin.x = left
+        self.frame.origin.y = top
     }
     
     func setFrame(allEdges: CGFloat) {
-        self.frame.origin.x = allEdges
-        self.frame.origin.y = allEdges
         self.frame.size.width = self.superview!.width - allEdges*2
         self.frame.size.height = self.superview!.height - allEdges*2
+        self.frame.origin.x = allEdges
+        self.frame.origin.y = allEdges
     }
     
     func setFrame(left: CGFloat, top: CGFloat, right: CGFloat, height: CGFloat) {
-        self.frame.origin.x = left
-        self.frame.origin.y = top
         self.frame.size.width = self.superview!.width - left - right
         self.frame.size.height = height
+        self.frame.origin.x = left
+        self.frame.origin.y = top
+    }
+    
+    func setFrame(left: CGFloat, centerY: CGFloat, right: CGFloat, height: CGFloat) {
+        self.frame.size.width = self.superview!.width - left - right
+        self.frame.size.height = height
+        self.frame.origin.x = left
+        self.centerY = centerY
+
     }
     
     func setFrame(left: CGFloat, top: CGFloat, width: CGFloat, bottom: CGFloat) {
