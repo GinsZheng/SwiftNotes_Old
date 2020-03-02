@@ -11,7 +11,7 @@ import SQLite
 import SwiftyJSON
 
 // 写个委托，完成子VC切到父VC时的通信
-// 如果不是 unpresent() 过场，直接在父VC用viewDidLoad()即可刷新，不用委托
+// 如果不是 dismiss() 过场，直接在父VC用viewDidLoad()即可刷新，不用委托
 protocol ReloadDelegate: NSObjectProtocol {
     func reloadItemsList()
 }
@@ -127,7 +127,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
         model.insert(item: insertJSON)
         model.printId()
         
-        self.unpresent()
+        self.dismiss()
         
         if delegate != nil {
             delegate!.reloadItemsList()

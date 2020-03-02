@@ -10,21 +10,10 @@ import UIKit
 
 extension UIView {
     
-    func setStyleCellShadow18() {
-        self.setShadow(color: c133660_15_shadow, x: 0, y: 4, radius: 18)
-        self.setBackgroundColor(color: cFFF)
-        self.setCornerRadiusWithoutMask(radius: 8)
-    }
-    
     func setStyleCellShadow16() {
         self.setShadow(color: c133660_15_shadow, x: 0, y: 4, radius: 16)
         self.setBackgroundColor(color: cFFF)
         self.setCornerRadiusWithoutMask(radius: 8)
-    }
-    
-    func setStyleCellCard() {
-        self.setCornerRadius(radius: 8)
-        self.setBackgroundColor(color: cFFF)
     }
     
     func setStyleProgressBarBg() {

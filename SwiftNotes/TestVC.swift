@@ -11,6 +11,7 @@ import UIKit
 class TestVC: UIViewController {
 
     let pickerView = UIPickerView()
+    let myView = UIView()
     
     override func viewDidAppear(_ animated: Bool) {
 
@@ -18,6 +19,7 @@ class TestVC: UIViewController {
         view.setBackgroundColor(color: cFFF)
         self.title = "Test"
         
+        myView.setGradientLayer(colors: [UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cBlue_2C9EFF_90).cgColor], locations: [0, 1], startPoint: CGPoint.init(x: 0, y: 0), endPoint: CGPoint.init(x: 0, y: 1))
     }
 }
 

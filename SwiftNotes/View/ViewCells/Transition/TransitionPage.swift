@@ -57,7 +57,7 @@ class Transition1ToVC: UIViewController {
         blueView.setCornerRadius(radius: 0) // 这句可以省略，只需给出始态与终态
         blueView.setFrame(allEdges: 0)
         
-        grayView.set(superview: view, backgroundColor: cOrange_F7AD18)
+        grayView.set(superview: view, backgroundColor: cOrange_F9AD18)
         grayView.setCornerRadius(radius: 15)
         grayView.setFrame(centerX: view.centerX, top: 100, width: 100, height: 100)
         
@@ -131,7 +131,7 @@ class Transition2ToVC: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.unpresent()
+        self.dismiss()
     }
     
 }

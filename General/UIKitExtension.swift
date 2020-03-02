@@ -70,6 +70,7 @@ extension UIView {
          locations: [0, 0.3, 1]
          startPoint: CGPoint.init(x: 0, y: 0)
          endPoint: CGPoint.init(x: 1, y: 1)
+         注：要写在setFrame之后
          */
         
         let gradientLayer = CAGradientLayer()
@@ -588,3 +589,5 @@ extension UIStackView {
         self.distribution = distribution
     }
 }
+
+

@@ -12,21 +12,41 @@
 // 其中，c与后续元素直接连接，其他元素用“_”连接
 
 
-// Colorful
+// Blue
 let cBlue_2C9EFF = "2C9EFF"
-let cRed_FF5349 = "FF5349"
-let cGreen_25BE3C = "25BE3C"
-let cOrange_F7AD18 = "F7AD18"
-let cPurple_BF62F8 = "BF62F8"
-let cMagenta_FC5AAE = "FC5AAE"
-let cBluishGreen_01C7BD = "01C7BD"
-
-// Colorful color extension
 let cBlue_2C9EFF_13 = "212C9EFF"
 let cBlue_2C9EFF_23 = "3B2C9EFF"
 let cBlue_2C9EFF_40 = "662C9EFF"
 let cBlue_2C9EFF_60 = "992C9EFF"
+let cBlue_2C9EFF_90 = "E52C9EFF"
+
+// Red
+let cRed_FF5349 = "FF5349"
+let cRed_FF5349_90 = "E5FF5349"
+
+// Green
+let cGreen_25BE3C = "25BE3C"
+let cGreen_25BE3C_90 = "E525BE3C"
+
+// Orange
+let cOrange_F9AD18 = "F9AD18"
+let cOrange_F9AD18_90 = "E5F9AD18"
+
+// Purple
+let cPurple_BF62F8 = "BF62F8"
+let cPurple_BF62F8_90 = "E5BF62F8"
+
+// Magenta
+let cMagenta_FC5AAE = "FC5AAE"
+let cMagenta_FC5AAE_90 = "E5FC5AAE"
+
+// BluishGreen
+let cBluishGreen_01C7BD = "01C7BD"
+let cBluishGreen_01C7BD_90 = "E501C7BD"
+
 let c278DE5 = "278DE5" // 2C9EFF 按钮按下
+
+
 
 // No color
 let cNoColor = "00000000"

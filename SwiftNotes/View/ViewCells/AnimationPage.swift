@@ -38,7 +38,7 @@ class AnimationPage: UIViewController {
     @objc func startAnimation() {
         
         UIView.animate(withDuration: 4, delay: 0.4, options: [.autoreverse], animations: {
-            self.myView.backgroundColor = UIColor.hex(cOrange_F7AD18)
+            self.myView.backgroundColor = UIColor.hex(cOrange_F9AD18)
             self.myView.alpha = 0.5
             self.myView.y = 300
             self.myView.width = 335
