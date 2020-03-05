@@ -498,6 +498,15 @@ extension UIButton {
         superview.addSubview(self)
         self.addTarget(target, action: action, for: forEvent)
     }
+    
+    func extendTouchArea() {
+        // 需写在setFrame之后
+        if self.width <= 44 && self.height <= 44 {
+            self.setFrame(left: self.left - (44 - self.width)/2, top: self.top - (44 - self.height)/2, width: 44, height: 44)
+        } else if self.width >= 44 && self.height <= 32 {
+            self.setFrame(left: self.left, top: self.top - (32 - self.height)/2, width: self.width, height: 32)
+        }
+    }
 }
 
 

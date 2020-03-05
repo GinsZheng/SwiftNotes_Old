@@ -82,7 +82,7 @@
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
 		7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */; };
 		7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74623CA24D5004DB044 /* FileManager.swift */; };
-		7AC56A0A23D4395C00538975 /* FrameNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC56A0923D4395C00538975 /* FrameNote.swift */; };
+		7AC56A0A23D4395C00538975 /* ViewNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC56A0923D4395C00538975 /* ViewNotes.swift */; };
 		7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD300024042A5100D300A6 /* TabBarController.swift */; };
 		7AEE56172406CA5A001B868A /* ESTabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEE56162406CA48001B868A /* ESTabBarController.framework */; };
 		7AEE56182406CA5A001B868A /* ESTabBarController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEE56162406CA48001B868A /* ESTabBarController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -433,7 +433,7 @@
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
 		7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataNote.swift; sourceTree = "<group>"; };
 		7AC3B74623CA24D5004DB044 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
-		7AC56A0923D4395C00538975 /* FrameNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameNote.swift; sourceTree = "<group>"; };
+		7AC56A0923D4395C00538975 /* ViewNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNotes.swift; sourceTree = "<group>"; };
 		7ACD300024042A5100D300A6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7AEE560E2406CA47001B868A /* ESTabBarControllerExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ESTabBarControllerExample.xcodeproj; path = ESTabBarController/ESTabBarControllerExample/ESTabBarControllerExample.xcodeproj; sourceTree = "<group>"; };
 		7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlEventNote.swift; sourceTree = "<group>"; };
@@ -737,7 +737,7 @@
 		7AC3B74123CA05EE004DB044 /* ViewNotes */ = {
 			isa = PBXGroup;
 			children = (
-				7AC56A0923D4395C00538975 /* FrameNote.swift */,
+				7AC56A0923D4395C00538975 /* ViewNotes.swift */,
 			);
 			path = ViewNotes;
 			sourceTree = "<group>";
@@ -1222,7 +1222,7 @@
 				7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */,
 				7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */,
 				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
-				7AC56A0A23D4395C00538975 /* FrameNote.swift in Sources */,
+				7AC56A0A23D4395C00538975 /* ViewNotes.swift in Sources */,
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
 				7A8A7EAF23D1A7F50067D9C3 /* JoinedModelPage.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
