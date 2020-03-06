@@ -19,6 +19,7 @@ import SwiftyJSON
 
 class JoinedModel: SQLiteManager {
     // 模型只需修改字段名、数据类型，及表名
+    let tableName = "progress"
     let id = Expression<Int>("id")
     let currentProgress = Expression<Int>("currentProgress")
     let startTime = Expression<String>("startTime")
@@ -26,7 +27,7 @@ class JoinedModel: SQLiteManager {
     let itemId = Expression<Int>("itemId")
     
     func getTable() -> Table {
-        table = super.getTable(tableName: "progress") { (t) in
+        table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)
             t.column(currentProgress)
             t.column(startTime)

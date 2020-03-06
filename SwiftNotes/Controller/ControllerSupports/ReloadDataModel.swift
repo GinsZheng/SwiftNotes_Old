@@ -11,11 +11,12 @@ import SwiftyJSON
 
 class ReloadDataModel: SQLiteManager {
     // 模型只需修改字段名及数据类型，及表名
+    let tableName = "reloadData"
     let id = Expression<Int>("id")
     let name = Expression<String>("name")
 
     func getTable() -> Table {
-        table = super.getTable(tableName: "reloadData") { (t) in
+        table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)
             t.column(name)
         }
@@ -82,5 +83,10 @@ extension ReloadDataModel {
         print("id列表：\(idList)")
     }
     
+    func getCount() -> Binding {
+        self.getTable()
+        let result = try! getDB().scalar("SELECT count(*) FROM \(tableName)")
+        return result ?? 0
+    }
 }
 

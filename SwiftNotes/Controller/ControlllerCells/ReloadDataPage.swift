@@ -115,7 +115,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     
     @objc func addItem() {
         
-        let autoId = model.getCount(tableName: "reloadData")
+        let autoId = model.getCount()
         print(autoId)
         let insertRow: [String: Any] = [
             "id": autoId,

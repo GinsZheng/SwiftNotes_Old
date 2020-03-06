@@ -80,12 +80,3 @@ class SQLiteManager: NSObject {
     }
 }
 
-
-extension SQLiteManager {
-    
-    func getCount(tableName: String) -> Binding {
-        let result = try! getDB().scalar("SELECT count(*) FROM \(tableName)")
-        return result ?? 0
-    }
-    
-}

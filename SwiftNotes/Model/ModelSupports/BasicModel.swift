@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class BasicModel: SQLiteManager {
     // 模型只需修改字段名、数据类型，及表名
+    let tableName = "items"
     let id = Expression<Int>("id")
     let name = Expression<String>("name")
     let resume = Expression<String>("resume")
@@ -19,7 +20,7 @@ class BasicModel: SQLiteManager {
     
     
     func getTable() -> Table {
-        table = super.getTable(tableName: "items") { (t) in
+        table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)
             t.column(name)
             t.column(resume)
@@ -134,6 +135,12 @@ extension BasicModel {
             idList.append(item[self.id])
         }
         print("id列表：\(idList)")
+    }
+
+    func getCount() -> Binding {
+        self.getTable()
+        let result = try! getDB().scalar("SELECT count(*) FROM \(tableName)")
+        return result ?? 0
     }
     
 }

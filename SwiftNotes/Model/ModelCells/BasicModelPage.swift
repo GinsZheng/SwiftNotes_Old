@@ -30,14 +30,14 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // model的基本操作：增删改查
         // 示例值
-        let exampleId = 4
+        let autoId = model.getCount()
         var exampleName = "name9"
         let exampleResume = ""
         let exampleTotalProgress = 100
         let exampleColor = 0
         
         let insertRow: [String: Any] = [
-            "id": exampleId,
+            "id": autoId,
              "name": exampleName,
              "resume": exampleResume,
              "totalProgress": exampleTotalProgress,
@@ -47,7 +47,7 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         exampleName = "name4"
         let updataRow: [String: Any] = [
-            "id": exampleId,
+            "id": autoId,
             "name": exampleName,
             "resume": exampleResume,
             "totalProgress": exampleTotalProgress,
@@ -79,7 +79,7 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
         model.printId()
         
         // SQLite尝试
-        print(model.getCount(tableName: "items"))
+        print(model.getCount())
         
     }
     
