@@ -27,14 +27,14 @@ class JoinedModel: SQLiteManager {
     let itemId = Expression<Int>("itemId")
     
     func getTable() -> Table {
-        table = super.getTable(tableName: tableName) { (t) in
+        let table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)
             t.column(currentProgress)
             t.column(startTime)
             t.column(endTime)
             t.column(itemId)
         }
-        return table!
+        return table
     }
     
     // 增

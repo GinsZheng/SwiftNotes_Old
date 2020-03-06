@@ -16,11 +16,11 @@ class ReloadDataModel: SQLiteManager {
     let name = Expression<String>("name")
 
     func getTable() -> Table {
-        table = super.getTable(tableName: tableName) { (t) in
+        let table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)
             t.column(name)
         }
-        return table!
+        return table
     }
     
     // 增

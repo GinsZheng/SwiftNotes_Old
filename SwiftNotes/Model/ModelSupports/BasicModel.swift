@@ -20,14 +20,14 @@ class BasicModel: SQLiteManager {
     
     
     func getTable() -> Table {
-        table = super.getTable(tableName: tableName) { (t) in
+        let table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)
             t.column(name)
             t.column(resume)
             t.column(totalProgress)
             t.column(color)
         }
-        return table!
+        return table
     }
     
     

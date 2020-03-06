@@ -13,7 +13,11 @@ import SwiftyJSON
 class SQLiteManager: NSObject {
     
     private var db: Connection?
-    var table: Table?
+    private var table: Table?
+    
+    override init() {
+        super.init()
+    }
 
     func getDB() -> Connection {
 
