@@ -22,7 +22,7 @@ class ViewPage: UIViewController {
         multiCornersView.setBackgroundColor(color: cBlue_2C9EFF)
         multiCornersView.set(superview: view)
         multiCornersView.setFrame(left: 20, top: myView.bottom + 20, width: kScreenWidth - 40, height: 66)
-        multiCornersView.setCornerRadius(radius: 16, corners: [.topRight, .bottomRight])
+        multiCornersView.setCornerRadiusWithMask(radius: 16, corners: [.topRight, .bottomRight])
         
         let gradientView = UIView()
         gradientView.set(superview: view)

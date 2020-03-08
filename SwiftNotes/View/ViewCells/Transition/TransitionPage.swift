@@ -21,11 +21,11 @@ class Transition1FromVC: UIViewController {
         view.backgroundColor = .white
         
         grayView.set(superview: view, backgroundColor: cCCC)
-        grayView.setCornerRadius(radius: 15)
+        grayView.setCornerRadiusWithMask(radius: 15)
         grayView.setFrame(left: 40, top: 180, width: kScreenWidth - 80, height: 56)
         
         blueView.set(superview: view, backgroundColor: cF0F1F3)
-        blueView.setCornerRadius(radius: 10)
+        blueView.setCornerRadiusWithMask(radius: 10)
         blueView.setFrame(left: 90, top: 270, width: kScreenWidth - 180, height: 260)
         
         // 1. 设置UIView的id，要与第二个页面相同的UIView的id名相同
@@ -54,16 +54,16 @@ class Transition1ToVC: UIViewController {
         
         // 设置终态的View
         blueView.set(superview: view, backgroundColor: cF0F1F3)
-        blueView.setCornerRadius(radius: 0) // 这句可以省略，只需给出始态与终态
+        blueView.setCornerRadiusWithMask(radius: 0) // 这句可以省略，只需给出始态与终态
         blueView.setFrame(allEdges: 0)
         
         grayView.set(superview: view, backgroundColor: cOrange_F9AD18)
-        grayView.setCornerRadius(radius: 15)
+        grayView.setCornerRadiusWithMask(radius: 15)
         grayView.setFrame(centerX: view.centerX, top: 100, width: 100, height: 100)
         
         // 新增的UIView也为终态
         whiteView.set(superview: view, backgroundColor: cBlue_2C9EFF_40)
-        whiteView.setCornerRadius(radius: 15)
+        whiteView.setCornerRadiusWithMask(radius: 15)
         whiteView.setFrame(centerX: view.centerX, top: 400, width: 300, height: 400)
         
         // 3. 设置id，与FromVC对应
@@ -95,7 +95,7 @@ class Transition2FromVC: UIViewController {
         
         button.set(superview: view, target: self, action: #selector(goNext))
         button.setStyleSolidBtn(title: "渐隐渐现")
-        button.setCornerRadius(radius: 50)
+        button.setCornerRadiusWithMask(radius: 50)
         button.setFrame(centerX: view.centerX, top: 200, width: 100, height: 100)
         
     }

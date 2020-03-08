@@ -71,6 +71,13 @@ extension UILabel {
         let width = self.superview!.width - left - right
         self.frame = CGRect(x: left, y: top, width: setLabelWidth(width: width), height: getDefaultLineheight())
     }
+    
+    func setFrame(left: CGFloat, centerY: CGFloat, right: CGFloat) {
+        self.frame.size.width = self.superview!.width - left - right
+        self.frame.size.height = getDefaultLineheight()
+        self.frame.origin.x = left
+        self.centerY = centerY
+    }
 
 }
 
@@ -159,7 +166,6 @@ extension UIView {
         self.frame.size.height = height
         self.frame.origin.x = left
         self.centerY = centerY
-
     }
     
     func setFrame(left: CGFloat, top: CGFloat, width: CGFloat, bottom: CGFloat) {

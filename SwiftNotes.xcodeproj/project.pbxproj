@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A032A1E2414DC7400579F02 /* ControlNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A032A1D2414DC7400579F02 /* ControlNotes.swift */; };
 		7A114CB8240570420058E70A /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A114CB7240570420058E70A /* pop.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7A1EF03C23FAEF4B00BDEEBF /* ReloadDataPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */; };
 		7A1EF03E23FAF0E100BDEEBF /* ReloadDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EF03D23FAF0E100BDEEBF /* ReloadDataModel.swift */; };
@@ -353,6 +354,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A032A1D2414DC7400579F02 /* ControlNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlNotes.swift; sourceTree = "<group>"; };
 		7A114CB7240570420058E70A /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = ESTabBarController/ESTabBarControllerExample/ESTabBarControllerExample/Framework/pop.framework; sourceTree = "<group>"; };
 		7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataPage.swift; sourceTree = "<group>"; };
 		7A1EF03D23FAF0E100BDEEBF /* ReloadDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataModel.swift; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 		7AFED64723C97C770079456D /* ControllerNotes */ = {
 			isa = PBXGroup;
 			children = (
+				7A032A1D2414DC7400579F02 /* ControlNotes.swift */,
 				7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */,
 			);
 			path = ControllerNotes;
@@ -1212,6 +1215,7 @@
 				7A216156238986AF00D5A93A /* SwitchPage.swift in Sources */,
 				7A216154238986AF00D5A93A /* LabelPage.swift in Sources */,
 				7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */,
+				7A032A1E2414DC7400579F02 /* ControlNotes.swift in Sources */,
 				7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */,
 				7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */,
 				7A2AC3722409106000B95E43 /* TimePage.swift in Sources */,

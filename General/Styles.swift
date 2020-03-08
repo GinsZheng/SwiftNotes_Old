@@ -13,28 +13,28 @@ extension UIView {
     func setStyleCellShadow16() {
         self.setShadow(color: c133660_15_shadow, x: 0, y: 4, radius: 16)
         self.setBackgroundColor(color: cFFF)
-        self.setCornerRadiusWithoutMask(radius: 8)
+        self.setCornerRadius(radius: 8)
     }
     
     func setStyleProgressBarBg() {
         self.setBackgroundColor(color: cF0F1F3)
-        self.setCornerRadius(radius: 8)
+        self.setCornerRadiusWithMask(radius: 8)
     }
     
     func setStyleProgressBar(color: String) {
-        self.setCornerRadius(radius: 8)
+        self.setCornerRadiusWithMask(radius: 8)
         self.setBackgroundColor(color: color)
     }
     
     func setStylePresentView() {
         self.setBackgroundColor(color: cFFF)
-        self.setCornerRadius(radius: 16, corners: [.topLeft, .topRight])
+        self.setCornerRadiusWithMask(radius: 16, corners: [.topLeft, .topRight])
     }
     
     func setStyleChartBg() {
         self.setBackgroundColor(color: cFFF)
         self.setShadow(color: c133660_15_shadow, x: 0, y: 2, radius: 10)
-        self.setCornerRadiusWithoutMask(radius: 8)
+        self.setCornerRadiusWithMask(radius: 8)
         self.setBorder(color: c000_5, borderWidth: kSeparatorHeight)
     }
     
@@ -174,7 +174,7 @@ extension UITextView {
 extension UITextField {
     func setStyleOneLineTextField() {
         self.backgroundColor = .hex(cF0F1F3)
-        self.setCornerRadius(radius: 8)
+        self.setCornerRadiusWithMask(radius: 8)
         self.setTextPadding(left: 12, right: 12)
     }
 }
@@ -198,7 +198,7 @@ extension UIButton {
         self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
         self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_40), for: .disabled)
         self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_60), for: .highlighted)
-        self.setCornerRadius(radius: 8)
+        self.setCornerRadiusWithMask(radius: 8)
         
     }
     
@@ -209,15 +209,15 @@ extension UIButton {
         self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
         self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_40), for: .disabled)
         self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_60), for: .highlighted)
-        self.setCornerRadius(radius: 8)
+        self.setCornerRadiusWithMask(radius: 8)
     }
     
     func setStyleGhostBtn(title: String) {
         self.setStyleGhostButton(title: title, borderWidth: 1, cornerRadius: 8)
     }
     
-    func setStyleAddItemBarBtn() {
-        self.setTitle("添加一个学习项目", for: .normal)
+    func setStyleAddItemBarBtn(title: String) {
+        self.setTitle(title, for: .normal)
         self.setTitleColor(.hex(cAAA), for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 0)
@@ -226,7 +226,7 @@ extension UIButton {
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 2)
         self.setBackgroundImage(getImageWithColor(color: cF0F1F3), for: .normal)
         self.setBackgroundImage(getImageWithColor(color: cDDDEE0), for: .highlighted)
-        self.setCornerRadius(radius: 8)
+        self.setCornerRadiusWithMask(radius: 8)
     }
 }
 
@@ -257,7 +257,7 @@ extension UIButton {
         self.setTitleColor(UIColor.hex(titleColor), for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight) // 这里设置UILabel的颜色值将无效
         self.setBorder(color: cThemeBorder, borderWidth: borderWidth)
-        self.setCornerRadius(radius: cornerRadius)
+        self.setCornerRadiusWithMask(radius: cornerRadius)
     }
     
     func setStyleSolidButton(title: String, titleSize: CGFloat = 17, titleColor: String = cFFF, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {
@@ -267,7 +267,7 @@ extension UIButton {
         self.setBackgroundImage(getImageWithColor(color: cThemeFill), for: .normal)
         self.setBackgroundImage(getImageWithColor(color: cThemeHightlightedFill), for: .highlighted)
         self.setBackgroundImage(getImageWithColor(color: cThemeDisabledFill), for: .disabled)
-        self.setCornerRadius(radius: cornerRadius)
+        self.setCornerRadiusWithMask(radius: cornerRadius)
     }
     
     func setStyleSolidButton2(title: String, titleSize: CGFloat = 17, titleColor: String = cFFF, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {
@@ -275,14 +275,14 @@ extension UIButton {
         self.setTitleColor(.hex(titleColor), for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight)
         self.setBackgroundImage(getImageWithColor(color: cThemeFill), for: .normal)
-        self.setCornerRadius(radius: cornerRadius)
+        self.setCornerRadiusWithMask(radius: cornerRadius)
     }
     
     func setStyleSystemIconButton(imageName: String, backgroundImage: UIImage = getImageWithColor(color: cNoColor), cornerRadius: CGFloat = 0) {
         self.tintColor = .hex(c222)
         self.setImage(UIImage(named: imageName), for: .normal)
         self.setBackgroundImage(backgroundImage, for: .normal)
-        self.setCornerRadius(radius: cornerRadius)
+        self.setCornerRadiusWithMask(radius: cornerRadius)
     }
     
     func setStyleCustomIconButton(imageName: String) {

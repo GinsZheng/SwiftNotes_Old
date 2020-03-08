@@ -29,7 +29,7 @@ class AnimationPage: UIViewController {
         solidButton.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
         solidButton.setBackgroundImage(getImageWithColor(color: "992c9eff"), for: .highlighted)
         solidButton.setBackgroundImage(getImageWithColor(color: "662c9eff"), for: .disabled)
-        solidButton.setCornerRadius(radius: 4)
+        solidButton.setCornerRadiusWithMask(radius: 4)
         solidButton.addTarget(self, action: #selector(startAnimation), for: .touchUpInside)
         
         

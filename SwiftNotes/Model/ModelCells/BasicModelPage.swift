@@ -81,6 +81,10 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
         // SQLite尝试
         print(model.getCount())
         
+        // 联表查询
+        let joindTableValue = model.getJoindTableValue()
+        print("联表查询：\(joindTableValue)")
+        
     }
     
     func getNameArray(result: [Row]) {

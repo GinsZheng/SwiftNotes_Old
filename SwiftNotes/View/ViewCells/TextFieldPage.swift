@@ -18,6 +18,7 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
         textField.set(superview: view, placeholder: "Input something", delegate: self)
         textField.setFrame(left: 20, top: 20, width: kScreenWidth, height: 44)
         textField.addTarget(self, action: #selector(checkInputtedValue), for: .allEditingEvents)
+        textField.becomeFirstResponder() // 获取焦点
         
         let textField2 = UITextField()
         textField2.set(superview: view, placeholder: "NumberPad", delegate: self)

@@ -91,16 +91,6 @@ class BasicModel: SQLiteManager {
     }
     
     
-    // ??联表查
-    func searchJoinTable(_ table: SQLite.QueryType, on condition: SQLite.Expression<Bool>) {
-
-        let query = getTable().join(table, on: condition)
-        let result = try! getDB().prepare(query)
-        print("联表查询：\(Array(result))")
-        // 联表查询后得到什么类型的结果？
-    }
-    
-    
     // SQL语句查询
     func searchInSQL() {
         let stmt = try! getDB().prepare("SELECT id, name, totalProgress FROM items")
@@ -143,5 +133,13 @@ extension BasicModel {
         return result ?? 0
     }
     
+    func getJoindTableValue() -> Binding {
+        self.getTable()
+        JoinedModel().getTable()
+        
+        let result = try! getDB().scalar("SELECT name FROM items, progress WHERE items.id = progress.itemId")
+        return result ?? ""
+        
+    }
 }
 

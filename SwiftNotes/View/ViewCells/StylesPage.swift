@@ -19,8 +19,8 @@ class StylesPage: UIViewController {
         myView.setBackgroundColor(color: cBlue_2C9EFF)
         myView.set(superview: view)
         myView.setFrame(left: 20, top: 20, width: 200, height: 66)
-        myView.setCornerRadius(radius: 16, corners: [.topRight, .bottomRight])
-        // 关键点：setCornerRadius一定要在setFrame之后
+        myView.setCornerRadiusWithMask(radius: 16, corners: [.topRight, .bottomRight])
+        // 关键点：setCornerRadiusWithMask一定要在setFrame之后
         
         
         
@@ -31,7 +31,7 @@ class StylesPage: UIViewController {
         
         shadowView.set(superview: view, backgroundColor: cFFF)
         shadowView.setShadow(color: "40133660", x: 0, y: 4, radius: 20)
-        shadowView.setCornerRadiusWithoutMask(radius: 8)
+        shadowView.setCornerRadius(radius: 8)
         shadowView.setFrame(centerX: view.centerX, top: 100, width: 180, height: 58)
         
         header.set(superview: shadowView, text: "iOS投影扩散值: 20")

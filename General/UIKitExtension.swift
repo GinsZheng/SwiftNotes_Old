@@ -35,16 +35,16 @@ extension UIView {
         self.layer.borderWidth = borderWidth
     }
     
-    func setCornerRadius(radius: CGFloat) {
+    func setCornerRadiusWithMask(radius: CGFloat) {
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }
     
-    func setCornerRadiusWithoutMask(radius: CGFloat) {
+    func setCornerRadius(radius: CGFloat) {
         self.layer.cornerRadius = radius
     }
     
-    func setCornerRadius(radius: CGFloat, corners: UIRectCorner) {
+    func setCornerRadiusWithMask(radius: CGFloat, corners: UIRectCorner) {
         let maskPath = UIBezierPath.init(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize.init(width: radius, height: radius))
         let maskLayer = CAShapeLayer.init()
         maskLayer.frame = self.bounds
@@ -363,7 +363,7 @@ extension UIImageView {
     }
     
     func setStyleImageView(cornerRadius: CGFloat, conteneMode: UIView.ContentMode = .scaleAspectFill) {
-        self.setCornerRadius(radius: cornerRadius)
+        self.setCornerRadiusWithMask(radius: cornerRadius)
         self.contentMode = conteneMode
     }
     

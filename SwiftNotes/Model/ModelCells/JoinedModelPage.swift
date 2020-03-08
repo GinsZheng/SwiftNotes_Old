@@ -47,10 +47,6 @@ class JoinedModelPage: UIViewController {
         let itemId = Expression<Int>("itemId")
         
         
-        let result = basicModel.searchJoinTable(joinedTable, on: basicTable[id] == joinedTable[itemId])
-//        for rows in result {
-//            print("id: \(rows[result]), name: \(rows[basicModel.name])")
-//        }
     }
     
     
