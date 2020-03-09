@@ -1,39 +1,37 @@
 //
-//  ViewController.swift
+//  UIEffectsPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2019/6/8.
-//  Copyright © 2019 GinsMac. All rights reserved.
+//  Created by GinsMac on 2020/3/9.
+//  Copyright © 2020 GinsMac. All rights reserved.
 //
 
 import UIKit
 
-class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let titleList = ["Mask"]
+    let pageList = [MaskPage()]
     
-    let titleList = ["Animation", "Button", "Date Picker", "Image View", "Label", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Styles", "Switch", "Table View", "Text Field", "Text View", "Transition", "UIList", "View", "Web View"]
-    let pageList = [AnimationPage(), ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), StylesPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), TransitionPage(), UIListPage(), ViewPage(), WebViewPage()]
+    var cardHeight: CGFloat = 0
+    
+    let tableView = UITableView()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        self.title = "View" // 导航栏标题
-
         
-        let table = UITableView()
-        table.set(superview: view, delegate: self, dataSource: self)
-        table.setFrame(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
-        
-        
+        tableView.set(superview: view, delegate: self, dataSource: self)
+        tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
     }
-
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
         cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
         cell.setSeparator(leftInset: 20, rightInset: 0)
+        // cell.selectionStyle = .none // 无按下效果
         
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: titleList[indexPath.row])
@@ -46,6 +44,7 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titleList.count
     }
@@ -60,9 +59,3 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
 }
-
-/*
- 在VC下，可以给某按钮操作设置以下属性，实现tab切换
- self.tabBarController?.selectedIndex = 2
- 
- */

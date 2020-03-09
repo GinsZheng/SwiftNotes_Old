@@ -1,14 +1,14 @@
 //
-//  ForthTab.swift
+//  MaskPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2019/6/10.
-//  Copyright © 2019 GinsMac. All rights reserved.
+//  Created by GinsMac on 2020/3/9.
+//  Copyright © 2020 GinsMac. All rights reserved.
 //
 
 import UIKit
 
-class TestVC: UIViewController {
+class MaskPage: UIViewController {
 
     let pickerView = UIPickerView()
     let myView = UIView()
@@ -18,7 +18,8 @@ class TestVC: UIViewController {
         view.backgroundColor = .white
         
         let mask = UIView()
-        UIApplication.shared.keyWindow?.addSubview(mask)
+        // 把遮罩加到UIWindow上，才能覆盖导航栏，处于(除状态栏外的)最顶层
+        UIApplication.shared.windows[0].addSubview(mask)
         mask.setBackgroundColor(color: cBlue_2C9EFF)
         mask.setFrame(allEdges: 0)
         

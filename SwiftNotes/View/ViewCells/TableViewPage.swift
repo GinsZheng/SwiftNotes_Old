@@ -10,7 +10,7 @@ import UIKit
 
 class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let controlList = ["Label", "Button", "Text Field", "Switch", "Table View"]
+    let titleList = ["Label", "Button", "Text Field", "Switch", "Table View"]
     var cardHeight: CGFloat = 0
     
     let tableView = UITableView()
@@ -32,7 +32,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         // cell.selectionStyle = .none // 无按下效果
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: controlList[indexPath.row])
+        cellTitle.set(superview: cell, text: titleList[indexPath.row])
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
@@ -44,7 +44,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return controlList.count
+        return titleList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
