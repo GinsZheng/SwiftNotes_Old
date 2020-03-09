@@ -44,8 +44,9 @@ class AnimationPage: UIViewController {
             self.myView.width = 335
             self.myView.height = 150
             self.myView.centerX = self.view.centerX
-
+            
         }) { (_) in
+            // 回调：动画结束后执行
             self.myView.backgroundColor = UIColor.hex(cBlue_2C9EFF)
             self.myView.alpha = 1
             self.myView.y = 100
@@ -53,13 +54,16 @@ class AnimationPage: UIViewController {
             self.myView.height = 100
             self.myView.centerX = self.view.centerX
             
-            
         }
         
+        // 延迟执行的代码
+        // 此处表示，延迟12秒后，移除myView
+        DispatchQueue.main.asyncAfter(deadline: .now() + 12, execute: {
+            self.myView.removeFromSuperview()
+        })
         
-        
-        }
+    }
     
-
+    
 }
 

@@ -20,12 +20,10 @@ class DatePickerPage: UIViewController {
         datePicker.set(superview: view)
         datePicker.setFrame(left: 0, top: 0, width: kScreenWidth, height: 215)
         datePicker.locale = Locale(identifier: "zh_CN")
-        datePicker.calendar = .current
-        
         
         
         datePicker2.set(superview: view)
-        datePicker2.setFrame(left: 0, bottom: kNavBarHeight + kBottomSafeAreaHeight, width: kScreenWidth, height: 215)
+        datePicker2.setFrame(left: 0, bottom: kNavBarHeight + kBottomBarHeight, width: kScreenWidth, height: 215)
         //设置tag(可通过tag来获取其对象)
         datePicker2.tag = 1
         //更改地区文字

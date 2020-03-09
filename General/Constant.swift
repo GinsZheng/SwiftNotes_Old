@@ -14,7 +14,9 @@ let kScreenHeight = UIScreen.main.bounds.size.height
 
 let kScreenWidth = UIScreen.main.bounds.size.width
 
-let kStatusBarHeight = UIApplication.shared.connectedScenes.map({$0 as? UIWindowScene}).compactMap({$0}).first?.windows.first?.windowScene?.statusBarManager?.statusBarFrame.size.height ?? 20
+//@available(iOS 13.0, *)
+//let kStatusBarHeight = UIApplication.shared.connectedScenes.map({$0 as? UIWindowScene}).compactMap({$0}).first?.windows.first?.windowScene?.statusBarManager?.statusBarFrame.size.height ?? 20
+let kStatusBarHeight = UIApplication.shared.statusBarFrame.size.height
 
 let kNavBarHeight = kStatusBarHeight + 44
 
@@ -26,7 +28,7 @@ let kSeparatorHeight = 1 / UIScreen.main.scale
 
 let kSafeAreaInsets = UIApplication.shared.delegate?.window??.safeAreaInsets ?? UIEdgeInsets.zero
 
-var kBottomSafeAreaHeight: CGFloat {
+var kBottomBarHeight: CGFloat {
     get {
         if kScreenHeight > 800 {
             return 34
@@ -40,4 +42,5 @@ var kBottomSafeAreaHeight: CGFloat {
 
 // APP范围UI参数
 let kButtonRadius: CGFloat = 4
+
 let kCellHeight: CGFloat = 56

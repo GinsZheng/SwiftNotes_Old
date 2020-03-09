@@ -39,20 +39,33 @@ func u(_ number: CGFloat) -> CGFloat {
 }
 
 
-//时间戳转成字符串
-func getTimeStrWithTimeStamp(timeInterval:TimeInterval, dateFormat:String = "yyyy/M/d HH:mm:ss") -> String {
-    let date:NSDate = NSDate.init(timeIntervalSince1970: timeInterval)
+// 时间戳转成字符串
+func getTimeStrWithTimeStamp(timeStamp:TimeInterval, dateFormat:String = "yyyy/M/d HH:mm:ss") -> String {
+    let date:NSDate = NSDate.init(timeIntervalSince1970: timeStamp)
     let formatter = DateFormatter.init()
     formatter.dateFormat = dateFormat
     return formatter.string(from: date as Date)
 }
 
-//字符串转时间戳
-func getTimeStampWithTimeStr(timeStr: String, dateFormat:String) -> String {
+// 字符串转时间戳
+func getTimeStampWithTimeStr(timeStr: String, dateFormat:String) -> Double {
     let format = DateFormatter.init()
     format.dateStyle = .medium
     format.timeStyle = .short
     format.dateFormat = dateFormat
     let date = format.date(from: timeStr)
-    return String(date!.timeIntervalSince1970)
+    return date!.timeIntervalSince1970
 }
+
+// date类型转时间戳
+func getTimeStampWithDate(date: Date) -> Double {
+    return date.timeIntervalSince1970
+}
+
+//func getTimeStampWithDate(date: Date, dateFormat:String) -> String {
+//    let format = DateFormatter.init()
+//    format.dateStyle = .medium
+//    format.timeStyle = .short
+//    format.dateFormat = dateFormat
+//    return String(date.timeIntervalSince1970)
+//}
