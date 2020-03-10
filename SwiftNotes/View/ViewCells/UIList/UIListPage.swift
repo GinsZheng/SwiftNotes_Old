@@ -54,7 +54,7 @@ class UIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: pageList[indexPath.row])
+        self.push(toTarget: pageList[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

@@ -52,7 +52,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: GeneralSubpage())
+        self.push(toTarget: GeneralSubpage())
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
