@@ -28,6 +28,7 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.set(superview: view, delegate: self, dataSource: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
         
+        
         // model的基本操作：增删改查
         // 示例值
         let autoId = model.getCount()
