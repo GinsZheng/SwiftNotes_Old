@@ -312,9 +312,10 @@ extension UITextView {
 
 extension UITextField {
     
-    func set(superview: UIView, placeholder: String, delegate: UITextFieldDelegate?, textColor: String = cMainBlack, isUserInteractionEnabled: Bool = true) {
+    func set(superview: UIView, placeholder: String, delegate: UITextFieldDelegate?, text: String? = nil, textColor: String = cMainBlack, isUserInteractionEnabled: Bool = true) {
         self.placeholder = placeholder
         self.delegate = delegate
+        self.text = text
         self.textColor = .hex(textColor)
         self.isUserInteractionEnabled = isUserInteractionEnabled
         superview.addSubview(self)

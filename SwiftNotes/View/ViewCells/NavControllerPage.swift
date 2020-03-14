@@ -10,6 +10,8 @@ import UIKit
 
 class NavControllerPage: UIViewController {
     
+    let button = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -17,10 +19,22 @@ class NavControllerPage: UIViewController {
         // 设置导航栏左按钮
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(pushToGeneralSubpage))
         // 用图片撑起Frame
+        
+        // 跳转并传值
+        button.set(superview: view, target: self, action: #selector(pushWithValue))
+        button.setStyleSolidBtn(title: "Push with Value")
+        button.setFrame(left: 20, top: 20, right: 20, height: 48)
+        
     }
     
     @objc func pushToGeneralSubpage() {
         self.push(toTarget: GeneralSubpage())
     }
-}
+    
+    @objc func pushWithValue() {
+        let subpage = GeneralSubpage()
+        subpage.textStr = "传值"
+        self.push(toTarget: subpage)
+    }
 
+}

@@ -12,7 +12,7 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     let titleList = ["Animation", "Button", "Date Picker", "Image View", "Label", "Nav Controller", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Styles", "Switch", "Table View", "Text Field", "Text View", "Transition", "UIList", "View", "Web View"]
-    let pageList = [AnimationPage(), ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), NavControllerPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), StylesPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), TransitionPage(), UIListPage(), ViewPage(), WebViewPage()]
+    let pageList = [CSAnimationPage(), ButtonPage(), DatePickerPage(), ImageViewPage(), LabelPage(), NavControllerPage(), PageControlPage(), PickerViewPage(), ScrollViewPage(), SegmentControlPage(), SliderPage(), StackViewPage(), StepperPage(), StylesPage(), SwitchPage(),TableViewPage(),  TextFieldPage(), TextViewPage(), TransitionPage(), UIListPage(), ViewPage(), WebViewPage()]
     
     
     override func viewDidLoad() {

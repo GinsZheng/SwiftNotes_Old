@@ -10,15 +10,16 @@ import UIKit
 
 class GeneralSubpage: UIViewController {
     
+    public var textStr = "General SubPage"
+    let label = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        let label = UILabel()
-        label.set(superview: view, text: "General SubPage")
+        label.set(superview: view, text: textStr)
         label.setFontStyle(size: 34, color: "222")
-        label.setFrame(center: view)
-        
+        label.setFrame(centerX: view.centerX, top: 200)
         
     }
     

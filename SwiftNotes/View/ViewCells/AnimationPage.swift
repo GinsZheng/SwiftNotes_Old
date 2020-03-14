@@ -1,5 +1,5 @@
 //
-//  AnimationPage.swift
+//  CSAnimationPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/8/3.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AnimationPage: UIViewController {
+class CSAnimationPage: UIViewController {
     
     let myView = UIView()
     let solidButton = UIButton(type: .custom)

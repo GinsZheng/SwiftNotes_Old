@@ -15,6 +15,7 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     let model = BasicModel()
     
+    var idArray = [Int]()
     var nameArray = [String]()
     lazy var result = model.search() // Select * From table
     
@@ -30,9 +31,9 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
         tableView.reloadData()
         
-        nameArray = []
         self.result = model.search()
         for item in result {
+            idArray.append(item[model.id])
             nameArray.append(item[model.name])
         }
         
@@ -120,7 +121,7 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nameArray.count
+        return idArray.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -128,7 +129,9 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: GeneralSubpage())
+        let updatePage = UpdatePage()
+        updatePage.updatedId = idArray[indexPath.row]
+        self.present(toTarget: updatePage)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -142,9 +145,11 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func reloadItemsList() {
         // 如果不需要把已加载的清除，则不用把itemName清空，直接再遍历
+        idArray = []
         nameArray = []
         
         for name in model.search() {
+            idArray.append(name[model.id])
             nameArray.append(name[model.name])
         }
         print("reloadData")
