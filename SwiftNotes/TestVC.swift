@@ -16,9 +16,8 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let result = itemTable.getJSONOneRow(id: 0)
-//        let results = model.getJSON()
-        
+        print(itemTable.getNextId())
+        print(itemTable.getCount())
     }
     
     @objc func pushNext() {

@@ -88,5 +88,9 @@ extension CSReloadDataModel {
         let result = try! getDB().scalar("SELECT count(*) FROM \(tableName)")
         return result ?? 0
     }
+    
+
+    
+//    func getMax
 }
 

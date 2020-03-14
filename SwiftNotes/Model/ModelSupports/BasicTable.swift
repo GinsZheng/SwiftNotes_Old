@@ -133,6 +133,15 @@ extension CSBasicTable {
         return result ?? 0
     }
     
+    func getNextId() -> Int64 {
+        self.getTable()
+        let result = try! getDB().scalar("SELECT MAX(id) FROM \(tableName)")
+        if result == nil {
+            return 0
+        }
+        return result as! Int64
+    }
+    
     func getJoindTableValue() -> Binding {
         self.getTable()
         CSJoinedTable().getTable()
