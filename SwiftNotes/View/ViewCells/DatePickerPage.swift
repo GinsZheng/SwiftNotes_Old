@@ -1,5 +1,5 @@
 //
-//  DatePickerPage.swift
+//  CSDatePickerPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DatePickerPage: UIViewController {
+class CSDatePickerPage: UIViewController {
     
     let datePicker = UIDatePicker() // 常规用法
     let datePicker2 = UIDatePicker() // 尽可能多的属性

@@ -1,5 +1,5 @@
 //
-//  TransitionPage.swift
+//  CSTransitionPage.swift
 //  HeroTest
 //
 //  Created by FDM on 2019/10/17.

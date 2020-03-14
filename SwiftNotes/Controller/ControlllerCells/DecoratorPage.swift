@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DecoratorPage: UIViewController {
+class CSDecoratorPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  TimePage.swift
+//  CSTimePage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/2/28.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimePage: UIViewController {
+class CSTimePage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

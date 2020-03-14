@@ -1,5 +1,5 @@
 //
-//  ImageViewPage.swift
+//  CSImageViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageViewPage: UIViewController {
+class CSImageViewPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

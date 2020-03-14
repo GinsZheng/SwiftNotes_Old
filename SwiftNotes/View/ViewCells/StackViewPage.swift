@@ -1,5 +1,5 @@
 //
-//  StackViewPage.swift
+//  CSStackViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StackViewPage: UIViewController {
+class CSStackViewPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

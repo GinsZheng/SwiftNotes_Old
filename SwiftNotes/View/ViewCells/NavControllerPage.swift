@@ -1,5 +1,5 @@
 //
-//  NavControllerPage.swift
+//  CSNavControllerPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/3/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NavControllerPage: UIViewController {
+class CSNavControllerPage: UIViewController {
     
     let button = UIButton()
     
@@ -28,11 +28,11 @@ class NavControllerPage: UIViewController {
     }
     
     @objc func pushToGeneralSubpage() {
-        self.push(toTarget: GeneralSubpage())
+        self.push(toTarget: CSGeneralSubpage())
     }
     
     @objc func pushWithValue() {
-        let subpage = GeneralSubpage()
+        let subpage = CSGeneralSubpage()
         subpage.textStr = "传值"
         self.push(toTarget: subpage)
     }

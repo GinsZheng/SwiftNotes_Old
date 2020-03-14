@@ -9,7 +9,7 @@
 import SQLite
 import SwiftyJSON
 
-class BasicModel: SQLiteManager {
+class CSBasicModel: SQLiteManager {
     // 模型只需修改字段名、数据类型，及表名
     let tableName = "items"
     let id = Expression<Int>("id")
@@ -105,7 +105,7 @@ class BasicModel: SQLiteManager {
 }
 
 
-extension BasicModel {
+extension CSBasicModel {
     
     func searchInSQL() -> Statement? {
         let result = try! getDB().prepare("SELECT * FROM items")
@@ -135,7 +135,7 @@ extension BasicModel {
     
     func getJoindTableValue() -> Binding {
         self.getTable()
-        JoinedModel().getTable()
+        CSJoinedModel().getTable()
         
         let result = try! getDB().scalar("SELECT name FROM items, progress WHERE items.id = progress.itemId")
         return result ?? ""

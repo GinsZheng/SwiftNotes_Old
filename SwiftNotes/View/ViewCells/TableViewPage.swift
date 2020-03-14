@@ -1,5 +1,5 @@
 //
-//  TableViewPage.swift
+//  CSTableViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let titleList = ["Label", "Button", "Text Field", "Switch", "Table View"]
     var cardHeight: CGFloat = 0
@@ -52,7 +52,7 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: GeneralSubpage())
+        self.push(toTarget: CSGeneralSubpage())
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

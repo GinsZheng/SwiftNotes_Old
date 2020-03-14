@@ -1,5 +1,5 @@
 //
-//  ProtocolPage.swift
+//  CSProtocolPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/7/31.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProtocolPage: UIViewController {
+class CSProtocolPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class ProtocolPage: UIViewController {
 }
 
 
-protocol PersonProtocol {
+protocol CSPersonProtocol {
     
     static var personCount: Int {get}
     
@@ -43,7 +43,7 @@ protocol PersonProtocol {
     mutating func changeName(newName: String)
 }
 
-class Students: PersonProtocol {
+class Students: CSPersonProtocol {
     
     static var personCount: Int = 10
     

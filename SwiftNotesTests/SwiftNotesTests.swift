@@ -25,7 +25,7 @@ class SwiftNotesTests: XCTestCase {
         let myHeight = kScreenHeight
         XCTAssert(myHeight == 896)
         
-        let testPage = TestPage()
+        let testPage = CSTestPage()
         let textInTestPage = testPage.mytext
         XCTAssert(textInTestPage == "heheda")
     }

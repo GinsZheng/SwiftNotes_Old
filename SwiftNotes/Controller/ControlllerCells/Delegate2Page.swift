@@ -1,5 +1,5 @@
 //
-//  Delegate2Page.swift
+//  CSDelegate2Page.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/2/12.
@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-protocol RefreshDataDelegate: NSObjectProtocol {
+protocol CSRefreshDataDelegate: NSObjectProtocol {
     func refreshData()
 }
 
-class Delegate2Page: UIViewController, RefreshDataDelegate {
+class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
     
     let button = UIButton()
     
@@ -28,7 +28,7 @@ class Delegate2Page: UIViewController, RefreshDataDelegate {
     }
     
     @objc func pushToSubpage() {
-        let delegator = Delegator()
+        let delegator = CSDelegator()
         delegator.delegate = self
         self.push(toTarget: delegator)
     }
@@ -40,9 +40,9 @@ class Delegate2Page: UIViewController, RefreshDataDelegate {
     
 }
 
-class Delegator: UIViewController {
+class CSDelegator: UIViewController {
     
-    weak var delegate: RefreshDataDelegate?
+    weak var delegate: CSRefreshDataDelegate?
     
     let button = UIButton()
     

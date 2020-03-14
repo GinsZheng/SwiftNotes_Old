@@ -1,5 +1,5 @@
 //
-//  LoadingPage.swift
+//  CSLoadingPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/2/17.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class LoadingPage: UIViewController {
+class CSLoadingPage: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()

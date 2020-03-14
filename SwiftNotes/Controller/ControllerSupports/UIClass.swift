@@ -1,5 +1,5 @@
 //
-//  UIClass.swift
+//  CSUIClass.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/1/21.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UIClass: UIView {
+class CSUIClass: UIView {
     
     private var progressBarBg = UIView()
     private var progressBar = UIView()

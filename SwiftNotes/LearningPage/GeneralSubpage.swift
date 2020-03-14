@@ -1,5 +1,5 @@
 //
-//  GeneralSubpage.swift
+//  CSGeneralSubpage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GeneralSubpage: UIViewController {
+class CSGeneralSubpage: UIViewController {
     
     public var textStr = "General SubPage"
     let label = UILabel()

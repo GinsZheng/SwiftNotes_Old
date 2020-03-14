@@ -1,5 +1,5 @@
 //
-//  ModelListVC.swift
+//  CSModelListVC.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/10.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let titleList = ["Array", "Basic Model", "Joined Model", "Request", "SwiftyJSON", "Time"]
-    let pageList = [ArrayPage(), BasicModelPage(), JoinedModelPage(), RequestPage(), SwiftyJSONPage(), TimePage()]
+    let pageList = [CSArrayPage(), CSBasicModelPage(), CSJoinedModelPage(), CSRequestPage(), CSSwiftyJSONPage(), CSTimePage()]
     
     override func viewDidLoad() {
         super.viewDidLoad()

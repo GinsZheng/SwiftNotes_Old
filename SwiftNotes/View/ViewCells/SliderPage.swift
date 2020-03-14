@@ -1,5 +1,5 @@
 //
-//  SliderPage.swift
+//  CSSliderPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SliderPage: UIViewController {
+class CSSliderPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

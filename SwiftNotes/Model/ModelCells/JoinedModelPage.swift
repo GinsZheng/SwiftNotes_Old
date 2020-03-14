@@ -11,10 +11,10 @@ import UIKit
 import SwiftyJSON
 import SQLite
 
-class JoinedModelPage: UIViewController {
+class CSJoinedModelPage: UIViewController {
     
-    let basicModel = BasicModel()
-    let joinedModel = JoinedModel()
+    let basicModel = CSBasicModel()
+    let joinedModel = CSJoinedModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

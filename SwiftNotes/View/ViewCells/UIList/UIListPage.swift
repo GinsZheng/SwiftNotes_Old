@@ -8,10 +8,10 @@
 
 import UIKit
 
-class UIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CSUIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let titleList = ["Mask"]
-    let pageList = [MaskPage()]
+    let pageList = [CSMaskPage()]
     
     var cardHeight: CGFloat = 0
     

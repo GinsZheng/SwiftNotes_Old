@@ -1,5 +1,5 @@
 //
-//  UpdatePage.swift
+//  CSUpdatePage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/3/14.
@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import SQLite
 
-class UpdatePage: UIViewController, UITextFieldDelegate {
+class CSUpdatePage: UIViewController, UITextFieldDelegate {
     
     public var updatedId = 0
     
@@ -22,10 +22,10 @@ class UpdatePage: UIViewController, UITextFieldDelegate {
     let colorTextField = UITextField()
     let addingButton = UIButton()
     
-    let model = BasicModel()
+    let model = CSBasicModel()
 
     
-    weak var delegate: ReloadDelegate?
+    weak var delegate: CSReloadDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()

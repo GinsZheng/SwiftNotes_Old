@@ -1,5 +1,5 @@
 //
-//  DelegatePage.swift
+//  CSDelegatePage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/8/22.
@@ -10,13 +10,13 @@
 import UIKit
 
 // 0.协议
-protocol NameEditorDelegate: NSObjectProtocol {
+protocol CSNameEditorDelegate: NSObjectProtocol {
     func fetchName(name: String)
 }
 
 // 受托人
 // 1.继承协议类A
-class DelegatePage: UIViewController, NameEditorDelegate {
+class CSDelegatePage: UIViewController, CSNameEditorDelegate {
 
     let label = UILabel()
     let button = UIButton()
@@ -38,11 +38,11 @@ class DelegatePage: UIViewController, NameEditorDelegate {
 
     // 受托
     @objc func editName() {
-        let nameEditorPage = NameEditorPage() // 3.类A，实例化委托人-类B
+        let nameEditorPage = CSNameEditorPage() // 3.类A，实例化委托人-类B
         nameEditorPage.delegate = self // 4.让类B实例.delegate = self，表示接受类B的委托
         self.pushFromSecondaryPage(toTarget: nameEditorPage) // 5.Push的时候，
         // toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
-        // 而不是NameEditorPage(),是一个大坑
+        // 而不是CSNameEditorPage(),是一个大坑
     }
     // 6.遵循协议的函数，里面写了具体的类A要做的事
     func fetchName(name: String) {
@@ -53,13 +53,13 @@ class DelegatePage: UIViewController, NameEditorDelegate {
 
 
 // 委托人
-class NameEditorPage: UIViewController, UITextFieldDelegate {
+class CSNameEditorPage: UIViewController, UITextFieldDelegate {
 
     var oldName: String?
     let nameTextField = UITextField()
     let button = UIButton()
     // 7.定义委托变量delegate
-    weak var delegate: NameEditorDelegate?
+    weak var delegate: CSNameEditorDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

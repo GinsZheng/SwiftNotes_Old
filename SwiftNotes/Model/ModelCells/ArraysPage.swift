@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArrayPage: UIViewController {
+class CSArrayPage: UIViewController {
     
     // 创建数组
     var array1 = [String]() // 写法1

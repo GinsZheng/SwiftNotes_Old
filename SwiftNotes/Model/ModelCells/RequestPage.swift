@@ -1,5 +1,5 @@
 //
-//  RequestPage.swift
+//  CSRequestPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/1/13.
@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class RequestPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var slidesTitle = [String]()
     var slidesType = [String]()
@@ -26,10 +26,10 @@ class RequestPage: UIViewController, UITableViewDelegate, UITableViewDataSource 
         AF.request(url).responseJSON { (response) in
             if let value = response.result.value {
                 let jsonData3 = JSON(value)
-                let model3 = SwiftyModel3(jsonData: jsonData3)
+                let model3 = CSSwiftyModel3(jsonData: jsonData3)
                 self.slidesTitle = model3.slidesTitle
                 self.slidesType = model3.slidesType
-                print("SwiftyModel3 slidesTitle \(model3.slidesTitle)")
+                print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
                 
                 self.table.set(superview: self.view, delegate: self, dataSource: self)
                 self.table.setFrame(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
@@ -69,7 +69,7 @@ class RequestPage: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: GeneralSubpage())
+        self.pushFromRootPage(toTarget: CSGeneralSubpage())
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

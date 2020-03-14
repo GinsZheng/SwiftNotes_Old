@@ -1,5 +1,5 @@
 //
-//  SegmentControlPage.swift
+//  CSSegmentControlPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SegmentControlPage: UIViewController {
+class CSSegmentControlPage: UIViewController {
     
     @objc func showSelectedSegment(_ segmentControl:UISegmentedControl) {
         print(segmentControl.selectedSegmentIndex)

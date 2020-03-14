@@ -1,5 +1,5 @@
 //
-//  TextFieldPage.swift
+//  CSTextFieldPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextFieldPage: UIViewController, UITextFieldDelegate {
+class CSTextFieldPage: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()

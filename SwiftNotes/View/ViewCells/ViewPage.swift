@@ -1,5 +1,5 @@
 //
-//  ViewPage.swift
+//  CSViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/25.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewPage: UIViewController {
+class CSViewPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  NumberFormatterPage.swift
+//  CSNumberFormatterPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/8/3.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NumberFormatterPage: UIViewController {
+class CSNumberFormatterPage: UIViewController {
     
     let floatFormat = UILabel()
     let stringFormat = UILabel()

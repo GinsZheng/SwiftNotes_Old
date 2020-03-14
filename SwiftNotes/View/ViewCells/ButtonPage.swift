@@ -1,5 +1,5 @@
 //
-//  ButtonPage.swift
+//  CSButtonPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/11.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class ButtonPage: UIViewController {
+class CSButtonPage: UIViewController {
     
     @objc func pushToGeneralSubpage() {
-        self.pushFromSecondaryPage(toTarget: GeneralSubpage())
+        self.pushFromSecondaryPage(toTarget: CSGeneralSubpage())
     }
     
     @objc func pushWithParameter(_ button: UIButton) {
-        self.pushFromSecondaryPage(toTarget: GeneralSubpage())
+        self.pushFromSecondaryPage(toTarget: CSGeneralSubpage())
     }
     
     override func viewDidLoad() {

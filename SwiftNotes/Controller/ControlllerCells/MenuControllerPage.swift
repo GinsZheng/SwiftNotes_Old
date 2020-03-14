@@ -8,13 +8,13 @@
 
 import UIKit
 
-class MenuControllerPage: UIViewController {
+class CSMenuControllerPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        let label = InteractiveUILabel()
+        let label = CSInteractiveUILabel()
         label.set(superview: view, text: "heheda")
         label.setFontStyle(size: 17, color: c222)
         label.setFrame(left: 20, top: 20)
@@ -24,7 +24,7 @@ class MenuControllerPage: UIViewController {
     
 }
 
-class InteractiveUILabel: UILabel {
+class CSInteractiveUILabel: UILabel {
     override var canBecomeFirstResponder: Bool { return true }
     
     override init(frame: CGRect) {

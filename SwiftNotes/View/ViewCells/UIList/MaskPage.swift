@@ -1,5 +1,5 @@
 //
-//  MaskPage.swift
+//  CSMaskPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/3/9.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MaskPage: UIViewController {
+class CSMaskPage: UIViewController {
 
     let mask = UIView()
     

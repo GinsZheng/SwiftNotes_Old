@@ -1,5 +1,5 @@
 //
-//  TestPage.swift
+//  CSTestPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/7/25.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TestPage: UIViewController {
+class CSTestPage: UIViewController {
     
     let mytext = "heheda"
     

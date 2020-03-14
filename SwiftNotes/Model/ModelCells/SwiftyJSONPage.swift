@@ -11,7 +11,7 @@ import Alamofire
 import UIKit
 import Foundation
 
-class SwiftyJSONPage: UIViewController {
+class CSSwiftyJSONPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +24,15 @@ class SwiftyJSONPage: UIViewController {
                                         "room_num": 588,
                                         "area_address":"浙江省温州市鹿城区五马街道"]
         let jsonData = JSON(baseInfo) // 先序列化再解析
-        let model = SwiftyModel1(jsonData: jsonData)
+        let model = CSSwiftyModel1(jsonData: jsonData)
         print("Model name \(model.build_name)")
         
         
         // 解析本地文件
         let jsonFile = FileManager.readLocalFile(fileNameStr: "TestJSON", type: "json")
         let jsonData2 = JSON(jsonFile ?? "")
-        let model2 = SwiftyModel2(jsonData: jsonData2)
-        print("SwiftyModel2 id \(model2.id)")
+        let model2 = CSSwiftyModel2(jsonData: jsonData2)
+        print("CSSwiftyModel2 id \(model2.id)")
         
         
         // 解析http传输的JSON
@@ -40,8 +40,8 @@ class SwiftyJSONPage: UIViewController {
         AF.request(url).responseJSON { (response) in
             if let value = response.result.value {
                 let jsonData3 = JSON(value)
-                let model3 = SwiftyModel3(jsonData: jsonData3)
-                print("SwiftyModel3 slidesTitle \(model3.slidesTitle)")
+                let model3 = CSSwiftyModel3(jsonData: jsonData3)
+                print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
             }
         }
         
@@ -60,7 +60,7 @@ class SwiftyJSONPage: UIViewController {
 }
 
 // 建模
-struct SwiftyModel1 {
+struct CSSwiftyModel1 {
     var build_name: String
     var build_address: String
     var build_num: Int
@@ -80,7 +80,7 @@ struct SwiftyModel1 {
 }
 
 
-struct SwiftyModel2 {
+struct CSSwiftyModel2 {
     var id: [String]
     var arrivalTime: [String]
     var name: [String]
@@ -93,7 +93,7 @@ struct SwiftyModel2 {
 }
 
 
-struct SwiftyModel3 {
+struct CSSwiftyModel3 {
     var author: String
     var date: String
     var slidesTitle: [String]

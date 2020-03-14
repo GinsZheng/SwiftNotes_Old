@@ -1,5 +1,5 @@
 //
-//  StepperPage.swift
+//  CSStepperPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StepperPage: UIViewController {
+class CSStepperPage: UIViewController {
     
     @objc func printValue(_ stepper: UIStepper) {
         print(stepper.value)

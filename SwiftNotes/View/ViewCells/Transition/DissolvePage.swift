@@ -10,7 +10,7 @@ import UIKit
 import Hero
 
 // 转场2 渐隐渐现
-class DissolveFromVC: UIViewController {
+class CSDissolveFromVC: UIViewController {
     
     let button = UIButton()
     

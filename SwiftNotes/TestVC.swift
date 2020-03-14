@@ -22,7 +22,7 @@ class TestVC: UIViewController {
     }
     
     @objc func pushNext() {
-        let subpage = GeneralSubpage()
+        let subpage = CSGeneralSubpage()
         subpage.textStr = "传值"
         self.push(toTarget: subpage)
     }

@@ -1,5 +1,5 @@
 //
-//  ScrollViewPage.swift
+//  CSScrollViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScrollViewPage: UIViewController {
+class CSScrollViewPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

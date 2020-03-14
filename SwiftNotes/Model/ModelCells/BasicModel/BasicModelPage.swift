@@ -11,9 +11,9 @@ import SQLite
 import SwiftyJSON
 
 
-class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSource, ReloadDelegate {
+class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
-    let model = BasicModel()
+    let model = CSBasicModel()
     
     var idArray = [Int]()
     var nameArray = [String]()
@@ -129,7 +129,7 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let updatePage = UpdatePage()
+        let updatePage = CSUpdatePage()
         updatePage.updatedId = idArray[indexPath.row]
         self.present(toTarget: updatePage)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -138,7 +138,7 @@ class BasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     @objc func presentToInsertPage() {
-        let insertPage = InsertPage()
+        let insertPage = CSInsertPage()
         insertPage.delegate = self
         self.present(toTarget: insertPage)
     }

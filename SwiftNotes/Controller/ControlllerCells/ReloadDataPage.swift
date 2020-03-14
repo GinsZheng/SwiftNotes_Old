@@ -1,5 +1,5 @@
 //
-//  ReloadDataPage.swift
+//  CSReloadDataPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/2/17.
@@ -12,15 +12,15 @@ import SwiftyJSON
 
 // 写个委托，完成子VC切到父VC时的通信
 // 如果不是 dismiss() 过场，直接在父VC用viewDidLoad()即可刷新，不用委托
-protocol ReloadDelegate: NSObjectProtocol {
+protocol CSReloadDelegate: NSObjectProtocol {
     func reloadItemsList()
 }
 
-class ReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSource, ReloadDelegate {
+class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
 
     var itemName = [String]()
     
-    let model = ReloadDataModel()
+    let model = CSReloadDataModel()
     
     let addItemBtn = UIButton(type: .custom)
     let tableView = UITableView()
@@ -85,10 +85,10 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     let nameTextField = UITextField()
     let addingButton = UIButton()
     
-    let model = ReloadDataModel()
+    let model = CSReloadDataModel()
     lazy var result = model.search()
     
-    weak var delegate: ReloadDelegate?
+    weak var delegate: CSReloadDelegate?
     
     override func viewDidLoad() {
         

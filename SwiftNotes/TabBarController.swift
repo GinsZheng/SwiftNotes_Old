@@ -15,8 +15,8 @@ class TabBarController {
     static func getTabBar() -> ESTabBarController {
         let tabBarController = ESTabBarController()
         let v1 = ViewListVC()
-        let v2 = ControllerListVC()
-        let v3 = ModelListVC()
+        let v2 = CSControllerListVC()
+        let v3 = CSModelListVC()
         let v4 = TestVC()
         
         v1.tabBarItem = ESTabBarItem.init(title: "View", image: UIImage(named: "tab_discovery"), selectedImage: UIImage(named: "tab_discovery_s"))
@@ -73,15 +73,15 @@ class TabBarController {
             [weak tabBarController] tabbarController, viewController, index in
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                tabBarController?.present(toTarget: GeneralSubpage())
+                tabBarController?.present(toTarget: CSGeneralSubpage())
             }
         }
         
         let v1 = ViewListVC()
-        let v2 = ControllerListVC()
-        let v3 = ModelListVC()
+        let v2 = CSControllerListVC()
+        let v3 = CSModelListVC()
         let v4 = TestVC()
-        let v0 = GeneralSubpage()
+        let v0 = CSGeneralSubpage()
         
         v1.tabBarItem = ESTabBarItem.init(title: "View", image: UIImage(named: "tab_discovery"), selectedImage: UIImage(named: "tab_discovery_s"))
         v2.tabBarItem = ESTabBarItem.init(title: "Controller", image: UIImage(named: "tab_saved"), selectedImage: UIImage(named: "tab_saved_s"))

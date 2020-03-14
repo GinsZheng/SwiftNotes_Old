@@ -9,7 +9,7 @@
 
 import UIKit
 
-class PlistPage: UIViewController {
+class CSPlistPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

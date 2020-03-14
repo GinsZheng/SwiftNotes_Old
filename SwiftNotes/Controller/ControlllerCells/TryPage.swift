@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SQLite
 
-class TryPage: UIViewController {
+class CSTryPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  PickerViewPage.swift
+//  CSPickerViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PickerViewPage: UIViewController {
+class CSPickerViewPage: UIViewController {
     
     
     override func viewDidLoad() {
