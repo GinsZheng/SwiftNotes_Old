@@ -45,6 +45,13 @@ class CSSwiftyJSONPage: UIViewController {
             }
         }
         
+        // 解析本地数据库的JSON
+        let basicTable = CSBasicTable()
+        let result = basicTable.getJSONOneRow(id: 10)
+        print(result)
+        let model4 = CSSwiftyModel4(jsonData: result)
+        print("CSSwiftyModel4 name \(model4.name)")
+        
         
         
         /*
@@ -105,4 +112,32 @@ struct CSSwiftyModel3 {
         slidesTitle = jsonData["slideshow"]["slides"].arrayValue.map {$0["title"].stringValue}
         slidesType = jsonData["slideshow"]["slides"].arrayValue.map {$0["type"].stringValue}
     }
+}
+
+
+struct CSSwiftyModel4 {
+    var id: Int
+    var name: String
+    var resume: String
+    var totalProgress: Int
+    var color: Int
+    
+    init(jsonData: JSON) {
+        id = jsonData["id"].intValue
+        name = jsonData["name"].stringValue
+        resume = jsonData["resume"].stringValue
+        totalProgress = jsonData["totalProgress"].intValue
+        color = jsonData["color"].intValue
+    }
+    
+    /*
+     数据结构如下：
+     {
+       "resume" : "4",
+       "totalProgress" : 2,
+       "color" : 3,
+       "id" : 10,
+       "name" : "Are you OK?"
+     }
+     */
 }

@@ -162,7 +162,6 @@ extension CSBasicTable {
             ]
         }
         let jsonDict = JSON(rowDict)
-        print(jsonDict)
         return jsonDict
     }
     
@@ -190,7 +189,6 @@ extension CSBasicTable {
             jsonArray.append(jsonDict)
         }
         jsonResult = JSON(jsonArray)
-        print(jsonResult)
         return jsonResult
     }
 }

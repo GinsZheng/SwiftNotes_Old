@@ -25,21 +25,16 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         view.backgroundColor = UIColor.white
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(presentToInsertPage))
         
+        // 从本地数据库获取JSON数据、建模、赋值
         let result = itemTable.getJSON()
-        
-        
-        
+        let model = CSBasicModel.init(jsonData: result)
+        idArray = model.id
+        nameArray = model.name
         
         tableView.set(superview: view, delegate: self, dataSource: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
         tableView.reloadData()
         
-//        self.result = itemTable.search()
-//        for item in result {
-//            idArray.append(item[itemTable.id])
-//            nameArray.append(item[itemTable.name])
-//        }
-
     }
     
     
@@ -58,7 +53,6 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         return cell
     }
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return idArray.count
@@ -76,14 +70,14 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
-    
+    // 建立委托
     @objc func presentToInsertPage() {
         let insertPage = CSInsertPage()
         insertPage.delegate = self
         self.present(toTarget: insertPage)
     }
     
+    // 委托的事
     func reloadItemsList() {
         // 如果不需要把已加载的清除，则不用把itemName清空，直接再遍历
         idArray = []
@@ -115,8 +109,5 @@ struct CSBasicModel {
         resume = jsonData.arrayValue.map {$0["resume"].stringValue}
         totalProgress = jsonData.arrayValue.map {$0["totalProgress"].intValue}
         color = jsonData.arrayValue.map {$0["color"].intValue}
-        // .stringValue 等价于 .string ?? "" ，即自动填充默认值""
-        // .intValue 等价于 .int ?? 0
-        // .arrayValue 等价于 .array ?? []
     }
 }

@@ -57,9 +57,9 @@ class CSInsertPage: UIViewController, UITextFieldDelegate {
         self.dismiss()
     }
     
+    // 建立委托
     @objc func addItem() {
         let id = itemTable.getCount()
-        print(id)
         let insertValue: [String: Any] = [
             "id": id,
             "name": nameTextField.text ?? "",
@@ -67,7 +67,6 @@ class CSInsertPage: UIViewController, UITextFieldDelegate {
             "totalProgress": Int(totalProgressTextField.text ?? "") ?? 100,
             "color": Int(colorTextField.text ?? "") ?? 0
         ]
-        print(insertValue)
         itemTable.insert(item: JSON(insertValue))
         
         if delegate != nil {

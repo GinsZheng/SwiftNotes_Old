@@ -12,6 +12,7 @@ import SQLite
 
 class CSUpdatePage: UIViewController, UITextFieldDelegate {
     
+    // 从父页面获取编辑数据的id
     public var updatedId = 0
     
     let navPresent = UIPresentNav()
@@ -32,26 +33,26 @@ class CSUpdatePage: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        // 从本地数据库取JSON值(以赋值给相应控件)、建模
         let result = itemTable.getJSONOneRow(id: updatedId)
-        let itemTable = CSUpdateItemModel(jsonData: result)
-        print("itemTable name \(itemTable.name)")
+        let model = CSUpdateItemModel(jsonData: result)
         
         navPresent.setTitleLabel(superview: view, title: "Update")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
         
-        nameTextField.set(superview: view, placeholder: "name", delegate: self, text: itemTable.name)
+        nameTextField.set(superview: view, placeholder: "name", delegate: self, text: model.name)
         nameTextField.setStyleOneLineTextField()
         nameTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
         
-        resumeTextField.set(superview: view, placeholder: "resume", delegate: self, text: itemTable.resume)
+        resumeTextField.set(superview: view, placeholder: "resume", delegate: self, text: model.resume)
         resumeTextField.setStyleOneLineTextField()
         resumeTextField.setFrame(left: 20, top: nameTextField.bottom + 20, right: 20, height: 48)
         
-        totalProgressTextField.set(superview: view, placeholder: "totalProgress", delegate: self, text: "\(itemTable.totalProgress)")
+        totalProgressTextField.set(superview: view, placeholder: "totalProgress", delegate: self, text: "\(model.totalProgress)")
         totalProgressTextField.setStyleOneLineTextField()
         totalProgressTextField.setFrame(left: 20, top: resumeTextField.bottom + 20, right: 20, height: 48)
         
-        colorTextField.set(superview: view, placeholder: "color(Int)", delegate: self, text: "\(itemTable.color)")
+        colorTextField.set(superview: view, placeholder: "color(Int)", delegate: self, text: "\(model.color)")
         colorTextField.setStyleOneLineTextField()
         colorTextField.setFrame(left: 20, top: totalProgressTextField.bottom + 20, right: 20, height: 48)
         
