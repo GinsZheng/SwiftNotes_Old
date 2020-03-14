@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
 //        let tabBarController = TabBarController.getTabBarWithButton(delegate: self)
         // 将window的一级页面设置为tabBar
         self.window?.rootViewController = tabBarController
-        self.window?.backgroundColor = UIColor.white
 
         
         return true
