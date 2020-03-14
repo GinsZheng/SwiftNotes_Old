@@ -130,6 +130,7 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let updatePage = CSUpdatePage()
+        updatePage.delegate = self
         updatePage.updatedId = idArray[indexPath.row]
         self.present(toTarget: updatePage)
         tableView.deselectRow(at: indexPath, animated: true)

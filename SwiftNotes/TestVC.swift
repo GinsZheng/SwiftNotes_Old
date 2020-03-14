@@ -10,15 +10,15 @@ import UIKit
 
 class TestVC: UIViewController {
 
-    let button = UIButton()
+    let model = CSBasicModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        button.set(superview: view, target: self, action: #selector(pushNext))
-        button.setStyleSolidBtn(title: "test")
-        button.setFrame(left: 20, top: 20, right: 20, height: 48)
+        let result = model.getJSONOneRow(id: 0)
+//        let results = model.getJSON()
+        
     }
     
     @objc func pushNext() {

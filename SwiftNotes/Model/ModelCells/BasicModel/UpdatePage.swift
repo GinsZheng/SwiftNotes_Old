@@ -20,10 +20,11 @@ class CSUpdatePage: UIViewController, UITextFieldDelegate {
     let resumeTextField = UITextField()
     let totalProgressTextField = UITextField()
     let colorTextField = UITextField()
-    let addingButton = UIButton()
+    let updateButton = UIButton()
+    // 删除按钮
+    let deleteButton = UIButton(type: .system)
     
     let model = CSBasicModel()
-
     
     weak var delegate: CSReloadDelegate?
     
@@ -31,28 +32,40 @@ class CSUpdatePage: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        let result = model.getJSONOneRow(id: updatedId)
+        let itemJson = CSUpdateItemModel(jsonData: result)
+        print("Model name \(itemJson.name)")
+        
         navPresent.setTitleLabel(superview: view, title: "Update")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
         
-        nameTextField.set(superview: view, placeholder: "name", delegate: self)
+        nameTextField.set(superview: view, placeholder: "name", delegate: self, text: itemJson.name)
         nameTextField.setStyleOneLineTextField()
         nameTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
         
-        resumeTextField.set(superview: view, placeholder: "resume", delegate: self)
+        resumeTextField.set(superview: view, placeholder: "resume", delegate: self, text: itemJson.resume)
         resumeTextField.setStyleOneLineTextField()
         resumeTextField.setFrame(left: 20, top: nameTextField.bottom + 20, right: 20, height: 48)
         
-        totalProgressTextField.set(superview: view, placeholder: "totalProgress", delegate: self)
+        totalProgressTextField.set(superview: view, placeholder: "totalProgress", delegate: self, text: "\(itemJson.totalProgress)")
         totalProgressTextField.setStyleOneLineTextField()
         totalProgressTextField.setFrame(left: 20, top: resumeTextField.bottom + 20, right: 20, height: 48)
         
-        colorTextField.set(superview: view, placeholder: "color(Int)", delegate: self)
+        colorTextField.set(superview: view, placeholder: "color(Int)", delegate: self, text: "\(itemJson.color)")
         colorTextField.setStyleOneLineTextField()
         colorTextField.setFrame(left: 20, top: totalProgressTextField.bottom + 20, right: 20, height: 48)
         
-        addingButton.set(superview: view, target: self, action: #selector(addItem))
-        addingButton.setStyleSolidBtn(title: "Insert")
-        addingButton.setFrame(left: 20, top: colorTextField.bottom + 20, right: 20, height: 48)
+        updateButton.set(superview: view, target: self, action: #selector(updateItem))
+        updateButton.setStyleSolidBtn(title: "Update")
+        updateButton.setFrame(left: 20, top: colorTextField.bottom + 20, right: 20, height: 48)
+        
+        
+        
+        // 删除
+        deleteButton.set(superview: view, target: self, action: #selector(deleteItem))
+        deleteButton.setStyleWordButton(title: "Delete", titleColor: cRed_FF5349)
+        deleteButton.setFrame(centerX: view.centerX, top: updateButton.bottom + 10, width: 80, height: 44)
+        
     }
     
     
@@ -60,18 +73,26 @@ class CSUpdatePage: UIViewController, UITextFieldDelegate {
         self.dismiss()
     }
     
-    @objc func addItem() {
-        let id = model.getCount()
-        print(id)
-        let insertValue: [String: Any] = [
-            "id": id,
+    @objc func updateItem() {
+        let updateValue: [String: Any] = [
             "name": nameTextField.text ?? "",
             "resume": resumeTextField.text ?? "",
             "totalProgress": Int(totalProgressTextField.text ?? "") ?? 100,
             "color": Int(colorTextField.text ?? "") ?? 0
         ]
-        print(insertValue)
-        model.insert(item: JSON(insertValue))
+        print(updateValue)
+        let updateJson = JSON(updateValue)
+        model.update(id: updatedId, item: updateJson)
+        
+        if delegate != nil {
+            delegate!.reloadItemsList()
+        }
+        
+        self.dismiss()
+    }
+    
+    @objc func deleteItem() {
+        model.delete(id: updatedId)
         
         if delegate != nil {
             delegate!.reloadItemsList()
@@ -90,3 +111,20 @@ class CSUpdatePage: UIViewController, UITextFieldDelegate {
     
 }
 
+
+// 建模
+struct CSUpdateItemModel {
+    var id: Int
+    var name: String
+    var resume: String
+    var totalProgress: Int
+    var color: Int
+    
+    init(jsonData: JSON) {
+        id = jsonData["id"].intValue
+        name = jsonData["name"].stringValue
+        resume = jsonData["resume"].stringValue
+        totalProgress = jsonData["totalProgress"].intValue
+        color = jsonData["color"].intValue
+    }
+}

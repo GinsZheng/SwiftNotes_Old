@@ -139,7 +139,58 @@ extension CSBasicModel {
         
         let result = try! getDB().scalar("SELECT name FROM items, progress WHERE items.id = progress.itemId")
         return result ?? ""
+    }
+    
+    func getJSONOneRow(id: Int) -> JSON {
+        let result = try! getDB().prepare("SELECT * FROM items WHERE id = \(id)")
+        var rowDict: [String: Any] = [:]
         
+        for row in result {
+            let jsonRow = JSON(row)
+            let id = jsonRow[0]
+            let name = jsonRow[1]
+            let resume = jsonRow[2]
+            let totalProgress = jsonRow[3]
+            let color = jsonRow[4]
+            
+            rowDict = [
+                "id": id,
+                "name": name,
+                "resume": resume,
+                "totalProgress": totalProgress,
+                "color": color
+            ]
+        }
+        let jsonDict = JSON(rowDict)
+        print(jsonDict)
+        return jsonDict
+    }
+    
+    func getJSON() -> JSON {
+        let result = try! getDB().prepare("SELECT * FROM items")
+        var jsonArray: [Any] = []
+        let jsonResult: JSON
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            let id = jsonRow[0]
+            let name = jsonRow[1]
+            let resume = jsonRow[2]
+            let totalProgress = jsonRow[3]
+            let color = jsonRow[4]
+            
+            let rowDict: [String: Any] = [
+                "id": id,
+                "name": name,
+                "resume": resume,
+                "totalProgress": totalProgress,
+                "color": color
+            ]
+            let jsonDict = JSON(rowDict)
+            jsonArray.append(jsonDict)
+        }
+        jsonResult = JSON(jsonArray)
+        print(jsonResult)
+        return jsonResult
     }
 }
-
