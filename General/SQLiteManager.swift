@@ -14,10 +14,6 @@ class SQLiteManager: NSObject {
     
     private var db: Connection?
     private var table: Table?
-    
-    override init() {
-        super.init()
-    }
 
     func getDB() -> Connection {
 

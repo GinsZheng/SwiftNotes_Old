@@ -16,8 +16,7 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        print(itemTable.getNextId())
-        print(itemTable.getCount())
+        print(itemTable.getJoindTableValue())
     }
     
     @objc func pushNext() {

@@ -115,7 +115,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     
     @objc func addItem() {
         
-        let id = itemTable.getCount()
+        let id = itemTable.getNextId()
         let insertRow: [String: Any] = [
             "id": id,
             "name": nameTextField.text ?? ""

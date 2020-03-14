@@ -18,7 +18,6 @@ class CSBasicTable: SQLiteManager {
     let totalProgress = Expression<Int>("totalProgress")
     let color = Expression<Int>("color")
     
-    
     func getTable() -> Table {
         let table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)
@@ -100,23 +99,11 @@ class CSBasicTable: SQLiteManager {
             }
         }
     }
-
     
 }
 
 
 extension CSBasicTable {
-    
-    func searchInSQL() -> Statement? {
-        let result = try! getDB().prepare("SELECT * FROM items")
-        var ids = [Binding]()
-        for row in result {
-            ids.append(row[0] ?? 0)
-            // 在转化上遇到问题，不知怎么把[Binding]类型转化为[Int]类型
-        }
-        print(ids)
-        return result
-    }
     
     func printId() {
         var idList: [Int] = []
@@ -126,30 +113,28 @@ extension CSBasicTable {
         }
         print("id列表：\(idList)")
     }
-
+    
+    // scalar 可获取一个值
     func getCount() -> Binding {
-        self.getTable()
+        // self.getTable() // 以下函数如果有报错，则尝试加上这条
         let result = try! getDB().scalar("SELECT count(*) FROM \(tableName)")
         return result ?? 0
     }
     
     func getNextId() -> Int64 {
-        self.getTable()
         let result = try! getDB().scalar("SELECT MAX(id) FROM \(tableName)")
         if result == nil {
             return 0
         }
-        return result as! Int64
+        return result as! Int64 + 1
     }
     
     func getJoindTableValue() -> Binding {
-        self.getTable()
-        CSJoinedTable().getTable()
-        
         let result = try! getDB().scalar("SELECT name FROM items, progress WHERE items.id = progress.itemId")
         return result ?? ""
     }
     
+    // prepare 可获取数组
     func getJSONOneRow(id: Int) -> JSON {
         let result = try! getDB().prepare("SELECT * FROM items WHERE id = \(id)")
         var rowDict: [String: Any] = [:]

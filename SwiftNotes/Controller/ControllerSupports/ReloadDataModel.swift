@@ -84,13 +84,19 @@ extension CSReloadDataModel {
     }
     
     func getCount() -> Binding {
-        self.getTable()
         let result = try! getDB().scalar("SELECT count(*) FROM \(tableName)")
         return result ?? 0
     }
     
+    func getNextId() -> Int64 {
+        let result = try! getDB().scalar("SELECT MAX(id) FROM \(tableName)")
+        if result == nil {
+            return 0
+        }
+        return result as! Int64 + 1
+    }
+    
 
     
-//    func getMax
 }
 
