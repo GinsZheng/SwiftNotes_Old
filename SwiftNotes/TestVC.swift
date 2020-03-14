@@ -17,10 +17,6 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let mask = UIView()
-        UIApplication.shared.keyWindow?.addSubview(mask)
-        mask.setBackgroundColor(color: cBlue_2C9EFF)
-        mask.setFrame(allEdges: 0)
         
     }
 }
