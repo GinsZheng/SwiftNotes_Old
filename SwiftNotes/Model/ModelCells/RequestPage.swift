@@ -16,7 +16,7 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     var slidesTitle = [String]()
     var slidesType = [String]()
     
-    let table = UITableView()
+    let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +31,9 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 self.slidesType = model3.slidesType
                 print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
                 
-                self.table.set(superview: self.view, delegate: self, dataSource: self)
-                self.table.setFrame(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
-                self.table.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(self.slidesTitle.count))
+                self.tableView.set(superview: self.view, delegate: self, dataSource: self)
+                self.tableView.setFrame(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
+                self.tableView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(self.slidesTitle.count))
             }
             
         }

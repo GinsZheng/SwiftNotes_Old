@@ -13,8 +13,8 @@ import SQLite
 
 class CSJoinedModelPage: UIViewController {
     
-    let basicModel = CSBasicModel()
-    let joinedModel = CSJoinedModel()
+    let basicTable = CSBasicTable()
+    let joinedTable = CSJoinedTable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,14 +37,8 @@ class CSJoinedModelPage: UIViewController {
         ]
         let insertJSON = JSON(insertRow)
         
-        joinedModel.insert(item: insertJSON)
+        joinedTable.insert(item: insertJSON)
         
-        
-        let basicTable = basicModel.getTable()
-        let id = Expression<Int>("id")
-        
-        let joinedTable = joinedModel.getTable()
-        let itemId = Expression<Int>("itemId")
         
         
     }

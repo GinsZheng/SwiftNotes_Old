@@ -20,7 +20,7 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
 
     var itemName = [String]()
     
-    let model = CSReloadDataModel()
+    let itemTable = CSReloadDataModel()
     
     let addItemBtn = UIButton(type: .custom)
     let tableView = UITableView()
@@ -29,8 +29,8 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        for name in model.search() {
-            itemName.append(name[model.name])
+        for name in itemTable.search() {
+            itemName.append(name[itemTable.name])
         }
         
         addItemBtn.set(superview: view, target: self, action: #selector(presentAddItemVC))
@@ -69,8 +69,8 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         // 如果不需要把已加载的清除，则不用把itemName清空，直接再遍历
         itemName = []
         
-        for name in model.search() {
-            itemName.append(name[model.name])
+        for name in itemTable.search() {
+            itemName.append(name[itemTable.name])
         }
         print("reloadData")
         // 关键：reloadData()，刷新页面数据
@@ -85,8 +85,8 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     let nameTextField = UITextField()
     let addingButton = UIButton()
     
-    let model = CSReloadDataModel()
-    lazy var result = model.search()
+    let itemTable = CSReloadDataModel()
+    lazy var result = itemTable.search()
     
     weak var delegate: CSReloadDelegate?
     
@@ -115,7 +115,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     
     @objc func addItem() {
         
-        let autoId = model.getCount()
+        let autoId = itemTable.getCount()
         print(autoId)
         let insertRow: [String: Any] = [
             "id": autoId,
@@ -124,8 +124,8 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
 
         let insertJSON = JSON(insertRow)
         print(insertJSON)
-        model.insert(item: insertJSON)
-        model.printId()
+        itemTable.insert(item: insertJSON)
+        itemTable.printId()
         
         self.dismiss()
         

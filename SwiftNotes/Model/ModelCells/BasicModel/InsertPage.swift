@@ -20,7 +20,7 @@ class CSInsertPage: UIViewController, UITextFieldDelegate {
     let colorTextField = UITextField()
     let addingButton = UIButton()
     
-    let model = CSBasicModel()
+    let itemTable = CSBasicTable()
     
     weak var delegate: CSReloadDelegate?
     
@@ -58,7 +58,7 @@ class CSInsertPage: UIViewController, UITextFieldDelegate {
     }
     
     @objc func addItem() {
-        let id = model.getCount()
+        let id = itemTable.getCount()
         print(id)
         let insertValue: [String: Any] = [
             "id": id,
@@ -68,7 +68,7 @@ class CSInsertPage: UIViewController, UITextFieldDelegate {
             "color": Int(colorTextField.text ?? "") ?? 0
         ]
         print(insertValue)
-        model.insert(item: JSON(insertValue))
+        itemTable.insert(item: JSON(insertValue))
         
         if delegate != nil {
             delegate!.reloadItemsList()

@@ -66,7 +66,7 @@
 		7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; };
 		7A3647F0238AB1D1000BBECD /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A3647DB238AB179000BBECD /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A3647F5238AB287000BBECD /* BasicModelPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F4238AB287000BBECD /* BasicModelPage.swift */; };
-		7A3647F9238AD062000BBECD /* BasicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* BasicModel.swift */; };
+		7A3647F9238AD062000BBECD /* BasicTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* BasicTable.swift */; };
 		7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
 		7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58124169DF900CBF18D /* UIListPage.swift */; };
@@ -83,7 +83,7 @@
 		7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A871E7923CE122A007CCA90 /* TryPage.swift */; };
 		7A89B2D9240AB9B6004688FD /* MagicMovePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */; };
 		7A8A7EAF23D1A7F50067D9C3 /* JoinedModelPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */; };
-		7A94609123D1A6AB00936DE7 /* JoinedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* JoinedModel.swift */; };
+		7A94609123D1A6AB00936DE7 /* JoinedTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* JoinedTable.swift */; };
 		7A9DA3FE240A902600AFB585 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9DA3FB240A901100AFB585 /* SnapKit.framework */; };
 		7A9DA3FF240A902600AFB585 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9DA3FB240A901100AFB585 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3C290241CCA5800F77711 /* NavControllerPage.swift */; };
@@ -427,7 +427,7 @@
 		7A3308C223CC6DAD0021BA5B /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		7A3647C9238AB178000BBECD /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "SQLite.swift-master/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		7A3647F4238AB287000BBECD /* BasicModelPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModelPage.swift; sourceTree = "<group>"; };
-		7A3647F8238AD062000BBECD /* BasicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicModel.swift; sourceTree = "<group>"; };
+		7A3647F8238AD062000BBECD /* BasicTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTable.swift; sourceTree = "<group>"; };
 		7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7A58D58124169DF900CBF18D /* UIListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListPage.swift; sourceTree = "<group>"; };
@@ -444,7 +444,7 @@
 		7A871E7923CE122A007CCA90 /* TryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryPage.swift; sourceTree = "<group>"; };
 		7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMovePage.swift; sourceTree = "<group>"; };
 		7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedModelPage.swift; sourceTree = "<group>"; };
-		7A94609023D1A6AB00936DE7 /* JoinedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedModel.swift; sourceTree = "<group>"; };
+		7A94609023D1A6AB00936DE7 /* JoinedTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedTable.swift; sourceTree = "<group>"; };
 		7A9DA3F5240A901100AFB585 /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = "SnapKit-develop/SnapKit.xcodeproj"; sourceTree = "<group>"; };
 		7AA3C290241CCA5800F77711 /* NavControllerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerPage.swift; sourceTree = "<group>"; };
 		7AA3C2B0241CCC6000F77711 /* UpdatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePage.swift; sourceTree = "<group>"; };
@@ -715,8 +715,8 @@
 		7AC3B73B23CA04C5004DB044 /* ModelSupports */ = {
 			isa = PBXGroup;
 			children = (
-				7A3647F8238AD062000BBECD /* BasicModel.swift */,
-				7A94609023D1A6AB00936DE7 /* JoinedModel.swift */,
+				7A3647F8238AD062000BBECD /* BasicTable.swift */,
+				7A94609023D1A6AB00936DE7 /* JoinedTable.swift */,
 				7AC3B73F23CA05B3004DB044 /* TestJSON.json */,
 			);
 			path = ModelSupports;
@@ -1250,7 +1250,7 @@
 				7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */,
 				7A2AC398240A791300B95E43 /* TransitionPage.swift in Sources */,
 				7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */,
-				7A94609123D1A6AB00936DE7 /* JoinedModel.swift in Sources */,
+				7A94609123D1A6AB00936DE7 /* JoinedTable.swift in Sources */,
 				7A21611A2389857700D5A93A /* Mix.swift in Sources */,
 				7A2161282389868500D5A93A /* TestVC.swift in Sources */,
 				7A2161142389857700D5A93A /* Constant.swift in Sources */,
@@ -1279,7 +1279,7 @@
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,
 				7A1EF03E23FAF0E100BDEEBF /* ReloadDataModel.swift in Sources */,
 				7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */,
-				7A3647F9238AD062000BBECD /* BasicModel.swift in Sources */,
+				7A3647F9238AD062000BBECD /* BasicTable.swift in Sources */,
 				7A1EF03C23FAEF4B00BDEEBF /* ReloadDataPage.swift in Sources */,
 				7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */,
 				7A2161372389869D00D5A93A /* PlistPage.swift in Sources */,

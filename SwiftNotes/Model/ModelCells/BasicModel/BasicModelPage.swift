@@ -10,14 +10,12 @@ import UIKit
 import SQLite
 import SwiftyJSON
 
-
 class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
-    let model = CSBasicModel()
+    let itemTable = CSBasicTable()
     
     var idArray = [Int]()
     var nameArray = [String]()
-    lazy var result = model.search() // Select * From table
     
     let tableView = UITableView()
     
@@ -27,80 +25,22 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         view.backgroundColor = UIColor.white
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(presentToInsertPage))
         
+        let result = itemTable.getJSON()
+        
+        
+        
+        
         tableView.set(superview: view, delegate: self, dataSource: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
         tableView.reloadData()
         
-        self.result = model.search()
-        for item in result {
-            idArray.append(item[model.id])
-            nameArray.append(item[model.name])
-        }
-        
-        // model的基本操作：增删改查
-//        // 示例值
-//        let autoId = model.getCount()
-//        var exampleName = "name9"
-//        let exampleResume = ""
-//        let exampleTotalProgress = 100
-//        let exampleColor = 0
-//
-//        let insertRow: [String: Any] = [
-//            "id": autoId,
-//             "name": exampleName,
-//             "resume": exampleResume,
-//             "totalProgress": exampleTotalProgress,
-//             "color": exampleColor
-//        ]
-//        let insertJSON = JSON(insertRow)
-//
-//        exampleName = "name4"
-//        let updataRow: [String: Any] = [
-//            "id": autoId,
-//            "name": exampleName,
-//            "resume": exampleResume,
-//            "totalProgress": exampleTotalProgress,
-//            "color": exampleColor
-//        ]
-//        let updateJSON = JSON(updataRow)
-//
-//
-//        // insert
-//        model.insert(item: insertJSON)
-//        getNameArray(result: result)
-//
-//        // update
-//        model.update(id: 4, item: updateJSON)
-//        getNameArray(result: result)
-//
-//        // delete
-//        // model.delete(id: 4)
-//        model.delete(filter: model.id == 4)
-//        getNameArray(result: result)
-//
-//        // search
-//        getNameArray(result: result)
-//
-//        // 注：打印结果有错位，大概率是因为返回速度不同，
-//        // getNameArray的遍历数据库比delete等直接print慢一些
-//
-//        // printId
-//        model.printId()
-//
-//        // SQLite尝试
-//        print(model.getCount())
-        
-        
-    }
-    
-//    func getNameArray(result: [Row]) {
-//        nameArray = []
-//        self.result = model.search()
+//        self.result = itemTable.search()
 //        for item in result {
-//            nameArray.append(item[model.name])
+//            idArray.append(item[itemTable.id])
+//            nameArray.append(item[itemTable.name])
 //        }
-//        print(nameArray)
-//    }
+
+    }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -149,12 +89,34 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         idArray = []
         nameArray = []
         
-        for name in model.search() {
-            idArray.append(name[model.id])
-            nameArray.append(name[model.name])
+        for name in itemTable.search() {
+            idArray.append(name[itemTable.id])
+            nameArray.append(name[itemTable.name])
         }
         print("reloadData")
         // 关键：reloadData()，刷新页面数据
         tableView.reloadData()
+    }
+}
+
+
+
+// 建模
+struct CSBasicModel {
+    var id: [Int]
+    var name: [String]
+    var resume: [String]
+    var totalProgress: [Int]
+    var color: [Int]
+    
+    init(jsonData: JSON) {
+        id = jsonData.arrayValue.map {$0["id"].intValue}
+        name = jsonData.arrayValue.map {$0["name"].stringValue}
+        resume = jsonData.arrayValue.map {$0["resume"].stringValue}
+        totalProgress = jsonData.arrayValue.map {$0["totalProgress"].intValue}
+        color = jsonData.arrayValue.map {$0["color"].intValue}
+        // .stringValue 等价于 .string ?? "" ，即自动填充默认值""
+        // .intValue 等价于 .int ?? 0
+        // .arrayValue 等价于 .array ?? []
     }
 }

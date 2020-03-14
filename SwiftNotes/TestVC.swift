@@ -10,13 +10,13 @@ import UIKit
 
 class TestVC: UIViewController {
 
-    let model = CSBasicModel()
+    let itemTable = CSBasicTable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let result = model.getJSONOneRow(id: 0)
+        let result = itemTable.getJSONOneRow(id: 0)
 //        let results = model.getJSON()
         
     }

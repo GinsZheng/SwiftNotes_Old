@@ -33,7 +33,7 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
         button.set(superview: view, target: self, action: #selector(editName))
         button.setStyleSolidBtn(title: "下一页")
         button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
-
+        
     }
 
     // 受托
