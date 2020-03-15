@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
-    let itemTable = CSBasicTable()
+    let table = CSBasicTable()
     
     var idArray = [Int]()
     var nameArray = [String]()
@@ -26,14 +26,13 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(presentToInsertPage))
         
         // 从本地数据库获取JSON数据、建模、赋值
-        let result = itemTable.getJSON()
+        let result = table.getJSON()
         let model = CSBasicModel.init(jsonData: result)
         idArray = model.id
         nameArray = model.name
         
         tableView.set(superview: view, delegate: self, dataSource: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
-        tableView.reloadData()
         
     }
     
@@ -83,9 +82,9 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         idArray = []
         nameArray = []
         
-        for name in itemTable.search() {
-            idArray.append(name[itemTable.id])
-            nameArray.append(name[itemTable.name])
+        for name in table.search() {
+            idArray.append(name[table.id])
+            nameArray.append(name[table.name])
         }
         print("reloadData")
         // 关键：reloadData()，刷新页面数据
@@ -93,21 +92,3 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
 }
 
-
-
-// 建模
-struct CSBasicModel {
-    var id: [Int]
-    var name: [String]
-    var resume: [String]
-    var totalProgress: [Int]
-    var color: [Int]
-    
-    init(jsonData: JSON) {
-        id = jsonData.arrayValue.map {$0["id"].intValue}
-        name = jsonData.arrayValue.map {$0["name"].stringValue}
-        resume = jsonData.arrayValue.map {$0["resume"].stringValue}
-        totalProgress = jsonData.arrayValue.map {$0["totalProgress"].intValue}
-        color = jsonData.arrayValue.map {$0["color"].intValue}
-    }
-}

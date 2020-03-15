@@ -38,7 +38,7 @@ class CSLoadingPage: UIViewController {
 
 /*
  viewDidLoad 只会加载一次
- viewWillAppear 每次回到页面就会重新加载(包括返回、标签切换)，但不包括 dismiss 方式返回页面
+ viewWillAppear 每次回到页面就会重新加载(包括返回、标签切换)，但以 dismiss 方式返回时不会重新加载
  viewDidAppear 同上
  */
 

@@ -121,6 +121,42 @@ extension CSBasicTable {
         return result ?? 0
     }
     
+    func getJSON() -> JSON {
+        let result = try! getDB().prepare("SELECT * FROM \(tableName)")
+        var jsonArray: [Any] = []
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            let rowDict: [String: Any] = [
+                "id": jsonRow[0],
+                "name": jsonRow[1],
+                "resume": jsonRow[2],
+                "totalProgress": jsonRow[3],
+                "color": jsonRow[4]
+            ]
+            let jsonDict = JSON(rowDict)
+            jsonArray.append(jsonDict)
+        }
+        return JSON(jsonArray)
+    }
+    
+    func getJSONOneRow(id: Int) -> JSON {
+        let result = try! getDB().prepare("SELECT * FROM \(tableName) WHERE id = \(id)")
+        var rowDict: [String: Any] = [:]
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            rowDict = [
+                "id": jsonRow[0],
+                "name": jsonRow[1],
+                "resume": jsonRow[2],
+                "totalProgress": jsonRow[3],
+                "color": jsonRow[4]
+            ]
+        }
+        return JSON(rowDict)
+    }
+
     func getNextId() -> Int64 {
         let result = try! getDB().scalar("SELECT MAX(id) FROM \(tableName)")
         if result == nil {
@@ -134,59 +170,62 @@ extension CSBasicTable {
         return result ?? ""
     }
     
-    func getJoindTableValue() -> Binding {
-        let result = try! getDB().scalar("SELECT name FROM items, progress WHERE items.id = progress.itemId")
-        return result ?? ""
-    }
     
-    func getJSONOneRow(id: Int) -> JSON {
-        let result = try! getDB().prepare("SELECT * FROM \(tableName) WHERE id = \(id)")
-        var rowDict: [String: Any] = [:]
-        
-        for row in result {
-            let jsonRow = JSON(row)
-            let id = jsonRow[0]
-            let name = jsonRow[1]
-            let resume = jsonRow[2]
-            let totalProgress = jsonRow[3]
-            let color = jsonRow[4]
-            
-            rowDict = [
-                "id": id,
-                "name": name,
-                "resume": resume,
-                "totalProgress": totalProgress,
-                "color": color
-            ]
-        }
-        let jsonDict = JSON(rowDict)
-        return jsonDict
-    }
-    
-    func getJSON() -> JSON {
-        let result = try! getDB().prepare("SELECT * FROM \(tableName)")
+    func getJoinedTablesJSON() -> JSON {
+        // 联结表时，如果两个表的字段一致(如id，需要指明表名，如：items.id)
+        let result = try! getDB().prepare("SELECT items.id, name, createTime FROM items, progress WHERE items.id = progress.id ORDER BY progress.createTime DESC")
         var jsonArray: [Any] = []
-        let jsonResult: JSON
         
         for row in result {
             let jsonRow = JSON(row)
-            let id = jsonRow[0]
-            let name = jsonRow[1]
-            let resume = jsonRow[2]
-            let totalProgress = jsonRow[3]
-            let color = jsonRow[4]
-            
             let rowDict: [String: Any] = [
-                "id": id,
-                "name": name,
-                "resume": resume,
-                "totalProgress": totalProgress,
-                "color": color
+                "id": jsonRow[0],
+                "name": jsonRow[1],
+                "createTime": jsonRow[2],
             ]
             let jsonDict = JSON(rowDict)
             jsonArray.append(jsonDict)
         }
-        jsonResult = JSON(jsonArray)
-        return jsonResult
+        return JSON(jsonArray)
+    }
+    
+    func getJoinedTablesJSONOneLine() -> JSON {
+        
+        let result = try! getDB().prepare("SELECT items.id, name, createTime FROM items, progress WHERE items.id = progress.id ORDER BY progress.createTime DESC LIMIT 1")
+        
+        var rowDict: [String: Any] = [:]
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            rowDict = [
+                "id": jsonRow[0],
+                "name": jsonRow[1],
+                "createTime": jsonRow[2],
+            ]
+        }
+        return JSON(rowDict)
+    }
+    
+
+}
+
+// 建模
+struct CSBasicModel {
+    var id: [Int]
+    var name: [String]
+    var resume: [String]
+    var totalProgress: [Int]
+    var color: [Int]
+    
+    init(jsonData: JSON) {
+        id = jsonData.arrayValue.map {$0["id"].intValue}
+        name = jsonData.arrayValue.map {$0["name"].stringValue}
+        resume = jsonData.arrayValue.map {$0["resume"].stringValue}
+        totalProgress = jsonData.arrayValue.map {$0["totalProgress"].intValue}
+        color = jsonData.arrayValue.map {$0["color"].intValue}
     }
 }
+
+/*
+ 新增字段后，可能出问题，尝试删除APP看看，后续再看处理
+ */
