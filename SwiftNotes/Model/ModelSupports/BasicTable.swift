@@ -39,6 +39,7 @@ class CSBasicTable: SQLiteManager {
             resume <- item["resume"].stringValue,
             totalProgress <- item["totalProgress"].intValue,
             color <- item["color"].intValue
+            
         )
         super.insert(values)
     }
@@ -116,7 +117,6 @@ extension CSBasicTable {
     
     // scalar 可获取一个值
     func getCount() -> Binding {
-        // self.getTable() // 以下函数如果有报错，则尝试加上这条
         let result = try! getDB().scalar("SELECT count(*) FROM \(tableName)")
         return result ?? 0
     }
@@ -129,14 +129,18 @@ extension CSBasicTable {
         return result as! Int64 + 1
     }
     
+    func getFirstName() -> Binding {
+        let result = try! getDB().scalar("SELECT name FROM items, progress ORDER BY progress.createTime DESC LIMIT 1")
+        return result ?? ""
+    }
+    
     func getJoindTableValue() -> Binding {
         let result = try! getDB().scalar("SELECT name FROM items, progress WHERE items.id = progress.itemId")
         return result ?? ""
     }
     
-    // prepare 可获取数组
     func getJSONOneRow(id: Int) -> JSON {
-        let result = try! getDB().prepare("SELECT * FROM items WHERE id = \(id)")
+        let result = try! getDB().prepare("SELECT * FROM \(tableName) WHERE id = \(id)")
         var rowDict: [String: Any] = [:]
         
         for row in result {
@@ -160,7 +164,7 @@ extension CSBasicTable {
     }
     
     func getJSON() -> JSON {
-        let result = try! getDB().prepare("SELECT * FROM items")
+        let result = try! getDB().prepare("SELECT * FROM \(tableName)")
         var jsonArray: [Any] = []
         let jsonResult: JSON
         

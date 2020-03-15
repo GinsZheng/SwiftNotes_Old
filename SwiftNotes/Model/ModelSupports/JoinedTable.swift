@@ -22,9 +22,10 @@ class CSJoinedTable: SQLiteManager {
     let tableName = "progress"
     let id = Expression<Int>("id")
     let currentProgress = Expression<Int>("currentProgress")
-    let startTime = Expression<String>("startTime")
-    let endTime = Expression<String>("endTime")
+    let startTime = Expression<Int>("startTime")
+    let endTime = Expression<Int>("endTime")
     let itemId = Expression<Int>("itemId")
+//    let createTime = Expression<Int>("createTime")
     
     func getTable() -> Table {
         let table = super.getTable(tableName: tableName) { (t) in
@@ -33,6 +34,7 @@ class CSJoinedTable: SQLiteManager {
             t.column(startTime)
             t.column(endTime)
             t.column(itemId)
+//            t.column(createTime)
         }
         return table
     }
@@ -43,9 +45,10 @@ class CSJoinedTable: SQLiteManager {
         let values = getTable().insert(
             id <- item["id"].intValue,
             currentProgress <- item["currentProgress"].intValue,
-            startTime <- item["startTime"].stringValue,
-            endTime <- item["endTime"].stringValue,
+            startTime <- item["startTime"].intValue,
+            endTime <- item["endTime"].intValue,
             itemId <- item["itemId"].intValue
+//            createTime <- 10000
         )
         super.insert(values)
     }
@@ -72,8 +75,8 @@ class CSJoinedTable: SQLiteManager {
         let updatedData = getTable().filter(id == rowid)
         let values = updatedData.update(
             currentProgress <- item["currentProgress"].intValue,
-            startTime <- item["startTime"].stringValue,
-            endTime <- item["endTime"].stringValue,
+            startTime <- item["startTime"].intValue,
+            endTime <- item["endTime"].intValue,
             itemId <- item["itemId"].intValue
         )
         super.update(values)
@@ -82,8 +85,8 @@ class CSJoinedTable: SQLiteManager {
     // 查
     func search(filter: Expression<Bool>? = nil, select: [Expressible] = [
         Expression<Int>("id"),
-        Expression<String>("currentProgress"),
-        Expression<String>("startTime"),
+        Expression<Int>("currentProgress"),
+        Expression<Int>("startTime"),
         Expression<Int>("endTime"),
         Expression<Int>("itemId")
         ], order: [Expressible] = [Expression<Int>("id").asc], limit: Int? = nil, offset: Int? = nil) -> [Row] {
@@ -96,3 +99,73 @@ class CSJoinedTable: SQLiteManager {
     
 }
 
+extension CSJoinedTable {
+    
+    func getJSON() -> JSON {
+        let result = try! getDB().prepare("SELECT * FROM \(tableName)")
+        var jsonArray: [Any] = []
+        let jsonResult: JSON
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            let id = jsonRow[0]
+            let currentProgress = jsonRow[1]
+            let startTime = jsonRow[2]
+            let endTime = jsonRow[3]
+            let itemId = jsonRow[4]
+//            let createTime = jsonRow[5]
+            
+            let rowDict: [String: Any] = [
+                "id": id,
+                "currentProgress": currentProgress,
+                "startTime": startTime,
+                "endTime": endTime,
+                "itemId": itemId,
+//                "createTime": createTime
+            ]
+            let jsonDict = JSON(rowDict)
+            jsonArray.append(jsonDict)
+        }
+        jsonResult = JSON(jsonArray)
+        return jsonResult
+    }
+    
+    func getJSONOneRow(id: Int) -> JSON {
+        let result = try! getDB().prepare("SELECT * FROM \(tableName) WHERE id = \(id)")
+        var rowDict: [String: Any] = [:]
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            let id = jsonRow[0]
+            let currentProgress = jsonRow[1]
+            let startTime = jsonRow[2]
+            let endTime = jsonRow[3]
+            let itemId = jsonRow[4]
+//            let
+            
+            rowDict = [
+                "id": id,
+                "currentProgress": currentProgress,
+                "startTime": startTime,
+                "endTime": endTime,
+                "itemId": itemId,
+//                "createTime": createTime
+            ]
+        }
+        let jsonDict = JSON(rowDict)
+        return jsonDict
+    }
+    
+    func getNextId() -> Int64 {
+        let result = try! getDB().scalar("SELECT MAX(id) FROM \(tableName)")
+        if result == nil {
+            return 0
+        }
+        return result as! Int64 + 1
+    }
+    
+    func getCount() -> Binding {
+        let result = try! getDB().scalar("SELECT count(*) FROM \(tableName)")
+        return result ?? 0
+    }
+}

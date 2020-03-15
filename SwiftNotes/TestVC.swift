@@ -11,12 +11,17 @@ import UIKit
 class TestVC: UIViewController {
 
     let itemTable = CSBasicTable()
+    let joinedTable = CSJoinedTable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        print(itemTable.getJoindTableValue())
+//        print(joinedTable.getCount())
+//        print(itemTable.getCount())
+//
+//        print(joinedTable.delete())
+//        print(itemTable.delete())
     }
     
     @objc func pushNext() {

@@ -1,21 +1,21 @@
 //
-//  SQLite.swift
+//  SQLiteJoinTablesPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2019/11/24.
-//  Copyright © 2019 GinsMac. All rights reserved.
+//  Created by GinsMac on 2020/1/17.
+//  Copyright © 2020 GinsMac. All rights reserved.
 //
 
 import UIKit
 import SQLite
 import SwiftyJSON
 
-class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
+class CSJoinedModelPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
-    let itemTable = CSBasicTable()
+    let table = CSJoinedTable()
     
     var idArray = [Int]()
-    var nameArray = [String]()
+//    var createTimeArray = [Int]()
     
     let tableView = UITableView()
     
@@ -26,10 +26,10 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(presentToInsertPage))
         
         // 从本地数据库获取JSON数据、建模、赋值
-        let result = itemTable.getJSON()
-        let model = CSBasicModel.init(jsonData: result)
+        let result = table.getJSON()
+        let model = CSJoinedModel.init(jsonData: result)
         idArray = model.id
-        nameArray = model.name
+//        createTimeArray = model.createTime
         
         tableView.set(superview: view, delegate: self, dataSource: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
@@ -44,7 +44,7 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.setSeparator(leftInset: 20, rightInset: 0)
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: nameArray[indexPath.row])
+        cellTitle.set(superview: cell, text: String(idArray[indexPath.row]))
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
@@ -63,7 +63,7 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let updatePage = CSBasicUpdatePage()
+        let updatePage = CSJoinedUpdatePage()
         updatePage.delegate = self
         updatePage.updatedId = idArray[indexPath.row]
         self.present(toTarget: updatePage)
@@ -72,7 +72,7 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     // 建立委托
     @objc func presentToInsertPage() {
-        let insertPage = CSBasicInsertPage()
+        let insertPage = CSJoinedInsertPage()
         insertPage.delegate = self
         self.present(toTarget: insertPage)
     }
@@ -81,11 +81,11 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     func reloadItemsList() {
         // 如果不需要把已加载的清除，则不用把itemName清空，直接再遍历
         idArray = []
-        nameArray = []
+//        createTimeArray = []
         
-        for name in itemTable.search() {
-            idArray.append(name[itemTable.id])
-            nameArray.append(name[itemTable.name])
+        for row in table.search() {
+            idArray.append(row[table.id])
+//            createTimeArray.append(row[table.createTime])
         }
         print("reloadData")
         // 关键：reloadData()，刷新页面数据
@@ -96,18 +96,20 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
 
 
 // 建模
-struct CSBasicModel {
+struct CSJoinedModel {
     var id: [Int]
-    var name: [String]
-    var resume: [String]
-    var totalProgress: [Int]
-    var color: [Int]
-    
+    var currentProgress: [Int]
+    var startTime: [Int]
+    var endTime: [Int]
+    var itemId: [Int]
+//    var createTime: [Int]
+
     init(jsonData: JSON) {
         id = jsonData.arrayValue.map {$0["id"].intValue}
-        name = jsonData.arrayValue.map {$0["name"].stringValue}
-        resume = jsonData.arrayValue.map {$0["resume"].stringValue}
-        totalProgress = jsonData.arrayValue.map {$0["totalProgress"].intValue}
-        color = jsonData.arrayValue.map {$0["color"].intValue}
+        currentProgress = jsonData.arrayValue.map {$0["currentProgress"].intValue}
+        startTime = jsonData.arrayValue.map {$0["startTime"].intValue}
+        endTime = jsonData.arrayValue.map {$0["endTime"].intValue}
+        itemId = jsonData.arrayValue.map {$0["itemId"].intValue}
+//        createTime = jsonData.arrayValue.map {$0["createTime"].intValue}
     }
 }

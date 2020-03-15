@@ -1,5 +1,5 @@
 //
-//  CSInsertPage.swift
+//  CSBasicInsertPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/3/14.
@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import SQLite
 
-class CSInsertPage: UIViewController, UITextFieldDelegate {
+class CSBasicInsertPage: UIViewController, UITextFieldDelegate {
     
     let navPresent = UIPresentNav()
     
@@ -59,7 +59,7 @@ class CSInsertPage: UIViewController, UITextFieldDelegate {
     
     // 建立委托
     @objc func addItem() {
-        let id = itemTable.getCount()
+        let id = itemTable.getNextId()
         let insertValue: [String: Any] = [
             "id": id,
             "name": nameTextField.text ?? "",

@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         // 将window的一级页面设置为tabBar
         self.window?.rootViewController = tabBarController
 
+        CSBasicTable().getTable()
+        CSJoinedTable().getTable()
         
         return true
     }
