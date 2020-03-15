@@ -116,7 +116,7 @@ struct CSJoinedUpdateModel {
     var startTime: Int
     var endTime: Int
     var itemId: Int
-//    var createTime: Int
+    var createTime: Int
     
     init(jsonData: JSON) {
         id = jsonData["id"].intValue
@@ -124,6 +124,6 @@ struct CSJoinedUpdateModel {
         startTime = jsonData["startTime"].intValue
         endTime = jsonData["endTime"].intValue
         itemId = jsonData["itemId"].intValue
-//        createTime = jsonData["createTime"].intValue
+        createTime = jsonData["createTime"].intValue
     }
 }

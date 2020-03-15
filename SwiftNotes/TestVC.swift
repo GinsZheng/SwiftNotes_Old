@@ -22,6 +22,7 @@ class TestVC: UIViewController {
 //
 //        print(joinedTable.delete())
 //        print(itemTable.delete())
+        print(joinedTable.createTime)
     }
     
     @objc func pushNext() {

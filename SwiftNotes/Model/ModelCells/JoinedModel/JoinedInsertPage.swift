@@ -66,7 +66,7 @@ class CSJoinedInsertPage: UIViewController, UITextFieldDelegate {
             "startTime": Int(startTimeTextField.text ?? "") ?? 0,
             "entTime": Int(endTimeTextField.text ?? "") ?? 0,
             "itemId": Int(itemIdTextField.text ?? "") ?? 0,
-//            "createTime": 1000000
+            "createTime": Int(getTimeStampWithDate(date: Date()))
         ]
         table.insert(item: JSON(insertValue))
         

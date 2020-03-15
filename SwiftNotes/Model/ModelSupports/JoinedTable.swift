@@ -25,7 +25,7 @@ class CSJoinedTable: SQLiteManager {
     let startTime = Expression<Int>("startTime")
     let endTime = Expression<Int>("endTime")
     let itemId = Expression<Int>("itemId")
-//    let createTime = Expression<Int>("createTime")
+    let createTime = Expression<Int>("createTime")
     
     func getTable() -> Table {
         let table = super.getTable(tableName: tableName) { (t) in
@@ -34,7 +34,7 @@ class CSJoinedTable: SQLiteManager {
             t.column(startTime)
             t.column(endTime)
             t.column(itemId)
-//            t.column(createTime)
+            t.column(createTime)
         }
         return table
     }
@@ -47,8 +47,8 @@ class CSJoinedTable: SQLiteManager {
             currentProgress <- item["currentProgress"].intValue,
             startTime <- item["startTime"].intValue,
             endTime <- item["endTime"].intValue,
-            itemId <- item["itemId"].intValue
-//            createTime <- 10000
+            itemId <- item["itemId"].intValue,
+            createTime <- item["createTime"].intValue
         )
         super.insert(values)
     }
@@ -88,7 +88,8 @@ class CSJoinedTable: SQLiteManager {
         Expression<Int>("currentProgress"),
         Expression<Int>("startTime"),
         Expression<Int>("endTime"),
-        Expression<Int>("itemId")
+        Expression<Int>("itemId"),
+        Expression<Int>("createTime")
         ], order: [Expressible] = [Expression<Int>("id").asc], limit: Int? = nil, offset: Int? = nil) -> [Row] {
         
         let query = getTable().select(select).order(order)
@@ -113,7 +114,7 @@ extension CSJoinedTable {
             let startTime = jsonRow[2]
             let endTime = jsonRow[3]
             let itemId = jsonRow[4]
-//            let createTime = jsonRow[5]
+            let createTime = jsonRow[5]
             
             let rowDict: [String: Any] = [
                 "id": id,
@@ -121,7 +122,7 @@ extension CSJoinedTable {
                 "startTime": startTime,
                 "endTime": endTime,
                 "itemId": itemId,
-//                "createTime": createTime
+                "createTime": createTime
             ]
             let jsonDict = JSON(rowDict)
             jsonArray.append(jsonDict)
@@ -141,7 +142,7 @@ extension CSJoinedTable {
             let startTime = jsonRow[2]
             let endTime = jsonRow[3]
             let itemId = jsonRow[4]
-//            let
+            let createTime = jsonRow[5]
             
             rowDict = [
                 "id": id,
@@ -149,7 +150,7 @@ extension CSJoinedTable {
                 "startTime": startTime,
                 "endTime": endTime,
                 "itemId": itemId,
-//                "createTime": createTime
+                "createTime": createTime
             ]
         }
         let jsonDict = JSON(rowDict)
