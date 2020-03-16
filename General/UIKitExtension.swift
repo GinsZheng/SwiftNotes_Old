@@ -64,7 +64,7 @@ extension UIView {
         separator.backgroundColor = UIColor.hex(color)
     }
     
-    func setGradientLayer(colors: [CGColor]?, locations: [NSNumber]?, startPoint: CGPoint, endPoint: CGPoint) {
+    func setGradientLayer(colors: [CGColor]?, locations: [NSNumber]?, startPoint: CGPoint, endPoint: CGPoint, zIndex: UInt32 = 0) {
         /* eg:
          colors: [UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF5349).cgColor]
          locations: [0, 0.3, 1]
@@ -79,7 +79,16 @@ extension UIView {
         gradientLayer.startPoint = startPoint
         gradientLayer.endPoint  = endPoint
         gradientLayer.frame = CGRect.init(x: 0, y: 0, width: self.width, height: self.height)
-        self.layer.insertSublayer(gradientLayer, at: 0)
+        self.layer.insertSublayer(gradientLayer, at: zIndex)
+    }
+    
+    func removeGradientLayer() {
+        self.layer.sublayers?[0].removeFromSuperlayer()
+    }
+    
+    func resetGradientLayer(colors: [CGColor]?, locations: [NSNumber]?, startPoint: CGPoint, endPoint: CGPoint, zIndex: UInt32 = 0) {
+        self.removeGradientLayer()
+        self.setGradientLayer(colors: colors, locations: locations, startPoint: startPoint, endPoint: endPoint, zIndex: zIndex)
     }
     
     

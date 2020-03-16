@@ -10,31 +10,63 @@ import UIKit
 
 class CSTextFieldPage: UIViewController, UITextFieldDelegate {
     
+    let textField = UITextField()
+    let textField2 = UITextField()
+    let button = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        
-        let textField = UITextField()
+
         textField.set(superview: view, placeholder: "Input something", delegate: self)
         textField.setFrame(left: 20, top: 20, width: kScreenWidth, height: 44)
         textField.addTarget(self, action: #selector(checkInputtedValue), for: .allEditingEvents)
         textField.becomeFirstResponder() // 获取焦点
         
-        let textField2 = UITextField()
         textField2.set(superview: view, placeholder: "NumberPad", delegate: self)
-        textField2.setFrame(left: 20, top: 160, width: kScreenWidth, height: 44)
+        textField2.setFrame(left: 20, top: textField.bottom + 20, width: kScreenWidth, height: 44)
         textField2.keyboardType = .numberPad
+
+        button.set(superview: view, target: self, action: #selector(resign))
+        button.setStyleSolidButton(title: "hehe")
+        button.setFrame(left: 20, top: textField2.bottom + 20, right: 20, height: 48)
         
+        let myView = UIView()
+        myView.set(superview: view, backgroundColor: cF0F1F3)
+        myView.setFrame(left: 20, top: button.bottom + 20, right: 20, height: 100)
     }
     
+    // 点击空白位置，收起键盘
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resignFirstResponders()
+    }
+    /*
+     空白位置指：无点击事件的控件。
+     无点击事件控件：比如默认的UIView，点了无事件但不穿透， 即如果此控件下层有可点击的彼控件，则彼控件点击事件不触发
+     不可交互控件：比如默认的UILabel，点了无效且被穿透， 即如果此控件下层有可点击的彼控件，则彼控件点击事件被触发
+     可点击控件：比如默认的Button，点了有事件。 点击可点击控件，不会收起键盘， 如果需要，就要写上：textField.resignFirstResponder()
+     
+     注：实际上，无交互控件也会被触发收起键盘， 是因为无交互控件的底下还有一个❲无点击事件的控件❳：view。 点击不可交互控件，就点击了view，所以收起键盘
+     */
     
+    func resignFirstResponders() {
+        textField.resignFirstResponder()
+        textField2.resignFirstResponder()
+    }
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(textField.text!)
         return true
     }
     
     @objc func checkInputtedValue(textField: UITextField) {
-
+        
     }
+    
+    @objc func resign() {
+        resignFirstResponders()
+        print("resign already")
+    }
+
 }
 
