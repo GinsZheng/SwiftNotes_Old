@@ -26,8 +26,8 @@ class CSJoinedModelPage: UIViewController, UITableViewDelegate, UITableViewDataS
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(presentToInsertPage))
         
         // 从本地数据库获取JSON数据、建模、赋值
-        let result = table.getJSON()
-        let model = CSJoinedModel.init(jsonData: result)
+        let json = table.getJSON()
+        let model = CSJoinedModel.init(jsonData: json)
         idArray = model.id
         createTimeArray = model.createTime
         print(createTimeArray)
@@ -94,23 +94,3 @@ class CSJoinedModelPage: UIViewController, UITableViewDelegate, UITableViewDataS
     }
 }
 
-
-
-// 建模
-struct CSJoinedModel {
-    var id: [Int]
-    var currentProgress: [Int]
-    var startTime: [Int]
-    var endTime: [Int]
-    var itemId: [Int]
-    var createTime: [Int]
-
-    init(jsonData: JSON) {
-        id = jsonData.arrayValue.map {$0["id"].intValue}
-        currentProgress = jsonData.arrayValue.map {$0["currentProgress"].intValue}
-        startTime = jsonData.arrayValue.map {$0["startTime"].intValue}
-        endTime = jsonData.arrayValue.map {$0["endTime"].intValue}
-        itemId = jsonData.arrayValue.map {$0["itemId"].intValue}
-        createTime = jsonData.arrayValue.map {$0["createTime"].intValue}
-    }
-}

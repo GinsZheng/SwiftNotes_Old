@@ -170,3 +170,23 @@ extension CSJoinedTable {
         return result ?? 0
     }
 }
+
+
+
+struct CSJoinedModel {
+    var id: [Int]
+    var currentProgress: [Int]
+    var startTime: [Int]
+    var endTime: [Int]
+    var itemId: [Int]
+    var createTime: [Int]
+
+    init(jsonData: JSON) {
+        id = jsonData.arrayValue.map {$0["id"].intValue}
+        currentProgress = jsonData.arrayValue.map {$0["currentProgress"].intValue}
+        startTime = jsonData.arrayValue.map {$0["startTime"].intValue}
+        endTime = jsonData.arrayValue.map {$0["endTime"].intValue}
+        itemId = jsonData.arrayValue.map {$0["itemId"].intValue}
+        createTime = jsonData.arrayValue.map {$0["createTime"].intValue}
+    }
+}

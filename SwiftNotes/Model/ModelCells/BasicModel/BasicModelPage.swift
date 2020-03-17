@@ -26,8 +26,8 @@ class CSBasicModelPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(presentToInsertPage))
         
         // 从本地数据库获取JSON数据、建模、赋值
-        let result = table.getJSON()
-        let model = CSBasicModel.init(jsonData: result)
+        let json = table.getJSON()
+        let model = CSBasicModel.init(jsonData: json)
         idArray = model.id
         nameArray = model.name
         

@@ -31,8 +31,8 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let result = table.getJSON()
-        let model = ReloadDateModel.init(jsonData: result)
+        let json = table.getJSON()
+        let model = ReloadDateModel.init(jsonData: json)
         nameArray = model.name
         
         
@@ -71,8 +71,8 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     // 3.遵循协议的函数
     func reloadItemsList() {
         //MARK:- 关键1：重新赋值数组
-        let result = table.getJSON()
-        let model = ReloadDateModel.init(jsonData: result)
+        let json = table.getJSON()
+        let model = ReloadDateModel.init(jsonData: json)
         nameArray = model.name
         print("reloadData")
         // 关键2：reloadData()，刷新页面数据
