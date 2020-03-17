@@ -1,5 +1,5 @@
 //
-//  CSReloadDataModel.swift
+//  CSReloadDataTable.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/11/24.
@@ -9,7 +9,7 @@
 import SQLite
 import SwiftyJSON
 
-class CSReloadDataModel: SQLiteManager {
+class CSReloadDataTable: SQLiteManager {
     // 模型只需修改字段名及数据类型，及表名
     let tableName = "reloadData"
     let id = Expression<Int>("id")
@@ -72,7 +72,7 @@ class CSReloadDataModel: SQLiteManager {
 }
 
 
-extension CSReloadDataModel {
+extension CSReloadDataTable {
     
     func printId() {
         var idList: [Int] = []
@@ -96,7 +96,32 @@ extension CSReloadDataModel {
         return result as! Int64 + 1
     }
     
-
+    func getJSON() -> JSON {
+        let result = try! getDB().prepare("SELECT * FROM \(tableName)")
+        var jsonArray: [Any] = []
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            let rowDict: [String: Any] = [
+                "id": jsonRow[0],
+                "name": jsonRow[1],
+            ]
+            let jsonDict = JSON(rowDict)
+            jsonArray.append(jsonDict)
+        }
+        return JSON(jsonArray)
+    }
     
 }
 
+
+
+struct ReloadDateModel {
+    var id: [Int]
+    var name: [String]
+    
+    init(jsonData: JSON) {
+        id = jsonData.arrayValue.map {$0["id"].intValue}
+        name = jsonData.arrayValue.map {$0["name"].stringValue}
+    }
+}

@@ -12,15 +12,17 @@ import SwiftyJSON
 
 // 写个委托，完成子VC切到父VC时的通信
 // 如果不是 dismiss() 过场，直接在父VC用viewDidLoad()即可刷新，不用委托
+// 0.协议
 protocol CSReloadDelegate: NSObjectProtocol {
     func reloadItemsList()
 }
 
+// 1.委托类：继承协议类
 class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
 
-    var itemName = [String]()
+    var nameArray = [String]()
     
-    let itemTable = CSReloadDataModel()
+    let table = CSReloadDataTable()
     
     let addItemBtn = UIButton(type: .custom)
     let tableView = UITableView()
@@ -29,9 +31,10 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        for name in itemTable.search() {
-            itemName.append(name[itemTable.name])
-        }
+        let result = table.getJSON()
+        let model = ReloadDateModel.init(jsonData: result)
+        nameArray = model.name
+        
         
         addItemBtn.set(superview: view, target: self, action: #selector(presentAddItemVC))
         addItemBtn.setFrame(right: 20, top: 0, width: 25, height: 20)
@@ -42,13 +45,13 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        itemName.count
+        nameArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "itemList")
         cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: 0)
-        cell.textLabel?.text = itemName[indexPath.row]
+        cell.textLabel?.text = nameArray[indexPath.row]
         
         return cell
     }
@@ -59,35 +62,35 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     @objc func presentAddItemVC() {
-        
+        // 2.受托
         let addItemVc = AddItemVC()
         addItemVc.delegate = self
         self.present(toTarget: addItemVc)
     }
     
+    // 3.遵循协议的函数
     func reloadItemsList() {
-        // 如果不需要把已加载的清除，则不用把itemName清空，直接再遍历
-        itemName = []
-        
-        for name in itemTable.search() {
-            itemName.append(name[itemTable.name])
-        }
+        //MARK:- 关键1：重新赋值数组
+        let result = table.getJSON()
+        let model = ReloadDateModel.init(jsonData: result)
+        nameArray = model.name
         print("reloadData")
-        // 关键：reloadData()，刷新页面数据
+        // 关键2：reloadData()，刷新页面数据
         tableView.reloadData()
     }
 }
 
 
-
+// 委托类
 class AddItemVC: UIViewController, UITextFieldDelegate {
     
     let nameTextField = UITextField()
     let addingButton = UIButton()
     
-    let itemTable = CSReloadDataModel()
-    lazy var result = itemTable.search()
+    let table = CSReloadDataTable()
+    lazy var result = table.search()
     
+    // 4.定义委托变量delegate
     weak var delegate: CSReloadDelegate?
     
     override func viewDidLoad() {
@@ -115,7 +118,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     
     @objc func addItem() {
         
-        let id = itemTable.getNextId()
+        let id = table.getNextId()
         let insertRow: [String: Any] = [
             "id": id,
             "name": nameTextField.text ?? ""
@@ -123,20 +126,21 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
 
         let insertJSON = JSON(insertRow)
         print(insertJSON)
-        itemTable.insert(item: insertJSON)
-        itemTable.printId()
+        table.insert(item: insertJSON)
+        table.printId()
         
         self.dismiss()
         
+        // 5.委托
         if delegate != nil {
             delegate!.reloadItemsList()
         }
     }
     
+    // 6.内存管理与析构
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
     deinit {
         print("释放")
     }

@@ -29,22 +29,22 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
         label.setFontStyle(size: 24, color: cBlue_2C9EFF)
         label.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 60)
 
-        // 2.受托的触发条件
         button.set(superview: view, target: self, action: #selector(editName))
         button.setStyleSolidBtn(title: "下一页")
         button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
         
     }
 
-    // 受托
     @objc func editName() {
-        let nameEditorPage = CSNameEditorPage() // 3.类A，实例化委托人-类B
-        nameEditorPage.delegate = self // 4.让类B实例.delegate = self，表示接受类B的委托
-        self.pushFromSecondaryPage(toTarget: nameEditorPage) // 5.Push的时候，
+        // 2.受托
+        let nameEditorPage = CSNameEditorPage() // 类A，实例化委托人-类B
+        nameEditorPage.delegate = self // 让类B实例.delegate = self，表示接受类B的委托
+        self.pushFromSecondaryPage(toTarget: nameEditorPage) // Push的时候，
         // toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
         // 而不是CSNameEditorPage(),是一个大坑
     }
-    // 6.遵循协议的函数，里面写了具体的类A要做的事
+    
+    // 3.遵循协议的函数，里面写了具体的类A要做的事
     func fetchName(name: String) {
         self.label.text = name
     }
@@ -58,7 +58,8 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     var oldName: String?
     let nameTextField = UITextField()
     let button = UIButton()
-    // 7.定义委托变量delegate
+    
+    // 4.定义委托变量delegate
     weak var delegate: CSNameEditorDelegate?
 
     override func viewDidLoad() {
@@ -69,7 +70,6 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
         nameTextField.setStyleOneLineTextField()
         nameTextField.setFrame(left: 20, top: 20, right: 20, height: 44)
 
-        // 8.委托的触发条件
         button.set(superview: view, target: self, action: #selector(refreshSuperView))
         button.setStyleSolidBtn(title: "返回")
         button.setFrame(left: 20, top: 84, right: 20, height: 44)
@@ -82,7 +82,7 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     @objc func refreshSuperView() {
         let name = nameTextField.text
         if name != "" {
-            // 9.委托开始，委托的事为fetchName
+            // 5.委托开始，委托的事为fetchName
             if delegate != nil {
                 delegate!.fetchName(name: name!)
             }
@@ -100,11 +100,10 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
         }
     }
 
-    // 10.内存管理
+    // 6.内存管理与析构
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    // 11.析构
     deinit {
         print("释放")
     }
@@ -115,11 +114,19 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
 
 
 
-// 设置代理步骤：以反向传值为例
-// 定义一个协议，以实现两个类的传值通信
-// 类A成为受托人，类B为委托人
-// 在接收值的类A，实例化传值的类B，让类B实例.delegate = self，实现类A的受托
-// 接收值的类A，遵循协议，这样可调用协议内的方法，实现值的获取、操作
-// 传值的类B，定义weak变量：delegate
-// 传值的类B，在某触发条件下，执行delegate的方法
-// 传值的类B，最后做内存管理和析构
+/*
+ 设置代理步骤：以反向传值为例
+ 定义一个协议，以实现两个类的传值通信
+ 类A成为受托人，类B为委托人
+ 在接收值的类A，实例化传值的类B，让类B实例.delegate = self，实现类A的受托
+ 接收值的类A，遵循协议，这样可调用协议内的方法，实现值的获取、操作
+ 传值的类B，定义weak变量：delegate
+ 传值的类B，在某触发条件下，执行delegate的方法
+ 传值的类B，最后做内存管理和析构
+ */
+
+/* 什么时候要代理：
+ 要代理：写在viewDidLoad等中的present等页面，需要代理
+ 不要代理：写在viewWillAppear中的push页面
+ 不要代理：写在viewDidLoad之外的变量声明：直接实例化类，并赋值即可
+ */

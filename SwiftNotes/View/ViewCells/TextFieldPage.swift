@@ -45,6 +45,7 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
      无点击事件控件：比如默认的UIView，点了无事件但不穿透， 即如果此控件下层有可点击的彼控件，则彼控件点击事件不触发
      不可交互控件：比如默认的UILabel，点了无效且被穿透， 即如果此控件下层有可点击的彼控件，则彼控件点击事件被触发
      可点击控件：比如默认的Button，点了有事件。 点击可点击控件，不会收起键盘， 如果需要，就要写上：textField.resignFirstResponder()
+     如果需要，就要写上：textField.resignFirstResponder()
      
      注：实际上，无交互控件也会被触发收起键盘， 是因为无交互控件的底下还有一个❲无点击事件的控件❳：view。 点击不可交互控件，就点击了view，所以收起键盘
      */
