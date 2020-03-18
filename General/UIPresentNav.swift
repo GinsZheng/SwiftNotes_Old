@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UIPresentNav {
+class CSPresentNav {
     
     let closeButton = UIButton(type: .custom)
     let titleLabel = UILabel()

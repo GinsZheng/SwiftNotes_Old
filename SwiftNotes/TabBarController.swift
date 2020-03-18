@@ -26,10 +26,10 @@ class TabBarController {
         
         tabBarController.tabBar.shadowImage = nil
         
-        let v1Nav = rootNavController(rootViewController: v1)
-        let v2Nav = rootNavController(rootViewController: v2)
-        let v3Nav = rootNavController(rootViewController: v3)
-        let v4Nav = rootNavController(rootViewController: v4)
+        let v1Nav = CSRootNavController(rootViewController: v1)
+        let v2Nav = CSRootNavController(rootViewController: v2)
+        let v3Nav = CSRootNavController(rootViewController: v3)
+        let v4Nav = CSRootNavController(rootViewController: v4)
         
         tabBarController.viewControllers = [v1Nav, v2Nav, v3Nav, v4Nav]
         tabBarController.tabBar.isTranslucent = false
@@ -89,11 +89,11 @@ class TabBarController {
         v4.tabBarItem = ESTabBarItem.init(title: "Test", image: UIImage(named: "tab_mine"), selectedImage: UIImage(named: "tab_mine_s"))
         v0.tabBarItem = ESTabBarItem.init(title: nil, image: nil, selectedImage: nil)
         
-        let v1Nav = rootNavController(rootViewController: v1)
-        let v2Nav = rootNavController(rootViewController: v2)
-        let v3Nav = rootNavController(rootViewController: v3)
-        let v4Nav = rootNavController(rootViewController: v4)
-        let v0Nav = rootNavController(rootViewController: v0)
+        let v1Nav = CSRootNavController(rootViewController: v1)
+        let v2Nav = CSRootNavController(rootViewController: v2)
+        let v3Nav = CSRootNavController(rootViewController: v3)
+        let v4Nav = CSRootNavController(rootViewController: v4)
+        let v0Nav = CSRootNavController(rootViewController: v0)
         
         tabBarController.viewControllers = [v1Nav, v2Nav, v0Nav, v3Nav, v4Nav]
         

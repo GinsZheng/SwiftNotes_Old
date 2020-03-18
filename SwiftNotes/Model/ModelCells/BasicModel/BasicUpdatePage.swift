@@ -15,7 +15,7 @@ class CSBasicUpdatePage: UIViewController, UITextFieldDelegate {
     // 从父页面获取编辑数据的id
     public var updatedId = 0
     
-    let navPresent = UIPresentNav()
+    let navPresent = CSPresentNav()
     
     let nameTextField = UITextField()
     let resumeTextField = UITextField()

@@ -12,7 +12,7 @@ import SQLite
 
 class CSBasicInsertPage: UIViewController, UITextFieldDelegate {
     
-    let navPresent = UIPresentNav()
+    let navPresent = CSPresentNav()
     
     let nameTextField = UITextField()
     let resumeTextField = UITextField()

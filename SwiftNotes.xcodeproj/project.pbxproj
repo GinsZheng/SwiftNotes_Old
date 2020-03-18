@@ -84,6 +84,8 @@
 		7A7F97E5241DF213000F1E31 /* JoinedInsertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F97E4241DF213000F1E31 /* JoinedInsertPage.swift */; };
 		7A7F97E7241DF290000F1E31 /* JoinedUpdatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F97E6241DF290000F1E31 /* JoinedUpdatePage.swift */; };
 		7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A871E7923CE122A007CCA90 /* TryPage.swift */; };
+		7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */; };
+		7A88A71024227FBE00BF1611 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88A70F24227FBE00BF1611 /* Formatter.swift */; };
 		7A89B2D9240AB9B6004688FD /* MagicMovePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */; };
 		7A8A7EAF23D1A7F50067D9C3 /* JoinedModelPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */; };
 		7A94609123D1A6AB00936DE7 /* JoinedTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* JoinedTable.swift */; };
@@ -448,6 +450,8 @@
 		7A7F97E4241DF213000F1E31 /* JoinedInsertPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedInsertPage.swift; sourceTree = "<group>"; };
 		7A7F97E6241DF290000F1E31 /* JoinedUpdatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedUpdatePage.swift; sourceTree = "<group>"; };
 		7A871E7923CE122A007CCA90 /* TryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryPage.swift; sourceTree = "<group>"; };
+		7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForWhilePage.swift; sourceTree = "<group>"; };
+		7A88A70F24227FBE00BF1611 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMovePage.swift; sourceTree = "<group>"; };
 		7A8A7EAE23D1A7F50067D9C3 /* JoinedModelPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedModelPage.swift; sourceTree = "<group>"; };
 		7A94609023D1A6AB00936DE7 /* JoinedTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedTable.swift; sourceTree = "<group>"; };
@@ -521,6 +525,7 @@
 				7A2161102389857700D5A93A /* Functions.swift */,
 				7A2161122389857700D5A93A /* Mix.swift */,
 				7A782D6A23CF20D900E09ED0 /* NavViewController.swift */,
+				7A88A70F24227FBE00BF1611 /* Formatter.swift */,
 				7A2161112389857700D5A93A /* SetFrame.swift */,
 				7A21610D2389857700D5A93A /* SetColorInHex.swift */,
 				7A76EF6223CF17B400350087 /* SQLiteManager.swift */,
@@ -823,6 +828,7 @@
 			isa = PBXGroup;
 			children = (
 				7A31324E2392A6680008298C /* ClassPage.swift */,
+				7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */,
 				7A21612B2389869D00D5A93A /* DecoratorPage.swift */,
 				7A21612F2389869D00D5A93A /* DelegatePage.swift */,
 				7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */,
@@ -1247,6 +1253,7 @@
 				7A21611B2389857700D5A93A /* Colors.swift in Sources */,
 				7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */,
 				7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */,
+				7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */,
 				7A782D6B23CF20DA00E09ED0 /* NavViewController.swift in Sources */,
 				7A7F97E7241DF290000F1E31 /* JoinedUpdatePage.swift in Sources */,
 				7A7D1C5A241CBE6500E08EA1 /* UIPresentNav.swift in Sources */,
@@ -1306,6 +1313,7 @@
 				7A2161182389857700D5A93A /* Functions.swift in Sources */,
 				7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */,
 				7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */,
+				7A88A71024227FBE00BF1611 /* Formatter.swift in Sources */,
 				7A216158238986AF00D5A93A /* TextViewPage.swift in Sources */,
 				7A89B2D9240AB9B6004688FD /* MagicMovePage.swift in Sources */,
 				7A216157238986AF00D5A93A /* SliderPage.swift in Sources */,

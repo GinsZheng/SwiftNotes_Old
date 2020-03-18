@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Regex {
+class CSRegex {
     static func test(pattern: String, testedText: String) -> Bool {
         let regex = try! NSRegularExpression(pattern: pattern)
         let resultNum = regex.numberOfMatches(in: testedText, range: NSRange(location: 0, length: testedText.count))

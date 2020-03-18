@@ -1,5 +1,5 @@
 //
-//  DatePicker.swift
+//  CSDatePicker.swift
 //  SnailProgress
 //
 //  Created by GinsMac on 2020/3/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DatePicker {
+class CSDatePicker {
     
     let mask = UIButton()
     let pickerBg = UIView()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class rootNavController: UINavigationController, UINavigationControllerDelegate {
+class CSRootNavController: UINavigationController, UINavigationControllerDelegate {
     var popDelegate:UIGestureRecognizerDelegate?
     
     override func viewDidLoad() {

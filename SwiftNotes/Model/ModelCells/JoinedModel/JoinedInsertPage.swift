@@ -12,7 +12,7 @@ import SQLite
 
 class CSJoinedInsertPage: UIViewController, UITextFieldDelegate {
     
-    let navPresent = UIPresentNav()
+    let navPresent = CSPresentNav()
     
     let currentProgressTextField = UITextField()
     let startTimeTextField = UITextField()

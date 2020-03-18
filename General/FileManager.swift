@@ -1,5 +1,5 @@
 //
-//  FileManager.swift
+//  CSFileManager.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/1/11.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FileManager: NSObject {
+class CSFileManager: NSObject {
     static func readLocalFile(fileNameStr:String,type:String) -> Any? {
         //读取本地的文件
         let path = Bundle.main.path(forResource: fileNameStr, ofType: type)
