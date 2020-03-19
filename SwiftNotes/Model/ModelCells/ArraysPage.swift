@@ -11,35 +11,39 @@ import UIKit
 class CSArrayPage: UIViewController {
     
     // 创建数组
-    var array1 = [String]() // 写法1
-    var array2:[String] = [] // 写法2
-    var array3 = Array(repeating: 1, count: 5)
+    var arr1 = [String]() // 写法1
+    var arr2:[String] = [] // 写法2
+    var arr3 = Array(repeating: 1, count: 5)
 
-    
-    
-    // 多参数遍历
-    var multipleElementArray: [(Int, String)] = [(1001, "Gins"), (1002, "Jack"), (1002, "Jane")]
-    
-    // 带着下标遍历
-    var arrayWithSubscript = ["a", "b", "c"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
         // 调用
-        let firstElement = array3[0]
+        let firstElement = arr3[0]
         print("firstElement: \(firstElement)")
         
         // 多参数遍历
-        for (id, name) in multipleElementArray {
+        let arr4: [(Int, String)] = [(1001, "Gins"), (1002, "Jack"), (1002, "Jane")]
+        for (id, name) in arr4 {
             print("\(name)的学号是\(id)")
         }
         
         // 带着下标遍历
-        for (index, char) in arrayWithSubscript.enumerated() {
+        let arr5 = ["a", "b", "c"]
+        for (index, char) in arr5.enumerated() {
             print("第\(index)个元素对应的值是\(char)")
         }
+        
+        // map遍历
+        let arr6 = (1...20).map {$0*2}
+        print("所有元素乘2: \(arr6)")
+        
+        // 数组元素求和
+        let arr7 = [1, 3, 5, 7, 9]
+        let sumValue = arr7.reduce(0, +)
+        print("数组求和：\(sumValue)")
     }
     
     

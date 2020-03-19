@@ -25,7 +25,6 @@ class CSJoinedTable: SQLiteManager {
     let startTime = Expression<Int>("startTime")
     let endTime = Expression<Int>("endTime")
     let itemId = Expression<Int>("itemId")
-    let createTime = Expression<Int>("createTime")
     
     func getTable() -> Table {
         let table = super.getTable(tableName: tableName) { (t) in
@@ -34,7 +33,6 @@ class CSJoinedTable: SQLiteManager {
             t.column(startTime)
             t.column(endTime)
             t.column(itemId)
-            t.column(createTime)
         }
         return table
     }
@@ -47,8 +45,7 @@ class CSJoinedTable: SQLiteManager {
             currentProgress <- item["currentProgress"].intValue,
             startTime <- item["startTime"].intValue,
             endTime <- item["endTime"].intValue,
-            itemId <- item["itemId"].intValue,
-            createTime <- item["createTime"].intValue
+            itemId <- item["itemId"].intValue
         )
         super.insert(values)
     }
@@ -88,8 +85,7 @@ class CSJoinedTable: SQLiteManager {
         Expression<Int>("currentProgress"),
         Expression<Int>("startTime"),
         Expression<Int>("endTime"),
-        Expression<Int>("itemId"),
-        Expression<Int>("createTime")
+        Expression<Int>("itemId")
         ], order: [Expressible] = [Expression<Int>("id").asc], limit: Int? = nil, offset: Int? = nil) -> [Row] {
         
         let query = getTable().select(select).order(order)
@@ -105,30 +101,20 @@ extension CSJoinedTable {
     func getJSON() -> JSON {
         let result = try! getDB().prepare("SELECT * FROM \(tableName)")
         var jsonArray: [Any] = []
-        let jsonResult: JSON
         
         for row in result {
             let jsonRow = JSON(row)
-            let id = jsonRow[0]
-            let currentProgress = jsonRow[1]
-            let startTime = jsonRow[2]
-            let endTime = jsonRow[3]
-            let itemId = jsonRow[4]
-            let createTime = jsonRow[5]
-            
             let rowDict: [String: Any] = [
-                "id": id,
-                "currentProgress": currentProgress,
-                "startTime": startTime,
-                "endTime": endTime,
-                "itemId": itemId,
-                "createTime": createTime
+                "id": jsonRow[0],
+                "name": jsonRow[1],
+                "resume": jsonRow[2],
+                "totalProgress": jsonRow[3],
+                "color": jsonRow[4],
             ]
             let jsonDict = JSON(rowDict)
             jsonArray.append(jsonDict)
         }
-        jsonResult = JSON(jsonArray)
-        return jsonResult
+        return JSON(jsonArray)
     }
     
     func getJSONOneRow(id: Int) -> JSON {
@@ -137,20 +123,13 @@ extension CSJoinedTable {
         
         for row in result {
             let jsonRow = JSON(row)
-            let id = jsonRow[0]
-            let currentProgress = jsonRow[1]
-            let startTime = jsonRow[2]
-            let endTime = jsonRow[3]
-            let itemId = jsonRow[4]
-            let createTime = jsonRow[5]
-            
+
             rowDict = [
-                "id": id,
-                "currentProgress": currentProgress,
-                "startTime": startTime,
-                "endTime": endTime,
-                "itemId": itemId,
-                "createTime": createTime
+                "id": jsonRow[0],
+                "currentProgress": jsonRow[1],
+                "startTime": jsonRow[2],
+                "endTime": jsonRow[3],
+                "itemId": jsonRow[4],
             ]
         }
         let jsonDict = JSON(rowDict)
@@ -179,7 +158,6 @@ struct CSJoinedModel {
     var startTime: [Int]
     var endTime: [Int]
     var itemId: [Int]
-    var createTime: [Int]
 
     init(jsonData: JSON) {
         id = jsonData.arrayValue.map {$0["id"].intValue}
@@ -187,6 +165,5 @@ struct CSJoinedModel {
         startTime = jsonData.arrayValue.map {$0["startTime"].intValue}
         endTime = jsonData.arrayValue.map {$0["endTime"].intValue}
         itemId = jsonData.arrayValue.map {$0["itemId"].intValue}
-        createTime = jsonData.arrayValue.map {$0["createTime"].intValue}
     }
 }

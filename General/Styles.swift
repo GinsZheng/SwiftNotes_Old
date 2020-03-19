@@ -34,7 +34,7 @@ extension UIView {
     func setStyleChartBg() {
         self.setBackgroundColor(color: cFFF)
         self.setShadow(color: c133660_15_shadow, x: 0, y: 2, radius: 10)
-        self.setCornerRadiusWithMask(radius: 8)
+        self.setCornerRadius(radius: 8)
         self.setBorder(color: c000_5, borderWidth: kSeparatorHeight)
     }
     
@@ -97,6 +97,10 @@ extension UILabel {
     
     func setStyle12pt999() {
         self.setFontStyle(size: 12, color: c999)
+    }
+    
+    func setStyle12pt999Right() {
+        self.setFontStyle(size: 12, color: c999, alignment: .right)
     }
     
     func setStyle12ptFFF45Center() {

@@ -19,7 +19,12 @@ class ForWhilePage: UIViewController {
         for i in 0 ..< numbers.count {
             print("Count is: \(i)")
         }
-        
+        /*
+         可用于多个数组的计算，比如startTime数组和endTime数组，计算时间差
+         for i in 0 ..< startTimeArray.count {
+             let seconds = model.endTime[i] - model.startTime[i]
+         }
+         */
         
     }
     

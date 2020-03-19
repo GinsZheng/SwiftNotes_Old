@@ -15,7 +15,6 @@ class CSJoinedModelPage: UIViewController, UITableViewDelegate, UITableViewDataS
     let table = CSJoinedTable()
     
     var idArray = [Int]()
-    var createTimeArray = [Int]()
     
     let tableView = UITableView()
     
@@ -29,8 +28,6 @@ class CSJoinedModelPage: UIViewController, UITableViewDelegate, UITableViewDataS
         let json = table.getJSON()
         let model = CSJoinedModel.init(jsonData: json)
         idArray = model.id
-        createTimeArray = model.createTime
-        print(createTimeArray)
         
         tableView.set(superview: view, delegate: self, dataSource: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
@@ -82,12 +79,7 @@ class CSJoinedModelPage: UIViewController, UITableViewDelegate, UITableViewDataS
     func reloadItemsList() {
         // 如果不需要把已加载的清除，则不用把itemName清空，直接再遍历
         idArray = []
-        createTimeArray = []
-        
-        for row in table.search() {
-            idArray.append(row[table.id])
-            createTimeArray.append(row[table.createTime])
-        }
+
         print("reloadData")
         // 关键：reloadData()，刷新页面数据
         tableView.reloadData()

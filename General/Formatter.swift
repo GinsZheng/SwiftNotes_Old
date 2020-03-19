@@ -8,13 +8,10 @@
 
 import UIKit
 
-class CSFormatter: UIViewController {
+class CSFormatter {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-
-        
+    static func getMinite(fromSecond second: Int) -> Int {
+        return Int(round(Double(second) / 60))
     }
 
     
