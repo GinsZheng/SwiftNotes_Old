@@ -115,12 +115,13 @@ extension CSBasicTable {
         print("id列表：\(idList)")
     }
     
-    // scalar 可获取一个值
+    // 获取一个值(scalar)
     func getCount() -> Binding {
         let result = try! getDB().scalar("SELECT count(*) FROM \(tableName)")
         return result ?? 0
     }
     
+    // 获取数组+字典
     func getJSON() -> JSON {
         let result = try! getDB().prepare("SELECT * FROM \(tableName)")
         var jsonArray: [Any] = []
@@ -140,6 +141,7 @@ extension CSBasicTable {
         return JSON(jsonArray)
     }
     
+    // 获取字典
     func getJSONOneRow(id: Int) -> JSON {
         let result = try! getDB().prepare("SELECT * FROM \(tableName) WHERE id = \(id)")
         var rowDict: [String: Any] = [:]
@@ -155,6 +157,23 @@ extension CSBasicTable {
             ]
         }
         return JSON(rowDict)
+    }
+    
+    // 获取数组
+    func getArray() -> JSON {
+        let result = try! getDB().prepare("SELECT name FROM \(tableName)")
+        var jsonArray: [Any] = []
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            jsonArray.append(jsonRow[0])
+        }
+        return JSON(jsonArray)
+    }
+    
+    // 获取数组2：计算
+    func getCalArray() -> JSON {
+        let result = try! getDB().prepare("SELECT ")
     }
 
     func getNextId() -> Int64 {
@@ -208,6 +227,8 @@ extension CSBasicTable {
     
 
 }
+
+
 
 // 建模
 struct CSBasicModel {

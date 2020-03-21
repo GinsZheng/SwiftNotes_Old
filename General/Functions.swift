@@ -69,3 +69,13 @@ func getTimeStampWithDate(date: Date) -> Double {
 //    format.dateFormat = dateFormat
 //    return String(date.timeIntervalSince1970)
 //}
+
+func round(_ value: Double, decimalPlaces: Int) -> Double {
+    let divisor = pow(10.0, Double(decimalPlaces))
+    return (value * divisor).rounded() / divisor
+}
+
+func floor(_ value: Double, decimalPlaces: Int = 0) -> Double {
+    let divisor = pow(10.0, Double(decimalPlaces))
+    return Double(Int(value * divisor)) / divisor
+}

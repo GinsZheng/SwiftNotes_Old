@@ -17,10 +17,7 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        print("getLastest \(basicTable.getJoinedTablesJSONOneLine())")
-//        print("getLastest \(basicTable.getJoinedTablesJSONOneLine())")
-        
-        
+        print(basicTable.getArray())
     }
     
     @objc func pushNext() {
