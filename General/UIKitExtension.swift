@@ -214,14 +214,14 @@ extension UILabel {
     }
     
     func getLabelWidth() -> CGFloat {
-        let labelText = self.text! as NSString
+        let labelText = self.text as NSString? ?? ""
         let size = CGSize(width: CGFloat(MAXFLOAT), height: self.frame.size.height)
         let textSize = labelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: self.font!], context: nil).size
         return CGFloat(Int(textSize.width) + 1)
     }
     
     func getLabelWidth(withMaxWidth maxWidth: CGFloat) -> CGFloat {
-        let labelText = self.text! as NSString
+        let labelText = self.text as NSString? ?? ""
         let size = CGSize(width: CGFloat(MAXFLOAT), height: self.frame.size.height)
         let textSize = labelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: self.font!], context: nil).size
         var labelWidth = CGFloat(Int(textSize.width) + 1)

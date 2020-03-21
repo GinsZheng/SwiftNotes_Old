@@ -148,6 +148,15 @@ extension CSJoinedTable {
         let result = try! getDB().scalar("SELECT count(*) FROM \(tableName)")
         return result ?? 0
     }
+    
+    // 获得计算数值
+    func getDuration(itemId: Int) -> Int64 {
+        let result =  try! getDB().scalar("SELECT SUM(endTime) - SUM(startTime) FROM \(tableName) WHERE itemId = \(itemId)")
+        if result == nil {
+            return 0
+        }
+        return result as! Int64
+    }
 }
 
 
