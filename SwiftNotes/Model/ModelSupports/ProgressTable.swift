@@ -102,7 +102,6 @@ extension CSProgressTable {
     func getJSON() -> JSON {
         let result = try! getDB().prepare("SELECT * FROM \(tableName)")
         var jsonArray: [Any] = []
-        print("tableName:\(tableName)")
         
         for row in result {
             let jsonRow = JSON(row)
@@ -160,29 +159,44 @@ extension CSProgressTable {
         return result as! Int64
     }
     
-    // 获取数组2：计算
-    func getCalArray() -> JSON {
-        // Group by 之后，每组只出现一个值
-        let result = try! getDB().prepare("SELECT currentProgress FROM ( SELECT ROW_NUMBER () over (PARTITION BY itemId ORDER BY startTime DESC) AS rownum, progress.* FROM progress) T WHERE T.rownum=1")
-        var jsonArray: [Any] = []
-        
-        for row in result {
-            let jsonRow = JSON(row)
-            jsonArray.append(jsonRow[0])
-        }
-        return JSON(jsonArray)
-    }
-    
-    func getCalArray2() -> JSON {
-        // Group by 之后，每组只出现一个值
+    // 获取计算JSON
+    func getCalJson() -> JSON {
+        // 获取每个分组的第一行
         let result = try! getDB().prepare("SELECT * FROM ( SELECT progress.*, ROW_NUMBER () over (PARTITION BY itemId ORDER BY startTime DESC) AS rownum FROM progress) T WHERE T.rownum=1")
         var jsonArray: [Any] = []
         
         for row in result {
             let jsonRow = JSON(row)
-            jsonArray.append(jsonRow[0])
+            let rowDict: [String: Any] = [
+                "id": jsonRow[0],
+                "currentProgress": jsonRow[1],
+                "startTime": jsonRow[2],
+                "endTime": jsonRow[3],
+                "itemId": jsonRow[4],
+            ]
+            let jsonDict = JSON(rowDict)
+            jsonArray.append(jsonDict)
         }
         return JSON(jsonArray)
+    }
+    
+    // 获取数组
+    func getArray() -> [Int] {
+        // 获取每个分组的第一行，返回Array
+        let result = try! getDB().prepare("SELECT currentProgress FROM ( SELECT progress.*, ROW_NUMBER () over (PARTITION BY itemId ORDER BY startTime DESC) AS rownum FROM progress) T WHERE T.rownum=1")
+        var jsonArray: [Any] = []
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            let rowDict: [String: Any] = [
+                "currentProgress": jsonRow[0],
+            ]
+            let jsonData = JSON(rowDict)
+            jsonArray.append(jsonData)
+        }
+        let arr = JSON(jsonArray).arrayValue.map {$0["currentProgress"].intValue}
+        
+        return arr
     }
 
 }
@@ -204,3 +218,4 @@ struct CSProgressModel {
         itemId = jsonData.arrayValue.map {$0["itemId"].intValue}
     }
 }
+
