@@ -40,7 +40,7 @@ class TryTable: SQLiteManager {
     // 使用 Try!
     func getTable() -> Table {
         if tbl == nil {
-            tbl = Table("items")
+            tbl = Table("item")
             // 使用try!之前，应判断了是否为nil，以避免崩溃
             try! getDB().run(tbl!.create(temporary: false, ifNotExists: true, withoutRowid: false, block: { (t) in
                 t.column(rowid, primaryKey: true)

@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class CSItemsTable: SQLiteManager {
     // 模型只需修改字段名、数据类型，及表名
-    let tableName = "items"
+    let tableName = "item"
     let id = Expression<Int>("id")
     let name = Expression<String>("name")
     let resume = Expression<String>("resume")
@@ -93,7 +93,7 @@ class CSItemsTable: SQLiteManager {
     
     // SQL语句查询
     func searchInSQL() {
-        let stmt = try! getDB().prepare("SELECT id, name, totalProgress FROM items")
+        let stmt = try! getDB().prepare("SELECT id, name, totalProgress FROM item")
         for row in stmt {
             for (index, columnName) in stmt.columnNames.enumerated() {
                 print ("\(columnName):\(row[index]!)")
@@ -180,14 +180,14 @@ extension CSItemsTable {
     }
     
     func getFirstName() -> Binding {
-        let result = try! getDB().scalar("SELECT name FROM items, progress ORDER BY progress.startTime DESC LIMIT 1")
+        let result = try! getDB().scalar("SELECT name FROM item, progress ORDER BY progress.startTime DESC LIMIT 1")
         return result ?? ""
     }
     
     
     func getJoinedTablesJSON() -> JSON {
-        // 联结表时，如果两个表的字段一致(如id，需要指明表名，如：items.id)
-        let result = try! getDB().prepare("SELECT items.id, name FROM items, progress WHERE items.id = progress.id ORDER BY progress.startTime DESC")
+        // 联结表时，如果两个表的字段一致(如id，需要指明表名，如：item.id)
+        let result = try! getDB().prepare("SELECT item.id, name FROM item, progress WHERE item.id = progress.id ORDER BY progress.startTime DESC")
         var jsonArray: [Any] = []
         
         for row in result {
@@ -204,7 +204,7 @@ extension CSItemsTable {
     
     func getJoinedTablesJSONOneLine() -> JSON {
         
-        let result = try! getDB().prepare("SELECT items.id, name FROM items, progress WHERE items.id = progress.id ORDER BY progress.startTime DESC LIMIT 1")
+        let result = try! getDB().prepare("SELECT item.id, name FROM item, progress WHERE item.id = progress.id ORDER BY progress.startTime DESC LIMIT 1")
         
         var rowDict: [String: Any] = [:]
         

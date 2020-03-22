@@ -17,7 +17,8 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        print("progressTable.getCalArray() \(progressTable.getCalArray())")
+        print("progressTable.getCalArray2() \(progressTable.getCalArray2())")
+//        let json = progressTable.g
     }
     
     @objc func pushNext() {

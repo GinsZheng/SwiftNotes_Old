@@ -93,8 +93,9 @@ class CSProgressTable: SQLiteManager {
     }
     
 
-    
 }
+
+
 
 extension CSProgressTable {
     
@@ -162,17 +163,27 @@ extension CSProgressTable {
     // 获取数组2：计算
     func getCalArray() -> JSON {
         // Group by 之后，每组只出现一个值
-        let result = try! getDB().prepare("SELECT Max(currentProgress) FROM \(tableName) GROUP BY itemId ORDER BY startTime DESC")
+        let result = try! getDB().prepare("SELECT currentProgress FROM ( SELECT ROW_NUMBER () over (PARTITION BY itemId ORDER BY startTime DESC) AS rownum, progress.* FROM progress) T WHERE T.rownum=1")
         var jsonArray: [Any] = []
         
         for row in result {
             let jsonRow = JSON(row)
-            print(jsonRow)
             jsonArray.append(jsonRow[0])
         }
         return JSON(jsonArray)
     }
     
+    func getCalArray2() -> JSON {
+        // Group by 之后，每组只出现一个值
+        let result = try! getDB().prepare("SELECT * FROM ( SELECT progress.*, ROW_NUMBER () over (PARTITION BY itemId ORDER BY startTime DESC) AS rownum FROM progress) T WHERE T.rownum=1")
+        var jsonArray: [Any] = []
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            jsonArray.append(jsonRow[0])
+        }
+        return JSON(jsonArray)
+    }
 
 }
 
