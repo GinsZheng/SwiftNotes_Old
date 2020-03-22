@@ -17,7 +17,7 @@
 import SQLite
 import SwiftyJSON
 
-class CSJoinedTable: SQLiteManager {
+class CSProgressTable: SQLiteManager {
     // 模型只需修改字段名、数据类型，及表名
     let tableName = "progress"
     let id = Expression<Int>("id")
@@ -96,7 +96,7 @@ class CSJoinedTable: SQLiteManager {
     
 }
 
-extension CSJoinedTable {
+extension CSProgressTable {
     
     func getJSON() -> JSON {
         let result = try! getDB().prepare("SELECT * FROM \(tableName)")
@@ -161,7 +161,8 @@ extension CSJoinedTable {
     
     // 获取数组2：计算
     func getCalArray() -> JSON {
-        let result = try! getDB().prepare("SELECT currentProgress FROM \(tableName) GROUP BY itemId ORDER BY startTime DESC LIMIT 1")
+        // Group by 之后，每组只出现一个值
+        let result = try! getDB().prepare("SELECT Max(currentProgress) FROM \(tableName) GROUP BY itemId ORDER BY startTime DESC")
         var jsonArray: [Any] = []
         
         for row in result {
@@ -171,11 +172,13 @@ extension CSJoinedTable {
         }
         return JSON(jsonArray)
     }
+    
+
 }
 
 
 
-struct CSJoinedModel {
+struct CSProgressModel {
     var id: [Int]
     var currentProgress: [Int]
     var startTime: [Int]

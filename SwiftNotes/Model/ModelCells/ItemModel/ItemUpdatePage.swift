@@ -1,5 +1,5 @@
 //
-//  CSBasicUpdatePage.swift
+//  CSItemUpdatePage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/3/14.
@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import SQLite
 
-class CSBasicUpdatePage: UIViewController, UITextFieldDelegate {
+class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
     
     // 从父页面获取编辑数据的id
     public var updatedId = 0
@@ -25,7 +25,7 @@ class CSBasicUpdatePage: UIViewController, UITextFieldDelegate {
     // 删除按钮
     let deleteButton = UIButton(type: .system)
     
-    let itemTable = CSBasicTable()
+    let itemTable = CSItemsTable()
     
     weak var delegate: CSReloadDelegate?
     
@@ -35,7 +35,7 @@ class CSBasicUpdatePage: UIViewController, UITextFieldDelegate {
         
         // 从本地数据库取JSON值(以赋值给相应控件)、建模
         let result = itemTable.getJSONOneRow(id: updatedId)
-        let model = CSBasicUpdateModel(jsonData: result)
+        let model = CSItemUpdateModel(jsonData: result)
         
         navPresent.setTitleLabel(superview: view, title: "Update")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
@@ -114,7 +114,7 @@ class CSBasicUpdatePage: UIViewController, UITextFieldDelegate {
 
 
 // 建模
-struct CSBasicUpdateModel {
+struct CSItemUpdateModel {
     var id: Int
     var name: String
     var resume: String

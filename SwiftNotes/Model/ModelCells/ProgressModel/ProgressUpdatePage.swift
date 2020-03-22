@@ -10,13 +10,13 @@ import UIKit
 import SwiftyJSON
 import SQLite
 
-class CSJoinedUpdatePage: UIViewController, UITextFieldDelegate {
+class CSProgressUpdatePage: UIViewController, UITextFieldDelegate {
     
     // 从父页面获取编辑数据的id
     public var updatedId = 0
     
     
-    let table = CSJoinedTable()
+    let table = CSProgressTable()
     
     let navPresent = CSPresentNav()
     
@@ -36,7 +36,7 @@ class CSJoinedUpdatePage: UIViewController, UITextFieldDelegate {
         
         // 从本地数据库取JSON值(以赋值给相应控件)、建模
         let result = table.getJSONOneRow(id: updatedId)
-        let model = CSJoinedUpdateModel(jsonData: result)
+        let model = CSProgressUpdateModel(jsonData: result)
         let currentProgressNum = model.currentProgress
         let startTimeNum = model.startTime
         let endTimeNum = model.endTime
@@ -89,7 +89,7 @@ class CSJoinedUpdatePage: UIViewController, UITextFieldDelegate {
         table.update(id: updatedId, item: updateJson)
         
         let result = table.getJSONOneRow(id: updatedId)
-        let model = CSJoinedUpdateModel(jsonData: result)
+        let model = CSProgressUpdateModel(jsonData: result)
         let currentProgressNum = model.currentProgress
         print("updated currentProgressNum \(currentProgressNum)")
         
@@ -122,7 +122,7 @@ class CSJoinedUpdatePage: UIViewController, UITextFieldDelegate {
 
 
 // 建模
-struct CSJoinedUpdateModel {
+struct CSProgressUpdateModel {
     var id: Int
     var currentProgress: Int
     var startTime: Int

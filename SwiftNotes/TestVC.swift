@@ -10,22 +10,14 @@ import UIKit
 
 class TestVC: UIViewController {
 
-    let basicTable = CSBasicTable()
-    let joinedTable = CSJoinedTable()
+    let itemTable = CSItemsTable()
+    let progressTable = CSProgressTable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        print(joinedTable.getCalArray())
-        
-        let json = joinedTable.getJSON()
-        print(json)
-        let model = CSJoinedModel.init(jsonData: json)
-        print(model.id)
-        print(model.currentProgress)
-        
-        
+
+        print("progressTable.getCalArray() \(progressTable.getCalArray())")
     }
     
     @objc func pushNext() {

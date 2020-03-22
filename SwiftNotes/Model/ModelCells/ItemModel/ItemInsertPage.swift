@@ -1,5 +1,5 @@
 //
-//  CSBasicInsertPage.swift
+//  CSItemInsertPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/3/14.
@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import SQLite
 
-class CSBasicInsertPage: UIViewController, UITextFieldDelegate {
+class CSItemInsertPage: UIViewController, UITextFieldDelegate {
     
     let navPresent = CSPresentNav()
     
@@ -20,7 +20,7 @@ class CSBasicInsertPage: UIViewController, UITextFieldDelegate {
     let colorTextField = UITextField()
     let addingButton = UIButton()
     
-    let itemTable = CSBasicTable()
+    let itemTable = CSItemsTable()
     
     weak var delegate: CSReloadDelegate?
     

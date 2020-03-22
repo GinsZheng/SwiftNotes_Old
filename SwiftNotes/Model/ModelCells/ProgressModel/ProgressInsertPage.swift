@@ -10,9 +10,9 @@ import UIKit
 import SwiftyJSON
 import SQLite
 
-class CSJoinedInsertPage: UIViewController, UITextFieldDelegate {
+class CSProgressInsertPage: UIViewController, UITextFieldDelegate {
     
-    let table = CSJoinedTable()
+    let table = CSProgressTable()
     
     let navPresent = CSPresentNav()
     let currentProgressTextField = UITextField()

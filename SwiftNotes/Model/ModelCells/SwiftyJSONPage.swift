@@ -46,8 +46,8 @@ class CSSwiftyJSONPage: UIViewController {
         }
         
         // 解析本地数据库的JSON
-        let basicTable = CSBasicTable()
-        let result = basicTable.getJSONOneRow(id: 10)
+        let itemTable = CSItemsTable()
+        let result = itemTable.getJSONOneRow(id: 10)
         print(result)
         let model4 = CSSwiftyModel4(jsonData: result)
         print("CSSwiftyModel4 name \(model4.name)")

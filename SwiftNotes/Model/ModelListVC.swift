@@ -11,7 +11,7 @@ import UIKit
 class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let titleArray = ["Array", "Basic Model", "Joined Model", "Request", "SwiftyJSON", "Time"]
-    let pageArray = [CSArrayPage(), CSBasicSearchPage(), CSJoinedSearchPage(), CSRequestPage(), CSSwiftyJSONPage(), CSTimePage()]
+    let pageArray = [CSArrayPage(), CSItemSearchPage(), CSProgressSearchPage(), CSRequestPage(), CSSwiftyJSONPage(), CSTimePage()]
     
     override func viewDidLoad() {
         super.viewDidLoad()

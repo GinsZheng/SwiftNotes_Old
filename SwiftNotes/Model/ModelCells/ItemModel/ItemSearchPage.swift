@@ -1,25 +1,25 @@
 //
-//  SQLiteJoinTablesPage.swift
+//  SQLite.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2020/1/17.
-//  Copyright © 2020 GinsMac. All rights reserved.
+//  Created by GinsMac on 2019/11/24.
+//  Copyright © 2019 GinsMac. All rights reserved.
 //
 
 import UIKit
 import SQLite
 import SwiftyJSON
 
-class CSJoinedSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
+class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
-    let table = CSJoinedTable()
+    let table = CSItemsTable()
     
     var idArray = [Int]()
-    var currentProgressArray = [Int]()
-    var itemIdArray = [Int]()
+    var nameArray = [String]()
     
     let tableView = UITableView()
     let deleteAllButton = UIButton()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,14 +28,12 @@ class CSJoinedSearchPage: UIViewController, UITableViewDelegate, UITableViewData
         
         // 从本地数据库获取JSON数据、建模、赋值
         let json = table.getJSON()
-        let model = CSJoinedModel.init(jsonData: json)
+        let model = CSItemModel.init(jsonData: json)
         idArray = model.id
-        currentProgressArray = model.currentProgress
-        itemIdArray = model.itemId
+        nameArray = model.name
         
         tableView.set(superview: view, delegate: self, dataSource: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
-        tableView.reloadData()
         
         deleteAllButton.set(superview: view, target: self, action: #selector(deleteAll))
         deleteAllButton.setStyleSystemIconButton(imageName: "delete")
@@ -50,7 +48,7 @@ class CSJoinedSearchPage: UIViewController, UITableViewDelegate, UITableViewData
         cell.setSeparator(leftInset: 20, rightInset: 0)
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: "itemId:\(itemIdArray[indexPath.row])  currentProgress: \(currentProgressArray[indexPath.row])")
+        cellTitle.set(superview: cell, text: nameArray[indexPath.row])
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
@@ -69,7 +67,7 @@ class CSJoinedSearchPage: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let updatePage = CSJoinedUpdatePage()
+        let updatePage = CSItemUpdatePage()
         updatePage.delegate = self
         updatePage.updatedId = idArray[indexPath.row]
         self.present(toTarget: updatePage)
@@ -79,14 +77,13 @@ class CSJoinedSearchPage: UIViewController, UITableViewDelegate, UITableViewData
     @objc func deleteAll() {
         table.delete()
         idArray = []
-        currentProgressArray = []
-        itemIdArray = []
+        nameArray = []
         tableView.reloadData()
     }
     
     // 建立委托
     @objc func presentToInsertPage() {
-        let insertPage = CSJoinedInsertPage()
+        let insertPage = CSItemInsertPage()
         insertPage.delegate = self
         self.present(toTarget: insertPage)
     }
@@ -95,11 +92,10 @@ class CSJoinedSearchPage: UIViewController, UITableViewDelegate, UITableViewData
     func reloadData() {
         // 如果不需要把已加载的清除，则不用把itemName清空，直接再遍历
         let json = table.getJSON()
-        let model = CSJoinedModel.init(jsonData: json)
+        let model = CSItemModel.init(jsonData: json)
         idArray = model.id
-        currentProgressArray = model.currentProgress
-        itemIdArray = model.itemId
-
+        nameArray = model.name
+        
         print("reloadData")
         // 关键：reloadData()，刷新页面数据
         tableView.reloadData()
