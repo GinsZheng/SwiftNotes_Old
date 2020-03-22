@@ -12,15 +12,14 @@ import SQLite
 
 class CSJoinedInsertPage: UIViewController, UITextFieldDelegate {
     
-    let navPresent = CSPresentNav()
+    let table = CSJoinedTable()
     
+    let navPresent = CSPresentNav()
     let currentProgressTextField = UITextField()
     let startTimeTextField = UITextField()
     let endTimeTextField = UITextField()
     let itemIdTextField = UITextField()
     let insertButton = UIButton()
-    
-    let table = CSJoinedTable()
     
     weak var delegate: CSReloadDelegate?
     
@@ -59,19 +58,23 @@ class CSJoinedInsertPage: UIViewController, UITextFieldDelegate {
     
     // 建立委托
     @objc func addProgress() {
-        let id = table.getNextId()
         let insertValue: [String: Any] = [
-            "id": id,
-            "currentProgress": Int(currentProgressTextField.text ?? "") ?? 0,
+            "id": table.getNextId(),
+            "currentProgress": Int(currentProgressTextField.text ?? "10") ?? 110,
             "startTime": Int(startTimeTextField.text ?? "") ?? 0,
             "entTime": Int(endTimeTextField.text ?? "") ?? 0,
             "itemId": Int(itemIdTextField.text ?? "") ?? 0,
-            "createTime": Int(getTimeStampWithDate(date: Date()))
         ]
+        print(table.getNextId())
+        print(Int(currentProgressTextField.text ?? "10") ?? 110)
+        print(Int(startTimeTextField.text ?? "") ?? 0)
+        print(Int(endTimeTextField.text ?? "") ?? 0)
+        print(Int(itemIdTextField.text ?? "") ?? 0)
+        
         table.insert(item: JSON(insertValue))
         
         if delegate != nil {
-            delegate!.reloadItemsList()
+            delegate!.reloadData()
         }
         
         self.dismiss()

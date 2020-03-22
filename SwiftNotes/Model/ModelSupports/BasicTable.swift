@@ -170,11 +170,6 @@ extension CSBasicTable {
         }
         return JSON(jsonArray)
     }
-    
-    // 获取数组2：计算
-    func getCalArray() -> JSON {
-        let result = try! getDB().prepare("SELECT ")
-    }
 
     func getNextId() -> Int64 {
         let result = try! getDB().scalar("SELECT MAX(id) FROM \(tableName)")
@@ -185,14 +180,14 @@ extension CSBasicTable {
     }
     
     func getFirstName() -> Binding {
-        let result = try! getDB().scalar("SELECT name FROM items, progress ORDER BY progress.createTime DESC LIMIT 1")
+        let result = try! getDB().scalar("SELECT name FROM items, progress ORDER BY progress.startTime DESC LIMIT 1")
         return result ?? ""
     }
     
     
     func getJoinedTablesJSON() -> JSON {
         // 联结表时，如果两个表的字段一致(如id，需要指明表名，如：items.id)
-        let result = try! getDB().prepare("SELECT items.id, name, createTime FROM items, progress WHERE items.id = progress.id ORDER BY progress.createTime DESC")
+        let result = try! getDB().prepare("SELECT items.id, name FROM items, progress WHERE items.id = progress.id ORDER BY progress.startTime DESC")
         var jsonArray: [Any] = []
         
         for row in result {
@@ -200,7 +195,6 @@ extension CSBasicTable {
             let rowDict: [String: Any] = [
                 "id": jsonRow[0],
                 "name": jsonRow[1],
-                "createTime": jsonRow[2],
             ]
             let jsonDict = JSON(rowDict)
             jsonArray.append(jsonDict)
@@ -210,7 +204,7 @@ extension CSBasicTable {
     
     func getJoinedTablesJSONOneLine() -> JSON {
         
-        let result = try! getDB().prepare("SELECT items.id, name, createTime FROM items, progress WHERE items.id = progress.id ORDER BY progress.createTime DESC LIMIT 1")
+        let result = try! getDB().prepare("SELECT items.id, name FROM items, progress WHERE items.id = progress.id ORDER BY progress.startTime DESC LIMIT 1")
         
         var rowDict: [String: Any] = [:]
         
@@ -219,7 +213,6 @@ extension CSBasicTable {
             rowDict = [
                 "id": jsonRow[0],
                 "name": jsonRow[1],
-                "createTime": jsonRow[2],
             ]
         }
         return JSON(rowDict)

@@ -86,7 +86,7 @@ class CSBasicUpdatePage: UIViewController, UITextFieldDelegate {
         itemTable.update(id: updatedId, item: updateJson)
         
         if delegate != nil {
-            delegate!.reloadItemsList()
+            delegate!.reloadData()
         }
         
         self.dismiss()
@@ -96,7 +96,7 @@ class CSBasicUpdatePage: UIViewController, UITextFieldDelegate {
         itemTable.delete(id: updatedId)
         
         if delegate != nil {
-            delegate!.reloadItemsList()
+            delegate!.reloadData()
         }
         
         self.dismiss()

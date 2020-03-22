@@ -15,6 +15,9 @@ class CSJoinedUpdatePage: UIViewController, UITextFieldDelegate {
     // 从父页面获取编辑数据的id
     public var updatedId = 0
     
+    
+    let table = CSJoinedTable()
+    
     let navPresent = CSPresentNav()
     
     let currentProgressTextField = UITextField()
@@ -25,8 +28,6 @@ class CSJoinedUpdatePage: UIViewController, UITextFieldDelegate {
     // 删除按钮
     let deleteButton = UIButton(type: .system)
     
-    let table = CSJoinedTable()
-    
     weak var delegate: CSReloadDelegate?
     
     override func viewDidLoad() {
@@ -36,23 +37,29 @@ class CSJoinedUpdatePage: UIViewController, UITextFieldDelegate {
         // 从本地数据库取JSON值(以赋值给相应控件)、建模
         let result = table.getJSONOneRow(id: updatedId)
         let model = CSJoinedUpdateModel(jsonData: result)
+        let currentProgressNum = model.currentProgress
+        let startTimeNum = model.startTime
+        let endTimeNum = model.endTime
+        let itemIdNum = model.itemId
+        print("currentProgressNum \(currentProgressNum)")
+        print(startTimeNum)
         
         navPresent.setTitleLabel(superview: view, title: "Update")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
         
-        currentProgressTextField.set(superview: view, placeholder: "currentProgress", delegate: self, text: String(model.currentProgress))
+        currentProgressTextField.set(superview: view, placeholder: "currentProgress", delegate: self, text: String(currentProgressNum))
         currentProgressTextField.setStyleOneLineTextField()
         currentProgressTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
         
-        startTimeTextField.set(superview: view, placeholder: "startTime", delegate: self, text: String(model.startTime))
+        startTimeTextField.set(superview: view, placeholder: "startTime", delegate: self, text: String(startTimeNum))
         startTimeTextField.setStyleOneLineTextField()
         startTimeTextField.setFrame(left: 20, top: currentProgressTextField.bottom + 20, right: 20, height: 48)
         
-        endTimeTextField.set(superview: view, placeholder: "entTime", delegate: self, text: String(model.endTime))
+        endTimeTextField.set(superview: view, placeholder: "entTime", delegate: self, text: String(endTimeNum))
         endTimeTextField.setStyleOneLineTextField()
         endTimeTextField.setFrame(left: 20, top: startTimeTextField.bottom + 20, right: 20, height: 48)
         
-        itemIdTextField.set(superview: view, placeholder: "itemId", delegate: self, text: String(model.itemId))
+        itemIdTextField.set(superview: view, placeholder: "itemId", delegate: self, text: String(itemIdNum))
         itemIdTextField.setStyleOneLineTextField()
         itemIdTextField.setFrame(left: 20, top: endTimeTextField.bottom + 20, right: 20, height: 48)
         
@@ -81,8 +88,13 @@ class CSJoinedUpdatePage: UIViewController, UITextFieldDelegate {
         let updateJson = JSON(updateValue)
         table.update(id: updatedId, item: updateJson)
         
+        let result = table.getJSONOneRow(id: updatedId)
+        let model = CSJoinedUpdateModel(jsonData: result)
+        let currentProgressNum = model.currentProgress
+        print("updated currentProgressNum \(currentProgressNum)")
+        
         if delegate != nil {
-            delegate!.reloadItemsList()
+            delegate!.reloadData()
         }
         
         self.dismiss()
@@ -92,7 +104,7 @@ class CSJoinedUpdatePage: UIViewController, UITextFieldDelegate {
         table.delete(id: updatedId)
         
         if delegate != nil {
-            delegate!.reloadItemsList()
+            delegate!.reloadData()
         }
         
         self.dismiss()
@@ -116,7 +128,6 @@ struct CSJoinedUpdateModel {
     var startTime: Int
     var endTime: Int
     var itemId: Int
-    var createTime: Int
     
     init(jsonData: JSON) {
         id = jsonData["id"].intValue
@@ -124,6 +135,5 @@ struct CSJoinedUpdateModel {
         startTime = jsonData["startTime"].intValue
         endTime = jsonData["endTime"].intValue
         itemId = jsonData["itemId"].intValue
-        createTime = jsonData["createTime"].intValue
     }
 }

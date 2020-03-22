@@ -70,7 +70,7 @@ class CSBasicInsertPage: UIViewController, UITextFieldDelegate {
         itemTable.insert(item: JSON(insertValue))
         
         if delegate != nil {
-            delegate!.reloadItemsList()
+            delegate!.reloadData()
         }
         
         self.dismiss()
@@ -79,7 +79,6 @@ class CSBasicInsertPage: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
     deinit {
         print("释放")
     }

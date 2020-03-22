@@ -261,7 +261,7 @@ extension UIButton {
         self.setTitleColor(UIColor.hex(titleColor), for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight) // 这里设置UILabel的颜色值将无效
         self.setBorder(color: cThemeBorder, borderWidth: borderWidth)
-        self.setCornerRadiusWithMask(radius: cornerRadius)
+        self.setCornerRadius(radius: cornerRadius)
     }
     
     func setStyleSolidButton(title: String, titleSize: CGFloat = 17, titleColor: String = cFFF, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {
@@ -271,7 +271,7 @@ extension UIButton {
         self.setBackgroundImage(getImageWithColor(color: cThemeFill), for: .normal)
         self.setBackgroundImage(getImageWithColor(color: cThemeHightlightedFill), for: .highlighted)
         self.setBackgroundImage(getImageWithColor(color: cThemeDisabledFill), for: .disabled)
-        self.setCornerRadiusWithMask(radius: cornerRadius)
+        self.setCornerRadius(radius: cornerRadius)
     }
     
     func setStyleSolidButton2(title: String, titleSize: CGFloat = 17, titleColor: String = cFFF, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {
@@ -279,14 +279,14 @@ extension UIButton {
         self.setTitleColor(.hex(titleColor), for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight)
         self.setBackgroundImage(getImageWithColor(color: cThemeFill), for: .normal)
-        self.setCornerRadiusWithMask(radius: cornerRadius)
+        self.setCornerRadius(radius: cornerRadius)
     }
     
     func setStyleSystemIconButton(imageName: String, backgroundImage: UIImage = getImageWithColor(color: cNoColor), cornerRadius: CGFloat = 0) {
         self.tintColor = .hex(c222)
         self.setImage(UIImage(named: imageName), for: .normal)
         self.setBackgroundImage(backgroundImage, for: .normal)
-        self.setCornerRadiusWithMask(radius: cornerRadius)
+        self.setCornerRadius(radius: cornerRadius)
     }
     
     func setStyleCustomIconButton(imageName: String) {

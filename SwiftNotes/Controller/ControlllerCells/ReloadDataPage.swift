@@ -14,7 +14,7 @@ import SwiftyJSON
 // 如果不是 dismiss() 过场，直接在父VC用viewDidLoad()即可刷新，不用委托
 // 0.协议
 protocol CSReloadDelegate: NSObjectProtocol {
-    func reloadItemsList()
+    func reloadData()
 }
 
 // 1.委托类：继承协议类
@@ -69,7 +69,7 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     // 3.遵循协议的函数
-    func reloadItemsList() {
+    func reloadData() {
         //MARK:- 关键1：重新赋值数组
         let json = table.getJSON()
         let model = ReloadDateModel.init(jsonData: json)
@@ -133,7 +133,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
         
         // 5.委托
         if delegate != nil {
-            delegate!.reloadItemsList()
+            delegate!.reloadData()
         }
     }
     

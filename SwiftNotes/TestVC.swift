@@ -17,7 +17,15 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        print(basicTable.getArray())
+        print(joinedTable.getCalArray())
+        
+        let json = joinedTable.getJSON()
+        print(json)
+        let model = CSJoinedModel.init(jsonData: json)
+        print(model.id)
+        print(model.currentProgress)
+        
+        
     }
     
     @objc func pushNext() {

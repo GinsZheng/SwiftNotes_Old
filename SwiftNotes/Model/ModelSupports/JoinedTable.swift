@@ -101,15 +101,16 @@ extension CSJoinedTable {
     func getJSON() -> JSON {
         let result = try! getDB().prepare("SELECT * FROM \(tableName)")
         var jsonArray: [Any] = []
+        print("tableName:\(tableName)")
         
         for row in result {
             let jsonRow = JSON(row)
             let rowDict: [String: Any] = [
                 "id": jsonRow[0],
-                "name": jsonRow[1],
-                "resume": jsonRow[2],
-                "totalProgress": jsonRow[3],
-                "color": jsonRow[4],
+                "currentProgress": jsonRow[1],
+                "startTime": jsonRow[2],
+                "endTime": jsonRow[3],
+                "itemId": jsonRow[4],
             ]
             let jsonDict = JSON(rowDict)
             jsonArray.append(jsonDict)
@@ -156,6 +157,19 @@ extension CSJoinedTable {
             return 0
         }
         return result as! Int64
+    }
+    
+    // 获取数组2：计算
+    func getCalArray() -> JSON {
+        let result = try! getDB().prepare("SELECT currentProgress FROM \(tableName) GROUP BY itemId ORDER BY startTime DESC LIMIT 1")
+        var jsonArray: [Any] = []
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            print(jsonRow)
+            jsonArray.append(jsonRow[0])
+        }
+        return JSON(jsonArray)
     }
 }
 
