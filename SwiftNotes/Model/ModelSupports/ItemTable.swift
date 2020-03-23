@@ -13,7 +13,7 @@ class CSItemsTable: SQLiteManager {
     // 模型只需修改字段名、数据类型，及表名
     let tableName = "item"
     let id = Expression<Int>("id")
-    let name = Expression<String>("name")
+    let itemName = Expression<String>("itemName")
     let resume = Expression<String>("resume")
     let totalProgress = Expression<Int>("totalProgress")
     let color = Expression<Int>("color")
@@ -21,7 +21,7 @@ class CSItemsTable: SQLiteManager {
     func getTable() -> Table {
         let table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)
-            t.column(name)
+            t.column(itemName)
             t.column(resume)
             t.column(totalProgress)
             t.column(color)
@@ -35,7 +35,7 @@ class CSItemsTable: SQLiteManager {
         
         let values = getTable().insert(
             id <- item["id"].intValue,
-            name <- item["name"].stringValue,
+            itemName <- item["itemName"].stringValue,
             resume <- item["resume"].stringValue,
             totalProgress <- item["totalProgress"].intValue,
             color <- item["color"].intValue
@@ -68,7 +68,7 @@ class CSItemsTable: SQLiteManager {
         
         let updatedData = getTable().filter(id == rowid)
         let values = updatedData.update(
-            name <- item["name"].stringValue,
+            itemName <- item["itemName"].stringValue,
             resume <- item["resume"].stringValue,
             totalProgress <- item["totalProgress"].intValue,
             color <- item["color"].intValue
@@ -80,7 +80,7 @@ class CSItemsTable: SQLiteManager {
     // 查
     func search(filter: Expression<Bool>? = nil, select: [Expressible] = [
         Expression<Int>("id"),
-        Expression<String>("name"),
+        Expression<String>("itemName"),
         Expression<String>("resume"),
         Expression<Int>("totalProgress"),
         Expression<Int>("color")
@@ -93,7 +93,7 @@ class CSItemsTable: SQLiteManager {
     
     // SQL语句查询
     func searchInSQL() {
-        let stmt = try! getDB().prepare("SELECT id, name, totalProgress FROM item")
+        let stmt = try! getDB().prepare("SELECT id, itemName, totalProgress FROM item")
         for row in stmt {
             for (index, columnName) in stmt.columnNames.enumerated() {
                 print ("\(columnName):\(row[index]!)")
@@ -130,7 +130,7 @@ extension CSItemsTable {
             let jsonRow = JSON(row)
             let rowDict: [String: Any] = [
                 "id": jsonRow[0],
-                "name": jsonRow[1],
+                "itemName": jsonRow[1],
                 "resume": jsonRow[2],
                 "totalProgress": jsonRow[3],
                 "color": jsonRow[4]
@@ -150,7 +150,7 @@ extension CSItemsTable {
             let jsonRow = JSON(row)
             rowDict = [
                 "id": jsonRow[0],
-                "name": jsonRow[1],
+                "itemName": jsonRow[1],
                 "resume": jsonRow[2],
                 "totalProgress": jsonRow[3],
                 "color": jsonRow[4]
@@ -161,7 +161,7 @@ extension CSItemsTable {
     
     // 获取数组
     func getArray() -> JSON {
-        let result = try! getDB().prepare("SELECT name FROM \(tableName)")
+        let result = try! getDB().prepare("SELECT itemName FROM \(tableName)")
         var jsonArray: [Any] = []
         
         for row in result {
@@ -180,21 +180,21 @@ extension CSItemsTable {
     }
     
     func getFirstName() -> Binding {
-        let result = try! getDB().scalar("SELECT name FROM item, progress ORDER BY progress.startTime DESC LIMIT 1")
+        let result = try! getDB().scalar("SELECT itemName FROM item, progress ORDER BY progress.startTime DESC LIMIT 1")
         return result ?? ""
     }
     
     
     func getJoinedTablesJSON() -> JSON {
         // 联结表时，如果两个表的字段一致(如id，需要指明表名，如：item.id)
-        let result = try! getDB().prepare("SELECT item.id, name FROM item, progress WHERE item.id = progress.id ORDER BY progress.startTime DESC")
+        let result = try! getDB().prepare("SELECT item.id, itemName FROM item, progress WHERE item.id = progress.id ORDER BY progress.startTime DESC")
         var jsonArray: [Any] = []
         
         for row in result {
             let jsonRow = JSON(row)
             let rowDict: [String: Any] = [
                 "id": jsonRow[0],
-                "name": jsonRow[1],
+                "itemName": jsonRow[1],
             ]
             let jsonDict = JSON(rowDict)
             jsonArray.append(jsonDict)
@@ -204,7 +204,7 @@ extension CSItemsTable {
     
     func getJoinedTablesJSONOneLine() -> JSON {
         
-        let result = try! getDB().prepare("SELECT item.id, name FROM item, progress WHERE item.id = progress.id ORDER BY progress.startTime DESC LIMIT 1")
+        let result = try! getDB().prepare("SELECT item.id, itemName FROM item, progress WHERE item.id = progress.id ORDER BY progress.startTime DESC LIMIT 1")
         
         var rowDict: [String: Any] = [:]
         
@@ -212,7 +212,7 @@ extension CSItemsTable {
             let jsonRow = JSON(row)
             rowDict = [
                 "id": jsonRow[0],
-                "name": jsonRow[1],
+                "itemName": jsonRow[1],
             ]
         }
         return JSON(rowDict)
@@ -226,14 +226,14 @@ extension CSItemsTable {
 // 建模
 struct CSItemModel {
     var id: [Int]
-    var name: [String]
+    var itemName: [String]
     var resume: [String]
     var totalProgress: [Int]
     var color: [Int]
     
     init(jsonData: JSON) {
         id = jsonData.arrayValue.map {$0["id"].intValue}
-        name = jsonData.arrayValue.map {$0["name"].stringValue}
+        itemName = jsonData.arrayValue.map {$0["itemName"].stringValue}
         resume = jsonData.arrayValue.map {$0["resume"].stringValue}
         totalProgress = jsonData.arrayValue.map {$0["totalProgress"].intValue}
         color = jsonData.arrayValue.map {$0["color"].intValue}

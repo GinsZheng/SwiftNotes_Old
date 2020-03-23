@@ -13,12 +13,12 @@ class CSReloadDataTable: SQLiteManager {
     // 模型只需修改字段名及数据类型，及表名
     let tableName = "reloadData"
     let id = Expression<Int>("id")
-    let name = Expression<String>("name")
+    let itemName = Expression<String>("itemName")
 
     func getTable() -> Table {
         let table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)
-            t.column(name)
+            t.column(itemName)
         }
         return table
     }
@@ -28,7 +28,7 @@ class CSReloadDataTable: SQLiteManager {
         
         let values = getTable().insert(
             id <- item["id"].intValue,
-            name <- item["name"].stringValue
+            itemName <- item["itemName"].stringValue
         )
         super.insert(values)
     }
@@ -54,7 +54,7 @@ class CSReloadDataTable: SQLiteManager {
         
         let updatedData = getTable().filter(id == rowid)
         let values = updatedData.update(
-            name <- item["name"].stringValue
+            itemName <- item["itemName"].stringValue
         )
         super.update(values)
     }
@@ -62,7 +62,7 @@ class CSReloadDataTable: SQLiteManager {
     // 查
     func search(filter: Expression<Bool>? = nil, select: [Expressible] = [
         Expression<Int>("id"),
-        Expression<String>("name")
+        Expression<String>("itemName")
         ], order: [Expressible] = [Expression<Int>("id").asc], limit: Int? = nil, offset: Int? = nil) -> [Row] {
         
         let query = getTable().select(select).order(order)
@@ -104,7 +104,7 @@ extension CSReloadDataTable {
             let jsonRow = JSON(row)
             let rowDict: [String: Any] = [
                 "id": jsonRow[0],
-                "name": jsonRow[1],
+                "itemName": jsonRow[1],
             ]
             let jsonDict = JSON(rowDict)
             jsonArray.append(jsonDict)
@@ -118,10 +118,10 @@ extension CSReloadDataTable {
 
 struct ReloadDateModel {
     var id: [Int]
-    var name: [String]
+    var itemName: [String]
     
     init(jsonData: JSON) {
         id = jsonData.arrayValue.map {$0["id"].intValue}
-        name = jsonData.arrayValue.map {$0["name"].stringValue}
+        itemName = jsonData.arrayValue.map {$0["itemName"].stringValue}
     }
 }

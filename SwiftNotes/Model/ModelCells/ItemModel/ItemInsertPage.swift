@@ -31,7 +31,7 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
         navPresent.setTitleLabel(superview: view, title: "Insert")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
         
-        nameTextField.set(superview: view, placeholder: "name", delegate: self)
+        nameTextField.set(superview: view, placeholder: "itemName", delegate: self)
         nameTextField.setStyleOneLineTextField()
         nameTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
         
@@ -62,7 +62,7 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
         let id = itemTable.getNextId()
         let insertValue: [String: Any] = [
             "id": id,
-            "name": nameTextField.text ?? "",
+            "itemName": nameTextField.text ?? "",
             "resume": resumeTextField.text ?? "",
             "totalProgress": Int(totalProgressTextField.text ?? "") ?? 100,
             "color": Int(colorTextField.text ?? "") ?? 0

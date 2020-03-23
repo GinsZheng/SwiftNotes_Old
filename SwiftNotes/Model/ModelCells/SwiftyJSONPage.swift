@@ -25,7 +25,7 @@ class CSSwiftyJSONPage: UIViewController {
                                         "area_address":"浙江省温州市鹿城区五马街道"]
         let jsonData = JSON(baseInfo) // 先序列化再解析
         let model = CSSwiftyModel1(jsonData: jsonData)
-        print("Model name \(model.build_name)")
+        print("Model itemName \(model.build_name)")
         
         
         // 解析本地文件
@@ -50,7 +50,7 @@ class CSSwiftyJSONPage: UIViewController {
         let result = itemTable.getJSONOneRow(id: 10)
         print(result)
         let model4 = CSSwiftyModel4(jsonData: result)
-        print("CSSwiftyModel4 name \(model4.name)")
+        print("CSSwiftyModel4 itemName \(model4.itemName)")
         
         
         
@@ -90,12 +90,12 @@ struct CSSwiftyModel1 {
 struct CSSwiftyModel2 {
     var id: [String]
     var arrivalTime: [String]
-    var name: [String]
+    var itemName: [String]
     
     init(jsonData: JSON) {
         id          = jsonData["result"].arrayValue.map {$0["id"].stringValue}
         arrivalTime = jsonData["result"].arrayValue.map {$0["arrivalTime"].stringValue}
-        name        = jsonData["result"].arrayValue.map {$0["name"].stringValue}
+        itemName        = jsonData["result"].arrayValue.map {$0["itemName"].stringValue}
     }
 }
 
@@ -117,14 +117,14 @@ struct CSSwiftyModel3 {
 
 struct CSSwiftyModel4 {
     var id: Int
-    var name: String
+    var itemName: String
     var resume: String
     var totalProgress: Int
     var color: Int
     
     init(jsonData: JSON) {
         id = jsonData["id"].intValue
-        name = jsonData["name"].stringValue
+        itemName = jsonData["itemName"].stringValue
         resume = jsonData["resume"].stringValue
         totalProgress = jsonData["totalProgress"].intValue
         color = jsonData["color"].intValue
@@ -137,7 +137,7 @@ struct CSSwiftyModel4 {
        "totalProgress" : 2,
        "color" : 3,
        "id" : 10,
-       "name" : "Are you OK?"
+       "itemName" : "Are you OK?"
      }
      */
 }

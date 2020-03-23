@@ -30,7 +30,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         let json = table.getJSON()
         let model = CSItemModel.init(jsonData: json)
         idArray = model.id
-        nameArray = model.name
+        nameArray = model.itemName
         
         tableView.set(superview: view, delegate: self, dataSource: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
@@ -94,7 +94,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         let json = table.getJSON()
         let model = CSItemModel.init(jsonData: json)
         idArray = model.id
-        nameArray = model.name
+        nameArray = model.itemName
         
         print("reloadData")
         // 关键：reloadData()，刷新页面数据

@@ -34,7 +34,7 @@ class TryTable: SQLiteManager {
     
     private var tbl: Table?
     let rowid = Expression<Int>("id")
-    let name = Expression<String>("name")
+    let itemName = Expression<String>("itemName")
     let resume = Expression<String>("resume")
     
     // 使用 Try!
@@ -44,7 +44,7 @@ class TryTable: SQLiteManager {
             // 使用try!之前，应判断了是否为nil，以避免崩溃
             try! getDB().run(tbl!.create(temporary: false, ifNotExists: true, withoutRowid: false, block: { (t) in
                 t.column(rowid, primaryKey: true)
-                t.column(name)
+                t.column(itemName)
                 t.column(resume)
             }))
         }

@@ -33,7 +33,7 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         let json = table.getJSON()
         let model = ReloadDateModel.init(jsonData: json)
-        nameArray = model.name
+        nameArray = model.itemName
         
         
         addItemBtn.set(superview: view, target: self, action: #selector(presentAddItemVC))
@@ -73,7 +73,7 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         //MARK:- 关键1：重新赋值数组
         let json = table.getJSON()
         let model = ReloadDateModel.init(jsonData: json)
-        nameArray = model.name
+        nameArray = model.itemName
         print("reloadData")
         // 关键2：reloadData()，刷新页面数据
         tableView.reloadData()
@@ -121,7 +121,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
         let id = table.getNextId()
         let insertRow: [String: Any] = [
             "id": id,
-            "name": nameTextField.text ?? ""
+            "itemName": nameTextField.text ?? ""
         ]
 
         let insertJSON = JSON(insertRow)

@@ -40,7 +40,7 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
         navPresent.setTitleLabel(superview: view, title: "Update")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
         
-        nameTextField.set(superview: view, placeholder: "name", delegate: self, text: model.name)
+        nameTextField.set(superview: view, placeholder: "itemName", delegate: self, text: model.itemName)
         nameTextField.setStyleOneLineTextField()
         nameTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
         
@@ -76,7 +76,7 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
     
     @objc func updateItem() {
         let updateValue: [String: Any] = [
-            "name": nameTextField.text ?? "",
+            "itemName": nameTextField.text ?? "",
             "resume": resumeTextField.text ?? "",
             "totalProgress": Int(totalProgressTextField.text ?? "") ?? 100,
             "color": Int(colorTextField.text ?? "") ?? 0
@@ -116,14 +116,14 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
 // 建模
 struct CSItemUpdateModel {
     var id: Int
-    var name: String
+    var itemName: String
     var resume: String
     var totalProgress: Int
     var color: Int
     
     init(jsonData: JSON) {
         id = jsonData["id"].intValue
-        name = jsonData["name"].stringValue
+        itemName = jsonData["itemName"].stringValue
         resume = jsonData["resume"].stringValue
         totalProgress = jsonData["totalProgress"].intValue
         color = jsonData["color"].intValue
