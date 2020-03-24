@@ -25,7 +25,7 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
     // 删除按钮
     let deleteButton = UIButton(type: .system)
     
-    let itemTable = CSItemsTable()
+    let itemTable = CSItemTable()
     
     weak var delegate: CSReloadDelegate?
     

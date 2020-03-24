@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         // 将window的一级页面设置为tabBar
         self.window?.rootViewController = tabBarController
 
-        CSItemsTable().getTable()
+        CSItemTable().getTable()
         CSProgressTable().getTable()
         
         return true

@@ -10,7 +10,7 @@ import UIKit
 
 class TestVC: UIViewController {
 
-    let itemTable = CSItemsTable()
+    let itemTable = CSItemTable()
     let progressTable = CSProgressTable()
     
     override func viewDidLoad() {

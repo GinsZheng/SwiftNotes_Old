@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
-    let table = CSItemsTable()
+    let table = CSItemTable()
     
     var idArray = [Int]()
     var nameArray = [String]()
