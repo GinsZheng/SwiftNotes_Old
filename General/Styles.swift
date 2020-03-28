@@ -279,14 +279,14 @@ extension UIButton {
         self.setTitleColor(.hex(titleColor), for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight)
         self.setBackgroundImage(getImageWithColor(color: cThemeFill), for: .normal)
-        self.setCornerRadius(radius: cornerRadius)
+        self.setCornerRadiusWithMask(radius: cornerRadius)
     }
     
     func setStyleSystemIconButton(imageName: String, backgroundImage: UIImage = getImageWithColor(color: cNoColor), cornerRadius: CGFloat = 0) {
         self.tintColor = .hex(c222)
         self.setImage(UIImage(named: imageName), for: .normal)
         self.setBackgroundImage(backgroundImage, for: .normal)
-        self.setCornerRadius(radius: cornerRadius)
+        self.setCornerRadiusWithMask(radius: cornerRadius)
     }
     
     func setStyleCustomIconButton(imageName: String) {

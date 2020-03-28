@@ -129,15 +129,15 @@ struct CSSwiftyModel4 {
         totalProgress = jsonData["totalProgress"].intValue
         color = jsonData["color"].intValue
     }
-    
-    /*
-     数据结构如下：
-     {
-       "resume" : "4",
-       "totalProgress" : 2,
-       "color" : 3,
-       "id" : 10,
-       "itemName" : "Are you OK?"
-     }
-     */
 }
+/*
+ 数据结构如下：
+ {
+ "resume" : "4",
+ "totalProgress" : 2,
+ "color" : 3,
+ "id" : 10,
+ "itemName" : "Are you OK?"
+ }
+ */
+

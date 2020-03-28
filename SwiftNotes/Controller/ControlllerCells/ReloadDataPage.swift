@@ -11,7 +11,7 @@ import SQLite
 import SwiftyJSON
 
 // 写个委托，完成子VC切到父VC时的通信
-// 如果不是 dismiss() 过场，直接在父VC用viewDidLoad()即可刷新，不用委托
+// 如果不是 dismiss() 过场，直接在父VC用viewWillAppear()等即可刷新，不用委托
 // 0.协议
 protocol CSReloadDelegate: NSObjectProtocol {
     func reloadData()

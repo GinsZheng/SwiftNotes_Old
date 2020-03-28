@@ -18,11 +18,11 @@ class CSFormatter {
     static func getHours(fromSeconds seconds: Int, decimalPlaces: Int = 0) -> Double {
         return round(Double(seconds)/3600, decimalPlaces: decimalPlaces)
     }
-
+    
 }
 
 extension CSFormatter {
-    
+    // <1分钟，Int(M分钟)，H小时
     static func getDurationStr1(fromSeconds seconds: Int) -> String {
         var result = ""
         switch seconds {
@@ -36,6 +36,7 @@ extension CSFormatter {
         return result
     }
     
+    // <1%，Int(N%)
     static func getPercentageStr1(percentage: Double) -> String {
         var result = "\(Int(percentage*100))%"
         if percentage < 0.01 {
@@ -44,5 +45,9 @@ extension CSFormatter {
         return result
     }
     
+    //
+    static func getDurationStr2(fromSeconds seconds: Int) -> String {
+        return "\(Int(getMinites(fromSeconds: seconds)))分钟"
+    }
 
 }
