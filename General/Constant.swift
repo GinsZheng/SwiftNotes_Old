@@ -14,19 +14,9 @@ let kScreenHeight = UIScreen.main.bounds.size.height
 
 let kScreenWidth = UIScreen.main.bounds.size.width
 
-//@available(iOS 13.0, *)
-//let kStatusBarHeight = UIApplication.shared.connectedScenes.map({$0 as? UIWindowScene}).compactMap({$0}).first?.windows.first?.windowScene?.statusBarManager?.statusBarFrame.size.height ?? 20
 let kStatusBarHeight = UIApplication.shared.statusBarFrame.size.height
 
 let kNavBarHeight = kStatusBarHeight + 44
-
-let kHeightUnderNavBar = kScreenHeight - kNavBarHeight
-
-let kScale = UIScreen.main.scale
-
-let kSeparatorHeight = 1 / UIScreen.main.scale
-
-let kSafeAreaInsets = UIApplication.shared.delegate?.window??.safeAreaInsets ?? UIEdgeInsets.zero
 
 var kBottomBarHeight: CGFloat {
     get {
@@ -38,7 +28,22 @@ var kBottomBarHeight: CGFloat {
     }
 }
 
+let kTabBarHeight = kBottomBarHeight + 49
 
+let kWithoutStatusBarHeight = kScreenHeight - kStatusBarHeight
+
+let kWithoutNavBarHeight = kScreenHeight - kNavBarHeight
+
+// 安全区域 = 除去状态栏与34高的底栏
+let kWithoutStatusAndBottomBarHeight = kScreenHeight - kStatusBarHeight - kBottomBarHeight
+
+var kWithoutNavAndBottomBarHeight = kScreenHeight - kNavBarHeight - kBottomBarHeight
+
+var kWithoutNavAndTabBarHeight = kScreenHeight - kNavBarHeight - kTabBarHeight
+
+let kScale = UIScreen.main.scale
+
+let kSeparatorHeight = 1 / UIScreen.main.scale
 
 // APP范围UI参数
 let kButtonRadius: CGFloat = 4

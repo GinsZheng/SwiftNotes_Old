@@ -19,11 +19,10 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         self.title = "View" // 导航栏标题
-
         
         let table = UITableView()
         table.set(superview: view, delegate: self, dataSource: self)
-        table.setFrame(left: 0, top: 0, right: 0, height: self.getSafeAreaHeight())
+        table.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
         
         
     }

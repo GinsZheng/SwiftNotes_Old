@@ -24,7 +24,10 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(presentToInsertPage))
+
+        let editButton = UIBarButtonItem(image: UIImage(named: "progress_editIte"), style: .plain, target: self, action: #selector(presentToInsertPage))
+        editButton.tintColor = .hex(cRed_FF5349)
+        self.navigationItem.rightBarButtonItem = editButton
         
         // 从本地数据库获取JSON数据、建模、赋值
         let json = table.getJSON()

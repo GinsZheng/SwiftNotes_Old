@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
 
         CSItemTable().getTable()
         CSProgressTable().getTable()
+        CSReloadDataTable().getTable()
         
         return true
     }

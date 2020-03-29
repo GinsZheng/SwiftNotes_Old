@@ -17,7 +17,9 @@ class CSNavControllerPage: UIViewController {
         view.backgroundColor = .white
         
         // 设置导航栏左按钮
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(pushToGeneralSubpage))
+        let editButton = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(pushToGeneralSubpage))
+        editButton.tintColor = .hex(cBlue_2C9EFF)
+        self.navigationItem.rightBarButtonItem = editButton
         // 用图片撑起Frame
         
         // 跳转并传值

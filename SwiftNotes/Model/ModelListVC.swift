@@ -10,7 +10,7 @@ import UIKit
 
 class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleArray = ["Array", "Basic Model", "Joined Model", "Request", "SwiftyJSON", "Time"]
+    let titleArray = ["Array", "Item Model (Basic)", "Progress Model (Joined)", "Request", "SwiftyJSON", "Time"]
     let pageArray = [CSArrayPage(), CSItemSearchPage(), CSProgressSearchPage(), CSRequestPage(), CSSwiftyJSONPage(), CSTimePage()]
     
     override func viewDidLoad() {
@@ -20,7 +20,7 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         let table = UITableView()
         table.set(superview: view, delegate: self, dataSource: self)
-        table.setFrame(left: 0, top: 0, right: 0, height: getSafeAreaHeight())
+        table.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndBottomBarHeight)
         
     }
     

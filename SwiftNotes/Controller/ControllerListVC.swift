@@ -21,7 +21,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
         
         let table = UITableView()
         table.set(superview: view, delegate: self, dataSource: self)
-        table.setFrame(left: 0, top: 0, right: 0, height: getSafeAreaHeight())
+        table.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
         
     }
     

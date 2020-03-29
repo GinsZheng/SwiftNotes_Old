@@ -22,7 +22,7 @@ class CSAnimationPage: UIViewController {
         myView.backgroundColor = UIColor.hex(cBlue_2C9EFF)
         
         view.addSubview(solidButton)
-        solidButton.setFrame(left: 20, bottom: 80, width: kScreenWidth - 40, height: 44)
+        solidButton.setFrame(left: 20, bottom: kTabBarHeight + 20, width: kScreenWidth - 40, height: 44)
         solidButton.setTitle("Start Animation", for: .normal)
         solidButton.setTitleColor(UIColor.white, for: .normal)
         solidButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)

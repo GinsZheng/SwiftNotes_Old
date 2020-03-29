@@ -41,7 +41,7 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         addItemBtn.setImage(UIImage(named: "progress_addItem"), for: .normal)
         
         tableView.set(superview: view, delegate: self, dataSource: self)
-        tableView.setFrame(left: 0, top: 20, right: 0, height: self.getSafeAreaHeight(inset: 40))
+        tableView.setFrame(left: 0, top: 20, right: 0, height: kWithoutNavAndTabBarHeight - 40)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

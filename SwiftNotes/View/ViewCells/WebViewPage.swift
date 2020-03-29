@@ -28,7 +28,7 @@ class CSWebViewPage: UIViewController {
         super.viewDidLoad()
         
         view.addSubview(webView)
-        webView.setFrame(left: 0, top: 0, width: kScreenWidth, height: kHeightUnderNavBar)
+        webView.setFrame(left: 0, top: 0, width: kScreenWidth, height: kWithoutNavBarHeight)
         webView.navigationDelegate = self
         
         let url = "https://www.apple.com"

@@ -560,13 +560,10 @@ extension UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func getTabBarHeight() -> CGFloat {
-        return self.tabBarController?.tabBar.bounds.size.height ?? 0
+    func getNavView() -> UIView {
+        return self.navigationController?.navigationBar ?? self.view
     }
     
-    func getSafeAreaHeight(inset: CGFloat = 0) -> CGFloat {
-        return kScreenHeight - kNavBarHeight - self.getTabBarHeight() - inset
-    }
     
 }
 
