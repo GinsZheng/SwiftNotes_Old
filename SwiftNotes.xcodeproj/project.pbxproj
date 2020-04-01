@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0258A82434EF42006D4AB5 /* PopToSpecificPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0258A72434EF42006D4AB5 /* PopToSpecificPage.swift */; };
+		7A0258AA2434EF58006D4AB5 /* DismissAllPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0258A92434EF58006D4AB5 /* DismissAllPage.swift */; };
+		7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */; };
 		7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */; };
 		7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A109AF72421302E0034C624 /* ModelBasicNote.swift */; };
 		7A114CB8240570420058E70A /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A114CB7240570420058E70A /* pop.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -76,6 +79,7 @@
 		7A58D5C92417F05100CBF18D /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5AA2417F05100CBF18D /* DatePicker.swift */; };
 		7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A64873F23FAE319006B6FC1 /* LoadingPage.swift */; };
 		7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A65113A23D6A332005E4FD4 /* UIClass.swift */; };
+		7A702DA82434E99600EB1FF3 /* JumpListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A702DA72434E99600EB1FF3 /* JumpListPage.swift */; };
 		7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76EF6223CF17B400350087 /* SQLiteManager.swift */; };
 		7A782D6B23CF20DA00E09ED0 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A782D6A23CF20D900E09ED0 /* NavViewController.swift */; };
 		7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B5D3B23C05A150079A931 /* ArraysPage.swift */; };
@@ -367,6 +371,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7A0258A72434EF42006D4AB5 /* PopToSpecificPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopToSpecificPage.swift; sourceTree = "<group>"; };
+		7A0258A92434EF58006D4AB5 /* DismissAllPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAllPage.swift; sourceTree = "<group>"; };
+		7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAndDismissPage.swift; sourceTree = "<group>"; };
 		7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerBasicNote.swift; sourceTree = "<group>"; };
 		7A109AF72421302E0034C624 /* ModelBasicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelBasicNote.swift; sourceTree = "<group>"; };
 		7A114CB7240570420058E70A /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = ESTabBarController/ESTabBarControllerExample/ESTabBarControllerExample/Framework/pop.framework; sourceTree = "<group>"; };
@@ -442,6 +449,7 @@
 		7A58D5AA2417F05100CBF18D /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		7A64873F23FAE319006B6FC1 /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		7A65113A23D6A332005E4FD4 /* UIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIClass.swift; sourceTree = "<group>"; };
+		7A702DA72434E99600EB1FF3 /* JumpListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpListPage.swift; sourceTree = "<group>"; };
 		7A76EF6223CF17B400350087 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		7A782D6A23CF20D900E09ED0 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		7A7B5D3B23C05A150079A931 /* ArraysPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysPage.swift; sourceTree = "<group>"; };
@@ -681,6 +689,17 @@
 			path = UIList;
 			sourceTree = "<group>";
 		};
+		7A702DC92434EEDC00EB1FF3 /* JumpList */ = {
+			isa = PBXGroup;
+			children = (
+				7A702DA72434E99600EB1FF3 /* JumpListPage.swift */,
+				7A0258A72434EF42006D4AB5 /* PopToSpecificPage.swift */,
+				7A0258A92434EF58006D4AB5 /* DismissAllPage.swift */,
+				7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */,
+			);
+			path = JumpList;
+			sourceTree = "<group>";
+		};
 		7A7D1C5B241CC4C900E08EA1 /* ItemModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -828,10 +847,11 @@
 			isa = PBXGroup;
 			children = (
 				7A31324E2392A6680008298C /* ClassPage.swift */,
-				7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */,
 				7A21612B2389869D00D5A93A /* DecoratorPage.swift */,
 				7A21612F2389869D00D5A93A /* DelegatePage.swift */,
 				7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */,
+				7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */,
+				7A702DC92434EEDC00EB1FF3 /* JumpList */,
 				7A64873F23FAE319006B6FC1 /* LoadingPage.swift */,
 				7A21612E2389869D00D5A93A /* MenuControllerPage.swift */,
 				7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */,
@@ -1253,6 +1273,7 @@
 				7A21611B2389857700D5A93A /* Colors.swift in Sources */,
 				7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */,
 				7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */,
+				7A0258AA2434EF58006D4AB5 /* DismissAllPage.swift in Sources */,
 				7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */,
 				7A782D6B23CF20DA00E09ED0 /* NavViewController.swift in Sources */,
 				7A7F97E7241DF290000F1E31 /* ProgressUpdatePage.swift in Sources */,
@@ -1269,6 +1290,7 @@
 				7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */,
 				7A21613F238986AA00D5A93A /* GeneralSubpage.swift in Sources */,
 				7A216161238986AF00D5A93A /* SegmentControlPage.swift in Sources */,
+				7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
 				7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */,
 				7AA3C2B1241CCC6000F77711 /* ItemUpdatePage.swift in Sources */,
@@ -1299,6 +1321,7 @@
 				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
 				7AC56A0A23D4395C00538975 /* ViewBasicNote.swift in Sources */,
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
+				7A0258A82434EF42006D4AB5 /* PopToSpecificPage.swift in Sources */,
 				7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
 				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,
@@ -1313,6 +1336,7 @@
 				7A2161182389857700D5A93A /* Functions.swift in Sources */,
 				7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */,
 				7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */,
+				7A702DA82434E99600EB1FF3 /* JumpListPage.swift in Sources */,
 				7A88A71024227FBE00BF1611 /* Formatter.swift in Sources */,
 				7A216158238986AF00D5A93A /* TextViewPage.swift in Sources */,
 				7A89B2D9240AB9B6004688FD /* MagicMovePage.swift in Sources */,

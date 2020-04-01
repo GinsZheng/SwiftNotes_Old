@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForWhilePage: UIViewController {
+class CSForWhilePage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

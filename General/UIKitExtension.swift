@@ -564,6 +564,22 @@ extension UIViewController {
         return self.navigationController?.navigationBar ?? self.view
     }
     
+    // 测试 有效
+    func dismissAll()  {
+        //1.2循环调用 presentingViewController 获取根VC，再dissmiss
+        //获取根VC
+        var rootVC = self.presentingViewController
+        while let parent = rootVC?.presentingViewController {
+            rootVC = parent
+        }
+        //释放所有下级视图
+        rootVC?.dismiss(animated: true, completion: nil)
+        
+        //2.连续dissmiss两个视图
+        //        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        
+        // ———— presentingViewController可获取父级ViewController
+    }
     
 }
 

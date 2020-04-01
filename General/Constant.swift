@@ -28,6 +28,16 @@ var kBottomBarHeight: CGFloat {
     }
 }
 
+var kCardStackBarHeight: CGFloat {
+    get {
+        if kScreenHeight > 800 {
+            return 54
+        } else {
+            return 40
+        }
+    }
+}
+
 let kTabBarHeight = kBottomBarHeight + 49
 
 let kWithoutStatusBarHeight = kScreenHeight - kStatusBarHeight
