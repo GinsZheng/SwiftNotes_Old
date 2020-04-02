@@ -10,8 +10,8 @@ import UIKit
 
 class CSUIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleList = ["Mask"]
-    let pageList = [CSMaskPage()]
+    let titleList = ["Mask", "Font"]
+    let pageList = [CSMaskPage(), CSFontPage()]
     
     var cardHeight: CGFloat = 0
     

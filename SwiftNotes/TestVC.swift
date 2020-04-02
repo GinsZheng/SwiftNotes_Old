@@ -12,20 +12,13 @@ class TestVC: UIViewController {
 
     let itemTable = CSItemTable()
     let progressTable = CSProgressTable()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        print(progressTable.getArray())
-        
+        print(getDurationStrHHMMSS(secounds: 1000))
     }
-    
-    @objc func pushNext() {
-        let subpage = CSGeneralSubpage()
-        subpage.textStr = "传值"
-        self.push(toTarget: subpage)
-    }
-    
+
 }
 
