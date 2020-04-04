@@ -17,7 +17,8 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        print(getDurationStrHHMMSS(secounds: 1000))
+        print(CSFormatter.getTimeStrHHmm(timeStamp: getTimeStampNow()))
+        
     }
 
 }

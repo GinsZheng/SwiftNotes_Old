@@ -14,15 +14,22 @@ class CSTimePage: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let getTimeStr = UILabel()
-        getTimeStr.set(superview: view, text: getTimeStrWithTimeStamp(timeStamp: 1463637807, dateFormat: "yyyy/M/d HH:mm:ss"))
-        getTimeStr.setStyle17pt222()
-        getTimeStr.setFrame(left: 20, top: 20)
+        let timeStrLabel = UILabel()
+        timeStrLabel.set(superview: view, text: getTimeStrWithTimeStamp(timeStamp: 1463637807, dateFormat: "yyyy/M/d HH:mm:ss"))
+        timeStrLabel.setStyle17pt222()
+        timeStrLabel.setFrame(left: 20, top: 20)
         
-        let getTimeStamp = UILabel()
-        getTimeStamp.set(superview: view, text: String(getTimeStampWithTimeStr(timeStr: "2018/2/2 10:10:11", dateFormat: "yyyy/M/d HH:mm:ss")))
-        getTimeStamp.setStyle17pt222()
-        getTimeStamp.setFrame(left: 20, top: getTimeStr.bottom + 20)
+        let timeStampLabel = UILabel()
+        timeStampLabel.set(superview: view, text: String(getTimeStampWithTimeStr(timeStr: "2018/2/2 10:10:11", dateFormat: "yyyy/M/d HH:mm:ss")))
+        timeStampLabel.setStyle17pt222()
+        timeStampLabel.setFrame(left: 20, top: timeStrLabel.bottom + 20)
+        
+        let nowTimeStamp = getTimeStampNow()
+        let nowLabel = UILabel()
+        nowLabel.set(superview: view, text: "\(nowTimeStamp)")
+        nowLabel.setStyle17pt222()
+        nowLabel.setFrame(left: 20, top: timeStampLabel.bottom + 20)
+        
     }
     
 }

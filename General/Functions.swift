@@ -62,20 +62,9 @@ func getTimeStampWithDate(date: Date) -> Double {
     return date.timeIntervalSince1970
 }
 
-// 时长格式
-func getDurationStrHHMMSS(secounds: TimeInterval) -> String {
-    if secounds.isNaN {
-        return "00:00"
-    }
-    var Min = Int(secounds / 60)
-    let Sec = Int(secounds.truncatingRemainder(dividingBy: 60))
-    var Hour = 0
-    if Min >= 60 {
-        Hour = Int(Min / 60)
-        Min = Min - Hour*60
-        return String(format: "%d:%02d:%02d", Hour, Min, Sec)
-    }
-    return String(format: "%02d:%02d", Min, Sec)
+// 获取当前时间
+func getTimeStampNow() -> Double {
+    return Date().timeIntervalSince1970
 }
 
 func round(_ value: Double, decimalPlaces: Int) -> Double {
