@@ -36,9 +36,10 @@ extension CSFormatter {
         return result
     }
     
-    // 时长 Int(M分钟)
-    static func getDurationStr2(fromSeconds seconds: Int) -> String {
-        return "\(Int(getMinites(fromSeconds: seconds)))分钟"
+    // 时长 M分钟
+    static func getDurationStrMinites(fromSeconds seconds: Int) -> String {
+        let formattedMinites = String(format: "%.0f", getMinites(fromSeconds: seconds))
+        return "\(formattedMinites)分钟"
     }
 
     // 时长 mm:ss H:mm:ss

@@ -17,7 +17,7 @@ class CSDatePicker {
     let cancelButton = UIButton()
     let confirmButton = UIButton()
     
-    var iTimeStamp = 0.0
+    var timeStamp = 0.0
     var iDateFormat = "yyyy/M/d HH:mm"
     
     var iLabel = UILabel()
@@ -25,7 +25,7 @@ class CSDatePicker {
     var iTextView = UITextView()
     
     
-    func setBasicAttribute() {
+    func setBasicAttribute(target: Any?, confirmAction: Selector) {
         UIApplication.shared.windows[0].addSubview(mask)
         mask.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         mask.setBackgroundColor(color: cNoColor)
@@ -45,7 +45,7 @@ class CSDatePicker {
         cancelButton.setStyleWordButton(title: "取消")
         cancelButton.setFrame(left: 20, centerY: pickerConfirmBar.height/2, width: 44, height: 44)
 
-        confirmButton.set(superview: pickerConfirmBar, target: self, action: #selector(confirm))
+        confirmButton.set(superview: pickerConfirmBar, target: target, action: confirmAction)
         confirmButton.setStyleWordButton(title: "确定")
         confirmButton.setFrame(right: 20, centerY: pickerConfirmBar.height/2, width: 44, height: 44)
         
@@ -72,7 +72,7 @@ class CSDatePicker {
     }
     
     func getTimeStamp() -> Double {
-        return iTimeStamp
+        return timeStamp
     }
     
     
@@ -87,14 +87,14 @@ class CSDatePicker {
         })
     }
     
-    @objc func confirm() {
+    func confirm() {
         UIView.animate(withDuration: 0.3) {
             self.mask.backgroundColor = .hex(cNoColor)
             self.pickerBg.bottom = -(kBottomBarHeight + 215 + 44)
         }
         
-        iTimeStamp = getTimeStampWithDate(date: datePicker.date)
-        iTextField.text = getTimeStrWithTimeStamp(timeStamp: iTimeStamp, dateFormat: iDateFormat)
+        timeStamp = getTimeStampWithDate(date: datePicker.date)
+        iTextField.text = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: iDateFormat)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute:{
             self.mask.removeFromSuperview()
