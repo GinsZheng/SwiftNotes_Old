@@ -98,6 +98,7 @@
 		7A9DA3FE240A902600AFB585 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9DA3FB240A901100AFB585 /* SnapKit.framework */; };
 		7A9DA3FF240A902600AFB585 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9DA3FB240A901100AFB585 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AA3259C243B6FC000D5308D /* StringPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3259B243B6FC000D5308D /* StringPage.swift */; };
+		7AA325BD243CDB6A00D5308D /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA325BC243CDB6A00D5308D /* LayerView.swift */; };
 		7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3C290241CCA5800F77711 /* NavControllerPage.swift */; };
 		7AA3C2B1241CCC6000F77711 /* ItemUpdatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3C2B0241CCC6000F77711 /* ItemUpdatePage.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
@@ -471,6 +472,7 @@
 		7A94609023D1A6AB00936DE7 /* ProgressTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTable.swift; sourceTree = "<group>"; };
 		7A9DA3F5240A901100AFB585 /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = "SnapKit-develop/SnapKit.xcodeproj"; sourceTree = "<group>"; };
 		7AA3259B243B6FC000D5308D /* StringPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringPage.swift; sourceTree = "<group>"; };
+		7AA325BC243CDB6A00D5308D /* LayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
 		7AA3C290241CCA5800F77711 /* NavControllerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerPage.swift; sourceTree = "<group>"; };
 		7AA3C2B0241CCC6000F77711 /* ItemUpdatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdatePage.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
@@ -800,6 +802,7 @@
 				7A21614A238986AF00D5A93A /* DatePickerPage.swift */,
 				7A216152238986AF00D5A93A /* ImageViewPage.swift */,
 				7A216142238986AF00D5A93A /* LabelPage.swift */,
+				7AA325BC243CDB6A00D5308D /* LayerView.swift */,
 				7AA3C290241CCA5800F77711 /* NavControllerPage.swift */,
 				7A21614B238986AF00D5A93A /* PageControlPage.swift */,
 				7A216151238986AF00D5A93A /* PickerViewPage.swift */,
@@ -1303,6 +1306,7 @@
 				7A21613F238986AA00D5A93A /* GeneralSubpage.swift in Sources */,
 				7A216161238986AF00D5A93A /* SegmentControlPage.swift in Sources */,
 				7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */,
+				7AA325BD243CDB6A00D5308D /* LayerView.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
 				7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */,
 				7AA3C2B1241CCC6000F77711 /* ItemUpdatePage.swift in Sources */,

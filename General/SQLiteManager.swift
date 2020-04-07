@@ -40,7 +40,7 @@ class SQLiteManager: NSObject {
     
     func insert(_ values: Insert) {
         if let id = try? getDB().run(values) {
-            print("插入成功：\(id)")
+            print("插入成功：id=\(id)")
         } else {
             print("插入失败")
         }

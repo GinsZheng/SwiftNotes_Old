@@ -25,7 +25,7 @@ class CSDatePicker {
     var iTextView = UITextView()
     
     
-    func setBasicAttribute(target: Any?, confirmAction: Selector) {
+    func setBasicAttribute(defaultDate: TimeInterval, target: Any?, confirmAction: Selector) {
         UIApplication.shared.windows[0].addSubview(mask)
         mask.addTarget(self, action: #selector(cancel), for: .touchUpInside)
         mask.setBackgroundColor(color: cNoColor)
@@ -37,6 +37,7 @@ class CSDatePicker {
         datePicker.set(superview: pickerBg, backgroundColor: cFFF)
         datePicker.setFrame(left: 0, bottom: kBottomBarHeight, width: kScreenWidth, height: 215)
         datePicker.locale = Locale(identifier: "zh_CN")
+        datePicker.setDate(Date(timeIntervalSince1970: defaultDate), animated: true)
         
         pickerConfirmBar.set(superview: pickerBg, backgroundColor: cFFF)
         pickerConfirmBar.setFrame(left: 0, bottom: datePicker.height + kBottomBarHeight, width: kScreenWidth, height: 44)
@@ -101,5 +102,8 @@ class CSDatePicker {
         })
     }
     
+    func getDatePicker() -> UIDatePicker {
+        return datePicker
+    }
 }
 
