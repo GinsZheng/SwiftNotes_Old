@@ -17,6 +17,8 @@ class TestVC: UIViewController {
         view.backgroundColor = .white
         
         let myView = UITableView()
+        
+        print(self.parent?.title)
     }
 
 

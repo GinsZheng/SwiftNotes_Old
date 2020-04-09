@@ -553,7 +553,7 @@ extension UIViewController {
     }
     
     func dismiss(completion: @escaping () -> Void = {}) {
-        self.dismiss(animated: true, completion: completion)
+        self.presentingViewController?.dismiss(animated: true, completion: completion)
     }
     
     func hideNavBar() {
@@ -576,9 +576,9 @@ extension UIViewController {
         rootVC?.dismiss(animated: true, completion: nil)
     }
     
-    func dismissTwice() {
+    func dismissTwice(animated: Bool = true) {
         // presentingViewController可获取父级ViewController
-        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.presentingViewController?.presentingViewController?.dismiss(animated: animated, completion: nil)
     }
     
 }

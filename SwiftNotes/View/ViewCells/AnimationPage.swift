@@ -16,7 +16,7 @@ class CSAnimationPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-
+        
         myView.set(superview: view)
         myView.setFrame(centerX: view.centerX, top: 20, width: 100, height: 100)
         myView.backgroundColor = UIColor.hex(cBlue_2C9EFF)
@@ -61,6 +61,7 @@ class CSAnimationPage: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 12, execute: {
             self.myView.removeFromSuperview()
         })
+        
         
     }
     

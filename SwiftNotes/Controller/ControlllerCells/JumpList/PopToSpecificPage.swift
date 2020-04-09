@@ -29,6 +29,8 @@ class CSPopToSpecificPage: UIViewController {
     
     @objc func test() {
         self.popToControllerListVC()
+        print(self.parent?.title ?? "no title")
+        // self.parent?可获取父控制器
     }
     
 }
@@ -53,3 +55,14 @@ extension UIViewController {
     }
 
 }
+
+/*
+ (应该是)push所得的父控制器、子控制器：
+ self.parent?.title // parent可获取父控制器
+ self.children // children可获取子控制器的数组
+ 
+ present所得的父控制器为：
+ presentingViewController
+ */
+
+
