@@ -99,6 +99,23 @@ class CSProgressTable: SQLiteManager {
 
 extension CSProgressTable {
     
+    func getId() -> [Int] {
+        let result = try! getDB().prepare("SELECT id FROM \(tableName)")
+        var jsonArray: [Any] = []
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            let rowDict: [String: Any] = [
+                "id": jsonRow[0],
+            ]
+            let jsonData = JSON(rowDict)
+            jsonArray.append(jsonData)
+        }
+        let arr = JSON(jsonArray).arrayValue.map {$0["id"].intValue}
+        print(arr)
+        return arr
+    }
+    
     func getJSON() -> JSON {
         let result = try! getDB().prepare("SELECT * FROM \(tableName)")
         var jsonArray: [Any] = []

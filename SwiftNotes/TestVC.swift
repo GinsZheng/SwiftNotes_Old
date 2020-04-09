@@ -16,7 +16,7 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-
+        let myView = UITableView()
     }
 
 

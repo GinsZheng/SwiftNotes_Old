@@ -574,11 +574,11 @@ extension UIViewController {
         }
         //释放所有下级视图
         rootVC?.dismiss(animated: true, completion: nil)
-        
-        //2.连续dissmiss两个视图
-        //        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
-        
-        // ———— presentingViewController可获取父级ViewController
+    }
+    
+    func dismissTwice() {
+        // presentingViewController可获取父级ViewController
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
 }

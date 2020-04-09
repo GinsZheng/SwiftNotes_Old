@@ -53,6 +53,7 @@ class CSItemTable: SQLiteManager {
     
     // 按条件删除
     func delete(filter: Expression<Bool>? = nil) {
+        // Expression<Bool> 比如：Expression<String>("itemName")
         var deletedData = getTable()
         if let f = filter {
             deletedData = deletedData.filter(f)
@@ -106,13 +107,21 @@ class CSItemTable: SQLiteManager {
 
 extension CSItemTable {
     
-    func printId() {
-        var idList: [Int] = []
-        let result = self.search()
-        for item in result {
-            idList.append(item[self.id])
+    func getId() -> [Int] {
+        let result = try! getDB().prepare("SELECT id FROM \(tableName)")
+        var jsonArray: [Any] = []
+        
+        for row in result {
+            let jsonRow = JSON(row)
+            let rowDict: [String: Any] = [
+                "id": jsonRow[0],
+            ]
+            let jsonData = JSON(rowDict)
+            jsonArray.append(jsonData)
         }
-        print("id列表：\(idList)")
+        let arr = JSON(jsonArray).arrayValue.map {$0["id"].intValue}
+        print(arr)
+        return arr
     }
     
     // 获取一个值(scalar)
