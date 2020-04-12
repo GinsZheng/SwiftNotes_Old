@@ -26,9 +26,9 @@ extension CSFormatter {
     static func getDurationStr1(fromSeconds seconds: Int) -> String {
         var result = ""
         switch seconds {
-        case 0..<60:
+        case 0..<30:
             result = "<1分钟"
-        case 60..<3600:
+        case 30..<3570:
             result = "\(seconds/60)分钟"
         default:
             result = "\(getHours(fromSeconds: seconds, decimalPlaces: 1))小时"
@@ -69,13 +69,13 @@ extension CSFormatter {
     
     // 时间 HH:mm
     static func getTimeStrHHmm(timeStamp: Double) -> String {
-        var result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "HH:mm")
+        let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "HH:mm")
         return result
     }
     
     // 日期+时间 M/d HH:mm
     static func getDateAndTimeStrMdHHmm(timeStamp: Double) -> String {
-        var result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d HH:mm")
+        let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d HH:mm")
         return result
     }
 }

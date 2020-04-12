@@ -39,7 +39,7 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
         // 2.受托
         let nameEditorPage = CSNameEditorPage() // 类A，实例化委托人-类B
         nameEditorPage.delegate = self // 让类B实例.delegate = self，表示接受类B的委托
-        self.pushFromSecondaryPage(toTarget: nameEditorPage) // Push的时候，
+        self.push(toTarget: nameEditorPage) // Push的时候，
         // toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
         // 而不是CSNameEditorPage(),是一个大坑
     }
