@@ -17,7 +17,7 @@ class CSDatePicker {
     let cancelButton = UIButton()
     let confirmButton = UIButton()
     
-    var timeStamp = 0.0
+    var timeStamp = 0
     var iDateFormat = "yyyy/M/d HH:mm"
     
     var iLabel = UILabel()
@@ -74,7 +74,7 @@ class CSDatePicker {
         iDateFormat = dateFormat
     }
     
-    func getTimeStamp() -> Double {
+    func getTimeStamp() -> Int {
         return timeStamp
     }
     

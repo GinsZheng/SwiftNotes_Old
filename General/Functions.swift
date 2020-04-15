@@ -40,31 +40,40 @@ func u(_ number: CGFloat) -> CGFloat {
 
 
 // 时间戳转成字符串
-func getTimeStrWithTimeStamp(timeStamp:TimeInterval, dateFormat:String = "yyyy/M/d HH:mm:ss") -> String {
-    let date:NSDate = NSDate.init(timeIntervalSince1970: timeStamp)
+func getTimeStrWithTimeStamp(timeStamp: Int, dateFormat:String = "yyyy/M/d HH:mm:ss") -> String {
+    let date:NSDate = NSDate.init(timeIntervalSince1970: TimeInterval(timeStamp))
     let formatter = DateFormatter.init()
     formatter.dateFormat = dateFormat
     return formatter.string(from: date as Date)
 }
 
 // 字符串转时间戳
-func getTimeStampWithTimeStr(timeStr: String, dateFormat:String) -> Double {
+func getTimeStampWithTimeStr(timeStr: String, dateFormat:String) -> Int {
     let format = DateFormatter.init()
     format.dateStyle = .medium
     format.timeStyle = .short
     format.dateFormat = dateFormat
     let date = format.date(from: timeStr)
-    return date!.timeIntervalSince1970
+    return Int(date!.timeIntervalSince1970)
 }
 
 // date类型转时间戳
-func getTimeStampWithDate(date: Date) -> Double {
-    return date.timeIntervalSince1970
+func getTimeStampWithDate(date: Date) -> Int {
+    return Int(date.timeIntervalSince1970)
 }
 
-// 获取当前时间
-func getTimeStampNow() -> Double {
-    return Date().timeIntervalSince1970
+// 获取当前时间戮
+func getTimeStampNow() -> Int {
+    return Int(Date().timeIntervalSince1970)
+}
+
+// 获取当日零点时间戳
+func getTimeStampOfTheBeginingToday() -> Int {
+    let calendar = NSCalendar.current
+    var componts = calendar.dateComponents([.weekday, .year, .month, .day], from: Date())
+    componts.day = componts.day!
+    let result = Int(calendar.date(from: componts)?.timeIntervalSince1970 ?? 0.0)
+    return result
 }
 
 func round(_ value: Double, decimalPlaces: Int) -> Double {

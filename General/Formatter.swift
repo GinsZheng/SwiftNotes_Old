@@ -63,34 +63,34 @@ extension CSFormatter {
     }
     
     // 时间 HH:mm
-    static func getTimeStrDefault(timeStamp: Double) -> String {
+    static func getTimeStrDefault(timeStamp: Int) -> String {
         let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "HH:mm")
         return result
     }
     
     // 日期+时间 M/d HH:mm
-    static func getDateAndTimeStrMdHHmm(timeStamp: Double) -> String {
+    static func getDateAndTimeStrMdHHmm(timeStamp: Int) -> String {
         let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d HH:mm")
         return result
     }
     
-    static func getDateStrDefault(timeStamp: Double) -> String {
-        var result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "yy/M/d")
-        let now = getTimeStampNow()
-        let interval = Int(now - timeStamp)
+    static func getDateStrDefault(timeStamp: Int) -> String {
+        var result = ""
+        let theBeginingTomorrow = getTimeStampOfTheBeginingToday() + 86400
+        let theBeginingToday = getTimeStampOfTheBeginingToday()
+        let theBeginingYestoday = getTimeStampOfTheBeginingToday() - 86400
+        let theBeginingTwoDaysBefore = getTimeStampOfTheBeginingToday() - 86400*2
         
-        switch interval {
-        case 0..<60:
-            result = "刚刚"
-        case 60..<3600:
-            result = "\(interval/60)分钟前"
-        case 3600..<86400:
-            result = "\(interval/3600)小时前"
-//        case
+        switch timeStamp {
+        case theBeginingToday..<theBeginingTomorrow:
+            result = "今天"
+        case theBeginingYestoday..<theBeginingToday:
+            result = "昨天"
+        case theBeginingTwoDaysBefore..<theBeginingYestoday:
+            result = "前天"
         default:
-            print("heheda")
+            result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "yy/M/d")
         }
-        print(interval)
         return result
     }
     

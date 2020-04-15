@@ -15,20 +15,10 @@ class TestVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
-        
-        let calendar = NSCalendar.current
-        var componts = calendar.dateComponents([.weekday, .year, .month, .day], from: Date())
-        componts.day = componts.day!
-          
-        let tomorrowInterval = calendar.date(from: componts)?.timeIntervalSince1970
-        print(tomorrowInterval)
-        print(getTimeStrWithTimeStamp(timeStamp: tomorrowInterval ?? 0))
-        
+
+        print(CSFormatter.getDateStrDefault(timeStamp: 1586706839))
     }
 
-//    func getTimeStampOfTheBeginingToday() -> 
     
 }
 
-//1586853159
