@@ -13,7 +13,6 @@
 		7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */; };
 		7A0715DA243650C7002A5371 /* FontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0715D9243650C7002A5371 /* FontPage.swift */; };
 		7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A109AF72421302E0034C624 /* ModelBasicNote.swift */; };
-		7A114CB8240570420058E70A /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A114CB7240570420058E70A /* pop.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7A1E5A4A24363EA40074DA7F /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E5A4924363EA40074DA7F /* Timer.swift */; };
 		7A1EF03C23FAEF4B00BDEEBF /* ReloadDataPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */; };
 		7A1EF03E23FAF0E100BDEEBF /* ReloadDataTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EF03D23FAF0E100BDEEBF /* ReloadDataTable.swift */; };
@@ -65,7 +64,6 @@
 		7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */; };
 		7A2AC3722409106000B95E43 /* TimePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2AC3712409105F00B95E43 /* TimePage.swift */; };
 		7A2AC398240A791300B95E43 /* TransitionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2AC397240A791300B95E43 /* TransitionPage.swift */; };
-		7A2AC43F240A8AD800B95E43 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; };
 		7A31324F2392A6680008298C /* ClassPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31324E2392A6680008298C /* ClassPage.swift */; };
 		7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33086823CC48A30021BA5B /* RequestPage.swift */; };
 		7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3308C223CC6DAD0021BA5B /* Styles.swift */; };
@@ -106,6 +104,10 @@
 		7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74623CA24D5004DB044 /* FileManager.swift */; };
 		7AC56A0A23D4395C00538975 /* ViewBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC56A0923D4395C00538975 /* ViewBasicNote.swift */; };
 		7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD300024042A5100D300A6 /* TabBarController.swift */; };
+		7AEB11362444D9C0005851FD /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; };
+		7AEB11372444D9C0005851FD /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7AEB11382444D9C2005851FD /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A114CB7240570420058E70A /* pop.framework */; };
+		7AEB11392444D9C2005851FD /* pop.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A114CB7240570420058E70A /* pop.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AEE56172406CA5A001B868A /* ESTabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEE56162406CA48001B868A /* ESTabBarController.framework */; };
 		7AEE56182406CA5A001B868A /* ESTabBarController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEE56162406CA48001B868A /* ESTabBarController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AF5BBBD23C86DBD002464D7 /* UIControlEventNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */; };
@@ -364,8 +366,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7AEB11392444D9C2005851FD /* pop.framework in Embed Frameworks */,
 				7AEE56182406CA5A001B868A /* ESTabBarController.framework in Embed Frameworks */,
 				7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */,
+				7AEB11372444D9C0005851FD /* Hero.framework in Embed Frameworks */,
 				7A9DA3FF240A902600AFB585 /* SnapKit.framework in Embed Frameworks */,
 				7AFF38D822AF828300AC4958 /* Alamofire.framework in Embed Frameworks */,
 				7A3647F0238AB1D1000BBECD /* SQLite.framework in Embed Frameworks */,
@@ -492,13 +496,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A2AC43F240A8AD800B95E43 /* Hero.framework in Frameworks */,
+				7AEB11382444D9C2005851FD /* pop.framework in Frameworks */,
 				7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */,
 				7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */,
 				7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */,
 				7AEE56172406CA5A001B868A /* ESTabBarController.framework in Frameworks */,
-				7A114CB8240570420058E70A /* pop.framework in Frameworks */,
 				7A9DA3FE240A902600AFB585 /* SnapKit.framework in Frameworks */,
+				7AEB11362444D9C0005851FD /* Hero.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

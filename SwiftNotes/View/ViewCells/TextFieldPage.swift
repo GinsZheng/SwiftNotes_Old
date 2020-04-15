@@ -22,6 +22,7 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
         textField.setFrame(left: 20, top: 20, width: kScreenWidth, height: 44)
         textField.addTarget(self, action: #selector(checkInputtedValue), for: .allEditingEvents)
         textField.becomeFirstResponder() // 获取焦点
+        textField.delegate = self
         
         textField2.set(superview: view, placeholder: "NumberPad", delegate: self)
         textField2.setFrame(left: 20, top: textField.bottom + 20, width: kScreenWidth, height: 44)
@@ -67,6 +68,15 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
     @objc func resign() {
         resignFirstResponders()
         print("resign already")
+    }
+
+    // 限制输入字数 (先设置textField.delegate = self)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else{
+            return true
+        }
+        let textLength = text.count + string.count - range.length
+        return textLength <= 8
     }
 
 }

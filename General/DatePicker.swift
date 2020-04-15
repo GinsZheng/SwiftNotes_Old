@@ -36,7 +36,7 @@ class CSDatePicker {
         
         datePicker.set(superview: pickerBg, backgroundColor: cFFF)
         datePicker.setFrame(left: 0, bottom: kBottomBarHeight, width: kScreenWidth, height: 215)
-        datePicker.locale = Locale(identifier: "zh_CN")
+        datePicker.locale = Locale(identifier: "zh_CHS")
         datePicker.setDate(Date(timeIntervalSince1970: defaultDate), animated: true)
         datePicker.minimumDate = minimumDate
         datePicker.maximumDate = maximumDate

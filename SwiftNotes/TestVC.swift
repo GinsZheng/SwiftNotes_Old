@@ -16,10 +16,19 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let myView = UITableView()
         
-        print(self.parent?.title)
+        let calendar = NSCalendar.current
+        var componts = calendar.dateComponents([.weekday, .year, .month, .day], from: Date())
+        componts.day = componts.day!
+          
+        let tomorrowInterval = calendar.date(from: componts)?.timeIntervalSince1970
+        print(tomorrowInterval)
+        print(getTimeStrWithTimeStamp(timeStamp: tomorrowInterval ?? 0))
+        
     }
 
-
+//    func getTimeStampOfTheBeginingToday() -> 
+    
 }
+
+//1586853159

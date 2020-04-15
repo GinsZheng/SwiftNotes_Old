@@ -23,7 +23,7 @@ class CSFormatter {
 
 extension CSFormatter {
     // 时长 <1分钟，Int(M分钟)，H小时
-    static func getDurationStr1(fromSeconds seconds: Int) -> String {
+    static func getDurationStrDefault(fromSeconds seconds: Int) -> String {
         var result = ""
         switch seconds {
         case 0..<30:
@@ -36,11 +36,6 @@ extension CSFormatter {
         return result
     }
     
-    // 时长 M分钟
-    static func getDurationStrMinites(fromSeconds seconds: Int) -> String {
-        let formattedMinites = String(format: "%.0f", getMinites(fromSeconds: seconds))
-        return "\(formattedMinites)分钟"
-    }
 
     // 时长 mm:ss H:mm:ss
     static func getDurationStrHMMSS(secounds: TimeInterval) -> String {
@@ -68,7 +63,7 @@ extension CSFormatter {
     }
     
     // 时间 HH:mm
-    static func getTimeStrHHmm(timeStamp: Double) -> String {
+    static func getTimeStrDefault(timeStamp: Double) -> String {
         let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "HH:mm")
         return result
     }
@@ -78,4 +73,26 @@ extension CSFormatter {
         let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d HH:mm")
         return result
     }
+    
+    static func getDateStrDefault(timeStamp: Double) -> String {
+        var result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "yy/M/d")
+        let now = getTimeStampNow()
+        let interval = Int(now - timeStamp)
+        
+        switch interval {
+        case 0..<60:
+            result = "刚刚"
+        case 60..<3600:
+            result = "\(interval/60)分钟前"
+        case 3600..<86400:
+            result = "\(interval/3600)小时前"
+//        case
+        default:
+            print("heheda")
+        }
+        print(interval)
+        return result
+    }
+    
+
 }

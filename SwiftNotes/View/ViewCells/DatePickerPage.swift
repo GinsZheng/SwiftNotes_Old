@@ -27,9 +27,9 @@ class CSDatePickerPage: UIViewController {
         // 设置tag(可通过tag来获取其对象)
         datePicker2.tag = 1
         // 更改地区文字
-        datePicker2.locale = Locale(identifier: "zh_CN")
+        datePicker2.locale = Locale(identifier: "zh-CHS") // 24小时制
         // 设置显示模式为日期时间
-        datePicker2.datePickerMode = .date
+        datePicker2.datePickerMode = .dateAndTime
         // 设置默认值
         datePicker2.setDate(Date(timeInterval:24*60*60,since:Date()), animated: true)
         // 设置最小值为现在.注：如果默认值超出最小/最大值，则设为最小/最大值
@@ -38,6 +38,11 @@ class CSDatePickerPage: UIViewController {
         datePicker2.maximumDate = Date(timeInterval:3*24*60*60,since:Date())
         // 设置文字颜色
         datePicker2.setValue(UIColor.hex(c222), forKey: "textColor")
+        datePicker2.calendar = .current
+        
+        
+
+        
         
         // 添加确定按钮
         let button = UIButton()
@@ -62,3 +67,18 @@ class CSDatePickerPage: UIViewController {
     }
     
 }
+
+/*
+ 地区：
+ zh-HK 华 - 香港的 SAR
+ zh-MO 华 - 澳门的 SAR
+ zh-CN 华 -中国
+ zh-CHS 华 (单一化) 24小时制
+ zh-SG 华 -新加坡
+ zh-TW 华 -台湾
+ zh-CHT 华 (传统的)
+ 
+ en 英国
+ en-GB 英国 - 英国
+ en-US 英国 - 美国
+ */

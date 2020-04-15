@@ -43,11 +43,14 @@ class TabBarController {
         // 如果想遮住标签栏，应当把标签栏实际高度设置为50pt
         
         // 设置启动时显示的tab
+//        tabBarController.selectedIndex = 0
         tabBarController.selectedIndex = 3
+        
         
         return tabBarController
         
     }
+    
     
     // 带中央按钮的tabBar
     static func getTabBarWithButton(delegate: UITabBarControllerDelegate) -> ESTabBarController {
@@ -105,7 +108,7 @@ class TabBarController {
         addingBtn.isUserInteractionEnabled = false
 
         // 设置启动时显示的tab
-        tabBarController.selectedIndex = 3
+        tabBarController.selectedIndex = 0
         
         
         return tabBarController
