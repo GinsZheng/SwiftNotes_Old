@@ -1,16 +1,17 @@
 //
-//  CSTableViewPage.swift
+//  AlertListPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2019/6/14.
-//  Copyright © 2019 GinsMac. All rights reserved.
+//  Created by GinsMac on 2020/4/16.
+//  Copyright © 2020 GinsMac. All rights reserved.
 //
 
 import UIKit
 
-class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CSAlertListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleList = ["Label", "Button", "Text Field", "Switch", "Table View"]
+    let titleList = ["One Button", "Two Button"]
+    let pageList = [CSAlertOneBtnPage(), CSAlertTwoBtnPage()]
     var cardHeight: CGFloat = 0
     
     let tableView = UITableView()
@@ -51,15 +52,8 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: CSGeneralSubpage())
+        self.push(toTarget: pageList[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
-
-/*
- TableViewCell内容超出Frame：
-    TableViewCell内容超出Frame时，以投影超出为例，可以完整显示，不会被裁切，
-    但在滑动列表后，会出现投影被裁切的情况，些时把背景颜色设置为透明即可解决
-    (可能)扩展而言：只要不设置 maskToBounds 属性，所有的视图都可以超出控件边界
- */

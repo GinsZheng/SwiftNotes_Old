@@ -581,7 +581,35 @@ extension UIViewController {
         self.presentingViewController?.presentingViewController?.dismiss(animated: animated, completion: nil)
     }
     
+    
+    // 弹窗
+    func alertOneBtn(title: String?, message: String? = nil, btnTitle: String?, btnStyle: UIAlertAction.Style = .default, handler: ((UIAlertAction) -> Void)? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: btnTitle, style: btnStyle, handler: handler)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func alertTwoBtn(title: String?, message: String? = nil, cancelBtnTitle: String? = "取消", cancelBtnStyle: UIAlertAction.Style = .default, okBtnTitle: String?, okBtnStyle: UIAlertAction.Style = .default, okBtnhandler: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: cancelBtnTitle, style: cancelBtnStyle, handler: nil)
+        let okAction = UIAlertAction(title: okBtnTitle, style: okBtnStyle, handler: okBtnhandler)
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    // 选项表
+    func actionSheetTwoBtn(title: String?, message: String? = nil, cancelBtnTitle: String? = "取消", cancelBtnStyle: UIAlertAction.Style = .default, okBtnTitle: String?, okBtnStyle: UIAlertAction.Style = .default, okBtnhandler: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: cancelBtnTitle, style: cancelBtnStyle, handler: nil)
+        let okAction = UIAlertAction(title: okBtnTitle, style: okBtnStyle, handler: okBtnhandler)
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
+
 
 
 extension String {
