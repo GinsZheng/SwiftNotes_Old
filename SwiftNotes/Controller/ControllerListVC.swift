@@ -11,8 +11,8 @@ import UIKit
 
 class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleList = ["Alert", "Class", "Decorator", "Delegate", "Delegate2", "For & While", "Jump", "Loading", "Menu Controller", "Number Formatter", "Plist", "Protocol", "Reload Data", "Timer", "Try"]
-    let pageList = [CSAlertListPage(), CSClassPage(), CSDecoratorPage(), CSDelegatePage(), CSDelegate2Page(), CSForWhilePage(), CSJumpListPage(), CSLoadingPage(), CSMenuControllerPage(), CSNumberFormatterPage(), CSPlistPage(), CSProtocolPage(), CSReloadDataPage(), CSTimerPage(), CSTryPage()]
+    let titleList = ["ActionSheet", "Alert", "Class", "Decorator", "Delegate", "Delegate2", "For & While", "Gesture", "Jump", "Loading", "Menu Controller", "Number Formatter", "Plist", "Protocol", "Reload Data", "Timer", "Try"]
+    let pageList = [CSActionSheetPage(), CSAlertListPage(), CSClassPage(), CSDecoratorPage(), CSDelegatePage(), CSDelegate2Page(), CSForWhilePage(), CSGestureListPage(),  CSJumpListPage(), CSLoadingPage(), CSMenuControllerPage(), CSNumberFormatterPage(), CSPlistPage(), CSProtocolPage(), CSReloadDataPage(), CSTimerPage(), CSTryPage()]
     
     override func viewDidLoad() {
         super.viewDidLoad()

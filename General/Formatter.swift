@@ -36,21 +36,20 @@ extension CSFormatter {
         return result
     }
     
-
     // 时长 mm:ss H:mm:ss
-    static func getDurationStrHMMSS(secounds: TimeInterval) -> String {
-        if secounds.isNaN {
+    static func getDurationStrHMMSS(fromSeconds secounds: Int) -> String {
+        if secounds == 0 {
             return "00:00"
         }
-        var Min = Int(secounds / 60)
-        let Sec = Int(secounds.truncatingRemainder(dividingBy: 60))
-        var Hour = 0
-        if Min >= 60 {
-            Hour = Int(Min / 60)
-            Min = Min - Hour*60
-            return String(format: "%d:%02d:%02d", Hour, Min, Sec)
+        var min = Int(secounds / 60)
+        let sec = secounds % 60
+        var hour = 0
+        if min >= 60 {
+            hour = Int(min / 60)
+            min = min - hour*60
+            return String(format: "%d:%02d:%02d", hour, min, sec)
         }
-        return String(format: "%02d:%02d", Min, Sec)
+        return String(format: "%02d:%02d", min, sec)
     }
     
     // 比例 <1%，Int(N%)

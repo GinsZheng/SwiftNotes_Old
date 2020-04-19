@@ -590,24 +590,37 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func alertTwoBtn(title: String?, message: String? = nil, cancelBtnTitle: String? = "取消", cancelBtnStyle: UIAlertAction.Style = .default, okBtnTitle: String?, okBtnStyle: UIAlertAction.Style = .default, okBtnhandler: ((UIAlertAction) -> Void)?) {
+    func alertTwoBtn(title: String?, message: String? = nil, cancelBtnTitle: String? = "取消", cancelBtnStyle: UIAlertAction.Style = .default, okBtnTitle: String?, okBtnStyle: UIAlertAction.Style = .default, okBtnHandler: ((UIAlertAction) -> Void)?) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: cancelBtnTitle, style: cancelBtnStyle, handler: nil)
-        let okAction = UIAlertAction(title: okBtnTitle, style: okBtnStyle, handler: okBtnhandler)
+        let okAction = UIAlertAction(title: okBtnTitle, style: okBtnStyle, handler: okBtnHandler)
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
     
     // 选项表
-    func actionSheetTwoBtn(title: String?, message: String? = nil, cancelBtnTitle: String? = "取消", cancelBtnStyle: UIAlertAction.Style = .default, okBtnTitle: String?, okBtnStyle: UIAlertAction.Style = .default, okBtnhandler: ((UIAlertAction) -> Void)?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: cancelBtnTitle, style: cancelBtnStyle, handler: nil)
-        let okAction = UIAlertAction(title: okBtnTitle, style: okBtnStyle, handler: okBtnhandler)
+    func actionSheet(title: String? = nil, cancelBtnTitle: String? = "取消", cancelBtnHandler: ((UIAlertAction) -> Void)? = nil, actionsTitle: [String?], actionsStyle: [UIAlertAction.Style], actionsHandler: [((UIAlertAction) -> Void)?]) {
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: cancelBtnTitle, style: .cancel, handler: cancelBtnHandler)
         alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
+        
+        for i in 0..<actionsTitle.count {
+            let selection = UIAlertAction(title: actionsTitle[i], style: actionsStyle[i], handler: actionsHandler[i])
+            alertController.addAction(selection)
+        }
+        
         self.present(alertController, animated: true, completion: nil)
     }
+    
+//    func actionSheet(title: String?, cancelBtnTitle: String? = "取消", cancelBtnStyle: UIAlertAction.Style = .cancel, okBtnTitle: String?, okBtnStyle: UIAlertAction.Style = .default, okBtnhandler: ((UIAlertAction) -> Void)?) {
+//        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+//        let cancelAction = UIAlertAction(title: cancelBtnTitle, style: cancelBtnStyle, handler: nil)
+//        let okAction = UIAlertAction(title: okBtnTitle, style: okBtnStyle, handler: okBtnhandler)
+//        alertController.addAction(okAction)
+//        alertController.addAction(cancelAction)
+//        self.present(alertController, animated: true, completion: nil)
+//    }
 }
 
 

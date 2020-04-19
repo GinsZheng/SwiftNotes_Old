@@ -64,6 +64,7 @@
 		7A2883142448AD7D00591C29 /* AlertListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2883132448AD7D00591C29 /* AlertListPage.swift */; };
 		7A28833A2448BB9700591C29 /* AlertOneBtnPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2883392448BB9700591C29 /* AlertOneBtnPage.swift */; };
 		7A28833C2448BCF600591C29 /* AlertTwoBtnPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28833B2448BCF600591C29 /* AlertTwoBtnPage.swift */; };
+		7A28833F244A02A500591C29 /* ActionSheetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A28833E244A02A500591C29 /* ActionSheetPage.swift */; };
 		7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */; };
 		7A2AC3722409106000B95E43 /* TimePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2AC3712409105F00B95E43 /* TimePage.swift */; };
 		7A2AC398240A791300B95E43 /* TransitionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2AC397240A791300B95E43 /* TransitionPage.swift */; };
@@ -80,6 +81,11 @@
 		7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58324169F2D00CBF18D /* MaskPage.swift */; };
 		7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5852416A06400CBF18D /* DissolvePage.swift */; };
 		7A58D5C92417F05100CBF18D /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5AA2417F05100CBF18D /* DatePicker.swift */; };
+		7A62A180244C92670090D128 /* GestureListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A17F244C92670090D128 /* GestureListPage.swift */; };
+		7A62A1A1244C93E90090D128 /* DisablePopGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1A0244C93E90090D128 /* DisablePopGesturePage.swift */; };
+		7A62A1A3244C99290090D128 /* SwipeGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1A2244C99290090D128 /* SwipeGesturePage.swift */; };
+		7A62A1A5244CA9790090D128 /* PinchGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1A4244CA9790090D128 /* PinchGesturePage.swift */; };
+		7A62A1A7244CB51C0090D128 /* DataOperate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1A6244CB51C0090D128 /* DataOperate.swift */; };
 		7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A64873F23FAE319006B6FC1 /* LoadingPage.swift */; };
 		7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A65113A23D6A332005E4FD4 /* UIClass.swift */; };
 		7A702DA82434E99600EB1FF3 /* JumpListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A702DA72434E99600EB1FF3 /* JumpListPage.swift */; };
@@ -448,6 +454,7 @@
 		7A2883132448AD7D00591C29 /* AlertListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertListPage.swift; sourceTree = "<group>"; };
 		7A2883392448BB9700591C29 /* AlertOneBtnPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertOneBtnPage.swift; sourceTree = "<group>"; };
 		7A28833B2448BCF600591C29 /* AlertTwoBtnPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTwoBtnPage.swift; sourceTree = "<group>"; };
+		7A28833E244A02A500591C29 /* ActionSheetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetPage.swift; sourceTree = "<group>"; };
 		7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate2Page.swift; sourceTree = "<group>"; };
 		7A2AC3712409105F00B95E43 /* TimePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePage.swift; sourceTree = "<group>"; };
 		7A2AC397240A791300B95E43 /* TransitionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionPage.swift; sourceTree = "<group>"; };
@@ -464,6 +471,11 @@
 		7A58D58324169F2D00CBF18D /* MaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPage.swift; sourceTree = "<group>"; };
 		7A58D5852416A06400CBF18D /* DissolvePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvePage.swift; sourceTree = "<group>"; };
 		7A58D5AA2417F05100CBF18D /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		7A62A17F244C92670090D128 /* GestureListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListPage.swift; sourceTree = "<group>"; };
+		7A62A1A0244C93E90090D128 /* DisablePopGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisablePopGesturePage.swift; sourceTree = "<group>"; };
+		7A62A1A2244C99290090D128 /* SwipeGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGesturePage.swift; sourceTree = "<group>"; };
+		7A62A1A4244CA9790090D128 /* PinchGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchGesturePage.swift; sourceTree = "<group>"; };
+		7A62A1A6244CB51C0090D128 /* DataOperate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOperate.swift; sourceTree = "<group>"; };
 		7A64873F23FAE319006B6FC1 /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		7A65113A23D6A332005E4FD4 /* UIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIClass.swift; sourceTree = "<group>"; };
 		7A702DA72434E99600EB1FF3 /* JumpListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpListPage.swift; sourceTree = "<group>"; };
@@ -667,13 +679,6 @@
 			path = AlertList;
 			sourceTree = "<group>";
 		};
-		7A28833D2448BE7D00591C29 /* ActionSheetList */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ActionSheetList;
-			sourceTree = "<group>";
-		};
 		7A2AC40F240A8ABB00B95E43 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -726,6 +731,17 @@
 				7A0715D9243650C7002A5371 /* FontPage.swift */,
 			);
 			path = UIList;
+			sourceTree = "<group>";
+		};
+		7A62A19F244C93670090D128 /* GestureList */ = {
+			isa = PBXGroup;
+			children = (
+				7A62A17F244C92670090D128 /* GestureListPage.swift */,
+				7A62A1A0244C93E90090D128 /* DisablePopGesturePage.swift */,
+				7A62A1A2244C99290090D128 /* SwipeGesturePage.swift */,
+				7A62A1A4244CA9790090D128 /* PinchGesturePage.swift */,
+			);
+			path = GestureList;
 			sourceTree = "<group>";
 		};
 		7A702DC92434EEDC00EB1FF3 /* JumpList */ = {
@@ -782,6 +798,7 @@
 			isa = PBXGroup;
 			children = (
 				7A7B5D3B23C05A150079A931 /* ArraysPage.swift */,
+				7A62A1A6244CB51C0090D128 /* DataOperate.swift */,
 				7A7D1C5B241CC4C900E08EA1 /* ItemModel */,
 				7A7F97C5241DF1B8000F1E31 /* ProgressModel */,
 				7A33086823CC48A30021BA5B /* RequestPage.swift */,
@@ -887,13 +904,14 @@
 		7AFED65C23C97C8F0079456D /* ControlllerCells */ = {
 			isa = PBXGroup;
 			children = (
+				7A28833E244A02A500591C29 /* ActionSheetPage.swift */,
 				7A2883382448BB6600591C29 /* AlertList */,
-				7A28833D2448BE7D00591C29 /* ActionSheetList */,
 				7A31324E2392A6680008298C /* ClassPage.swift */,
 				7A21612B2389869D00D5A93A /* DecoratorPage.swift */,
 				7A21612F2389869D00D5A93A /* DelegatePage.swift */,
 				7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */,
 				7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */,
+				7A62A19F244C93670090D128 /* GestureList */,
 				7A702DC92434EEDC00EB1FF3 /* JumpList */,
 				7A64873F23FAE319006B6FC1 /* LoadingPage.swift */,
 				7A21612E2389869D00D5A93A /* MenuControllerPage.swift */,
@@ -1318,14 +1336,17 @@
 				7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */,
 				7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */,
 				7A0258AA2434EF58006D4AB5 /* DismissAllPage.swift in Sources */,
+				7A62A1A5244CA9790090D128 /* PinchGesturePage.swift in Sources */,
 				7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */,
 				7A782D6B23CF20DA00E09ED0 /* NavViewController.swift in Sources */,
 				7A7F97E7241DF290000F1E31 /* ProgressUpdatePage.swift in Sources */,
 				7A7D1C5A241CBE6500E08EA1 /* UIPresentNav.swift in Sources */,
 				7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */,
+				7A62A1A1244C93E90090D128 /* DisablePopGesturePage.swift in Sources */,
 				7AF5BBBD23C86DBD002464D7 /* UIControlEventNote.swift in Sources */,
 				7A3647F5238AB287000BBECD /* ItemSearchPage.swift in Sources */,
 				7A28833C2448BCF600591C29 /* AlertTwoBtnPage.swift in Sources */,
+				7A62A1A7244CB51C0090D128 /* DataOperate.swift in Sources */,
 				7A216153238986AF00D5A93A /* ButtonPage.swift in Sources */,
 				7A2161362389869D00D5A93A /* DelegatePage.swift in Sources */,
 				7A216159238986AF00D5A93A /* StackViewPage.swift in Sources */,
@@ -1338,6 +1359,7 @@
 				7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */,
 				7AA325BD243CDB6A00D5308D /* LayerView.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
+				7A62A1A3244C99290090D128 /* SwipeGesturePage.swift in Sources */,
 				7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */,
 				7AA3C2B1241CCC6000F77711 /* ItemUpdatePage.swift in Sources */,
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
@@ -1356,12 +1378,14 @@
 				7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */,
 				7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */,
 				7AF7B16F2436351800738C65 /* TimerPage.swift in Sources */,
+				7A28833F244A02A500591C29 /* ActionSheetPage.swift in Sources */,
 				7A2AC3722409106000B95E43 /* TimePage.swift in Sources */,
 				7A21615C238986AF00D5A93A /* DatePickerPage.swift in Sources */,
 				7A21615D238986AF00D5A93A /* PageControlPage.swift in Sources */,
 				7A0715DA243650C7002A5371 /* FontPage.swift in Sources */,
 				7A2161352389869D00D5A93A /* MenuControllerPage.swift in Sources */,
 				7A2161152389857700D5A93A /* SetColorInHex.swift in Sources */,
+				7A62A180244C92670090D128 /* GestureListPage.swift in Sources */,
 				7A28833A2448BB9700591C29 /* AlertOneBtnPage.swift in Sources */,
 				7A7D1C3A241CB9F100E08EA1 /* ItemInsertPage.swift in Sources */,
 				7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */,

@@ -32,7 +32,6 @@ class CSAnimationPage: UIViewController {
         solidButton.setCornerRadiusWithMask(radius: 4)
         solidButton.addTarget(self, action: #selector(startAnimation), for: .touchUpInside)
         
-        
         }
     
     @objc func startAnimation() {
