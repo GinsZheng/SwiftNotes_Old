@@ -17,6 +17,7 @@ class CSDataOperate: UIViewController {
         // trim
         let trimingText = "  123  ".trimmingCharacters(in: .whitespaces)
         print(trimingText)
+        
     }
     
     
