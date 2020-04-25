@@ -27,7 +27,7 @@ class CSViewPage: UIViewController {
         let gradientView = UIView()
         gradientView.set(superview: view)
         gradientView.setFrame(left: 20, top: multiCornersView.bottom + 20, width: kScreenWidth - 40, height: 100)
-        gradientView.setGradientLayer(colors: [UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF5349).cgColor], locations: [0, 0.3, 1], startPoint: CGPoint.init(x: 0, y: 0), endPoint: CGPoint.init(x: 1, y: 1))
+        gradientView.setGradientLayer(colors: [UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF635A).cgColor], locations: [0, 0.3, 1], startPoint: CGPoint.init(x: 0, y: 0), endPoint: CGPoint.init(x: 1, y: 1))
         
         
     }

@@ -26,7 +26,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         view.backgroundColor = UIColor.white
 
         let editButton = UIBarButtonItem(image: UIImage(named: "progress_editIte"), style: .plain, target: self, action: #selector(presentToInsertPage))
-        editButton.tintColor = .hex(cRed_FF5349)
+        editButton.tintColor = .hex(cRed_FF635A)
         self.navigationItem.rightBarButtonItem = editButton
         
         // 从本地数据库获取JSON数据、建模、赋值

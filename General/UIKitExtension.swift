@@ -66,7 +66,7 @@ extension UIView {
     
     func setGradientLayer(colors: [CGColor]?, locations: [NSNumber]?, startPoint: CGPoint, endPoint: CGPoint, zIndex: UInt32 = 0) {
         /* eg:
-         colors: [UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF5349).cgColor]
+         colors: [UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF635A).cgColor]
          locations: [0, 0.3, 1]
          startPoint: CGPoint.init(x: 0, y: 0)
          endPoint: CGPoint.init(x: 1, y: 1)
@@ -356,6 +356,48 @@ extension UITextField {
         self.setTextLeftPadding(left: left)
         self.setTextRightPadding(right: right)
     }
+    
+    func isTextValueGreaterThan(_ comparedValue: Int) -> Bool {
+        let textValue = Int(self.text ?? "")
+        if textValue != nil {
+            if textValue! > comparedValue {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isTextValueGreaterThanOrEqualTo(_ comparedValue: Int) -> Bool {
+        let textValue = Int(self.text ?? "")
+        if textValue != nil {
+            if textValue! >= comparedValue {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isTextValueLessThan(_ comparedValue: Int) -> Bool {
+        let textValue = Int(self.text ?? "")
+        if textValue != nil {
+            if textValue! < comparedValue {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func isTextValueLessThanOrEqualTo(_ comparedValue: Int) -> Bool {
+        let textValue = Int(self.text ?? "")
+        if textValue != nil {
+            if textValue! <= comparedValue {
+                return true
+            }
+        }
+        return false
+    }
+
+    
 }
 
 
@@ -613,27 +655,6 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-//    func actionSheet(title: String?, cancelBtnTitle: String? = "取消", cancelBtnStyle: UIAlertAction.Style = .cancel, okBtnTitle: String?, okBtnStyle: UIAlertAction.Style = .default, okBtnhandler: ((UIAlertAction) -> Void)?) {
-//        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
-//        let cancelAction = UIAlertAction(title: cancelBtnTitle, style: cancelBtnStyle, handler: nil)
-//        let okAction = UIAlertAction(title: okBtnTitle, style: okBtnStyle, handler: okBtnhandler)
-//        alertController.addAction(okAction)
-//        alertController.addAction(cancelAction)
-//        self.present(alertController, animated: true, completion: nil)
-//    }
-}
-
-
-
-extension String {
-    func removeFirstCharacter() -> String {
-        return String(self[self.index(after: self.startIndex)...])
-    }
-    
-    func removeFrontCharacters(length: Int) -> String {
-        return String(self[self.index(self.startIndex, offsetBy: length-1)])
-    }
-    
 }
 
 
@@ -654,6 +675,7 @@ extension UITableView {
     }
     
 }
+
 
 extension UIStackView {
     func setStyleStackView(spacing: CGFloat, alignment: UIStackView.Alignment = .fill, distribution: UIStackView.Distribution = .fillEqually) {

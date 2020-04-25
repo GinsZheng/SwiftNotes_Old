@@ -22,9 +22,9 @@ let cBlue_2C9EFF_90 = "E52C9EFF"
 let cBlue_2C9EFF_80 = "CC2C9EFF"
 
 // Red
-let cRed_FF5349 = "FF5349"
-let cRed_FF5349_90 = "E5FF5349"
-let cRed_FF5349_80 = "CCFF5349"
+let cRed_FF635A = "FF635A"
+let cRed_FF635A_90 = "E5FF635A"
+let cRed_FF635A_80 = "CCFF635A"
 
 // Green
 let cGreen_25BE3C = "25BE3C"

@@ -15,7 +15,7 @@ class CSStackViewPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let stackBlock1 = UIView()
-        stackBlock1.backgroundColor = .hex(cRed_FF5349)
+        stackBlock1.backgroundColor = .hex(cRed_FF635A)
         
         let stackBlock2 = UIView()
         stackBlock2.backgroundColor = .hex(cOrange_F9AD18)

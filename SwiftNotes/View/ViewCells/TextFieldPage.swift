@@ -27,6 +27,7 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
         textField2.set(superview: view, placeholder: "NumberPad", delegate: self)
         textField2.setFrame(left: 20, top: textField.bottom + 20, width: kScreenWidth, height: 44)
         textField2.keyboardType = .numberPad
+        
 
         button.set(superview: view, target: self, action: #selector(resign))
         button.setStyleSolidButton(title: "hehe")
@@ -72,7 +73,7 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
 
     // 限制输入字数 (先设置textField.delegate = self)
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else{
+        guard let text = textField.text else {
             return true
         }
         let textLength = text.count + string.count - range.length

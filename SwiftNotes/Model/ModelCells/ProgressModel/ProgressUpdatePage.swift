@@ -69,7 +69,7 @@ class CSProgressUpdatePage: UIViewController, UITextFieldDelegate {
         
         // 删除
         deleteButton.set(superview: view, target: self, action: #selector(deleteProgress))
-        deleteButton.setStyleWordButton(title: "Delete", titleColor: cRed_FF5349)
+        deleteButton.setStyleWordButton(title: "Delete", titleColor: cRed_FF635A)
         deleteButton.setFrame(centerX: view.centerX, top: updateButton.bottom + 10, width: 80, height: 44)
     }
     
