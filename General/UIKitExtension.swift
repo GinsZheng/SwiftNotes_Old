@@ -206,6 +206,13 @@ extension UILabel {
         self.textAlignment = alignment
     }
     
+    func getTextHeight(withWidth width: CGFloat) -> CGFloat {
+        _ = self.text! as NSString
+        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
+        let height = self.sizeThatFits(size).height
+        return CGFloat(Int(height) + 1)
+    }
+    
     func setLineHeight(multiple: CGFloat = 1.4) {
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineHeightMultiple = multiple / 1.194
@@ -236,7 +243,7 @@ extension UILabel {
     }
     
     func setAsMultipleLines(numberOfLines: Int, lineMultiple: CGFloat = 1.4) {
-        self.numberOfLines = 0
+        self.numberOfLines = numberOfLines
         self.lineBreakMode = .byWordWrapping
         self.setLineHeight(multiple: lineMultiple)
     }

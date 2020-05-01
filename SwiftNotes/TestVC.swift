@@ -21,7 +21,9 @@ class TestVC: UIViewController, UITextFieldDelegate {
 //        textField2.setFrame(left: 20, top: 100, right: 20, height: 56)
 //        textField2.keyboardType = .numberPad
 //
-        XHToast.showCenterWithText("双行文本提示，通常可以容纳24个汉字", duration: 2)
+//        XHToast.showCenterWithText("双行双行双行双行双行双行双行双行双行双行双行双行")
+        
+        CSToast.showCenterWithText("双行双行双行双行双行双行双行双行双行双行双行双行双行双行双行双行双行")
         
     }
     

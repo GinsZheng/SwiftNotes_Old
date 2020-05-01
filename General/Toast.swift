@@ -1,30 +1,25 @@
 //
-//  XHToast.swift
-//  XHToastSwiftExample
+//  CSToast.swift
+//  CSToastSwiftExample
 //
 //  Created by xiaohui on 16/8/12.
 //  Copyright © 2016年 CoderZhuXH. All rights reserved.
-//  代码地址:https://github.com/CoderZhuXH/XHToastSwift
+//  代码地址:https://github.com/CoderZhuXH/CSToastSwift
 
 
 import UIKit
 
 /**
- *  Toast默认停留时间
- */
-private let ToastDispalyDuration:CGFloat  = 1.5
-/**
  *  Toast到顶端/底端默认距离
  */
-private let ToastSpace:CGFloat = 100.0
+private let toastSpace:CGFloat = 100.0
 /**
  *  Toast背景颜色
  */
 private let ToastBackgroundColor = UIColor.hex(c000_75)
 
 //在window上显示
-extension XHToast
-{
+extension CSToast {
     //MARK:-中间显示
     
     /**
@@ -32,22 +27,11 @@ extension XHToast
      
      - parameter text: 文字
      */
-    public class func showCenterWithText(_ text: String) {
-        
-        XHToast.showCenterWithText(text, duration:ToastDispalyDuration)
-    }
-    
-    /**
-     中间显示+自定义时间
-     
-     - parameter text:     文字
-     - parameter duration: 自定义停留时间
-     */
-    public class func showCenterWithText(_ text:String, duration:CGFloat) {
-        let toast = XHToast(text: text)
-        toast.duration = duration
+    public class func showCenterWithText(_ text:String) {
+        let toast = CSToast(text: text)
         toast.showIn(UIWindow.window())
     }
+    
 
     // MARK:-上方显示
     
@@ -57,41 +41,10 @@ extension XHToast
      - parameter text: 文字
      */
     public class func showTopWithText(_ text:String) {
-        XHToast.showTopWithText(text, topOffset:ToastSpace, duration:ToastDispalyDuration)
+        let toast = CSToast(text: text)
+        toast.showIn(UIWindow.window(), topOffset: toastSpace)
     }
     
-    /**
-     上方显示+自定义停留时间
-     
-     - parameter text:     文字
-     - parameter duration: 自定义停留时间
-     */
-    public class func showTopWithText(_ text:String, duration:CGFloat) {
-        XHToast.showTopWithText(text, topOffset:ToastSpace, duration:duration)
-    }
-    
-    /**
-     上方显示+自定义到顶部距离
-     
-     - parameter text:      文字
-     - parameter topOffset: 自定义到顶部距离
-     */
-    public class func showTopWithText(_ text:String,topOffset:CGFloat) {
-        XHToast.showTopWithText(text, topOffset:topOffset, duration:ToastDispalyDuration)
-    }
-    
-    /**
-     上方显示+自定义到顶部距离+自定义停留时间
-     
-     - parameter text:      文字
-     - parameter topOffset: 自定义到顶部距离
-     - parameter duration:  自定义停留时间
-     */
-    public class func showTopWithText(_ text:String, topOffset:CGFloat,duration:CGFloat) {
-        let toast = XHToast(text: text)
-        toast.duration = duration
-        toast.showIn(UIWindow.window(), topOffset: topOffset)
-    }
     
     // MARK:-下方显示
     
@@ -101,70 +54,24 @@ extension XHToast
      - parameter text: 文字
      */
     public class func showBottomWithText(_ text:String) {
-        XHToast.showBottomWithText(text, bottomOffset:ToastSpace, duration:ToastDispalyDuration)
-    }
-    
-    /**
-     下方显示+自定义停留时间
-     
-     - parameter text:     文字
-     - parameter duration: 自定义停留时间
-     */
-    public class func showBottomWithText(_ text:String,duration:CGFloat) {
-        XHToast.showBottomWithText(text, bottomOffset:ToastSpace, duration:duration)
-    }
-    
-    /**
-     下方显示+自定义到底部距离
-     
-     - parameter text:         文字
-     - parameter bottomOffset: 自定义到底部距离
-     */
-    public class func showBottomWithText(_ text:String,bottomOffset:CGFloat) {
-        XHToast.showBottomWithText(text, bottomOffset:bottomOffset, duration:ToastDispalyDuration)
-    }
-    
-    /**
-     下方显示+自定义到底部距离+自定义停留时间
-     
-     - parameter text:         文字
-     - parameter bottomOffset: 自定义到底部距离
-     - parameter duration:     自定义停留时间
-     */
-    public class func showBottomWithText(_ text:String,bottomOffset:CGFloat,duration:CGFloat) {
-        let toast: XHToast = XHToast(text: text)
-        toast.duration = duration
-        toast.showIn(UIWindow.window(), bottomOffset: bottomOffset)
+        let toast: CSToast = CSToast(text: text)
+        toast.showIn(UIWindow.window(), bottomOffset: toastSpace)
     }
     
 }
 
 //在view上显示
-extension UIView
-{
+extension UIView {
     // MARK:- 中间显示
     
     /// 中间显示
     ///
     /// - Parameter text: 文字
-    public func showXHToastCenterWithText(_ text:String){
+    public func showCSToastCenterWithText(_ text:String){
         
-        self.showXHToastCenterWithText(text, duration: ToastDispalyDuration)
-    
-    }
-    
-    
-    /// 中间显示+自定义停留时间
-    ///
-    /// - Parameters:
-    ///   - text: 文字
-    ///   - duration: 自定义停留时间
-    public func showXHToastCenterWithText(_ text:String , duration:CGFloat){
-    
-        let toast: XHToast = XHToast(text: text)
-        toast.duration = duration
+        let toast: CSToast = CSToast(text: text)
         toast.showIn(self)
-    
+        
     }
     
     
@@ -173,48 +80,10 @@ extension UIView
     /// 上方显示
     ///
     /// - Parameter text: 文字
-    public func showXHToastTopWithText(_ text:String){
+    public func showCSToastTopWithText(_ text:String){
     
-       self.showXHToastTopWithText(text, topOffset: ToastSpace, duration: ToastDispalyDuration)
-    }
-    
-    
-    /// 上方显示+自定义停留时间
-    ///
-    /// - Parameters:
-    ///   - text: 文字
-    ///   - duration: 自定义停留时间
-    public func showXHToastTopWithText(_ text:String,  duration:CGFloat){
-    
-      self.showXHToastTopWithText(text, topOffset: ToastSpace, duration: duration)
-    
-    }
-    
-    
-    /// 上方显示+自定义到顶部距离
-    ///
-    /// - Parameters:
-    ///   - text: 文字
-    ///   - topOffset: 自定义到顶部距离
-    public func showXHToastTopWithText(_ text:String,topOffset:CGFloat){
-    
-        self.showXHToastTopWithText(text, topOffset: topOffset, duration: ToastDispalyDuration)
-    
-    }
-    
-    
-    /// 上方显示+自定义到顶部距离+自定义停留时间
-    ///
-    /// - Parameters:
-    ///   - text: 文字
-    ///   - topOffset: 自定义到顶部距离
-    ///   - duration: 自定义停留时间
-    public  func showXHToastTopWithText(_ text:String,topOffset:CGFloat,duration:CGFloat) {
-        
-        let toast: XHToast = XHToast(text: text)
-        toast.duration = duration
-        toast.showIn(self, topOffset: topOffset)
-        
+       let toast: CSToast = CSToast(text: text)
+       toast.showIn(self, topOffset: toastSpace)
     }
     
 
@@ -223,45 +92,9 @@ extension UIView
     /// 下方显示
     ///
     /// - Parameter text: 文字
-    public func showXHToastBottomWithText(_ text:String){
-        self.showXHToastBottomWithText(text, bottomOffset: ToastSpace, duration: ToastDispalyDuration)
-    }
-    
-    
-    /// 下方显示+自定义停留时间
-    ///
-    /// - Parameters:
-    ///   - text: 文字
-    ///   - duration: 自定义停留时间
-    public func showXHToastBottomWithText(_ text:String,  duration:CGFloat){
-        
-         self.showXHToastBottomWithText(text, bottomOffset: ToastSpace, duration: duration)
-        
-    }
-    
-    
-    /// 下方显示+自定义到顶部距离
-    ///
-    /// - Parameters:
-    ///   - text: 文字
-    ///   - topOffset: 自定义到顶部距离
-    public func showXHToastBottomWithText(_ text:String,bottomOffset:CGFloat){
-        
-        self.showXHToastBottomWithText(text, bottomOffset: bottomOffset, duration: ToastDispalyDuration)
-        
-    }
-    
-    /// 下方显示+自定义到顶部距离+自定义停留时间
-    ///
-    /// - Parameters:
-    ///   - text: 文字
-    ///   - topOffset: 自定义到顶部距离
-    ///   - duration: 自定义停留时间
-    public  func showXHToastBottomWithText(_ text:String,bottomOffset:CGFloat,duration:CGFloat) {
-        
-        let toast: XHToast = XHToast(text: text)
-        toast.duration = duration
-        toast.showIn(self, bottomOffset: bottomOffset)
+    public func showCSToastBottomWithText(_ text:String){
+        let toast: CSToast = CSToast(text: text)
+        toast.showIn(self, bottomOffset: toastSpace)
     }
 
 }
@@ -277,35 +110,39 @@ extension UIWindow
     }
 }
 
-open class XHToast:NSObject {
+open class CSToast:NSObject {
     
-    var contentView: UIButton
-    var duration:CGFloat
+//    var contentView: UIButton
+    var contentView: UIView
+    var duration: CGFloat
     
     init(text: String) {
         
-        duration = ToastDispalyDuration
+        contentView = UIView()
         
-        let font = UIFont.systemFont(ofSize: 16)
-        let attributes = [NSAttributedString.Key.font: font]
-        let rect = text.boundingRect(with: CGSize(width: 192, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:attributes, context: nil)
-        let textLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: rect.size.width, height: rect.size.height+26))
-        textLabel.backgroundColor = UIColor.clear
-        textLabel.textColor = UIColor.white
-        textLabel.textAlignment = NSTextAlignment.center
-        textLabel.font = font
-        textLabel.text = text
+        let textLabel = UILabel()
+        textLabel.set(superview: contentView, text: text)
+        textLabel.setLineHeight()
+        textLabel.setFontStyle(size: 16, color: cFFF, alignment: .center)
         textLabel.numberOfLines = 2
-        contentView = UIButton(frame: CGRect(x: 0, y: 0, width: textLabel.frame.size.width+100, height: textLabel.frame.size.height))
-        contentView.layer.cornerRadius = 10
-        contentView.backgroundColor = ToastBackgroundColor
-        contentView.addSubview(textLabel)
-        contentView.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
+        textLabel.size = CGSize(width: textLabel.getLabelWidth(withMaxWidth: 196), height: textLabel.getTextHeight(withWidth: 196))
+        print(textLabel.getTextHeight(withWidth: 196))
+        
+        contentView.setFrame(left: 0, top: 0, width: textLabel.width + 40, height: textLabel.height + 26)
+        contentView.backgroundColor = .hex(c000_75)
+        contentView.setCornerRadius(radius: 10)
+
+        textLabel.centerX = contentView.centerX
+        textLabel.centerY = contentView.centerY - 2
+        
+        if textLabel.getTextHeight(withWidth: 196) > 30 {
+            duration = 3
+        } else {
+            duration = 1.5
+        }
         
         super.init()
         
-//        contentView.addTarget(self, action:#selector(toastTaped(_:)), for: UIControl.Event.touchDown)
-        contentView.alpha = 0.0
         
     }
     
@@ -317,14 +154,10 @@ open class XHToast:NSObject {
         contentView.removeFromSuperview()
     }
     
-    @objc fileprivate func toastTaped(_ sender: UIButton) {
-        
-        self.hideAnimation()
-    }
     
     fileprivate func showAnimation() {
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
             
             self.contentView.alpha = 1.0
             
@@ -336,7 +169,7 @@ open class XHToast:NSObject {
     
     fileprivate  func hideAnimation() {
         
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             
             self.contentView.alpha = 0.0
             
@@ -347,7 +180,7 @@ open class XHToast:NSObject {
         
     }
     
-    fileprivate func showIn(_ view:UIView) {
+    fileprivate func showIn(_ view: UIView) {
 
         contentView.center = view.center
         view.addSubview(contentView)
@@ -359,7 +192,7 @@ open class XHToast:NSObject {
         }
     }
     
-    fileprivate func showIn(_ view:UIView,topOffset top: CGFloat) {
+    fileprivate func showIn(_ view: UIView, topOffset top: CGFloat) {
         
         contentView.center = CGPoint(x: view.center.x, y: top+contentView.frame.size.height/2)
         view.addSubview(contentView)
@@ -370,7 +203,7 @@ open class XHToast:NSObject {
         }
     }
     
-    fileprivate func showIn(_ view:UIView,bottomOffset bottom: CGFloat) {
+    fileprivate func showIn(_ view: UIView, bottomOffset bottom: CGFloat) {
         
         contentView.center = CGPoint(x: view.center.x, y: view.frame.size.height-(bottom+contentView.frame.size.height/2))
         view.addSubview(contentView)
