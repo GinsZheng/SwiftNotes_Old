@@ -12,6 +12,8 @@ class TestVC: UIViewController, UITextFieldDelegate {
     
     let textField2 = UITextField()
     
+//    let window = UIWindow(frame: UIScreen.main.bounds)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -24,6 +26,10 @@ class TestVC: UIViewController, UITextFieldDelegate {
 //        XHToast.showCenterWithText("双行双行双行双行双行双行双行双行双行双行双行双行")
         
         CSToast.showCenterWithText("双行双行双行双行双行双行双行双行双行双行双行双行双行双行双行双行双行")
+
+//        window.backgroundColor = .hex(cBlue_2C9EFF)
+//        window.windowLevel = .alert
+//        window.makeKeyAndVisible()
         
     }
     

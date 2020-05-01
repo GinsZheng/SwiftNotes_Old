@@ -4,7 +4,6 @@
 //
 //  Created by xiaohui on 16/8/12.
 //  Copyright © 2016年 CoderZhuXH. All rights reserved.
-//  代码地址:https://github.com/CoderZhuXH/CSToastSwift
 
 
 import UIKit
@@ -27,12 +26,12 @@ extension CSToast {
      
      - parameter text: 文字
      */
-    public class func showCenterWithText(_ text:String) {
+    public static func showCenterWithText(_ text:String) {
         let toast = CSToast(text: text)
         toast.showIn(UIWindow.window())
     }
     
-
+    
     // MARK:-上方显示
     
     /**
@@ -40,7 +39,7 @@ extension CSToast {
      
      - parameter text: 文字
      */
-    public class func showTopWithText(_ text:String) {
+    public static func showTopWithText(_ text:String) {
         let toast = CSToast(text: text)
         toast.showIn(UIWindow.window(), topOffset: toastSpace)
     }
@@ -53,7 +52,7 @@ extension CSToast {
      
      - parameter text: 文字
      */
-    public class func showBottomWithText(_ text:String) {
+    public static func showBottomWithText(_ text:String) {
         let toast: CSToast = CSToast(text: text)
         toast.showIn(UIWindow.window(), bottomOffset: toastSpace)
     }
@@ -81,12 +80,12 @@ extension UIView {
     ///
     /// - Parameter text: 文字
     public func showCSToastTopWithText(_ text:String){
-    
-       let toast: CSToast = CSToast(text: text)
-       toast.showIn(self, topOffset: toastSpace)
+        
+        let toast: CSToast = CSToast(text: text)
+        toast.showIn(self, topOffset: toastSpace)
     }
     
-
+    
     //MARK:-下方显示
     
     /// 下方显示
@@ -96,23 +95,27 @@ extension UIView {
         let toast: CSToast = CSToast(text: text)
         toast.showIn(self, bottomOffset: toastSpace)
     }
-
+    
 }
 
-extension UIWindow
-{
-    fileprivate class func window() -> UIWindow{
+extension UIWindow {
+    fileprivate class func window() -> UIWindow {
         let window = UIApplication.shared.windows.last!
         if(!window.isHidden){
             return window;
         }
-        return (UIApplication.shared.delegate?.window!)!;
+        return (UIApplication.shared.delegate?.window!)!
+        
+//        let window = UIWindow(frame: UIScreen.main.bounds)
+//        window.backgroundColor = .hex(cBlue_2C9EFF)
+//        window.makeKeyAndVisible()
+//        return window
     }
 }
 
 open class CSToast:NSObject {
     
-//    var contentView: UIButton
+    //    var contentView: UIButton
     var contentView: UIView
     var duration: CGFloat
     
@@ -131,14 +134,14 @@ open class CSToast:NSObject {
         contentView.setFrame(left: 0, top: 0, width: textLabel.width + 40, height: textLabel.height + 26)
         contentView.backgroundColor = .hex(c000_75)
         contentView.setCornerRadius(radius: 10)
-
+        
         textLabel.centerX = contentView.centerX
         textLabel.centerY = contentView.centerY - 2
         
         if textLabel.getTextHeight(withWidth: 196) > 30 {
-            duration = 3
+            duration = 3.3
         } else {
-            duration = 1.5
+            duration = 1.8
         }
         
         super.init()
@@ -181,7 +184,7 @@ open class CSToast:NSObject {
     }
     
     fileprivate func showIn(_ view: UIView) {
-
+        
         contentView.center = view.center
         view.addSubview(contentView)
         self.showAnimation()
