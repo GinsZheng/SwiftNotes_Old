@@ -530,7 +530,7 @@ extension UIImage {
 
 
     /*图片着色*/
-    func setOverlay(color: UIColor, blendMode: CGBlendMode) -> UIImage {
+    func setOverlay(color: UIColor, blendMode: CGBlendMode = .normal) -> UIImage {
         let drawRect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         color.setFill()
@@ -539,7 +539,8 @@ extension UIImage {
         let tintedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return tintedImage
-      }
+    }
+    
 
 }
 

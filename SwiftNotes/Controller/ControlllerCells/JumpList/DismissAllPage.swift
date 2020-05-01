@@ -47,13 +47,15 @@ class CSPresentPage: UIViewController {
         label.setFontStyle(size: 34, color: "222")
         label.setFrame(centerX: view.centerX, top: 200)
         
-        button.set(superview: view, target: self, action: #selector(dismissAllPage))
+        button.set(superview: view, target: self, action: #selector(presentPage))
         button.setStyleWordButton(title: "Present")
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
     
-    @objc func dismissAllPage() {
-        self.present(toTarget: CSPresentAgainPage())
+    @objc func presentPage() {
+        self.present(toTarget: CSPresentAgainPage()) {
+            print("heheda")
+        }
     }
 }
 
@@ -83,3 +85,7 @@ class CSPresentAgainPage: UIViewController {
         self.present(toTarget: CSDismissAllPage())
     }
 }
+
+/*
+ present的回调是在present完成之后立即执行，而不是dismiss后执行
+ */

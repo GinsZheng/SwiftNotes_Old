@@ -87,6 +87,7 @@
 		7A62A1A5244CA9790090D128 /* PinchGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1A4244CA9790090D128 /* PinchGesturePage.swift */; };
 		7A62A1A7244CB51C0090D128 /* DataOperate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1A6244CB51C0090D128 /* DataOperate.swift */; };
 		7A62A1AF24548CCA0090D128 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1AE24548CCA0090D128 /* Extension.swift */; };
+		7A62A1F3245C7F2E0090D128 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1F2245C7F2E0090D128 /* Toast.swift */; };
 		7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A64873F23FAE319006B6FC1 /* LoadingPage.swift */; };
 		7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A65113A23D6A332005E4FD4 /* UIClass.swift */; };
 		7A702DA82434E99600EB1FF3 /* JumpListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A702DA72434E99600EB1FF3 /* JumpListPage.swift */; };
@@ -478,6 +479,7 @@
 		7A62A1A4244CA9790090D128 /* PinchGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchGesturePage.swift; sourceTree = "<group>"; };
 		7A62A1A6244CB51C0090D128 /* DataOperate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOperate.swift; sourceTree = "<group>"; };
 		7A62A1AE24548CCA0090D128 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		7A62A1F2245C7F2E0090D128 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		7A64873F23FAE319006B6FC1 /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		7A65113A23D6A332005E4FD4 /* UIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIClass.swift; sourceTree = "<group>"; };
 		7A702DA72434E99600EB1FF3 /* JumpListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpListPage.swift; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 				7A2161112389857700D5A93A /* SetFrame.swift */,
 				7A76EF6223CF17B400350087 /* SQLiteManager.swift */,
 				7A3308C223CC6DAD0021BA5B /* Styles.swift */,
+				7A62A1F2245C7F2E0090D128 /* Toast.swift */,
 				7A21610E2389857700D5A93A /* UIKitExtension.swift */,
 				7A7D1C59241CBE6500E08EA1 /* UIPresentNav.swift */,
 			);
@@ -1401,6 +1404,7 @@
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
 				7A0258A82434EF42006D4AB5 /* PopToSpecificPage.swift in Sources */,
 				7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */,
+				7A62A1F3245C7F2E0090D128 /* Toast.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
 				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,

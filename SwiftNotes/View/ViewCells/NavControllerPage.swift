@@ -20,7 +20,7 @@ class CSNavControllerPage: UIViewController {
         let editButton = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(pushToGeneralSubpage))
         editButton.tintColor = .hex(cBlue_2C9EFF)
         self.navigationItem.rightBarButtonItem = editButton
-        // 用图片撑起Frame
+        // 用图片撑起Frame   
         
         // 跳转并传值
         button.set(superview: view, target: self, action: #selector(pushWithValue))

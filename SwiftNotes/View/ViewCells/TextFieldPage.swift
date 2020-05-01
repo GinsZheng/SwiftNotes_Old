@@ -52,6 +52,12 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
      注：实际上，无交互控件也会被触发收起键盘， 是因为无交互控件的底下还有一个❲无点击事件的控件❳：view。 点击不可交互控件，就点击了view，所以收起键盘
      */
     
+    /*
+     键盘类型：
+     小数键盘：.decimalPad
+     整数键盘：.numberPad
+     */
+    
     func resignFirstResponders() {
         textField.resignFirstResponder()
         textField2.resignFirstResponder()
@@ -80,5 +86,29 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
         return textLength <= 8
     }
 
+    
+    @objc func editingDidBegin() {
+        print("editingDidBegin")
+    }
+    
+    @objc func editingChanged() {
+        print("editingChanged", textField2.text ?? "")
+    }
+
+    @objc func editingDidEnd() {
+        print("editingDidEnd")
+    }
+    
+    @objc func editingDidEndOnExit() {
+        print("editingDidEndOnExit")
+    }
+    /*
+     UIControl.Event
+     .editingDidBegin 拉起键盘时触发
+     .editingChanged 编辑之后，text值也为编辑之后的值
+     .editingDidEnd 退出编辑时触发
+     .editingDidEndOnExit 指点击键盘的返回键（Return Key）时触发，此时不存在焦点
+     */
+    
 }
 

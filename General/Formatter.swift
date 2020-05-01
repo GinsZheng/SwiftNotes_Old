@@ -61,18 +61,6 @@ extension CSFormatter {
         return result
     }
     
-    // 时间 HH:mm
-    static func getTimeStrDefault(timeStamp: Int) -> String {
-        let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "HH:mm")
-        return result
-    }
-    
-    // 日期+时间 M/d HH:mm
-    static func getDateAndTimeStrMdHHmm(timeStamp: Int) -> String {
-        let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d HH:mm")
-        return result
-    }
-    
     static func getDateStrDefault(timeStamp: Int) -> String {
         var result = ""
         let theBeginingTomorrow = getTimeStampOfTheBeginingToday() + 86400
@@ -93,5 +81,23 @@ extension CSFormatter {
         return result
     }
     
+    // 时间 HH:mm
+    static func getTimeStrDefault(timeStamp: Int) -> String {
+        let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "HH:mm")
+        return result
+    }
+    
+    // 日期+时间 默认日期 + 默认时间
+    static func getDateAndTimeStrDefault(timeStamp: Int) -> String {
+        let date = getDateStrDefault(timeStamp: timeStamp)
+        let time = getTimeStrDefault(timeStamp: timeStamp)
+        return "\(date) \(time)"
+    }
+    
+    // 日期+时间 M/d HH:mm
+    static func getDateAndTimeStrMdHHmm(timeStamp: Int) -> String {
+        let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d HH:mm")
+        return result
+    }
 
 }
