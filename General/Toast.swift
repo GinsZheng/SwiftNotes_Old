@@ -100,22 +100,17 @@ extension UIView {
 
 extension UIWindow {
     fileprivate class func window() -> UIWindow {
-        let window = UIApplication.shared.windows.last!
+        let window = UIApplication.shared.windows[0]
         if(!window.isHidden){
             return window;
         }
         return (UIApplication.shared.delegate?.window!)!
         
-//        let window = UIWindow(frame: UIScreen.main.bounds)
-//        window.backgroundColor = .hex(cBlue_2C9EFF)
-//        window.makeKeyAndVisible()
-//        return window
     }
 }
 
 open class CSToast:NSObject {
     
-    //    var contentView: UIButton
     var contentView: UIView
     var duration: CGFloat
     
@@ -166,7 +161,6 @@ open class CSToast:NSObject {
             
         }) { (completion) in
             
-            
         }
     }
     
@@ -177,7 +171,6 @@ open class CSToast:NSObject {
             self.contentView.alpha = 0.0
             
         }) { (completion) in
-            
             
         }
         
