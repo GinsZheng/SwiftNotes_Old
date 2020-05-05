@@ -9,20 +9,34 @@
 import Foundation
 import UIKit
 
+func getImageFromView(view: UIView) -> UIImage{
+    UIGraphicsBeginImageContextWithOptions(view.size, false, kScale) // 创建一个图形上下文
+    view.layer.render(in: UIGraphicsGetCurrentContext()!) // 将视图的图层渲染到创建的图形上下文
+    let image = UIGraphicsGetImageFromCurrentImageContext() // 从绘制到图形上下文中的内容创建一个UIImage对象
+    UIGraphicsEndImageContext() // 清理图形上下文
+    return image!
+}
+
+//func getImageOfScreenshot(uiView: UIView, opaque: Bool = true) -> UIImage {
+//    UIGraphicsBeginImageContextWithOptions(uiView.layer.frame.size, opaque, kScale)
+//    uiView.layer.render(in: UIGraphicsGetCurrentContext()!)
+//    let tempImage = UIGraphicsGetImageFromCurrentImageContext()
+//    UIGraphicsEndImageContext()
+//    // Save it to the camera roll
+//    // UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//    return image!
+//}
+/*
+ 目前暂不清楚怎么获取整个页面的截图，会缺状态栏、导航栏、标签栏
+ 去调取照片库是另一种思路
+ */
+
 func getImageWithColor(color: String) -> UIImage {
     let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
     UIGraphicsBeginImageContext(rect.size)
     let context = UIGraphicsGetCurrentContext()
     context!.setFillColor(UIColor.hex(color).cgColor)
     context!.fill(rect)
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return image!
-}
-
-func getImageFromView(view:UIView) -> UIImage{
-    UIGraphicsBeginImageContextWithOptions(view.size, false, kScale)
-    view.layer.render(in: UIGraphicsGetCurrentContext()!)
     let image = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     return image!

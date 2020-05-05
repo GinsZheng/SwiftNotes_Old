@@ -89,6 +89,7 @@
 		7A62A1AF24548CCA0090D128 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1AE24548CCA0090D128 /* Extension.swift */; };
 		7A62A1F3245C7F2E0090D128 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1F2245C7F2E0090D128 /* Toast.swift */; };
 		7A62A1F7245CAD890090D128 /* WindowPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1F6245CAD890090D128 /* WindowPage.swift */; };
+		7A62A1F92461AB980090D128 /* CustomPopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1F82461AB980090D128 /* CustomPopupWindow.swift */; };
 		7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A64873F23FAE319006B6FC1 /* LoadingPage.swift */; };
 		7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A65113A23D6A332005E4FD4 /* UIClass.swift */; };
 		7A702DA82434E99600EB1FF3 /* JumpListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A702DA72434E99600EB1FF3 /* JumpListPage.swift */; };
@@ -482,6 +483,7 @@
 		7A62A1AE24548CCA0090D128 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7A62A1F2245C7F2E0090D128 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		7A62A1F6245CAD890090D128 /* WindowPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowPage.swift; sourceTree = "<group>"; };
+		7A62A1F82461AB980090D128 /* CustomPopupWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopupWindow.swift; sourceTree = "<group>"; };
 		7A64873F23FAE319006B6FC1 /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		7A65113A23D6A332005E4FD4 /* UIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIClass.swift; sourceTree = "<group>"; };
 		7A702DA72434E99600EB1FF3 /* JumpListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpListPage.swift; sourceTree = "<group>"; };
@@ -916,6 +918,7 @@
 				7A28833E244A02A500591C29 /* ActionSheetPage.swift */,
 				7A2883382448BB6600591C29 /* AlertList */,
 				7A31324E2392A6680008298C /* ClassPage.swift */,
+				7A62A1F82461AB980090D128 /* CustomPopupWindow.swift */,
 				7A21612B2389869D00D5A93A /* DecoratorPage.swift */,
 				7A21612F2389869D00D5A93A /* DelegatePage.swift */,
 				7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */,
@@ -1407,6 +1410,7 @@
 				7AC56A0A23D4395C00538975 /* ViewBasicNote.swift in Sources */,
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
 				7A0258A82434EF42006D4AB5 /* PopToSpecificPage.swift in Sources */,
+				7A62A1F92461AB980090D128 /* CustomPopupWindow.swift in Sources */,
 				7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */,
 				7A62A1F3245C7F2E0090D128 /* Toast.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,

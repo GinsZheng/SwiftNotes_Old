@@ -5,7 +5,7 @@ import UIKit
 
 extension UILabel {
     
-    func setLabelWidth(width: CGFloat) -> CGFloat {
+    func getLabelWidth(width: CGFloat) -> CGFloat {
         var realWidth: CGFloat = 0
         if width == 0 {
             realWidth = getLabelWidth()
@@ -16,60 +16,60 @@ extension UILabel {
     }
     
     func setFrame(left: CGFloat, top: CGFloat, width: CGFloat = 0) {
-        self.frame = CGRect(x: left, y: top, width: setLabelWidth(width: width), height: getDefaultLineheight())
+        self.frame = CGRect(x: left, y: top, width: getLabelWidth(width: width), height: getDefaultLineheight())
     }
     
     func setFrame(left: CGFloat, centerY: CGFloat, width: CGFloat = 0) {
-        self.frame.size = CGSize(width: setLabelWidth(width: width), height: getDefaultLineheight())
+        self.frame.size = CGSize(width: getLabelWidth(width: width), height: getDefaultLineheight())
         self.frame.origin.x = left
         self.centerY = centerY
     }
     
     func setFrame(left: CGFloat, bottom: CGFloat, width: CGFloat = 0) {
-        self.frame.size = CGSize(width: setLabelWidth(width: width), height: getDefaultLineheight())
+        self.frame.size = CGSize(width: getLabelWidth(width: width), height: getDefaultLineheight())
         self.frame.origin.x = left
         self.frame.origin.y = self.superview!.height - self.height - bottom
     }
     
     func setFrame(centerX: CGFloat, top: CGFloat, width: CGFloat = 0) {
-        self.frame.size = CGSize(width: setLabelWidth(width: width), height: getDefaultLineheight())
+        self.frame.size = CGSize(width: getLabelWidth(width: width), height: getDefaultLineheight())
         self.centerX = centerX
         self.frame.origin.y = top
     }
     
     func setFrame(center: UIView, width: CGFloat = 0) {
-        self.frame.size = CGSize(width: setLabelWidth(width: width), height: getDefaultLineheight())
+        self.frame.size = CGSize(width: getLabelWidth(width: width), height: getDefaultLineheight())
         self.frame.origin.x = (center.width - self.width) / 2
         self.frame.origin.y = (center.height - self.height) / 2
     }
     
     func setFrame(centerX: CGFloat, bottom: CGFloat, width: CGFloat = 0) {
-        self.frame.size = CGSize(width: setLabelWidth(width: width), height: getDefaultLineheight())
+        self.frame.size = CGSize(width: getLabelWidth(width: width), height: getDefaultLineheight())
         self.centerX = centerX
         self.frame.origin.y = self.superview!.height - self.height - bottom
     }
     
     func setFrame(right: CGFloat, top: CGFloat, width: CGFloat = 0) {
-        self.frame.size = CGSize(width: setLabelWidth(width: width), height: getDefaultLineheight())
+        self.frame.size = CGSize(width: getLabelWidth(width: width), height: getDefaultLineheight())
         self.frame.origin.x = self.superview!.width - self.width - right
         self.frame.origin.y = top
     }
     
     func setFrame(right: CGFloat, centerY: CGFloat, width: CGFloat = 0) {
-        self.frame.size = CGSize(width: setLabelWidth(width: width), height: getDefaultLineheight())
+        self.frame.size = CGSize(width: getLabelWidth(width: width), height: getDefaultLineheight())
         self.frame.origin.x = self.superview!.width - self.width - right
         self.centerY = centerY
     }
     
     func setFrame(right: CGFloat, bottom: CGFloat, width: CGFloat = 0) {
-        self.frame.size = CGSize(width: setLabelWidth(width: width), height: getDefaultLineheight())
+        self.frame.size = CGSize(width: getLabelWidth(width: width), height: getDefaultLineheight())
         self.frame.origin.x = self.superview!.width - self.width - right
         self.frame.origin.y = self.superview!.height - self.height - bottom
     }
     
     func setFrame(left: CGFloat, top: CGFloat, right: CGFloat) {
         let width = self.superview!.width - left - right
-        self.frame = CGRect(x: left, y: top, width: setLabelWidth(width: width), height: getDefaultLineheight())
+        self.frame = CGRect(x: left, y: top, width: getLabelWidth(width: width), height: getDefaultLineheight())
     }
     
     func setFrame(left: CGFloat, centerY: CGFloat, right: CGFloat) {

@@ -128,7 +128,7 @@ open class CSToast:NSObject {
         
         contentView.setFrame(left: 0, top: 0, width: textLabel.width + 40, height: textLabel.height + 26)
         contentView.backgroundColor = .hex(c000_75)
-        contentView.setCornerRadius(radius: 10)
+        contentView.setCornerRadius(radius: 8)
         
         textLabel.centerX = contentView.centerX
         textLabel.centerY = contentView.centerY - 2

@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import Hero
  
 class TestVC: UIViewController, UITextFieldDelegate {
     
+    
     let textField2 = UITextField()
+    let btn = UIButton()
+    
+    let imgView = UIImageView()
     
 //    let window = UIWindow(frame: UIScreen.main.bounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        view.backgroundColor = .hex(cBlue_2C9EFF_40)
         view.backgroundColor = .white
         
 //        textField2.set(superview: view, placeholder: "请输入", delegate: self)
@@ -25,21 +31,100 @@ class TestVC: UIViewController, UITextFieldDelegate {
 //
 //        XHToast.showCenterWithText("双行双行双行双行双行双行双行双行双行双行双行双行")
         
-        CSToast.showCenterWithText("双行双行双行双行双行双行双行双行双行双行双行双行双行双行双行双行双行")
+        btn.set(superview: view, target: self, action: #selector(popup))
+        btn.setStyleAddItemBarBtn(title: "添加")
+        btn.setFrame(left: 20, top: 100, right: 20, height: 348)
 
-//        window.backgroundColor = .hex(cBlue_2C9EFF)
-//        window.windowLevel = .alert
-//        window.makeKeyAndVisible()
-        
     }
     
 //    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        textField2.resignFirstResponder()
 //        textField2.text = textField2.text?.trimmingCharacters(in: .whitespaces)
 //    }
-
     
 
+    @objc func popup() {
+        let toVC = CSCustomPopupWindow()
+        toVC.bgImage = getImageFromView(view: self.view)
+        toVC.hero.isEnabled = true
+        toVC.modalPresentationStyle = .fullScreen
+        self.present(toTarget: toVC)
+    }
     
 }
-                    
+
+
+
+//
+//protocol CustomAlertViewDelegate: NSObjectProtocol {
+//    func okButtonTapped()
+//    func cancelButtonTapped()
+//}
+//
+//
+//
+//class CustomAlertView: UIViewController {
+//
+//    public var startTime = 0
+//
+//    var delegate: CustomAlertViewDelegate?
+//
+//    let maskView = UIView()
+//    let bgView = UIView()
+//    let titleLabel = UILabel()
+//    let startTimeLabel = UILabel()
+//    let addingButton = UIButton()
+//    let cancelButton = UIButton()
+//
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        let startTimeText = "开始时间：\(CSFormatter.getDateAndTimeStrDefault(timeStamp: startTime))"
+//
+//        maskView.set(superview: UIApplication.shared.windows[0], backgroundColor: c04040F_40_mask)
+//        maskView.setFrame(allEdges: 0)
+//
+//        bgView.set(superview: maskView, backgroundColor: cFFF)
+//        bgView.setCornerRadius(radius: 8)
+//        bgView.setFrame(center: maskView, width: 270, height: 184)
+//
+//        titleLabel.set(superview: bgView, text: "添加上次学习进度")
+//        titleLabel.setStyle20pt222MedCenter()
+//        titleLabel.setFrame(centerX: bgView.centerX, top: 20)
+//
+//        startTimeLabel.set(superview: bgView, text: startTimeText)
+//        startTimeLabel.setStyle14pt666Center()
+//        startTimeLabel.setFrame(centerX: titleLabel.centerX, top: titleLabel.bottom + 8)
+//
+//        addingButton.set(superview: bgView, target: self, action: #selector(addProgress))
+//        addingButton.setStyleAddItemBarBtn(title: "添加")
+//        addingButton.setFrame(left: 20, top: startTimeLabel.bottom + 16, right: 20, height: 48)
+//
+//        cancelButton.set(superview: bgView, target: self, action: #selector(cancel))
+//
+//    }
+//
+//
+//    @objc func addProgress() {
+////        let toVC = CSGeneralSubpage()
+//        if delegate != nil {
+//            delegate!.okButtonTapped()
+//        }
+//        self.dismiss()
+//    }
+//
+//    @objc func cancel() {
+//        if delegate != nil {
+//            delegate!.cancelButtonTapped()
+//        }
+//        self.dismiss()
+//    }
+//
+//
+//}
+//
+//

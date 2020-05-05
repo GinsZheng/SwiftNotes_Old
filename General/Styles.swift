@@ -240,6 +240,10 @@ extension UIButton {
         self.setBackgroundImage(getImageWithColor(color: cDDDEE0), for: .highlighted)
         self.setCornerRadiusWithMask(radius: 8)
     }
+    
+    func setStyleCutsomCancelBtn(title: String) {
+        self.setStyleWordButton(title: title, titleSize: 14, titleColor: c999, titleWeight: .regular)
+    }
 }
 
 
