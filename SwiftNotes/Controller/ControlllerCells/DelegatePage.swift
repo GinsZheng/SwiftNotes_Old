@@ -14,43 +14,6 @@ protocol CSNameEditorDelegate: NSObjectProtocol {
     func fetchName(name: String)
 }
 
-// 受托人
-// 1.继承协议类A
-class CSDelegatePage: UIViewController, CSNameEditorDelegate {
-
-    let label = UILabel()
-    let button = UIButton()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-
-        label.set(superview: view, text: "这行文字将通过下个页面编辑")
-        label.setFontStyle(size: 24, color: cBlue_2C9EFF)
-        label.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 60)
-
-        button.set(superview: view, target: self, action: #selector(editName))
-        button.setStyleSolidBtn(title: "下一页")
-        button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
-        
-    }
-
-    @objc func editName() {
-        // 2.受托
-        let nameEditorPage = CSNameEditorPage() // 类A，实例化委托人-类B
-        nameEditorPage.delegate = self // 让类B实例.delegate = self，表示接受类B的委托
-        self.push(toTarget: nameEditorPage) // Push的时候，
-        // toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
-        // 而不是CSNameEditorPage(),是一个大坑
-    }
-    
-    // 3.遵循协议的函数，里面写了具体的类A要做的事
-    func fetchName(name: String) {
-        self.label.text = name
-    }
-
-}
-
 
 // 委托人
 class CSNameEditorPage: UIViewController, UITextFieldDelegate {
@@ -59,7 +22,7 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     let nameTextField = UITextField()
     let button = UIButton()
     
-    // 4.定义委托变量delegate
+    // 1.定义委托变量delegate
     weak var delegate: CSNameEditorDelegate?
 
     override func viewDidLoad() {
@@ -82,7 +45,7 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     @objc func refreshSuperView() {
         let name = nameTextField.text
         if name != "" {
-            // 5.委托开始，委托的事为fetchName
+            // 2.委托开始，委托的事为fetchName
             if delegate != nil {
                 delegate!.fetchName(name: name!)
             }
@@ -100,7 +63,7 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
         }
     }
 
-    // 6.内存管理与析构
+    // 3.内存管理与析构
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -110,6 +73,43 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
 
 }
 
+
+// 受托人
+// 4.继承协议类A
+class CSDelegatePage: UIViewController, CSNameEditorDelegate {
+
+    let label = UILabel()
+    let button = UIButton()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.white
+
+        label.set(superview: view, text: "这行文字将通过下个页面编辑")
+        label.setFontStyle(size: 24, color: cBlue_2C9EFF)
+        label.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 60)
+
+        button.set(superview: view, target: self, action: #selector(editName))
+        button.setStyleSolidBtn(title: "下一页")
+        button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
+        
+    }
+
+    @objc func editName() {
+        // 5.受托
+        let nameEditorPage = CSNameEditorPage() // 类A，实例化委托人-类B
+        nameEditorPage.delegate = self // 让类B实例.delegate = self，表示接受类B的委托
+        self.push(toTarget: nameEditorPage) // Push的时候，
+        // toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
+        // 而不是CSNameEditorPage(),是一个大坑
+    }
+    
+    // 6.遵循协议的函数，里面写了具体的类A要做的事
+    func fetchName(name: String) {
+        self.label.text = name
+    }
+
+}
 
 
 

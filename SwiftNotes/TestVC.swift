@@ -10,31 +10,27 @@ import UIKit
 import Hero
  
 class TestVC: UIViewController, UITextFieldDelegate {
-    
+
     
     let textField2 = UITextField()
     let btn = UIButton()
     
     let imgView = UIImageView()
     
-//    let window = UIWindow(frame: UIScreen.main.bounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .hex(cBlue_2C9EFF_40)
         view.backgroundColor = .white
         
 //        textField2.set(superview: view, placeholder: "请输入", delegate: self)
 //        textField2.setStyleOneLineTextField()
 //        textField2.setFrame(left: 20, top: 100, right: 20, height: 56)
 //        textField2.keyboardType = .numberPad
-//
-//        XHToast.showCenterWithText("双行双行双行双行双行双行双行双行双行双行双行双行")
         
         btn.set(superview: view, target: self, action: #selector(popup))
         btn.setStyleAddItemBarBtn(title: "添加")
-        btn.setFrame(left: 20, top: 100, right: 20, height: 348)
-
+        btn.setFrame(left: 20, top: 100, right: 20, height: 48)
+        
     }
     
 //    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -45,12 +41,13 @@ class TestVC: UIViewController, UITextFieldDelegate {
 
     @objc func popup() {
         let toVC = CSCustomPopupWindow()
-        toVC.bgImage = getImageFromView(view: self.view)
+        toVC.bgImage = getImageOfScreenshot(uiView: UIApplication.shared.windows[0])
         toVC.hero.isEnabled = true
         toVC.modalPresentationStyle = .fullScreen
         self.present(toTarget: toVC)
     }
     
+
 }
 
 

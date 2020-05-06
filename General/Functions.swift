@@ -17,15 +17,15 @@ func getImageFromView(view: UIView) -> UIImage{
     return image!
 }
 
-//func getImageOfScreenshot(uiView: UIView, opaque: Bool = true) -> UIImage {
-//    UIGraphicsBeginImageContextWithOptions(uiView.layer.frame.size, opaque, kScale)
-//    uiView.layer.render(in: UIGraphicsGetCurrentContext()!)
-//    let tempImage = UIGraphicsGetImageFromCurrentImageContext()
-//    UIGraphicsEndImageContext()
-//    // Save it to the camera roll
-//    // UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-//    return image!
-//}
+func getImageOfScreenshot(uiView: UIView, opaque: Bool = true) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(uiView.layer.frame.size, opaque, kScale)
+    uiView.layer.render(in: UIGraphicsGetCurrentContext()!)
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    // Save it to the camera roll
+    // UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    return image!
+}
 /*
  目前暂不清楚怎么获取整个页面的截图，会缺状态栏、导航栏、标签栏
  去调取照片库是另一种思路
