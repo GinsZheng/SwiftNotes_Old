@@ -1,17 +1,17 @@
 //
-//  CSTableViewPage.swift
+//  DataSaveListVC.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2019/6/14.
-//  Copyright © 2019 GinsMac. All rights reserved.
+//  Created by GinsMac on 2020/5/7.
+//  Copyright © 2020 GinsMac. All rights reserved.
 //
 
 import UIKit
 
-class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CSDataSaveListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleList = ["Label", "Button", "Text Field"]
-    let pageList = [CSGeneralSubpage(), CSGeneralSubpage(), CSGeneralSubpage(), ]
+    let titleList = ["UserDefaults", ]
+    let pageList = [CSUserDefaultsPage(), ]
     
     var cardHeight: CGFloat = 0
     
@@ -58,10 +58,3 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
 }
-
-/*
- TableViewCell内容超出Frame：
-    TableViewCell内容超出Frame时，以投影超出为例，可以完整显示，不会被裁切，
-    但在滑动列表后，会出现投影被裁切的情况，些时把背景颜色设置为透明即可解决
-    (可能)扩展而言：只要不设置 maskToBounds 属性，所有的视图都可以超出控件边界
- */

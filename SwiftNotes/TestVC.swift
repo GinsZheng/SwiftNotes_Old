@@ -13,23 +13,27 @@ class TestVC: UIViewController, UITextFieldDelegate {
 
     
     let textField2 = UITextField()
-    let btn = UIButton()
     
     let imgView = UIImageView()
     
+    var userDefault = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+//        userDefault.set(1584855000, forKey: "startTime")
+//        userDefault.set(12345, forKey: "Int")
+        var intValue = userDefault.integer(forKey: "startTime")
+        print(intValue)
+        
+        
+        
+        
 //        textField2.set(superview: view, placeholder: "请输入", delegate: self)
 //        textField2.setStyleOneLineTextField()
 //        textField2.setFrame(left: 20, top: 100, right: 20, height: 56)
 //        textField2.keyboardType = .numberPad
-        
-        btn.set(superview: view, target: self, action: #selector(popup))
-        btn.setStyleAddItemBarBtn(title: "添加")
-        btn.setFrame(left: 20, top: 100, right: 20, height: 48)
         
     }
     
@@ -39,13 +43,7 @@ class TestVC: UIViewController, UITextFieldDelegate {
 //    }
     
 
-    @objc func popup() {
-        let toVC = CSCustomPopupWindow()
-        toVC.bgImage = getImageOfScreenshot(uiView: UIApplication.shared.windows[0])
-        toVC.hero.isEnabled = true
-        toVC.modalPresentationStyle = .fullScreen
-        self.present(toTarget: toVC)
-    }
+
     
 
 }
