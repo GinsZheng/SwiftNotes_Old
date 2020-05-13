@@ -22,7 +22,7 @@ class CSUIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        tableView.set(superview: view, delegate: self, dataSource: self)
+        self.tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
     }
     

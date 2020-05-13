@@ -18,9 +18,9 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         view.backgroundColor = UIColor.white
         self.title = "Model"
         
-        let table = UITableView()
-        table.set(superview: view, delegate: self, dataSource: self)
-        table.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndBottomBarHeight)
+        let tableView = UITableView()
+        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndBottomBarHeight)
         
     }
     

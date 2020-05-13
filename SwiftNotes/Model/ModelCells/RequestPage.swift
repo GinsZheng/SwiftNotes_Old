@@ -31,7 +31,7 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 self.slidesType = model3.slidesType
                 print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
                 
-                self.tableView.set(superview: self.view, delegate: self, dataSource: self)
+                self.tableView.set(superview: self.view, delegate: self, dataSource: self, viewController: self)
                 self.tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
                 self.tableView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(self.slidesTitle.count))
             }

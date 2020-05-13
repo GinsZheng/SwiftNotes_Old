@@ -18,6 +18,7 @@ class CSScrollViewPage: UIViewController {
         scrollView.set(superview: view)
         scrollView.setFrame(left: 0, top: 0, width: kScreenWidth, height: 400)
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kScreenWidth/375*812)
+        scrollView.OptimizeEdgePanGesture(of: self)
         
         let image = UIImageView()
         image.set(superview: scrollView, imageName: "iPhoneX")

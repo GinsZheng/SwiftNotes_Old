@@ -40,7 +40,7 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         addItemBtn.setFrame(right: 20, top: 0, width: 25, height: 20)
         addItemBtn.setImage(UIImage(named: "progress_addItem"), for: .normal)
         
-        tableView.set(superview: view, delegate: self, dataSource: self)
+        self.tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 20, right: 0, height: kWithoutNavAndTabBarHeight - 40)
     }
     

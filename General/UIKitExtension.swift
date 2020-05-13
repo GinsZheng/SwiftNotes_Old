@@ -669,11 +669,12 @@ extension UIViewController {
 
 
 extension UITableView {
-    func set(superview: UIView, delegate: UITableViewDelegate, dataSource: UITableViewDataSource) {
+    func set(superview: UIView, delegate: UITableViewDelegate, dataSource: UITableViewDataSource, viewController: UIViewController) {
         superview.addSubview(self)
         self.delegate = delegate
         self.dataSource = dataSource
         self.separatorColor = .hex(cNoColor)
+        self.OptimizeEdgePanGesture(of: viewController)
         setAutoHeight()
     }
     
@@ -683,6 +684,23 @@ extension UITableView {
     }
     
 }
+
+
+
+
+extension UIScrollView {
+    func OptimizeEdgePanGesture(of viewController: UIViewController) {
+        let gestureArray: [AnyObject] = viewController.navigationController!.view.gestureRecognizers!
+        
+        for gesture in gestureArray {
+            if gesture.isKind(of: UIScreenEdgePanGestureRecognizer.self) {
+                self.panGestureRecognizer.require(toFail: gesture as! UIGestureRecognizer)
+            }
+        }
+    }
+}
+
+
 
 
 extension UIStackView {

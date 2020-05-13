@@ -16,14 +16,30 @@ class TestVC: UIViewController, UITextFieldDelegate {
     
     let imgView = UIImageView()
     
+    let scrollView = UIScrollView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-//        if determinePanDirection(touchPoint: <#T##CGPoint#>, beginPoint: <#T##CGPoint#>)
+
+        scrollView.set(superview: view)
+        scrollView.setFrame(left: 0, top: 0, width: kScreenWidth, height: 400)
+        scrollView.contentSize = CGSize(width: kScreenWidth, height: kScreenWidth/375*812)
         
+        let image = UIImageView()
+        image.set(superview: scrollView, imageName: "iPhoneX")
+        image.setFrame(left: 0, top: 0, width: kScreenWidth, height: kScreenWidth/375*812)
         
+        scrollView.OptimizeEdgePanGesture(of: self)
+//        let gestureArray: [AnyObject] = self.navigationController!.view.gestureRecognizers!
+//
+//        for gesture in gestureArray {
+//            if gesture.isKind(of: UIScreenEdgePanGestureRecognizer.self) {
+//                self.scrollView.panGestureRecognizer.require(toFail: gesture as! UIGestureRecognizer)
+//            }
+//        }
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -34,28 +50,11 @@ class TestVC: UIViewController, UITextFieldDelegate {
         }
     }
     
+
+
 }
 
-enum PanDirection {
-    case unknown
-    case horizontal
-    case vertical
-}
 
-// 最小移动距离
-private let leastDistance: Float = 15
 
-/// 确定滑动方向
-func determinePanDirection(touchPoint: CGPoint,
-                           beginPoint: CGPoint) -> PanDirection {
-    // 不确定方向，先判断滑动方向
-    let dragX = touchPoint.x - beginPoint.x
-    let dragY = touchPoint.y - beginPoint.y
-    if fabsf(Float(dragX)) > leastDistance + 30 {
-        return .horizontal
-    }
-    if fabsf(Float(dragY)) > leastDistance {
-        return .vertical
-    }
-    return .unknown
-}
+
+
