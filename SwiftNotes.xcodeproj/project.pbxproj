@@ -79,6 +79,7 @@
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
 		7A4736AC246AFDCC0071115F /* DictionaryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736AB246AFDCC0071115F /* DictionaryPage.swift */; };
 		7A4736CC246B015F0071115F /* EnumPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CB246B015F0071115F /* EnumPage.swift */; };
+		7A4736CE246C4B580071115F /* TouchGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CD246C4B580071115F /* TouchGesturePage.swift */; };
 		7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58124169DF900CBF18D /* UIListPage.swift */; };
 		7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58324169F2D00CBF18D /* MaskPage.swift */; };
 		7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5852416A06400CBF18D /* DissolvePage.swift */; };
@@ -478,6 +479,7 @@
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7A4736AB246AFDCC0071115F /* DictionaryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryPage.swift; sourceTree = "<group>"; };
 		7A4736CB246B015F0071115F /* EnumPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPage.swift; sourceTree = "<group>"; };
+		7A4736CD246C4B580071115F /* TouchGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchGesturePage.swift; sourceTree = "<group>"; };
 		7A58D58124169DF900CBF18D /* UIListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListPage.swift; sourceTree = "<group>"; };
 		7A58D58324169F2D00CBF18D /* MaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPage.swift; sourceTree = "<group>"; };
 		7A58D5852416A06400CBF18D /* DissolvePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvePage.swift; sourceTree = "<group>"; };
@@ -758,8 +760,9 @@
 			children = (
 				7A62A17F244C92670090D128 /* GestureListPage.swift */,
 				7A62A1A0244C93E90090D128 /* DisablePopGesturePage.swift */,
-				7A62A1A2244C99290090D128 /* SwipeGesturePage.swift */,
 				7A62A1A4244CA9790090D128 /* PinchGesturePage.swift */,
+				7A62A1A2244C99290090D128 /* SwipeGesturePage.swift */,
+				7A4736CD246C4B580071115F /* TouchGesturePage.swift */,
 			);
 			path = GestureList;
 			sourceTree = "<group>";
@@ -1418,6 +1421,7 @@
 				7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */,
 				7AF7B16F2436351800738C65 /* TimerPage.swift in Sources */,
 				7A28833F244A02A500591C29 /* ActionSheetPage.swift in Sources */,
+				7A4736CE246C4B580071115F /* TouchGesturePage.swift in Sources */,
 				7A2AC3722409106000B95E43 /* TimePage.swift in Sources */,
 				7A21615C238986AF00D5A93A /* DatePickerPage.swift in Sources */,
 				7A21615D238986AF00D5A93A /* PageControlPage.swift in Sources */,

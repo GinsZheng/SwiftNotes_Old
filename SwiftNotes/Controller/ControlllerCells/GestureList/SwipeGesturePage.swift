@@ -32,6 +32,8 @@ class CSSwipeGesturePage: UIViewController {
             print("向下滑动")
         }
     }
+    
+
 }
 
 /*

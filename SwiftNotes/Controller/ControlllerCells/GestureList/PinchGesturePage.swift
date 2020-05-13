@@ -21,5 +21,7 @@ class CSPinchGesturePage: UIViewController {
     @objc func pinchGesture() {
         print("Pinch")
     }
+    
+
 }
 
