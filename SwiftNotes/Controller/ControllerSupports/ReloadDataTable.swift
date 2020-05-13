@@ -15,6 +15,7 @@ class CSReloadDataTable: SQLiteManager {
     let id = Expression<Int>("id")
     let itemName = Expression<String>("itemName")
 
+    @discardableResult
     func getTable() -> Table {
         let table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)

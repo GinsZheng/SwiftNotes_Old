@@ -77,6 +77,8 @@
 		7A3647F9238AD062000BBECD /* ItemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* ItemTable.swift */; };
 		7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
+		7A4736AC246AFDCC0071115F /* DictionaryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736AB246AFDCC0071115F /* DictionaryPage.swift */; };
+		7A4736CC246B015F0071115F /* EnumPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CB246B015F0071115F /* EnumPage.swift */; };
 		7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58124169DF900CBF18D /* UIListPage.swift */; };
 		7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58324169F2D00CBF18D /* MaskPage.swift */; };
 		7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5852416A06400CBF18D /* DissolvePage.swift */; };
@@ -92,6 +94,7 @@
 		7A62A1F92461AB980090D128 /* CustomPopupWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1F82461AB980090D128 /* CustomPopupWindow.swift */; };
 		7A62A1FC24645CD90090D128 /* UserDefaultsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1FB24645CD90090D128 /* UserDefaultsPage.swift */; };
 		7A62A1FE24645D420090D128 /* DataSaveListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1FD24645D420090D128 /* DataSaveListVC.swift */; };
+		7A62A2002465B8F60090D128 /* OperatorAtPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1FF2465B8F60090D128 /* OperatorAtPage.swift */; };
 		7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A64873F23FAE319006B6FC1 /* LoadingPage.swift */; };
 		7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A65113A23D6A332005E4FD4 /* UIClass.swift */; };
 		7A702DA82434E99600EB1FF3 /* JumpListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A702DA72434E99600EB1FF3 /* JumpListPage.swift */; };
@@ -473,6 +476,8 @@
 		7A3647F8238AD062000BBECD /* ItemTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTable.swift; sourceTree = "<group>"; };
 		7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
+		7A4736AB246AFDCC0071115F /* DictionaryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryPage.swift; sourceTree = "<group>"; };
+		7A4736CB246B015F0071115F /* EnumPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPage.swift; sourceTree = "<group>"; };
 		7A58D58124169DF900CBF18D /* UIListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListPage.swift; sourceTree = "<group>"; };
 		7A58D58324169F2D00CBF18D /* MaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPage.swift; sourceTree = "<group>"; };
 		7A58D5852416A06400CBF18D /* DissolvePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvePage.swift; sourceTree = "<group>"; };
@@ -488,6 +493,7 @@
 		7A62A1F82461AB980090D128 /* CustomPopupWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopupWindow.swift; sourceTree = "<group>"; };
 		7A62A1FB24645CD90090D128 /* UserDefaultsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsPage.swift; sourceTree = "<group>"; };
 		7A62A1FD24645D420090D128 /* DataSaveListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSaveListVC.swift; sourceTree = "<group>"; };
+		7A62A1FF2465B8F60090D128 /* OperatorAtPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorAtPage.swift; sourceTree = "<group>"; };
 		7A64873F23FAE319006B6FC1 /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		7A65113A23D6A332005E4FD4 /* UIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIClass.swift; sourceTree = "<group>"; };
 		7A702DA72434E99600EB1FF3 /* JumpListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpListPage.swift; sourceTree = "<group>"; };
@@ -823,6 +829,8 @@
 				7A7B5D3B23C05A150079A931 /* ArraysPage.swift */,
 				7A62A1A6244CB51C0090D128 /* DataOperate.swift */,
 				7A62A1FA24645CA30090D128 /* DataSave */,
+				7A4736AB246AFDCC0071115F /* DictionaryPage.swift */,
+				7A4736CB246B015F0071115F /* EnumPage.swift */,
 				7A7D1C5B241CC4C900E08EA1 /* ItemModel */,
 				7A7F97C5241DF1B8000F1E31 /* ProgressModel */,
 				7A33086823CC48A30021BA5B /* RequestPage.swift */,
@@ -942,6 +950,7 @@
 				7A64873F23FAE319006B6FC1 /* LoadingPage.swift */,
 				7A21612E2389869D00D5A93A /* MenuControllerPage.swift */,
 				7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */,
+				7A62A1FF2465B8F60090D128 /* OperatorAtPage.swift */,
 				7A2161302389869D00D5A93A /* PlistPage.swift */,
 				7A2161312389869D00D5A93A /* ProtocolPage.swift */,
 				7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */,
@@ -1401,6 +1410,7 @@
 				7A2161142389857700D5A93A /* Constant.swift in Sources */,
 				7A216155238986AF00D5A93A /* ScrollViewPage.swift in Sources */,
 				7A216156238986AF00D5A93A /* SwitchPage.swift in Sources */,
+				7A62A2002465B8F60090D128 /* OperatorAtPage.swift in Sources */,
 				7A216154238986AF00D5A93A /* LabelPage.swift in Sources */,
 				7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */,
 				7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */,
@@ -1419,6 +1429,7 @@
 				7A7D1C3A241CB9F100E08EA1 /* ItemInsertPage.swift in Sources */,
 				7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */,
 				7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */,
+				7A4736CC246B015F0071115F /* EnumPage.swift in Sources */,
 				7A1E5A4A24363EA40074DA7F /* Timer.swift in Sources */,
 				7A58D5C92417F05100CBF18D /* DatePicker.swift in Sources */,
 				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
@@ -1428,6 +1439,7 @@
 				7A62A1F92461AB980090D128 /* CustomPopupWindow.swift in Sources */,
 				7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */,
 				7A62A1F3245C7F2E0090D128 /* Toast.swift in Sources */,
+				7A4736AC246AFDCC0071115F /* DictionaryPage.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
 				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,

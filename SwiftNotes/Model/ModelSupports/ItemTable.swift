@@ -18,6 +18,7 @@ class CSItemTable: SQLiteManager {
     let totalProgress = Expression<Int>("totalProgress")
     let color = Expression<Int>("color")
     
+    @discardableResult
     func getTable() -> Table {
         let table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)

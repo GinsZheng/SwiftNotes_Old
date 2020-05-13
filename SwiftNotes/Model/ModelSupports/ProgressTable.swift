@@ -26,6 +26,7 @@ class CSProgressTable: SQLiteManager {
     let endTime = Expression<Int>("endTime")
     let itemId = Expression<Int>("itemId")
     
+    @discardableResult
     func getTable() -> Table {
         let table = super.getTable(tableName: tableName) { (t) in
             t.column(id, primaryKey: true)

@@ -16,7 +16,7 @@ class TestVC: UIViewController, UITextFieldDelegate {
     
     let imgView = UIImageView()
     
-    var userDefault = UserDefaults.standard
+    let userDefault = UserDefaults.standard.integer(forKey: "startTime")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +24,12 @@ class TestVC: UIViewController, UITextFieldDelegate {
         
 //        userDefault.set(1584855000, forKey: "startTime")
 //        userDefault.set(12345, forKey: "Int")
-        var intValue = userDefault.integer(forKey: "startTime")
-        print(intValue)
+//        var intValue = userDefault.integer(forKey: "startTime")
+//        print(intValue)
         
+        UserDefaults.standard.set(1234, forKey: "startTime")
+        let intValue = UserDefaults.standard.integer(forKey: "startTime")
+        print(intValue)
         
         
         
