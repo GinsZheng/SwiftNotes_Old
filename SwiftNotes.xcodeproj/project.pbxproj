@@ -80,6 +80,9 @@
 		7A4736AC246AFDCC0071115F /* DictionaryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736AB246AFDCC0071115F /* DictionaryPage.swift */; };
 		7A4736CC246B015F0071115F /* EnumPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CB246B015F0071115F /* EnumPage.swift */; };
 		7A4736CE246C4B580071115F /* TouchGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CD246C4B580071115F /* TouchGesturePage.swift */; };
+		7A4736D0246DA0AA0071115F /* TestPresentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CF246DA0AA0071115F /* TestPresentVC.swift */; };
+		7A4736D2246DA6500071115F /* DismissPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D1246DA64F0071115F /* DismissPage.swift */; };
+		7A4736D4246DAD940071115F /* PanGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D3246DAD940071115F /* PanGesturePage.swift */; };
 		7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58124169DF900CBF18D /* UIListPage.swift */; };
 		7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58324169F2D00CBF18D /* MaskPage.swift */; };
 		7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5852416A06400CBF18D /* DissolvePage.swift */; };
@@ -480,6 +483,9 @@
 		7A4736AB246AFDCC0071115F /* DictionaryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryPage.swift; sourceTree = "<group>"; };
 		7A4736CB246B015F0071115F /* EnumPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPage.swift; sourceTree = "<group>"; };
 		7A4736CD246C4B580071115F /* TouchGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchGesturePage.swift; sourceTree = "<group>"; };
+		7A4736CF246DA0AA0071115F /* TestPresentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPresentVC.swift; sourceTree = "<group>"; };
+		7A4736D1246DA64F0071115F /* DismissPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPage.swift; sourceTree = "<group>"; };
+		7A4736D3246DAD940071115F /* PanGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGesturePage.swift; sourceTree = "<group>"; };
 		7A58D58124169DF900CBF18D /* UIListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListPage.swift; sourceTree = "<group>"; };
 		7A58D58324169F2D00CBF18D /* MaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPage.swift; sourceTree = "<group>"; };
 		7A58D5852416A06400CBF18D /* DissolvePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvePage.swift; sourceTree = "<group>"; };
@@ -659,6 +665,7 @@
 				7A27506522ABA25600C8A474 /* AppDelegate.swift */,
 				7ACD300024042A5100D300A6 /* TabBarController.swift */,
 				7A2161242389868500D5A93A /* TestVC.swift */,
+				7A4736CF246DA0AA0071115F /* TestPresentVC.swift */,
 				7A216140238986AF00D5A93A /* View */,
 				7A21612A2389869D00D5A93A /* Controller */,
 				7A3647F3238AB268000BBECD /* Model */,
@@ -760,6 +767,7 @@
 			children = (
 				7A62A17F244C92670090D128 /* GestureListPage.swift */,
 				7A62A1A0244C93E90090D128 /* DisablePopGesturePage.swift */,
+				7A4736D3246DAD940071115F /* PanGesturePage.swift */,
 				7A62A1A4244CA9790090D128 /* PinchGesturePage.swift */,
 				7A62A1A2244C99290090D128 /* SwipeGesturePage.swift */,
 				7A4736CD246C4B580071115F /* TouchGesturePage.swift */,
@@ -780,9 +788,10 @@
 			isa = PBXGroup;
 			children = (
 				7A702DA72434E99600EB1FF3 /* JumpListPage.swift */,
-				7A0258A72434EF42006D4AB5 /* PopToSpecificPage.swift */,
+				7A4736D1246DA64F0071115F /* DismissPage.swift */,
 				7A0258A92434EF58006D4AB5 /* DismissAllPage.swift */,
 				7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */,
+				7A0258A72434EF42006D4AB5 /* PopToSpecificPage.swift */,
 			);
 			path = JumpList;
 			sourceTree = "<group>";
@@ -1393,6 +1402,7 @@
 				7A2161272389868500D5A93A /* ModelListVC.swift in Sources */,
 				7A2161192389857700D5A93A /* SetFrame.swift in Sources */,
 				7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */,
+				7A4736D4246DAD940071115F /* PanGesturePage.swift in Sources */,
 				7A21613F238986AA00D5A93A /* GeneralSubpage.swift in Sources */,
 				7A216161238986AF00D5A93A /* SegmentControlPage.swift in Sources */,
 				7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */,
@@ -1400,6 +1410,7 @@
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
 				7A62A1FE24645D420090D128 /* DataSaveListVC.swift in Sources */,
 				7A62A1A3244C99290090D128 /* SwipeGesturePage.swift in Sources */,
+				7A4736D2246DA6500071115F /* DismissPage.swift in Sources */,
 				7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */,
 				7AA3C2B1241CCC6000F77711 /* ItemUpdatePage.swift in Sources */,
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
@@ -1430,6 +1441,7 @@
 				7A2161152389857700D5A93A /* SetColorInHex.swift in Sources */,
 				7A62A180244C92670090D128 /* GestureListPage.swift in Sources */,
 				7A28833A2448BB9700591C29 /* AlertOneBtnPage.swift in Sources */,
+				7A4736D0246DA0AA0071115F /* TestPresentVC.swift in Sources */,
 				7A7D1C3A241CB9F100E08EA1 /* ItemInsertPage.swift in Sources */,
 				7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */,
 				7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */,

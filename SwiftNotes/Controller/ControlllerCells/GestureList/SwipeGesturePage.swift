@@ -20,7 +20,7 @@ class CSSwipeGesturePage: UIViewController {
           
         let swipeDown = UISwipeGestureRecognizer(target:self, action:#selector(swipeGesture(_:)))
         swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-        self.view.addGestureRecognizer(swipeDown)
+        view.addGestureRecognizer(swipeDown)
     }
     
     //滑动手势
@@ -37,5 +37,5 @@ class CSSwipeGesturePage: UIViewController {
 }
 
 /*
- 在 present = .automitic 之下，自定义的滑动手势被屏蔽
+ 在 present = .automitic 之下，swipe手势被屏蔽，而pan手势有效且覆盖下滑关闭
  */

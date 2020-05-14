@@ -8,7 +8,7 @@
 
 import UIKit
 // 这是从List的PopAndDismissPage项进入后的最后一个页面
-class CSPopAndDismissPage: UIViewController {
+class CSPopAndDismissPage3: UIViewController {
     
     public var textStr = "Pop and dismiss page"
     let label = UILabel()
@@ -37,7 +37,7 @@ class CSPopAndDismissPage: UIViewController {
 
 
 // 这是从List的PopAndDismissPage项进入后的第一个页面
-class CSPushFirstPage: UIViewController {
+class CSPopAndDismissPage1: UIViewController {
     
     public var textStr = "Push First"
     let label = UILabel()
@@ -57,14 +57,14 @@ class CSPushFirstPage: UIViewController {
     }
 
     @objc func pushFirst() {
-        self.push(toTarget: CSPresentThenPage())
+        self.push(toTarget: CSPopAndDismissPage2())
     }
 
 }
 
 
 
-class CSPresentThenPage: UIViewController {
+class CSPopAndDismissPage2: UIViewController {
     
     public var textStr = "Present then"
     let label = UILabel()
@@ -84,7 +84,7 @@ class CSPresentThenPage: UIViewController {
     }
 
     @objc func presentThen() {
-        self.present(toTarget: CSPopAndDismissPage())
+        self.present(toTarget: CSPopAndDismissPage3())
     }
 
 }

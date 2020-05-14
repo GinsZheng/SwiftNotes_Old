@@ -10,8 +10,8 @@ import UIKit
 
 class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleList = ["Disable Pop", "Pinch", "Swipe", "Touch"]
-    let pageList = [CSDisablePopGesturePage(), CSPinchGesturePage(), CSSwipeGesturePage(), CSTouchGesturePage()]
+    let titleList = ["Disable Pop","Pan", "Pinch", "Swipe", "Touch"]
+    let pageList = [CSDisablePopGesturePage(), CSPanGesturePage(), CSPinchGesturePage(), CSSwipeGesturePage(), CSTouchGesturePage()]
     var cardHeight: CGFloat = 0
     
     let tableView = UITableView()
@@ -53,7 +53,6 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.push(toTarget: pageList[indexPath.row])
-//        self.present(toTarget: pageList[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
