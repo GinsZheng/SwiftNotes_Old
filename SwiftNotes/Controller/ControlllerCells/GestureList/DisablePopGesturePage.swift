@@ -16,7 +16,6 @@ class CSDisablePopGesturePage: UIViewController {
         
         // 禁用侧滑返回
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        
     }
     
     

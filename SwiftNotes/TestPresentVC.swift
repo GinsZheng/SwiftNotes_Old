@@ -22,14 +22,44 @@ class TestPresentVC: UIViewController {
 
 //        self.isModalInPresentation = true
         
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(activeActionSheet))
-        view.addGestureRecognizer(pan)
+        let scrollView = UIScrollView()
+        scrollView.set(superview: view)
+        scrollView.setFrame(left: 0, top: 0, width: kScreenWidth, height: 400)
+        scrollView.contentSize = CGSize(width: kScreenWidth, height: kScreenWidth/375*812)
+        scrollView.OptimizeEdgePanGesture(of: self)
+        
+        let image = UIImageView()
+        image.set(superview: scrollView, imageName: "iPhoneX")
+        image.setFrame(left: 0, top: 0, width: kScreenWidth, height: kScreenWidth/375*812)
+        
         
     }
-
-    @objc func activeActionSheet() {
-        
-        self.view.y = 100
+    
+    
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch: AnyObject in touches {
+            let t: UITouch = touch as! UITouch
+            let point = t.location(in: self.view)
+            print("移动中\(point)")
+            
+//            actionSheet(actionsTitle: ["放弃"], actionsStyle: [.destructive], actionsHandler: [{
+//                (x) in
+//                self.dismiss()
+//                }])
+        }
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //获取点击的坐标位置
+        for touch: AnyObject in touches {
+            let t: UITouch = touch as! UITouch
+            let point = t.location(in: self.view)
+            print(point)
+        }
+        
+    }
+    
+    
 }
 

@@ -690,12 +690,15 @@ extension UITableView {
 
 extension UIScrollView {
     func OptimizeEdgePanGesture(of viewController: UIViewController) {
-        let gestureArray: [AnyObject] = viewController.navigationController!.view.gestureRecognizers!
-        
-        for gesture in gestureArray {
-            if gesture.isKind(of: UIScreenEdgePanGestureRecognizer.self) {
-                self.panGestureRecognizer.require(toFail: gesture as! UIGestureRecognizer)
+        let gestureArray = viewController.navigationController?.view.gestureRecognizers
+        if gestureArray != nil {
+            for gesture in gestureArray! {
+                if gesture.isKind(of: UIScreenEdgePanGestureRecognizer.self) {
+                    self.panGestureRecognizer.require(toFail: gesture)
+                }
             }
+        } else {
+            print("no gesture")
         }
     }
 }

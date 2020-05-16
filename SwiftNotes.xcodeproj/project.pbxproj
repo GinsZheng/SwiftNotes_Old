@@ -79,10 +79,11 @@
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
 		7A4736AC246AFDCC0071115F /* DictionaryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736AB246AFDCC0071115F /* DictionaryPage.swift */; };
 		7A4736CC246B015F0071115F /* EnumPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CB246B015F0071115F /* EnumPage.swift */; };
-		7A4736CE246C4B580071115F /* TouchGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CD246C4B580071115F /* TouchGesturePage.swift */; };
+		7A4736CE246C4B580071115F /* TouchesBeganGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CD246C4B580071115F /* TouchesBeganGesturePage.swift */; };
 		7A4736D0246DA0AA0071115F /* TestPresentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CF246DA0AA0071115F /* TestPresentVC.swift */; };
 		7A4736D2246DA6500071115F /* DismissPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D1246DA64F0071115F /* DismissPage.swift */; };
 		7A4736D4246DAD940071115F /* PanGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D3246DAD940071115F /* PanGesturePage.swift */; };
+		7A4736D62470371F0071115F /* TouchesMovedGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D52470371F0071115F /* TouchesMovedGesturePage.swift */; };
 		7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58124169DF900CBF18D /* UIListPage.swift */; };
 		7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58324169F2D00CBF18D /* MaskPage.swift */; };
 		7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5852416A06400CBF18D /* DissolvePage.swift */; };
@@ -482,10 +483,11 @@
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7A4736AB246AFDCC0071115F /* DictionaryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryPage.swift; sourceTree = "<group>"; };
 		7A4736CB246B015F0071115F /* EnumPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPage.swift; sourceTree = "<group>"; };
-		7A4736CD246C4B580071115F /* TouchGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchGesturePage.swift; sourceTree = "<group>"; };
+		7A4736CD246C4B580071115F /* TouchesBeganGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesBeganGesturePage.swift; sourceTree = "<group>"; };
 		7A4736CF246DA0AA0071115F /* TestPresentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPresentVC.swift; sourceTree = "<group>"; };
 		7A4736D1246DA64F0071115F /* DismissPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPage.swift; sourceTree = "<group>"; };
 		7A4736D3246DAD940071115F /* PanGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGesturePage.swift; sourceTree = "<group>"; };
+		7A4736D52470371F0071115F /* TouchesMovedGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesMovedGesturePage.swift; sourceTree = "<group>"; };
 		7A58D58124169DF900CBF18D /* UIListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListPage.swift; sourceTree = "<group>"; };
 		7A58D58324169F2D00CBF18D /* MaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPage.swift; sourceTree = "<group>"; };
 		7A58D5852416A06400CBF18D /* DissolvePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvePage.swift; sourceTree = "<group>"; };
@@ -770,7 +772,8 @@
 				7A4736D3246DAD940071115F /* PanGesturePage.swift */,
 				7A62A1A4244CA9790090D128 /* PinchGesturePage.swift */,
 				7A62A1A2244C99290090D128 /* SwipeGesturePage.swift */,
-				7A4736CD246C4B580071115F /* TouchGesturePage.swift */,
+				7A4736CD246C4B580071115F /* TouchesBeganGesturePage.swift */,
+				7A4736D52470371F0071115F /* TouchesMovedGesturePage.swift */,
 			);
 			path = GestureList;
 			sourceTree = "<group>";
@@ -1432,7 +1435,7 @@
 				7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */,
 				7AF7B16F2436351800738C65 /* TimerPage.swift in Sources */,
 				7A28833F244A02A500591C29 /* ActionSheetPage.swift in Sources */,
-				7A4736CE246C4B580071115F /* TouchGesturePage.swift in Sources */,
+				7A4736CE246C4B580071115F /* TouchesBeganGesturePage.swift in Sources */,
 				7A2AC3722409106000B95E43 /* TimePage.swift in Sources */,
 				7A21615C238986AF00D5A93A /* DatePickerPage.swift in Sources */,
 				7A21615D238986AF00D5A93A /* PageControlPage.swift in Sources */,
@@ -1472,6 +1475,7 @@
 				7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */,
 				7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */,
 				7A702DA82434E99600EB1FF3 /* JumpListPage.swift in Sources */,
+				7A4736D62470371F0071115F /* TouchesMovedGesturePage.swift in Sources */,
 				7AA3259C243B6FC000D5308D /* StringPage.swift in Sources */,
 				7A88A71024227FBE00BF1611 /* Formatter.swift in Sources */,
 				7A216158238986AF00D5A93A /* TextViewPage.swift in Sources */,

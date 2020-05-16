@@ -25,7 +25,6 @@ class CSSwipeGesturePage: UIViewController {
     
     //滑动手势
     @objc func swipeGesture(_ swip: UISwipeGestureRecognizer) {
-        print("开始滑动")
         if swip.direction == UISwipeGestureRecognizer.Direction.up {
             print("向上滑动")
         }else if swip.direction == UISwipeGestureRecognizer.Direction.down {

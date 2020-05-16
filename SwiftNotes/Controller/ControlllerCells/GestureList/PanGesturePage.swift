@@ -10,6 +10,8 @@ import UIKit
 
 class CSPanGesturePage: UIViewController {
     
+    let myView = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -21,6 +23,7 @@ class CSPanGesturePage: UIViewController {
     @objc func panGes() {
         print("pan")
     }
+    
 }
 
 /*

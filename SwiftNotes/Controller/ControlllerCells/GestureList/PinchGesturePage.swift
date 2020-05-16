@@ -22,6 +22,11 @@ class CSPinchGesturePage: UIViewController {
         print("Pinch")
     }
     
-
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        for touch: AnyObject in touches {
+//            let t: UITouch = touch as! UITouch
+//            print(t.location(in: self.view))
+//        }
+//    }
 }
 
