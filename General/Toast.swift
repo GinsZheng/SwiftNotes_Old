@@ -164,7 +164,7 @@ open class CSToast:NSObject {
         }
     }
     
-    fileprivate  func hideAnimation() {
+    fileprivate func hideAnimation() {
         
         UIView.animate(withDuration: 0.15, delay: 0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             

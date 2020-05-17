@@ -84,6 +84,8 @@
 		7A4736D2246DA6500071115F /* DismissPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D1246DA64F0071115F /* DismissPage.swift */; };
 		7A4736D4246DAD940071115F /* PanGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D3246DAD940071115F /* PanGesturePage.swift */; };
 		7A4736D62470371F0071115F /* TouchesMovedGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D52470371F0071115F /* TouchesMovedGesturePage.swift */; };
+		7A4736D8247191B90071115F /* LongPressGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D7247191B90071115F /* LongPressGesturePage.swift */; };
+		7A473715247199200071115F /* TapGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473714247199200071115F /* TapGesturePage.swift */; };
 		7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58124169DF900CBF18D /* UIListPage.swift */; };
 		7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58324169F2D00CBF18D /* MaskPage.swift */; };
 		7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5852416A06400CBF18D /* DissolvePage.swift */; };
@@ -488,6 +490,8 @@
 		7A4736D1246DA64F0071115F /* DismissPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPage.swift; sourceTree = "<group>"; };
 		7A4736D3246DAD940071115F /* PanGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanGesturePage.swift; sourceTree = "<group>"; };
 		7A4736D52470371F0071115F /* TouchesMovedGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesMovedGesturePage.swift; sourceTree = "<group>"; };
+		7A4736D7247191B90071115F /* LongPressGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressGesturePage.swift; sourceTree = "<group>"; };
+		7A473714247199200071115F /* TapGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGesturePage.swift; sourceTree = "<group>"; };
 		7A58D58124169DF900CBF18D /* UIListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListPage.swift; sourceTree = "<group>"; };
 		7A58D58324169F2D00CBF18D /* MaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPage.swift; sourceTree = "<group>"; };
 		7A58D5852416A06400CBF18D /* DissolvePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvePage.swift; sourceTree = "<group>"; };
@@ -769,9 +773,11 @@
 			children = (
 				7A62A17F244C92670090D128 /* GestureListPage.swift */,
 				7A62A1A0244C93E90090D128 /* DisablePopGesturePage.swift */,
+				7A4736D7247191B90071115F /* LongPressGesturePage.swift */,
 				7A4736D3246DAD940071115F /* PanGesturePage.swift */,
 				7A62A1A4244CA9790090D128 /* PinchGesturePage.swift */,
 				7A62A1A2244C99290090D128 /* SwipeGesturePage.swift */,
+				7A473714247199200071115F /* TapGesturePage.swift */,
 				7A4736CD246C4B580071115F /* TouchesBeganGesturePage.swift */,
 				7A4736D52470371F0071115F /* TouchesMovedGesturePage.swift */,
 			);
@@ -1381,6 +1387,7 @@
 			files = (
 				7A2161382389869D00D5A93A /* ProtocolPage.swift in Sources */,
 				7A62A1AF24548CCA0090D128 /* Extension.swift in Sources */,
+				7A4736D8247191B90071115F /* LongPressGesturePage.swift in Sources */,
 				7A2161292389868500D5A93A /* ControllerListVC.swift in Sources */,
 				7A21615B238986AF00D5A93A /* WebViewPage.swift in Sources */,
 				7A21611B2389857700D5A93A /* Colors.swift in Sources */,
@@ -1458,6 +1465,7 @@
 				7A62A1F92461AB980090D128 /* CustomPopupWindow.swift in Sources */,
 				7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */,
 				7A62A1F3245C7F2E0090D128 /* Toast.swift in Sources */,
+				7A473715247199200071115F /* TapGesturePage.swift in Sources */,
 				7A4736AC246AFDCC0071115F /* DictionaryPage.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
 				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,

@@ -10,8 +10,8 @@ import UIKit
 
 class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleList = ["Disable Pop", "Pan", "Pinch", "Swipe", "TouchesBegan", "TouchesMoved"]
-    let pageList = [CSDisablePopGesturePage(), CSPanGesturePage(), CSPinchGesturePage(), CSSwipeGesturePage(), CSTouchesBeganGesturePage(), CSTouchesMovedGesturePage()]
+    let titleList = ["Disable Pop", "Long Press", "Pan", "Pinch", "Swipe", "Tap", "TouchesBegan", "TouchesMoved"]
+    let pageList = [CSDisablePopGesturePage(), CSLongPressGesturePage(), CSPanGesturePage(), CSPinchGesturePage(), CSSwipeGesturePage(), CSTapGesturePage(), CSTouchesBeganGesturePage(), CSTouchesMovedGesturePage()]
     var cardHeight: CGFloat = 0
     
     let tableView = UITableView()
