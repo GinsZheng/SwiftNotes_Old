@@ -11,8 +11,8 @@ import UIKit
 class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    let titleList = ["Animation", "Button", "Date Picker", "Image View", "Label", "Layer", "Nav Controller", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Styles", "Switch", "Table View", "Text Field", "Text View", "Transition", "UIList", "View", "Web View", "Window"]
-    let pageList = [CSAnimationPage(), CSButtonPage(), CSDatePickerPage(), CSImageViewPage(), CSLabelPage(), CSLayerView(), CSNavControllerPage(), CSPageControlPage(), CSPickerViewPage(), CSScrollViewPage(), CSSegmentControlPage(), CSSliderPage(), CSStackViewPage(), CSStepperPage(), CSStylesPage(), CSSwitchPage(),CSTableViewPage(),  CSTextFieldPage(), CSTextViewPage(), CSTransitionListPage(), CSUIListPage(), CSViewPage(), CSWebViewPage(), CSWindowPage()]
+    let titleList = ["Animation", "Button", "Chart", "Date Picker", "Image View", "Label", "Layer", "Nav Controller", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Styles", "Switch", "Table View", "Text Field", "Text View", "Transition", "UIList", "View", "Web View", "Window"]
+    let pageList = [CSAnimationPage(), CSButtonPage(), CSChartListVC(), CSDatePickerPage(), CSImageViewPage(), CSLabelPage(), CSLayerView(), CSNavControllerPage(), CSPageControlPage(), CSPickerViewPage(), CSScrollViewPage(), CSSegmentControlPage(), CSSliderPage(), CSStackViewPage(), CSStepperPage(), CSStylesPage(), CSSwitchPage(),CSTableViewPage(),  CSTextFieldPage(), CSTextViewPage(), CSTransitionListPage(), CSUIListPage(), CSViewPage(), CSWebViewPage(), CSWindowPage()]
     
     
     override func viewDidLoad() {

@@ -10,8 +10,8 @@ import UIKit
 
 class CSJumpListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleList = ["Dismiss", "Dismiss all Page", "Pop to specific page", "Pop and dismiss Page"]
-    let pageList = [CSDismissPage1(), CSDismissAllPage1(), CSPopToSpecificPage(), CSPopAndDismissPage1()]
+    let titleList = ["Dismiss", "Dismiss all Page", "Pop to specific page", "Pop and dismiss Page", "Present"]
+    let pageList = [CSDismissPage1(), CSDismissAllPage1(), CSPopToSpecificPage(), CSPopAndDismissPage1(), CSPresentPage()]
     var cardHeight: CGFloat = 0
     
     let tableView = UITableView()

@@ -68,6 +68,14 @@
 		7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */; };
 		7A2AC3722409106000B95E43 /* TimePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2AC3712409105F00B95E43 /* TimePage.swift */; };
 		7A2AC398240A791300B95E43 /* TransitionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2AC397240A791300B95E43 /* TransitionPage.swift */; };
+		7A2E72252472E4CD00D0B9A2 /* ChartListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E72242472E4CD00D0B9A2 /* ChartListVC.swift */; };
+		7A2E724A2472E5B500D0B9A2 /* ColumnChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E72492472E5B500D0B9A2 /* ColumnChartPage.swift */; };
+		7A2E724C2472E5C800D0B9A2 /* BarChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E724B2472E5C800D0B9A2 /* BarChartPage.swift */; };
+		7A2E724E2472E5E000D0B9A2 /* LineChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E724D2472E5E000D0B9A2 /* LineChartPage.swift */; };
+		7A2E724F2472E70400D0B9A2 /* SwiftCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4737202472E4570071115F /* SwiftCharts.framework */; };
+		7A2E72502472E70400D0B9A2 /* SwiftCharts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4737202472E4570071115F /* SwiftCharts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A2E72542472EBD000D0B9A2 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E72522472EBD000D0B9A2 /* Env.swift */; };
+		7A2E72552472EBD000D0B9A2 /* ExamplesDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E72532472EBD000D0B9A2 /* ExamplesDefaults.swift */; };
 		7A31324F2392A6680008298C /* ClassPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31324E2392A6680008298C /* ClassPage.swift */; };
 		7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33086823CC48A30021BA5B /* RequestPage.swift */; };
 		7A3308C323CC6DAD0021BA5B /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3308C223CC6DAD0021BA5B /* Styles.swift */; };
@@ -86,6 +94,7 @@
 		7A4736D62470371F0071115F /* TouchesMovedGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D52470371F0071115F /* TouchesMovedGesturePage.swift */; };
 		7A4736D8247191B90071115F /* LongPressGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736D7247191B90071115F /* LongPressGesturePage.swift */; };
 		7A473715247199200071115F /* TapGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473714247199200071115F /* TapGesturePage.swift */; };
+		7A4737172472DA7D0071115F /* PresentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4737162472DA7D0071115F /* PresentPage.swift */; };
 		7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58124169DF900CBF18D /* UIListPage.swift */; };
 		7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58324169F2D00CBF18D /* MaskPage.swift */; };
 		7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5852416A06400CBF18D /* DissolvePage.swift */; };
@@ -242,6 +251,27 @@
 			remoteGlobalIDString = A121AC451CA35C79005A31D1;
 			remoteInfo = "SQLite watchOS";
 		};
+		7A47371F2472E4570071115F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A4737182472E4570071115F /* SwiftCharts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06405DA61B8AA74700A689FF;
+			remoteInfo = SwiftCharts;
+		};
+		7A4737212472E4570071115F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A4737182472E4570071115F /* SwiftCharts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06342AC11B8AAD7F001C9F5D;
+			remoteInfo = Examples;
+		};
+		7A4737232472E4570071115F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A4737182472E4570071115F /* SwiftCharts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 22E7020F1BF5B8EC00C19675;
+			remoteInfo = "SwiftCharts tvOS";
+		};
 		7A9DA3FA240A901100AFB585 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7A9DA3F5240A901100AFB585 /* SnapKit.xcodeproj */;
@@ -394,6 +424,7 @@
 				7AEB11392444D9C2005851FD /* pop.framework in Embed Frameworks */,
 				7AEE56182406CA5A001B868A /* ESTabBarController.framework in Embed Frameworks */,
 				7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */,
+				7A2E72502472E70400D0B9A2 /* SwiftCharts.framework in Embed Frameworks */,
 				7AEB11372444D9C0005851FD /* Hero.framework in Embed Frameworks */,
 				7A9DA3FF240A902600AFB585 /* SnapKit.framework in Embed Frameworks */,
 				7AFF38D822AF828300AC4958 /* Alamofire.framework in Embed Frameworks */,
@@ -475,6 +506,12 @@
 		7A2AC3712409105F00B95E43 /* TimePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePage.swift; sourceTree = "<group>"; };
 		7A2AC397240A791300B95E43 /* TransitionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionPage.swift; sourceTree = "<group>"; };
 		7A2AC40E240A8ABB00B95E43 /* Hero.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Hero.xcodeproj; path = Hero/Hero.xcodeproj; sourceTree = "<group>"; };
+		7A2E72242472E4CD00D0B9A2 /* ChartListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListVC.swift; sourceTree = "<group>"; };
+		7A2E72492472E5B500D0B9A2 /* ColumnChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnChartPage.swift; sourceTree = "<group>"; };
+		7A2E724B2472E5C800D0B9A2 /* BarChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartPage.swift; sourceTree = "<group>"; };
+		7A2E724D2472E5E000D0B9A2 /* LineChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartPage.swift; sourceTree = "<group>"; };
+		7A2E72522472EBD000D0B9A2 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Env.swift; path = ../../../../../../../../../../SwiftCharts/Examples/Examples/Env.swift; sourceTree = "<group>"; };
+		7A2E72532472EBD000D0B9A2 /* ExamplesDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamplesDefaults.swift; path = ../../../../../../../../../../SwiftCharts/Examples/Examples/ExamplesDefaults.swift; sourceTree = "<group>"; };
 		7A31324E2392A6680008298C /* ClassPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPage.swift; sourceTree = "<group>"; };
 		7A33086823CC48A30021BA5B /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
 		7A3308C223CC6DAD0021BA5B /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -492,6 +529,8 @@
 		7A4736D52470371F0071115F /* TouchesMovedGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesMovedGesturePage.swift; sourceTree = "<group>"; };
 		7A4736D7247191B90071115F /* LongPressGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongPressGesturePage.swift; sourceTree = "<group>"; };
 		7A473714247199200071115F /* TapGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGesturePage.swift; sourceTree = "<group>"; };
+		7A4737162472DA7D0071115F /* PresentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentPage.swift; sourceTree = "<group>"; };
+		7A4737182472E4570071115F /* SwiftCharts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCharts.xcodeproj; path = SwiftCharts/SwiftCharts.xcodeproj; sourceTree = "<group>"; };
 		7A58D58124169DF900CBF18D /* UIListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListPage.swift; sourceTree = "<group>"; };
 		7A58D58324169F2D00CBF18D /* MaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPage.swift; sourceTree = "<group>"; };
 		7A58D5852416A06400CBF18D /* DissolvePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvePage.swift; sourceTree = "<group>"; };
@@ -549,6 +588,7 @@
 				7AEB11382444D9C2005851FD /* pop.framework in Frameworks */,
 				7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */,
 				7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */,
+				7A2E724F2472E70400D0B9A2 /* SwiftCharts.framework in Frameworks */,
 				7A3647EF238AB1D1000BBECD /* SQLite.framework in Frameworks */,
 				7AEE56172406CA5A001B868A /* ESTabBarController.framework in Frameworks */,
 				7A9DA3FE240A902600AFB585 /* SnapKit.framework in Frameworks */,
@@ -576,6 +616,7 @@
 		7A019B2322ABA46E0034C5A3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				7A4737182472E4570071115F /* SwiftCharts.xcodeproj */,
 				7A9DA3F5240A901100AFB585 /* SnapKit.xcodeproj */,
 				7A2AC40E240A8ABB00B95E43 /* Hero.xcodeproj */,
 				7AEE560E2406CA47001B868A /* ESTabBarControllerExample.xcodeproj */,
@@ -726,6 +767,27 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7A2E72482472E4D900D0B9A2 /* ChartList */ = {
+			isa = PBXGroup;
+			children = (
+				7A2E72242472E4CD00D0B9A2 /* ChartListVC.swift */,
+				7A2E72492472E5B500D0B9A2 /* ColumnChartPage.swift */,
+				7A2E724B2472E5C800D0B9A2 /* BarChartPage.swift */,
+				7A2E724D2472E5E000D0B9A2 /* LineChartPage.swift */,
+				7A2E72512472EBA100D0B9A2 /* ChartSupports */,
+			);
+			path = ChartList;
+			sourceTree = "<group>";
+		};
+		7A2E72512472EBA100D0B9A2 /* ChartSupports */ = {
+			isa = PBXGroup;
+			children = (
+				7A2E72522472EBD000D0B9A2 /* Env.swift */,
+				7A2E72532472EBD000D0B9A2 /* ExamplesDefaults.swift */,
+			);
+			path = ChartSupports;
+			sourceTree = "<group>";
+		};
 		7A33088923CC66850021BA5B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,6 +818,16 @@
 				7AC3B73D23CA0503004DB044 /* ModelNotes */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7A4737192472E4570071115F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A4737202472E4570071115F /* SwiftCharts.framework */,
+				7A4737222472E4570071115F /* Examples.app */,
+				7A4737242472E4570071115F /* SwiftCharts.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		7A58D56224169D1500CBF18D /* UIList */ = {
@@ -801,6 +873,7 @@
 				7A0258A92434EF58006D4AB5 /* DismissAllPage.swift */,
 				7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */,
 				7A0258A72434EF42006D4AB5 /* PopToSpecificPage.swift */,
+				7A4737162472DA7D0071115F /* PresentPage.swift */,
 			);
 			path = JumpList;
 			sourceTree = "<group>";
@@ -896,6 +969,7 @@
 			children = (
 				7A216148238986AF00D5A93A /* AnimationPage.swift */,
 				7A216141238986AF00D5A93A /* ButtonPage.swift */,
+				7A2E72482472E4D900D0B9A2 /* ChartList */,
 				7A21614A238986AF00D5A93A /* DatePickerPage.swift */,
 				7A216152238986AF00D5A93A /* ImageViewPage.swift */,
 				7A216142238986AF00D5A93A /* LabelPage.swift */,
@@ -1124,6 +1198,10 @@
 					ProjectRef = 7A3647C9238AB178000BBECD /* SQLite.xcodeproj */;
 				},
 				{
+					ProductGroup = 7A4737192472E4570071115F /* Products */;
+					ProjectRef = 7A4737182472E4570071115F /* SwiftCharts.xcodeproj */;
+				},
+				{
 					ProductGroup = 7AFF38B722AF822000AC4958 /* Products */;
 					ProjectRef = 7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */;
 				},
@@ -1220,6 +1298,27 @@
 			fileType = wrapper.framework;
 			path = SQLite.framework;
 			remoteRef = 7A3647E6238AB179000BBECD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A4737202472E4570071115F /* SwiftCharts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCharts.framework;
+			remoteRef = 7A47371F2472E4570071115F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A4737222472E4570071115F /* Examples.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = Examples.app;
+			remoteRef = 7A4737212472E4570071115F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7A4737242472E4570071115F /* SwiftCharts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCharts.framework;
+			remoteRef = 7A4737232472E4570071115F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		7A9DA3FB240A901100AFB585 /* SnapKit.framework */ = {
@@ -1397,6 +1496,7 @@
 				7A62A1A5244CA9790090D128 /* PinchGesturePage.swift in Sources */,
 				7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */,
 				7A782D6B23CF20DA00E09ED0 /* NavViewController.swift in Sources */,
+				7A2E72552472EBD000D0B9A2 /* ExamplesDefaults.swift in Sources */,
 				7A7F97E7241DF290000F1E31 /* ProgressUpdatePage.swift in Sources */,
 				7A7D1C5A241CBE6500E08EA1 /* UIPresentNav.swift in Sources */,
 				7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */,
@@ -1410,6 +1510,7 @@
 				7A216159238986AF00D5A93A /* StackViewPage.swift in Sources */,
 				7A2161162389857700D5A93A /* UIKitExtension.swift in Sources */,
 				7A2161272389868500D5A93A /* ModelListVC.swift in Sources */,
+				7A2E724A2472E5B500D0B9A2 /* ColumnChartPage.swift in Sources */,
 				7A2161192389857700D5A93A /* SetFrame.swift in Sources */,
 				7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */,
 				7A4736D4246DAD940071115F /* PanGesturePage.swift in Sources */,
@@ -1417,8 +1518,10 @@
 				7A216161238986AF00D5A93A /* SegmentControlPage.swift in Sources */,
 				7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */,
 				7AA325BD243CDB6A00D5308D /* LayerView.swift in Sources */,
+				7A2E724C2472E5C800D0B9A2 /* BarChartPage.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
 				7A62A1FE24645D420090D128 /* DataSaveListVC.swift in Sources */,
+				7A2E724E2472E5E000D0B9A2 /* LineChartPage.swift in Sources */,
 				7A62A1A3244C99290090D128 /* SwipeGesturePage.swift in Sources */,
 				7A4736D2246DA6500071115F /* DismissPage.swift in Sources */,
 				7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */,
@@ -1429,6 +1532,7 @@
 				7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */,
 				7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */,
 				7A62A1F7245CAD890090D128 /* WindowPage.swift in Sources */,
+				7A2E72542472EBD000D0B9A2 /* Env.swift in Sources */,
 				7A21611A2389857700D5A93A /* Mix.swift in Sources */,
 				7A2161282389868500D5A93A /* TestVC.swift in Sources */,
 				7A2161142389857700D5A93A /* Constant.swift in Sources */,
@@ -1436,6 +1540,7 @@
 				7A216156238986AF00D5A93A /* SwitchPage.swift in Sources */,
 				7A62A2002465B8F60090D128 /* OperatorAtPage.swift in Sources */,
 				7A216154238986AF00D5A93A /* LabelPage.swift in Sources */,
+				7A2E72252472E4CD00D0B9A2 /* ChartListVC.swift in Sources */,
 				7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */,
 				7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */,
 				7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */,
@@ -1496,6 +1601,7 @@
 				7A216160238986AF00D5A93A /* ViewPage.swift in Sources */,
 				7A216162238986AF00D5A93A /* StepperPage.swift in Sources */,
 				7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */,
+				7A4737172472DA7D0071115F /* PresentPage.swift in Sources */,
 				7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
