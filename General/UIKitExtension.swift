@@ -476,6 +476,37 @@ extension UIImageView {
         guard let url = URL(string: link) else { return }
         downloadedFrom(url: url, contentMode: mode)
     }
+    
+    // 横向虚线
+    func setDashedLine(color: String, dash: CGFloat, gap: CGFloat, lineCap: CGLineCap = .butt) {
+        
+        UIGraphicsBeginImageContextWithOptions(self.size, false, kScale)
+        self.image?.draw(in: self.bounds)
+        
+        let context:CGContext = UIGraphicsGetCurrentContext()!
+        
+        context.setLineCap(lineCap)
+        
+        let lengths:[CGFloat] = [dash, gap] // 绘制 跳过 无限循环
+        
+        var phase: CGFloat {
+            if lineCap == .butt {
+                return 0
+            } else {
+                return -height/2
+            }
+        }
+        
+        context.setStrokeColor(UIColor.hex(color).cgColor)
+        context.setLineWidth(self.height)
+        context.setLineDash(phase: phase, lengths: lengths)
+        context.move(to: CGPoint(x: 0, y: self.height/2))
+        context.addLine(to: CGPoint(x: self.width, y: self.height/2))
+        context.strokePath()
+        
+        self.image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+    }
 }
 
 
