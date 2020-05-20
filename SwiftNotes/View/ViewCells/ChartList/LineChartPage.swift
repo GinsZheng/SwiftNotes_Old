@@ -19,27 +19,37 @@ class CSLineChartPage: UIViewController {
         
         let bgView = UIView()
         bgView.set(superview: view, backgroundColor: cFFF)
+        bgView.setBorder(color: c000_5, borderWidth: 0.5)
         bgView.setShadow(y: 2, radius: 10)
         bgView.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 214)
         bgView.setCornerRadius(radius: 8)
+        
+        // 单独画y=0的虚线
+        let xAxisLine = UIImageView()
+        xAxisLine.set(superview: bgView)
+        xAxisLine.setFrame(left: 32, top: 175, width: bgView.width - 30 - 12, height: 0.5)
+        xAxisLine.setDashedLine(color: cF0F1F3, dash: 4, gap: 4)
         
 
         let labelSettings = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10), fontColor: .hex(cCCC))
         let labelYSettings = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10), fontColor: .hex(c999))
         
-        let chartPoints: [ChartPoint] = [(1, 0), (2, 24), (3, 31), (4, 80), (5, 100)].map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
+        let points = [(1, 0), (2, 24), (3, 31), (4, 50), (5, 82), (6, 82), (7, 100)]
+        let lastPoint = [(7, 100)]
+        let chartPoints: [ChartPoint] = points.map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
+        let lastchartPoint: [ChartPoint] = lastPoint.map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
         
-        
-        let axisPoints: [ChartPoint] = [(1, 20), (2, 40), (3, 60), (4, 80), (5, 100)].map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
+        let axisPoints: [ChartPoint] = points.map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
         
         let xValues = axisPoints.map{$0.x}
         let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 5, multiple: 20, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelYSettings)}, addPaddingSegmentIfEdge: false)
         
-        let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: .hex(cBlue_2C9EFF), lineWidth: 2, lineCap: .butt, animDuration: 0, animDelay: 0)
+        let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: .hex(cBlue_2C9EFF), lineWidth: 2, lineJoin: .round, lineCap: .butt, animDuration: 0, animDelay: 0)
         
         let xModel = ChartAxisModel(axisValues: xValues, lineColor: .hex(cNoColor), axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings))
         
         let yModel = ChartAxisModel(axisValues: yValues, lineColor: .hex(cNoColor), axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings.defaultVertical()))
+        
         let chartFrame = CGRect(x: 0, y: 0, width: kScreenWidth - 40, height: 214)
         
         let chartSettings = ExamplesDefaults.chartSettingsWithPanZoom
@@ -52,6 +62,28 @@ class CSLineChartPage: UIViewController {
         let settings = ChartGuideLinesDottedLayerSettings(linesColor: .hex(cF0F1F3), linesWidth: 0.5, dotWidth: 4, dotSpacing: 4)
         let guidelinesLayer = ChartGuideLinesDottedLayer(xAxisLayer: xAxisLayer, yAxisLayer: yAxisLayer, axis: .y, settings: settings)
         
+        
+        // circles layer
+        let circleViewGenerator = {(chartPointModel: ChartPointLayerModel, layer: ChartPointsLayer, chart: Chart) -> UIView? in
+            let circleView = ChartPointEllipseView(center: chartPointModel.screenLoc, diameter: 6)
+            circleView.animDuration = 0.5
+            circleView.fillColor = .hex(cBlue_2C9EFF)
+            return circleView
+        }
+        let lineCirclesLayer = ChartPointsViewsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, chartPoints: chartPoints, viewGenerator: circleViewGenerator, displayDelay: 0, delayBetweenItems: 0, mode: .translate)
+        
+        // last circles layer
+        let lastCircleViewGenerator = {(chartPointModel: ChartPointLayerModel, layer: ChartPointsLayer, chart: Chart) -> UIView? in
+            let circleView = ChartPointEllipseView(center: chartPointModel.screenLoc, diameter: 12)
+            circleView.animDuration = 0.5
+            circleView.fillColor = .hex(cFFF)
+            circleView.borderColor = .hex(cBlue_2C9EFF)
+            circleView.borderWidth = 4
+            return circleView
+        }
+        let lastLineCirclesLayer = ChartPointsViewsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, chartPoints: lastchartPoint, viewGenerator: lastCircleViewGenerator, displayDelay: 0, delayBetweenItems: 0, mode: .translate)
+        
+        
         let chart = Chart(
             frame: chartFrame,
             innerFrame: innerFrame,
@@ -60,7 +92,9 @@ class CSLineChartPage: UIViewController {
                 xAxisLayer,
                 yAxisLayer,
                 guidelinesLayer,
-                chartPointsLineLayer
+                chartPointsLineLayer,
+                lineCirclesLayer,
+                lastLineCirclesLayer,
             ]
         )
         
@@ -68,12 +102,6 @@ class CSLineChartPage: UIViewController {
 //        chart.view.backgroundColor = .hex(c000_10)
         self.chart = chart
         
-        
-        // 单独画y=0的虚线
-        let xAxisLine = UIImageView()
-        xAxisLine.set(superview: bgView)
-        xAxisLine.setFrame(left: 32, top: 175, width: bgView.width - 30 - 12, height: 0.5)
-        xAxisLine.setDashedLine(color: cF0F1F3, dash: 4, gap: 4)
         
     }
 }
