@@ -11,8 +11,8 @@ import UIKit
 
 class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleList = ["TestVC", "TestPresentVC", "ActionSheet", "Alert", "Class", "Custom Popup Window", "Decorator", "Delegate", "Delegate2", "For & While", "Gesture", "Jump", "Loading", "Menu Controller", "Number Formatter", "Operator @", "Plist", "Protocol", "Reload Data", "Timer", "Try"]
-    let pageList = [TestVC(), TestPresentVC(), CSActionSheetPage(), CSAlertListPage(), CSClassPage(), CSCustomPopupWindowPage(), CSDecoratorPage(), CSDelegatePage(), CSDelegate2Page(), CSForWhilePage(), CSGestureListPage(),  CSJumpListPage(), CSLoadingPage(), CSMenuControllerPage(), CSNumberFormatterPage(), CSOperatorAtPage(), CSPlistPage(), CSProtocolPage(), CSReloadDataPage(), CSTimerPage(), CSTryPage()]
+    let titleList = ["TestVC", "TestPresentVC", "ActionSheet", "Alert", "Class", "Custom Popup Window", "Decorator", "Delegate", "Delegate2", "For & While", "Gesture", "Jump", "Loading", "Map", "Menu Controller", "Number Formatter", "Operator @", "Plist", "Protocol", "Reload Data", "Timer", "Try"]
+    let pageList = [TestVC(), TestPresentVC(), CSActionSheetPage(), CSAlertListPage(), CSClassPage(), CSCustomPopupWindowPage(), CSDecoratorPage(), CSDelegatePage(), CSDelegate2Page(), CSForWhilePage(), CSGestureListPage(),  CSJumpListPage(), CSLoadingPage(), CSMapPage(),  CSMenuControllerPage(), CSNumberFormatterPage(), CSOperatorAtPage(), CSPlistPage(), CSProtocolPage(), CSReloadDataPage(), CSTimerPage(), CSTryPage()]
     
     override func viewDidLoad() {
         super.viewDidLoad()

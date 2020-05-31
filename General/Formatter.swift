@@ -26,7 +26,7 @@ extension CSFormatter {
     static func getDurationStrDefault(fromSeconds seconds: Int) -> String {
         var result = ""
         switch seconds {
-        case 0..<30:
+        case ..<30:
             result = "<1分钟"
         case 30..<3570:
             result = "\(seconds/60)分钟"
@@ -38,7 +38,7 @@ extension CSFormatter {
     
     // 时长 mm:ss H:mm:ss
     static func getDurationStrHMMSS(fromSeconds secounds: Int) -> String {
-        if secounds == 0 {
+        if secounds <= 0 {
             return "00:00"
         }
         var min = Int(secounds / 60)
