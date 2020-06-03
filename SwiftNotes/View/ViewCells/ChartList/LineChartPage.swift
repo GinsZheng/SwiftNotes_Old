@@ -35,19 +35,15 @@ class CSLineChartPage: UIViewController {
         let labelYSettings = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10), fontColor: .hex(c999))
         
         let points = [(1, 0), (2, 24), (3, 31), (4, 50), (5, 82), (6, 82), (7, 100)]
-//        let lastPoint = [(7, 100)]
         
         let chartPoints: [ChartPoint] = points.map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
         
-//        let lastchartPoint: [ChartPoint] = lastPoint.map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
         
         let axisPoints: [ChartPoint] = points.map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
-//        let axisPoints: [ChartPoint] = points.map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
         
-        let xv = [("10/21", 0), ("10/22", 24), ("10/23", 31), ("10/24", 50), ("10/25", 82), ("10/26", 82), ("10/27", 100)]
+        let pointArray = [("10/21", 0), ("10/22", 24), ("10/23", 31), ("10/24", 50), ("10/25", 82), ("10/26", 82), ("10/27", 100)]
         
-//        let xValues = axisPoints.map{$0.x}
-        let xValues = xv.enumerated().map { (index, tuples) in
+        let xValues = pointArray.enumerated().map { (index, tuples) in
             ChartAxisValueString(tuples.0, order: index+1, labelSettings: labelSettings)
         }
         let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 5, multiple: 20, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelYSettings)}, addPaddingSegmentIfEdge: false)
@@ -81,17 +77,6 @@ class CSLineChartPage: UIViewController {
         }
         let lineCirclesLayer = ChartPointsViewsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, chartPoints: chartPoints, viewGenerator: circleViewGenerator, displayDelay: 0, delayBetweenItems: 0, mode: .translate, clipViews: false)
         
-        // last circles layer
-        let lastCircleViewGenerator = {(chartPointModel: ChartPointLayerModel, layer: ChartPointsLayer, chart: Chart) -> UIView? in
-            let circleView = ChartPointEllipseView(center: chartPointModel.screenLoc, diameter: 12)
-            circleView.animDuration = 0.5
-            circleView.fillColor = .hex(cFFF)
-            circleView.borderColor = .hex(cBlue_2C9EFF)
-            circleView.borderWidth = 4
-            return circleView
-        }
-//        let lastLineCirclesLayer = ChartPointsViewsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, chartPoints: lastchartPoint, viewGenerator: lastCircleViewGenerator, displayDelay: 0, delayBetweenItems: 0, mode: .translate, clipViews: false)
-        
         
         let chart = Chart(
             frame: chartFrame,
@@ -103,7 +88,6 @@ class CSLineChartPage: UIViewController {
                 guidelinesLayer,
                 chartPointsLineLayer,
                 lineCirclesLayer,
-//                lastLineCirclesLayer,
             ]
         )
         
