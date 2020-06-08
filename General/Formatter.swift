@@ -81,6 +81,10 @@ extension CSFormatter {
         return result
     }
     
+    static func getDateStrMD(timeStamp: Int) -> String {
+        return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d")
+    }
+    
     // 时间 HH:mm
     static func getTimeStrDefault(timeStamp: Int) -> String {
         let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "HH:mm")

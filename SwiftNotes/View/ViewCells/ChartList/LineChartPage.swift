@@ -34,16 +34,12 @@ class CSLineChartPage: UIViewController {
         let labelSettings = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10), fontColor: .hex(cCCC))
         let labelYSettings = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10), fontColor: .hex(c999))
         
-        let points = [(1, 0), (2, 24), (3, 31), (4, 50), (5, 82), (6, 82), (7, 100)]
+//        let points = [(1, 0), (2, 24), (3, 31), (4, 50), (5, 82), (6, 82), (7, 100)]
         
-        let chartPoints: [ChartPoint] = points.map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
+        let points = [("10/21", 0), ("10/22", 24), ("10/23", 31), ("10/24", 50), ("10/25", 82), ("10/26", 82), ("10/27", 100)]
         
-        
-        let axisPoints: [ChartPoint] = points.map{ChartPoint(x: ChartAxisValueInt($0.0, labelSettings: labelSettings), y: ChartAxisValueInt($0.1))}
-        
-        let pointArray = [("10/21", 0), ("10/22", 24), ("10/23", 31), ("10/24", 50), ("10/25", 82), ("10/26", 82), ("10/27", 100)]
-        
-        let xValues = pointArray.enumerated().map { (index, tuples) in
+        let chartPoints: [ChartPoint] = points.enumerated().map {ChartPoint(x: ChartAxisValueInt($0 + 1, labelSettings: labelSettings), y: ChartAxisValueInt($1.1))}
+        let xValues = points.enumerated().map { (index, tuples) in
             ChartAxisValueString(tuples.0, order: index+1, labelSettings: labelSettings)
         }
         let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 5, multiple: 20, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelYSettings)}, addPaddingSegmentIfEdge: false)
@@ -51,7 +47,6 @@ class CSLineChartPage: UIViewController {
         let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: .hex(cBlue_2C9EFF), lineWidth: 2, lineJoin: .round, lineCap: .butt, animDuration: 0, animDelay: 0)
         
         let xModel = ChartAxisModel(axisValues: xValues, lineColor: .hex(cNoColor), axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings))
-        
         let yModel = ChartAxisModel(axisValues: yValues, lineColor: .hex(cNoColor), axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings.defaultVertical()))
         
         let chartFrame = CGRect(x: 0, y: 0, width: kScreenWidth - 40, height: 214)

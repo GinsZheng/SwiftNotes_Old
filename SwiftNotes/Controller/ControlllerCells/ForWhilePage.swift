@@ -26,6 +26,15 @@ class CSForWhilePage: UIViewController {
          }
          */
         
+        // 值与索引
+        for (index, value) in numbers.enumerated() {
+            print("index is \(index), value is \(value)")
+        }
+        
+        // 只需要索引
+        for (index, _) in numbers.enumerated() {
+            print("index is \(index)")
+        }
     }
     
     

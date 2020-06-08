@@ -40,6 +40,10 @@ class CSDataOperate: UIViewController {
         
         let strD2 = "123.4a"
         print("123.4a", Double(strD2) ?? 0)
+        
+        // 四舍五入并转为Int
+        let intValue = lround(23.50)
+        print("lround 23.50: \(intValue)")
     }
     
     
