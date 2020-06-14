@@ -36,6 +36,7 @@ import UIKit
  
 class TestVC: UIViewController {
 
+    let label = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,7 @@ class TestVC: UIViewController {
 //        let imgView:UIImageView = UIImageView(frame: CGRect(x: 0, y: 100, width: self.view.frame.width, height: 20))
 //        self.view.addSubview(imgView)
         
+        label.setFrame(left: 20, top: 10)
         
         self.push(toTarget: CSLineChartPage())
     }
