@@ -45,6 +45,12 @@ class TestVC: UIViewController {
 //        let imgView:UIImageView = UIImageView(frame: CGRect(x: 0, y: 100, width: self.view.frame.width, height: 20))
 //        self.view.addSubview(imgView)
         
+        let tuples = [(1, 1), (2, 2), (3, 6), (4, 9)]
+        for (x, y) in tuples {
+            print(x, y)
+        }
+        
+        
         label.setFrame(left: 20, top: 10)
         
         self.push(toTarget: CSLineChartPage())

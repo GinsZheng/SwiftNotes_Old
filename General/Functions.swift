@@ -90,6 +90,12 @@ func getTimeStampOfTheBeginingToday() -> Int {
     return result
 }
 
+// 获取两个时间的日差
+func getDaysInterval(earlierDay: Int, laterDay: Int) -> Int {
+    return (laterDay - earlierDay) / 86400
+}
+
+
 func round(_ value: Double, decimalPlaces: Int) -> Double {
     let divisor = pow(10.0, Double(decimalPlaces))
     return (value * divisor).rounded() / divisor

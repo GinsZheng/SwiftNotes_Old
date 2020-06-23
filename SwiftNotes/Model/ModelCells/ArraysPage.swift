@@ -36,6 +36,16 @@ class CSArrayPage: UIViewController {
             print("第\(index)个元素对应的值是\(char)")
         }
         
+        // 只需要索引的遍历
+        for i in 0...6 {
+            print("索引为 \(i)")
+        }
+        
+        // 只需要索引的遍历(非零开始)
+        for i in 3...5 {
+            print("非零开始的索引为 \(i)")
+        }
+        
         // map遍历
         let arr6 = (1...20).map {$0*2}
         print("所有元素乘2: \(arr6)")

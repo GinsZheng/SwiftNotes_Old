@@ -55,6 +55,7 @@
 		7A216162238986AF00D5A93A /* StepperPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A216150238986AF00D5A93A /* StepperPage.swift */; };
 		7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A216151238986AF00D5A93A /* PickerViewPage.swift */; };
 		7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A216152238986AF00D5A93A /* ImageViewPage.swift */; };
+		7A25A885249A67FC006D9F05 /* TuplePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A25A884249A67FC006D9F05 /* TuplePage.swift */; };
 		7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27506522ABA25600C8A474 /* AppDelegate.swift */; };
 		7A27506B22ABA25600C8A474 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A27506922ABA25600C8A474 /* Main.storyboard */; };
 		7A27506D22ABA25A00C8A474 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A27506C22ABA25A00C8A474 /* Assets.xcassets */; };
@@ -487,6 +488,7 @@
 		7A216151238986AF00D5A93A /* PickerViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewPage.swift; sourceTree = "<group>"; };
 		7A216152238986AF00D5A93A /* ImageViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewPage.swift; sourceTree = "<group>"; };
 		7A216165238986E800D5A93A /* SwiftNotes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftNotes-Bridging-Header.h"; sourceTree = "<group>"; };
+		7A25A884249A67FC006D9F05 /* TuplePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuplePage.swift; sourceTree = "<group>"; };
 		7A27506222ABA25600C8A474 /* SwiftNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A27506522ABA25600C8A474 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A27506A22ABA25600C8A474 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -933,6 +935,7 @@
 				7AA3259B243B6FC000D5308D /* StringPage.swift */,
 				7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */,
 				7A2AC3712409105F00B95E43 /* TimePage.swift */,
+				7A25A884249A67FC006D9F05 /* TuplePage.swift */,
 			);
 			path = ModelCells;
 			sourceTree = "<group>";
@@ -1508,6 +1511,7 @@
 				7A3647F5238AB287000BBECD /* ItemSearchPage.swift in Sources */,
 				7A28833C2448BCF600591C29 /* AlertTwoBtnPage.swift in Sources */,
 				7A62A1A7244CB51C0090D128 /* DataOperate.swift in Sources */,
+				7A25A885249A67FC006D9F05 /* TuplePage.swift in Sources */,
 				7A216153238986AF00D5A93A /* ButtonPage.swift in Sources */,
 				7A2161362389869D00D5A93A /* DelegatePage.swift in Sources */,
 				7A216159238986AF00D5A93A /* StackViewPage.swift in Sources */,
