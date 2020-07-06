@@ -105,3 +105,20 @@ func floor(_ value: Double, decimalPlaces: Int = 0) -> Double {
     let divisor = pow(10.0, Double(decimalPlaces))
     return Double(Int(value * divisor)) / divisor
 }
+
+
+func getPartsOfArray(_ array: [Int], startIndex: Int , endIndex: Int) -> [Int] {
+    var resultArray: [Int] = []
+    for i in startIndex...endIndex {
+        resultArray.append(array[i])
+    }
+    return resultArray
+}
+
+func getPartsOfArray(_ array: [String], startIndex: Int , endIndex: Int) -> [String] {
+    var resultArray: [String] = []
+    for i in startIndex...endIndex {
+        resultArray.append(array[i])
+    }
+    return resultArray
+}

@@ -49,20 +49,12 @@ class TestVC: UIViewController {
 //        label.setFrame(left: 20, top: 10)
 //        self.push(toTarget: CSLineChartPage())
 //
-//        let x = [1,2,3,4,4,5,5,5,5,55,]
-//        let result = getPartsOfArray(x, startIndex: 3, endIndex: 7)
-//        print(result)
+        let x = [1,2,3,4,4,5,5,5,5,55,]
+        let result = getPartsOfArray(x, startIndex: 3, endIndex: 7)
+        print(result)
     }
 }
 
-
-//func getPartsOfArray(_ array: [Int], startIndex: Int , endIndex: Int) -> [Int] {
-//    var resultArray: [Int] = []
-//    for i in startIndex...endIndex {
-//        resultArray.append(array[i])
-//    }
-//    return resultArray
-//}
 
 //var mainPoints: [(String, Int)] = []
 //for i in allDatePoints.count - selectedDays - 1...allDatePoints.count - 1 {
