@@ -287,7 +287,7 @@ extension UIButton {
         self.setBackgroundImage(getImageWithColor(color: cThemeFill), for: .normal)
         self.setBackgroundImage(getImageWithColor(color: cThemeHightlightedFill), for: .highlighted)
         self.setBackgroundImage(getImageWithColor(color: cThemeDisabledFill), for: .disabled)
-        self.setCornerRadius(radius: cornerRadius)
+        self.setCornerRadiusWithMask(radius: cornerRadius)
     }
     
     func setStyleSolidButton2(title: String, titleSize: CGFloat = 17, titleColor: String = cFFF, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {

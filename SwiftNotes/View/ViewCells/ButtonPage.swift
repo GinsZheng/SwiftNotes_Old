@@ -37,7 +37,7 @@ class CSButtonPage: UIViewController {
         solidButton.setStyleSolidButton(title: "Solid Button")
         solidButton.setFrame(left: 20, top: ghostButton.bottom + 20, right: 20, height: 44)
         
-        let solidButton2 = UIButton(type: .custom)
+        let solidButton2 = UIButton(type: .system)
         solidButton2.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         solidButton2.setStyleSolidButton2(title: "Solid Button2")
         solidButton2.setFrame(left: 20, top: solidButton.bottom + 20, right: 20, height: 44)
