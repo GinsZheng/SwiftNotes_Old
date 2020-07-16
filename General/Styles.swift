@@ -11,7 +11,7 @@ import UIKit
 extension UIView {
     
     func setStyleCellShadow16() {
-        self.setShadow(color: c133660_15_shadow, x: 0, y: 4, radius: 16)
+        self.setShadow(color: c00244F_14_shadow, x: 0, y: 4, radius: 16)
         self.setBackgroundColor(color: cFFF)
         self.setCornerRadius(radius: 8)
     }
@@ -33,7 +33,7 @@ extension UIView {
     
     func setStyleChartBg() {
         self.setBackgroundColor(color: cFFF)
-        self.setShadow(color: c133660_15_shadow, x: 0, y: 2, radius: 10)
+        self.setShadow(color: c00244F_14_shadow, x: 0, y: 2, radius: 10)
         self.setCornerRadius(radius: 8)
         self.setBorder(color: c000_5, borderWidth: kSeparatorHeight)
     }
@@ -80,11 +80,11 @@ extension UILabel {
     }
     
     func setStyle17ptCCC() {
-        self.setFontStyle(size: 17, color: cCCC)
+        self.setFontStyle(size: 17, color: c000_22)
     }
     
-    func setStyle15ptFFF80Center() {
-        self.setFontStyle(size: 15, color: cFFF_80, alignment: .center)
+    func setStyle15ptFFF85Center() {
+        self.setFontStyle(size: 15, color: cFEFEFE_85, alignment: .center)
     }
     
     func setStyle15pt999() {
@@ -116,7 +116,7 @@ extension UILabel {
     }
     
     func setStyle12ptFFF45Center() {
-        self.setFontStyle(size: 12, color: cFFF_45, alignment: .center)
+        self.setFontStyle(size: 12, color: cFEFEFE_45, alignment: .center)
     }
     
     func setStyle12pt999MedRight() {
@@ -124,11 +124,11 @@ extension UILabel {
     }
     
     func setStyle12ptFFFMedCenter() {
-        self.setFontStyle(size: 12, color: cFFF, weight: .medium, alignment: .center)
+        self.setFontStyle(size: 12, color: cFEFEFE, weight: .medium, alignment: .center)
     }
     
-    func setStyle80ptFFF80ThinCenter() {
-        self.setFontStyle(size: 80, color: cFFF_80, weight: .thin, alignment: .center)
+    func setStyle80ptFFF75ThinCenter() {
+        self.setFontStyle(size: 80, color: cFFF_75, weight: .thin, alignment: .center)
     }
 }
 
@@ -181,7 +181,7 @@ extension UITextView {
     }
     
     func setStyle12ptFFFMedCenter() {
-        self.setFontStyle(size: 12, color: cFFF, weight: .medium, alignment: .center)
+        self.setFontStyle(size: 12, color: cFEFEFE, weight: .medium, alignment: .center)
     }
 }
 
@@ -204,7 +204,7 @@ extension UIButton {
     
     func setStyleSolidAddingBtn(title: String) {
         self.setTitle(title, for: .normal)
-        self.setTitleColor(.hex(cFFF), for: .normal)
+        self.setTitleColor(.hex(cFEFEFE), for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 3, bottom: 0, right: 0)
         self.setImage(UIImage(named: "general_adding_btn"), for: .normal)
@@ -220,7 +220,7 @@ extension UIButton {
     
     func setStyleSolidBtn(title: String) {
         self.setTitle(title, for: .normal)
-        self.setTitleColor(.hex(cFFF), for: .normal)
+        self.setTitleColor(.hex(cFEFEFE), for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
         self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
         self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_40), for: .disabled)
@@ -280,7 +280,7 @@ extension UIButton {
         self.setCornerRadius(radius: cornerRadius)
     }
     
-    func setStyleSolidButton(title: String, titleSize: CGFloat = 17, titleColor: String = cFFF, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {
+    func setStyleSolidButton(title: String, titleSize: CGFloat = 17, titleColor: String = cFEFEFE, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {
         self.setTitle(title, for: .normal)
         self.setTitleColor(.hex(titleColor), for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight)
@@ -290,7 +290,7 @@ extension UIButton {
         self.setCornerRadiusWithMask(radius: cornerRadius)
     }
     
-    func setStyleSolidButton2(title: String, titleSize: CGFloat = 17, titleColor: String = cFFF, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {
+    func setStyleSolidButton2(title: String, titleSize: CGFloat = 17, titleColor: String = cFEFEFE, titleWeight: UIFont.Weight = .medium, fillColor: String = cThemeFill, cornerRadius: CGFloat = kButtonRadius) {
         self.setTitle(title, for: .normal)
         self.setTitleColor(.hex(titleColor), for: .normal)
         self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight)

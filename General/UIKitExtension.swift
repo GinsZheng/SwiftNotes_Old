@@ -91,6 +91,12 @@ extension UIView {
         self.setGradientLayer(colors: colors, locations: locations, startPoint: startPoint, endPoint: endPoint, zIndex: zIndex)
     }
     
+    func removeAllSubviews() {
+        _ = self.subviews.map {
+            $0.removeFromSuperview()
+        }
+    }
+    
     
     var x: CGFloat {
         get {

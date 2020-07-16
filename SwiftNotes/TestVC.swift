@@ -52,6 +52,10 @@ class TestVC: UIViewController {
         let x = [1,2,3,4,4,5,5,5,5,55,]
         let result = getPartsOfArray(x, startIndex: 3, endIndex: 7)
         print(result)
+        
+        for i in 0...0 {
+            print("i \(i)")
+        }
     }
 }
 

@@ -121,7 +121,7 @@ open class CSToast:NSObject {
         let textLabel = UILabel()
         textLabel.set(superview: contentView, text: text)
         textLabel.setLineHeight()
-        textLabel.setFontStyle(size: 16, color: cFFF, alignment: .center)
+        textLabel.setFontStyle(size: 16, color: cFEFEFE, alignment: .center)
         textLabel.numberOfLines = 2
         textLabel.size = CGSize(width: textLabel.getLabelWidth(withMaxWidth: 196), height: textLabel.getTextHeight(withWidth: 196))
         print(textLabel.getTextHeight(withWidth: 196))

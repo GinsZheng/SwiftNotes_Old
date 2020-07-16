@@ -53,7 +53,7 @@ class CSDatePicker {
         confirmButton.setFrame(right: 20, centerY: pickerConfirmBar.height/2, width: 44, height: 44)
         
         UIView.animate(withDuration: 0.3) {
-            self.mask.backgroundColor = .hex(c04040F_40_mask)
+            self.mask.backgroundColor = .hex(c000309_40_mask)
             self.pickerBg.bottom = 0
         }
     }
