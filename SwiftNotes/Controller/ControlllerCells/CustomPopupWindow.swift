@@ -53,7 +53,7 @@ class CSCustomPopupWindow: UIViewController {
         bgImageView.set(superview: view, image: bgImage)
         bgImageView.setFrame(left: 0, top: 0, width: bgImage.size.width, height: bgImage.size.height)
         
-        maskView.set(superview: view, backgroundColor: c04040F_40_mask)
+        maskView.set(superview: view, backgroundColor: c000309_40_mask)
         maskView.setFrame(allEdges: 0)
 
         bgView.set(superview: maskView, backgroundColor: cFFF)

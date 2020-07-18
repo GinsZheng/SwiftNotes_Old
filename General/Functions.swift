@@ -96,7 +96,7 @@ func getDaysInterval(earlierDay: Int, laterDay: Int) -> Int {
 }
 
 
-func round(_ value: Double, decimalPlaces: Int) -> Double {
+func round(_ value: Double, decimalPlaces: Int = 0) -> Double {
     let divisor = pow(10.0, Double(decimalPlaces))
     return (value * divisor).rounded() / divisor
 }

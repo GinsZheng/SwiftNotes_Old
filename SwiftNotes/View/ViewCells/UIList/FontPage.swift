@@ -18,7 +18,7 @@ class CSFontPage: UIViewController {
         
         // 设置字体
         timerLabel.set(superview: view, text: "00:00")
-        timerLabel.setStyle80ptFFF80ThinCenter()
+        timerLabel.setStyle80ptFFF75ThinCenter()
         timerLabel.font = UIFont(name: "HelveticaNeue-UltraLight", size: 80)
         timerLabel.setFrame(left: 20, top: 20, right: 20, height: 100)
         

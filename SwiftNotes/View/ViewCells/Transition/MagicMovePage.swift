@@ -19,7 +19,7 @@ class MagicMoveFromVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        grayView.set(superview: view, backgroundColor: cCCC)
+        grayView.set(superview: view, backgroundColor: c000_22)
         grayView.setCornerRadiusWithMask(radius: 15)
         grayView.setFrame(left: 40, top: 180, width: kScreenWidth - 80, height: 56)
         

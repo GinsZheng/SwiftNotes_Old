@@ -31,7 +31,7 @@ class CSLineChartPage: UIViewController {
         xAxisLine.setDashedLine(color: cF0F1F3, dash: 4, gap: 4)
         
 
-        let labelSettings = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10), fontColor: .hex(cCCC))
+        let labelSettings = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10), fontColor: .hex(c000_22))
         let labelYSettings = ChartLabelSettings(font: UIFont.systemFont(ofSize: 10), fontColor: .hex(c999))
         
 //        let points = [(1, 0), (2, 24), (3, 31), (4, 50), (5, 82), (6, 82), (7, 100)]

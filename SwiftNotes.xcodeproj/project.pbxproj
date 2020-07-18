@@ -140,6 +140,9 @@
 		7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74623CA24D5004DB044 /* FileManager.swift */; };
 		7AC56A0A23D4395C00538975 /* ViewBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC56A0923D4395C00538975 /* ViewBasicNote.swift */; };
 		7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD300024042A5100D300A6 /* TabBarController.swift */; };
+		7AEA78AE24C32A0B00909C62 /* SwiftCSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEA789A24C329F400909C62 /* SwiftCSV.framework */; };
+		7AEA78AF24C32A0B00909C62 /* SwiftCSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEA789A24C329F400909C62 /* SwiftCSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7AEA78B324C32AE400909C62 /* progress.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AEA78B224C32AE400909C62 /* progress.csv */; };
 		7AEB11362444D9C0005851FD /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; };
 		7AEB11372444D9C0005851FD /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AEB11382444D9C2005851FD /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A114CB7240570420058E70A /* pop.framework */; };
@@ -288,6 +291,55 @@
 			remoteGlobalIDString = 22E7020F1BF5B8EC00C19675;
 			remoteInfo = "SwiftCharts tvOS";
 		};
+		7AEA789924C329F400909C62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D1E59B41945FFAC001CF760;
+			remoteInfo = SwiftCSV;
+		};
+		7AEA789B24C329F400909C62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D1E59BF1945FFAD001CF760;
+			remoteInfo = SwiftCSVTests;
+		};
+		7AEA789D24C329F400909C62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FB74B911CCB9274009DDBF1;
+			remoteInfo = "SwiftCSV OSX";
+		};
+		7AEA789F24C329F400909C62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FB74B9A1CCB9274009DDBF1;
+			remoteInfo = "SwiftCSV OSXTests";
+		};
+		7AEA78A124C329F400909C62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FB74BAD1CCB929D009DDBF1;
+			remoteInfo = "SwiftCSV tvOS";
+		};
+		7AEA78A324C329F400909C62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FB74BB61CCB929D009DDBF1;
+			remoteInfo = "SwiftCSV tvOSTests";
+		};
+		7AEA78A524C329F400909C62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5FB74BC91CCB92BA009DDBF1;
+			remoteInfo = "SwiftCSV watchOS";
+		};
 		7AEE56132406CA48001B868A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7AEE560E2406CA47001B868A /* ESTabBarControllerExample.xcodeproj */;
@@ -424,6 +476,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7AEB11392444D9C2005851FD /* pop.framework in Embed Frameworks */,
+				7AEA78AF24C32A0B00909C62 /* SwiftCSV.framework in Embed Frameworks */,
 				7AEE56182406CA5A001B868A /* ESTabBarController.framework in Embed Frameworks */,
 				7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */,
 				7A9E0EF22483DFDE0020A05B /* SwiftCharts.framework in Embed Frameworks */,
@@ -577,6 +630,8 @@
 		7AC3B74623CA24D5004DB044 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		7AC56A0923D4395C00538975 /* ViewBasicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBasicNote.swift; sourceTree = "<group>"; };
 		7ACD300024042A5100D300A6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCSV.xcodeproj; path = "SwiftCSV-master/SwiftCSV.xcodeproj"; sourceTree = "<group>"; };
+		7AEA78B224C32AE400909C62 /* progress.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = progress.csv; sourceTree = "<group>"; };
 		7AEE560E2406CA47001B868A /* ESTabBarControllerExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ESTabBarControllerExample.xcodeproj; path = ESTabBarController/ESTabBarControllerExample/ESTabBarControllerExample.xcodeproj; sourceTree = "<group>"; };
 		7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlEventNote.swift; sourceTree = "<group>"; };
 		7AF7B16E2436351800738C65 /* TimerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPage.swift; sourceTree = "<group>"; };
@@ -590,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7AEB11382444D9C2005851FD /* pop.framework in Frameworks */,
+				7AEA78AE24C32A0B00909C62 /* SwiftCSV.framework in Frameworks */,
 				7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */,
 				7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */,
 				7A9E0EF12483DFDE0020A05B /* SwiftCharts.framework in Frameworks */,
@@ -620,6 +676,7 @@
 		7A019B2322ABA46E0034C5A3 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */,
 				7A9E0EE42483DFB10020A05B /* SwiftCharts.xcodeproj */,
 				7A9DA3F5240A901100AFB585 /* SnapKit.xcodeproj */,
 				7A2AC40E240A8ABB00B95E43 /* Hero.xcodeproj */,
@@ -943,6 +1000,7 @@
 		7AC3B73B23CA04C5004DB044 /* ModelSupports */ = {
 			isa = PBXGroup;
 			children = (
+				7AEA78B224C32AE400909C62 /* progress.csv */,
 				7A3647F8238AD062000BBECD /* ItemTable.swift */,
 				7A94609023D1A6AB00936DE7 /* ProgressTable.swift */,
 				7AC3B73F23CA05B3004DB044 /* TestJSON.json */,
@@ -1014,6 +1072,20 @@
 				7AC56A0923D4395C00538975 /* ViewBasicNote.swift */,
 			);
 			path = ViewNotes;
+			sourceTree = "<group>";
+		};
+		7AEA787524C329F400909C62 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7AEA789A24C329F400909C62 /* SwiftCSV.framework */,
+				7AEA789C24C329F400909C62 /* SwiftCSVTests.xctest */,
+				7AEA789E24C329F400909C62 /* SwiftCSV.framework */,
+				7AEA78A024C329F400909C62 /* SwiftCSVTests.xctest */,
+				7AEA78A224C329F400909C62 /* SwiftCSV.framework */,
+				7AEA78A424C329F400909C62 /* SwiftCSVTests.xctest */,
+				7AEA78A624C329F400909C62 /* SwiftCSV.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		7AEE560F2406CA47001B868A /* Products */ = {
@@ -1208,6 +1280,10 @@
 					ProjectRef = 7A9E0EE42483DFB10020A05B /* SwiftCharts.xcodeproj */;
 				},
 				{
+					ProductGroup = 7AEA787524C329F400909C62 /* Products */;
+					ProjectRef = 7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */;
+				},
+				{
 					ProductGroup = 7AFF38B722AF822000AC4958 /* Products */;
 					ProjectRef = 7AFF38B622AF822000AC4958 /* SwiftyJSON.xcodeproj */;
 				},
@@ -1341,6 +1417,55 @@
 			remoteRef = 7A9E0EEF2483DFB10020A05B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		7AEA789A24C329F400909C62 /* SwiftCSV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCSV.framework;
+			remoteRef = 7AEA789924C329F400909C62 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7AEA789C24C329F400909C62 /* SwiftCSVTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftCSVTests.xctest;
+			remoteRef = 7AEA789B24C329F400909C62 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7AEA789E24C329F400909C62 /* SwiftCSV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCSV.framework;
+			remoteRef = 7AEA789D24C329F400909C62 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7AEA78A024C329F400909C62 /* SwiftCSVTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftCSVTests.xctest;
+			remoteRef = 7AEA789F24C329F400909C62 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7AEA78A224C329F400909C62 /* SwiftCSV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCSV.framework;
+			remoteRef = 7AEA78A124C329F400909C62 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7AEA78A424C329F400909C62 /* SwiftCSVTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftCSVTests.xctest;
+			remoteRef = 7AEA78A324C329F400909C62 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		7AEA78A624C329F400909C62 /* SwiftCSV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftCSV.framework;
+			remoteRef = 7AEA78A524C329F400909C62 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		7AEE56142406CA48001B868A /* Example.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -1462,6 +1587,7 @@
 			files = (
 				7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */,
 				7A27507022ABA25A00C8A474 /* LaunchScreen.storyboard in Resources */,
+				7AEA78B324C32AE400909C62 /* progress.csv in Resources */,
 				7A21613A238986A400D5A93A /* Images.xcassets in Resources */,
 				7A27506D22ABA25A00C8A474 /* Assets.xcassets in Resources */,
 				7A27506B22ABA25600C8A474 /* Main.storyboard in Resources */,

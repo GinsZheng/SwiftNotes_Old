@@ -18,7 +18,7 @@ class CSMaskPage: UIViewController {
         
         // 把遮罩加到UIWindow上，才能覆盖导航栏，处于(除状态栏外的)最顶层
         UIApplication.shared.windows[0].addSubview(mask)
-        mask.setBackgroundColor(color: c04040F_40_mask)
+        mask.setBackgroundColor(color: c000309_40_mask)
         mask.isUserInteractionEnabled = false
         mask.setFrame(allEdges: 0)
     }
