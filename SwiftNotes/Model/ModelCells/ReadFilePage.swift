@@ -1,28 +1,28 @@
 //
-//  ForthTab.swift
+//  ReadFilePage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2019/6/10.
-//  Copyright © 2019 GinsMac. All rights reserved.
+//  Created by GinsMac on 2020/7/18.
+//  Copyright © 2020 GinsMac. All rights reserved.
 //
 
 import UIKit
-import SwiftCSV
 import SwiftyJSON
 
-class TestVC: UIViewController {
-
-    let label = UILabel()
+class CSReadFilePage: UIViewController {
     
     let progressTable = CSProgressTable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
+        
+        let fileToString = CSFileManager.readFileAsString(fileNameStr: "index", type: "html") ?? ""
+        print("fileToString \(fileToString)")
+        
+        
         let csv = CSFileManager.readFileAsCsv(fileNameStr: "progress", type: "csv")!
         let data = csv.namedRows
-        
         for i in 0..<data.count {
             let row: [String: String] = data[i]
             let result: [String: Any] = [
@@ -34,7 +34,6 @@ class TestVC: UIViewController {
             ]
             progressTable.insert(item: JSON(result))
         }
-        
         let json = progressTable.getJSON()
         let model = CSProgressModel.init(jsonData: json)
         let idArray = model.id
@@ -45,8 +44,5 @@ class TestVC: UIViewController {
     }
     
     
-    
-    
 }
-
 

@@ -29,7 +29,7 @@ class CSSwiftyJSONPage: UIViewController {
         
         
         // 解析本地文件
-        let jsonFile = CSFileManager.readLocalFile(fileNameStr: "TestJSON", type: "json")
+        let jsonFile = CSFileManager.readFileAsData(fileNameStr: "TestJSON", type: "json")
         let jsonData2 = JSON(jsonFile ?? "")
         let model2 = CSSwiftyModel2(jsonData: jsonData2)
         print("CSSwiftyModel2 id \(model2.id)")

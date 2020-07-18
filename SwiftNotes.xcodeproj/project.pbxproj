@@ -114,6 +114,7 @@
 		7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A64873F23FAE319006B6FC1 /* LoadingPage.swift */; };
 		7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A65113A23D6A332005E4FD4 /* UIClass.swift */; };
 		7A702DA82434E99600EB1FF3 /* JumpListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A702DA72434E99600EB1FF3 /* JumpListPage.swift */; };
+		7A728E7A24C32FC300CBDA1D /* ReadFilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A728E7924C32FC300CBDA1D /* ReadFilePage.swift */; };
 		7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A76EF6223CF17B400350087 /* SQLiteManager.swift */; };
 		7A782D6B23CF20DA00E09ED0 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A782D6A23CF20D900E09ED0 /* NavViewController.swift */; };
 		7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B5D3B23C05A150079A931 /* ArraysPage.swift */; };
@@ -143,6 +144,7 @@
 		7AEA78AE24C32A0B00909C62 /* SwiftCSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEA789A24C329F400909C62 /* SwiftCSV.framework */; };
 		7AEA78AF24C32A0B00909C62 /* SwiftCSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEA789A24C329F400909C62 /* SwiftCSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AEA78B324C32AE400909C62 /* progress.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AEA78B224C32AE400909C62 /* progress.csv */; };
+		7AEA78B524C32F0F00909C62 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7AEA78B424C32F0F00909C62 /* index.html */; };
 		7AEB11362444D9C0005851FD /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; };
 		7AEB11372444D9C0005851FD /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AEB11382444D9C2005851FD /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A114CB7240570420058E70A /* pop.framework */; };
@@ -606,6 +608,7 @@
 		7A64873F23FAE319006B6FC1 /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		7A65113A23D6A332005E4FD4 /* UIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIClass.swift; sourceTree = "<group>"; };
 		7A702DA72434E99600EB1FF3 /* JumpListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpListPage.swift; sourceTree = "<group>"; };
+		7A728E7924C32FC300CBDA1D /* ReadFilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadFilePage.swift; sourceTree = "<group>"; };
 		7A76EF6223CF17B400350087 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		7A782D6A23CF20D900E09ED0 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		7A7B5D3B23C05A150079A931 /* ArraysPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysPage.swift; sourceTree = "<group>"; };
@@ -632,6 +635,7 @@
 		7ACD300024042A5100D300A6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCSV.xcodeproj; path = "SwiftCSV-master/SwiftCSV.xcodeproj"; sourceTree = "<group>"; };
 		7AEA78B224C32AE400909C62 /* progress.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = progress.csv; sourceTree = "<group>"; };
+		7AEA78B424C32F0F00909C62 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		7AEE560E2406CA47001B868A /* ESTabBarControllerExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ESTabBarControllerExample.xcodeproj; path = ESTabBarController/ESTabBarControllerExample/ESTabBarControllerExample.xcodeproj; sourceTree = "<group>"; };
 		7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlEventNote.swift; sourceTree = "<group>"; };
 		7AF7B16E2436351800738C65 /* TimerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPage.swift; sourceTree = "<group>"; };
@@ -988,6 +992,7 @@
 				7A4736CB246B015F0071115F /* EnumPage.swift */,
 				7A7D1C5B241CC4C900E08EA1 /* ItemModel */,
 				7A7F97C5241DF1B8000F1E31 /* ProgressModel */,
+				7A728E7924C32FC300CBDA1D /* ReadFilePage.swift */,
 				7A33086823CC48A30021BA5B /* RequestPage.swift */,
 				7AA3259B243B6FC000D5308D /* StringPage.swift */,
 				7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */,
@@ -1000,6 +1005,7 @@
 		7AC3B73B23CA04C5004DB044 /* ModelSupports */ = {
 			isa = PBXGroup;
 			children = (
+				7AEA78B424C32F0F00909C62 /* index.html */,
 				7AEA78B224C32AE400909C62 /* progress.csv */,
 				7A3647F8238AD062000BBECD /* ItemTable.swift */,
 				7A94609023D1A6AB00936DE7 /* ProgressTable.swift */,
@@ -1590,6 +1596,7 @@
 				7AEA78B324C32AE400909C62 /* progress.csv in Resources */,
 				7A21613A238986A400D5A93A /* Images.xcassets in Resources */,
 				7A27506D22ABA25A00C8A474 /* Assets.xcassets in Resources */,
+				7AEA78B524C32F0F00909C62 /* index.html in Resources */,
 				7A27506B22ABA25600C8A474 /* Main.storyboard in Resources */,
 				7A2161332389869D00D5A93A /* Books.plist in Resources */,
 			);
@@ -1680,6 +1687,7 @@
 				7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */,
 				7AF7B16F2436351800738C65 /* TimerPage.swift in Sources */,
 				7A28833F244A02A500591C29 /* ActionSheetPage.swift in Sources */,
+				7A728E7A24C32FC300CBDA1D /* ReadFilePage.swift in Sources */,
 				7A4736CE246C4B580071115F /* TouchesBeganGesturePage.swift in Sources */,
 				7A2AC3722409106000B95E43 /* TimePage.swift in Sources */,
 				7A21615C238986AF00D5A93A /* DatePickerPage.swift in Sources */,
