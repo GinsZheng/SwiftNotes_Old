@@ -57,6 +57,8 @@ extension CSFormatter {
         var result = "\(Int(percentage*100))%"
         if percentage < 0.01 {
             result = "<1%"
+        } else if percentage > 1 {
+            result = ">100%"
         }
         return result
     }

@@ -20,15 +20,50 @@ class CSTouchesMovedGesturePage: UIViewController {
         myView.setCornerRadius(radius: 4)
         myView.setFrame(left: 20, top: 20, width: 44, height: 44)
     }
-        
+
+    
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch: AnyObject in touches {
-            let t: UITouch = touch as! UITouch
-            let point = t.location(in: self.view)
-            myView.point = point
-            print(point)
+        view.touchesMovedUpOrDwon(touches: touches) {
+            print("uporDown")
+        }
+        view.touchesMovedUp(touches: touches) {
+            print("up")
+        }
+        view.touchesMovedDown(touches: touches) {
+            print("down")
+        }
+        view.touchesMovedLeft(touches: touches) {
+            print("left")
+        }
+        view.touchesMovedRight(touches: touches) {
+            print("right")
+        }
+        view.touchesMovedLeftOrRight(touches: touches) {
+            print("leftOrRight")
         }
     }
+
+    // 让myView跟手移动
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        for touch: AnyObject in touches {
+//            let t: UITouch = touch as! UITouch
+//            let point = t.location(in: self.view)
+//            myView.point = point
+//            print(point)
+//        }
+//    }
+    
+    // 让view跟手上下滑动
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        for touch: AnyObject in touches {
+//            let t: UITouch = touch as! UITouch
+//            let previousPoint = t.previousLocation(in: self.view)
+//            let point = t.location(in: self.view)
+//            view.y += point.y - previousPoint.y // 通过前一点与后一点的差值，来设置view的y值，实现上下滑动
+//            view.y = 0
+//            view.setCornerRadius(radius: 10)
+//        }
+//    }
     
 }
 
