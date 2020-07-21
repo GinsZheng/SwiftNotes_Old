@@ -1,16 +1,14 @@
 //
-//  ForthTab.swift
+//  DisabledDismissPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2019/6/10.
-//  Copyright © 2019 GinsMac. All rights reserved.
+//  Created by GinsMac on 2020/7/22.
+//  Copyright © 2020 GinsMac. All rights reserved.
 //
 
 import UIKit
-import SwiftCSV
-import SwiftyJSON
 
-class TestVC: UIViewController {
+class CSDisabledDismissParentPage: UIViewController {
 
     let button = UIButton()
     
@@ -34,7 +32,8 @@ class TestVC: UIViewController {
     }
 }
 
-class TestPresentedVC: UIViewController {
+
+class CSDisabledDismissChildPage: UIViewController {
     
     // 必备3参数
     var startTouchPoint = CGPoint(x: 0, y: 0)
@@ -96,3 +95,12 @@ class TestPresentedVC: UIViewController {
     }
     
 }
+
+
+/*
+ 在iOS13的默认的 present 为 .automatic 样式下:
+ ‣ present后的页面：view的高度为全屏高度，y=0值则为卡片的顶端(iPhoneX为全屏的y=54)
+ ‣ 如果有滑动，则touchesMoved只能获取前面滑动的约10pt的点
+ ‣ 如果有滑动，则touchesEnded无法获取
+ ‣ 一种处理方法见上：让子页面的下滑手势失效
+ */

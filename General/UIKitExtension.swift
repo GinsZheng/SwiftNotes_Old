@@ -194,6 +194,88 @@ extension UIView {
             self.frame.origin = newValue
         }
     }
+    
+    func touchesMovedUp(touches: Set<UITouch>, action: () -> Void) {
+        for touch in touches {
+            let previousPoint = touch.previousLocation(in: self)
+            let point = touch.location(in: self)
+            let pointsGap = point.y - previousPoint.y
+            
+            if pointsGap < 0 {
+                action()
+            }
+        }
+    }
+    
+    func touchesMovedDown(touches: Set<UITouch>, action: () -> Void) {
+        for touch in touches {
+            let previousPoint = touch.previousLocation(in: self)
+            let point = touch.location(in: self)
+            let pointsGap = point.y - previousPoint.y
+            
+            if pointsGap > 0 {
+                action()
+            }
+        }
+    }
+    
+    func touchesMovedUpOrDwon(touches: Set<UITouch>, action: () -> Void) {
+        for touch in touches {
+            let previousPoint = touch.previousLocation(in: self)
+            let point = touch.location(in: self)
+            let pointsGap = point.y - previousPoint.y
+            
+            if pointsGap != 0 {
+                action()
+            }
+        }
+    }
+
+    func touchesMovedLeft(touches: Set<UITouch>, action: () -> Void) {
+        for touch in touches {
+            let previousPoint = touch.previousLocation(in: self)
+            let point = touch.location(in: self)
+            let pointsGap = point.x - previousPoint.x
+            
+            if pointsGap < 0 {
+                action()
+            }
+        }
+    }
+    
+    func touchesMovedRight(touches: Set<UITouch>, action: () -> Void) {
+        for touch in touches {
+            let previousPoint = touch.previousLocation(in: self)
+            let point = touch.location(in: self)
+            let pointsGap = point.x - previousPoint.x
+            
+            if pointsGap > 0 {
+                action()
+            }
+        }
+    }
+    
+    func touchesMovedLeftOrRight(touches: Set<UITouch>, action: () -> Void) {
+        for touch in touches {
+            let previousPoint = touch.previousLocation(in: self)
+            let point = touch.location(in: self)
+            let pointsGap = point.x - previousPoint.x
+            
+            if pointsGap != 0 {
+                action()
+            }
+        }
+    }
+    
+    func getTouchPoint(touches: Set<UITouch>) -> CGPoint {
+        var point = CGPoint(x: 0, y: 0)
+        for touch in touches {
+            point = touch.location(in: self)
+            print("point \(point)")
+        }
+        return point
+    }
+    
 }
 
 

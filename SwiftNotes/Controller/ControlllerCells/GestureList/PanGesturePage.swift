@@ -28,4 +28,5 @@ class CSPanGesturePage: UIViewController {
 
 /*
  pan 有高优先级，可以屏幕掉其他滑动手势
+ swipe手势被屏蔽，而pan手势有效且覆盖下滑关闭
  */

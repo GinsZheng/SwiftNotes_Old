@@ -19,8 +19,3 @@ class CSPresentPage: UIViewController {
     
     
 }
-
-/*
- 在iOS13的默认的 .automatic 样式下，
- present后的页面：view的高度为全屏高度，y=0值则为卡片的顶端(iPhoneX为全屏的y=54)
- */

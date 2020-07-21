@@ -34,7 +34,3 @@ class CSSwipeGesturePage: UIViewController {
     
 
 }
-
-/*
- 在 present = .automitic 之下，swipe手势被屏蔽，而pan手势有效且覆盖下滑关闭
- */

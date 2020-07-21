@@ -18,7 +18,7 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        self.title = "View" // 导航栏标题
+        self.title = "presentedView" // 导航栏标题
         
         let tableView = UITableView()
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
