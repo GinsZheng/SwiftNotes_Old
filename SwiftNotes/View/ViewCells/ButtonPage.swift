@@ -56,9 +56,3 @@ class CSButtonPage: UIViewController {
     
     
 }
-
-/*
- customIconButton.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControl.Event#>)
- 其中，target暂时理解为：action在哪里。
- 比如：通常，action写在当前的类之内，于是填self。如果是另一个类之内，填另一个类的实例
- */

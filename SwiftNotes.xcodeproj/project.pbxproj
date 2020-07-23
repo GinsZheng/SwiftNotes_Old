@@ -55,6 +55,7 @@
 		7A216162238986AF00D5A93A /* StepperPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A216150238986AF00D5A93A /* StepperPage.swift */; };
 		7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A216151238986AF00D5A93A /* PickerViewPage.swift */; };
 		7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A216152238986AF00D5A93A /* ImageViewPage.swift */; };
+		7A244E9E24C7EFE500D072FB /* IntPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A244E9D24C7EFE400D072FB /* IntPage.swift */; };
 		7A25A885249A67FC006D9F05 /* TuplePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A25A884249A67FC006D9F05 /* TuplePage.swift */; };
 		7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A27506522ABA25600C8A474 /* AppDelegate.swift */; };
 		7A27506B22ABA25600C8A474 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A27506922ABA25600C8A474 /* Main.storyboard */; };
@@ -96,6 +97,7 @@
 		7A473715247199200071115F /* TapGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A473714247199200071115F /* TapGesturePage.swift */; };
 		7A4737172472DA7D0071115F /* PresentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4737162472DA7D0071115F /* PresentPage.swift */; };
 		7A4B162E24C750CA004367F9 /* DisabledDismissPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B162D24C750CA004367F9 /* DisabledDismissPage.swift */; };
+		7A4B169A24C9E19A004367F9 /* CustomControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B169924C9E19A004367F9 /* CustomControl.swift */; };
 		7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58124169DF900CBF18D /* UIListPage.swift */; };
 		7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58324169F2D00CBF18D /* MaskPage.swift */; };
 		7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5852416A06400CBF18D /* DissolvePage.swift */; };
@@ -544,6 +546,7 @@
 		7A216151238986AF00D5A93A /* PickerViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewPage.swift; sourceTree = "<group>"; };
 		7A216152238986AF00D5A93A /* ImageViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewPage.swift; sourceTree = "<group>"; };
 		7A216165238986E800D5A93A /* SwiftNotes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftNotes-Bridging-Header.h"; sourceTree = "<group>"; };
+		7A244E9D24C7EFE400D072FB /* IntPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntPage.swift; sourceTree = "<group>"; };
 		7A25A884249A67FC006D9F05 /* TuplePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuplePage.swift; sourceTree = "<group>"; };
 		7A27506222ABA25600C8A474 /* SwiftNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A27506522ABA25600C8A474 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -591,6 +594,7 @@
 		7A473714247199200071115F /* TapGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapGesturePage.swift; sourceTree = "<group>"; };
 		7A4737162472DA7D0071115F /* PresentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentPage.swift; sourceTree = "<group>"; };
 		7A4B162D24C750CA004367F9 /* DisabledDismissPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledDismissPage.swift; sourceTree = "<group>"; };
+		7A4B169924C9E19A004367F9 /* CustomControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomControl.swift; sourceTree = "<group>"; };
 		7A58D58124169DF900CBF18D /* UIListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListPage.swift; sourceTree = "<group>"; };
 		7A58D58324169F2D00CBF18D /* MaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPage.swift; sourceTree = "<group>"; };
 		7A58D5852416A06400CBF18D /* DissolvePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvePage.swift; sourceTree = "<group>"; };
@@ -700,6 +704,7 @@
 			children = (
 				7A2161132389857700D5A93A /* Colors.swift */,
 				7A21610C2389857700D5A93A /* Constant.swift */,
+				7A4B169924C9E19A004367F9 /* CustomControl.swift */,
 				7A58D5AA2417F05100CBF18D /* DatePicker.swift */,
 				7A62A1AE24548CCA0090D128 /* Extension.swift */,
 				7AC3B74623CA24D5004DB044 /* FileManager.swift */,
@@ -993,6 +998,7 @@
 				7A62A1FA24645CA30090D128 /* DataSave */,
 				7A4736AB246AFDCC0071115F /* DictionaryPage.swift */,
 				7A4736CB246B015F0071115F /* EnumPage.swift */,
+				7A244E9D24C7EFE400D072FB /* IntPage.swift */,
 				7A7D1C5B241CC4C900E08EA1 /* ItemModel */,
 				7A7F97C5241DF1B8000F1E31 /* ProgressModel */,
 				7A728E7924C32FC300CBDA1D /* ReadFilePage.swift */,
@@ -1650,6 +1656,7 @@
 				7A25A885249A67FC006D9F05 /* TuplePage.swift in Sources */,
 				7A216153238986AF00D5A93A /* ButtonPage.swift in Sources */,
 				7A2161362389869D00D5A93A /* DelegatePage.swift in Sources */,
+				7A4B169A24C9E19A004367F9 /* CustomControl.swift in Sources */,
 				7A216159238986AF00D5A93A /* StackViewPage.swift in Sources */,
 				7A2161162389857700D5A93A /* UIKitExtension.swift in Sources */,
 				7A2161272389868500D5A93A /* ModelListVC.swift in Sources */,
@@ -1746,6 +1753,7 @@
 				7A21613E238986AA00D5A93A /* TestPage.swift in Sources */,
 				7A216160238986AF00D5A93A /* ViewPage.swift in Sources */,
 				7A216162238986AF00D5A93A /* StepperPage.swift in Sources */,
+				7A244E9E24C7EFE500D072FB /* IntPage.swift in Sources */,
 				7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */,
 				7A4737172472DA7D0071115F /* PresentPage.swift in Sources */,
 				7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */,

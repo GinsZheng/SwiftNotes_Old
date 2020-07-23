@@ -492,6 +492,17 @@ extension UITextField {
         return false
     }
 
+    func isInputtedIntValue() -> Bool {
+        guard let text = self.text else {
+            return false
+        }
+
+        guard let _ = Int(text) else {
+            return false
+        }
+        return true
+
+    }
     
 }
 
@@ -680,12 +691,15 @@ extension UIButton {
     
     func extendTouchArea() {
         // 需写在setFrame之后
-        if self.width <= 44 && self.height <= 44 {
-            self.setFrame(left: self.left - (44 - self.width)/2, top: self.top - (44 - self.height)/2, width: 44, height: 44)
-        } else if self.width >= 44 && self.height <= 32 {
-            self.setFrame(left: self.left, top: self.top - (32 - self.height)/2, width: self.width, height: 32)
+        let boundary: CGFloat = 44
+        let widthBoundary: CGFloat = 32
+        if self.width <= boundary && self.height <= boundary {
+            self.setFrame(left: self.left - (boundary - self.width)/2, top: self.top - (boundary - self.height)/2, width: boundary, height: boundary)
+        } else if self.width >= boundary && self.height <= widthBoundary {
+            self.setFrame(left: self.left, top: self.top - (widthBoundary - self.height)/2, width: self.width, height: widthBoundary)
         }
     }
+    
 }
 
 

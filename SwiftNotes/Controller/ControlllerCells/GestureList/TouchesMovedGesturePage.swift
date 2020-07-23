@@ -67,3 +67,6 @@ class CSTouchesMovedGesturePage: UIViewController {
     
 }
 
+/*
+ 在UITextField等已经有手势的控件里(很可能包括所有可交互的控件)，touchedMoved无效
+ */

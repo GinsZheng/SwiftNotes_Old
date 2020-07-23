@@ -23,7 +23,7 @@ class CSDisabledDismissParentPage: UIViewController {
     
     @objc func presentNext() {
         // 禁用子页面下滑手势
-        let vc = TestPresentedVC()
+        let vc = CSDisabledDismissChildPage()
         self.present(toTarget: vc, completion: {
             vc.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
         })
@@ -36,7 +36,7 @@ class CSDisabledDismissParentPage: UIViewController {
 class CSDisabledDismissChildPage: UIViewController {
     
     // 必备3参数
-    var startTouchPoint = CGPoint(x: 0, y: 0)
+    var touchesBeganPoint = CGPoint(x: 0, y: 0)
     var isClosing = false
     var dampingDegree: CGFloat = 2
     
@@ -48,9 +48,7 @@ class CSDisabledDismissChildPage: UIViewController {
     
     // 获取滑动距离
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            startTouchPoint = touch.location(in: view)
-        }
+        touchesBeganPoint = view.getTouchPoint(touches: touches)
     }
     
     // 滑动距离判断与跟手动画
@@ -59,9 +57,9 @@ class CSDisabledDismissChildPage: UIViewController {
             let previousPoint = touch.previousLocation(in: view)
             let point = touch.location(in: view)
             let pointsGap = point.y - previousPoint.y
-            let swipeDistance = point.y - startTouchPoint.y
+            let swipeDistance = point.y - touchesBeganPoint.y
 
-            dampingDegree += 1/2 // 阻尼设计
+            dampingDegree += 1/2
             if pointsGap > 0 {
                 view.y += pointsGap / CGFloat(dampingDegree)
                 view.setCornerRadius(radius: 10)
