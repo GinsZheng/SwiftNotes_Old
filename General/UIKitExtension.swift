@@ -578,7 +578,7 @@ extension UIImageView {
     
     // 横向虚线
     func setDashedLine(color: String, dash: CGFloat, gap: CGFloat, lineCap: CGLineCap = .butt) {
-        
+        // 前置：setFrame
         UIGraphicsBeginImageContextWithOptions(self.size, false, kScale)
         self.image?.draw(in: self.bounds)
         
@@ -846,3 +846,4 @@ extension UIStackView {
         self.distribution = distribution
     }
 }
+

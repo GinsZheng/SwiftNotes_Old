@@ -83,7 +83,7 @@ extension UILabel {
         self.setFontStyle(size: 17, color: c000_22)
     }
     
-    func setStyle15ptFFF85Center() {
+    func setStyle15ptFEFEFE85Center() {
         self.setFontStyle(size: 15, color: cFEFEFE_85, alignment: .center)
     }
     
@@ -115,7 +115,7 @@ extension UILabel {
         self.setFontStyle(size: 12, color: c999, alignment: .right)
     }
     
-    func setStyle12ptFFF45Center() {
+    func setStyle12ptFEFEFE45Center() {
         self.setFontStyle(size: 12, color: cFEFEFE_45, alignment: .center)
     }
     
@@ -123,7 +123,7 @@ extension UILabel {
         self.setFontStyle(size: 12, color: c999, weight: .medium, alignment: .right)
     }
     
-    func setStyle12ptFFFMedCenter() {
+    func setStyle12ptFEFEFEMedCenter() {
         self.setFontStyle(size: 12, color: cFEFEFE, weight: .medium, alignment: .center)
     }
     
@@ -180,7 +180,7 @@ extension UITextView {
         self.setFontStyle(size: 12, color: c999, weight: .medium, alignment: .right)
     }
     
-    func setStyle12ptFFFMedCenter() {
+    func setStyle12ptFEFEFEMedCenter() {
         self.setFontStyle(size: 12, color: cFEFEFE, weight: .medium, alignment: .center)
     }
 }
