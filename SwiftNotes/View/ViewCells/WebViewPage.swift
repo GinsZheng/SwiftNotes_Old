@@ -7,12 +7,15 @@
 //
 
 import UIKit
+// 1.import
 import WebKit
 
 class CSWebViewPage: UIViewController {
     
+    // 2声明变量
     var webView = WKWebView()
     
+    // 2.5进度条动画
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.setBackgroundColor(color: cFFF)
@@ -27,10 +30,11 @@ class CSWebViewPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 3添加webView
         view.addSubview(webView)
         webView.setFrame(left: 0, top: 0, width: kScreenWidth, height: kWithoutNavBarHeight)
         webView.navigationDelegate = self
-        
+        // 4加载
         let url = "https://www.apple.com"
         let mapwayURL = URL(string: url)!
         let mapwayRequest = URLRequest(url: mapwayURL)

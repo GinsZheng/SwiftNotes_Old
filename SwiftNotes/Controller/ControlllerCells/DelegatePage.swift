@@ -63,7 +63,7 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
         }
     }
 
-    // 3.内存管理与析构
+    // 3.内存管理与析构提示
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -129,4 +129,14 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
  要代理：写在viewDidLoad等中的present等页面，需要代理
  不要代理：写在viewWillAppear中的push页面
  不要代理：写在viewDidLoad之外的变量声明：直接实例化类，并赋值即可
+ */
+
+
+
+/*
+ 跨两级页面委托思路：
+ 假设页面A、B、C(B为弹窗)，A跳到B再跳到C，可如下处理：
+ 1. B页面先dismiss()，然后委托A页面跳到C页面
+ 2. 接下来就是A与C页面的常规委托，回避了跨两级页面
+ 具体代码可见项目SnailProgress的页面 HomwVC.swift / CSAddProgressPopupWindow.swift / AddProgress.swift
  */

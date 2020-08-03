@@ -38,7 +38,7 @@ class CSUIClass: UIView {
     func setStyles(color: String) {
         progressBarBg.setStyleProgressBarBg()
         progressBar.setStyleProgressBar(color: color)
-        progressBarLabel.setStyle12ptFFFMedCenter()
+        progressBarLabel.setStyle12ptFEFEFEMedCenter()
     }
     
     func setFrames(left: CGFloat, top: CGFloat, right: CGFloat, height: CGFloat) {
