@@ -21,7 +21,7 @@ class TestVC: UIViewController {
         button.setStyleSolidBtn(title: "Test")
         button.setFrame(left: 20, top: 200, right: 20, height: 44)
         
-        print(Int("heheda"))
+        print("heheda")
         
         let activity = UIActivityIndicatorView()
         activity.style = .medium
@@ -29,6 +29,7 @@ class TestVC: UIViewController {
         activity.hidesWhenStopped = false
         activity.color = .white
         activity.startAnimating()
+        
     }
     
     @objc func presentNext() {

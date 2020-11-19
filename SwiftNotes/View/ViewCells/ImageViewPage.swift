@@ -49,3 +49,7 @@ class CSImageViewPage: UIViewController {
     
 }
 
+/*
+ 图片视图：
+ 默认会把图片内容拉伸以填满图片视图
+ */

@@ -12,6 +12,7 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
     
     let textField = UITextField()
     let textField2 = UITextField()
+    let textField3 = UITextField()
     let button = UIButton()
     
     override func viewDidLoad() {
@@ -19,19 +20,24 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
         view.backgroundColor = UIColor.white
 
         textField.set(superview: view, placeholder: "Input something", delegate: self)
-        textField.setFrame(left: 20, top: 20, width: kScreenWidth, height: 44)
+        textField.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 44)
         textField.addTarget(self, action: #selector(checkInputtedValue), for: .allEditingEvents)
         textField.becomeFirstResponder() // 获取焦点
         textField.delegate = self
         
         textField2.set(superview: view, placeholder: "NumberPad", delegate: self)
-        textField2.setFrame(left: 20, top: textField.bottom + 20, width: kScreenWidth, height: 44)
+        textField2.setFrame(left: 20, top: textField.bottom + 20, width: kScreenWidth - 40, height: 44)
         textField2.keyboardType = .numberPad
+        
+        textField3.set(superview: view, placeholder: "Scale", delegate: self)
+        textField3.setFrame(left: 20, top: textField2.bottom + 20, width: kScreenWidth - 40, height: 44)
+        textField3.adjustsFontSizeToFitWidth = true
+        textField3.minimumFontSize = 12
         
 
         button.set(superview: view, target: self, action: #selector(resign))
         button.setStyleSolidButton(title: "hehe")
-        button.setFrame(left: 20, top: textField2.bottom + 20, right: 20, height: 48)
+        button.setFrame(left: 20, top: textField3.bottom + 20, right: 20, height: 48)
         
         let myView = UIView()
         myView.set(superview: view, backgroundColor: cF0F1F3)
@@ -83,7 +89,7 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
             return true
         }
         let textLength = text.count + string.count - range.length
-        return textLength <= 8
+        return textLength <= 80
     }
 
     
