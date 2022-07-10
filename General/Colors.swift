@@ -13,13 +13,13 @@
 
 
 // Blue
-let cBlue_2C9EFF = "2C9EFF"
-let cBlue_2C9EFF_90 = "E52C9EFF"
-let cBlue_2C9EFF_80 = "CC2C9EFF"
-let cBlue_2C9EFF_60 = "992C9EFF"
-let cBlue_2C9EFF_40 = "662C9EFF"
-let cBlue_2C9EFF_23 = "3B2C9EFF"
-let cBlue_2C9EFF_13 = "212C9EFF"
+let cBlue_5393FF = "5393FF"
+let cBlue_5393FF_90 = "E55393FF"
+let cBlue_5393FF_80 = "CC5393FF"
+let cBlue_5393FF_60 = "995393FF"
+let cBlue_5393FF_40 = "665393FF"
+let cBlue_5393FF_23 = "3B5393FF"
+let cBlue_5393FF_13 = "215393FF"
 
 // Red
 let cRed_FF635A = "FF635A"
@@ -52,7 +52,7 @@ let cBluishGreen_01C7BD = "01C7BD"
 let cBluishGreen_01C7BD_90 = "E501C7BD"
 let cBluishGreen_01C7BD_80 = "CC01C7BD"
 
-let c278DE5 = "278DE5" // 2C9EFF 按钮按下
+let c278DE5 = "278DE5" // 5393FF 按钮按下
 
 // No color
 let cNoColor = "00000000"
@@ -139,11 +139,11 @@ let cFFF_10 = "1AFFFFFF"
 let cFFF_5 = "0DFFFFFF"
 
 // ThemeColor
-let cThemeWord = cBlue_2C9EFF
-let cThemeFill = cBlue_2C9EFF
+let cThemeWord = cBlue_5393FF
+let cThemeFill = cBlue_5393FF
 let cThemeBorder = cThemeFill
-let cThemeHightlightedFill = cBlue_2C9EFF_60
-let cThemeDisabledFill = cBlue_2C9EFF_40
+let cThemeHightlightedFill = cBlue_5393FF_60
+let cThemeDisabledFill = cBlue_5393FF_40
 let cShadowColor = c00244F_14_shadow
 let cSeparatorColor = c000820_10_separator
 let cMainBlack = c222

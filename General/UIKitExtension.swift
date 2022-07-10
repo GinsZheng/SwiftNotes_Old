@@ -66,7 +66,7 @@ extension UIView {
     
     func setGradientLayer(colors: [CGColor]?, locations: [NSNumber]?, startPoint: CGPoint, endPoint: CGPoint, zIndex: UInt32 = 0) {
         /* eg:
-         colors: [UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF635A).cgColor]
+         colors: [UIColor.hex(cBlue_5393FF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF635A).cgColor]
          locations: [0, 0.3, 1]
          startPoint: CGPoint.init(x: 0, y: 0)
          endPoint: CGPoint.init(x: 1, y: 1)

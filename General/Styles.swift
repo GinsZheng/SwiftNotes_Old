@@ -211,9 +211,9 @@ extension UIButton {
         self.setImage(UIImage(named: "general_adding_btn"), for: .highlighted)
         self.setImage(UIImage(named: "general_adding_btn"), for: .disabled)
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 3)
-        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
-        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_40), for: .disabled)
-        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_60), for: .highlighted)
+        self.setBackgroundImage(getImageWithColor(color: cBlue_5393FF), for: .normal)
+        self.setBackgroundImage(getImageWithColor(color: cBlue_5393FF_40), for: .disabled)
+        self.setBackgroundImage(getImageWithColor(color: cBlue_5393FF_60), for: .highlighted)
         self.setCornerRadiusWithMask(radius: 8)
         
     }
@@ -222,9 +222,9 @@ extension UIButton {
         self.setTitle(title, for: .normal)
         self.setTitleColor(.hex(cFEFEFE), for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 17, weight: .medium)
-        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
-        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_40), for: .disabled)
-        self.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF_60), for: .highlighted)
+        self.setBackgroundImage(getImageWithColor(color: cBlue_5393FF), for: .normal)
+        self.setBackgroundImage(getImageWithColor(color: cBlue_5393FF_40), for: .disabled)
+        self.setBackgroundImage(getImageWithColor(color: cBlue_5393FF_60), for: .highlighted)
         self.setCornerRadiusWithMask(radius: 8)
     }
     
@@ -234,7 +234,7 @@ extension UIButton {
     
     func setStyleAddItemBarBtn(title: String) {
         self.setTitle(title, for: .normal)
-        self.setTitleColor(.hex(cAAA), for: .normal)
+        self.setTitleColor(.hex(c999), for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 0)
         self.setImage(UIImage(named: "progress_adding"), for: .normal)
@@ -314,6 +314,6 @@ extension UIButton {
 extension UIImageView {
     func setStyleNote() {
         self.setStyleImageView(cornerRadius: 8)
-        self.setBorder(color: cBlue_2C9EFF, borderWidth: 1)
+        self.setBorder(color: cBlue_5393FF, borderWidth: 1)
     }
 }
