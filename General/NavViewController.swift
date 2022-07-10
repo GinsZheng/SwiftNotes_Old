@@ -14,6 +14,22 @@ class CSRootNavController: UINavigationController, UINavigationControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
             
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .white
+            appearance.shadowImage = getImageWithColor(color: cNoColor)
+            //设置取消按钮的字
+//            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            navigationBar.standardAppearance = appearance
+            navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+        } else {
+            UINavigationBar.appearance().barTintColor = .white
+//            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.white]
+            UINavigationBar.appearance().tintColor = .white
+        }
+        
+        
         //navigationBar字体颜色设置
         self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.hex(c222)]
         //navigationBar颜色
@@ -21,6 +37,11 @@ class CSRootNavController: UINavigationController, UINavigationControllerDelegat
         self.navigationBar.shadowImage = getImageWithColor(color: cNoColor)
         self.popDelegate = self.interactivePopGestureRecognizer?.delegate
         self.delegate = self
+        
+        
+
+        
+        
     }
     
     //MARK: - UIGestureRecognizerDelegate代理

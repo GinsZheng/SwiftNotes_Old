@@ -70,6 +70,7 @@
 		7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */; };
 		7A2AC3722409106000B95E43 /* TimePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2AC3712409105F00B95E43 /* TimePage.swift */; };
 		7A2AC398240A791300B95E43 /* TransitionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2AC397240A791300B95E43 /* TransitionPage.swift */; };
+		7A2D34A82580D1FB00207996 /* CollectionViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D34A72580D1FB00207996 /* CollectionViewPage.swift */; };
 		7A2E72252472E4CD00D0B9A2 /* ChartListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E72242472E4CD00D0B9A2 /* ChartListVC.swift */; };
 		7A2E724A2472E5B500D0B9A2 /* ColumnChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E72492472E5B500D0B9A2 /* ColumnChartPage.swift */; };
 		7A2E724C2472E5C800D0B9A2 /* BarChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E724B2472E5C800D0B9A2 /* BarChartPage.swift */; };
@@ -150,10 +151,9 @@
 		7AEA78B524C32F0F00909C62 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7AEA78B424C32F0F00909C62 /* index.html */; };
 		7AEB11362444D9C0005851FD /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; };
 		7AEB11372444D9C0005851FD /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7AEB11382444D9C2005851FD /* pop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A114CB7240570420058E70A /* pop.framework */; };
-		7AEB11392444D9C2005851FD /* pop.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A114CB7240570420058E70A /* pop.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AEE56172406CA5A001B868A /* ESTabBarController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEE56162406CA48001B868A /* ESTabBarController.framework */; };
 		7AEE56182406CA5A001B868A /* ESTabBarController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEE56162406CA48001B868A /* ESTabBarController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7AF1454E25810E3600B98393 /* DoublePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1454D25810E3600B98393 /* DoublePage.swift */; };
 		7AF5BBBD23C86DBD002464D7 /* UIControlEventNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */; };
 		7AF7B16F2436351800738C65 /* TimerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7B16E2436351800738C65 /* TimerPage.swift */; };
 		7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AFF38C222AF822000AC4958 /* SwiftyJSON.framework */; };
@@ -480,7 +480,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7AEB11392444D9C2005851FD /* pop.framework in Embed Frameworks */,
 				7AEA78AF24C32A0B00909C62 /* SwiftCSV.framework in Embed Frameworks */,
 				7AEE56182406CA5A001B868A /* ESTabBarController.framework in Embed Frameworks */,
 				7AFF38D022AF828300AC4958 /* SwiftyJSON.framework in Embed Frameworks */,
@@ -568,6 +567,7 @@
 		7A2AC3712409105F00B95E43 /* TimePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePage.swift; sourceTree = "<group>"; };
 		7A2AC397240A791300B95E43 /* TransitionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionPage.swift; sourceTree = "<group>"; };
 		7A2AC40E240A8ABB00B95E43 /* Hero.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Hero.xcodeproj; path = Hero/Hero.xcodeproj; sourceTree = "<group>"; };
+		7A2D34A72580D1FB00207996 /* CollectionViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewPage.swift; sourceTree = "<group>"; };
 		7A2E72242472E4CD00D0B9A2 /* ChartListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartListVC.swift; sourceTree = "<group>"; };
 		7A2E72492472E5B500D0B9A2 /* ColumnChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnChartPage.swift; sourceTree = "<group>"; };
 		7A2E724B2472E5C800D0B9A2 /* BarChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartPage.swift; sourceTree = "<group>"; };
@@ -643,6 +643,7 @@
 		7AEA78B224C32AE400909C62 /* progress.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = progress.csv; sourceTree = "<group>"; };
 		7AEA78B424C32F0F00909C62 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		7AEE560E2406CA47001B868A /* ESTabBarControllerExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ESTabBarControllerExample.xcodeproj; path = ESTabBarController/ESTabBarControllerExample/ESTabBarControllerExample.xcodeproj; sourceTree = "<group>"; };
+		7AF1454D25810E3600B98393 /* DoublePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePage.swift; sourceTree = "<group>"; };
 		7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlEventNote.swift; sourceTree = "<group>"; };
 		7AF7B16E2436351800738C65 /* TimerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPage.swift; sourceTree = "<group>"; };
 		7AFF389422AF821800AC4958 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-alamofire5/Alamofire.xcodeproj"; sourceTree = "<group>"; };
@@ -654,7 +655,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7AEB11382444D9C2005851FD /* pop.framework in Frameworks */,
 				7AEA78AE24C32A0B00909C62 /* SwiftCSV.framework in Frameworks */,
 				7AFF38CF22AF828300AC4958 /* SwiftyJSON.framework in Frameworks */,
 				7AFF38D722AF828300AC4958 /* Alamofire.framework in Frameworks */,
@@ -997,6 +997,7 @@
 				7A62A1A6244CB51C0090D128 /* DataOperate.swift */,
 				7A62A1FA24645CA30090D128 /* DataSave */,
 				7A4736AB246AFDCC0071115F /* DictionaryPage.swift */,
+				7AF1454D25810E3600B98393 /* DoublePage.swift */,
 				7A4736CB246B015F0071115F /* EnumPage.swift */,
 				7A244E9D24C7EFE400D072FB /* IntPage.swift */,
 				7A7D1C5B241CC4C900E08EA1 /* ItemModel */,
@@ -1048,6 +1049,7 @@
 				7A216148238986AF00D5A93A /* AnimationPage.swift */,
 				7A216141238986AF00D5A93A /* ButtonPage.swift */,
 				7A2E72482472E4D900D0B9A2 /* ChartList */,
+				7A2D34A72580D1FB00207996 /* CollectionViewPage.swift */,
 				7A21614A238986AF00D5A93A /* DatePickerPage.swift */,
 				7A216152238986AF00D5A93A /* ImageViewPage.swift */,
 				7A216142238986AF00D5A93A /* LabelPage.swift */,
@@ -1659,6 +1661,7 @@
 				7A4B169A24C9E19A004367F9 /* CustomControl.swift in Sources */,
 				7A216159238986AF00D5A93A /* StackViewPage.swift in Sources */,
 				7A2161162389857700D5A93A /* UIKitExtension.swift in Sources */,
+				7A2D34A82580D1FB00207996 /* CollectionViewPage.swift in Sources */,
 				7A2161272389868500D5A93A /* ModelListVC.swift in Sources */,
 				7A2E724A2472E5B500D0B9A2 /* ColumnChartPage.swift in Sources */,
 				7A2161192389857700D5A93A /* SetFrame.swift in Sources */,
@@ -1717,6 +1720,7 @@
 				7A58D5C92417F05100CBF18D /* DatePicker.swift in Sources */,
 				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
 				7AC56A0A23D4395C00538975 /* ViewBasicNote.swift in Sources */,
+				7AF1454E25810E3600B98393 /* DoublePage.swift in Sources */,
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
 				7A0258A82434EF42006D4AB5 /* PopToSpecificPage.swift in Sources */,
 				7A62A1F92461AB980090D128 /* CustomPopupWindow.swift in Sources */,

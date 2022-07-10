@@ -22,6 +22,8 @@ class CSButtonPage: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
+        print("当前机型的逻辑分辨率：\(kScreenWidth) * \(kScreenHeight)")
+        
         let wordButton = UIButton(type: .system)
         wordButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         wordButton.setStyleWordButton(title: "Word Button")

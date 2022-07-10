@@ -35,7 +35,8 @@ class CSWebViewPage: UIViewController {
         webView.setFrame(left: 0, top: 0, width: kScreenWidth, height: kWithoutNavBarHeight)
         webView.navigationDelegate = self
         // 4加载
-        let url = "https://www.apple.com"
+//        let url = "https://www.apple.com"
+        let url = "apple"
         let mapwayURL = URL(string: url)!
         let mapwayRequest = URLRequest(url: mapwayURL)
         webView.load(mapwayRequest)

@@ -85,6 +85,7 @@ let c000_5 = "0D000000"
 let c000309_40_mask = "66000309"
 let c000820_10_separator = "1A000820"
 let c00244F_14_shadow = "2400244F"
+let c00244F_4_shadow = "0A00244F"
 let c111 = "111"
 let c222 = "222"
 let c222_60 = "99222222"
@@ -99,6 +100,7 @@ let cAAA = "AAA"
 let cBBB = "BBB"
 let cDDD = "DDD"
 let cDDDEE0 = "DDDEE0" // F0F1F3 按钮高亮
+let cE9EAEC = "E9EAEC"
 let cEEE = "EEE"
 let cF0F1F3 = "F0F1F3"
 let cF5F6F8 = "F5F6F8"
@@ -144,4 +146,6 @@ let cThemeDisabledFill = cBlue_2C9EFF_40
 let cShadowColor = c00244F_14_shadow
 let cSeparatorColor = c000820_10_separator
 let cMainBlack = c222
+
+
 

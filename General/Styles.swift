@@ -10,8 +10,8 @@ import UIKit
 
 extension UIView {
     
-    func setStyleCellShadow16() {
-        self.setShadow(color: c00244F_14_shadow, x: 0, y: 4, radius: 16)
+    func setStyleCellShadow36() {
+        self.setShadow(color: c00244F_14_shadow, x: 0, y: 2, radius: 10)
         self.setBackgroundColor(color: cFFF)
         self.setCornerRadius(radius: 8)
     }
@@ -240,7 +240,7 @@ extension UIButton {
         self.setImage(UIImage(named: "progress_adding"), for: .normal)
         self.setImage(UIImage(named: "progress_adding"), for: .highlighted)
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 2)
-        self.setBackgroundImage(getImageWithColor(color: cF0F1F3), for: .normal)
+        self.setBackgroundImage(getImageWithColor(color: cE9EAEC), for: .normal)
         self.setBackgroundImage(getImageWithColor(color: cDDDEE0), for: .highlighted)
         self.setCornerRadiusWithMask(radius: 8)
     }

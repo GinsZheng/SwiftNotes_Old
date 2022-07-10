@@ -93,6 +93,11 @@ extension CSFormatter {
         return result
     }
     
+    static func getTimeStr12Hour(timeStamp: Int) -> String {
+        let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "a h:mm")
+        return result
+    }
+    
     // 日期+时间 默认日期 + 默认时间
     static func getDateAndTimeStrDefault(timeStamp: Int) -> String {
         let date = getDateStrDefault(timeStamp: timeStamp)
@@ -103,6 +108,11 @@ extension CSFormatter {
     // 日期+时间 M/d HH:mm
     static func getDateAndTimeStrMdHHmm(timeStamp: Int) -> String {
         let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d HH:mm")
+        return result
+    }
+    
+    static func getWeekOfYear(timeStamp: Int) -> String {
+        let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "w")
         return result
     }
 

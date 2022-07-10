@@ -33,6 +33,25 @@ class CSStackViewPage: UIViewController {
         let stackBlock4 = UIView()
         stackBlock4.backgroundColor = UIColor.hex(cGreen_25BE3C)
         stack.addArrangedSubview(stackBlock4)
+        
+        
+        // 3等分的次像素处理调研
+        var stackBlockBArray: [UIView] = []
+        
+        for i in 0..<3 {
+            let stackBlockB = UIView()
+            stackBlockBArray.append(stackBlockB)
+            
+            let separator = UIView()
+            separator.set(superview: stackBlockBArray[i])
+            separator.setBackgroundColor(color: c222)
+            separator.setFrame(right: 0, top: 0, width: kSeparatorHeight, height: 100)
+        }
+
+        let stackB = UIStackView(arrangedSubviews: [stackBlockBArray[0], stackBlockBArray[1], stackBlockBArray[2]])
+        stackB.set(superview: view)
+        stackB.setStyleStackView(spacing: 0)
+        stackB.setFrame(left: 0, top: stack.bottom + 20, width: kScreenWidth, height: 100)
     }
     
     
