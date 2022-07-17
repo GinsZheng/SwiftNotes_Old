@@ -34,12 +34,19 @@ class CSDatePicker {
         pickerBg.set(superview: mask, backgroundColor: cFFF)
         pickerBg.setFrame(left: 0, bottom: -(kBottomBarHeight + 215 + 44), width: kScreenWidth, height: kBottomBarHeight + 215 + 44)
         
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
         datePicker.set(superview: pickerBg, backgroundColor: cFFF)
-        datePicker.setFrame(left: 0, bottom: kBottomBarHeight, width: kScreenWidth, height: 215)
+        datePicker.setFrame(centerX: kScreenWidth/2, bottom: kBottomBarHeight, width: datePicker.width, height: 215)
         datePicker.locale = Locale(identifier: "zh_CHS")
         datePicker.setDate(Date(timeIntervalSince1970: Double(defaultDate)), animated: true)
         datePicker.minimumDate = minimumDate
         datePicker.maximumDate = maximumDate
+
+        
+        print("width", kScreenWidth)
+        print(datePicker.width)
         
         pickerConfirmBar.set(superview: pickerBg, backgroundColor: cFFF)
         pickerConfirmBar.setFrame(left: 0, bottom: datePicker.height + kBottomBarHeight, width: kScreenWidth, height: 44)
