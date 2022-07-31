@@ -44,7 +44,7 @@ class CSLineChartPage: UIViewController {
         }
         let yValues = ChartAxisValuesStaticGenerator.generateYAxisValuesWithChartPoints(chartPoints, minSegmentCount: 5, maxSegmentCount: 5, multiple: 20, axisValueGenerator: {ChartAxisValueDouble($0, labelSettings: labelYSettings)}, addPaddingSegmentIfEdge: false)
         
-        let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: .hex(cBlue_2C9EFF), lineWidth: 2, lineJoin: .round, lineCap: .butt, animDuration: 0, animDelay: 0)
+        let lineModel = ChartLineModel(chartPoints: chartPoints, lineColor: .hex(cBlue_5393FF), lineWidth: 2, lineJoin: .round, lineCap: .butt, animDuration: 0, animDelay: 0)
         
         let xModel = ChartAxisModel(axisValues: xValues, lineColor: .hex(cNoColor), axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings))
         let yModel = ChartAxisModel(axisValues: yValues, lineColor: .hex(cNoColor), axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings.defaultVertical()))
@@ -67,7 +67,7 @@ class CSLineChartPage: UIViewController {
         let circleViewGenerator = {(chartPointModel: ChartPointLayerModel, layer: ChartPointsLayer, chart: Chart) -> UIView? in
             let circleView = ChartPointEllipseView(center: chartPointModel.screenLoc, diameter: 6)
             circleView.animDuration = 0.5
-            circleView.fillColor = .hex(cBlue_2C9EFF)
+            circleView.fillColor = .hex(cBlue_5393FF)
             return circleView
         }
         let lineCirclesLayer = ChartPointsViewsLayer(xAxis: xAxisLayer.axis, yAxis: yAxisLayer.axis, chartPoints: chartPoints, viewGenerator: circleViewGenerator, displayDelay: 0, delayBetweenItems: 0, mode: .translate, clipViews: false)

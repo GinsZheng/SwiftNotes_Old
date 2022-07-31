@@ -20,7 +20,7 @@ class CSViewPage: UIViewController {
         
         // 定制圆角图层
         let multiCornersView = UIView()
-        multiCornersView.setBackgroundColor(color: cBlue_2C9EFF)
+        multiCornersView.setBackgroundColor(color: cBlue_5393FF)
         multiCornersView.set(superview: view)
         multiCornersView.setFrame(left: 20, top: myView.bottom + 20, width: kScreenWidth - 40, height: 66)
         multiCornersView.setCornerRadiusWithMask(radius: 16, corners: [.topRight, .bottomRight])
@@ -29,13 +29,13 @@ class CSViewPage: UIViewController {
         let gradientView = UIView()
         gradientView.set(superview: view)
         gradientView.setFrame(left: 20, top: multiCornersView.bottom + 20, width: kScreenWidth - 40, height: 100)
-        gradientView.setGradientLayer(colors: [UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF635A).cgColor], locations: [0, 0.3, 1], startPoint: CGPoint.init(x: 0, y: 0), endPoint: CGPoint.init(x: 1, y: 1))
+        gradientView.setGradientLayer(colors: [UIColor.hex(cBlue_5393FF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor,  UIColor.hex(cRed_FF635A).cgColor], locations: [0, 0.3, 1], startPoint: CGPoint.init(x: 0, y: 0), endPoint: CGPoint.init(x: 1, y: 1))
         
         // 次像素测试
         let subpixelView = UIView()
         subpixelView.set(superview: view)
         subpixelView.setFrame(left: 20, top: gradientView.bottom + 20, width: kScreenWidth - 40, height: 1.5)
-        subpixelView.backgroundColor = .hex(cBlue_2C9EFF)
+        subpixelView.backgroundColor = .hex(cBlue_5393FF)
         // 结果：0.5pt在3倍屏下显示为1px，1.5pt在3倍屏下显示为4px
     }
     

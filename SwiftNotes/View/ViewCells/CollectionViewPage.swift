@@ -14,14 +14,14 @@ class CollectionViewPage: UIViewController, UICollectionViewDelegate, UICollecti
     
     //课程名称和图片，每一门课程用字典来表示
     let dateSource = [
-        ["name":"Swift","pic":cBlue_2C9EFF],
+        ["name":"Swift","pic":cBlue_5393FF],
         ["name":"Xcode","pic":cPurple_BF62F8],
         ["name":"Java","pic":cMagenta_FC5AAE],
         ["name":"PHP","pic":cRed_FF635A],
         ["name":"JS","pic":cOrange_F9AD18],
         ["name":"React","pic":cGreen_25BE3C],
         ["name":"Ruby","pic":cBluishGreen_01C7BD],
-        ["name":"HTML","pic":cBlue_2C9EFF],
+        ["name":"HTML","pic":cBlue_5393FF],
         ["name":"C#","pic":cPurple_BF62F8]
     ]
     

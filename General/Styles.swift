@@ -71,6 +71,10 @@ extension UILabel {
         self.setFontStyle(size: 17, color: c888, weight: .medium)
     }
     
+    func setStyle17pt222Med() {
+        self.setFontStyle(size: 17, color: c222, weight: .medium)
+    }
+    
     func setStyle17pt222() {
         self.setFontStyle(size: 17, color: c222)
     }

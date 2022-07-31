@@ -38,7 +38,7 @@ class TestVC: UIViewController {
         
         let x = NSCalendar(calendarIdentifier: NSCalendar.Identifier(rawValue: "Cal"))
         
-        let colorArr = [UIColor.hex(cRed_FF635A).cgColor, UIColor.hex(cBlue_2C9EFF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor]
+        let colorArr = [UIColor.hex(cRed_FF635A).cgColor, UIColor.hex(cBlue_5393FF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor]
         let gradientView = UIView()
 //        let locationArr = NSNumber[0, 0.3, 1]
         

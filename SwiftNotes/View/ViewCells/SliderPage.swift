@@ -18,7 +18,7 @@ class CSSliderPage: UIViewController {
         view.addSubview(slider)
         slider.setFrame(left: 50, top: 20, right: 50, height: 40)
         slider.setThumbImage(UIImage(named: "tickets-refund-reason-s"), for: .normal)
-        slider.setMinimumTrackImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
+        slider.setMinimumTrackImage(getImageWithColor(color: cBlue_5393FF), for: .normal)
         slider.setMaximumTrackImage(getImageWithColor(color: c999), for: .normal)
         
         

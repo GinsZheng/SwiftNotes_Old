@@ -84,6 +84,9 @@
 		7A3647F9238AD062000BBECD /* ItemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* ItemTable.swift */; };
 		7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
+		7A3C6B062884111F00C1D7AC /* CSVPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3C6B052884111F00C1D7AC /* CSVPage.swift */; };
+		7A3C6B3F2884135900C1D7AC /* item.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A3C6B3D2884135900C1D7AC /* item.csv */; };
+		7A3C6B402884135900C1D7AC /* progress.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A3C6B3E2884135900C1D7AC /* progress.csv */; };
 		7A4040412483E045000FF8C7 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A40401E2483E045000FF8C7 /* Env.swift */; };
 		7A4040432483E052000FF8C7 /* ExamplesDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4040422483E052000FF8C7 /* ExamplesDefaults.swift */; };
 		7A4040452483EED3000FF8C7 /* MapPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4040442483EED3000FF8C7 /* MapPage.swift */; };
@@ -147,7 +150,6 @@
 		7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD300024042A5100D300A6 /* TabBarController.swift */; };
 		7AEA78AE24C32A0B00909C62 /* SwiftCSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEA789A24C329F400909C62 /* SwiftCSV.framework */; };
 		7AEA78AF24C32A0B00909C62 /* SwiftCSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AEA789A24C329F400909C62 /* SwiftCSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7AEA78B324C32AE400909C62 /* progress.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AEA78B224C32AE400909C62 /* progress.csv */; };
 		7AEA78B524C32F0F00909C62 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7AEA78B424C32F0F00909C62 /* index.html */; };
 		7AEB11362444D9C0005851FD /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; };
 		7AEB11372444D9C0005851FD /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2AC428240A8ABB00B95E43 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -580,6 +582,9 @@
 		7A3647F8238AD062000BBECD /* ItemTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTable.swift; sourceTree = "<group>"; };
 		7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
+		7A3C6B052884111F00C1D7AC /* CSVPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVPage.swift; sourceTree = "<group>"; };
+		7A3C6B3D2884135900C1D7AC /* item.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = item.csv; sourceTree = "<group>"; };
+		7A3C6B3E2884135900C1D7AC /* progress.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = progress.csv; sourceTree = "<group>"; };
 		7A40401E2483E045000FF8C7 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Env.swift; path = Libraries/SwiftCharts/Examples/Examples/Env.swift; sourceTree = SOURCE_ROOT; };
 		7A4040422483E052000FF8C7 /* ExamplesDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamplesDefaults.swift; path = Libraries/SwiftCharts/Examples/Examples/ExamplesDefaults.swift; sourceTree = SOURCE_ROOT; };
 		7A4040442483EED3000FF8C7 /* MapPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPage.swift; sourceTree = "<group>"; };
@@ -640,7 +645,6 @@
 		7AC56A0923D4395C00538975 /* ViewBasicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBasicNote.swift; sourceTree = "<group>"; };
 		7ACD300024042A5100D300A6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7AEA787424C329F400909C62 /* SwiftCSV.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCSV.xcodeproj; path = "SwiftCSV-master/SwiftCSV.xcodeproj"; sourceTree = "<group>"; };
-		7AEA78B224C32AE400909C62 /* progress.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = progress.csv; sourceTree = "<group>"; };
 		7AEA78B424C32F0F00909C62 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		7AEE560E2406CA47001B868A /* ESTabBarControllerExample.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ESTabBarControllerExample.xcodeproj; path = ESTabBarController/ESTabBarControllerExample/ESTabBarControllerExample.xcodeproj; sourceTree = "<group>"; };
 		7AF1454D25810E3600B98393 /* DoublePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePage.swift; sourceTree = "<group>"; };
@@ -892,6 +896,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		7A3C6B302884131200C1D7AC /* CSV File */ = {
+			isa = PBXGroup;
+			children = (
+				7A3C6B3D2884135900C1D7AC /* item.csv */,
+				7A3C6B3E2884135900C1D7AC /* progress.csv */,
+			);
+			path = "CSV File";
+			sourceTree = "<group>";
+		};
 		7A58D56224169D1500CBF18D /* UIList */ = {
 			isa = PBXGroup;
 			children = (
@@ -994,6 +1007,7 @@
 			isa = PBXGroup;
 			children = (
 				7A7B5D3B23C05A150079A931 /* ArraysPage.swift */,
+				7A3C6B052884111F00C1D7AC /* CSVPage.swift */,
 				7A62A1A6244CB51C0090D128 /* DataOperate.swift */,
 				7A62A1FA24645CA30090D128 /* DataSave */,
 				7A4736AB246AFDCC0071115F /* DictionaryPage.swift */,
@@ -1015,8 +1029,8 @@
 		7AC3B73B23CA04C5004DB044 /* ModelSupports */ = {
 			isa = PBXGroup;
 			children = (
+				7A3C6B302884131200C1D7AC /* CSV File */,
 				7AEA78B424C32F0F00909C62 /* index.html */,
-				7AEA78B224C32AE400909C62 /* progress.csv */,
 				7A3647F8238AD062000BBECD /* ItemTable.swift */,
 				7A94609023D1A6AB00936DE7 /* ProgressTable.swift */,
 				7AC3B73F23CA05B3004DB044 /* TestJSON.json */,
@@ -1604,12 +1618,13 @@
 			files = (
 				7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */,
 				7A27507022ABA25A00C8A474 /* LaunchScreen.storyboard in Resources */,
-				7AEA78B324C32AE400909C62 /* progress.csv in Resources */,
 				7A21613A238986A400D5A93A /* Images.xcassets in Resources */,
 				7A27506D22ABA25A00C8A474 /* Assets.xcassets in Resources */,
+				7A3C6B402884135900C1D7AC /* progress.csv in Resources */,
 				7AEA78B524C32F0F00909C62 /* index.html in Resources */,
 				7A27506B22ABA25600C8A474 /* Main.storyboard in Resources */,
 				7A2161332389869D00D5A93A /* Books.plist in Resources */,
+				7A3C6B3F2884135900C1D7AC /* item.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1715,6 +1730,7 @@
 				7A7D1C3A241CB9F100E08EA1 /* ItemInsertPage.swift in Sources */,
 				7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */,
 				7AC3B74723CA24D5004DB044 /* FileManager.swift in Sources */,
+				7A3C6B062884111F00C1D7AC /* CSVPage.swift in Sources */,
 				7A4736CC246B015F0071115F /* EnumPage.swift in Sources */,
 				7A1E5A4A24363EA40074DA7F /* Timer.swift in Sources */,
 				7A58D5C92417F05100CBF18D /* DatePicker.swift in Sources */,

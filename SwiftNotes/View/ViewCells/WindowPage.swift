@@ -22,7 +22,7 @@ class CSWindowPage: UIViewController {
         view.backgroundColor = .white
         
 
-        myview.set(superview: window, backgroundColor: cBlue_2C9EFF)
+        myview.set(superview: window, backgroundColor: cBlue_5393FF)
         myview.setFrame(left: 20, top: 20, width: 100, height: 100)
         
     }

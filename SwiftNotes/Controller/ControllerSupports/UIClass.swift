@@ -17,7 +17,7 @@ class CSUIClass: UIView {
     private var innerPercentage: Double
     private var innerColor: String
     
-    init(percentage : Double = 0.0, color: String = cBlue_2C9EFF) {
+    init(percentage : Double = 0.0, color: String = cBlue_5393FF) {
         innerPercentage = percentage
         innerColor = color
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))

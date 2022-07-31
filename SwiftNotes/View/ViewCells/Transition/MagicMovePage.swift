@@ -61,7 +61,7 @@ class MagicMoveToVC: UIViewController {
         grayView.setFrame(centerX: view.centerX, top: 100, width: 100, height: 100)
         
         // 新增的UIView也为终态
-        whiteView.set(superview: view, backgroundColor: cBlue_2C9EFF_40)
+        whiteView.set(superview: view, backgroundColor: cBlue_5393FF_40)
         whiteView.setCornerRadiusWithMask(radius: 15)
         whiteView.setFrame(centerX: view.centerX, top: 400, width: 300, height: 400)
         

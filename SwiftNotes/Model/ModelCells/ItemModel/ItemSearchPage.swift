@@ -42,6 +42,16 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         deleteAllButton.setStyleSystemIconButton(imageName: "delete")
         deleteAllButton.setShadow(y: 2, radius: 16)
         deleteAllButton.setFrame(right: 20, bottom: 20 + kNavBarHeight + kBottomBarHeight, width: 44, height: 44)
+        
+        
+        // MARK: - 打印数据为csv格式
+        let resumeArray = model.resume
+        let totalProgressArray = model.totalProgress
+        let colorArray = model.color
+        for i in 0...idArray.count-1 {
+            print(idArray[i], nameArray[i], resumeArray[i], totalProgressArray[i], colorArray[i],  separator: ",")
+        }
+        
     }
     
     

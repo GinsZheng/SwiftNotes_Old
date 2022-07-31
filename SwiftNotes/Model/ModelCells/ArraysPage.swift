@@ -54,6 +54,10 @@ class CSArrayPage: UIViewController {
         let arr7 = [1, 3, 5, 7, 9]
         let sumValue = arr7.reduce(0, +)
         print("数组求和：\(sumValue)")
+        
+        // 生成重复元素
+        let arr8 = Array(repeating: "T", count: 3)
+        print("生成重复元素", arr8)
     }
     
     

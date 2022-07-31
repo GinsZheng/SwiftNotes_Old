@@ -19,14 +19,14 @@ class CSAnimationPage: UIViewController {
         
         myView.set(superview: view)
         myView.setFrame(centerX: view.centerX, top: 20, width: 100, height: 100)
-        myView.backgroundColor = UIColor.hex(cBlue_2C9EFF)
+        myView.backgroundColor = UIColor.hex(cBlue_5393FF)
         
         view.addSubview(solidButton)
         solidButton.setFrame(left: 20, bottom: kTabBarHeight + 20, width: kScreenWidth - 40, height: 44)
         solidButton.setTitle("Start Animation", for: .normal)
         solidButton.setTitleColor(UIColor.white, for: .normal)
         solidButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        solidButton.setBackgroundImage(getImageWithColor(color: cBlue_2C9EFF), for: .normal)
+        solidButton.setBackgroundImage(getImageWithColor(color: cBlue_5393FF), for: .normal)
         solidButton.setBackgroundImage(getImageWithColor(color: "992c9eff"), for: .highlighted)
         solidButton.setBackgroundImage(getImageWithColor(color: "662c9eff"), for: .disabled)
         solidButton.setCornerRadiusWithMask(radius: 4)
@@ -46,7 +46,7 @@ class CSAnimationPage: UIViewController {
             
         }) { (_) in
             // 回调：动画结束后执行
-            self.myView.backgroundColor = UIColor.hex(cBlue_2C9EFF)
+            self.myView.backgroundColor = UIColor.hex(cBlue_5393FF)
             self.myView.alpha = 1
             self.myView.y = 100
             self.myView.width = 100

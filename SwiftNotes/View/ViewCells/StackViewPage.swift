@@ -21,7 +21,7 @@ class CSStackViewPage: UIViewController {
         stackBlock2.backgroundColor = .hex(cOrange_F9AD18)
         
         let stackBlock3 = UIView()
-        stackBlock3.backgroundColor = .hex(cBlue_2C9EFF)
+        stackBlock3.backgroundColor = .hex(cBlue_5393FF)
         
         let stack = UIStackView(arrangedSubviews: [stackBlock1, stackBlock2, stackBlock3])
         stack.set(superview: view)

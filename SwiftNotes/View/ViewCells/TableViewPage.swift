@@ -69,3 +69,19 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     但在滑动列表后，会出现投影被裁切的情况，些时把背景颜色设置为透明即可解决
     (可能)扩展而言：只要不设置 maskToBounds 属性，所有的视图都可以超出控件边界
  */
+
+
+/*
+ TableViewCell中可交互控件失效处理方法：
+ // 以UISwitch为例，把UISwitch控件添加到cell.contentView上而不是添加到cell上
+ let cell = CellComponent()
+ cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: 0)
+ cell.setBackgroundColor(color: cNoColor)
+ cell.selectionStyle = .none
+ 
+ let switchView = UISwitch()
+ switchView.set(superview: cell.contentView)
+ switchView.setFrame(right: 20, centerY: cardBg.centerY, width: switchView.width, height: switchView.height)
+ switchView.onTintColor = UIColor.hex(cBlue_5393FF)
+ switchView.setOn(true, animated: false)
+ */

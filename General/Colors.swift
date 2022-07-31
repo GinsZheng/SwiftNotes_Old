@@ -104,7 +104,6 @@ let cE9EAEC = "E9EAEC"
 let cEEE = "EEE"
 let cF0F1F3 = "F0F1F3"
 let cF5F6F8 = "F5F6F8"
-let cF7F8FA = "F7F8FA"
 
 // foreground white
 let cFEFEFE = "FEFEFE"

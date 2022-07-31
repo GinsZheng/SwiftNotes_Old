@@ -10,8 +10,8 @@ import UIKit
 
 class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleArray = ["Array", "Data Operate", "Data Save List", "Dictionary", "Double", "Enum", "Int", "Item Model (Basic)", "Progress Model (Joined)", "Read File", "Request", "String", "SwiftyJSON", "Time"]
-    let pageArray = [CSArrayPage(), CSDataOperate(), CSDataSaveListVC(), CSDictionaryPage(), DoublePage(), CSEnumPage(), CSIntPage(), CSItemSearchPage(), CSProgressSearchPage(), CSReadFilePage(), CSRequestPage(), CSStringPage(), CSSwiftyJSONPage(), CSTimePage()]
+    let titleArray = ["Array", "CSV", "Data Operate", "Data Save List", "Dictionary", "Double", "Enum", "Int", "Item Model (Basic)", "Progress Model (Joined)", "Read File", "Request", "String", "SwiftyJSON", "Time"]
+    let pageArray = [CSArrayPage(), CSVPage(), CSDataOperate(), CSDataSaveListVC(), CSDictionaryPage(), DoublePage(), CSEnumPage(), CSIntPage(), CSItemSearchPage(), CSProgressSearchPage(), CSReadFilePage(), CSRequestPage(), CSStringPage(), CSSwiftyJSONPage(), CSTimePage()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
