@@ -42,6 +42,12 @@ func getImageWithColor(color: String) -> UIImage {
     return image!
 }
 
+//func getImageWithAlpha(imageName: String, alpha: CGFloat) -> UIImage {
+//    let image = UIImage(named: imageName).alpha
+////    let alphaImage =
+//    return
+//}
+
 
 // 按比例布局的因子
 func s(_ number: CGFloat) -> CGFloat {
