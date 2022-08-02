@@ -109,16 +109,16 @@ extension UIButton {
         self.setStyleWordButton(title: title, titleSize: 14, titleColor: c999, titleWeight: .regular)
     }
     
-    func setStyleArrow(title: String) {
+    func setStyleArrow(title: String, imageName: String) {
         self.setTitle(title, for: .normal)
         self.setTitleColor(.hex(cBlue_5393FF), for: .normal)
         self.setTitleColor(.hex(cBlue_5393FF_60), for: .highlighted)
         self.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
         self.contentHorizontalAlignment = .left  // 文本左对齐
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: -18, bottom: 0, right: 0)
-        self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 42, bottom: 0, right: 0)
-        self.setImage(UIImage(named: "general_arrowDown_blue"), for: .normal)
-        self.setImage(UIImage(named: "general_arrowDown_blue")?.withAlpha(0.6), for: .highlighted)
+        self.imageEdgeInsets = UIEdgeInsets(top: 0, left: self.width - 1 - 18, bottom: 0, right: 0)
+        self.setImage(UIImage(named: imageName), for: .normal)
+        self.setImage(UIImage(named: imageName)?.withAlpha(0.6), for: .highlighted)
     }
     
 }
