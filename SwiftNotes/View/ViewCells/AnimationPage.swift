@@ -43,6 +43,7 @@ class CSAnimationPage: UIViewController {
             self.myView.width = 335
             self.myView.height = 150
             self.myView.centerX = self.view.centerX
+            // self.myView.isHidden = true // 动画对isHidden无效(不能形成渐隐渐现效果)
             
         }) { (_) in
             // 回调：动画结束后执行
@@ -61,6 +62,8 @@ class CSAnimationPage: UIViewController {
             self.myView.removeFromSuperview()
         })
         
+        // ⚠️注意，此处函数参数一定要选对，多选了参数将达不到效果，如如果用以下函数(多了两个参数)，将达不到想要的动画效果
+        //        UIView.animate(withDuration: <#T##TimeInterval#>, delay: <#T##TimeInterval#>, usingSpringWithDamping: <#T##CGFloat#>, initialSpringVelocity: <#T##CGFloat#>, options: <#T##UIView.AnimationOptions#>, animations: <#T##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
         
     }
     
