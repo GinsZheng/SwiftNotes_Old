@@ -64,4 +64,6 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
  在VC下，可以给某按钮操作设置以下属性，实现tab切换
  self.tabBarController?.selectedIndex = 2
  
+ 要需要隐藏元素不占位时，y值最好用赋值的方式来处理，而不是 +=/-= 来处理，后者在扩展时容易出错
+ 
  */

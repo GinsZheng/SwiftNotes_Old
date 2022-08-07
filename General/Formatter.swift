@@ -63,6 +63,17 @@ extension CSFormatter {
         return result
     }
     
+    // 比例，不含⌜%⌟。 <1，Int(N)
+    static func getPercentageStr2(percentage: Double) -> String {
+        var result = "\(Int(percentage*100))"
+        if percentage < 0.01 {
+            result = "<1"
+        } else if percentage > 1 {
+            result = "100"
+        }
+        return result
+    }
+    
     static func getDateStrDefault(timeStamp: Int) -> String {
         var result = ""
         let theBeginingTomorrow = getTimeStampOfTheBeginingToday() + 86400
@@ -78,13 +89,17 @@ extension CSFormatter {
         case theBeginingTwoDaysBefore..<theBeginingYestoday:
             result = "前天"
         default:
-            result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "yy/M/d")
+            result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d")
         }
         return result
     }
     
     static func getDateStrMD(timeStamp: Int) -> String {
         return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d")
+    }
+    
+    static func getDateStrY(timeStamp: Int) -> String {
+        return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "yyyy")
     }
     
     // 时间 HH:mm

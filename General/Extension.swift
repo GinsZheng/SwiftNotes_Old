@@ -121,6 +121,16 @@ extension UIButton {
         self.setImage(UIImage(named: imageName)?.withAlpha(0.6), for: .highlighted)
     }
     
+    func setStyleTintTitleGrayBg(title: String) {
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(.hex(cBlue_5393FF), for: .normal)
+        self.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
+        self.setBackgroundImage(getImageWithColor(color: cF0F1F3), for: .normal)
+        self.setBackgroundImage(getImageWithColor(color: cDDDEE0), for: .highlighted)
+        
+        self.setCornerRadiusWithMask(radius: 14)
+    }
+    
 }
 
 

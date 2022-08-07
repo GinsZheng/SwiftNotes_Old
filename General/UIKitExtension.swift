@@ -283,9 +283,10 @@ extension UIView {
 
 extension UILabel {
     
-    func set(superview: UIView, text: String) {
+    func set(superview: UIView, text: String, numberOfLines: Int = 1) {
         self.text = text
         superview.addSubview(self)
+        self.numberOfLines = numberOfLines
     }
     
     func setFontStyle(size: CGFloat, color: String, weight: UIFont.Weight = .regular, alignment: NSTextAlignment = .left) {
