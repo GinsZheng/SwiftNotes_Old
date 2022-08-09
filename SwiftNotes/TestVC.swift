@@ -46,7 +46,8 @@ class TestVC: UIViewController {
         gradientView.setFrame(left: 10, top: 100, width: 160, height: 80)
         gradientView.setGradientLayer(colors: colorArr, locations: [0, 0.5, 1], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1,y: 0))
         
-        
+        let majorVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+        print("当前版本", majorVersion)
         
     }
     

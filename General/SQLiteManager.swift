@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class SQLiteManager: NSObject {
     
-    private var db: Connection?
+    var db: Connection?
     private var table: Table?
 
     func getDB() -> Connection {
@@ -78,5 +78,64 @@ class SQLiteManager: NSObject {
         print("查询结果：")
         return Array(result)
     }
+    
+    func addColumn<V:Value>(table: Table, columnName: String, column:Expression<V>, defaultValue:V) {
+        do {
+            var isExist = false
+            let expression = table.expression
+            let colunmnNames = try getDB().prepare(expression.template,expression.bindings).columnNames
+            for colName in colunmnNames {
+                if colName == columnName {
+                    isExist = true
+                    print("已添加过字段 \(columnName)")
+                    break
+                }
+            }
+            
+            if !isExist {
+                do {
+                    try getDB().run(table.addColumn(column, defaultValue:defaultValue))
+                    print("成功新增字段 \(columnName)")
+                } catch {
+                    print("addError")
+                }
+            }
+        } catch {
+            
+        }
+    }
+
+    
 }
 
+
+//class SQLiteOperation {
+//    class func addColumn<V: Value>(table:Table, db: Connection, columnName:String, column:Expression<V>, defaultValue:V) {
+//        do {
+//            var isExist = false
+//            let expression = table.expression
+//            let colunmnNames = try db.prepare(expression.template,expression.bindings).columnNames
+//            for colName in colunmnNames {
+//                if colName == columnName {
+//                    isExist = true
+//                    print("已存在字段 \(columnName)")
+//                    break
+//                }
+//            }
+//
+//            if !isExist {
+//                do {
+//                    try db.run(table.addColumn(column, defaultValue: defaultValue))
+//                    print("新增字段 \(columnName)")
+//                } catch {
+//                    print("addError")
+//                }
+//            }
+//
+//        } catch {
+//            print("出错")
+//        }
+//
+//    }
+//}
+//

@@ -32,13 +32,13 @@ extension UserDefaults {
         }
         return isFirstLaunch
     }
-     
+    
     //当前版本第一次启动
     static func isFirstLaunchOfNewVersion() -> Bool {
         //主程序版本号
         let infoDictionary = Bundle.main.infoDictionary!
         let majorVersion = infoDictionary["CFBundleShortVersionString"] as! String
-         
+        
         //上次启动的版本号
         let hasBeenLaunchedOfNewVersion = "hasBeenLaunchedOfNewVersion"
         let lastLaunchVersion = UserDefaults.standard.string(forKey:
@@ -53,6 +53,23 @@ extension UserDefaults {
         }
         return isFirstLaunchOfNewVersion
     }
+    
+    /// 通过下标使用枚举
+    subscript<T: RawRepresentable>(key: String) -> T? {
+        get {
+            if let rawValue = value(forKey: key) as? T.RawValue {
+                return T(rawValue: rawValue)
+            }
+            return nil
+        }
+        set { set(newValue?.rawValue, forKey: key) }
+    }
+    
+    subscript<T>(key: String) -> T? {
+        get { return value(forKey: key) as? T }
+        set { set(newValue, forKey: key) }
+    }
+    
 }
 
 

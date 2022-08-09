@@ -32,7 +32,6 @@ class TestPresentVC: UIViewController {
         image.set(superview: scrollView, imageName: "iPhoneX")
         image.setFrame(left: 0, top: 0, width: kScreenWidth, height: kScreenWidth/375*812)
         
-        
     }
     
     
