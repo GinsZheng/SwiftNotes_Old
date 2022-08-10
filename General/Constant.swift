@@ -59,3 +59,6 @@ let kSeparatorHeight = 1 / UIScreen.main.scale
 let kButtonRadius: CGFloat = 4
 
 let kCellHeight: CGFloat = 56
+
+// 简称
+let kUserDefaults = UserDefaults.standard

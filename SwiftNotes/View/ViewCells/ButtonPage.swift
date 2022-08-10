@@ -10,13 +10,7 @@ import UIKit
 
 class CSButtonPage: UIViewController {
     
-    @objc func pushToGeneralSubpage() {
-        self.pushFromSecondaryPage(toTarget: CSGeneralSubpage())
-    }
-    
-    @objc func pushWithParameter(_ button: UIButton) {
-        self.pushFromSecondaryPage(toTarget: CSGeneralSubpage())
-    }
+    let testInt = "testInt"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +19,7 @@ class CSButtonPage: UIViewController {
         print("当前机型的逻辑分辨率：\(kScreenWidth) * \(kScreenHeight)")
         
         let wordButton = UIButton(type: .system)
-        wordButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
+        wordButton.set(superview: view, target: self, action: #selector(changeSetting))
         wordButton.setStyleWordButton(title: "Word Button")
         wordButton.setFrame(left: 20, top: 20, right: 20, height: 44)
         
@@ -54,7 +48,33 @@ class CSButtonPage: UIViewController {
         customIconButton.setStyleCustomIconButton(imageName: "mine_item")
         customIconButton.setFrame(centerX: view.centerX, top: systemIconButton.bottom + 20, width: 44, height: 44)
         
+        // 测试UserDefualt内容(1)
+        print("testInt初始值", kUserDefaults.integer(forKey: testInt))
+        
     }
+    
+    // 测试UserDefualt内容(2)
+    @objc func changeSetting() {
+        if kUserDefaults.integer(forKey: testInt) == 0 {
+            kUserDefaults.set(1, forKey: testInt)
+            print("testInt已改为：", kUserDefaults.integer(forKey: testInt))
+        } else if kUserDefaults.integer(forKey: testInt) == 1 {
+            kUserDefaults.set(0, forKey: testInt)
+            print("testInt已改为：", kUserDefaults.integer(forKey: testInt))
+        } else {
+            print("错误")
+        }
+    }
+    
+    @objc func pushToGeneralSubpage() {
+        self.pushFromSecondaryPage(toTarget: CSGeneralSubpage())
+    }
+    
+    @objc func pushWithParameter(_ button: UIButton) {
+        self.pushFromSecondaryPage(toTarget: CSGeneralSubpage())
+    }
+    
+
     
     
 }

@@ -25,10 +25,10 @@ extension UserDefaults {
     //应用第一次启动
     static func isFirstLaunch() -> Bool {
         let hasBeenLaunched = "hasBeenLaunched"
-        let isFirstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunched)
+        let isFirstLaunch = kUserDefaults.bool(forKey: hasBeenLaunched)
         if isFirstLaunch {
-            UserDefaults.standard.set(true, forKey: hasBeenLaunched)
-            UserDefaults.standard.synchronize()
+            kUserDefaults.set(true, forKey: hasBeenLaunched)
+            kUserDefaults.synchronize()
         }
         return isFirstLaunch
     }
@@ -41,15 +41,15 @@ extension UserDefaults {
         
         //上次启动的版本号
         let hasBeenLaunchedOfNewVersion = "hasBeenLaunchedOfNewVersion"
-        let lastLaunchVersion = UserDefaults.standard.string(forKey:
+        let lastLaunchVersion = kUserDefaults.string(forKey:
             hasBeenLaunchedOfNewVersion)
          
         //版本号比较
         let isFirstLaunchOfNewVersion = majorVersion != lastLaunchVersion
         if isFirstLaunchOfNewVersion {
-            UserDefaults.standard.set(majorVersion, forKey:
+            kUserDefaults.set(majorVersion, forKey:
                 hasBeenLaunchedOfNewVersion)
-            UserDefaults.standard.synchronize()
+            kUserDefaults.synchronize()
         }
         return isFirstLaunchOfNewVersion
     }

@@ -10,84 +10,86 @@ import UIKit
 
 class CSUserDefaultsPage: UIViewController {
     
-    // 创建UserDefaults。存储目录：Library/Preference
-    var userDefault = UserDefaults.standard
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        // MARK: - 优雅的做法
+
+        print("初始isFirstLogin值", Preference.isFirstLogin)
+        print("初始appTheme值", Preference.appTheme)
+
+        // 存储数据
+        Preference.isFirstLogin = false
+        Preference.appTheme = .light
+        Preference.serverUrl = .developServer
+        
+
+        // 读取数据
+        print("更新后isFirstLogin值", Preference.isFirstLogin)
+        print("更新后appTheme值", Preference.appTheme)
+
+        
+        // MARK: - 最原始的做法
+        
         // 保存值
-        userDefault.set(12345, forKey: "Int")
+        kUserDefaults.set(12345, forKey: "Int")
         // 读取值
-        let intValue = userDefault.integer(forKey: "Int")
+        let intValue = kUserDefaults.integer(forKey: "Int")
         print("intValue \(intValue)")
         
-        let defaultName = userDefault.string(forKey: "defaultName") ?? "a"
+        let defaultName = kUserDefaults.string(forKey: "defaultName") ?? "a"
         print("defaultName \(defaultName)")
         
         // 与「integer」等位的有：
-        userDefault.object(forKey: "O")
-        userDefault.float(forKey: "F")
-        userDefault.double(forKey: "D")
-        userDefault.bool(forKey: "B")
-        userDefault.url(forKey: "U")
-        userDefault.string(forKey: "S")
-        userDefault.array(forKey: "A")
-        userDefault.dictionary(forKey: "Dict")
-        userDefault.data(forKey: "Data")
-        
-        /*
-         未存储值时：
-         -> 读取int值会返回：0
-         -> 读取string返回：nil
-         */
+        kUserDefaults.object(forKey: "O")
+        kUserDefaults.float(forKey: "F")
+        kUserDefaults.double(forKey: "D")
+        kUserDefaults.bool(forKey: "B")
+        kUserDefaults.url(forKey: "U")
+        kUserDefaults.string(forKey: "S")
+        kUserDefaults.array(forKey: "A")
+        kUserDefaults.dictionary(forKey: "Dict")
+        kUserDefaults.data(forKey: "Data")
         
         
-        
-        // MARK: - 以下为新方法，简化UserDefault的表达
-        
-        // 存储数据
-        Preference.isFirstLogin = true
-        Preference.appTheme = .dark
-        Preference.serverUrl = .developServer
-
-        // 读取数据
-        let value1 = Preference.isFirstLogin // true
-        let value2 = Preference.appTheme == .dark // true
-        let value3 = Preference.serverUrl.rawValue // url: developServer
-        print(value1, value2, value3)
-
     }
 }
 
 
+// 优雅的做法
 struct Preference {
-    /// bool
+    // bool
     static var isFirstLogin: Bool {
-        get { return UserDefaults.standard[#function] ?? false }
-        set { UserDefaults.standard[#function] = newValue }
+        get { return kUserDefaults[#function] ?? true }
+        set { kUserDefaults[#function] = newValue }
+        /*
+         注：虽然以下代码也行，但明显以上代码更牛，虽然不清楚实现方式
+         get { return kUserDefaults.bool(forKey: "isFirstLogin") }
+         set { kUserDefaults.set(newValue, forKey: "isFirstLogin") }
+         */
     }
 
-    /// string
+    // string
     static var userName: String {
-        get { return UserDefaults.standard[#function] ?? "yourDefaultValue" }
-        set { UserDefaults.standard[#function] = newValue }
+        get { return kUserDefaults[#function] ?? "" }
+        set { kUserDefaults[#function] = newValue }
     }
 
-    /// enum
+    // enum
     static var appTheme: Theme {
-        get { return UserDefaults.standard[#function] ?? .light }
-        set { UserDefaults.standard[#function] = newValue }
-    }
-    /// 测试服跟正式服之间的切换（默认正式服）
-    static var serverUrl: ServerUrlType {
-        get { return UserDefaults.standard[#function] ?? .distributeServer }
-        set { UserDefaults.standard[#function] = newValue }
+        get { return kUserDefaults[#function] ?? .light }
+        set { kUserDefaults[#function] = newValue }
     }
     
+    // 测试服跟正式服之间的切换（默认正式服）
+    static var serverUrl: ServerUrlType {
+        get { return kUserDefaults[#function] ?? .distributeServer }
+        set { kUserDefaults[#function] = newValue }
+    }
     
 }
+
 
 enum Theme: Int {
     case light
@@ -102,3 +104,13 @@ enum ServerUrlType: String {
 
 
 
+/*
+ 使用 UserDefaults 读取时，如果key不存在，则会返回一个默认值：
+
+ integer(forKey:): 不存在则返回 0
+ bool(forKey:): 不存在则返回 false
+ String：不存在返回 nil
+ float(forKey:) | double(forKey:): 如果不存在则返回 0.0
+ object(forKey): 会返回 AnyObject?, 因此你需要自定义转换为你想要的返回类型，比如上面的 kUserDefaults.object(forKey: "INFO"), 自定义返回类型为 [String: String], 如果 INFO key 不存在，则给一个默认的空字符串字典 [String:String]()
+
+ */
