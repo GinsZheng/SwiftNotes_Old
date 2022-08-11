@@ -123,7 +123,7 @@ extension UIButton {
     }
     
     func setStyleCutsomCancelBtn(title: String) {
-        self.setStyleWordButton(title: title, titleSize: 14, titleColor: c999, titleWeight: .regular)
+        self.setStyleWordButton(title: title, titleSize: 14, normalTitleColor: c999, highlightedTitleColor: cBBB, titleWeight: .regular)
     }
     
     func setStyleArrow(title: String, imageName: String) {
@@ -166,15 +166,17 @@ extension UIStackView {
 // SwiftNotes
 
 extension UIButton {
-    func setStyleWordButton(title: String, titleSize: CGFloat = 17, titleColor: String = cThemeWord, titleWeight: UIFont.Weight = .medium) {
+    func setStyleWordButton(title: String, titleSize: CGFloat = 17, normalTitleColor: String = cThemeWord, highlightedTitleColor: String = cThemeHightlightedFill, titleWeight: UIFont.Weight = .medium) {
         self.setTitle(title, for: .normal)
-        self.setTitleColor(UIColor.hex(titleColor), for: .normal)
+        self.setTitleColor(UIColor.hex(normalTitleColor), for: .normal)
+        self.setTitleColor(UIColor.hex(highlightedTitleColor), for: .highlighted)
         self.titleLabel?.font = .systemFont(ofSize: titleSize, weight: titleWeight)
     }
     
-    func setStyleGhostButton(title: String, titleSize: CGFloat = 17, titleColor: String = cThemeWord, titleWeight: UIFont.Weight = .medium, borderColor: String = cThemeBorder, borderWidth: CGFloat = 0.5, cornerRadius: CGFloat = kButtonRadius) {
+    func setStyleGhostButton(title: String, titleSize: CGFloat = 17, normalTitleColor: String = cThemeWord, highlightedTitleColor: String = cThemeHightlightedFill, titleWeight: UIFont.Weight = .medium, borderColor: String = cThemeBorder, borderWidth: CGFloat = 0.5, cornerRadius: CGFloat = kButtonRadius) {
         self.setTitle(title, for: .normal)
-        self.setTitleColor(UIColor.hex(titleColor), for: .normal)
+        self.setTitleColor(UIColor.hex(normalTitleColor), for: .normal)
+        self.setTitleColor(UIColor.hex(highlightedTitleColor), for: .highlighted)
         self.titleLabel?.font = UIFont.systemFont(ofSize: titleSize, weight: titleWeight) // 这里设置UILabel的颜色值将无效
         self.setBorder(color: cThemeBorder, borderWidth: borderWidth)
         self.setCornerRadius(radius: cornerRadius)

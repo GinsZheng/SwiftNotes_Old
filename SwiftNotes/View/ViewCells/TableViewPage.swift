@@ -31,6 +31,7 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
         cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
         cell.setSeparator(leftInset: 20, rightInset: 0)
+        cell.selectionStyle = .none
         
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: titleList[indexPath.row])
@@ -58,8 +59,6 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
 }
-
-
 
 
 

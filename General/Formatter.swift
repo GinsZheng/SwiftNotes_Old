@@ -100,15 +100,23 @@ extension CSFormatter {
     
     static func getDateStrYYYYMDInThePastYear(timeStamp: Int) -> String {
         // 当年不显示年份，过去的年份显示年份
-        if getDateStrY(timeStamp: timeStamp) != getDateStrY(timeStamp: getTimeStampNow()) {
+        if getDateStrYYYY(timeStamp: timeStamp) != getDateStrYYYY(timeStamp: getTimeStampNow()) {
             return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "yyyy/M/d")
         } else {
             return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d")
         }
     }
     
-    static func getDateStrY(timeStamp: Int) -> String {
+    static func getDateStrYYYY(timeStamp: Int) -> String {
         return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "yyyy")
+    }
+    
+    static func getDateStrYYYYInThePastYear(timeStamp: Int) -> String {
+        if getDateStrYYYY(timeStamp: timeStamp) != getDateStrYYYY(timeStamp: getTimeStampNow()) {
+            return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "yyyy")
+        } else {
+            return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "")
+        }
     }
     
     // 时间 HH:mm
