@@ -12,6 +12,8 @@
 		7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */; };
 		7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */; };
 		7A0715DA243650C7002A5371 /* FontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0715D9243650C7002A5371 /* FontPage.swift */; };
+		7A0B6A6B28A4EE1300065611 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0B6A4028A4EE1300065611 /* Env.swift */; };
+		7A0B6A6C28A4EE1300065611 /* ExamplesDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0B6A6A28A4EE1300065611 /* ExamplesDefaults.swift */; };
 		7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A109AF72421302E0034C624 /* ModelBasicNote.swift */; };
 		7A1E5A4A24363EA40074DA7F /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1E5A4924363EA40074DA7F /* Timer.swift */; };
 		7A1EF03C23FAEF4B00BDEEBF /* ReloadDataPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */; };
@@ -87,8 +89,6 @@
 		7A3C6B062884111F00C1D7AC /* CSVPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3C6B052884111F00C1D7AC /* CSVPage.swift */; };
 		7A3C6B3F2884135900C1D7AC /* item.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A3C6B3D2884135900C1D7AC /* item.csv */; };
 		7A3C6B402884135900C1D7AC /* progress.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A3C6B3E2884135900C1D7AC /* progress.csv */; };
-		7A4040412483E045000FF8C7 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A40401E2483E045000FF8C7 /* Env.swift */; };
-		7A4040432483E052000FF8C7 /* ExamplesDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4040422483E052000FF8C7 /* ExamplesDefaults.swift */; };
 		7A4040452483EED3000FF8C7 /* MapPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4040442483EED3000FF8C7 /* MapPage.swift */; };
 		7A4736AC246AFDCC0071115F /* DictionaryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736AB246AFDCC0071115F /* DictionaryPage.swift */; };
 		7A4736CC246B015F0071115F /* EnumPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CB246B015F0071115F /* EnumPage.swift */; };
@@ -503,6 +503,8 @@
 		7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAndDismissPage.swift; sourceTree = "<group>"; };
 		7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerBasicNote.swift; sourceTree = "<group>"; };
 		7A0715D9243650C7002A5371 /* FontPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPage.swift; sourceTree = "<group>"; };
+		7A0B6A4028A4EE1300065611 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
+		7A0B6A6A28A4EE1300065611 /* ExamplesDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesDefaults.swift; sourceTree = "<group>"; };
 		7A109AF72421302E0034C624 /* ModelBasicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelBasicNote.swift; sourceTree = "<group>"; };
 		7A114CB7240570420058E70A /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = ESTabBarController/ESTabBarControllerExample/ESTabBarControllerExample/Framework/pop.framework; sourceTree = "<group>"; };
 		7A1E5A4924363EA40074DA7F /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
@@ -586,8 +588,6 @@
 		7A3C6B052884111F00C1D7AC /* CSVPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVPage.swift; sourceTree = "<group>"; };
 		7A3C6B3D2884135900C1D7AC /* item.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = item.csv; sourceTree = "<group>"; };
 		7A3C6B3E2884135900C1D7AC /* progress.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = progress.csv; sourceTree = "<group>"; };
-		7A40401E2483E045000FF8C7 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Env.swift; path = Libraries/SwiftCharts/Examples/Examples/Env.swift; sourceTree = SOURCE_ROOT; };
-		7A4040422483E052000FF8C7 /* ExamplesDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExamplesDefaults.swift; path = Libraries/SwiftCharts/Examples/Examples/ExamplesDefaults.swift; sourceTree = SOURCE_ROOT; };
 		7A4040442483EED3000FF8C7 /* MapPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPage.swift; sourceTree = "<group>"; };
 		7A4736AB246AFDCC0071115F /* DictionaryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryPage.swift; sourceTree = "<group>"; };
 		7A4736CB246B015F0071115F /* EnumPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPage.swift; sourceTree = "<group>"; };
@@ -853,18 +853,10 @@
 				7A2E72492472E5B500D0B9A2 /* ColumnChartPage.swift */,
 				7A2E724B2472E5C800D0B9A2 /* BarChartPage.swift */,
 				7A2E724D2472E5E000D0B9A2 /* LineChartPage.swift */,
-				7A2E72512472EBA100D0B9A2 /* ChartSupports */,
+				7A0B6A4028A4EE1300065611 /* Env.swift */,
+				7A0B6A6A28A4EE1300065611 /* ExamplesDefaults.swift */,
 			);
 			path = ChartList;
-			sourceTree = "<group>";
-		};
-		7A2E72512472EBA100D0B9A2 /* ChartSupports */ = {
-			isa = PBXGroup;
-			children = (
-				7A40401E2483E045000FF8C7 /* Env.swift */,
-				7A4040422483E052000FF8C7 /* ExamplesDefaults.swift */,
-			);
-			path = ChartSupports;
 			sourceTree = "<group>";
 		};
 		7A33088923CC66850021BA5B /* Frameworks */ = {
@@ -1704,12 +1696,12 @@
 				7A2E724E2472E5E000D0B9A2 /* LineChartPage.swift in Sources */,
 				7A62A1A3244C99290090D128 /* SwipeGesturePage.swift in Sources */,
 				7A4736D2246DA6500071115F /* DismissPage.swift in Sources */,
+				7A0B6A6C28A4EE1300065611 /* ExamplesDefaults.swift in Sources */,
 				7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */,
 				7AA3C2B1241CCC6000F77711 /* ItemUpdatePage.swift in Sources */,
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
 				7A76EF6323CF17B400350087 /* SQLiteManager.swift in Sources */,
 				7A2AC398240A791300B95E43 /* TransitionPage.swift in Sources */,
-				7A4040412483E045000FF8C7 /* Env.swift in Sources */,
 				7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */,
 				7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */,
 				7A62A1F7245CAD890090D128 /* WindowPage.swift in Sources */,
@@ -1737,7 +1729,6 @@
 				7A2161152389857700D5A93A /* SetColorInHex.swift in Sources */,
 				7A62A180244C92670090D128 /* GestureListPage.swift in Sources */,
 				7A28833A2448BB9700591C29 /* AlertOneBtnPage.swift in Sources */,
-				7A4040432483E052000FF8C7 /* ExamplesDefaults.swift in Sources */,
 				7A4736D0246DA0AA0071115F /* TestPresentVC.swift in Sources */,
 				7A7D1C3A241CB9F100E08EA1 /* ItemInsertPage.swift in Sources */,
 				7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */,
@@ -1765,6 +1756,7 @@
 				7A1EF03C23FAEF4B00BDEEBF /* ReloadDataPage.swift in Sources */,
 				7A4B162E24C750CA004367F9 /* DisabledDismissPage.swift in Sources */,
 				7A62A1FC24645CD90090D128 /* UserDefaultsPage.swift in Sources */,
+				7A0B6A6B28A4EE1300065611 /* Env.swift in Sources */,
 				7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */,
 				7A7F97E5241DF213000F1E31 /* ProgressInsertPage.swift in Sources */,
 				7A2161372389869D00D5A93A /* PlistPage.swift in Sources */,
