@@ -22,7 +22,10 @@ class TestVC: UIViewController {
         img.setStyleImageView(cornerRadius: 10)
         img.setFrame(left: 0, top: 0, right: 0, height: 667)
         
+//        let lbl = UILabel()
+        let time = CSFormatter.getDateAndTimeStrYYYYMDHHmmInThePastYear(timeStamp: 1360211688)
         
+        print("打印日期", time)
     }
     
     @objc func presentNext() {

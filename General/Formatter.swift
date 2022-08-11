@@ -98,6 +98,15 @@ extension CSFormatter {
         return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d")
     }
     
+    static func getDateStrYYYYMDInThePastYear(timeStamp: Int) -> String {
+        // 当年不显示年份，过去的年份显示年份
+        if getDateStrY(timeStamp: timeStamp) != getDateStrY(timeStamp: getTimeStampNow()) {
+            return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "yyyy/M/d")
+        } else {
+            return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d")
+        }
+    }
+    
     static func getDateStrY(timeStamp: Int) -> String {
         return getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "yyyy")
     }
@@ -124,6 +133,13 @@ extension CSFormatter {
     static func getDateAndTimeStrMdHHmm(timeStamp: Int) -> String {
         let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "M/d HH:mm")
         return result
+    }
+    
+    static func getDateAndTimeStrYYYYMDHHmmInThePastYear(timeStamp: Int) -> String {
+        // 当年不显示年份，过去的年份显示年份
+        let date = getDateStrYYYYMDInThePastYear(timeStamp: timeStamp)
+        let time = getTimeStrDefault(timeStamp: timeStamp)
+        return "\(date) \(time)"
     }
     
     static func getWeekOfYear(timeStamp: Int) -> String {
