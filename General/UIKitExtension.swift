@@ -683,6 +683,8 @@ extension UIImage {
 }
 
 
+// 扩大响应区域辅助项
+var kExpandSizeKey = "expandSizeKey"
 
 extension UIButton {
     func set(superview: UIView, target: Any?, action: Selector, forEvent: UIControl.Event = UIControl.Event.touchUpInside) {
@@ -690,16 +692,48 @@ extension UIButton {
         self.addTarget(target, action: action, for: forEvent)
     }
     
-    func extendTouchArea() {
-        // 需写在setFrame之后
-        let boundary: CGFloat = 44
-        let widthBoundary: CGFloat = 32
-        if self.width <= boundary && self.height <= boundary {
-            self.setFrame(left: self.left - (boundary - self.width)/2, top: self.top - (boundary - self.height)/2, width: boundary, height: boundary)
-        } else if self.width >= boundary && self.height <= widthBoundary {
-            self.setFrame(left: self.left, top: self.top - (widthBoundary - self.height)/2, width: self.width, height: widthBoundary)
-        }
+//    func expendTouchArea() {
+//        // 需写在setFrame之后
+//        let boundary: CGFloat = 44
+//        let widthBoundary: CGFloat = 32
+//        if self.width <= boundary && self.height <= boundary {
+//            self.setFrame(left: self.left - (boundary - self.width)/2, top: self.top - (boundary - self.height)/2, width: boundary, height: boundary)
+//        } else if self.width >= boundary && self.height <= widthBoundary {
+//            self.setFrame(left: self.left, top: self.top - (widthBoundary - self.height)/2, width: self.width, height: widthBoundary)
+//        }
+//    }
+    
+    
+    // 扩大响应区域 (把宽高44pt以下的部分扩大到44pt)
+    open func expendTouchArea() {
+        let size: CGFloat = 44 // 最小响应区域的宽/高
+        let padding = max((size - self.height) / 2, (size - self.width) / 2)
+        objc_setAssociatedObject(self, &kExpandSizeKey, padding,  objc_AssociationPolicy.OBJC_ASSOCIATION_COPY)
     }
+    // 扩大响应区域辅助项
+    func expandRect() -> CGRect {
+        let expandSize = objc_getAssociatedObject(self, &kExpandSizeKey)
+        let size: CGFloat = 44  // 最小响应区域的宽/高
+         if (expandSize != nil) {
+             if self.height >= size {
+                 return CGRect(x: bounds.origin.x - (expandSize as! CGFloat), y: bounds.origin.y, width: bounds.size.width + 2*(expandSize as! CGFloat), height: bounds.size.height)
+             } else if self.width >= size {
+                 return CGRect(x: bounds.origin.x, y: bounds.origin.y - (expandSize as! CGFloat), width: bounds.size.width, height: bounds.size.height + 2*(expandSize as! CGFloat))
+             } else {
+                 return CGRect(x: bounds.origin.x - (expandSize as! CGFloat), y: bounds.origin.y - (expandSize as! CGFloat), width: bounds.size.width + 2*(expandSize as! CGFloat), height: bounds.size.height + 2*(expandSize as! CGFloat))
+             }
+         }
+         return bounds
+    }
+    // 扩大响应区域辅助项
+    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+         let buttonRect = expandRect()
+         if (buttonRect.equalTo(bounds)) {
+             return super.point(inside: point, with: event)
+         }
+         return buttonRect.contains(point)
+    }
+    
     
 }
 

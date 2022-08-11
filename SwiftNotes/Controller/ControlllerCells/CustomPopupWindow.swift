@@ -75,7 +75,7 @@ class CSCustomPopupWindow: UIViewController {
         cancelButton.set(superview: bgView, target: self, action: #selector(cancel))
         cancelButton.setStyleCutsomCancelBtn(title: "放弃")
         cancelButton.setFrame(centerX: bgView.centerX - bgView.x, top: addingButton.bottom + 12, width: 44, height: 20)
-        cancelButton.extendTouchArea()
+        cancelButton.expendTouchArea()
         
         //动画
         maskView.hero.modifiers = [.opacity(0), .duration(0.15), .delay(0), .useGlobalCoordinateSpace]

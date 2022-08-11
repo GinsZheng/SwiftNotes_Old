@@ -52,7 +52,7 @@ class CSButtonPage: UIViewController {
         smallButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         smallButton.setStyleTintTitleGrayBg(title: "小按钮")
         smallButton.setFrame(centerX: view.centerX, top: customIconButton.bottom + 20, width: 58, height: 28)
-        smallButton.kExpandSize()
+        smallButton.expendTouchArea()
         
         // 测试UserDefualt内容(1)
         print("testInt初始值", kUserDefaults.integer(forKey: testInt))
@@ -80,116 +80,49 @@ class CSButtonPage: UIViewController {
         self.pushFromSecondaryPage(toTarget: CSGeneralSubpage())
     }
     
-
-    
-    
 }
 
 
-// 扩大响应区域辅助项
-var expandSizeKey = "expandSizeKey"
-
-extension UIButton {
-
-    /// 扩大响应区域
-    /// - Parameter size: size
-    open func kExpandSize(size: CGFloat = 44) {
-        let padding = max((size - self.height) / 2, (size - self.width) / 2)
-        
-         objc_setAssociatedObject(self, &expandSizeKey, padding,  objc_AssociationPolicy.OBJC_ASSOCIATION_COPY)
-    }
-    // 扩大响应区域辅助项
-    func expandRect() -> CGRect {
-         let expandSize = objc_getAssociatedObject(self, &expandSizeKey)
-         if (expandSize != nil) {
-              return CGRect(x: bounds.origin.x - (expandSize as! CGFloat), y: bounds.origin.y - (expandSize as! CGFloat), width: bounds.size.width + 2*(expandSize as! CGFloat), height: bounds.size.height + 2*(expandSize as! CGFloat))
-         }
-         return bounds
-    }
-    // 扩大响应区域辅助项
-    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-         let buttonRect = expandRect()
-         if (buttonRect.equalTo(bounds)) {
-             return super.point(inside: point, with: event)
-         }
-         return buttonRect.contains(point)
-    }
-    
-}
-
-
-
-
-
-
-
-
+//// 扩大响应区域辅助项
+//var expandSizeKey = "expandSizeKey"
+//
 //extension UIButton {
 //
-////    func setEnlargeEdge(top: Float, bottom: Float, left: Float, right: Float) -> Void {
-////        self.top = CGFloat(NSNumber.init(value: top))
-////        self.bottom = NSNumber.init(value: bottom)
-////        self.left = NSNumber.init(value: left)
-////        self.right = NSNumber.init(value: right)
-////    }
-//
-//    func enlargedRect() -> CGRect {
-//        let top = self.top
-//        let bottom = self.bottom
-//        let left = self.left
-//        let right = self.right
-//        if top.floatValue >= 0, bottom.floatValue >= 0, left.floatValue >= 0, right.floatValue >= 0 {
-//            return CGRect.init(x: self.bounds.origin.x - CGFloat(left.floatValue),
-//                               y: self.bounds.origin.y - CGFloat(top.floatValue),
-//                               width: self.bounds.size.width + CGFloat(left.floatValue) + CGFloat(right.floatValue),
-//                               height: self.bounds.size.height + CGFloat(top.floatValue) + CGFloat(bottom.floatValue))
-//        }
-//        else {
-//            return self.bounds
-//        }
+//    /// 扩大响应区域 (把宽高44pt以下的部分扩大到44pt)
+//    /// - Parameter size: size
+//    open func kExpandSize() {
+//        let size: CGFloat = 44 // 最小响应区域的宽/高
+//        let padding = max((size - self.height) / 2, (size - self.width) / 2)
+//        objc_setAssociatedObject(self, &expandSizeKey, padding,  objc_AssociationPolicy.OBJC_ASSOCIATION_COPY)
 //    }
-//
+//    // 扩大响应区域辅助项
+//    func expandRect() -> CGRect {
+//        let expandSize = objc_getAssociatedObject(self, &expandSizeKey)
+//        let size: CGFloat = 44  // 最小响应区域的宽/高
+//         if (expandSize != nil) {
+//             if self.height >= size {
+//                 return CGRect(x: bounds.origin.x - (expandSize as! CGFloat), y: bounds.origin.y, width: bounds.size.width + 2*(expandSize as! CGFloat), height: bounds.size.height)
+//             } else if self.width >= size {
+//                 return CGRect(x: bounds.origin.x, y: bounds.origin.y - (expandSize as! CGFloat), width: bounds.size.width, height: bounds.size.height + 2*(expandSize as! CGFloat))
+//             } else {
+//                 return CGRect(x: bounds.origin.x - (expandSize as! CGFloat), y: bounds.origin.y - (expandSize as! CGFloat), width: bounds.size.width + 2*(expandSize as! CGFloat), height: bounds.size.height + 2*(expandSize as! CGFloat))
+//             }
+//         }
+//         return bounds
+//    }
+//    // 扩大响应区域辅助项
 //    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-//        let rect = self.enlargedRect()
-//        if rect.equalTo(self.bounds) {
-//            return super.point(inside: point, with: event)
-//        }
-//        return rect.contains(point) ? true : false
+//         let buttonRect = expandRect()
+//         if (buttonRect.equalTo(bounds)) {
+//             return super.point(inside: point, with: event)
+//         }
+//         return buttonRect.contains(point)
 //    }
+//
+//
+//
 //}
 
-//
-//fileprivate let minimumHitArea = CGSize(width: 100, height: 100)
-//
-//extension UIButton {
-//    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-//        // if the button is hidden/disabled/transparent it can't be hit
-//        if self.isHidden || !self.isUserInteractionEnabled || self.alpha < 0.01 { return nil }
-//
-//        // increase the hit frame to be at least as big as `minimumHitArea`
-//        let buttonSize = self.bounds.size
-//        let widthToAdd = max(minimumHitArea.width - buttonSize.width, 0)
-//        let heightToAdd = max(minimumHitArea.height - buttonSize.height, 0)
-//        let largerFrame = self.bounds.insetBy(dx: -widthToAdd / 2, dy: -heightToAdd / 2)
-//
-//        // perform hit test on larger frame
-//        return (largerFrame.contains(point)) ? self : nil
-//    }
-//}
-////但是当我使用它时，我应用程序中的每个按钮都有较大的点击区域.我只想将其增加到一个specialButton-我该怎么做?
-////
-////推荐答案
-////请勿扩展点击范围；缩小绘图区域.将按钮设为UIButton的子类，然后在该子类中实现rect方法，如下所示:
-//
-//class MyButton : UIButton {
-//    override func contentRect(forBounds bounds: CGRect) -> CGRect {
-//        return bounds.insetBy(dx: 30, dy: 30)
-//    }
-//    override func backgroundRect(forBounds bounds: CGRect) -> CGRect {
-//        return bounds.insetBy(dx: 30, dy: 30)
-//    }
-//}
-////现在该按钮可以在其可见背景之外点击30点.
-////
-////这篇关于如何在Swift中扩展特定UIButton的点击区域?的文章就介绍到这了，希望我们推荐的答案对大家有所帮助，也希望大家多多支持IT屋！
-////
+
+
+

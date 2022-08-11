@@ -17,7 +17,7 @@ class CSPresentNav {
         closeButton.set(superview: superview, target: target, action: action)
         closeButton.setFrame(right: 20, top: 19, width: 18, height: 18)
         closeButton.setImage(UIImage(named: "nav_close"), for: .normal)
-        closeButton.extendTouchArea()
+        closeButton.expendTouchArea()
     }
     
     func setTitleLabel(superview: UIView, title: String) {

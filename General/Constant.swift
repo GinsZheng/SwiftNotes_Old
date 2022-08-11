@@ -14,7 +14,18 @@ let kScreenHeight = UIScreen.main.bounds.size.height
 
 let kScreenWidth = UIScreen.main.bounds.size.width
 
-let kStatusBarHeight = UIApplication.shared.statusBarFrame.size.height
+//let kStatusBarHeight = UIApplication.shared.statusBarFrame.size.height
+var kStatusBarHeight: CGFloat {
+    get {
+        if #available(iOS 13.0, *) {
+            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            print("高度？", window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 48)
+            return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 88
+        } else {
+            return UIApplication.shared.statusBarFrame.size.height
+        }
+    }
+}
 
 let kNavBarHeight = kStatusBarHeight + 44
 
