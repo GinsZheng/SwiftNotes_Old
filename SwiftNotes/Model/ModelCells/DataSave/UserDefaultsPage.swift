@@ -24,7 +24,6 @@ class CSUserDefaultsPage: UIViewController {
         Preference.appTheme = .light
         Preference.serverUrl = .developServer
         
-
         // 读取数据
         print("更新后isFirstLogin值", Preference.isFirstLogin)
         print("更新后appTheme值", Preference.appTheme)
@@ -52,6 +51,8 @@ class CSUserDefaultsPage: UIViewController {
         kUserDefaults.dictionary(forKey: "Dict")
         kUserDefaults.data(forKey: "Data")
         
+        // 设置默认值
+        UserDefaults.standard.register(defaults: ["isDefaultlyHiddenProgressResume": true])
         
     }
 }
@@ -113,4 +114,5 @@ enum ServerUrlType: String {
  float(forKey:) | double(forKey:): 如果不存在则返回 0.0
  object(forKey): 会返回 AnyObject?, 因此你需要自定义转换为你想要的返回类型，比如上面的 kUserDefaults.object(forKey: "INFO"), 自定义返回类型为 [String: String], 如果 INFO key 不存在，则给一个默认的空字符串字典 [String:String]()
 
+ ⚠️不知为啥，在模拟器中，切换UserDefaults的值时，如果在较短时间内杀进程，会出现不保存的情况。在正常设备中又不会
  */

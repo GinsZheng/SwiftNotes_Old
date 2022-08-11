@@ -25,10 +25,10 @@ extension UserDefaults {
     //应用第一次启动
     static func isFirstLaunch() -> Bool {
         let hasBeenLaunched = "hasBeenLaunched"
-        let isFirstLaunch = kUserDefaults.bool(forKey: hasBeenLaunched)
+        let isFirstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunched)
         if isFirstLaunch {
-            kUserDefaults.set(true, forKey: hasBeenLaunched)
-            kUserDefaults.synchronize()
+            UserDefaults.standard.set(true, forKey: hasBeenLaunched)
+            UserDefaults.standard.synchronize()
         }
         return isFirstLaunch
     }
@@ -117,7 +117,7 @@ extension UIButton {
         self.setImage(UIImage(named: "progress_adding"), for: .normal)
         self.setImage(UIImage(named: "progress_adding"), for: .highlighted)
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 2)
-        self.setBackgroundImage(getImageWithColor(color: cE9EAEC), for: .normal)
+        self.setBackgroundImage(getImageWithColor(color: cE6E7E9), for: .normal)
         self.setBackgroundImage(getImageWithColor(color: cDDDEE0), for: .highlighted)
         self.setCornerRadiusWithMask(radius: 8)
     }

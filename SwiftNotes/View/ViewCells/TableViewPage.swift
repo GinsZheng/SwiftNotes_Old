@@ -85,3 +85,7 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
  switchView.onTintColor = UIColor.hex(cBlue_5393FF)
  switchView.setOn(true, animated: false)
  */
+
+/*
+ ⚠️如果是做成卡片等视觉区域与与响应区域不重叠时，一定要把视觉区域置于响应区域中间，否则会出现响应区域偏差
+ */
