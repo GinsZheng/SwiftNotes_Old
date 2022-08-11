@@ -17,37 +17,11 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let timeStamp = 8888888
-        let value = CSFormatter.getDurationStrHMMSS(fromSeconds: timeStamp)
-
-        button.set(superview: view, target: self, action: #selector(presentNext))
-        button.setStyleSolidBtn(title: value)
-//        button.setBackgroundImage(getImageWithColor(color: cRed_FF635A), for: .normal)
-        button.setFrame(left: 20, top: 200, right: 20, height: 44)
+        let img = UIImageView()
+        img.set(superview: view, image: UIImage(named: "adding_background")?.withFilter(c000_10) ?? getImageWithColor(color: cF0F1F3))
+        img.setStyleImageView(cornerRadius: 10)
+        img.setFrame(left: 0, top: 0, right: 0, height: 667)
         
-//        print(getTimeStampWithTimeStr(timeStr: <#T##String#>, dateFormat: <#T##String#>)"1644488762")
-        print(CSFormatter.getTimeStr12Hour(timeStamp: 1644488762))
-        
-        
-        let activity = UIActivityIndicatorView()
-        activity.style = .medium
-        activity.setFrame(left: 100, top: 400, width: 20, height: 20)
-        activity.hidesWhenStopped = false
-        activity.color = .white
-        activity.startAnimating()
-        
-        let x = NSCalendar(calendarIdentifier: NSCalendar.Identifier(rawValue: "Cal"))
-        
-        let colorArr = [UIColor.hex(cRed_FF635A).cgColor, UIColor.hex(cBlue_5393FF).cgColor, UIColor.hex(cPurple_BF62F8).cgColor]
-        let gradientView = UIView()
-//        let locationArr = NSNumber[0, 0.3, 1]
-        
-        gradientView.set(superview: view)
-        gradientView.setFrame(left: 10, top: 100, width: 160, height: 80)
-        gradientView.setGradientLayer(colors: colorArr, locations: [0, 0.5, 1], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1,y: 0))
-        
-        let majorVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-        print("当前版本", majorVersion)
         
     }
     

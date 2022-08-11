@@ -14,3 +14,5 @@ class Env {
         return UIDevice.current.userInterfaceIdiom == .pad
     }
 }
+
+// 图表辅助列

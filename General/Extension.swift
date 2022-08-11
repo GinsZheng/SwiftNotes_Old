@@ -118,7 +118,7 @@ extension UIButton {
         self.setImage(UIImage(named: "progress_adding"), for: .highlighted)
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 2)
         self.setBackgroundImage(getImageWithColor(color: cE6E7E9), for: .normal)
-        self.setBackgroundImage(getImageWithColor(color: cDDDEE0), for: .highlighted)
+        self.setBackgroundImage(getImageWithColor(color: cE6E7E9).withFilter(), for: .highlighted)
         self.setCornerRadiusWithMask(radius: 8)
     }
     
@@ -143,7 +143,7 @@ extension UIButton {
         self.setTitleColor(.hex(cBlue_5393FF), for: .normal)
         self.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
         self.setBackgroundImage(getImageWithColor(color: cF0F1F3), for: .normal)
-        self.setBackgroundImage(getImageWithColor(color: cDDDEE0), for: .highlighted)
+        self.setBackgroundImage(getImageWithColor(color: cF0F1F3).withFilter(), for: .highlighted)
         
         self.setCornerRadiusWithMask(radius: 14)
     }
@@ -225,6 +225,24 @@ extension UIImage {
             draw(in: CGRect(origin: .zero, size: size), blendMode: .normal, alpha: a)
         }
     }
+    
+    func withFilter(_ maskColor: String = c000_10) -> UIImage {
+        let myView = UIView()
+        myView.size = self.size
+        let imageView = UIImageView()
+        imageView.setStyleImageView(cornerRadius: 0)
+        imageView.set(superview: myView,image: self)
+        imageView.setFrame(allEdges: 0)
+        
+        let mask = UIView()
+        mask.set(superview: myView, backgroundColor: maskColor)
+        mask.setFrame(allEdges: 0)
+
+        let image = getImageFromView(view: myView)
+        return image
+    }
+    
+    
 }
 
 
