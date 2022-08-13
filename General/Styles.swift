@@ -115,6 +115,10 @@ extension UILabel {
         self.setFontStyle(size: 14, color: c999)
     }
     
+    func setStyle14pt999Right() {
+        self.setFontStyle(size: 14, color: c999, alignment: .right)
+    }
+    
     func setStyle14ptFEFEFEMedCenter() {
         self.setFontStyle(size: 14, color: cFEFEFE, weight: .medium, alignment: .center)
     }

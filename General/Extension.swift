@@ -148,6 +148,12 @@ extension UIButton {
         self.setCornerRadiusWithMask(radius: 14)
     }
     
+    func setStyleCellWhiteBg(radius: CGFloat = 8) {
+        self.setBackgroundImage(getImageWithColor(color: cFFF), for: .normal)
+        self.setBackgroundImage(getImageWithColor(color: cFFF).withFilter(c000_10), for: .highlighted)
+        self.setCornerRadiusWithMask(radius: radius)
+    }
+    
 }
 
 
