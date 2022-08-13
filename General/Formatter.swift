@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class CSFormatter {
     
@@ -22,21 +23,60 @@ class CSFormatter {
 }
 
 extension CSFormatter {
-    // 时长 <1分钟，Int(M分钟)，H小时
+    // 时长 - 默认 <1分钟，Int(M分钟)，H小时
     static func getDurationStrDefault(fromSeconds seconds: Int) -> String {
         var result = ""
         switch seconds {
         case ..<30:
             result = "<1分钟"
         case 30..<3570:
-            result = "\(seconds/60)分钟"
+            result = "\(lround(Double(seconds)/60))分钟"
         default:
             result = "\(getHours(fromSeconds: seconds, decimalPlaces: 1))小时"
         }
         return result
     }
     
-    // 时长 mm:ss H:mm:ss
+    // 时长 - 分钟
+    static func getDurationStrMins(fromSeconds seconds: Int) -> String {
+        var result = ""
+        switch seconds {
+        case ..<30:
+            result = "<1分钟"
+        default:
+            result = "\(lround(Double(seconds)/60))分钟"
+        }
+        return result
+    }
+    
+    // 时长 - 小时
+    static func getDurationStrHours(fromSeconds seconds: Int) -> String {
+        var result = ""
+        switch seconds {
+        case ..<180:
+            result = "<0.1小时"
+        default:
+            result = "\(getHours(fromSeconds: seconds, decimalPlaces: 1))小时"
+        }
+        return result
+    }
+    
+    // 时长 - 可配置：默认、分钟、小时
+    static func getDurationStrConfig(fromSeconds seconds: Int, type: DurationFormat) -> String {
+        var result = ""
+        switch type {
+        case .defaultType:
+            result = getDurationStrDefault(fromSeconds: seconds)
+        case .mins:
+            result = getDurationStrMins(fromSeconds: seconds)
+        case .hours:
+            result = getDurationStrHours(fromSeconds: seconds)
+        }
+        return result
+    }
+    
+    
+    // 时长 - 计时 mm:ss H:mm:ss
     static func getDurationStrHMMSS(fromSeconds secounds: Int) -> String {
         if secounds <= 0 {
             return "00:00"
@@ -51,6 +91,7 @@ extension CSFormatter {
         }
         return String(format: "%02d:%02d", min, sec)
     }
+    
     
     // 比例 <1%，Int(N%)
     static func getPercentageStr1(percentage: Double) -> String {
@@ -155,4 +196,12 @@ extension CSFormatter {
         return result
     }
 
+}
+
+
+// 可配置时长
+enum DurationFormat: Int {
+    case defaultType // 隐式赋值：0
+    case mins
+    case hours
 }

@@ -17,15 +17,11 @@ class TestVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let img = UIImageView()
-        img.set(superview: view, image: UIImage(named: "adding_background")?.withFilter(c000_10) ?? getImageWithColor(color: cF0F1F3))
-        img.setStyleImageView(cornerRadius: 10)
-        img.setFrame(left: 0, top: 0, right: 0, height: 667)
+        let result = CSFormatter.getDurationStrConfig(fromSeconds: 6000, type: DurationFormat(rawValue: 1) ?? .defaultType)
+        print("时长", result)
         
-//        let lbl = UILabel()
-        let time = CSFormatter.getDateAndTimeStrYYYYMDHHmmInThePastYear(timeStamp: 1360211688)
-        
-        print("打印日期", time)
+//        var x = [1,2,3,4,5]
+//        x[5] = 6
     }
     
     @objc func presentNext() {

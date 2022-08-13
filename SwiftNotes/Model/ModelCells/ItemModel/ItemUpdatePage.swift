@@ -64,7 +64,7 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
         
         // 删除
         deleteButton.set(superview: view, target: self, action: #selector(deleteItem))
-        deleteButton.setStyleWordButton(title: "Delete", titleColor: cRed_FF635A)
+        deleteButton.setStyleWordButton(title: "Delete", normalTitleColor: cRed_FF635A)
         deleteButton.setFrame(centerX: view.centerX, top: updateButton.bottom + 10, width: 80, height: 44)
         
     }

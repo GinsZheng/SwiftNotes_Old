@@ -13,7 +13,7 @@ class CSArrayPage: UIViewController {
     // 创建数组
     var arr1 = [String]() // 写法1
     var arr2:[String] = [] // 写法2
-    var arr3 = Array(repeating: 1, count: 5)
+    var arr3 = Array(repeating: 1, count: 5) // 写法3
 
     
     override func viewDidLoad() {

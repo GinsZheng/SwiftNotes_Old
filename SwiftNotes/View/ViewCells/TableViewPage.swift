@@ -69,6 +69,15 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     (可能)扩展而言：只要不设置 maskToBounds 属性，所有的视图都可以超出控件边界
  */
 
+/*
+ 复杂情形示例：
+    同时满足 A：需要在子页面(通过代理)更新父页面的列表 B：列表的高度根据文字多少计算而来
+    思路：1. 为了满足B，高度需要创建一个数组如cellHeightArray，在func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) 函数中完成计算与添加值到数组cellHeightArray中。然后把cellHeightArray的值作为func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath)中的返回的cell高度值
+        2. 为了满足A，需要创建一个代理，代理中由于不知道cellHeightArray在更新后的值，所以要让cellHeightArray = Array(repeating: 0, count: dateArray.count)，先填个正确长度的值，然后让cellHeightArray在<cellForRowAt>中赋值，要写成cellHeightArray[indexPath.row] = cellHeight 而不是用append方法，来完成替换
+        3. 详见蜗牛进度中的⌜进度列表⌟页面
+ 
+ */
+
 
 /*
  TableViewCell中可交互控件失效处理方法：
@@ -88,3 +97,4 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
 /*
  ⚠️如果是做成卡片等视觉区域与与响应区域不重叠时，一定要把视觉区域置于响应区域中间，否则会出现响应区域偏差
  */
+
