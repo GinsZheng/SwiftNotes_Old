@@ -18,7 +18,7 @@ class CSDatePicker {
     let confirmButton = UIButton()
     
     var timeStamp = 0
-    var iDateFormat = "yyyy/M/d HH:mm"
+    var iDateFormat: CSDateFormatter = .dateAndTimeStrYYYYMDHHmmInThePastYear
     
     var iLabel = UILabel()
     var iTextField = UITextField()
@@ -66,17 +66,17 @@ class CSDatePicker {
     }
     
     // 设置点击“确定”后，要改变的控件的文本
-    func setText(_ label: UILabel, dateFormat: String) {
+    func setText(_ label: UILabel, dateFormat: CSDateFormatter) {
         iLabel = label
         iDateFormat = dateFormat
     }
     
-    func setText(_ textField: UITextField, dateFormat: String = "yyyy/M/d HH:mm") {
+    func setText(_ textField: UITextField, dateFormat: CSDateFormatter) {
         iTextField = textField
         iDateFormat = dateFormat
     }
     
-    func setText(_ textView: UITextView, dateFormat: String) {
+    func setText(_ textView: UITextView, dateFormat: CSDateFormatter) {
         iTextView = textView
         iDateFormat = dateFormat
     }
@@ -104,7 +104,11 @@ class CSDatePicker {
         }
         
         timeStamp = getTimeStampWithDate(date: datePicker.date)
-        iTextField.text = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: iDateFormat)
+        switch iDateFormat {
+        case .dateAndTimeStrYYYYMDHHmmInThePastYear:
+            iTextField.text = CSFormatter.getDateAndTimeStrYYYYMDHHmmInThePastYear(timeStamp: timeStamp)
+        }
+
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute:{
             self.mask.removeFromSuperview()
@@ -116,3 +120,7 @@ class CSDatePicker {
     }
 }
 
+
+enum CSDateFormatter: Int {
+    case dateAndTimeStrYYYYMDHHmmInThePastYear
+}

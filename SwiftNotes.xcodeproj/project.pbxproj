@@ -106,6 +106,7 @@
 		7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58324169F2D00CBF18D /* MaskPage.swift */; };
 		7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5852416A06400CBF18D /* DissolvePage.swift */; };
 		7A58D5C92417F05100CBF18D /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5AA2417F05100CBF18D /* DatePicker.swift */; };
+		7A61FDCF28A8D04000AA3FFC /* ViewControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A61FDCE28A8D04000AA3FFC /* ViewControllerPage.swift */; };
 		7A62A180244C92670090D128 /* GestureListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A17F244C92670090D128 /* GestureListPage.swift */; };
 		7A62A1A1244C93E90090D128 /* DisablePopGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1A0244C93E90090D128 /* DisablePopGesturePage.swift */; };
 		7A62A1A3244C99290090D128 /* SwipeGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1A2244C99290090D128 /* SwipeGesturePage.swift */; };
@@ -605,6 +606,7 @@
 		7A58D58324169F2D00CBF18D /* MaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPage.swift; sourceTree = "<group>"; };
 		7A58D5852416A06400CBF18D /* DissolvePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvePage.swift; sourceTree = "<group>"; };
 		7A58D5AA2417F05100CBF18D /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		7A61FDCE28A8D04000AA3FFC /* ViewControllerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerPage.swift; sourceTree = "<group>"; };
 		7A62A17F244C92670090D128 /* GestureListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureListPage.swift; sourceTree = "<group>"; };
 		7A62A1A0244C93E90090D128 /* DisablePopGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisablePopGesturePage.swift; sourceTree = "<group>"; };
 		7A62A1A2244C99290090D128 /* SwipeGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGesturePage.swift; sourceTree = "<group>"; };
@@ -1087,6 +1089,7 @@
 				7A89B2B1240AB9A7004688FD /* Transition */,
 				7A58D56224169D1500CBF18D /* UIList */,
 				7A21614E238986AF00D5A93A /* ViewPage.swift */,
+				7A61FDCE28A8D04000AA3FFC /* ViewControllerPage.swift */,
 				7A216149238986AF00D5A93A /* WebViewPage.swift */,
 				7A62A1F6245CAD890090D128 /* WindowPage.swift */,
 			);
@@ -1657,6 +1660,7 @@
 				7A4736D8247191B90071115F /* LongPressGesturePage.swift in Sources */,
 				7A4040452483EED3000FF8C7 /* MapPage.swift in Sources */,
 				7A2161292389868500D5A93A /* ControllerListVC.swift in Sources */,
+				7A61FDCF28A8D04000AA3FFC /* ViewControllerPage.swift in Sources */,
 				7A21615B238986AF00D5A93A /* WebViewPage.swift in Sources */,
 				7A21611B2389857700D5A93A /* Colors.swift in Sources */,
 				7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */,

@@ -195,6 +195,15 @@ extension CSFormatter {
         let result = getTimeStrWithTimeStamp(timeStamp: timeStamp, dateFormat: "w")
         return result
     }
+    
+    // 返回格式本身，如"yyyy/M/d"
+    static func getDateFormattYYYYMDHHmmInThePastYear(timeStamp: Int) -> String {
+        if getDateStrYYYY(timeStamp: timeStamp) != getDateStrYYYY(timeStamp: getTimeStampNow()) {
+            return "yyyy/M/d HH:mm"
+        } else {
+            return "M/d HH:mm"
+        }
+    }
 
 }
 
