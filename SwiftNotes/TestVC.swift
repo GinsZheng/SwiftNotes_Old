@@ -11,24 +11,21 @@ import SwiftyJSON
 
 class TestVC: UIViewController {
 
-    let button = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let result = CSFormatter.getDurationStrConfig(fromSeconds: 6000, type: DurationFormat(rawValue: 1) ?? .defaultType)
-        print("时长", result)
+        let myView = CSEditableTextView()
+        myView.set(superview: view, placeholder: "在在在在在在在在在在在在在在在在在在在iiiii")
+        myView.setFrame(left: 20, top: 20, right: 20, height: 100)
+        myView.setBackgroundColor(color: cF0F1F3)
         
-//        var x = [1,2,3,4,5]
-//        x[5] = 6
     }
     
     @objc func presentNext() {
         print("pressed")
     }
     
-    
 }
-
 

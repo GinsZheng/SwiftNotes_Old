@@ -19,11 +19,19 @@ class CSPlistPage: UIViewController {
         let BooksList = NSArray(contentsOfFile: myPlist)!
         let Books2018 = BooksList[0] as! NSDictionary
         let firstBook = Books2018.object(forKey: "腾讯传") as! String
+        print("firstBook", firstBook)
         
         // feedback
         let label = UILabel()
         label.set(superview: view, text: firstBook)
         label.setFrame(left: 20, top: 20)
+        
+        
+        
+        
     }
+    
+    
+    
     
 }

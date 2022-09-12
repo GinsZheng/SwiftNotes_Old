@@ -145,6 +145,8 @@
 		7AA789B828CDA30500B58537 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA789A628CDA30500B58537 /* NavViewController.swift */; };
 		7AA789B928CDA30500B58537 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA789A728CDA30500B58537 /* Colors.swift */; };
 		7AA789BA28CDA30500B58537 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA789A828CDA30500B58537 /* Toast.swift */; };
+		7AA789BD28CE0D9800B58537 /* myPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AA789BC28CE0D9800B58537 /* myPlist.plist */; };
+		7AA789C328CEF54D00B58537 /* Inheritance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA789C228CEF54D00B58537 /* Inheritance.swift */; };
 		7AA9AC8928A3B967009E3FAC /* InAppVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9AC8828A3B967009E3FAC /* InAppVariables.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
 		7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */; };
@@ -646,6 +648,8 @@
 		7AA789A628CDA30500B58537 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		7AA789A728CDA30500B58537 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7AA789A828CDA30500B58537 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		7AA789BC28CE0D9800B58537 /* myPlist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = myPlist.plist; sourceTree = "<group>"; };
+		7AA789C228CEF54D00B58537 /* Inheritance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inheritance.swift; sourceTree = "<group>"; };
 		7AA9AC8828A3B967009E3FAC /* InAppVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppVariables.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
 		7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataNote.swift; sourceTree = "<group>"; };
@@ -986,24 +990,25 @@
 		7AA7899628CDA30500B58537 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				7AA789A728CDA30500B58537 /* Colors.swift */,
 				7AA7899728CDA30500B58537 /* Constant.swift */,
-				7AA7899828CDA30500B58537 /* SetColorInHex.swift */,
-				7AA7899928CDA30500B58537 /* DatePicker.swift */,
-				7AA7899A28CDA30500B58537 /* Styles.swift */,
 				7AA7899B28CDA30500B58537 /* CustomControl.swift */,
-				7AA7899C28CDA30500B58537 /* Functions.swift */,
+				7AA7899928CDA30500B58537 /* DatePicker.swift */,
+				7AA789A228CDA30500B58537 /* Extension.swift */,
 				7AA7899D28CDA30500B58537 /* FileManager.swift */,
-				7AA7899E28CDA30500B58537 /* Timer.swift */,
+				7AA789A428CDA30500B58537 /* Formatter.swift */,
+				7AA7899C28CDA30500B58537 /* Functions.swift */,
+				7AA789C228CEF54D00B58537 /* Inheritance.swift */,
 				7AA7899F28CDA30500B58537 /* Mix.swift */,
+				7AA789A628CDA30500B58537 /* NavViewController.swift */,
+				7AA7899828CDA30500B58537 /* SetColorInHex.swift */,
 				7AA789A028CDA30500B58537 /* SetFrame.swift */,
 				7AA789A128CDA30500B58537 /* SQLiteManager.swift */,
-				7AA789A228CDA30500B58537 /* Extension.swift */,
-				7AA789A328CDA30500B58537 /* UIKitExtension.swift */,
-				7AA789A428CDA30500B58537 /* Formatter.swift */,
-				7AA789A528CDA30500B58537 /* UIPresentNav.swift */,
-				7AA789A628CDA30500B58537 /* NavViewController.swift */,
-				7AA789A728CDA30500B58537 /* Colors.swift */,
+				7AA7899A28CDA30500B58537 /* Styles.swift */,
+				7AA7899E28CDA30500B58537 /* Timer.swift */,
 				7AA789A828CDA30500B58537 /* Toast.swift */,
+				7AA789A328CDA30500B58537 /* UIKitExtension.swift */,
+				7AA789A528CDA30500B58537 /* UIPresentNav.swift */,
 			);
 			name = General;
 			path = ../SnailProgress/General;
@@ -1030,6 +1035,7 @@
 				7A4736CB246B015F0071115F /* EnumPage.swift */,
 				7A244E9D24C7EFE400D072FB /* IntPage.swift */,
 				7A7D1C5B241CC4C900E08EA1 /* ItemModel */,
+				7A2161302389869D00D5A93A /* PlistPage.swift */,
 				7A7F97C5241DF1B8000F1E31 /* ProgressModel */,
 				7A728E7924C32FC300CBDA1D /* ReadFilePage.swift */,
 				7A33086823CC48A30021BA5B /* RequestPage.swift */,
@@ -1046,6 +1052,7 @@
 			children = (
 				7A3C6B302884131200C1D7AC /* CSV File */,
 				7AEA78B424C32F0F00909C62 /* index.html */,
+				7AA789BC28CE0D9800B58537 /* myPlist.plist */,
 				7A3647F8238AD062000BBECD /* ItemTable.swift */,
 				7A94609023D1A6AB00936DE7 /* ProgressTable.swift */,
 				7AC3B73F23CA05B3004DB044 /* TestJSON.json */,
@@ -1173,7 +1180,6 @@
 				7A21612E2389869D00D5A93A /* MenuControllerPage.swift */,
 				7A21612D2389869D00D5A93A /* NumberFormatterPage.swift */,
 				7A62A1FF2465B8F60090D128 /* OperatorAtPage.swift */,
-				7A2161302389869D00D5A93A /* PlistPage.swift */,
 				7A2161312389869D00D5A93A /* ProtocolPage.swift */,
 				7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */,
 				7AF7B16E2436351800738C65 /* TimerPage.swift */,
@@ -1639,6 +1645,7 @@
 				7A27507022ABA25A00C8A474 /* LaunchScreen.storyboard in Resources */,
 				7A21613A238986A400D5A93A /* Images.xcassets in Resources */,
 				7AD5C3B728BDFF530002CCE1 /* ViewCellList.plist in Resources */,
+				7AA789BD28CE0D9800B58537 /* myPlist.plist in Resources */,
 				7A27506D22ABA25A00C8A474 /* Assets.xcassets in Resources */,
 				7A3C6B402884135900C1D7AC /* progress.csv in Resources */,
 				7AEA78B524C32F0F00909C62 /* index.html in Resources */,
@@ -1695,6 +1702,7 @@
 				7A28833C2448BCF600591C29 /* AlertTwoBtnPage.swift in Sources */,
 				7A62A1A7244CB51C0090D128 /* DataOperate.swift in Sources */,
 				7AA789B028CDA30500B58537 /* Timer.swift in Sources */,
+				7AA789C328CEF54D00B58537 /* Inheritance.swift in Sources */,
 				7A25A885249A67FC006D9F05 /* TuplePage.swift in Sources */,
 				7A216153238986AF00D5A93A /* ButtonPage.swift in Sources */,
 				7A2161362389869D00D5A93A /* DelegatePage.swift in Sources */,

@@ -14,6 +14,7 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
     let textField2 = UITextField()
     let textField3 = UITextField()
     let button = UIButton()
+    let myView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,6 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
         button.setStyleSolidButton(title: "hehe")
         button.setFrame(left: 20, top: textField3.bottom + 20, right: 20, height: 48)
         
-        let myView = UIView()
         myView.set(superview: view, backgroundColor: cF0F1F3)
         myView.setFrame(left: 20, top: button.bottom + 20, right: 20, height: 100)
     }
