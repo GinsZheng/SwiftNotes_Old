@@ -11,8 +11,8 @@ import UIKit
 class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
-    let titleList = ["Animation", "Button", "Chart", "Collection View","Date Picker", "Image View", "Label", "Layer", "Nav Controller", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Styles", "Switch", "Table View", "Text Field", "Text View", "Transition", "UIList", "View", "ViewController", "Web View", "Window"]
-    let pageList = [CSAnimationPage(), CSButtonPage(), CSChartListVC(), CollectionViewPage(), CSDatePickerPage(), CSImageViewPage(), CSLabelPage(), CSLayerView(), CSNavControllerPage(), CSPageControlPage(), CSPickerViewPage(), CSScrollViewPage(), CSSegmentControlPage(), CSSliderPage(), CSStackViewPage(), CSStepperPage(), CSStylesPage(), CSSwitchPage(),CSTableViewPage(),  CSTextFieldPage(), CSTextViewPage(), CSTransitionListPage(), CSUIListPage(), CSViewPage(), CSViewControllerPage(), CSWebViewPage(), CSWindowPage()]
+    let titleList = ["Animation", "Button", "Camera and Photos","Chart", "Collection View","Date Picker", "Image View", "Label", "Layer", "Nav Controller", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Styles", "Switch", "Table View", "Text Field", "Text View", "Transition", "UIList", "View", "ViewController", "Web View", "Window"]
+    let pageList = [CSAnimationPage(), CSButtonPage(), CSCameraAndPhotosPage(), CSChartListVC(), CollectionViewPage(), CSDatePickerPage(), CSImageViewPage(), CSLabelPage(), CSLayerView(), CSNavControllerPage(), CSPageControlPage(), CSPickerViewPage(), CSScrollViewPage(), CSSegmentControlPage(), CSSliderPage(), CSStackViewPage(), CSStepperPage(), CSStylesPage(), CSSwitchPage(),CSTableViewPage(),  CSTextFieldPage(), CSTextViewPage(), CSTransitionListPage(), CSUIListPage(), CSViewPage(), CSViewControllerPage(), CSWebViewPage(), CSWindowPage()]
     
     
     override func viewDidLoad() {

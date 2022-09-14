@@ -23,11 +23,9 @@ class CSTextViewPage: UIViewController {
           textView.setBackgroundColor(color: cF0F1F3)
           
           textViewWitoutInteraction.set(superview: view, text: "在在在在在在在在在", maxLines: 0, interaction: true)
-          textViewWitoutInteraction.setFontStyle(size: 100, color: c222)
+          textViewWitoutInteraction.setFontStyle(size: 100, color: c222, lineHeight: 1.4)
           textViewWitoutInteraction.setFrame(left: 20, top: 220, right: 20, height: 420)
           textViewWitoutInteraction.setBackgroundColor(color: cBlue_5393FF_13)
-          
-          
           
           
      }

@@ -147,6 +147,7 @@
 		7AA789BA28CDA30500B58537 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA789A828CDA30500B58537 /* Toast.swift */; };
 		7AA789BD28CE0D9800B58537 /* myPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AA789BC28CE0D9800B58537 /* myPlist.plist */; };
 		7AA789C328CEF54D00B58537 /* Inheritance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA789C228CEF54D00B58537 /* Inheritance.swift */; };
+		7AA789C528D03F4900B58537 /* CameraAndPhotosPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA789C428D03F4900B58537 /* CameraAndPhotosPage.swift */; };
 		7AA9AC8928A3B967009E3FAC /* InAppVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA9AC8828A3B967009E3FAC /* InAppVariables.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
 		7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */; };
@@ -650,6 +651,7 @@
 		7AA789A828CDA30500B58537 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		7AA789BC28CE0D9800B58537 /* myPlist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = myPlist.plist; sourceTree = "<group>"; };
 		7AA789C228CEF54D00B58537 /* Inheritance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inheritance.swift; sourceTree = "<group>"; };
+		7AA789C428D03F4900B58537 /* CameraAndPhotosPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAndPhotosPage.swift; sourceTree = "<group>"; };
 		7AA9AC8828A3B967009E3FAC /* InAppVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppVariables.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
 		7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataNote.swift; sourceTree = "<group>"; };
@@ -1084,6 +1086,7 @@
 			children = (
 				7A216148238986AF00D5A93A /* AnimationPage.swift */,
 				7A216141238986AF00D5A93A /* ButtonPage.swift */,
+				7AA789C428D03F4900B58537 /* CameraAndPhotosPage.swift */,
 				7A2E72482472E4D900D0B9A2 /* ChartList */,
 				7A2D34A72580D1FB00207996 /* CollectionViewPage.swift */,
 				7A21614A238986AF00D5A93A /* DatePickerPage.swift */,
@@ -1740,6 +1743,7 @@
 				7AA789AB28CDA30500B58537 /* DatePicker.swift in Sources */,
 				7A2E72252472E4CD00D0B9A2 /* ChartListVC.swift in Sources */,
 				7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */,
+				7AA789C528D03F4900B58537 /* CameraAndPhotosPage.swift in Sources */,
 				7AA789AC28CDA30500B58537 /* Styles.swift in Sources */,
 				7AA789B628CDA30500B58537 /* Formatter.swift in Sources */,
 				7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */,
@@ -2009,7 +2013,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2034,7 +2038,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENABLE_BATCH_MODE = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
