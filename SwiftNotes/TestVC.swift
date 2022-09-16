@@ -7,25 +7,38 @@
 //
 
 import UIKit
-import SwiftyJSON
+import Alamofire
 
 class TestVC: UIViewController {
-
+    // 两件事：1.学着用Alamofire 。2.上传图片
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.white
         
-        let myView = CSEditableTextView()
-        myView.set(superview: view, placeholder: "在在在在在在在在在在在在在在在在在在在iiiii")
-        myView.setFrame(left: 20, top: 20, right: 20, height: 100)
-        myView.setBackgroundColor(color: cF0F1F3)
+        let image = UIImageView()
+        image.set(superview: view, imageName: "iPhoneX")
+        image.setStyleNote()
+        image.setFrame(left: 20, top: 20, right: 20, height: 500)
+        
+        let btn = UIButton()
+        btn.set(superview: view, target: self, action: #selector(uploadData))
+        btn.setStyleSolidBtn(title: "上传")
+        btn.setFrame(left: 20, top: image.bottom + 12, right: 20, height: 48)
+        
         
     }
     
-    @objc func presentNext() {
-        print("pressed")
+    
+    
+    
+    
+    
+    // MARK: - obj
+    @objc func uploadData() {
+        print("上传中...")
+        
     }
+    
     
 }
-

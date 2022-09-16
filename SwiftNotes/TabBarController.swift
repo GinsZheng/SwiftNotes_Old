@@ -14,7 +14,7 @@ class TabBarController {
 
     static func getTabBar() -> ESTabBarController {
         
-        let selectedIndex = 0
+        let selectedIndex = 3
         
         let tabBarController = ESTabBarController()
         let v1 = ViewListVC()
@@ -27,7 +27,7 @@ class TabBarController {
         v3.tabBarItem = ESTabBarItem.init(title: "Model", image: UIImage(named: "tab_tickets"), selectedImage: UIImage(named: "tab_tickets_s"))
         v4.tabBarItem = ESTabBarItem.init(title: "Test", image: UIImage(named: "tab_mine"), selectedImage: UIImage(named: "tab_mine_s"))
         
-        tabBarController.tabBar.shadowImage = nil
+        // tabBarController.tabBar.shadowImage = nil
         
         let v1Nav = CSRootNavController(rootViewController: v1)
         let v2Nav = CSRootNavController(rootViewController: v2)
@@ -35,19 +35,21 @@ class TabBarController {
         let v4Nav = CSRootNavController(rootViewController: v4)
         
         tabBarController.viewControllers = [v1Nav, v2Nav, v3Nav, v4Nav]
-        tabBarController.tabBar.isTranslucent = false
-        tabBarController.tabBar.barTintColor = UIColor.white
-        tabBarController.tabBar.shadowImage = getImageWithColor(color: cF5F6F8)
+        // tabBarController.tabBar.barTintColor = .hex(cFFF)
+        // tabBarController.tabBar.isTranslucent = false
+        // tabBarController.tabBar.shadowImage = getImageWithColor(color: cF5F6F8)
         
-        let tabShadow = UIImageView()
-        tabShadow.set(superview: tabBarController.tabBar, imageName: "tab_shadow")
-        tabShadow.setFrame(left: 0, top: -10, right: 0, height: 10)
+        let tabBg = UIImageView()
+        tabBg.set(superview: tabBarController.tabBar, imageName: "tab_background")
+        tabBg.setFrame(left: 0, top: 0, right: 0, height: 120)
+        tabBg.setShadow(y: 2, radius: 14)
+        tabBg.sendToback()
+        
         // 标签栏为49pt高，49pt之上加1px分隔线。所以：
         // 如果想遮住标签栏，应当把标签栏实际高度设置为50pt
         
         // 设置启动时显示的tab
         tabBarController.selectedIndex = selectedIndex
-        
         
         return tabBarController
         
@@ -111,7 +113,6 @@ class TabBarController {
 
         // 设置启动时显示的tab
         tabBarController.selectedIndex = 0
-        
         
         return tabBarController
         
