@@ -47,7 +47,6 @@ class DissolveToVC: UIViewController {
         blackView.setFrame(allEdges: 0)
         
         bgImage.set(superview: view, imageName: "adding_background")
-        bgImage.setStyleImageView(cornerRadius: 0)
         bgImage.setFrame(allEdges: 0)
         
         blackView.hero.modifiers = [.opacity(0), .duration(1), .useGlobalCoordinateSpace]
