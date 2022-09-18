@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class TestVC: UIViewController {
     // 两件事：1.学着用Alamofire 。2.上传图片
@@ -27,11 +28,31 @@ class TestVC: UIViewController {
         btn.setFrame(left: 20, top: image.bottom + 12, right: 20, height: 48)
         
         
+        // 获取文本
+        AF.request("https://httpbin.org/get").responseJSON { (response) in
+            if let value = response.result.value {
+                let json = JSON(value)
+                print("json", json)
+                let origin = json["origin"].string ?? "(空)"
+                let url = json["url"].string ?? "(空)"
+                let headers = json["headers"]
+                let userAgent = json["headers"]["User-Agent"].string ?? "(空)"
+                let host = headers["Host"].string ?? "(空)"
+                print("返回结果", "origin =", origin, ", url =", url, "userAgent =", userAgent, "host =", host)
+            }
+        }
+     
+//        // 获取文本
+//        AF.request("https://httpbin.org/get").responseJSON { (response) in
+//            if let value = response.result.value {
+//                let json = JSON(value)
+//                let probability = json["probability"].string ?? "0"
+//                let link = json["link"].string ?? ""
+//                let word = json["word"].string ?? ""
+//            }
+//        }
+        
     }
-    
-    
-    
-    
     
     
     // MARK: - obj
@@ -42,3 +63,4 @@ class TestVC: UIViewController {
     
     
 }
+

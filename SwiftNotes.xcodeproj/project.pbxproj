@@ -81,6 +81,7 @@
 		7A3C6B3F2884135900C1D7AC /* item.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A3C6B3D2884135900C1D7AC /* item.csv */; };
 		7A3C6B402884135900C1D7AC /* progress.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A3C6B3E2884135900C1D7AC /* progress.csv */; };
 		7A4040452483EED3000FF8C7 /* MapPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4040442483EED3000FF8C7 /* MapPage.swift */; };
+		7A40D47428D71D8D00F64711 /* AlamofirePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A40D47328D71D8D00F64711 /* AlamofirePage.swift */; };
 		7A4736AC246AFDCC0071115F /* DictionaryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736AB246AFDCC0071115F /* DictionaryPage.swift */; };
 		7A4736CC246B015F0071115F /* EnumPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CB246B015F0071115F /* EnumPage.swift */; };
 		7A4736CE246C4B580071115F /* TouchesBeganGesturePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4736CD246C4B580071115F /* TouchesBeganGesturePage.swift */; };
@@ -589,6 +590,7 @@
 		7A3C6B3D2884135900C1D7AC /* item.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = item.csv; sourceTree = "<group>"; };
 		7A3C6B3E2884135900C1D7AC /* progress.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = progress.csv; sourceTree = "<group>"; };
 		7A4040442483EED3000FF8C7 /* MapPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPage.swift; sourceTree = "<group>"; };
+		7A40D47328D71D8D00F64711 /* AlamofirePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofirePage.swift; sourceTree = "<group>"; };
 		7A4736AB246AFDCC0071115F /* DictionaryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryPage.swift; sourceTree = "<group>"; };
 		7A4736CB246B015F0071115F /* EnumPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumPage.swift; sourceTree = "<group>"; };
 		7A4736CD246C4B580071115F /* TouchesBeganGesturePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesBeganGesturePage.swift; sourceTree = "<group>"; };
@@ -1182,6 +1184,7 @@
 			isa = PBXGroup;
 			children = (
 				7A28833E244A02A500591C29 /* ActionSheetPage.swift */,
+				7A40D47328D71D8D00F64711 /* AlamofirePage.swift */,
 				7A2883382448BB6600591C29 /* AlertList */,
 				7A31324E2392A6680008298C /* ClassPage.swift */,
 				7A62A1F82461AB980090D128 /* CustomPopupWindow.swift */,
@@ -1768,6 +1771,7 @@
 				7AA789B328CDA30500B58537 /* SQLiteManager.swift in Sources */,
 				7AF7B16F2436351800738C65 /* TimerPage.swift in Sources */,
 				7A28833F244A02A500591C29 /* ActionSheetPage.swift in Sources */,
+				7A40D47428D71D8D00F64711 /* AlamofirePage.swift in Sources */,
 				7A728E7A24C32FC300CBDA1D /* ReadFilePage.swift in Sources */,
 				7A4736CE246C4B580071115F /* TouchesBeganGesturePage.swift in Sources */,
 				7A2AC3722409106000B95E43 /* TimePage.swift in Sources */,
