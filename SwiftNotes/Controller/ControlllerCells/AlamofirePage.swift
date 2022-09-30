@@ -12,11 +12,12 @@ import SwiftyJSON
 
 class CSAlamofirePage: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
         view.setBackgroundColor(color: cFFF)
         
-        // 获取文本, 方法为 get
+        // MARK: - 获取文本, 方法为 get
         AF.request("https://httpbin.org/get").responseJSON { (response) in
             if let value = response.result.value {
                 let json = JSON(value)
@@ -31,7 +32,7 @@ class CSAlamofirePage: UIViewController {
         }
         
         
-        // 获取文本，方法为 post
+        // MARK: - 获取文本，方法为 post
         print("获取文本，post")
         AF.request("https://httpbin.org/post", method: .post).responseJSON { (response) in
             if let value = response.result.value {
@@ -44,8 +45,25 @@ class CSAlamofirePage: UIViewController {
         }
 
         
+        // MARK: - 上传文本信息，方法为 post
+        print("上传文本信息，方法为 post")
+        let parameters = [
+            "username": "GinsMac",
+            "phone": "13311112222"
+        ]
+        
+        AF.request("http://127.0.0.1:5000/feedback", method: .post, parameters: parameters).responseJSON { (response) in
+            print("上传文本信息，返回结果", response)
+        }
+
+        
+        // MARK: - 上传图片
+        print("上传图片")
+        
+        
+        
+        
     }
-    
     
 }
 
