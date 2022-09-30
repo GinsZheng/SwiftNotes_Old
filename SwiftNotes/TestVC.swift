@@ -28,29 +28,16 @@ class TestVC: UIViewController {
         btn.setFrame(left: 20, top: image.bottom + 12, right: 20, height: 48)
         
         
-        // 获取文本
-        AF.request("https://httpbin.org/get").responseJSON { (response) in
-            if let value = response.result.value {
-                let json = JSON(value)
-                print("json", json)
-                let origin = json["origin"].string ?? "(空)"
-                let url = json["url"].string ?? "(空)"
-                let headers = json["headers"]
-                let userAgent = json["headers"]["User-Agent"].string ?? "(空)"
-                let host = headers["Host"].string ?? "(空)"
-                print("返回结果", "origin =", origin, ", url =", url, "userAgent =", userAgent, "host =", host)
-            }
-        }
-     
-//        // 获取文本
-//        AF.request("https://httpbin.org/get").responseJSON { (response) in
-//            if let value = response.result.value {
-//                let json = JSON(value)
-//                let probability = json["probability"].string ?? "0"
-//                let link = json["link"].string ?? ""
-//                let word = json["word"].string ?? ""
-//            }
+        // MARK: - 上传文件(如上传图片)
+        print("上传图片")
+//        let image = UIImage(named: "adding_background")
+        
+        let fileURL = Bundle.main.url(forResource: "iPhone7", withExtension: "png")!
+//        AF.upload(fileURL, to: "https://httpbin.org/post").responseDecodable { (response) in
+//            print("上传图片返回结果：", response)
 //        }
+        
+        AF.upload(fileURL, to: "https://httpbin.org/post")
         
     }
     
@@ -64,3 +51,48 @@ class TestVC: UIViewController {
     
 }
 
+//
+//typealias UploadUserIconSuccess = (_ dict:[String : Any]) -> Void//成功block
+//    
+//    func uploadUserIcon(fileName: String, imgData: NSData, success:@escaping UploadUserIconSuccess, fail:@escaping FailedBlock ) {
+//        let urlStr = HttpConfig.RequestUrlHeader.httpRequestUrlHeader + HttpConfig.RequestApi.uploadUserIconApi
+//        
+//     //请求头
+//        let localToken = Tools.readFromUserDefault(key: localToken)!
+//        // 头部需要的内容包装
+//        let headers: HTTPHeaders = [
+//            "Accept": "application/json;charset=utf-8",
+//            "lang":"en-US",
+//            "token": localToken
+//        ]
+//
+//        Alamofire.upload(multipartFormData: { (formData) in
+//            // 参数解释：
+//            //withName:和后台服务器的name要一致 ；fileName:可以充分利用写成用户的id，但是格式要写对； mimeType：规定的，要上传其他格式可以自行百度查一下
+//            formData.append(imgData as Data, withName: "fname", fileName: fileName, mimeType:"image/jpeg")
+//            //如果需要上传多个文件,就多添加几个append,或则for-in语句进行循环处理
+//// formData.append(imgData as Data, withName: "fname", fileName: fileName, mimeType:"image/jpeg")
+////  formData.append(imgData as Data, withName: "fname", fileName: fileName, mimeType:"image/jpeg")
+//        }, usingThreshold: (10*1024*1024), to: URL.init(string: urlStr)!, method: HTTPMethod.post, headers: headers) { (encodingResult) in
+//            switch encodingResult {
+//            case .success(let upload, _, _):
+//                upload.responseJSON { response in
+//                    if let jsonValue = response.result.value {
+//                        let json = JSON(jsonValue)
+//                        print("上传头像json:\(json)")
+//                        let code = json["code"].int
+//                        
+//                        if code == HttpConfig.ErrorCode.HttpOK {
+//                            let dict = json["data"].dictionaryObject
+//                            success(dict!)
+//                        } else {
+//                            let msg = json["msg"].string
+//                            HudToast.toastError(error: msg!)
+//                        }
+//                    }
+//                }
+//            case .failure(_):
+//                self.networkErrorHint()
+//            }
+//        }
+//    }

@@ -57,13 +57,9 @@ class CSAlamofirePage: UIViewController {
         }
 
         
-        // MARK: - 上传图片
-        print("上传图片")
-        
-        
-        
-        
+        // MARK: - 上传文件(如上传图片)
+
+            
     }
     
 }
-
