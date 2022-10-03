@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class CSCameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     // 1. 如上行，增加代理：UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -53,10 +54,36 @@ class CSCameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate &
         // 其中的editedImage要求代码中的⌜cameraPicker.allowsEditing⌟一定为true，否则将没有编辑后的照片，会崩
         
         // 获取原始照片
-        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        let originalImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         
         //显示设置的照片
-        imageView.image = image
+        imageView.image = originalImage
+        
+        
+//        // 上传图片：
+//        // 1. 将选择的图片保存到Document目录下
+//        let fileManager = FileManager.default
+//        let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
+//                                                           .userDomainMask, true)[0] as String
+//        let filePath = "\(rootPath)/originalImage.jpg"
+//        let imageData = originalImage.jpegData(compressionQuality: 1.0)
+//        fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
+//
+//        if (fileManager.fileExists(atPath: filePath)){
+//            print("到这一步了")
+//            //取得NSURL
+//            let imageNSURL = NSURL.init(fileURLWithPath: filePath) as URL
+////            let imageNSURL = URL(string: filePath)!
+//
+//            //使用Alamofire上传
+////            AF.upload(.post, "http://www.hangge.com/upload.php", file: imageNSURL)
+////                .responseString { response in
+////                    print("Success: \(response.result.isSuccess)")
+////                    print("Response String: \(response.result.value)")
+////                }
+//            AF.upload(imageNSURL, to: "http://127.0.0.1:5000/upload_image")
+//        }
+        
         
         self.dismiss(animated: true, completion: nil)
     }

@@ -109,6 +109,7 @@
 		7A62A2002465B8F60090D128 /* OperatorAtPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A62A1FF2465B8F60090D128 /* OperatorAtPage.swift */; };
 		7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A64873F23FAE319006B6FC1 /* LoadingPage.swift */; };
 		7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A65113A23D6A332005E4FD4 /* UIClass.swift */; };
+		7A6822CD28EAEBFC0005EEFB /* StarryNight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7A6822A328EAEBFC0005EEFB /* StarryNight.jpg */; };
 		7A702DA82434E99600EB1FF3 /* JumpListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A702DA72434E99600EB1FF3 /* JumpListPage.swift */; };
 		7A728E7A24C32FC300CBDA1D /* ReadFilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A728E7924C32FC300CBDA1D /* ReadFilePage.swift */; };
 		7A74D10B28D4473100FB4FB3 /* HideBackBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74D10A28D4473100FB4FB3 /* HideBackBtn.swift */; };
@@ -122,6 +123,7 @@
 		7A89B2D9240AB9B6004688FD /* MagicMovePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */; };
 		7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */; };
 		7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* ProgressTable.swift */; };
+		7A9B2A2C28E843620027C41D /* imageFlask.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9B2A0228E843620027C41D /* imageFlask.png */; };
 		7A9DA3FE240A902600AFB585 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9DA3FB240A901100AFB585 /* SnapKit.framework */; };
 		7A9DA3FF240A902600AFB585 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9DA3FB240A901100AFB585 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A9E0EF12483DFDE0020A05B /* SwiftCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9E0EEC2483DFB10020A05B /* SwiftCharts.framework */; };
@@ -618,6 +620,7 @@
 		7A62A1FF2465B8F60090D128 /* OperatorAtPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorAtPage.swift; sourceTree = "<group>"; };
 		7A64873F23FAE319006B6FC1 /* LoadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPage.swift; sourceTree = "<group>"; };
 		7A65113A23D6A332005E4FD4 /* UIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIClass.swift; sourceTree = "<group>"; };
+		7A6822A328EAEBFC0005EEFB /* StarryNight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = StarryNight.jpg; sourceTree = "<group>"; };
 		7A702DA72434E99600EB1FF3 /* JumpListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpListPage.swift; sourceTree = "<group>"; };
 		7A728E7924C32FC300CBDA1D /* ReadFilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadFilePage.swift; sourceTree = "<group>"; };
 		7A74D10A28D4473100FB4FB3 /* HideBackBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideBackBtn.swift; sourceTree = "<group>"; };
@@ -631,6 +634,7 @@
 		7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMovePage.swift; sourceTree = "<group>"; };
 		7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSearchPage.swift; sourceTree = "<group>"; };
 		7A94609023D1A6AB00936DE7 /* ProgressTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTable.swift; sourceTree = "<group>"; };
+		7A9B2A0228E843620027C41D /* imageFlask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageFlask.png; sourceTree = "<group>"; };
 		7A9DA3F5240A901100AFB585 /* SnapKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SnapKit.xcodeproj; path = "SnapKit-develop/SnapKit.xcodeproj"; sourceTree = "<group>"; };
 		7A9E0EE42483DFB10020A05B /* SwiftCharts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCharts.xcodeproj; path = SwiftCharts/SwiftCharts.xcodeproj; sourceTree = "<group>"; };
 		7AA3259B243B6FC000D5308D /* StringPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringPage.swift; sourceTree = "<group>"; };
@@ -1067,6 +1071,8 @@
 		7AC3B73B23CA04C5004DB044 /* ModelSupports */ = {
 			isa = PBXGroup;
 			children = (
+				7A6822A328EAEBFC0005EEFB /* StarryNight.jpg */,
+				7A9B2A0228E843620027C41D /* imageFlask.png */,
 				7A3C6B302884131200C1D7AC /* CSV File */,
 				7AEA78B424C32F0F00909C62 /* index.html */,
 				7AA789BC28CE0D9800B58537 /* myPlist.plist */,
@@ -1671,6 +1677,8 @@
 				7AEA78B524C32F0F00909C62 /* index.html in Resources */,
 				7A27506B22ABA25600C8A474 /* Main.storyboard in Resources */,
 				7A2161332389869D00D5A93A /* Books.plist in Resources */,
+				7A6822CD28EAEBFC0005EEFB /* StarryNight.jpg in Resources */,
+				7A9B2A2C28E843620027C41D /* imageFlask.png in Resources */,
 				7A3C6B3F2884135900C1D7AC /* item.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

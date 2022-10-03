@@ -30,14 +30,23 @@ class TestVC: UIViewController {
         
         // MARK: - 上传文件(如上传图片)
         print("上传图片")
-//        let image = UIImage(named: "adding_background")
         
-        let fileURL = Bundle.main.url(forResource: "iPhone7", withExtension: "png")!
-//        AF.upload(fileURL, to: "https://httpbin.org/post").responseDecodable { (response) in
-//            print("上传图片返回结果：", response)
-//        }
+        // Bundle.main.url 可查到可以在工程文件->Build Phases->Copy Bundle Resource中看到
+//        let fileURL = Bundle.main.url(forResource: "imageFlask", withExtension: "png")!
+        let fileURL = Bundle.main.url(forResource: "StarryNight", withExtension: "jpg")!
         
-        AF.upload(fileURL, to: "https://httpbin.org/post")
+        AF.upload(multipartFormData: { (mutidata) in
+            mutidata.append(fileURL, withName: "file")
+        },
+                  to: "http://127.0.0.1:5000/upload_image").responseJSON { (response) in
+            if let value = response.result.value {
+                let json = JSON(value)
+                // print("json", json)
+                let image_url = json["image_url"].string ?? "(空)"
+                print("post 返回结果", "image_url =", image_url)
+            }
+        }
+        
         
     }
     
@@ -50,49 +59,3 @@ class TestVC: UIViewController {
     
     
 }
-
-//
-//typealias UploadUserIconSuccess = (_ dict:[String : Any]) -> Void//成功block
-//    
-//    func uploadUserIcon(fileName: String, imgData: NSData, success:@escaping UploadUserIconSuccess, fail:@escaping FailedBlock ) {
-//        let urlStr = HttpConfig.RequestUrlHeader.httpRequestUrlHeader + HttpConfig.RequestApi.uploadUserIconApi
-//        
-//     //请求头
-//        let localToken = Tools.readFromUserDefault(key: localToken)!
-//        // 头部需要的内容包装
-//        let headers: HTTPHeaders = [
-//            "Accept": "application/json;charset=utf-8",
-//            "lang":"en-US",
-//            "token": localToken
-//        ]
-//
-//        Alamofire.upload(multipartFormData: { (formData) in
-//            // 参数解释：
-//            //withName:和后台服务器的name要一致 ；fileName:可以充分利用写成用户的id，但是格式要写对； mimeType：规定的，要上传其他格式可以自行百度查一下
-//            formData.append(imgData as Data, withName: "fname", fileName: fileName, mimeType:"image/jpeg")
-//            //如果需要上传多个文件,就多添加几个append,或则for-in语句进行循环处理
-//// formData.append(imgData as Data, withName: "fname", fileName: fileName, mimeType:"image/jpeg")
-////  formData.append(imgData as Data, withName: "fname", fileName: fileName, mimeType:"image/jpeg")
-//        }, usingThreshold: (10*1024*1024), to: URL.init(string: urlStr)!, method: HTTPMethod.post, headers: headers) { (encodingResult) in
-//            switch encodingResult {
-//            case .success(let upload, _, _):
-//                upload.responseJSON { response in
-//                    if let jsonValue = response.result.value {
-//                        let json = JSON(jsonValue)
-//                        print("上传头像json:\(json)")
-//                        let code = json["code"].int
-//                        
-//                        if code == HttpConfig.ErrorCode.HttpOK {
-//                            let dict = json["data"].dictionaryObject
-//                            success(dict!)
-//                        } else {
-//                            let msg = json["msg"].string
-//                            HudToast.toastError(error: msg!)
-//                        }
-//                    }
-//                }
-//            case .failure(_):
-//                self.networkErrorHint()
-//            }
-//        }
-//    }
