@@ -7,56 +7,54 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
-class TestVC: UIViewController {
-    // 两件事：1.学着用Alamofire 。2.上传图片
+class TestVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let titleArray: [String] = []
+    let vcArray: [UIViewController] = []
+    
+    let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-        
-        let image = UIImageView()
-        image.set(superview: view, imageName: "iPhoneX")
-        image.setStyleNote()
-        image.setFrame(left: 20, top: 20, right: 20, height: 500)
-        
-        let btn = UIButton()
-        btn.set(superview: view, target: self, action: #selector(uploadData))
-        btn.setStyleSolidBtn(title: "上传")
-        btn.setFrame(left: 20, top: image.bottom + 12, right: 20, height: 48)
-        
-        
-        // MARK: - 上传文件(如上传图片)
-        print("上传图片")
-        
-        // Bundle.main.url 可查到可以在工程文件->Build Phases->Copy Bundle Resource中看到
-        let fileURL = Bundle.main.url(forResource: "StarryNight", withExtension: "jpg")!
-        
-        AF.upload(multipartFormData: { (mutidata) in
-            mutidata.append(fileURL, withName: "file")
-        },
-                  to: "http://127.0.0.1:5000/upload_image").responseJSON { (response) in
-            if let value = response.result.value {
-                let json = JSON(value)
-                // print("json", json)
-                let image_url = json["image_url"].string ?? "(空)"
-                print("post 返回结果", "image_url =", image_url)
-            }
-        }
-        
-        
-        
+        view.setBackgroundColor(color: cFFF)
+
+        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
         
     }
     
     
-    // MARK: - obj
-    @objc func uploadData() {
-        print("上传中...")
-        
+    // MARK: - tableview 代理
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return titleArray.count
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 56
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.push(toTarget: vcArray[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
+        cell.setSeparator(leftInset: 20, rightInset: 0)
+        
+        let cellTitle = UILabel()
+        cellTitle.set(superview: cell, text: titleArray[indexPath.row])
+        cellTitle.setFrame(left: 20, centerY: cell.centerY)
+        
+        let next = UIImageView()
+        next.set(superview: cell, imageName: "next")
+        next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
+        
+        return cell
+    }
+    
     
     
 }
