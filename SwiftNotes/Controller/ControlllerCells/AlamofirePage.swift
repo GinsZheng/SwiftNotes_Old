@@ -81,7 +81,7 @@ class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSou
             let fileURL = Bundle.main.url(forResource: "StarryNight", withExtension: "jpg")!
             
             AF.upload(multipartFormData: { (mutidata) in
-                mutidata.append(fileURL, withName: "file")
+                mutidata.append(fileURL, withName: "file") // "file"是上传文件时参数的key
             },
                       to: "http://127.0.0.1:5000/upload_image").responseJSON { (response) in
                 if let value = response.result.value {

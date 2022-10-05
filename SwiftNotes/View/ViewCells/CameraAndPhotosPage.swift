@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class CSCameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     // 1. 如上行，增加代理：UIImagePickerControllerDelegate & UINavigationControllerDelegate
@@ -60,29 +61,32 @@ class CSCameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate &
         imageView.image = originalImage
         
         
-//        // 上传图片：
-//        // 1. 将选择的图片保存到Document目录下
-//        let fileManager = FileManager.default
-//        let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
-//                                                           .userDomainMask, true)[0] as String
-//        let filePath = "\(rootPath)/originalImage.jpg"
-//        let imageData = originalImage.jpegData(compressionQuality: 1.0)
-//        fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
-//
-//        if (fileManager.fileExists(atPath: filePath)){
-//            print("到这一步了")
-//            //取得NSURL
-//            let imageNSURL = NSURL.init(fileURLWithPath: filePath) as URL
-////            let imageNSURL = URL(string: filePath)!
-//
-//            //使用Alamofire上传
-////            AF.upload(.post, "http://www.hangge.com/upload.php", file: imageNSURL)
-////                .responseString { response in
-////                    print("Success: \(response.result.isSuccess)")
-////                    print("Response String: \(response.result.value)")
-////                }
-//            AF.upload(imageNSURL, to: "http://127.0.0.1:5000/upload_image")
-//        }
+        // 上传图片：
+        // 将选择的图片保存到Document目录下
+        let fileManager = FileManager.default
+        let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
+                                                           .userDomainMask, true)[0] as String
+        let filePath = "\(rootPath)/image.jpg"
+        let imageData = originalImage.jpegData(compressionQuality: 1.0)
+        fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
+
+        if (fileManager.fileExists(atPath: filePath)){
+            //取得NSURL
+            let imageNSURL = NSURL.init(fileURLWithPath: filePath) as URL
+            
+            AF.upload(multipartFormData: { (mutidata) in
+                mutidata.append(imageNSURL, withName: "file") // "file"是上传文件时参数的key
+            },
+                      to: "http://127.0.0.1:5000/upload_image").responseJSON { (response) in
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    // print("json", json)
+                    let image_url = json["image_url"].string ?? "(空)"
+                    print("上传文件(如上传图片) post 返回结果:", "image_url =", image_url)
+                }
+            }
+            
+        }
         
         
         self.dismiss(animated: true, completion: nil)
