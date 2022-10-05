@@ -32,7 +32,6 @@ class TestVC: UIViewController {
         print("上传图片")
         
         // Bundle.main.url 可查到可以在工程文件->Build Phases->Copy Bundle Resource中看到
-//        let fileURL = Bundle.main.url(forResource: "imageFlask", withExtension: "png")!
         let fileURL = Bundle.main.url(forResource: "StarryNight", withExtension: "jpg")!
         
         AF.upload(multipartFormData: { (mutidata) in
@@ -46,6 +45,8 @@ class TestVC: UIViewController {
                 print("post 返回结果", "image_url =", image_url)
             }
         }
+        
+        
         
         
     }
