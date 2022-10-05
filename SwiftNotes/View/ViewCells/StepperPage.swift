@@ -19,10 +19,10 @@ class CSStepperPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let stepper = UIStepper()
-        view.addSubview(stepper)
+        stepper.set(superview: view, target: self, action: #selector(printValue(_:)))
         stepper.setFrame(left: 20, top: 20, width: 200, height: 36)
-        stepper.addTarget(self, action: #selector(printValue(_:)), for: .touchUpInside)
             
+        
     }
     
     

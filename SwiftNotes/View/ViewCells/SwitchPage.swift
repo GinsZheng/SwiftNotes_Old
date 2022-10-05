@@ -20,12 +20,10 @@ class CSSwitchPage: UIViewController {
         print("初始boolValue1", userDefaultsboolValue1)
         
         let mySwitch = UISwitch()
-        view.addSubview(mySwitch)
+        mySwitch.set(superview: view, setOn: userDefaultsboolValue1, target: self, action: #selector(switchChanged(_:)))
         mySwitch.setFrame(left: 20, top: 20, width: 50, height: 30)
         
         mySwitch.onTintColor = UIColor.hex(cBlue_5393FF)
-        mySwitch.setOn(userDefaultsboolValue1, animated: false)
-        mySwitch.addTarget(self, action: #selector(switchChanged(_:)), for: .touchUpInside)
         print("初始isOn", mySwitch.isOn)
 
     }

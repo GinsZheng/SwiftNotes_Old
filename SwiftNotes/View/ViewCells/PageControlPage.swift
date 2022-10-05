@@ -15,10 +15,7 @@ class CSPageControlPage: UIViewController {
         view.backgroundColor = .hex(c999)
         
         let pageControl = UIPageControl()
-        pageControl.set(superview: view)
-        pageControl.setFrame(left: 50, top: 20, right: 50, height: 44)
-        pageControl.numberOfPages = 5
-        pageControl.hidesForSinglePage = true
+        
     }
     
     
