@@ -61,8 +61,10 @@ class CSCameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate &
         imageView.image = originalImage
         
         
-        // 上传图片：
-        // 将选择的图片保存到Document目录下
+        // 相册上传：需要将相册图片先保存图片到Document目录下，生成文件url，再上传
+        let uploadImageAPI = "http://127.0.0.1:5000/upload_image"
+        let parameterName = "file"
+        
         let fileManager = FileManager.default
         let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
                                                            .userDomainMask, true)[0] as String
@@ -75,9 +77,9 @@ class CSCameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate &
             let imageNSURL = NSURL.init(fileURLWithPath: filePath) as URL
             
             AF.upload(multipartFormData: { (mutidata) in
-                mutidata.append(imageNSURL, withName: "file") // "file"是上传文件时参数的key
+                mutidata.append(imageNSURL, withName: parameterName) // "file"是上传文件时参数的key
             },
-                      to: "http://127.0.0.1:5000/upload_image").responseJSON { (response) in
+                      to: uploadImageAPI).responseJSON { (response) in
                 if let value = response.result.value {
                     let json = JSON(value)
                     // print("json", json)
