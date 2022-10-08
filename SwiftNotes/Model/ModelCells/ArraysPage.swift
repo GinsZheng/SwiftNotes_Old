@@ -58,6 +58,17 @@ class CSArrayPage: UIViewController {
         // 生成重复元素
         let arr8 = Array(repeating: "T", count: 3)
         print("生成重复元素", arr8)
+        
+        // 字符串数组转为字符串(方便上传到后端)
+        let arr9 = ["a", "b", "c"]
+        let result9 = arr9.joined(separator: ",\n")
+        print("字符串数组转为字符串", result9)
+        
+        // 数字数组转为字符串
+        let arr10 = [1, 3, 5, 7, 9]
+        let stringArray = arr10.map { String($0) }
+        let result10 = stringArray.joined(separator: ",\n")
+        print("数字数组转为字符串", result10)
     }
     
     
