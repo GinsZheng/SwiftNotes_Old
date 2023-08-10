@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         // Override point for customization after application launch.
         
 //        let tabBarController = TabBarController.getTabBar()
-        let tabBarController = TabBarController.getTabBarWithButton(delegate: self)
+        let tabBarController = TabBarController.getTabBar()
         // 将window的一级页面设置为tabBar
         self.window?.rootViewController = tabBarController
 
