@@ -38,11 +38,17 @@ class CSButtonPage: UIViewController {
         solidButton2.setStyleSolidButton2(title: "Solid Button2")
         solidButton2.setFrame(left: 20, top: solidButton.bottom + 20, right: 20, height: 44)
         
+        let withIconButton = UIButton(type: .custom)
+        withIconButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
+        withIconButton.setStyleSolidWithIconButton(title: "Solid Button3")
+        let btnWidth = withIconButton.titleLabel?.getLabelWidth() ?? 0
+        withIconButton.setFrame(centerX: view.centerX, top: solidButton2.bottom + 20, width: btnWidth + 24 + 3, height: 44)
+        
         let systemIconButton = UIButton(type: .system)
         systemIconButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         systemIconButton.setStyleSystemIconButton(imageName: "mine_item")
-        systemIconButton.setFrame(centerX: view.centerX, top: solidButton2.bottom + 20, width: 44, height: 44)
-        
+        systemIconButton.setFrame(centerX: view.centerX, top: withIconButton.bottom + 20, width: 44, height: 44)
+
         let customIconButton = UIButton(type: .custom)
         customIconButton.set(superview: view, target: self, action: #selector(pushToGeneralSubpage))
         customIconButton.setStyleCustomIconButton(imageName: "mine_item")

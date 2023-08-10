@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let tabBarController = TabBarController.getTabBar()
-//        let tabBarController = TabBarController.getTabBarWithButton(delegate: self)
+//        let tabBarController = TabBarController.getTabBar()
+        let tabBarController = TabBarController.getTabBarWithButton(delegate: self)
         // 将window的一级页面设置为tabBar
         self.window?.rootViewController = tabBarController
 
@@ -39,6 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         } else {
             print("非也")
         }
+        
+        // MARK: - 设置长按图标出现快捷功能列表
+        // 创建一个快捷功能项
+        let shortcutItem = UIApplicationShortcutItem(type: "com.example.myapp.shortcut", localizedTitle: "快捷功能", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(systemImageName: "star.fill"), userInfo: nil)
+        
+        // 将快捷功能项添加到应用程序的快捷功能列表中
+        application.shortcutItems = [shortcutItem]
         
         return true
     }

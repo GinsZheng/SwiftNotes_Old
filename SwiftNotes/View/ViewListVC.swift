@@ -10,9 +10,38 @@ import UIKit
 
 class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
-    let titleList = ["Animation", "Button", "Camera and Photos","Chart", "Collection View","Date Picker", "Image View", "Label", "Layer", "Nav Controller", "Page Control",  "Picker View", "Scroll View", "Segment Control", "Slider", "Stack View", "Stepper", "Styles", "Switch", "Table View", "Text Field", "Text View", "Transition", "UIList", "View", "ViewController", "Web View", "Window"]
-    let pageList = [CSAnimationPage(), CSButtonPage(), CSCameraAndPhotosPage(), CSChartListVC(), CollectionViewPage(), CSDatePickerPage(), CSImageViewPage(), CSLabelPage(), CSLayerView(), CSNavControllerPage(), CSPageControlPage(), CSPickerViewPage(), CSScrollViewPage(), CSSegmentControlPage(), CSSliderPage(), CSStackViewPage(), CSStepperPage(), CSStylesPage(), CSSwitchPage(),CSTableViewPage(),  CSTextFieldPage(), CSTextViewPage(), CSTransitionListPage(), CSUIListPage(), CSViewPage(), CSViewControllerPage(), CSWebViewPage(), CSWindowPage()]
+    let list: [(String, UIViewController)] = [
+        ("Animation", CSAnimationPage()),
+        ("Button", CSButtonPage()),
+        ("Camera and Photos", CSCameraAndPhotosPage()),
+        ("Chart", CSChartListVC()),
+        ("Collection View", CollectionViewPage()),
+        ("Date Picker", CSDatePickerPage()),
+        ("Image View", CSImageViewPage()),
+        ("Label", CSLabelPage()),
+        ("Layer", CSLayerView()),
+        ("Nav Controller", CSNavControllerPage()),
+        ("Page Control", CSPageControlPage()),
+        ("Picker View", CSPickerViewPage()),
+        ("Scroll View", CSScrollViewPage()),
+        ("Scroll View Horizonal", CSScrollViewHorizonalPage()),
+        ("Segment Control", CSSegmentControlPage()),
+        ("Slider", CSSliderPage()),
+        ("Stack View", CSStackViewPage()),
+        ("Stepper", CSStepperPage()),
+        ("Styles", CSStylesPage()),
+        ("Switch", CSSwitchPage()),
+        ("Table View", CSTableViewPage()),
+        ("Text Field", CSTextFieldPage()),
+        ("Text View", CSTextViewPage()),
+        ("Transition", CSTransitionListPage()),
+        ("UIList", CSUIListPage()),
+        ("Video Player", CSVideoPlayerPage()),
+        ("View", CSViewPage()),
+        ("ViewController", CSViewControllerPage()),
+        ("Web View", CSWebViewPage()),
+        ("Window", CSWindowPage()),
+    ]
     
     
     override func viewDidLoad() {
@@ -35,7 +64,7 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         cell.setSeparator(leftInset: 20, rightInset: 0)
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: titleList[indexPath.row])
+        cellTitle.set(superview: cell, text: list[indexPath.row].0)
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
@@ -46,7 +75,7 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleList.count
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -54,7 +83,7 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: pageList[indexPath.row])
+        self.pushFromRootPage(toTarget: list[indexPath.row].1)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

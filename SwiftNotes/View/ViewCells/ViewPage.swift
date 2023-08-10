@@ -23,7 +23,7 @@ class CSViewPage: UIViewController {
         multiCornersView.setBackgroundColor(color: cBlue_5393FF)
         multiCornersView.set(superview: view)
         multiCornersView.setFrame(left: 20, top: myView.bottom + 20, width: kScreenWidth - 40, height: 66)
-        multiCornersView.setCornerRadiusWithMask(radius: 16, corners: [.topRight, .bottomRight])
+        multiCornersView.setEachCornerRadiusWithMask(radius: 16, corners: [.topRight, .bottomRight])
         
         // 渐变图层
         let gradientView = UIView()

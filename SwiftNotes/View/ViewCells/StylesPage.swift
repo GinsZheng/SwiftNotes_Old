@@ -19,7 +19,7 @@ class CSStylesPage: UIViewController {
         myView.setBackgroundColor(color: cBlue_5393FF)
         myView.set(superview: view)
         myView.setFrame(left: 20, top: 20, width: 200, height: 66)
-        myView.setCornerRadiusWithMask(radius: 16, corners: [.topRight, .bottomRight])
+        myView.setEachCornerRadiusWithMask(radius: 16, corners: [.topRight, .bottomRight])
         // 关键点：setCornerRadiusWithMask一定要在setFrame之后
         
         

@@ -10,8 +10,25 @@ import UIKit
 
 class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleArray = ["Array", "CSV", "Data Operate", "Data Save List", "设备信息" , "Dictionary", "Double", "Enum", "Int", "Item Model (Basic)", "plist", "Progress Model (Joined)", "Read File", "Request", "String", "SwiftyJSON", "Time"]
-    let pageArray = [CSArrayPage(), CSVPage(), CSDataOperate(), CSDataSaveListVC(), CSDeviceInfoPage(), CSDictionaryPage(), DoublePage(), CSEnumPage(), CSIntPage(), CSItemSearchPage(), CSPlistPage(),  CSProgressSearchPage(), CSReadFilePage(), CSRequestPage(), CSStringPage(), CSSwiftyJSONPage(), CSTimePage()]
+    let list: [(String, UIViewController)] = [
+        ("Array", CSArrayPage()),
+        ("CSV", CSVPage()),
+        ("Data Operate", CSDataOperate()),
+        ("Data Save List", CSDataSaveListVC()),
+        ("设备信息", CSDeviceInfoPage()),
+        ("Dictionary", CSDictionaryPage()),
+        ("Double", DoublePage()),
+        ("Enum", CSEnumPage()),
+        ("Int", CSIntPage()),
+        ("Item Model (Basic)", CSItemSearchPage()),
+        ("plist", CSPlistPage()),
+        ("Progress Model (Joined)", CSProgressSearchPage()),
+        ("Read File", CSReadFilePage()),
+        ("Request", CSRequestPage()),
+        ("String", CSStringPage()),
+        ("SwiftyJSON", CSSwiftyJSONPage()),
+        ("Time", CSTimePage()),
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +44,7 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleArray.count
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -40,7 +57,7 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.setSeparator(leftInset: 20, rightInset: 0)
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: titleArray[indexPath.row])
+        cellTitle.set(superview: cell, text: list[indexPath.row].0)
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
@@ -51,7 +68,7 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: pageArray[indexPath.row])
+        self.pushFromRootPage(toTarget: list[indexPath.row].1)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

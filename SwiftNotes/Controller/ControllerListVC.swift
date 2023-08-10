@@ -11,8 +11,31 @@ import UIKit
 
 class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleList = ["TestVC", "TestPresentVC", "ActionSheet", "Alamofire","Alert", "Class", "Custom Popup Window", "Decorator", "Delegate", "Delegate2", "For & While", "Gesture", "Jump", "Loading", "Map", "Menu Controller", "Number Formatter", "Operator @", "Protocol", "Reload Data", "Timer", "Try", "上传(文字/图片等)"]
-    let pageList = [TestVC(), TestPresentVC(), CSActionSheetPage(), CSAlamofirePage(), CSAlertListPage(), CSClassPage(), CSCustomPopupWindowPage(), CSDecoratorPage(), CSDelegatePage(), CSDelegate2Page(), CSForWhilePage(), CSGestureListPage(),  CSJumpListPage(), CSLoadingPage(), CSMapPage(),  CSMenuControllerPage(), CSNumberFormatterPage(), CSOperatorAtPage(), CSProtocolPage(), CSReloadDataPage(), CSTimerPage(), CSTryPage(), CSUploadDataPage()]
+    let list: [(String, UIViewController)] = [
+        ("TestVC", TestVC()),
+        ("TestPresentVC", TestPresentVC()),
+        ("ActionSheet", CSActionSheetPage()),
+        ("Alamofire", CSAlamofirePage()),
+        ("Alert", CSAlertListPage()),
+        ("Class", CSClassPage()),
+        ("Custom Popup Window", CSCustomPopupWindowPage()),
+        ("Decorator", CSDecoratorPage()),
+        ("Delegate", CSDelegatePage()),
+        ("Delegate2", CSDelegate2Page()),
+        ("For & While", CSForWhilePage()),
+        ("Gesture", CSGestureListPage()),
+        ("Jump", CSJumpListPage()),
+        ("Loading", CSLoadingPage()),
+        ("Map", CSMapPage()),
+        ("Menu Controller", CSMenuControllerPage()),
+        ("Number Formatter", CSNumberFormatterPage()),
+        ("Operator @", CSOperatorAtPage()),
+        ("Protocol", CSProtocolPage()),
+        ("Reload Data", CSReloadDataPage()),
+        ("Timer", CSTimerPage()),
+        ("Try", CSTryPage()),
+        ("上传(文字/图片等)", CSUploadDataPage()),
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +51,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleList.count
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -41,7 +64,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
         cell.setSeparator(leftInset: 20, rightInset: 0)
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: titleList[indexPath.row])
+        cellTitle.set(superview: cell, text: list[indexPath.row].0)
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
@@ -53,9 +76,9 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
-            self.present(toTarget: pageList[indexPath.row])
+            self.present(toTarget: list[indexPath.row].1)
         } else {
-            self.push(toTarget: pageList[indexPath.row])
+            self.push(toTarget: list[indexPath.row].1)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -19,6 +19,16 @@ class TuplePage: UIViewController {
         for (x, y) in tuples {
             print(x, y)
         }
+        
+        let list: [(String, UIViewController)] = [
+            ("Animation", CSAnimationPage()),
+            ("Button", CSButtonPage()),
+            ("Camera and Photos", CSCameraAndPhotosPage()),
+        ]
+        
+        let c1 = list[0].0
+        print("c1", c1)
+            
     }
     
     
