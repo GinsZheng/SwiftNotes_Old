@@ -8,13 +8,12 @@
 
 import UIKit
 import ESTabBarController
-import pop
 
 class TabBarController {
 
     static func getTabBar() -> ESTabBarController {
         
-        let selectedIndex = 3
+        let selectedIndex = 0
         
         let tabBarController = ESTabBarController()
         let v1 = ViewListVC()

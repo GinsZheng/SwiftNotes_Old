@@ -20,7 +20,6 @@ class CSImageViewPage: UIViewController {
         image.setStyleNote()
         image.setFrame(left: 20, top: 20, right: 20, height: 300)
         
-
         let stretchMiddleImage = UIImageView()
         stretchMiddleImage.set(superview: view)
         stretchMiddleImage.setFrame(left: 20, top: 340, width: 78, height: 84)

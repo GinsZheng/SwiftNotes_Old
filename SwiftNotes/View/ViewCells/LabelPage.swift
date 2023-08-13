@@ -14,6 +14,7 @@ class CSLabelPage: UIViewController {
     let label2 = UILabel()
     let label3 = UILabel()
     let label4 = UILabel()
+    let label5 = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,13 +43,12 @@ class CSLabelPage: UIViewController {
         label4.adjustsFontSizeToFitWidth = true
         label4.minimumScaleFactor = 0.7
         
-        
-        let label5 = UILabel()
         label5.set(superview: view, text: "特朗普威胁世行不该给富起来的中国贷款二在")
         label5.numberOfLines = 3
         label5.setFrame(left: 20, top: label4.bottom + 20, right: 20, height: 60)
         label5.setBackgroundColor(color: cF0F1F3)
         
+
     }
     
 }

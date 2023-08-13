@@ -15,9 +15,11 @@ class CSPageControlPage: UIViewController {
         view.backgroundColor = .hex(c999)
         
         let pageControl = UIPageControl()
+        pageControl.set(superview: view, numberOfPages: 3)
+        pageControl.setFrame(left: 0, top: 0, width: kScreenWidth, height: 100)
         
     }
     
-    
+
 }
 

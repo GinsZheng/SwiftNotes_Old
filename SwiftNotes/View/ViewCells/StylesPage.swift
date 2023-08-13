@@ -16,8 +16,7 @@ class CSStylesPage: UIViewController {
         
         // 设置部分圆角
         let myView = UIView()
-        myView.setBackgroundColor(color: cBlue_5393FF)
-        myView.set(superview: view)
+        myView.set(superview: view, backgroundColor: cBlue_5393FF)
         myView.setFrame(left: 20, top: 20, width: 200, height: 66)
         myView.setEachCornerRadiusWithMask(radius: 16, corners: [.topRight, .bottomRight])
         // 关键点：setCornerRadiusWithMask一定要在setFrame之后

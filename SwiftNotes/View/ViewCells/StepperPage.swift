@@ -21,8 +21,6 @@ class CSStepperPage: UIViewController {
         let stepper = UIStepper()
         stepper.set(superview: view, target: self, action: #selector(printValue(_:)))
         stepper.setFrame(left: 20, top: 20, width: 200, height: 36)
-            
-        
     }
     
     

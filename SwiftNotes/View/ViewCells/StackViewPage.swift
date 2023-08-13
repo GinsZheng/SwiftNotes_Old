@@ -31,10 +31,11 @@ class CSStackViewPage: UIViewController {
         // 使用UIStackView时，放在其中的UIView的frame信息无效，UILabel有效
         
         let stackBlock4 = UIView()
-        stackBlock4.backgroundColor = UIColor.hex(cGreen_25BE3C)
+        stackBlock4.backgroundColor = .hex(cGreen_25BE3C)
         stack.addArrangedSubview(stackBlock4)
         
         
+        // MARK: -
         // 3等分的次像素处理调研
         var stackBlockBArray: [UIView] = []
         

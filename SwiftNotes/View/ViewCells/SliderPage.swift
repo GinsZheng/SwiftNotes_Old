@@ -21,8 +21,6 @@ class CSSliderPage: UIViewController {
         slider.setMinimumTrackImage(getImageWithColor(color: cBlue_5393FF), for: .normal)
         slider.setMaximumTrackImage(getImageWithColor(color: c999), for: .normal)
         
-        
-
     }
     
     
