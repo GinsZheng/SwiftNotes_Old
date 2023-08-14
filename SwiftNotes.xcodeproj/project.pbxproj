@@ -121,14 +121,13 @@
 		7A7F97E7241DF290000F1E31 /* ProgressUpdatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F97E6241DF290000F1E31 /* ProgressUpdatePage.swift */; };
 		7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A871E7923CE122A007CCA90 /* TryPage.swift */; };
 		7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */; };
-		7A88C6372A8925C500D61E33 /* InAppVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C6362A8925C500D61E33 /* InAppVariables.swift */; };
+		7A88C6372A8925C500D61E33 /* VariablesInApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C6362A8925C500D61E33 /* VariablesInApp.swift */; };
 		7A88C7422A8929E400D61E33 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C72F2A8929E400D61E33 /* Constant.swift */; };
 		7A88C7432A8929E400D61E33 /* SetColorInHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7302A8929E400D61E33 /* SetColorInHex.swift */; };
 		7A88C7442A8929E400D61E33 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7312A8929E400D61E33 /* DatePicker.swift */; };
 		7A88C7452A8929E400D61E33 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7322A8929E400D61E33 /* Styles.swift */; };
 		7A88C7462A8929E400D61E33 /* CustomControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7332A8929E400D61E33 /* CustomControl.swift */; };
 		7A88C7472A8929E400D61E33 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7342A8929E400D61E33 /* Functions.swift */; };
-		7A88C7482A8929E400D61E33 /* Inheritance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7352A8929E400D61E33 /* Inheritance.swift */; };
 		7A88C7492A8929E400D61E33 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7362A8929E400D61E33 /* FileManager.swift */; };
 		7A88C74A2A8929E400D61E33 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7372A8929E400D61E33 /* Timer.swift */; };
 		7A88C74B2A8929E400D61E33 /* Mix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7382A8929E400D61E33 /* Mix.swift */; };
@@ -137,10 +136,12 @@
 		7A88C74E2A8929E400D61E33 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C73B2A8929E400D61E33 /* Extension.swift */; };
 		7A88C74F2A8929E400D61E33 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C73C2A8929E400D61E33 /* UIKitExtension.swift */; };
 		7A88C7502A8929E400D61E33 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C73D2A8929E400D61E33 /* Formatter.swift */; };
-		7A88C7512A8929E400D61E33 /* UIPresentNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C73E2A8929E400D61E33 /* UIPresentNav.swift */; };
 		7A88C7522A8929E400D61E33 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C73F2A8929E400D61E33 /* NavViewController.swift */; };
 		7A88C7532A8929E400D61E33 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7402A8929E400D61E33 /* Colors.swift */; };
 		7A88C7542A8929E400D61E33 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7412A8929E400D61E33 /* Toast.swift */; };
+		7A88C7582A892B6B00D61E33 /* ColorsInApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7572A892B6B00D61E33 /* ColorsInApp.swift */; };
+		7A88C78D2A8A62A800D61E33 /* StylesInApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C78C2A8A62A800D61E33 /* StylesInApp.swift */; };
+		7A88C78E2A8A630800D61E33 /* UIPresentNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C78B2A8A626300D61E33 /* UIPresentNav.swift */; };
 		7A89B2D9240AB9B6004688FD /* MagicMovePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */; };
 		7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */; };
 		7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* ProgressTable.swift */; };
@@ -589,7 +590,7 @@
 		7A7F97E6241DF290000F1E31 /* ProgressUpdatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressUpdatePage.swift; sourceTree = "<group>"; };
 		7A871E7923CE122A007CCA90 /* TryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryPage.swift; sourceTree = "<group>"; };
 		7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForWhilePage.swift; sourceTree = "<group>"; };
-		7A88C6362A8925C500D61E33 /* InAppVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppVariables.swift; sourceTree = "<group>"; };
+		7A88C6362A8925C500D61E33 /* VariablesInApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariablesInApp.swift; sourceTree = "<group>"; };
 		7A88C6732A8926E200D61E33 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Frameworks/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		7A88C6942A8926E700D61E33 /* SwiftCSV.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftCSV.xcodeproj; path = Frameworks/SwiftCSV/SwiftCSV.xcodeproj; sourceTree = "<group>"; };
 		7A88C6AC2A8926EB00D61E33 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = Frameworks/SwiftyJSON/SwiftyJSON.xcodeproj; sourceTree = "<group>"; };
@@ -603,7 +604,6 @@
 		7A88C7322A8929E400D61E33 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		7A88C7332A8929E400D61E33 /* CustomControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomControl.swift; sourceTree = "<group>"; };
 		7A88C7342A8929E400D61E33 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		7A88C7352A8929E400D61E33 /* Inheritance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inheritance.swift; sourceTree = "<group>"; };
 		7A88C7362A8929E400D61E33 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		7A88C7372A8929E400D61E33 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		7A88C7382A8929E400D61E33 /* Mix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mix.swift; sourceTree = "<group>"; };
@@ -612,10 +612,12 @@
 		7A88C73B2A8929E400D61E33 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		7A88C73C2A8929E400D61E33 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		7A88C73D2A8929E400D61E33 /* Formatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
-		7A88C73E2A8929E400D61E33 /* UIPresentNav.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPresentNav.swift; sourceTree = "<group>"; };
 		7A88C73F2A8929E400D61E33 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		7A88C7402A8929E400D61E33 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7A88C7412A8929E400D61E33 /* Toast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		7A88C7572A892B6B00D61E33 /* ColorsInApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsInApp.swift; sourceTree = "<group>"; };
+		7A88C78B2A8A626300D61E33 /* UIPresentNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPresentNav.swift; sourceTree = "<group>"; };
+		7A88C78C2A8A62A800D61E33 /* StylesInApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesInApp.swift; sourceTree = "<group>"; };
 		7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMovePage.swift; sourceTree = "<group>"; };
 		7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSearchPage.swift; sourceTree = "<group>"; };
 		7A94609023D1A6AB00936DE7 /* ProgressTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTable.swift; sourceTree = "<group>"; };
@@ -726,6 +728,7 @@
 				7ACD300024042A5100D300A6 /* TabBarController.swift */,
 				7A4736CF246DA0AA0071115F /* TestPresentVC.swift */,
 				7A2161242389868500D5A93A /* TestVC.swift */,
+				7A88C78A2A8A624E00D61E33 /* Base */,
 				7A0FBCDA2A7253BB00AC7BCA /* testVideo.mp4 */,
 				7A216140238986AF00D5A93A /* View */,
 				7A21612A2389869D00D5A93A /* Controller */,
@@ -898,7 +901,9 @@
 		7A88C6352A8925AA00D61E33 /* InApp */ = {
 			isa = PBXGroup;
 			children = (
-				7A88C6362A8925C500D61E33 /* InAppVariables.swift */,
+				7A88C7572A892B6B00D61E33 /* ColorsInApp.swift */,
+				7A88C6362A8925C500D61E33 /* VariablesInApp.swift */,
+				7A88C78C2A8A62A800D61E33 /* StylesInApp.swift */,
 			);
 			name = InApp;
 			path = ../SwiftGeneral/InApp;
@@ -988,28 +993,34 @@
 		7A88C72E2A8929E400D61E33 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				7A88C7402A8929E400D61E33 /* Colors.swift */,
 				7A88C72F2A8929E400D61E33 /* Constant.swift */,
-				7A88C7302A8929E400D61E33 /* SetColorInHex.swift */,
-				7A88C7312A8929E400D61E33 /* DatePicker.swift */,
-				7A88C7322A8929E400D61E33 /* Styles.swift */,
 				7A88C7332A8929E400D61E33 /* CustomControl.swift */,
-				7A88C7342A8929E400D61E33 /* Functions.swift */,
-				7A88C7352A8929E400D61E33 /* Inheritance.swift */,
+				7A88C7312A8929E400D61E33 /* DatePicker.swift */,
+				7A88C73B2A8929E400D61E33 /* Extension.swift */,
 				7A88C7362A8929E400D61E33 /* FileManager.swift */,
-				7A88C7372A8929E400D61E33 /* Timer.swift */,
+				7A88C73D2A8929E400D61E33 /* Formatter.swift */,
+				7A88C7342A8929E400D61E33 /* Functions.swift */,
 				7A88C7382A8929E400D61E33 /* Mix.swift */,
+				7A88C73F2A8929E400D61E33 /* NavViewController.swift */,
+				7A88C7302A8929E400D61E33 /* SetColorInHex.swift */,
 				7A88C7392A8929E400D61E33 /* SetFrame.swift */,
 				7A88C73A2A8929E400D61E33 /* SQLiteManager.swift */,
-				7A88C73B2A8929E400D61E33 /* Extension.swift */,
-				7A88C73C2A8929E400D61E33 /* UIKitExtension.swift */,
-				7A88C73D2A8929E400D61E33 /* Formatter.swift */,
-				7A88C73E2A8929E400D61E33 /* UIPresentNav.swift */,
-				7A88C73F2A8929E400D61E33 /* NavViewController.swift */,
-				7A88C7402A8929E400D61E33 /* Colors.swift */,
+				7A88C7322A8929E400D61E33 /* Styles.swift */,
+				7A88C7372A8929E400D61E33 /* Timer.swift */,
 				7A88C7412A8929E400D61E33 /* Toast.swift */,
+				7A88C73C2A8929E400D61E33 /* UIKitExtension.swift */,
 			);
 			name = Global;
 			path = ../SwiftGeneral/Global;
+			sourceTree = "<group>";
+		};
+		7A88C78A2A8A624E00D61E33 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7A88C78B2A8A626300D61E33 /* UIPresentNav.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		7A89B2B1240AB9A7004688FD /* Transition */ = {
@@ -1618,9 +1629,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A88C78E2A8A630800D61E33 /* UIPresentNav.swift in Sources */,
 				7A2161382389869D00D5A93A /* ProtocolPage.swift in Sources */,
 				7A4736D8247191B90071115F /* LongPressGesturePage.swift in Sources */,
-				7A88C7482A8929E400D61E33 /* Inheritance.swift in Sources */,
 				7A4040452483EED3000FF8C7 /* MapPage.swift in Sources */,
 				7A88C7502A8929E400D61E33 /* Formatter.swift in Sources */,
 				7A2161292389868500D5A93A /* ControllerListVC.swift in Sources */,
@@ -1629,6 +1640,7 @@
 				7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */,
 				7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */,
 				7A0258AA2434EF58006D4AB5 /* DismissAllPage.swift in Sources */,
+				7A88C78D2A8A62A800D61E33 /* StylesInApp.swift in Sources */,
 				7A62A1A5244CA9790090D128 /* PinchGesturePage.swift in Sources */,
 				7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */,
 				7A7F97E7241DF290000F1E31 /* ProgressUpdatePage.swift in Sources */,
@@ -1682,7 +1694,7 @@
 				7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */,
 				7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */,
 				7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */,
-				7A88C6372A8925C500D61E33 /* InAppVariables.swift in Sources */,
+				7A88C6372A8925C500D61E33 /* VariablesInApp.swift in Sources */,
 				7AC4F56128B7615600F18E2F /* DeviceInfoPage.swift in Sources */,
 				7AF7B16F2436351800738C65 /* TimerPage.swift in Sources */,
 				7A88C7542A8929E400D61E33 /* Toast.swift in Sources */,
@@ -1708,6 +1720,7 @@
 				7A36487623926CC8000BBECD /* StylesPage.swift in Sources */,
 				7A74D10B28D4473100FB4FB3 /* HideBackBtn.swift in Sources */,
 				7AC56A0A23D4395C00538975 /* ViewBasicNote.swift in Sources */,
+				7A88C7582A892B6B00D61E33 /* ColorsInApp.swift in Sources */,
 				7AF1454E25810E3600B98393 /* DoublePage.swift in Sources */,
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
 				7A0258A82434EF42006D4AB5 /* PopToSpecificPage.swift in Sources */,
@@ -1719,7 +1732,6 @@
 				7A88C74D2A8929E400D61E33 /* SQLiteManager.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
 				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,
-				7A88C7512A8929E400D61E33 /* UIPresentNav.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,
 				7A1EF03E23FAF0E100BDEEBF /* ReloadDataTable.swift in Sources */,
 				7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */,
