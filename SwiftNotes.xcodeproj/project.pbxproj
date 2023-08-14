@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -144,6 +144,19 @@
 		7A88C78E2A8A630800D61E33 /* UIPresentNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C78B2A8A626300D61E33 /* UIPresentNav.swift */; };
 		7A89B2D9240AB9B6004688FD /* MagicMovePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */; };
 		7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */; };
+		7A93AB6B2A8A6E70004E0CC5 /* ESTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 7A93AB6A2A8A6E70004E0CC5 /* ESTabBarController */; };
+		7A93AB952A8A6E70004E0CC5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6812A8926E200D61E33 /* Alamofire.framework */; };
+		7A93AB962A8A6E70004E0CC5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6812A8926E200D61E33 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A93AB972A8A6E70004E0CC5 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6F42A8926FB00D61E33 /* Hero.framework */; };
+		7A93AB982A8A6E70004E0CC5 /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6F42A8926FB00D61E33 /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A93AB992A8A6E71004E0CC5 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6D02A8926EE00D61E33 /* SQLite.framework */; };
+		7A93AB9A2A8A6E71004E0CC5 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6D02A8926EE00D61E33 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A93AB9B2A8A6E71004E0CC5 /* SwiftCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6E62A8926F700D61E33 /* SwiftCharts.framework */; };
+		7A93AB9C2A8A6E71004E0CC5 /* SwiftCharts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6E62A8926F700D61E33 /* SwiftCharts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A93AB9D2A8A6E71004E0CC5 /* SwiftCSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C69F2A8926E700D61E33 /* SwiftCSV.framework */; };
+		7A93AB9E2A8A6E71004E0CC5 /* SwiftCSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C69F2A8926E700D61E33 /* SwiftCSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A93AB9F2A8A6E71004E0CC5 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6B82A8926EB00D61E33 /* SwiftyJSON.framework */; };
+		7A93ABA02A8A6E71004E0CC5 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6B82A8926EB00D61E33 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* ProgressTable.swift */; };
 		7A9B2A2C28E843620027C41D /* imageFlask.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9B2A0228E843620027C41D /* imageFlask.png */; };
 		7AA3259C243B6FC000D5308D /* StringPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3259B243B6FC000D5308D /* StringPage.swift */; };
@@ -462,6 +475,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7A93AB9E2A8A6E71004E0CC5 /* SwiftCSV.framework in Embed Frameworks */,
+				7A93AB982A8A6E70004E0CC5 /* Hero.framework in Embed Frameworks */,
+				7A93ABA02A8A6E71004E0CC5 /* SwiftyJSON.framework in Embed Frameworks */,
+				7A93AB962A8A6E70004E0CC5 /* Alamofire.framework in Embed Frameworks */,
+				7A93AB9A2A8A6E71004E0CC5 /* SQLite.framework in Embed Frameworks */,
+				7A93AB9C2A8A6E71004E0CC5 /* SwiftCharts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +666,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A93AB9B2A8A6E71004E0CC5 /* SwiftCharts.framework in Frameworks */,
+				7A93AB9D2A8A6E71004E0CC5 /* SwiftCSV.framework in Frameworks */,
+				7A93AB6B2A8A6E70004E0CC5 /* ESTabBarController in Frameworks */,
+				7A93AB952A8A6E70004E0CC5 /* Alamofire.framework in Frameworks */,
+				7A93AB9F2A8A6E71004E0CC5 /* SwiftyJSON.framework in Frameworks */,
+				7A93AB992A8A6E71004E0CC5 /* SQLite.framework in Frameworks */,
+				7A93AB972A8A6E70004E0CC5 /* Hero.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1200,6 +1226,9 @@
 			dependencies = (
 			);
 			name = SwiftNotes;
+			packageProductDependencies = (
+				7A93AB6A2A8A6E70004E0CC5 /* ESTabBarController */,
+			);
 			productName = SwiftNotes;
 			productReference = 7A27506222ABA25600C8A474 /* SwiftNotes.app */;
 			productType = "com.apple.product-type.application";
@@ -2110,6 +2139,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7A93AB6A2A8A6E70004E0CC5 /* ESTabBarController */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ESTabBarController;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7A27505A22ABA25600C8A474 /* Project object */;
 }

@@ -76,17 +76,17 @@ class CSCameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate &
             //取得NSURL
             let imageNSURL = NSURL.init(fileURLWithPath: filePath) as URL
             
-            AF.upload(multipartFormData: { (mutidata) in
-                mutidata.append(imageNSURL, withName: parameterName) // "file"是上传文件时参数的key
-            },
-                      to: uploadImageAPI).responseJSON { (response) in
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    // print("json", json)
-                    let image_url = json["image_url"].string ?? "(空)"
-                    print("上传文件(如上传图片) post 返回结果:", "image_url =", image_url)
-                }
-            }
+//            AF.upload(multipartFormData: { (mutidata) in
+//                mutidata.append(imageNSURL, withName: parameterName) // "file"是上传文件时参数的key
+//            },
+//                      to: uploadImageAPI).responseJSON { (response) in
+//                if let value = response.result.value {
+//                    let json = JSON(value)
+//                    // print("json", json)
+//                    let image_url = json["image_url"].string ?? "(空)"
+//                    print("上传文件(如上传图片) post 返回结果:", "image_url =", image_url)
+//                }
+//            }
             
         }
         

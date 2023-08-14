@@ -37,13 +37,13 @@ class CSSwiftyJSONPage: UIViewController {
         
         // 解析http传输的JSON
         let url = "https://httpbin.org/json"
-        AF.request(url).responseJSON { (response) in
-            if let value = response.result.value {
-                let jsonData3 = JSON(value)
-                let model3 = CSSwiftyModel3(jsonData: jsonData3)
-                print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
-            }
-        }
+//        AF.request(url).responseJSON { (response) in
+//            if let value = response.result.value {
+//                let jsonData3 = JSON(value)
+//                let model3 = CSSwiftyModel3(jsonData: jsonData3)
+//                print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
+//            }
+//        }
         
         // 解析本地数据库的JSON
         let itemTable = CSItemTable()

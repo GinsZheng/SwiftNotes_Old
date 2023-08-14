@@ -40,61 +40,61 @@ class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        switch titleArray[indexPath.row] {
-        case "获取文本 get":
-            // MARK: - 获取文本 get
-            AF.request("https://httpbin.org/get").responseJSON { (response) in
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    // print("json", json)
-                    let origin = json["origin"].string ?? "(空)"
-                    let url = json["url"].string ?? "(空)"
-                    let headers = json["headers"]
-                    let userAgent = json["headers"]["User-Agent"].string ?? "(空)"
-                    let host = headers["Host"].string ?? "(空)"
-                    print("获取文本 get 返回结果:", "origin =", origin, ", url =", url, "userAgent =", userAgent, "host =", host)
-                }
-            }
-        case "获取文本 post":
-            AF.request("https://httpbin.org/post", method: .post).responseJSON { (response) in
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    // print("json", json)
-                    let origin = json["origin"].string ?? "(空)"
-                    let url = json["url"].string ?? "(空)"
-                    print("获取文本 post 返回结果:", "origin =", origin, ", url =", url)
-                }
-            }
-        case "上传文本信息":
-            let parameters = [
-                "username": "GinsMac",
-                "phone": "13311112222"
-            ]
-            
-            AF.request("http://127.0.0.1:5000/feedback", method: .post, parameters: parameters).responseJSON { (response) in
-                print("上传文本信息，返回结果:", response)
-            }
-            
-        case "上传文件(如上传图片)":
-            
-            // Bundle.main.url 可查到可以在工程文件->Build Phases->Copy Bundle Resource中看到
-            let fileURL = Bundle.main.url(forResource: "StarryNight", withExtension: "jpg")!
-            
-            AF.upload(multipartFormData: { (mutidata) in
-                mutidata.append(fileURL, withName: "file") // "file"是上传文件时参数的key
-            },
-                      to: "http://127.0.0.1:5000/upload_image").responseJSON { (response) in
-                if let value = response.result.value {
-                    let json = JSON(value)
-                    // print("json", json)
-                    let image_url = json["image_url"].string ?? "(空)"
-                    print("上传文件(如上传图片) post 返回结果:", "image_url =", image_url)
-                }
-            }
-            
-        default:
-            break
-        }
+//        switch titleArray[indexPath.row] {
+//        case "获取文本 get":
+//            // MARK: - 获取文本 get
+//            AF.request("https://httpbin.org/get").responseJSON { (response) in
+//                if let value = response.result.value {
+//                    let json = JSON(value)
+//                    // print("json", json)
+//                    let origin = json["origin"].string ?? "(空)"
+//                    let url = json["url"].string ?? "(空)"
+//                    let headers = json["headers"]
+//                    let userAgent = json["headers"]["User-Agent"].string ?? "(空)"
+//                    let host = headers["Host"].string ?? "(空)"
+//                    print("获取文本 get 返回结果:", "origin =", origin, ", url =", url, "userAgent =", userAgent, "host =", host)
+//                }
+//            }
+//        case "获取文本 post":
+//            AF.request("https://httpbin.org/post", method: .post).responseJSON { (response) in
+//                if let value = response.result.value {
+//                    let json = JSON(value)
+//                    // print("json", json)
+//                    let origin = json["origin"].string ?? "(空)"
+//                    let url = json["url"].string ?? "(空)"
+//                    print("获取文本 post 返回结果:", "origin =", origin, ", url =", url)
+//                }
+//            }
+//        case "上传文本信息":
+//            let parameters = [
+//                "username": "GinsMac",
+//                "phone": "13311112222"
+//            ]
+//            
+//            AF.request("http://127.0.0.1:5000/feedback", method: .post, parameters: parameters).responseJSON { (response) in
+//                print("上传文本信息，返回结果:", response)
+//            }
+//            
+//        case "上传文件(如上传图片)":
+//            
+//            // Bundle.main.url 可查到可以在工程文件->Build Phases->Copy Bundle Resource中看到
+//            let fileURL = Bundle.main.url(forResource: "StarryNight", withExtension: "jpg")!
+//            
+//            AF.upload(multipartFormData: { (mutidata) in
+//                mutidata.append(fileURL, withName: "file") // "file"是上传文件时参数的key
+//            },
+//                      to: "http://127.0.0.1:5000/upload_image").responseJSON { (response) in
+//                if let value = response.result.value {
+//                    let json = JSON(value)
+//                    // print("json", json)
+//                    let image_url = json["image_url"].string ?? "(空)"
+//                    print("上传文件(如上传图片) post 返回结果:", "image_url =", image_url)
+//                }
+//            }
+//            
+//        default:
+//            break
+//        }
         
     }
     
