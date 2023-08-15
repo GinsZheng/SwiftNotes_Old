@@ -22,24 +22,9 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-//        let url = "https://httpbin.org/json"
-//        AF.request(url).responseJSON { (response) in
-//            if let value = response.result.value {
-//                let jsonData3 = JSON(value)
-//                let model3 = CSSwiftyModel3(jsonData: jsonData3)
-//                self.slidesTitle = model3.slidesTitle
-//                self.slidesType = model3.slidesType
-//                print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
-//
-//                self.tableView.set(superview: self.view, delegate: self, dataSource: self, viewController: self)
-//                self.tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
-//                self.tableView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(self.slidesTitle.count))
-//            }
-//
-//        }
         
-        print("here")
-
+        // MARK: - 简单请求
+        
         struct User: Decodable {
             let code: String
             let message: String
@@ -48,14 +33,19 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         let url = "https://go.ginkgeek.com/firstRequest"
         AF.request(url).responseDecodable(of: User.self) { response in
             if let user = response.value {
-                print("here:")
+                print("user", user)
                 print(user.code)
                 print(user.message)
             } else {
                 print(response.error!)
             }
         }
-        // ❓下一步：做一个Alamofire笔记，然后把上面 "https://httpbin.org/json"也解析了
+        
+        /*
+         新的请求方式的好处：简化了许多操作：1. struct无需初始化 2. AF的代码简化了许多
+         
+         新请求的构成：1. struct 2. AF.request
+         */
         
         /*
          User.self是啥，为什么不是User：
@@ -64,6 +54,68 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
          3. Type.self在Swift中是一个常见的用法,用来表示一个明确的类型,而不是该类型的实例。
          */
         
+        
+        
+        // MARK: - 正常请求
+        
+        struct SlideshowResponse: Decodable {
+            let slideshow: Slideshow
+        }
+
+        struct Slideshow: Decodable {
+            let author: String
+            let date: String
+            let slides: [Slide]
+            let title: String
+        }
+
+        struct Slide: Decodable {
+            let title: String
+            let type: String
+        }
+        
+        
+        let url2 = "https://httpbin.org/json"
+        AF.request(url2).responseDecodable(of: SlideshowResponse.self) { response in
+            if let slideshow = response.value {
+                let slides = slideshow.slideshow.slides
+                
+                for slide in slides {
+                    let title = slide.title
+                    let type = slide.type
+                    print("Title: \(title), Type: \(type)")
+                }
+            } else {
+                print("Error:", response.error!)
+            }
+        }
+        
+        /*
+         多层级的请求：
+         1. 建立多个struct，每层一个。从最子层开始建立。父层使用子层的Struct，如上面的[Slide]
+         2. AF中多层调用，如 slideshow.slideshow.slides
+         */
+        
+        
+        // MARK: - 旧的请求方式如下
+        
+        // let url = "https://httpbin.org/json"
+        // AF.request(url).responseJSON { (response) in
+        //     if let value = response.result.value {
+        //         let jsonData3 = JSON(value)
+        //         let model3 = CSSwiftyModel3(jsonData: jsonData3)
+        //         self.slidesTitle = model3.slidesTitle
+        //         self.slidesType = model3.slidesType
+        //         print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
+        //
+        //         self.tableView.set(superview: self.view, delegate: self, dataSource: self, viewController: self)
+        //         self.tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
+        //         self.tableView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(self.slidesTitle.count))
+        //     }
+        //
+        // }
+        
+
         
     }
     

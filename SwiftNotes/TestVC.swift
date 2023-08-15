@@ -1,4 +1,6 @@
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class TestVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
