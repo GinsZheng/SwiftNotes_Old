@@ -14,6 +14,18 @@ import UIKit
 
 class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    struct HttpbinGet: Decodable {
+        let origin: String
+        let url: String
+        let headers: HttpbinGetHeaders
+    }
+
+    struct HttpbinGetHeaders: Decodable {
+        let Accept: String
+        let Host: String
+    }
+
+    
     let titleArray: [String] = ["获取文本 get", "获取文本 post", "上传文本信息", "上传文件(如上传图片)"]
     
     let tableView = UITableView()
@@ -40,21 +52,24 @@ class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-//        switch titleArray[indexPath.row] {
-//        case "获取文本 get":
-//            // MARK: - 获取文本 get
-//            AF.request("https://httpbin.org/get").responseJSON { (response) in
-//                if let value = response.result.value {
-//                    let json = JSON(value)
-//                    // print("json", json)
-//                    let origin = json["origin"].string ?? "(空)"
-//                    let url = json["url"].string ?? "(空)"
-//                    let headers = json["headers"]
-//                    let userAgent = json["headers"]["User-Agent"].string ?? "(空)"
-//                    let host = headers["Host"].string ?? "(空)"
-//                    print("获取文本 get 返回结果:", "origin =", origin, ", url =", url, "userAgent =", userAgent, "host =", host)
-//                }
-//            }
+        switch titleArray[indexPath.row] {
+        case "获取文本 get":
+            // MARK: - 获取文本 get
+            let url = "https://httpbin.org/get"
+            AF.request(url).responseDecodable(of: HttpbinGet.self) { response in
+                if let httpbinGet = response.value {
+                    let origin = httpbinGet.origin
+                    let url = httpbinGet.url
+                    let headers = httpbinGet.headers
+                    let accept = headers.Accept
+                    let host = headers.Host
+                    print("请求成功", origin, url, accept, host)
+                    print("请求成功", headers)
+                } else {
+                    print(response.error!)
+                }
+            }
+            
 //        case "获取文本 post":
 //            AF.request("https://httpbin.org/post", method: .post).responseJSON { (response) in
 //                if let value = response.result.value {
@@ -92,9 +107,9 @@ class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSou
 //                }
 //            }
 //            
-//        default:
-//            break
-//        }
+        default:
+            break
+        }
         
     }
     
@@ -115,3 +130,4 @@ class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
 }
+

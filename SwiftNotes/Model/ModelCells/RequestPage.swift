@@ -25,21 +25,23 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         // MARK: - 简单请求
         
-        struct User: Decodable {
-            let code: String
+        struct Slides: Decodable {
+            let code: String // 注意，这里的 code 与 json 中的key要完全相等，否则报错(即就是用这个code值来判断要匹配哪个value)
             let message: String
         }
         
         let url = "https://go.ginkgeek.com/firstRequest"
-        AF.request(url).responseDecodable(of: User.self) { response in
-            if let user = response.value {
-                print("user", user)
-                print(user.code)
-                print(user.message)
+        AF.request(url).responseDecodable(of: Slides.self) { response in
+            if let slides = response.value {
+                let code = slides.code
+                let message = slides.message
+                print("code", code, "message", message)
             } else {
                 print(response.error!)
             }
         }
+        
+        
         
         /*
          新的请求方式的好处：简化了许多操作：1. struct无需初始化 2. AF的代码简化了许多
