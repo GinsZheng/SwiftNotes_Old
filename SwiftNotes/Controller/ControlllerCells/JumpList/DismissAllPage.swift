@@ -23,7 +23,7 @@ class CSDismissAllPage1: UIViewController {
         label.setFrame(centerX: view.centerX, top: 200)
         
         button.set(superview: view, target: self, action: #selector(presentPage))
-        button.setStyleWordButton(title: "Present")
+        button.setStyleWordButton(title: "Present", titleSize: 17, titleColor: cThemeWord)
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
     
@@ -51,7 +51,7 @@ class CSDismissAllPage2: UIViewController {
         label.setFrame(centerX: view.centerX, top: 200)
         
         button.set(superview: view, target: self, action: #selector(presentAgain))
-        button.setStyleWordButton(title: "Present again")
+        button.setStyleWordButton(title: "Present again", titleSize: 17, titleColor: cThemeWord)
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
     
@@ -78,7 +78,7 @@ class CSDismissAllPage3: UIViewController {
         label.setFrame(centerX: view.centerX, top: 200)
         
         button.set(superview: view, target: self, action: #selector(dismissAllPage))
-        button.setStyleWordButton(title: "dismiss all")
+        button.setStyleWordButton(title: "dismiss all", titleSize: 17, titleColor: cThemeWord)
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
     

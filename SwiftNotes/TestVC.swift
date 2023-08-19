@@ -8,13 +8,12 @@ class TestVC: UIViewController, UITextFieldDelegate, UITextViewDelegate {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)
         
-        
+        let w = getImageSize(imageName: "detail_mapLocation")
+        print(w)
         
     }
     
     
 }
-
-
 
 

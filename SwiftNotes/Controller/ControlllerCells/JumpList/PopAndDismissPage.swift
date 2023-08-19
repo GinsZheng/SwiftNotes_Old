@@ -23,7 +23,7 @@ class CSPopAndDismissPage3: UIViewController {
         label.setFrame(centerX: view.centerX, top: 200)
         
         button.set(superview: view, target: self, action: #selector(presentAgain))
-        button.setStyleWordButton(title: "Pop and dismiss")
+        button.setStyleWordButton(title: "Pop and dismiss", titleSize: 17, titleColor: cThemeFill)
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
 
@@ -52,7 +52,7 @@ class CSPopAndDismissPage1: UIViewController {
         label.setFrame(centerX: view.centerX, top: 200)
         
         button.set(superview: view, target: self, action: #selector(pushFirst))
-        button.setStyleWordButton(title: "Push First")
+        button.setStyleWordButton(title: "Push First", titleSize: 17, titleColor: cThemeFill)
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
 
@@ -79,7 +79,7 @@ class CSPopAndDismissPage2: UIViewController {
         label.setFrame(centerX: view.centerX, top: 200)
         
         button.set(superview: view, target: self, action: #selector(presentThen))
-        button.setStyleWordButton(title: "Present then")
+        button.setStyleWordButton(title: "Present then", titleSize: 17, titleColor: cThemeFill)
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
 

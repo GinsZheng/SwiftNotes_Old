@@ -23,7 +23,7 @@ class CSPopToSpecificPage: UIViewController {
         label.setFrame(centerX: view.centerX, top: 200)
         
         button.set(superview: view, target: self, action: #selector(test))
-        button.setStyleWordButton(title: "pop to root")
+        button.setStyleWordButton(title: "pop to root", titleSize: 17, titleColor: cThemeWord)
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
     
