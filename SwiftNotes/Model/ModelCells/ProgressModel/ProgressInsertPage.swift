@@ -47,7 +47,7 @@ class CSProgressInsertPage: UIViewController, UITextFieldDelegate {
         itemIdTextField.setFrame(left: 20, top: endTimeTextField.bottom + 20, right: 20, height: 48)
         
         insertButton.set(superview: view, target: self, action: #selector(addProgress))
-        insertButton.setStyleSolidBtn(title: "Insert")
+        insertButton.setStyleSolid17ptWhiteThemeButton(title: "Insert")
         insertButton.setFrame(left: 20, top: itemIdTextField.bottom + 20, right: 20, height: 48)
     }
     

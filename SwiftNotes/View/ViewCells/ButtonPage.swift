@@ -20,7 +20,7 @@ class CSButtonPage: UIViewController {
         
         let wordButton = UIButton(type: .custom)
         wordButton.set(superview: view, target: self, action: #selector(changeSetting))
-        wordButton.setStyleWordButton(title: "纯文", titleSize: 17, titleColor: cThemeFill)
+        wordButton.setStyleWord17ptThemeButton(title: "纯文")
         wordButton.setFrame(left: 20, top: 20, right: 20, height: 44)
         
         let IconButton = UIButton(type: .custom)
@@ -30,25 +30,21 @@ class CSButtonPage: UIViewController {
         
         let WordBgButton = UIButton(type: .custom)
         WordBgButton.set(superview: view, target: self, action: #selector(changeSetting))
-//        WordBgButton.setStyleSolidButton(title: "文字&背景", bgImage: getImageWithColor(color: cBlue_5393FF), radius: 10)
-        WordBgButton.setStyleSolidButton(title: "文字&背景", titleSize: 17, titleColor: cFgWhite, bgImage: getImageWithColor(color: cBlue_5393FF), radius: 10)
+        WordBgButton.setStyleSolid17ptWhiteThemeButton(title: "文字&背景")
         WordBgButton.setFrame(left: 20, top: IconButton.bottom + 20, right: 20, height: 44)
         
         let ghostButton = UIButton(type: .custom)
         ghostButton.set(superview: view, target: self, action: #selector(changeSetting))
-//        ghostButton.setStyleGhostButton(title: "幽灵", titleColor: cThemeWord, borderColor: cThemeWord)
         ghostButton.setStyleGhostButton(title: "幽灵", titleSize: 17, titleColor: cThemeWord, borderColor: cThemeWord, radius: 10)
         ghostButton.setFrame(left: 20, top: WordBgButton.bottom + 20, right: 20, height: 44)
         
         let wordIconButton = UIButton(type: .custom)
         wordIconButton.set(superview: view, target: self, action: #selector(changeSetting))
-//        wordIconButton.setStyleWordIconButton(title: "图文", imageName: "tickets_refund", interval: 10)
         wordIconButton.setStyleWordIconButton(title: "图文", titleSize: 17, titleColor: cThemeWord, imageName: "tickets_refund", imageLocation: .left, interval: 3)
         wordIconButton.setFrame(left: 20, top: ghostButton.bottom + 20, right: 20, height: 44)
         
         let WordIconBgButton = UIButton(type: .custom)
         WordIconBgButton.set(superview: view, target: self, action: #selector(changeSetting))
-//        WordIconBgButton.setStyleWordIconBgButton(title: "图文&背景", normalTitleColor: cFgWhite, highlightedTitleColor: cFgWhite, disabledTitleColor: cFgWhite, imageName: "general_adding_btn", interval: 3, bgImage: getImageWithColor(color: cThemeFill))
         WordIconBgButton.setStyleWordIconBgButton(title: "图文&背景", titleSize: 17, titleColor: cFgWhite, imageName: "general_adding_btn", imageLocation: .left, interval: 3, bgImage: getImageWithColor(color: cThemeFill), radius: 10)
         WordIconBgButton.setFrame(left: 20, top: wordIconButton.bottom + 20, right: 20, height: 44)
         

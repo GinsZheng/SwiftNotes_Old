@@ -23,7 +23,7 @@ class CSDismissPage1: UIViewController {
         label.setFrame(centerX: view.centerX, top: 200)
         
         button.set(superview: view, target: self, action: #selector(presentPage))
-        button.setStyleWordButton(title: "Present", titleSize: 17, titleColor: cThemeWord)
+        button.setStyleWord17ptThemeButton(title: "Present")
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
     
@@ -51,7 +51,7 @@ class CSDismissPage2: UIViewController {
         label.setFrame(centerX: view.centerX, top: 200)
         
         button.set(superview: view, target: self, action: #selector(dismissAllPage))
-        button.setStyleWordButton(title: "dismiss", titleSize: 17, titleColor: cThemeWord)
+        button.setStyleWord17ptThemeButton(title: "dismiss")
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
         
         // present取消下滑返回 | 下滑关闭 | 模态

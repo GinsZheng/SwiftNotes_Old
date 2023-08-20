@@ -34,7 +34,7 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
         nameTextField.setFrame(left: 20, top: 20, right: 20, height: 44)
 
         button.set(superview: view, target: self, action: #selector(refreshSuperView))
-        button.setStyleSolidBtn(title: "返回")
+        button.setStyleSolid17ptWhiteThemeButton(title: "返回")
         button.setFrame(left: 20, top: 84, right: 20, height: 44)
 
         if oldName != nil {
@@ -90,7 +90,7 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
         label.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 60)
 
         button.set(superview: view, target: self, action: #selector(editName))
-        button.setStyleSolidBtn(title: "下一页")
+        button.setStyleSolid17ptWhiteThemeButton(title: "下一页")
         button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
         
     }

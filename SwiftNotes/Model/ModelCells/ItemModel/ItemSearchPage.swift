@@ -18,7 +18,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     var nameArray = [String]()
     
     let tableView = UITableView()
-    let deleteAllButton = UIButton()
+    let deleteAllButton = UIButton(type: .custom)
     
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
         
         deleteAllButton.set(superview: view, target: self, action: #selector(deleteAll))
-        deleteAllButton.setStyleSystemIconButton(imageName: "delete")
+        deleteAllButton.setStyleIconButton(imageName: "delete")
         deleteAllButton.setShadow(y: 2, radius: 16)
         deleteAllButton.setFrame(right: 20, bottom: 20 + kNavBarHeight + kBottomBarHeight, width: 44, height: 44)
         

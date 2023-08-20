@@ -47,7 +47,7 @@ class CSDatePickerPage: UIViewController {
         // 添加确定按钮
         let button = UIButton()
         button.set(superview: view, target: self, action: #selector(getValue))
-        button.setStyleSolidBtn(title: "打印时间")
+        button.setStyleSolid17ptWhiteThemeButton(title: "打印时间")
         button.setFrame(left: 20, top: 235, right: 20, height: 56)
         
         

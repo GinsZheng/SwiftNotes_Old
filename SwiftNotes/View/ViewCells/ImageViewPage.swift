@@ -17,7 +17,6 @@ class CSImageViewPage: UIViewController {
         
         let image = UIImageView()
         image.set(superview: view, imageName: "big_MacStudio")
-        image.setStyleNote()
         image.setFrame(left: 20, top: 20, right: 20, height: 300)
         
         let stretchMiddleImage = UIImageView()

@@ -37,7 +37,7 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
         
 
         button.set(superview: view, target: self, action: #selector(resign))
-        button.setStyleSolidButton(title: "hehe")
+        button.setStyleSolid17ptWhiteThemeButton(title: "hehe")
         button.setFrame(left: 20, top: textField3.bottom + 20, right: 20, height: 48)
         
         myView.set(superview: view, backgroundColor: cF0F1F3)

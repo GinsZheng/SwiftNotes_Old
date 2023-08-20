@@ -57,14 +57,14 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
         colorTextField.setFrame(left: 20, top: totalProgressTextField.bottom + 20, right: 20, height: 48)
         
         updateButton.set(superview: view, target: self, action: #selector(updateItem))
-        updateButton.setStyleSolidBtn(title: "Update")
+        updateButton.setStyleSolid17ptWhiteThemeButton(title: "Update")
         updateButton.setFrame(left: 20, top: colorTextField.bottom + 20, right: 20, height: 48)
         
         
         
         // 删除
         deleteButton.set(superview: view, target: self, action: #selector(deleteItem))
-        deleteButton.setStyleWordButton(title: "Delete", titleSize: 17, titleColor: cRed_FF635A)
+        deleteButton.setStyleWord17ptRedButton(title: "Delete")
         deleteButton.setFrame(centerX: view.centerX, top: updateButton.bottom + 10, width: 80, height: 44)
         
     }

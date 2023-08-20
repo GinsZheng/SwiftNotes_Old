@@ -21,7 +21,7 @@ class CSCameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate &
         view.setBackgroundColor(color: cFFF)
         
         imageAddingBtn.set(superview: view, target: self, action: #selector(addImage))
-        imageAddingBtn.setStyleAddingImage()
+        imageAddingBtn.setStyleSolid17ptWhiteThemeButton(title: "添加")
         imageAddingBtn.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 56)
         
         imageView.set(superview: view, image: getImageWithColor(color: cDDDEE0))

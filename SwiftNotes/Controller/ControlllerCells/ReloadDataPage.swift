@@ -105,7 +105,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
         
         addingButton.set(superview: view, target: self, action: #selector(addItem))
         addingButton.setFrame(left: 20, top: 84, right: 20, height: 48)
-        addingButton.setStyleSolidBtn(title: "添加")
+        addingButton.setStyleSolid17ptWhiteThemeButton(title: "添加")
     }
     
     @objc func checkInputtedValue(textField: UITextField) {

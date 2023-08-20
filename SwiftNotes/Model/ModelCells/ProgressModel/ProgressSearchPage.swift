@@ -19,7 +19,7 @@ class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDa
     var itemIdArray = [Int]()
     
     let tableView = UITableView()
-    let deleteAllButton = UIButton()
+    let deleteAllButton = UIButton(type: .custom)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.reloadData()
         
         deleteAllButton.set(superview: view, target: self, action: #selector(deleteAll))
-        deleteAllButton.setStyleSystemIconButton(imageName: "delete")
+        deleteAllButton.setStyleIconButton(imageName: "delete")
         deleteAllButton.setShadow(y: 2, radius: 16)
         deleteAllButton.setFrame(right: 20, bottom: 20 + kNavBarHeight + kBottomBarHeight, width: 44, height: 44)
     }

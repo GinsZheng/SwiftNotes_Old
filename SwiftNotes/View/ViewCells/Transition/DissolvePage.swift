@@ -19,7 +19,7 @@ class CSDissolveFromVC: UIViewController {
         view.backgroundColor = .white
         
         button.set(superview: view, target: self, action: #selector(goNext))
-        button.setStyleSolidBtn(title: "渐隐渐现")
+        button.setStyleSolid17ptWhiteThemeButton(title: "渐隐渐现")
         button.setCornerRadiusWithMask(radius: 50)
         button.setFrame(centerX: view.centerX, top: 200, width: 100, height: 100)
         

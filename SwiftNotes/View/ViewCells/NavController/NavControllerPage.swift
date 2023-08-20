@@ -25,11 +25,11 @@ class CSNavControllerPage: UIViewController {
         
         // 跳转并传值
         button.set(superview: view, target: self, action: #selector(pushWithValue))
-        button.setStyleSolidBtn(title: "传值")
+        button.setStyleSolid17ptWhiteThemeButton(title: "传值")
         button.setFrame(left: 20, top: 20, right: 20, height: 48)
         
         button2.set(superview: view, target: self, action: #selector(hideNavBarBackBtn))
-        button2.setStyleSolidBtn(title: "隐藏导航栏")
+        button2.setStyleSolid17ptWhiteThemeButton(title: "隐藏导航栏")
         button2.setFrame(left: 20, top: button.bottom + 12, right: 20, height: 48)
         
     }
