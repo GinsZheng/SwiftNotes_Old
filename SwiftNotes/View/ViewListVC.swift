@@ -43,43 +43,27 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         ("Window", CSWindowPage()),
     ]
     
+    let tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
         self.title = "View" // 导航栏标题
-        
-        let tableView = UITableView()
+
+        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: "DefaultTableViewCell")
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
-        
-        
-    }
 
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
-        cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
-        cell.setSeparator(leftInset: 20, rightInset: 0)
-        
-        let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: list[indexPath.row].0)
-        cellTitle.setFrame(left: 20, centerY: cell.centerY)
-        
-        let next = UIImageView()
-        next.set(superview: cell, imageName: "next")
-        next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
-        
-        return cell
     }
     
+    
+    // MARK: - tableview 代理
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        return kCellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -87,7 +71,19 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultTableViewCell", for: indexPath) as! DefaultTableViewCell
+        cell.titleLabel.setText(text: list[indexPath.row].0)
+        
+        return cell
+    }
+    
+    // MARK: - @objc
+    
 }
+
+
 
 /*
  在VC下，可以给某按钮操作设置以下属性，实现tab切换

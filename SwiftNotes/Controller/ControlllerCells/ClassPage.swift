@@ -15,6 +15,10 @@ class CSClassPage: UIViewController {
         view.backgroundColor = .white
         
         _ = getView(superview: view)
+        
+        // 把类名转为字符串(主要用于tableView的register)
+        let className = String(describing: ViewListVC.self)
+        print("className", className)
     }
     
     // 多态：可以返回目标类的子类

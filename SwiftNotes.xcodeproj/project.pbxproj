@@ -11,6 +11,8 @@
 		7A0258AA2434EF58006D4AB5 /* DismissAllPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0258A92434EF58006D4AB5 /* DismissAllPage.swift */; };
 		7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */; };
 		7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */; };
+		7A04CB802A9482B80021B9DF /* CollectionViewEqualDivisionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04CB7F2A9482B80021B9DF /* CollectionViewEqualDivisionPage.swift */; };
+		7A04CB822A9484640021B9DF /* CollectionViewAutoLayoutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04CB812A9484640021B9DF /* CollectionViewAutoLayoutPage.swift */; };
 		7A0715DA243650C7002A5371 /* FontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0715D9243650C7002A5371 /* FontPage.swift */; };
 		7A0B6A6B28A4EE1300065611 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0B6A4028A4EE1300065611 /* Env.swift */; };
 		7A0B6A6C28A4EE1300065611 /* ExamplesDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0B6A6A28A4EE1300065611 /* ExamplesDefaults.swift */; };
@@ -492,6 +494,8 @@
 		7A0258A92434EF58006D4AB5 /* DismissAllPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAllPage.swift; sourceTree = "<group>"; };
 		7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAndDismissPage.swift; sourceTree = "<group>"; };
 		7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerBasicNote.swift; sourceTree = "<group>"; };
+		7A04CB7F2A9482B80021B9DF /* CollectionViewEqualDivisionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEqualDivisionPage.swift; sourceTree = "<group>"; };
+		7A04CB812A9484640021B9DF /* CollectionViewAutoLayoutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewAutoLayoutPage.swift; sourceTree = "<group>"; };
 		7A0715D9243650C7002A5371 /* FontPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPage.swift; sourceTree = "<group>"; };
 		7A0B6A4028A4EE1300065611 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		7A0B6A6A28A4EE1300065611 /* ExamplesDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesDefaults.swift; sourceTree = "<group>"; };
@@ -693,6 +697,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A04CB7E2A9482350021B9DF /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				7A2D34A72580D1FB00207996 /* CollectionViewPage.swift */,
+				7A04CB7F2A9482B80021B9DF /* CollectionViewEqualDivisionPage.swift */,
+				7A04CB812A9484640021B9DF /* CollectionViewAutoLayoutPage.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		7A21612A2389869D00D5A93A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -928,8 +942,8 @@
 			isa = PBXGroup;
 			children = (
 				7A88C7572A892B6B00D61E33 /* ColorsInApp.swift */,
-				7A88C6362A8925C500D61E33 /* VariablesInApp.swift */,
 				7A88C78C2A8A62A800D61E33 /* StylesInApp.swift */,
+				7A88C6362A8925C500D61E33 /* VariablesInApp.swift */,
 			);
 			name = InApp;
 			path = ../SwiftGeneral/InApp;
@@ -1125,7 +1139,7 @@
 				7A216141238986AF00D5A93A /* ButtonPage.swift */,
 				7AA789C428D03F4900B58537 /* CameraAndPhotosPage.swift */,
 				7A2E72482472E4D900D0B9A2 /* ChartList */,
-				7A2D34A72580D1FB00207996 /* CollectionViewPage.swift */,
+				7A04CB7E2A9482350021B9DF /* CollectionView */,
 				7A21614A238986AF00D5A93A /* DatePickerPage.swift */,
 				7A216152238986AF00D5A93A /* ImageViewPage.swift */,
 				7A216142238986AF00D5A93A /* LabelPage.swift */,
@@ -1721,6 +1735,7 @@
 				7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */,
 				7AA789C528D03F4900B58537 /* CameraAndPhotosPage.swift in Sources */,
 				7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */,
+				7A04CB822A9484640021B9DF /* CollectionViewAutoLayoutPage.swift in Sources */,
 				7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */,
 				7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */,
 				7A88C6372A8925C500D61E33 /* VariablesInApp.swift in Sources */,
@@ -1791,6 +1806,7 @@
 				7A21613E238986AA00D5A93A /* TestPage.swift in Sources */,
 				7A216160238986AF00D5A93A /* ViewPage.swift in Sources */,
 				7A216162238986AF00D5A93A /* StepperPage.swift in Sources */,
+				7A04CB802A9482B80021B9DF /* CollectionViewEqualDivisionPage.swift in Sources */,
 				7A88C7462A8929E400D61E33 /* CustomControl.swift in Sources */,
 				7A244E9E24C7EFE500D072FB /* IntPage.swift in Sources */,
 				7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */,

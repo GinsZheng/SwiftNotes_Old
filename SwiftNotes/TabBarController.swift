@@ -19,7 +19,7 @@ class TabBarController {
         let v1 = ViewListVC()
         let v2 = CSControllerListVC()
         let v3 = CSModelListVC()
-        let v4 = TestVC()
+        let v4 = ViewController()
         
         v1.tabBarItem = ESTabBarItem.init(title: "View", image: UIImage(named: "tab_discovery"), selectedImage: UIImage(named: "tab_discovery_s"))
         v2.tabBarItem = ESTabBarItem.init(title: "Controller", image: UIImage(named: "tab_saved"), selectedImage: UIImage(named: "tab_saved_s"))
@@ -86,7 +86,7 @@ class TabBarController {
         let v1 = ViewListVC()
         let v2 = CSControllerListVC()
         let v3 = CSModelListVC()
-        let v4 = TestVC()
+        let v4 = ViewController()
         let v0 = CSGeneralSubpage()
         
         v1.tabBarItem = ESTabBarItem.init(title: "View", image: UIImage(named: "tab_discovery"), selectedImage: UIImage(named: "tab_discovery_s"))

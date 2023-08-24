@@ -10,8 +10,16 @@ import UIKit
 
 class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let titleList = ["Label", "Button", "Text Field"]
-    let pageList = [CSGeneralSubpage(), CSGeneralSubpage(), CSGeneralSubpage(), ]
+    let list: [(String, UIViewController)] = [
+        ("Animation", CSAnimationPage()),
+        ("Button", CSButtonPage()),
+        ("Camera and Photos", CSCameraAndPhotosPage()),
+        ("Chart", CSChartListVC()),
+        ("Collection View", CollectionViewPage()),
+        ("Date Picker", CSDatePickerPage()),
+        ("Image View", CSImageViewPage()),
+        ("Label", CSLabelPage()),
+    ]
     
     var cardHeight: CGFloat = 0
     
@@ -30,11 +38,11 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
         cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
-        cell.setSeparator(leftInset: 20, rightInset: 0)
+        cell.setSeparator(left: 20, right: 0)
         cell.selectionStyle = .none
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: titleList[indexPath.row])
+        cellTitle.set(superview: cell, text: list[indexPath.row].0)
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
@@ -46,7 +54,7 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleList.count
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -54,7 +62,7 @@ class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: pageList[indexPath.row])
+        self.push(toTarget: list[indexPath.row].1)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

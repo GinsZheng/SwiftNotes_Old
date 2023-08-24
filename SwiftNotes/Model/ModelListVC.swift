@@ -54,7 +54,7 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
         cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
-        cell.setSeparator(leftInset: 20, rightInset: 0)
+        cell.setSeparator(left: 20, right: 0)
         
         let cellTitle = UILabel()
         cellTitle.set(superview: cell, text: list[indexPath.row].0)
