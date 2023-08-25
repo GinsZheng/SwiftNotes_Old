@@ -19,7 +19,7 @@ class CSDataSaveListVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: "DefaultTableViewCell")
+        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
 
@@ -43,7 +43,7 @@ class CSDataSaveListVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultTableViewCell", for: indexPath) as! DefaultTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
         cell.titleLabel.setText(text: list[indexPath.row].0)
         
         return cell
