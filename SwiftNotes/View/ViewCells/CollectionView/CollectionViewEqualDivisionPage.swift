@@ -12,62 +12,57 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
 
     var collectionView: UICollectionView!
     
-    //课程名称和图片，每一门课程用字典来表示
     let dateSource = [
-        ["name":"Swift","bgColor":cBlue_5393FF],
-        ["name":"Xcode","bgColor":cPurple_BF62F8],
-        ["name":"Java","bgColor":cMagenta_FC5AAE],
-        ["name":"PHP","bgColor":cRed_FF635A],
-        ["name":"JS","bgColor":cOrange_F9AD18],
-        ["name":"React","bgColor":cGreen_25BE3C],
-        ["name":"Ruby","bgColor":cBluishGreen_01C7BD],
-        ["name":"HTML","bgColor":cBlue_5393FF],
-        ["name":"C#","bgColor":cPurple_BF62F8],
+        ["title":"Swift","bgColor":cBlue_5393FF],
+        ["title":"Xcode","bgColor":cPurple_BF62F8],
+        ["title":"Java","bgColor":cMagenta_FC5AAE],
+        ["title":"PHP","bgColor":cRed_FF635A],
+        ["title":"JS","bgColor":cOrange_F9AD18],
+        ["title":"React","bgColor":cGreen_25BE3C],
+        ["title":"Ruby","bgColor":cBluishGreen_01C7BD],
+        ["title":"HTML","bgColor":cBlue_5393FF],
+        ["title":"C#","bgColor":cPurple_BF62F8],
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 添加collectionView
-        let layout = CollectionViewLayout()
         let frame = CGRect(x:0, y:0, width: kScreenWidth, height:kWithoutNavBarHeight)
-        // 这里必需要在初始化时加上frame
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        collectionView.set(superview: view)
-        // forCellWithReuseIdentifier: 值宜设为Class CollectionViewCell 的名字
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .hex(cBgGray)
+        // 这里必须要在初始化时加上frame(不明原因)
+        collectionView = UICollectionView(frame: frame, collectionViewLayout: EqualDivision3CollectionViewLayout())
+        // forCellWithReuseIdentifier: 值宜设为Class EgCollectionViewCell 的名字
+        collectionView.register(EgCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EgCollectionViewCell.self))
+        collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         
     }
 
     
     // MARK: - CollectionView 代理
     
-    // 设置列表数量
+    // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dateSource.count
     }
 
-    // 设置 cell UI与逻辑
+    // 设置 cell 逻辑
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // 创建一个 CollectionViewCell 实例 (类似于tableViewCell)
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
+        // 创建一个 EgCollectionViewCell 实例 (类似于tableViewCell)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: EgCollectionViewCell.self), for: indexPath) as! EgCollectionViewCell
+        // 把UI逻辑放在自定义的 EgCollectionViewCell，把数据放在此
         let data = dateSource[indexPath.row]
-        cell.imageView.image = getImageWithColor(color: data["bgColor"] ?? "");
-        cell.titleLabel.text = data["name"] ?? ""
+        cell.titleLabel.setText(text: data["title"] ?? "")
+        cell.imageView.setImage(image: getImageWithColor(color: data["bgColor"] ?? ""))
+
         return cell
     }
 }
 
 
-// MARK: - 创建一个 CollectionViewCell，方便复用(tableView其实也应如此)
+// MARK: - 创建一个 EgCollectionViewCell，方便复用(tableView其实也应如此)
 
-class CollectionViewCell: UICollectionViewCell {
+class EgCollectionViewCell: UICollectionViewCell {
     
-    let countEachLine: CGFloat = 3
+    let eachLineCount: CGFloat = 3
     
     let titleLabel = UILabel()
     let imageView = UIImageView()
@@ -75,14 +70,12 @@ class CollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        imageView.set(superview: self)
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.masksToBounds = true
-        imageView.setFrame(left: 0, top: 0, width: ceil(kScreenWidth/countEachLine), height: 60)
+        imageView.set(superview: self, cornerRadius: 0)
+        imageView.setFrame(left: 0, top: 0, width: ceil(kScreenWidth/eachLineCount), height: 60)
         
         titleLabel.set(superview: self)
         titleLabel.setStyle17ptFFFMedCent()
-        titleLabel.setFrame(left: 0, centerY: imageView.centerY, width: ceil(kScreenWidth/countEachLine), height: 20)
+        titleLabel.setFrame(left: 0, centerY: imageView.centerY, width: ceil(kScreenWidth/eachLineCount), height: 20)
 
     }
     
@@ -92,63 +85,77 @@ class CollectionViewCell: UICollectionViewCell {
 }
 
 
-// MARK: - 创建一个 CollectionViewLayout，用于设置布局
 
-class CollectionViewLayout: UICollectionViewLayout {
+// MARK: - 创建一个 EqualDivision3CollectionViewLayout，用于设置布局
+
+class EqualDivision3CollectionViewLayout: UICollectionViewLayout {
     
-    // 内容区域总大小，不是可见区域
-    override var collectionViewContentSize: CGSize {
-        let width = collectionView!.width
-        let height = kWithoutNavBarHeight
-        return CGSize(width: width, height: height)
-    }
+    var itemCount = 0
+    var eachLineCount = 0
+    var itemWidth: CGFloat = 0
+    var itemHeight: CGFloat = 0
+    var contentHeight: CGFloat = 0
     
-    // 设置所有单元格位置属性
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        // 创建属性数组，即每一个单元格的UI属性
-        var attributes = [UICollectionViewLayoutAttributes]()
-        // 获取单元格个数
-        let itemCount = self.collectionView!.numberOfItems(inSection: 0)
-        // 循环创建单元格的属性
+    var layoutAttributes: [UICollectionViewLayoutAttributes] = []
+    
+    // 初始化一些参数与布局
+    override func prepare() {
+        super.prepare()
+        
+        guard let collectionView = collectionView else { return }
+        
+        // MARK: - 输入以下参数
+        eachLineCount = 3
+        itemHeight = 500
+        
+        itemCount = collectionView.numberOfItems(inSection: 0)
+        itemWidth = (collectionView.bounds.width) / CGFloat(eachLineCount)
+        contentHeight = CGFloat(ceil(Double(itemCount / eachLineCount)))
+        
+        // 设置所有单元格的位置属性
+        layoutAttributes.removeAll()
         for i in 0..<itemCount {
             let indexPath = IndexPath(item: i, section: 0)
-            // 调用属性设置
-            let layoutAttributes = self.layoutAttributesForItem(at: indexPath)
-            attributes.append(layoutAttributes!)
+            if let attributes = layoutAttributesForItem(at: indexPath) {
+                layoutAttributes.append(attributes)
+            }
         }
-        return attributes
+    }
+    
+    // 设置内容区域总大小，是不可见区域
+    override var collectionViewContentSize: CGSize {
+        return CGSize(width: collectionView?.bounds.width ?? 0, height: contentHeight)
+    }
+    
+    // 设为只有在可见区域内的单元格的布局属性会被返回，以减少不必要的计算和绘制，提高性能
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        return layoutAttributes.filter { $0.frame.intersects(rect) }
     }
     
     // 设置单个单元格的位置属性
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        
-        // ❓此处可抽象成通用内容，以下布局为等分式布局，应当来说，只要修改逻辑就能实现不等分布局
-        
-        // 获取当前的布局属性
-        let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        
-        // MARK: - 如果是等分：
-        
-        // 设置一行几个
-        let countEachLine: CGFloat = 3
-
-        // 设置每个单元格宽高
-        let itemWidth: CGFloat = kScreenWidth / countEachLine
-        let itemHeight: CGFloat = 60
-        
-        // 从代码逻辑根据indexPath去设置每个单元格的Frame:
-        // 设置每个单元格的x值(= 单元格宽度 * 每行第几个)
-        let x = itemWidth * CGFloat(indexPath.item % Int(countEachLine))
-        // 设置每个单元格所处行数 (值为 0、1、2…)，用于设置y值
-        let lineNumber = CGFloat(indexPath.item / Int(countEachLine))
-        // 设置每个单元格的y值(= 单元格高度 * 行数)
-        let y = itemHeight * lineNumber
-        
-        // 设置frame
-        attribute.frame = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
-        
-        return attribute
-        
+        return createEqualDivisionLayoutAttributes(indexPath: indexPath, eachLineCount: CGFloat(eachLineCount), itemWidth: itemWidth, itemHeight: itemHeight)
     }
-    
 }
+
+func createEqualDivisionLayoutAttributes(indexPath: IndexPath, eachLineCount: CGFloat, itemWidth: CGFloat, itemHeight: CGFloat) -> UICollectionViewLayoutAttributes {
+    // 创建属性数组，即每一个单元格的UI属性
+    let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+    // 从代码逻辑根据indexPath去设置每个单元格的Frame的x、y值。其中lineNumber为单元格行数，用于计算y值
+    let x = itemWidth * CGFloat(indexPath.item % Int(eachLineCount))
+    let lineNumber = CGFloat(indexPath.item / Int(eachLineCount))
+    let y = itemHeight * lineNumber
+    
+    attributes.frame = CGRect(x: x, y: y, width: itemWidth, height: itemHeight)
+    
+    return attributes
+}
+
+
+/*
+ override func prepare()
+ prepare()在布局准备阶段被调用，用于进行一些初始化工作, 如：
+ 1. 计算并存储每个单元格的布局属性，以便后续的方法可以使用这些属性。
+ 2. 计算并设置 collectionViewContentSize 属性，表示整个内容的大小，这会影响滚动范围。
+ 想比init() ，某些内容在init中还未生成，比如想获取列表数量： collectionView!.numberOfItems(inSection: 0)，因collectionView未生成，所以会崩溃，而在prepare中collectionView就已生成，能正常运行
+ */

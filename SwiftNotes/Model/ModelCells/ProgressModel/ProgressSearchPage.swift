@@ -10,6 +10,7 @@ import UIKit
 import SQLite
 import SwiftyJSON
 
+// 未改tableView
 class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
     let table = CSProgressTable()
@@ -65,7 +66,7 @@ class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        return 48
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
