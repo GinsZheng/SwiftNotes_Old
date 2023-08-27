@@ -40,23 +40,31 @@ class EgCollectionViewCell: UICollectionViewCell {
 
 class EgCollectionViewLayout: UICollectionViewLayout {
     
-    var itemCount = 0
     var eachLineCount = 0
-    var itemWidth: CGFloat = 0
     var itemHeight: CGFloat = 0
+    
+    var itemCount = 0
+    var itemWidth: CGFloat = 0
     var contentHeight: CGFloat = 0
     
     var layoutAttributes: [UICollectionViewLayoutAttributes] = []
+    
+    init(eachLineCount: Int, itemHeight: CGFloat) {
+        super.init()
+        
+        self.eachLineCount = eachLineCount
+        self.itemHeight = itemHeight
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // 初始化一些参数与布局
     override func prepare() {
         super.prepare()
         
         guard let collectionView = collectionView else { return }
-        
-        // MARK: - 输入以下参数
-        eachLineCount = 3
-        itemHeight = 500
         
         itemCount = collectionView.numberOfItems(inSection: 0)
         itemWidth = (collectionView.bounds.width) / CGFloat(eachLineCount)
@@ -89,4 +97,7 @@ class EgCollectionViewLayout: UICollectionViewLayout {
     
     
 }
+
+
+
 

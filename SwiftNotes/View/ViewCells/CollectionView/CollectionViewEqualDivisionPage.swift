@@ -28,9 +28,8 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
         super.viewDidLoad()
         
         let frame = CGRect(x:0, y:0, width: kScreenWidth, height:kWithoutNavBarHeight)
-        // 这里必须要在初始化时加上frame(不明原因)
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: EgCollectionViewLayout())
-        // forCellWithReuseIdentifier: 值宜设为Class EgCollectionViewCell 的名字，省事
+        let layout = EgCollectionViewLayout(eachLineCount: 3, itemHeight: 500)
+        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(EgCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EgCollectionViewCell.self))
         collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         
@@ -52,7 +51,6 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
     
     // 设置 cell 逻辑
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // 创建一个 EgCollectionViewCell 实例 (类似于tableViewCell)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: EgCollectionViewCell.self), for: indexPath) as! EgCollectionViewCell
         // 把UI逻辑放在自定义的 EgCollectionViewCell，把数据放在此
         let data = dateSource[indexPath.row]
