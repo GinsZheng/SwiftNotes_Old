@@ -46,9 +46,7 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
         let name = nameTextField.text
         if name != "" {
             // 2.委托开始，委托的事为fetchName
-            if delegate != nil {
-                delegate!.fetchName(name: name!)
-            }
+            delegate?.fetchName(name: name!)
         }
         self.pop()
     }
@@ -57,25 +55,15 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         let name = nameTextField.text
         if name != "" {
-            if delegate != nil {
-                delegate!.fetchName(name: name!)
-            }
+            delegate?.fetchName(name: name!)
         }
-    }
-
-    // 3.内存管理与析构提示
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    deinit {
-        print("释放")
     }
 
 }
 
 
 // 受托人
-// 4.继承协议类A
+// 3.继承协议类A
 class CSDelegatePage: UIViewController, CSNameEditorDelegate {
 
     let label = UILabel()
@@ -96,15 +84,15 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
     }
 
     @objc func editName() {
-        // 5.受托
+        // 4.受托
         let nameEditorPage = CSNameEditorPage() // 类A，实例化委托人-类B
         nameEditorPage.delegate = self // 让类B实例.delegate = self，表示接受类B的委托
-        self.push(toTarget: nameEditorPage) // Push的时候，
-        // toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
+        self.push(toTarget: nameEditorPage)
+        // Push的时候，toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
         // 而不是CSNameEditorPage(),是一个大坑
     }
     
-    // 6.遵循协议的函数，里面写了具体的类A要做的事
+    // 5.遵循协议的函数，里面写了具体的类A要做的事
     func fetchName(name: String) {
         self.label.text = name
     }
@@ -115,14 +103,31 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
 
 
 /*
+ 几乎任何两个类之间都可以实现代理模式
+ 协议中，你可以放置以下内容:
+    1. 属性 var someProperty: Int { get set }  需要提供这些属性，但不需要指定属性的具体实现
+    2. 方法
+    3. init
+    4. 下标(暂不知场景)
+    5. 关联类型： 协议可以定义关联类型。关联类型常用于定义与协议相关的泛型类型
+ 代理要素
+ 1. 一个协议
+ 2. 一个委托类
+    1. 定义委托变量 var delegate: <协议名>?
+    2. 在触发委托的时机，delegate调用协议方法，如：delegate?.fetchName(name: name!)
+ 3. 一个受托类
+    1. 委托类继承协议，继承协议后会自己出现相应函数。在相应函数内写入需要实现的受托逻辑
+    2. 在触发受托的时机，A 实例化委托类、B 委托类.delegate = self、(C 如有push，就push到刚刚实例化的类)
+    
+ 
  设置代理步骤：以反向传值为例
- 定义一个协议，以实现两个类的传值通信
- 类A成为受托人，类B为委托人
- 在接收值的类A，实例化传值的类B，让类B实例.delegate = self，实现类A的受托
- 接收值的类A，遵循协议，这样可调用协议内的方法，实现值的获取、操作
- 传值的类B，定义weak变量：delegate
- 传值的类B，在某触发条件下，执行delegate的方法
- 传值的类B，最后做内存管理和析构
+ 1.定义一个协议，以实现两个类的传值通信
+ 2.类A成为受托人，类B为委托人
+ 3.在接收值的类A，实例化传值的类B，让类B实例.delegate = self，实现类A的受托
+ 4.接收值的类A，遵循协议，这样可调用协议内的方法，实现值的获取、操作
+ 5.传值的类B，定义weak变量：delegate
+ 6.传值的类B，在某触发条件下，执行delegate的方法
+ 7.传值的类B，最后做内存管理和析构
  */
 
 /* 什么时候要代理：

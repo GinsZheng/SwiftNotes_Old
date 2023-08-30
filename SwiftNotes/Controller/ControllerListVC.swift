@@ -22,6 +22,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
         ("Decorator", CSDecoratorPage()),
         ("Delegate", CSDelegatePage()),
         ("Delegate2", CSDelegate2Page()),
+        ("Delegate3", CSDelegate3Page()),
         ("For & While", CSForWhilePage()),
         ("Gesture", CSGestureListPage()),
         ("Jump", CSJumpListPage()),

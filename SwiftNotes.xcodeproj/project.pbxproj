@@ -148,6 +148,7 @@
 		7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */; };
 		7A8DF5A72A97B0C10048146F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DF5A62A97B0C10048146F /* TableViewCell.swift */; };
 		7A8DF6072A9B9EB80048146F /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DF6062A9B9EB80048146F /* Variables.swift */; };
+		7A8DF66A2A9F8D5C0048146F /* Delegate3Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DF6692A9F8D5C0048146F /* Delegate3Page.swift */; };
 		7A93AB6B2A8A6E70004E0CC5 /* ESTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 7A93AB6A2A8A6E70004E0CC5 /* ESTabBarController */; };
 		7A93AB952A8A6E70004E0CC5 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6812A8926E200D61E33 /* Alamofire.framework */; };
 		7A93AB962A8A6E70004E0CC5 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7A88C6812A8926E200D61E33 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -649,6 +650,7 @@
 		7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSearchPage.swift; sourceTree = "<group>"; };
 		7A8DF5A62A97B0C10048146F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		7A8DF6062A9B9EB80048146F /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
+		7A8DF6692A9F8D5C0048146F /* Delegate3Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate3Page.swift; sourceTree = "<group>"; };
 		7A94609023D1A6AB00936DE7 /* ProgressTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTable.swift; sourceTree = "<group>"; };
 		7A9B2A0228E843620027C41D /* imageFlask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageFlask.png; sourceTree = "<group>"; };
 		7AA3259B243B6FC000D5308D /* StringPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringPage.swift; sourceTree = "<group>"; };
@@ -1218,6 +1220,7 @@
 				7A21612B2389869D00D5A93A /* DecoratorPage.swift */,
 				7A21612F2389869D00D5A93A /* DelegatePage.swift */,
 				7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */,
+				7A8DF6692A9F8D5C0048146F /* Delegate3Page.swift */,
 				7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */,
 				7A62A19F244C93670090D128 /* GestureList */,
 				7A702DC92434EEDC00EB1FF3 /* JumpList */,
@@ -1737,6 +1740,7 @@
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
 				7A0FBCAF2A724D6000AC7BCA /* VideoPlayer.swift in Sources */,
 				7A2AC398240A791300B95E43 /* TransitionPage.swift in Sources */,
+				7A8DF66A2A9F8D5C0048146F /* Delegate3Page.swift in Sources */,
 				7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */,
 				7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */,
 				7A62A1F7245CAD890090D128 /* WindowPage.swift in Sources */,
