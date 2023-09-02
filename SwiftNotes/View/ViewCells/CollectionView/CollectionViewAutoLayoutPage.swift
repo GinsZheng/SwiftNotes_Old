@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AutoLayoutCollectionViewLayoutDelegate {
     
     var collectionView: UICollectionView!
     
@@ -28,15 +28,10 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // 获取每个Label的宽度并保存在全局变量中，方便在layout中调用
-        kAutoLayoutTitleWidths = []
-        for i in 0..<dateSource.count {
-            let width = getLabelWidth(text: dateSource[i]["title"] ?? "", fontSize: 17, weight: .medium)
-            kAutoLayoutTitleWidths.append(width)
-        }
-        
         let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kWithoutNavBarHeight)
         let layout = AutoLayoutCollectionViewLayout(titleOffset: 20, itemInterval: 6, itemHeight: 66)
+        layout.delegate = self
+        
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(AutoLayoutCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AutoLayoutCollectionViewCell.self))
         collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
@@ -68,7 +63,21 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     }
     
     
+    // MARK: - AutoLayoutCollectionViewLayoutDelegate 的代理
+    
+    func titleWidthsForLayout() -> [CGFloat] {
+        var titleWidths: [CGFloat] = []
+        for i in 0..<dateSource.count {
+            let width = getLabelWidth(text: dateSource[i]["title"] ?? "", fontSize: 17, weight: .medium)
+            titleWidths.append(width)
+        }
+        
+        return titleWidths
+    }
+    
+    
 }
+
 
 
 // MARK: - 自定义 Cell
@@ -122,6 +131,8 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
 
 class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     
+    weak var delegate: AutoLayoutCollectionViewLayoutDelegate?
+    
     // 初始化参数
     var titleOffset: CGFloat = 0
     var itemInterval: CGFloat = 0
@@ -129,7 +140,9 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     
     var contentHeight: CGFloat = 0
     var itemCount = 0
-    var titleWidths: [CGFloat] = kAutoLayoutTitleWidths
+    var titleWidths: [CGFloat] {
+        return delegate?.titleWidthsForLayout() ?? []
+    }
 
     var layoutAttributes: [UICollectionViewLayoutAttributes] = []
     
@@ -181,4 +194,5 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     }
     
 }
+
 
