@@ -13,6 +13,7 @@ protocol CSRefreshDataDelegate: NSObjectProtocol {
     func refreshData()
 }
 
+// 受托
 class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
     
     let button = UIButton()
@@ -40,6 +41,8 @@ class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
     
 }
 
+
+// 委托
 class CSDelegator: UIViewController {
     
     weak var delegate: CSRefreshDataDelegate?

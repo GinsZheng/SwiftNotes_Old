@@ -112,10 +112,10 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
     5. 关联类型： 协议可以定义关联类型。关联类型常用于定义与协议相关的泛型类型
  代理要素
  1. 一个协议
- 2. 一个委托类
+ 2. 一个委托类 (传值/传递指令。传值是通过函数参数来传)
     1. 定义委托变量 var delegate: <协议名>?
     2. 在触发委托的时机，delegate调用协议方法，如：delegate?.fetchName(name: name!)
- 3. 一个受托类
+ 3. 一个受托类 (执行动作/返回结果)
     1. 委托类继承协议，继承协议后会自己出现相应函数。在相应函数内写入需要实现的受托逻辑
     2. 在触发受托的时机，A 实例化委托类、B 委托类.delegate = self、(C 如有push，就push到刚刚实例化的类)
     
