@@ -10,7 +10,7 @@
 //}
 //
 //
-//
+
 
 import UIKit
 
@@ -168,17 +168,17 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     var titleWidths: [CGFloat] {
         return delegate?.fetchTitleWidths() ?? []
     }
-
+    
     var layoutAttributes: [UICollectionViewLayoutAttributes] = []
     
     init(titleOffset: CGFloat, itemInterval: CGFloat, itemHeight: CGFloat) {
         super.init()
-    
+        
         self.titleOffset = titleOffset
         self.itemInterval = itemInterval
         self.itemHeight = itemHeight
     }
-            
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
