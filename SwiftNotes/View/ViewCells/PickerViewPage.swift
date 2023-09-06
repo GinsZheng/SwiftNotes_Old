@@ -8,21 +8,22 @@
 
 import UIKit
 
-class CSPickerViewPage: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class CSPickerViewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    let pickerData = ["今天", "昨天", "前天"]
+    
+    let pickerView = UIPickerView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)
         
-        let pickerView = UIPickerView()
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        view.addSubview(pickerView)
+        pickerView.set(superview: view, delegate: self, dataSource: self)
         pickerView.setFrame(left: 10, top: 100, width: kScreenWidth - 20, height: 215)
     }
     
-    let pickerData = ["Item 1", "Item 2", "Item 3","Item 1", "Item 2", "Item 3","Item 1", "Item 2", "Item 3","Item 1", "Item 2", "Item 3"]
     
+    // MARK: - PickerView 代理
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -35,8 +36,8 @@ class CSPickerViewPage: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         return pickerData[row]
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("Selected item: \(pickerData[row])")
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 32
     }
-
+    
 }
