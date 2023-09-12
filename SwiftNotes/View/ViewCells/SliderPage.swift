@@ -10,8 +10,17 @@ import UIKit
 
 class CSSliderPage: UIViewController {
     
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupUI()
+    }
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
         
         let slider = UISlider()
@@ -22,7 +31,5 @@ class CSSliderPage: UIViewController {
         slider.setMaximumTrackImage(getImageWithColor(color: c999), for: .normal)
         
     }
-    
-    
 }
 

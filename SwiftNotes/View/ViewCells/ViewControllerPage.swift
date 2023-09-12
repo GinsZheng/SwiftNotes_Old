@@ -11,16 +11,30 @@ import UIKit
 class CSViewControllerPage: UIViewController {
     
     
+    // MARK: - 生命周期方法
+
     // viewDidLoad: 只在从父页面进入时本页才加载，从子页面返回本页时不加载
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.setBackgroundColor(color: cFFF)
         
+        setupUI()
     }
     
     // viewWillAppear：进入和返回都加载
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setupUIWhenViewWillAppear()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
+        view.setBackgroundColor(color: cFFF)
+    }
+    
+    func setupUIWhenViewWillAppear() {
         view.setBackgroundColor(color: cF5F6F8)
     }
     

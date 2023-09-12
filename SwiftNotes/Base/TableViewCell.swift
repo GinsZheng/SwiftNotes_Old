@@ -36,5 +36,6 @@ class DefaultTableViewCell: UITableViewCell {
         separator.setSeparatorFrame(left: 16, right: 16)
     }
     
+    
 }
 

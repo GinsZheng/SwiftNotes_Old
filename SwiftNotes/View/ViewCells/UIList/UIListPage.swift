@@ -17,9 +17,19 @@ class CSUIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     let tableView = UITableView()
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
@@ -27,7 +37,7 @@ class CSUIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     
-    // MARK: - tableview 代理
+    // MARK: - tableview 代理方法
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
@@ -50,7 +60,8 @@ class CSUIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
-    // MARK: - @objc
+    
+    // MARK: - @objc func
     
 }
 

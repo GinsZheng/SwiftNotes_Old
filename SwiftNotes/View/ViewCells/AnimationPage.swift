@@ -13,26 +13,31 @@ class CSAnimationPage: UIViewController {
     let myView = UIView()
     let solidButton = UIButton(type: .custom)
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
         
-        myView.set(superview: view)
+        myView.set(superview: view, backgroundColor: cBlue_5393FF)
         myView.setFrame(centerX: view.centerX, top: 20, width: 100, height: 100)
-        myView.backgroundColor = UIColor.hex(cBlue_5393FF)
         
-        view.addSubview(solidButton)
-        solidButton.setFrame(left: 20, bottom: kTabBarHeight + 20, width: kScreenWidth - 40, height: 44)
-        solidButton.setTitle("Start Animation", for: .normal)
-        solidButton.setTitleColor(UIColor.white, for: .normal)
-        solidButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        solidButton.setBackgroundImage(getImageWithColor(color: cBlue_5393FF), for: .normal)
-        solidButton.setBackgroundImage(getImageWithColor(color: "992c9eff"), for: .highlighted)
-        solidButton.setBackgroundImage(getImageWithColor(color: "662c9eff"), for: .disabled)
-        solidButton.setCornerRadiusWithMask(radius: 4)
-        solidButton.addTarget(self, action: #selector(startAnimation), for: .touchUpInside)
-        
-        }
+        solidButton.set(superview: view, target: self, action: #selector(startAnimation))
+        solidButton.setStyleSolidButton(title: "Start Animation", titleSize: 17, titleColor: cFEFEFE, bgImage: getImageWithColor(color: cThemeFill), radius: 10)
+        solidButton.setFrame(left: 20, bottom: kTabBarHeight + 20 + 44, width: kScreenWidth - 40, height: 44)
+    }
+    
+    
+    // MARK: - @objc func
     
     @objc func startAnimation() {
         

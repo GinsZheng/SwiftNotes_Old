@@ -10,16 +10,27 @@ import UIKit
 
 class CSSegmentControlPage: UIViewController {
     
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
         
         let segmentControl = UISegmentedControl(items: ["FirstSegment", "SecondSegment"])
         segmentControl.set(superview: view, target: self, action: #selector(showSelectedSegment(_:)), for: .valueChanged)
         segmentControl.setFrame(left: 20, top: 20, right: 20, height: 36)
-        
     }
     
+    
+    // MARK: - @objc func
     
     @objc func showSelectedSegment(_ segmentControl:UISegmentedControl) {
         print(segmentControl.selectedSegmentIndex)

@@ -17,18 +17,27 @@ class CSWindowPage: UIViewController {
     // 最后一个Window，即栈的最上层，退出页面时，lastWindow即释放
     let lastWindow = UIApplication.shared.windows.last!
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         
-
-        myview.set(superview: window, backgroundColor: cBlue_5393FF)
-        myview.setFrame(left: 20, top: 20, width: 100, height: 100)
-        
+        setupUI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         myview.removeFromSuperview()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
+        view.backgroundColor = .white
+        
+        myview.set(superview: window, backgroundColor: cBlue_5393FF)
+        myview.setFrame(left: 20, top: 20, width: 100, height: 100)
     }
 }
 

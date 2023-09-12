@@ -21,9 +21,20 @@ class CSTransitionListPage: UIViewController {
         MagicMoveFromVC(),
         CSDissolveFromVC(),
     ]
+    
+    
+    // MARK: - 生命周期方法
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = .white
         
         let layout = UICollectionViewFlowLayout()
@@ -41,7 +52,11 @@ class CSTransitionListPage: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
+    
+    
 }
+
+
 
 extension CSTransitionListPage: UICollectionViewDataSource, UICollectionViewDelegate {
     

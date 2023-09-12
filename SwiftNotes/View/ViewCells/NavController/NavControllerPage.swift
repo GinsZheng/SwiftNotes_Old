@@ -13,8 +13,19 @@ class CSNavControllerPage: UIViewController {
     let button = UIButton()
     let button2 = UIButton()
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = .white
         
         // 设置导航栏左按钮
@@ -34,6 +45,9 @@ class CSNavControllerPage: UIViewController {
         
     }
     
+    
+    // MARK: - @objc func
+
     @objc func pushToGeneralSubpage() {
         self.push(toTarget: CSGeneralSubpage())
     }

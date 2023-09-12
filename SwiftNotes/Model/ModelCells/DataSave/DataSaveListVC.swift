@@ -26,7 +26,7 @@ class CSDataSaveListVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     
-    // MARK: - tableview 代理
+    // MARK: - tableview 代理方法
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
@@ -49,7 +49,7 @@ class CSDataSaveListVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
-    // MARK: - @objc
+    // MARK: - @objc func
     
 }
 

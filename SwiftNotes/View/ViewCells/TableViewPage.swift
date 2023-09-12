@@ -11,62 +11,60 @@ import UIKit
 class CSTableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let list: [(String, UIViewController)] = [
-        ("Animation", CSAnimationPage()),
-        ("Button", CSButtonPage()),
-        ("Camera and Photos", CSCameraAndPhotosPage()),
-        ("Chart", CSChartListVC()),
-        ("Collection View", CollectionViewPage()),
-        ("Date Picker", CSDatePickerPage()),
-        ("Image View", CSImageViewPage()),
-        ("Label", CSLabelPage()),
+        ("Animation", CSGeneralSubpage()),
+        ("Button", CSGeneralSubpage()),
     ]
-    
-    var cardHeight: CGFloat = 0
     
     let tableView = UITableView()
     
-    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
         
-        self.tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
-        tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
+        setupUI()
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
-        cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: kCellHeight)
-        cell.setSeparator(left: 20, right: 0)
-        cell.selectionStyle = .none
+    // MARK: - func
+    
+    func setupUI() {
+        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
+        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         
-        let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: list[indexPath.row].0)
-        cellTitle.setFrame(left: 20, centerY: cell.centerY)
-        
-        let next = UIImageView()
-        next.set(superview: cell, imageName: "next")
-        next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
-        
-        return cell
     }
     
-
+    
+    // MARK: - tableview 代理方法
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        return kCellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: list[indexPath.row].1)
+        self.push(toTarget: CSGeneralSubpage())
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
+        cell.titleLabel.setText(text: list[indexPath.row].0)
+        
+        return cell
+    }
+    
+    
+    // MARK: - @objc func
+    
+    
 }
+
 
 
 

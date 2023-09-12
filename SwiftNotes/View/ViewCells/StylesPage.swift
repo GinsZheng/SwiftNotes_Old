@@ -10,8 +10,18 @@ import UIKit
 
 class CSStylesPage: UIViewController {
     
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
         
         // 设置部分圆角
@@ -20,8 +30,6 @@ class CSStylesPage: UIViewController {
         myView.setFrame(left: 20, top: 20, width: 200, height: 66)
         myView.setEachCornerRadiusWithMask(radius: 16, corners: [.topRight, .bottomRight])
         // 关键点：setCornerRadiusWithMask一定要在setFrame之后
-        
-        
         
         // 投影
         let shadowView = UIView()
@@ -41,7 +49,6 @@ class CSStylesPage: UIViewController {
         subtitle.setFontStyle(size: 12, color: c999)
         subtitle.setFrame(left: 10, top: 34)
     }
-    
     
 }
 

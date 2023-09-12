@@ -10,8 +10,18 @@ import UIKit
 
 class CSStackViewPage: UIViewController {
     
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
         
         let stackBlock1 = UIView()
@@ -54,7 +64,6 @@ class CSStackViewPage: UIViewController {
         stackB.setStyleStackView(spacing: 0)
         stackB.setFrame(left: 0, top: stack.bottom + 20, width: kScreenWidth, height: 100)
     }
-    
     
 }
 

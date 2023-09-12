@@ -13,17 +13,33 @@ class CSDatePickerPage: UIViewController {
     let datePicker = UIDatePicker() // 常规用法
     let datePicker2 = UIDatePicker() // 尽可能多的属性
     
+    
+    // MARK: - 生命周期方法
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
         
         datePicker.set(superview: view)
-        datePicker.setFrame(left: 0, top: 0, width: kScreenWidth, height: 215)
+        datePicker.setFrame(centerX: view.centerX, top: 0, width: 320, height: 215)
         datePicker.locale = Locale(identifier: "zh_CN")
-        
+        datePicker.datePickerMode = .dateAndTime
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
         
         datePicker2.set(superview: view)
-        datePicker2.setFrame(left: 0, bottom: kNavBarHeight + kBottomBarHeight, width: kScreenWidth, height: 215)
+        datePicker2.setFrame(centerX: view.centerX, top: 300, width: 320, height: 215)
         // 设置tag(可通过tag来获取其对象)
         datePicker2.tag = 1
         // 更改地区文字
@@ -39,22 +55,24 @@ class CSDatePickerPage: UIViewController {
         // 设置文字颜色
         datePicker2.setValue(UIColor.hex(c222), forKey: "textColor")
         datePicker2.calendar = .current
+        if #available(iOS 13.4, *) {
+            datePicker2.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
         
-        
-
-        
-        
-        // 添加确定按钮
+        // 确定按钮
         let button = UIButton()
         button.set(superview: view, target: self, action: #selector(getValue))
         button.setStyleSolid17ptWhiteThemeButton(title: "打印时间")
         button.setFrame(left: 20, top: 235, right: 20, height: 56)
         
-        
     }
     
+    
+    // MARK: - @objc func
+    
     @objc func getValue() {
-        
         let datePicker2 = self.view.viewWithTag(1)as! UIDatePicker // 通过tag获取datePicker对象
         let date = datePicker2.date // 获取选定的值
         // 初始化日期格式化对象
@@ -67,6 +85,8 @@ class CSDatePickerPage: UIViewController {
     }
     
 }
+
+
 
 /*
  地区：
@@ -82,3 +102,17 @@ class CSDatePickerPage: UIViewController {
  en-GB 英国 - 英国
  en-US 英国 - 美国
  */
+
+
+/*
+ Picker中的宽高：
+ 1. 使用frame时不能更改其尺寸，且尺寸必须设为：width: 320, height: 215，否则布局会出错(和UISwitch类似)
+ 2. 如果想修改尺寸，可以用Auto Layout，以下是一个写在 viewDidLoad 中的将宽度设为屏幕宽度的做法：
+ NSLayoutConstraint.activate([
+ durationPicker.leadingAnchor.constraint(equalTo: view.leadingAnchor), // 左边与屏幕左边对齐
+ durationPicker.trailingAnchor.constraint(equalTo: view.trailingAnchor), // 右边与屏幕右边对齐
+ durationPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor), // 垂直居中
+ ])
+ 
+ */
+

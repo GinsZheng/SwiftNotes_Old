@@ -30,6 +30,9 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
         ["title":"9 C++","bgColor":cPurple_BF62F8],
     ]
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,7 +47,7 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     }
     
     
-    // MARK: - CollectionView 代理
+    // MARK: - CollectionView 代理方法
     
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -69,7 +72,7 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     }
     
     
-    // MARK: - AutoLayoutCollectionViewLayoutDelegate 的代理
+    // MARK: - AutoLayoutCollectionViewLayoutDelegate 代理方法
     
     func fetchTitleWidths() -> [CGFloat] {
         var titleWidths: [CGFloat] = []
@@ -83,7 +86,7 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     }
     
     
-    // MARK: - AutoLayoutCollectionViewCellDelegate
+    // MARK: - AutoLayoutCollectionViewCellDelegate 代理方法
     func fetchTitleOffset() -> CGFloat {
         return titleOffset
     }
@@ -116,7 +119,6 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     
     // MARK: - func

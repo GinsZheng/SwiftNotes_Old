@@ -12,8 +12,19 @@ class CSButtonPage: UIViewController {
     
     let testInt = "testInt"
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
         
         print("当前机型的逻辑分辨率：\(kScreenWidth) * \(kScreenHeight)")
@@ -48,11 +59,13 @@ class CSButtonPage: UIViewController {
         WordIconBgButton.setStyleWordIconBgButton(title: "图文&背景", titleSize: 17, titleColor: cFgWhite, imageName: "general_adding_btn", imageLocation: .left, interval: 3, bgImage: getImageWithColor(color: cThemeFill), radius: 10)
         WordIconBgButton.setFrame(left: 20, top: wordIconButton.bottom + 20, right: 20, height: 44)
         
-        
         // 测试UserDefualt内容(1)
         print("testInt初始值", kUserDefaults.integer(forKey: testInt))
         
     }
+    
+    
+    // MARK: - @objc func
     
     // 测试UserDefualt内容(2)
     @objc func changeSetting() {
@@ -74,6 +87,7 @@ class CSButtonPage: UIViewController {
     @objc func pushWithParameter(_ button: UIButton) {
         self.pushFromSecondaryPage(toTarget: CSGeneralSubpage())
     }
+    
     
 }
 

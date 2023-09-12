@@ -14,8 +14,17 @@ class CSDissolveFromVC: UIViewController {
     
     let button = UIButton()
     
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = .white
         
         button.set(superview: view, target: self, action: #selector(goNext))
@@ -25,12 +34,17 @@ class CSDissolveFromVC: UIViewController {
         
     }
     
+    
+    // MARK: - @objc func
+    
     @objc func goNext() {
         let vc = DissolveToVC()
         vc.hero.isEnabled = true
         self.presentFullScreen(toTarget: vc)
     }
 }
+
+
 
 class DissolveToVC: UIViewController {
     
@@ -40,8 +54,19 @@ class DissolveToVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         
+        setupUI()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.dismiss()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
+        view.backgroundColor = .white
         
         blackView.set(superview: view, backgroundColor: c000_97)
         blackView.setFrame(allEdges: 0)
@@ -53,9 +78,4 @@ class DissolveToVC: UIViewController {
         bgImage.hero.modifiers = [.opacity(0), .duration(1), .delay(0.5), .useGlobalCoordinateSpace]
         
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss()
-    }
-    
 }

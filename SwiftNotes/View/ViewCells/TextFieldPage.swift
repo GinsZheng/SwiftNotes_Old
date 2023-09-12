@@ -16,8 +16,39 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
     let button = UIButton()
     let myView = UIView()
     
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    // 点击空白位置，收起键盘
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resignFirstResponders()
+    }
+    
+    /*
+     空白位置指：无点击事件的控件。
+     无点击事件控件：比如默认的UIView，点了无事件但不穿透， 即如果此控件下层有可点击的彼控件，则彼控件点击事件不触发
+     不可交互控件：比如默认的UILabel，点了无效且被穿透， 即如果此控件下层有可点击的彼控件，则彼控件点击事件被触发
+     可点击控件：比如默认的Button，点了有事件。 点击可点击控件，不会收起键盘， 如果需要，就要写上：textField.resignFirstResponder()
+     如果需要，就要写上：textField.resignFirstResponder()
+     
+     注：实际上，无交互控件也会被触发收起键盘， 是因为无交互控件的底下还有一个❲无点击事件的控件❳：view。 点击不可交互控件，就点击了view，所以收起键盘
+     */
+    
+    /*
+     键盘类型：
+     小数键盘：.decimalPad
+     整数键盘：.numberPad
+     */
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
 
         textField.set(superview: view, placeholder: "Input something", delegate: self)
@@ -44,26 +75,6 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
         myView.setFrame(left: 20, top: button.bottom + 20, right: 20, height: 100)
     }
     
-    // 点击空白位置，收起键盘
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        resignFirstResponders()
-    }
-    /*
-     空白位置指：无点击事件的控件。
-     无点击事件控件：比如默认的UIView，点了无事件但不穿透， 即如果此控件下层有可点击的彼控件，则彼控件点击事件不触发
-     不可交互控件：比如默认的UILabel，点了无效且被穿透， 即如果此控件下层有可点击的彼控件，则彼控件点击事件被触发
-     可点击控件：比如默认的Button，点了有事件。 点击可点击控件，不会收起键盘， 如果需要，就要写上：textField.resignFirstResponder()
-     如果需要，就要写上：textField.resignFirstResponder()
-     
-     注：实际上，无交互控件也会被触发收起键盘， 是因为无交互控件的底下还有一个❲无点击事件的控件❳：view。 点击不可交互控件，就点击了view，所以收起键盘
-     */
-    
-    /*
-     键盘类型：
-     小数键盘：.decimalPad
-     整数键盘：.numberPad
-     */
-    
     func resignFirstResponders() {
         textField.resignFirstResponder()
         textField2.resignFirstResponder()
@@ -74,6 +85,20 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    // MARK: -  UITextFieldDelegate 代理方法
+    
+    // 限制输入字数 (先设置textField.delegate = self)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else {
+            return true
+        }
+        let textLength = text.count + string.count - range.length
+        return textLength <= 80
+    }
+    
+    
+    // MARK: - @objc func
+    
     @objc func checkInputtedValue(textField: UITextField) {
         
     }
@@ -83,16 +108,6 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
         print("resign already")
     }
 
-    // 限制输入字数 (先设置textField.delegate = self)
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text else {
-            return true
-        }
-        let textLength = text.count + string.count - range.length
-        return textLength <= 80
-    }
-
-    
     @objc func editingDidBegin() {
         print("editingDidBegin")
     }
@@ -108,6 +123,7 @@ class CSTextFieldPage: UIViewController, UITextFieldDelegate {
     @objc func editingDidEndOnExit() {
         print("editingDidEndOnExit")
     }
+    
     /*
      UIControl.Event
      .editingDidBegin 拉起键盘时触发

@@ -45,19 +45,28 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let tableView = UITableView()
     
+    
+    // MARK: - 生命周期方法
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "View" // 导航栏标题
 
-        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
-        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
-
+        setupUI()
     }
     
     
-    // MARK: - tableview 代理
-
+    // MARK: - func
+    
+    func setupUI() {
+        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
+        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
+    }
+    
+    
+    // MARK: - tableview 代理方法
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
@@ -79,7 +88,10 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    // MARK: - @objc
+    
+    // MARK: - @objc func
+    
+    
     
 }
 

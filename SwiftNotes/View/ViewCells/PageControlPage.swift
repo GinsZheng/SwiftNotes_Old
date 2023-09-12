@@ -10,16 +10,24 @@ import UIKit
 
 class CSPageControlPage: UIViewController {
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .hex(c999)
         
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         let pageControl = UIPageControl()
         pageControl.set(superview: view, numberOfPages: 3)
         pageControl.setFrame(left: 0, top: 0, width: kScreenWidth, height: 100)
-        
     }
-    
 
 }
 

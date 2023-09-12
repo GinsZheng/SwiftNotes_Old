@@ -13,8 +13,19 @@ class CSTextViewPage: UIViewController, UITextViewDelegate {
      let textView = UITextView()
      let textViewWithInteraction = UITextView()
      
+     
+     // MARK: - 生命周期方法
+
      override func viewDidLoad() {
           super.viewDidLoad()
+          
+          setupUI()
+     }
+     
+     
+     // MARK: - func
+     
+     func setupUI() {
           view.backgroundColor = UIColor.white
           
           textView.set(superview: view, text: "美国或将推出中东和平方案巴以危机出路何在何在何在在在", maxLines: 3)
@@ -37,6 +48,9 @@ class CSTextViewPage: UIViewController, UITextViewDelegate {
           textViewWithInteraction.delegate = self
           
      }
+     
+     
+     // MARK: - UITextViewDelegate 代理方法
      
      // 监听到文本改变时，要做什么操作
      func textViewDidChange(_ textView: UITextView) {

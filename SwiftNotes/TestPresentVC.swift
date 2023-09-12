@@ -20,9 +20,6 @@ class TestPresentVC: UIViewController {
         label.setStyle24pt222Med()
         label.setFrame(left: 20, top: 20)
         
-
-//        self.isModalInPresentation = true
-        
         let scrollView = UIScrollView()
         scrollView.set(superview: view)
         scrollView.setFrame(left: 0, top: 0, width: kScreenWidth, height: 400)

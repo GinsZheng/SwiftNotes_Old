@@ -16,16 +16,26 @@ class CSLabelPage: UIViewController {
     let label4 = UILabel()
     let label5 = UILabel()
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
-
         
         label.set(superview: view, text: "在在在在在在在在在在在在在在在在")
         label.setFontStyle(size: 24, color: c222)
         label.setFrame(left: 20, top: 20, width: 384)
         label.setBackgroundColor(color: cF0F1F3)
-
+        
         label2.set(superview: view, text: "在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在")
         label2.setFontStyle(size: 12, color: c222)
         label2.setFrame(left: 20, top: 50, width: 384)
@@ -48,7 +58,6 @@ class CSLabelPage: UIViewController {
         label5.setFrame(left: 20, top: label4.bottom + 20, right: 20, height: 60)
         label5.setBackgroundColor(color: cF0F1F3)
         
-
     }
     
 }

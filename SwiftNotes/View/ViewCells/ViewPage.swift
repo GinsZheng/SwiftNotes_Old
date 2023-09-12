@@ -10,8 +10,18 @@ import UIKit
 
 class CSViewPage: UIViewController {
     
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
         
         let myView = UIView()
@@ -38,7 +48,6 @@ class CSViewPage: UIViewController {
         subpixelView.backgroundColor = .hex(cBlue_5393FF)
         // 结果：0.5pt在3倍屏下显示为1px，1.5pt在3倍屏下显示为4px
     }
-    
     
 }
 

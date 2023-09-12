@@ -10,8 +10,18 @@ import UIKit
 
 class CSScrollViewHorizonalPage: UIViewController {
     
+    // MARK: - 生命周期方法
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.setBackgroundColor(color: cEEEFF1)
         
         let groupBg = UIView()
@@ -22,7 +32,8 @@ class CSScrollViewHorizonalPage: UIViewController {
         buttonList.set(superview: groupBg)
     }
     
-    // MARK: - @objc
+    
+    // MARK: - @objc func
     @objc func pushToTest() {
         self.push(toTarget: CSGeneralSubpage())
     }
@@ -31,6 +42,8 @@ class CSScrollViewHorizonalPage: UIViewController {
 }
 
 
+
+// MARK: - scrollView 横滑按钮列表View
 class CSHorizonalScrollingButtonList: UIView {
 
     let scrollView = UIScrollView()

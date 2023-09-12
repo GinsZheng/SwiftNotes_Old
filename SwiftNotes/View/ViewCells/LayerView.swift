@@ -12,6 +12,9 @@ class CSLayerView: UIViewController {
     
     let label = UILabel()
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

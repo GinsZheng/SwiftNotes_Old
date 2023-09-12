@@ -15,8 +15,25 @@ class MagicMoveFromVC: UIViewController {
     let grayView = UIView()
     let blueView = UIView()
     
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // 2. 设置跳转
+        let toVC = MagicMoveToVC()
+        toVC.hero.isEnabled = true
+        self.presentFullScreen(toTarget: toVC)
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = .white
         
         grayView.set(superview: view, backgroundColor: c000_22)
@@ -31,14 +48,9 @@ class MagicMoveFromVC: UIViewController {
         grayView.hero.id = "grayView"
         blueView.hero.id = "blueView"
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // 2. 设置跳转
-        let toVC = MagicMoveToVC()
-        toVC.hero.isEnabled = true
-        self.presentFullScreen(toTarget: toVC)
-    }
 }
+
+
 
 // 转场1 神奇移动 toView
 class MagicMoveToVC: UIViewController {
@@ -47,8 +59,23 @@ class MagicMoveToVC: UIViewController {
     let blueView = UIView()
     let whiteView = UIView() // 新增UIView
     
+    
+    // MARK: - 生命周期方法
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = .white
         
         // 设置终态的View
@@ -74,10 +101,6 @@ class MagicMoveToVC: UIViewController {
         // useGlobalCoordinateSpace设置为独立的View(不设置的话效果差)
         // 数组内常用的动画，见底部笔记
         whiteView.hero.modifiers = [.translate(y: 500), .useGlobalCoordinateSpace]
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss(animated: true, completion: nil)
     }
 }
 

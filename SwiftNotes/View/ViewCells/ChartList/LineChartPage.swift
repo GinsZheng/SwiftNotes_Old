@@ -15,6 +15,13 @@ class CSLineChartPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    func setupUI() {
         view.backgroundColor = .white
         
         let bgView = UIView()
@@ -88,6 +95,5 @@ class CSLineChartPage: UIViewController {
         
         bgView.addSubview(chart.view)
         self.chart = chart
-        
     }
 }

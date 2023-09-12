@@ -14,8 +14,19 @@ class CSPickerViewPage: UIViewController, UIPickerViewDelegate, UIPickerViewData
     
     let pickerView = UIPickerView()
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
         pickerView.set(superview: view, delegate: self, dataSource: self)
@@ -28,14 +39,17 @@ class CSPickerViewPage: UIViewController, UIPickerViewDelegate, UIPickerViewData
         return 1
     }
     
+    // 行数
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
     
+    // 标题
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
     
+    // 行高
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 32
     }

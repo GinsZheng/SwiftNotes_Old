@@ -12,8 +12,23 @@ class CSMaskPage: UIViewController {
 
     let mask = UIView()
     
+    // MARK: - 生命周期方法
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.pop()
+        mask.removeFromSuperview()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = .white
         
         // 把遮罩加到UIWindow上，才能覆盖导航栏，处于(除状态栏外的)最顶层
@@ -21,11 +36,6 @@ class CSMaskPage: UIViewController {
         mask.setBackgroundColor(color: c000309_40_mask)
         mask.isUserInteractionEnabled = false
         mask.setFrame(allEdges: 0)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.pop()
-        mask.removeFromSuperview()
     }
 }
 

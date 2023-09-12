@@ -15,21 +15,32 @@ class CSWebViewPage: UIViewController {
     // 2声明变量
     var webView = WKWebView()
     
-    // 2.5进度条动画
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        view.setBackgroundColor(color: cFFF)
-        
-        self.progressView.setFrame(left: 0, top: 0, width: kScreenWidth, height: 2)
-        self.progressView.isHidden = false
-        UIView.animate(withDuration: 1.0) {
-            self.progressView.progress = 0.0
-        }
-    }
+    lazy var progressView: UIProgressView = {
+        let progress = UIProgressView()
+        progress.progressTintColor = UIColor.hex(cBlue_5393FF)
+        progress.trackTintColor = .clear
+        return progress
+    }()
+    
+    // MARK: - 生命周期方法
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+    }
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupUIWhenAppear()
+    }
+
+    
+    // MARK: - func
+    
+    func setupUI() {
         // 3添加webView
         view.addSubview(webView)
         webView.setFrame(left: 0, top: 0, width: kScreenWidth, height: kWithoutNavBarHeight)
@@ -44,15 +55,19 @@ class CSWebViewPage: UIViewController {
         view.addSubview(self.progressView)
     }
     
-    // 进度条
-    lazy var progressView: UIProgressView = {
-        let progress = UIProgressView()
-        progress.progressTintColor = UIColor.hex(cBlue_5393FF)
-        progress.trackTintColor = .clear
-        return progress
-    }()
-    
+    // 5进度条动画
+    func setupUIWhenAppear() {
+        view.setBackgroundColor(color: cFFF)
+        
+        self.progressView.setFrame(left: 0, top: 0, width: kScreenWidth, height: 2)
+        self.progressView.isHidden = false
+        UIView.animate(withDuration: 1.0) {
+            self.progressView.progress = 0.0
+        }
+    }
 }
+
+
 
 extension CSWebViewPage: WKNavigationDelegate{
     // 页面开始加载时调用
@@ -63,10 +78,12 @@ extension CSWebViewPage: WKNavigationDelegate{
             self.progressView.progress = Float(self.webView.estimatedProgress)
         }
     }
+    
     // 当内容开始返回时调用
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!){
         
     }
+    
     // 页面加载完成之后调用
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
         /// 获取网页title
@@ -77,6 +94,7 @@ extension CSWebViewPage: WKNavigationDelegate{
             self.progressView.isHidden = true
         }
     }
+    
     // 页面加载失败时调用
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error){
         

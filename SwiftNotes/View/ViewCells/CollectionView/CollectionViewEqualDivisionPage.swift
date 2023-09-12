@@ -24,9 +24,19 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
         ["title":"C#","bgColor":cPurple_BF62F8],
     ]
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         let frame = CGRect(x:0, y:0, width: kScreenWidth, height:kWithoutNavBarHeight)
         let layout = EgCollectionViewLayout(eachLineCount: 3, itemHeight: 500)
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
@@ -36,7 +46,7 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
     }
     
     
-    // MARK: - CollectionView 代理
+    // MARK: - CollectionView 代理方法
     
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -154,8 +164,6 @@ class EgCollectionViewLayout: UICollectionViewLayout {
     
     
 }
-
-
 
 
 
