@@ -42,7 +42,6 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(EgCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EgCollectionViewCell.self))
         collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
-        
     }
     
     
@@ -87,17 +86,23 @@ class EgCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         imageView.set(superview: self, cornerRadius: 0)
         imageView.setFrame(left: 0, top: 0, width: ceil(kScreenWidth/eachLineCount), height: 500)
         
         titleLabel.set(superview: self)
         titleLabel.setStyle17ptFFFMedCent()
         titleLabel.setFrame(left: 0, centerY: imageView.centerY, width: ceil(kScreenWidth/eachLineCount), height: 20)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  CSPickerViewPage.swift
+//  PickerViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSPickerViewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PickerViewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     let pickerData = ["今天", "昨天", "前天"]
     

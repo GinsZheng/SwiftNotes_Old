@@ -32,10 +32,16 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     
     
     // MARK: - 生命周期方法
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    func setupUI() {
         let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kWithoutNavBarHeight)
         let layout = AutoLayoutCollectionViewLayout(titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight)
         layout.delegate = self
