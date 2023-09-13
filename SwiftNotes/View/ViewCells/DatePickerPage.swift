@@ -92,11 +92,11 @@ class CSDatePickerPage: UIViewController {
  地区：
  zh-HK 华 - 香港的 SAR
  zh-MO 华 - 澳门的 SAR
- zh-CN 华 -中国
- zh-CHS 华 (单一化) 24小时制
+ zh-CN 华 - 中国
+ zh-CHS 华 - 简体 24小时制
  zh-SG 华 -新加坡
  zh-TW 华 -台湾
- zh-CHT 华 (传统的)
+ zh-CHT 华 - 繁体
  
  en 英国
  en-GB 英国 - 英国
