@@ -10,6 +10,9 @@ import UIKit
 
 class CSMenuControllerPage: UIViewController {
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -23,6 +26,8 @@ class CSMenuControllerPage: UIViewController {
     }
     
 }
+
+
 
 class CSInteractiveUILabel: UILabel {
     override var canBecomeFirstResponder: Bool { return true }

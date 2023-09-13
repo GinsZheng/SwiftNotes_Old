@@ -38,18 +38,28 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
         ("上传(文字/图片等)", CSUploadDataPage()),
     ]
     
+    let tableView = UITableView()
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         self.title = "Controller"
         
-        let tableView = UITableView()
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
-        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
-        
+        setupUI()
     }
     
     
+    // MARK: - func
+    
+    func setupUI() {
+        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
+    }
+    
+    
+    // MARK: - tableView代理方法
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
@@ -85,3 +95,5 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
     }
     
 }
+
+

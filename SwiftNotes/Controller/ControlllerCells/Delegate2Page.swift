@@ -13,44 +13,27 @@ protocol CSRefreshDataDelegate: NSObjectProtocol {
     func refreshData()
 }
 
-// 受托
-class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
-    
-    let button = UIButton()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.setBackgroundColor(color: cFFF)
-        
-        button.set(superview: view, target: self, action: #selector(pushToSubpage))
-        button.setStyleSolid17ptWhiteThemeButton(title: "下一页")
-        button.setFrame(left: 20, top: 20, right: 20, height: 44)
-        
-    }
-    
-    @objc func pushToSubpage() {
-        let delegator = CSDelegator()
-        delegator.delegate = self
-        self.push(toTarget: delegator)
-    }
-    
-    func refreshData() {
-        button.isHidden = true
-    }
-    
-    
-}
-
 
 // 委托
 class CSDelegator: UIViewController {
     
-    weak var delegate: CSRefreshDataDelegate?
-    
     let button = UIButton()
     
+    weak var delegate: CSRefreshDataDelegate?
+    
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
         button.set(superview: view, target: self, action: #selector(backToSuperpage))
@@ -58,6 +41,9 @@ class CSDelegator: UIViewController {
         button.setFrame(left: 20, top: 20, right: 20, height: 44)
     }
     
+    
+    // MARK: - @objc func
+
     @objc func backToSuperpage() {
         if delegate != nil {
             delegate!.refreshData()
@@ -65,12 +51,50 @@ class CSDelegator: UIViewController {
         self.pop()
     }
     
-    // 内存管理
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    // 析构
-    deinit {
-        print("释放")
-    }
+    
 }
+
+
+// 受托
+class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
+    
+    let button = UIButton()
+    
+    
+    // MARK: - 生命周期方法
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
+        view.setBackgroundColor(color: cFFF)
+        
+        button.set(superview: view, target: self, action: #selector(pushToSubpage))
+        button.setStyleSolid17ptWhiteThemeButton(title: "下一页")
+        button.setFrame(left: 20, top: 20, right: 20, height: 44)
+    }
+    
+    
+    // MARK: - 代理方法
+    func refreshData() {
+        button.isHidden = true
+    }
+    
+    
+    // MARK: - @objc func
+    
+    @objc func pushToSubpage() {
+        let delegator = CSDelegator()
+        delegator.delegate = self
+        self.push(toTarget: delegator)
+    }
+    
+    
+}
+

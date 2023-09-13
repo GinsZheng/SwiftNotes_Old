@@ -23,13 +23,22 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     let tableView = UITableView()
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
-
     }
     
     
@@ -55,6 +64,7 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
         
         return cell
     }
+    
     
     // MARK: - @objc func
     

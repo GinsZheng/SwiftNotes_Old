@@ -13,6 +13,9 @@ class CSReadFilePage: UIViewController {
     
     let progressTable = CSProgressTable()
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

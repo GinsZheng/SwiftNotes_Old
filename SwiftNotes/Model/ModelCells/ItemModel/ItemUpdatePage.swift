@@ -29,6 +29,9 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
     
     weak var delegate: CSReloadDelegate?
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

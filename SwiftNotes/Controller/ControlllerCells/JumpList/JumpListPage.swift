@@ -22,6 +22,9 @@ class CSJumpListPage: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     let tableView = UITableView()
     
+    
+    // MARK: - 生命周期方法
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,6 +57,7 @@ class CSJumpListPage: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell
     }
+    
     
     // MARK: - @objc func
     

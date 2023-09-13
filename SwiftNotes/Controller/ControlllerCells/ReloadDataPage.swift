@@ -27,6 +27,9 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     let addItemBtn = UIButton(type: .custom)
     let tableView = UITableView()
 
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -93,6 +96,9 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     // 4.定义委托变量delegate
     weak var delegate: CSReloadDelegate?
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         
         super.viewDidLoad()

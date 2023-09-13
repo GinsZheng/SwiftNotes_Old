@@ -14,6 +14,9 @@ class CSTimerPage: UIViewController {
     
     let timerLabel = UILabel()
 
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

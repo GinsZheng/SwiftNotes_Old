@@ -11,6 +11,9 @@ import UIKit
 
 class CSLoadingPage: UIViewController {
     
+    
+    // MARK: - 生命周期方法
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
         view.backgroundColor = .white

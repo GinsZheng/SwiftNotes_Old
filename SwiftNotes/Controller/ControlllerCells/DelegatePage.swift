@@ -24,9 +24,20 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     
     // 1.定义委托变量delegate
     weak var delegate: CSNameEditorDelegate?
+    
+    
+    // MARK: - 生命周期方法
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
 
         nameTextField.set(superview: view, placeholder: "请输入", delegate: self)
@@ -42,6 +53,9 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
         }
     }
     
+    
+    // MARK: - @objc func
+
     @objc func refreshSuperView() {
         let name = nameTextField.text
         if name != "" {
@@ -51,13 +65,6 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
         self.pop()
     }
     
-    // 本函数与 refreshSuperView 做一样的事，二者选一个即可
-    override func viewWillDisappear(_ animated: Bool) {
-        let name = nameTextField.text
-        if name != "" {
-            delegate?.fetchName(name: name!)
-        }
-    }
 
 }
 
@@ -68,9 +75,19 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
 
     let label = UILabel()
     let button = UIButton()
+    
+    
+    // MARK: - 生命周期方法
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupUI()
+    }
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = UIColor.white
 
         label.set(superview: view, text: "这行文字将通过下个页面编辑")
@@ -80,21 +97,26 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
         button.set(superview: view, target: self, action: #selector(editName))
         button.setStyleSolid17ptWhiteThemeButton(title: "下一页")
         button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
-        
     }
+    
+
+    // MARK: - 代理方法
+    
+    // 4.遵循协议的函数，里面写了具体的类A要做的事
+    func fetchName(name: String) {
+        self.label.text = name
+    }
+    
+    
+    // MARK: - @objc func
 
     @objc func editName() {
-        // 4.受托
+        // 5.受托
         let nameEditorPage = CSNameEditorPage() // 类A，实例化委托人-类B
         nameEditorPage.delegate = self // 让类B实例.delegate = self，表示接受类B的委托
         self.push(toTarget: nameEditorPage)
         // Push的时候，toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
         // 而不是CSNameEditorPage(),是一个大坑
-    }
-    
-    // 5.遵循协议的函数，里面写了具体的类A要做的事
-    func fetchName(name: String) {
-        self.label.text = name
     }
 
 }

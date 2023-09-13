@@ -14,6 +14,10 @@ import UIKit
 
 class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let titleArray: [String] = ["获取文本 get", "获取文本 post", "上传文本信息", "上传文件(如上传图片)"]
+    
+    let tableView = UITableView()
+    
     struct HttpbinGet: Decodable {
         let origin: String
         let url: String
@@ -26,21 +30,27 @@ class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
 
     
-    let titleArray: [String] = ["获取文本 get", "获取文本 post", "上传文本信息", "上传文件(如上传图片)"]
-    
-    let tableView = UITableView()
-    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.setBackgroundColor(color: cFFF)
 
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
-        
     }
     
     
     // MARK: - tableview 代理方法
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titleArray.count
     }

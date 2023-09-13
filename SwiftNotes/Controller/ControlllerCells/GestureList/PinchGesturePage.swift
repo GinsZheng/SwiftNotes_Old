@@ -10,13 +10,26 @@ import UIKit
 
 class CSPinchGesturePage: UIViewController {
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        setupPinch()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupPinch() {
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
         view.addGestureRecognizer(pinch)
     }
+    
+    
+    // MARK: - @objc func
     
     @objc func pinchGesture() {
         print("Pinch")

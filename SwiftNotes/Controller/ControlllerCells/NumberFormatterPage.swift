@@ -19,11 +19,14 @@ class CSNumberFormatterPage: UIViewController {
     let float = 3.1415926
     let int = 6
     
+    
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-// ———————— String(format)格式化
+        // ———————— String(format)格式化
         
         floatFormat.set(superview: view)
         floatFormat.setFrame(left: 20, top: 20, width: 300, height: 44)
@@ -53,7 +56,7 @@ class CSNumberFormatterPage: UIViewController {
         
         
         
-// ———————— NumberFormatter简单格式化
+        // ———————— NumberFormatter简单格式化
         
         //原始数字（需要先转成NSNumber类型）
         let number = NSNumber(value: 1234.5678)
@@ -98,7 +101,7 @@ class CSNumberFormatterPage: UIViewController {
         
     }
         
-// ———————— NumberFormatter复杂格式化
+    // ———————— NumberFormatter复杂格式化
     func formatNumber(value: String) -> String {
         
         let numberFormatter = NumberFormatter()

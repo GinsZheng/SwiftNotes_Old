@@ -13,7 +13,7 @@ class TabBarController {
 
     static func getTabBar() -> ESTabBarController {
         
-        let selectedIndex = 0
+        let selectedIndex = 1
         
         let tabBarController = ESTabBarController()
         let v1 = ViewListVC()

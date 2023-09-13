@@ -14,6 +14,13 @@ class CSActionSheetPage: UIViewController {
         super.viewWillAppear(animated)
         view.backgroundColor = .white
         
+        setupActionSheet()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupActionSheet() {
         actionSheet(actionsTitle: ["返回", "跳转", "打印"], actionsStyle: [.default, .default, .destructive], actionsHandler: [
             { (x) in
                 self.pop()
@@ -25,7 +32,6 @@ class CSActionSheetPage: UIViewController {
                 print("点了打印选项")
             }])
     }
-    
     
 }
 

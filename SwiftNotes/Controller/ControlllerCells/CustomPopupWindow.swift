@@ -12,8 +12,18 @@ class CSCustomPopupWindowPage: UIViewController {
     
     let btn = UIButton()
     
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = .white
         
         btn.set(superview: view, target: self, action: #selector(popup))
@@ -21,6 +31,9 @@ class CSCustomPopupWindowPage: UIViewController {
         btn.setFrame(left: 20, top: 100, right: 20, height: 48)
     }
     
+    
+    // MARK: - @objc func
+
     @objc func popup() {
         // 把前一VC的截图作为底图，并设置过场动画
         let toVC = CSCustomPopupWindow()
@@ -46,8 +59,18 @@ class CSCustomPopupWindow: UIViewController {
     let cancelButton = UIButton()
 
     
+    // MARK: - 生命周期方法
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = .white
         
         bgImageView.set(superview: view, image: bgImage)
@@ -81,6 +104,9 @@ class CSCustomPopupWindow: UIViewController {
         maskView.hero.modifiers = [.opacity(0), .duration(0.15), .delay(0), .useGlobalCoordinateSpace]
     }
     
+    
+    // MARK: - @objc func
+
     @objc func confirm() {
         self.dismiss()
         self.presentingViewController?.present(toTarget: CSGeneralSubpage())

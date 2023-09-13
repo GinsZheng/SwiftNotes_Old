@@ -38,19 +38,23 @@ class TableViewPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // MARK: - tableview 代理方法
     
+    // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
     
+    // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
     }
     
+    // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.push(toTarget: CSGeneralSubpage())
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
         cell.titleLabel.setText(text: list[indexPath.row].0)
