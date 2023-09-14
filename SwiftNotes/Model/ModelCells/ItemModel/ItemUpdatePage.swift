@@ -34,6 +34,14 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = .white
         
         // 从本地数据库取JSON值(以赋值给相应控件)、建模
@@ -63,8 +71,6 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
         updateButton.setStyleSolid17ptWhiteThemeButton(title: "Update")
         updateButton.setFrame(left: 20, top: colorTextField.bottom + 20, right: 20, height: 48)
         
-        
-        
         // 删除
         deleteButton.set(superview: view, target: self, action: #selector(deleteItem))
         deleteButton.setStyleWord17ptRedButton(title: "Delete")
@@ -72,6 +78,8 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    // MARK: - @objc func
     
     @objc func dismissPage() {
         self.dismiss()
@@ -105,18 +113,11 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
         self.dismiss()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    deinit {
-        print("释放")
-    }
-    
 }
 
 
-// 建模
+// MARK: - 建模
+
 struct CSItemUpdateModel {
     var id: Int
     var itemName: String

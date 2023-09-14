@@ -19,12 +19,23 @@ class CSTimerPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
 
+        setupUI()
+        setupTimer()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
+        view.backgroundColor = .white
+        
         timerLabel.set(superview: view)
         timerLabel.setStyle24pt222MedCenter()
         timerLabel.setFrame(left: 20, top: 20, right: 20, height: 100)
+    }
 
+    func setupTimer() {
         CSTimer.share.scheduledDispatchTimer(withName: "myTimer", timeInterval: 1, queue: .main, repeats: true) {
             // 每一时间间隔(此处为每1秒)执行一次闭包内的代码，直至销毁
             self.counter += 1
@@ -36,9 +47,6 @@ class CSTimerPage: UIViewController {
                 CSTimer.share.destoryTimer(withName: "myTimer")
             }
         }
-
-        
     }
-
 }
 

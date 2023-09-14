@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSNumberFormatterPage: UIViewController {
+class NumberFormatterPage: UIViewController {
     
     let floatFormat = UILabel()
     let stringFormat = UILabel()
@@ -53,7 +53,6 @@ class CSNumberFormatterPage: UIViewController {
         multicpleFormat.setFrame(left: 20, top: 220, width: 300, height: 44)
         multicpleFormat.text = String(format: "%.2f, %@'s reciting", float, str)
         // 多个参数逗号隔开
-        
         
         
         // ———————— NumberFormatter简单格式化

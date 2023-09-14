@@ -29,9 +29,6 @@ class CSPlistPage: UIViewController {
         label.set(superview: view, text: firstBook)
         label.setFrame(left: 20, top: 20)
         
-        
-        
-        
     }
     
     

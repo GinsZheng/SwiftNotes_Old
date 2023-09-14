@@ -37,7 +37,7 @@ class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDa
         currentProgressArray = model.currentProgress
         itemIdArray = model.itemId
         
-        self.tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
         tableView.reloadData()
         

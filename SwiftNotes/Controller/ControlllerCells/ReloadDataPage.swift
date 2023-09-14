@@ -17,35 +17,46 @@ protocol CSReloadDelegate: NSObjectProtocol {
     func reloadData()
 }
 
+
 // 1.委托类：继承协议类
 class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
-
+    
     var nameArray = [String]()
     
     let table = CSReloadDataTable()
     
     let addItemBtn = UIButton(type: .custom)
     let tableView = UITableView()
-
+    
     
     // MARK: - 生命周期方法
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         
         let json = table.getJSON()
         let model = ReloadDateModel.init(jsonData: json)
         nameArray = model.itemName
         
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
+        view.backgroundColor = .white
         
         addItemBtn.set(superview: view, target: self, action: #selector(presentAddItemVC))
         addItemBtn.setFrame(right: 20, top: 0, width: 25, height: 20)
         addItemBtn.setImage(UIImage(named: "progress_addItem"), for: .normal)
         
-        self.tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 20, right: 0, height: kWithoutNavAndTabBarHeight - 40)
     }
+    
+    
+    // MARK: - tableView代理方法
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         nameArray.count
@@ -63,15 +74,7 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         return 56
     }
     
-    
-    @objc func presentAddItemVC() {
-        // 2.受托
-        let addItemVc = AddItemVC()
-        addItemVc.delegate = self
-        self.present(toTarget: addItemVc)
-    }
-    
-    // 3.遵循协议的函数
+    // 2.遵循协议的函数
     func reloadData() {
         //MARK:- 关键1：重新赋值数组
         let json = table.getJSON()
@@ -81,7 +84,19 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         // 关键2：reloadData()，刷新页面数据
         tableView.reloadData()
     }
+    
+    
+    // MARK: - @objc func
+    
+    @objc func presentAddItemVC() {
+        // 3.受托
+        let addItemVc = AddItemVC()
+        addItemVc.delegate = self
+        self.present(toTarget: addItemVc)
+    }
+    
 }
+
 
 
 // 委托类
@@ -100,8 +115,15 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     // MARK: - 生命周期方法
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
         nameTextField.set(superview: view, placeholder: "名称", delegate: self)
@@ -114,6 +136,9 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
         addingButton.setStyleSolid17ptWhiteThemeButton(title: "添加")
     }
     
+    
+    // MARK: - @objc func
+
     @objc func checkInputtedValue(textField: UITextField) {
         if nameTextField.text == "" {
             addingButton.isEnabled = false
@@ -142,12 +167,5 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
             delegate!.reloadData()
         }
     }
-    
-    // 6.内存管理与析构
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    deinit {
-        print("释放")
-    }
+
 }

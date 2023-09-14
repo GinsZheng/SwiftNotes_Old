@@ -1,24 +1,25 @@
 //
-//  DataSaveListVC.swift
+//  FormatterListPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2020/5/7.
-//  Copyright © 2020 GinsMac. All rights reserved.
+//  Created by GinsMac on 2023/9/13.
+//  Copyright © 2023 GinsMac. All rights reserved.
 //
 
 import UIKit
 
-class CSDataSaveListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FormatterListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let list: [(String, UIViewController)] = [
-        ("UserDefaults", CSUserDefaultsPage()),
+        ("Date Formatter", DateFormatterPage()),
+        ("Number Formatter", NumberFormatterPage()),
     ]
     
     let tableView = UITableView()
     
     
     // MARK: - 生命周期方法
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,20 +37,24 @@ class CSDataSaveListVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     // MARK: - tableview 代理方法
-
+    
+    // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
     
+    // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
     }
     
+    // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.push(toTarget: list[indexPath.row].1)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
         cell.titleLabel.setText(text: list[indexPath.row].0)
@@ -57,7 +62,10 @@ class CSDataSaveListVC: UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
     }
     
+    
     // MARK: - @objc func
     
+    
 }
+
 

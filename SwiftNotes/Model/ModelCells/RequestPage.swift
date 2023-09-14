@@ -25,14 +25,15 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
+        simpleRequest() // MARK: - 简单请求
+        normalRequest() // MARK: - 常见请求
         
-        // MARK: - 简单请求
-        
-        struct Slides: Decodable {
-            let code: String // 注意，这里的 code 与 json 中的key要完全相等，否则报错(即就是用这个code值来判断要匹配哪个value)
-            let message: String
-        }
-        
+    }
+    
+    
+    // MARK: - func
+    
+    func simpleRequest() {
         let url = "https://go.ginkgeek.com/firstRequest"
         AF.request(url).responseDecodable(of: Slides.self) { response in
             if let slides = response.value {
@@ -44,11 +45,8 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
         }
         
-        
-        
         /*
          新的请求方式的好处：简化了许多操作：1. struct无需初始化 2. AF的代码简化了许多
-         
          新请求的构成：1. struct 2. AF.request
          */
         
@@ -58,28 +56,9 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
          2. 使用User.self可以获取User类型的元类型,让Alamofire知道需要解析成User类型的实例。
          3. Type.self在Swift中是一个常见的用法,用来表示一个明确的类型,而不是该类型的实例。
          */
-        
-        
-        
-        // MARK: - 正常请求
-        
-        struct SlideshowResponse: Decodable {
-            let slideshow: Slideshow
-        }
-
-        struct Slideshow: Decodable {
-            let author: String
-            let date: String
-            let slides: [Slide]
-            let title: String
-        }
-
-        struct Slide: Decodable {
-            let title: String
-            let type: String
-        }
-        
-        
+    }
+    
+    func normalRequest() {
         let url2 = "https://httpbin.org/json"
         AF.request(url2).responseDecodable(of: SlideshowResponse.self) { response in
             if let slideshow = response.value {
@@ -101,29 +80,10 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
          2. AF中多层调用，如 slideshow.slideshow.slides
          */
         
-        
-        // MARK: - 旧的请求方式如下
-        
-        // let url = "https://httpbin.org/json"
-        // AF.request(url).responseJSON { (response) in
-        //     if let value = response.result.value {
-        //         let jsonData3 = JSON(value)
-        //         let model3 = CSSwiftyModel3(jsonData: jsonData3)
-        //         self.slidesTitle = model3.slidesTitle
-        //         self.slidesType = model3.slidesType
-        //         print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
-        //
-        //         self.tableView.set(superview: self.view, delegate: self, dataSource: self, viewController: self)
-        //         self.tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
-        //         self.tableView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(self.slidesTitle.count))
-        //     }
-        //
-        // }
-        
-
-        
     }
     
+    
+    // MARK: - tableView代理方法
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cellID1")
@@ -157,3 +117,51 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
 }
+
+
+
+// MARK: - 建模
+
+private struct Slides: Decodable {
+    let code: String // 注意，这里的 code 与 json 中的key要完全相等，否则报错(即就是用这个code值来判断要匹配哪个value)
+    let message: String
+}
+
+private struct SlideshowResponse: Decodable {
+    let slideshow: Slideshow
+}
+
+private struct Slideshow: Decodable {
+    let author: String
+    let date: String
+    let slides: [Slide]
+    let title: String
+}
+
+private struct Slide: Decodable {
+    let title: String
+    let type: String
+}
+
+
+
+// MARK: - 旧的请求方式如下
+
+/*
+ let url = "https://httpbin.org/json"
+ AF.request(url).responseJSON { (response) in
+     if let value = response.result.value {
+         let jsonData3 = JSON(value)
+         let model3 = CSSwiftyModel3(jsonData: jsonData3)
+         self.slidesTitle = model3.slidesTitle
+         self.slidesType = model3.slidesType
+         print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
+
+         self.tableView.set(superview: self.view, delegate: self, dataSource: self, viewController: self)
+         self.tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
+         self.tableView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(self.slidesTitle.count))
+     }
+
+ }
+
+ */

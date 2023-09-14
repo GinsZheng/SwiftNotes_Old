@@ -20,6 +20,9 @@ class CSOperatorAtPage: UIViewController {
         func1()
     }
     
+    
+    // MARK: - func
+    
     // 当返回值没有用到时，回避警告：Result of call to 'func1()' is unused
     @discardableResult
     func func1() -> Int {

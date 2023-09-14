@@ -22,6 +22,7 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         ("Int", CSIntPage()),
         ("Item Model (Basic)", CSItemSearchPage()),
         ("plist", CSPlistPage()),
+        ("Private", PrivatePage()),
         ("Progress Model (Joined)", CSProgressSearchPage()),
         ("Read File", CSReadFilePage()),
         ("Request", CSRequestPage()),
@@ -30,22 +31,31 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         ("Time", CSTimePage()),
     ]
     
+    let tableView = UITableView()
+    
     
     // MARK: - 生命周期方法
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        
         self.title = "Model"
-        
-        let tableView = UITableView()
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
-        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndBottomBarHeight)
-        
+        setupUI()
     }
     
     
+    // MARK: - func
     
+    func setupUI() {
+        view.backgroundColor = UIColor.white
+        
+        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndBottomBarHeight)
+    }
+    
+    
+    // MARK: - tableView代理方法
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }

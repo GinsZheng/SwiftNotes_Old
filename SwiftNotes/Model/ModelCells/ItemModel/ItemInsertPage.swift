@@ -29,6 +29,14 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+    }
+    
+    
+    // MARK: - func
+    
+    func setupUI() {
         view.backgroundColor = .white
         
         navPresent.setTitleLabel(superview: view, title: "Insert")
@@ -56,6 +64,8 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
     }
     
     
+    // MARK: - @objc func
+    
     @objc func dismissPage() {
         self.dismiss()
     }
@@ -78,13 +88,6 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
         
         self.dismiss()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    deinit {
-        print("释放")
-    }
-    
+
 }
 
