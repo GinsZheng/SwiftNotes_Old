@@ -29,9 +29,12 @@ class PrivatePage: UIViewController {
         let person = Person()
         // let name = person.name // private时，其他类不同访问Person类的private属性
         let age = person.age // fileprivate时，在同一个.swift文件内，其他类可以访问Person类的fileprivate属性
+        
+        print(age)
     }
     
 }
+
 
 
 private class Person {
