@@ -6,18 +6,18 @@
 //  Copyright © 2020 GinsMac. All rights reserved.
 //
 
-import UIKit
-import SwiftCharts
-
-class CSColumnChartPage: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        
-
-    }
-    
-    
-}
-
+//import UIKit
+//import SwiftCharts
+//
+//class CSColumnChartPage: UIViewController {
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        view.backgroundColor = .white
+//        
+//
+//    }
+//    
+//    
+//}
+//

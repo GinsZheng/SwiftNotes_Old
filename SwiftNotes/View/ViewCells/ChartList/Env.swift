@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 ivanschuetz. All rights reserved.
 //
 
-import UIKit
-
-class Env {
-    
-    static var iPad: Bool {
-        return UIDevice.current.userInterfaceIdiom == .pad
-    }
-}
-
-// 图表辅助列
+//import UIKit
+//
+//class Env {
+//    
+//    static var iPad: Bool {
+//        return UIDevice.current.userInterfaceIdiom == .pad
+//    }
+//}
+//
+//// 图表辅助列
