@@ -1,5 +1,5 @@
 //
-//  CSImageViewPage.swift
+//  ImageViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -9,7 +9,7 @@
 import UIKit
 // 含UIImage的笔记
 
-class CSImageViewPage: UIViewController {
+class ImageViewPage: UIViewController {
 
     
     

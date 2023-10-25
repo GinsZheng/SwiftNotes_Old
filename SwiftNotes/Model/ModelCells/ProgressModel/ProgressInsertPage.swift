@@ -12,7 +12,7 @@ import SQLite
 
 class CSProgressInsertPage: UIViewController, UITextFieldDelegate {
     
-    let table = CSProgressTable()
+    let table = ProgressTable()
     
     let navPresent = CSPresentNav()
     let currentProgressTextField = UITextField()

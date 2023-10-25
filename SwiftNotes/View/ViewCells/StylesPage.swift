@@ -1,5 +1,5 @@
 //
-//  CSStylesPage.swift
+//  StylesPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/11/30.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSStylesPage: UIViewController {
+class StylesPage: UIViewController {
     
     // MARK: - 生命周期方法
 

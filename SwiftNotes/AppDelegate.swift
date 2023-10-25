@@ -17,14 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-//        let tabBarController = TabBarController.getTabBar()
         let tabBarController = TabBarController.getTabBar()
         // 将window的一级页面设置为tabBar
         self.window?.rootViewController = tabBarController
 
-        CSItemTable().getTable()
-        CSProgressTable().getTable()
-        CSReloadDataTable().getTable()
+        ItemTable().getTable()
+        ProgressTable().getTable()
+        ReloadDataTable().getTable()
         
         //是否第一次启动（两个都是第一次则以这个为准）
         if UserDefaults.isFirstLaunch() {

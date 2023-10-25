@@ -9,7 +9,7 @@
 import SQLite
 import SwiftyJSON
 
-class CSItemTable: SQLiteManager {
+class ItemTable: SQLiteManager {
     // 模型只需修改字段名、数据类型，及表名
     let tableName = "item"
     let id = Expression<Int>("id")
@@ -106,7 +106,7 @@ class CSItemTable: SQLiteManager {
 }
 
 
-extension CSItemTable {
+extension ItemTable {
     
     func getId() -> [Int] {
         let result = try! getDB().prepare("SELECT id FROM \(tableName)")

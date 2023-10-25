@@ -1,5 +1,5 @@
 //
-//  CSTextViewPage.swift
+//  TextViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSTextViewPage: UIViewController, UITextViewDelegate {
+class TextViewPage: UIViewController, UITextViewDelegate {
      
      let textView = UITextView()
      let textViewWithInteraction = UITextView()

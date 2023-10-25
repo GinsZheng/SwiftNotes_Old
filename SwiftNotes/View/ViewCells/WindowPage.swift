@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSWindowPage: UIViewController {
+class WindowPage: UIViewController {
     
     // windows[0]表示UIWindow的最底一层，有最长的生命周期
     let window = UIApplication.shared.windows[0]

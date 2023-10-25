@@ -24,9 +24,9 @@ class TuplePage: UIViewController {
         }
         
         let list: [(String, UIViewController)] = [
-            ("Animation", CSAnimationPage()),
-            ("Button", CSButtonPage()),
-            ("Camera and Photos", CSCameraAndPhotosPage()),
+            ("Animation", AnimationPage()),
+            ("Button", ButtonPage()),
+            ("Camera and Photos", CameraAndPhotosPage()),
         ]
         
         let c1 = list[0].0

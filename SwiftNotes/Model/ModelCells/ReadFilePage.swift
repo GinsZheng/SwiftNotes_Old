@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class CSReadFilePage: UIViewController {
     
-    let progressTable = CSProgressTable()
+    let progressTable = ProgressTable()
     
     
     // MARK: - 生命周期方法

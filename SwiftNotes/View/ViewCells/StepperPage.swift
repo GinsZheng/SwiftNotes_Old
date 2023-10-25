@@ -1,5 +1,5 @@
 //
-//  CSStepperPage.swift
+//  StepperPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSStepperPage: UIViewController {
+class StepperPage: UIViewController {
     
     // MARK: - 生命周期方法
 

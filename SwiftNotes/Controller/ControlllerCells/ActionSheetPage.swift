@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSActionSheetPage: UIViewController {
+class ActionSheetPage: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

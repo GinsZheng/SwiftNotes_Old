@@ -16,7 +16,7 @@ class CSProgressUpdatePage: UIViewController, UITextFieldDelegate {
     public var updatedId = 0
     
     
-    let table = CSProgressTable()
+    let table = ProgressTable()
     
     let navPresent = CSPresentNav()
     

@@ -1,5 +1,5 @@
 //
-//  CSNavControllerPage.swift
+//  NavControllerPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/3/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSNavControllerPage: UIViewController {
+class NavControllerPage: UIViewController {
     
     let button = UIButton()
     let button2 = UIButton()

@@ -1,5 +1,5 @@
 //
-//  CSButtonPage.swift
+//  ButtonPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSButtonPage: UIViewController {
+class ButtonPage: UIViewController {
     
     let testInt = "testInt"
     

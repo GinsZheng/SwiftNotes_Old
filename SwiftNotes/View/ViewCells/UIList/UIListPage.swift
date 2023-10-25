@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSUIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let list: [(String, UIViewController)] = [
         ("Mask", CSMaskPage()),

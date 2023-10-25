@@ -20,7 +20,7 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
     let colorTextField = UITextField()
     let addingButton = UIButton()
     
-    let itemTable = CSItemTable()
+    let itemTable = ItemTable()
     
     weak var delegate: CSReloadDelegate?
     

@@ -1,5 +1,5 @@
 //
-//  CSTransitionListPage.swift
+//  TransitionListPage.swift
 //  HeroTest
 //
 //  Created by FDM on 2019/10/17.
@@ -10,7 +10,7 @@
 import UIKit
 import Hero
 
-class CSTransitionListPage: UIViewController {
+class TransitionListPage: UIViewController {
     
     let titleArray = [
         "神奇移动",
@@ -58,7 +58,7 @@ class CSTransitionListPage: UIViewController {
 
 
 
-extension CSTransitionListPage: UICollectionViewDataSource, UICollectionViewDelegate {
+extension TransitionListPage: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return titleArray.count

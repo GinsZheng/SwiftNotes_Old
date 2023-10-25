@@ -14,7 +14,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
     let list: [(String, UIViewController)] = [
         ("TestVC", ViewController()),
         ("TestPresentVC", TestPresentVC()),
-        ("ActionSheet", CSActionSheetPage()),
+        ("ActionSheet", ActionSheetPage()),
         ("Alamofire", CSAlamofirePage()),
         ("Alert", CSAlertListPage()),
         ("Class", CSClassPage()),
@@ -33,6 +33,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
         ("Operator @", CSOperatorAtPage()),
         ("Protocol", CSProtocolPage()),
         ("Reload Data", CSReloadDataPage()),
+        ("Switch View", SwitchViewPage()),
         ("Timer", CSTimerPage()),
         ("Try", CSTryPage()),
         ("上传(文字/图片等)", CSUploadDataPage()),

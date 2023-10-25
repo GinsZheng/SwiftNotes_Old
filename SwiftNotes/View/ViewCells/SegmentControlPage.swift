@@ -1,5 +1,5 @@
 //
-//  CSSegmentControlPage.swift
+//  SegmentControlPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSSegmentControlPage: UIViewController {
+class SegmentControlPage: UIViewController {
     
     // MARK: - 生命周期方法
 

@@ -1,5 +1,5 @@
 //
-//  CSReloadDataTable.swift
+//  ReloadDataTable.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/11/24.
@@ -9,7 +9,7 @@
 import SQLite
 import SwiftyJSON
 
-class CSReloadDataTable: SQLiteManager {
+class ReloadDataTable: SQLiteManager {
     // 模型只需修改字段名及数据类型，及表名
     let tableName = "reloadData"
     let id = Expression<Int>("id")
@@ -73,7 +73,7 @@ class CSReloadDataTable: SQLiteManager {
 }
 
 
-extension CSReloadDataTable {
+extension ReloadDataTable {
     
     func printId() {
         var idList: [Int] = []

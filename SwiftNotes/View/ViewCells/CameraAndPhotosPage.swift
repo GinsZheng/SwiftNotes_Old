@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class CSCameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class CameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     // 1. 如上行，增加代理：UIImagePickerControllerDelegate & UINavigationControllerDelegate
     
     let imageAddingBtn = UIButton()

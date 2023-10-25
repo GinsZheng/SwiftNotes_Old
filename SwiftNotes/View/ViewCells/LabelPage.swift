@@ -1,5 +1,5 @@
 //
-//  CSLabelPage.swift
+//  LabelPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSLabelPage: UIViewController {
+class LabelPage: UIViewController {
     
     let label = UILabel()
     let label2 = UILabel()

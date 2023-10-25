@@ -1,5 +1,5 @@
 //
-//  CSWebViewPage.swift
+//  WebViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/7/19.
@@ -10,7 +10,7 @@ import UIKit
 // 1.import
 import WebKit
 
-class CSWebViewPage: UIViewController {
+class WebViewPage: UIViewController {
     
     // 2声明变量
     var webView = WKWebView()
@@ -69,7 +69,7 @@ class CSWebViewPage: UIViewController {
 
 
 
-extension CSWebViewPage: WKNavigationDelegate{
+extension WebViewPage: WKNavigationDelegate{
     // 页面开始加载时调用
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!){
         self.navigationItem.title = "加载中..."

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSScrollViewHorizonalPage: UIViewController {
+class ScrollViewHorizonalPage: UIViewController {
     
     // MARK: - 生命周期方法
     

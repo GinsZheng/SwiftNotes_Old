@@ -1,5 +1,5 @@
 //
-//  CSViewControllerPage.swift
+//  ViewControllerPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2022/8/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSViewControllerPage: UIViewController {
+class ViewControllerPage: UIViewController {
     
     
     // MARK: - 生命周期方法

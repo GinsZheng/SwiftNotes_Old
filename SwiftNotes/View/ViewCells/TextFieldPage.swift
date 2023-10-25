@@ -1,5 +1,5 @@
 //
-//  CSTextFieldPage.swift
+//  TextFieldPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSTextFieldPage: UIViewController, UITextFieldDelegate {
+class TextFieldPage: UIViewController, UITextFieldDelegate {
     
     let textField = UITextField()
     let textField2 = UITextField()

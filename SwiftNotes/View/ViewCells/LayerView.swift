@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSLayerView: UIViewController {
+class LayerView: UIViewController {
     
     let label = UILabel()
     

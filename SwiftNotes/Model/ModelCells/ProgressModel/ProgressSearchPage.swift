@@ -13,7 +13,7 @@ import SwiftyJSON
 // 未改tableView
 class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
-    let table = CSProgressTable()
+    let table = ProgressTable()
     
     var idArray = [Int]()
     var currentProgressArray = [Int]()

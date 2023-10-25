@@ -1,5 +1,5 @@
 //
-//  CSScrollViewPage.swift
+//  ScrollViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSScrollViewPage: UIViewController {
+class ScrollViewPage: UIViewController {
     
     // MARK: - 生命周期方法
 

@@ -23,7 +23,7 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     var nameArray = [String]()
     
-    let table = CSReloadDataTable()
+    let table = ReloadDataTable()
     
     let addItemBtn = UIButton(type: .custom)
     let tableView = UITableView()
@@ -105,7 +105,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     let nameTextField = UITextField()
     let addingButton = UIButton()
     
-    let table = CSReloadDataTable()
+    let table = ReloadDataTable()
     lazy var result = table.search()
     
     // 4.定义委托变量delegate

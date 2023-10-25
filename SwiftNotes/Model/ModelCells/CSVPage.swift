@@ -23,9 +23,9 @@ class CSVPage: UIViewController {
         
         // MARK: -读取CSV文件
         
-        let itemTable = CSItemTable()
+        let itemTable = ItemTable()
         itemTable.getTable()
-        let progressTable = CSProgressTable()
+        let progressTable = ProgressTable()
         progressTable.getTable()
         
         // 读取csv文件⌜item⌟。⌜item.csv⌟在项目中即可，不能有重名的文件

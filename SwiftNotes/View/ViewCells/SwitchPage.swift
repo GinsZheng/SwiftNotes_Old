@@ -1,5 +1,5 @@
 //
-//  CSSwitchPage.swift
+//  SwitchPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2019/6/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CSSwitchPage: UIViewController {
+class SwitchPage: UIViewController {
     
     var boolValue1 = "boolValue1"
     var userDefaultsboolValue1 = kUserDefaults.bool(forKey: "boolValue1")

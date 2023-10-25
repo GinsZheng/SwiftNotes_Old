@@ -17,7 +17,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         ("Button", CSGeneralSubpage()),
     ]
     
-    let table = CSItemTable()
+    let table = ItemTable()
     
     var idArray = [Int]()
     var nameArray = [String]()
