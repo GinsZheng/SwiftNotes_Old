@@ -58,8 +58,8 @@ class CameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & U
         
         
         // 相册上传：需要将相册图片先保存图片到Document目录下，生成文件url，再上传
-        let uploadImageAPI = "http://127.0.0.1:5000/upload_image"
-        let parameterName = "file"
+        let uploadImageAPI = "https://go.ginkgeek.com/upload"
+        let parameterName = "image"
         
         let fileManager = FileManager.default
         let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,
@@ -72,17 +72,27 @@ class CameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & U
             //取得NSURL
             let imageNSURL = NSURL.init(fileURLWithPath: filePath) as URL
             
-//            AF.upload(multipartFormData: { (mutidata) in
-//                mutidata.append(imageNSURL, withName: parameterName) // "file"是上传文件时参数的key
-//            },
-//                      to: uploadImageAPI).responseJSON { (response) in
-//                if let value = response.result.value {
-//                    let json = JSON(value)
-//                    // print("json", json)
-//                    let image_url = json["image_url"].string ?? "(空)"
-//                    print("上传文件(如上传图片) post 返回结果:", "image_url =", image_url)
-//                }
-//            }
+            struct ImageUploadResponse: Decodable {
+                let code: String
+                let message: String
+                let imageURL: String
+            }
+
+            guard let fileURL = Bundle.main.url(forResource: "StarryNight", withExtension: "jpg") else { return }
+
+            let url = "https://go.ginkgeek.com/upload"
+            
+            AF.upload(multipartFormData: { data in
+                data.append(fileURL, withName: "image")
+            }, to: url)
+            .responseDecodable(of: ImageUploadResponse.self) { response in
+                if let value = response.value {
+                    let imageURL = value.imageURL
+                    print("上传成功，图片URL：", imageURL)
+                } else {
+                    print("上传失败：", response.error!)
+                }
+            }
             
         }
         
