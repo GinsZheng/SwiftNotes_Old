@@ -40,14 +40,28 @@ class CSSwiftyJSONPage: UIViewController {
         
         // 解析http传输的JSON
         let url = "https://httpbin.org/json"
-//        AF.request(url).responseJSON { (response) in
-//            if let value = response.result.value {
-//                let jsonData3 = JSON(value)
-//                let model3 = CSSwiftyModel3(jsonData: jsonData3)
-//                print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
-//            }
-//        }
+        AF.request(url).responseDecodable(of: HttpbinJson.self) { response in
+            if let value = response.value {
+                let slideshow = value.slideshow
+                let author = slideshow.author
+                let title = slideshow.title
+                print("获取结果:", "author =", author, ", slidesTitle =", title)
+            } else {
+                print(response.error!)
+            }
+        }
         
+        struct HttpbinJson: Decodable {
+            let slideshow: Slideshow
+        }
+        
+        struct Slideshow: Decodable {
+            let author: String
+            let date: String
+            let title: String
+        }
+        
+
         // 解析本地数据库的JSON
         let itemTable = ItemTable()
         let result = itemTable.getJSONOneRow(id: 10)
@@ -99,21 +113,6 @@ struct CSSwiftyModel2 {
         id          = jsonData["result"].arrayValue.map {$0["id"].stringValue}
         arrivalTime = jsonData["result"].arrayValue.map {$0["arrivalTime"].stringValue}
         itemName        = jsonData["result"].arrayValue.map {$0["itemName"].stringValue}
-    }
-}
-
-
-struct CSSwiftyModel3 {
-    var author: String
-    var date: String
-    var slidesTitle: [String]
-    var slidesType: [String]
-    
-    init(jsonData: JSON) {
-        author = jsonData["slideshow"]["author"].string ?? ""
-        date = jsonData["slideshow"]["date"].string ?? ""
-        slidesTitle = jsonData["slideshow"]["slides"].arrayValue.map {$0["title"].stringValue}
-        slidesType = jsonData["slideshow"]["slides"].arrayValue.map {$0["type"].stringValue}
     }
 }
 
