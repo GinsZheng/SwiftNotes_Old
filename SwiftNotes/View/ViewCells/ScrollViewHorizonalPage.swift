@@ -22,7 +22,7 @@ class ScrollViewHorizonalPage: UIViewController {
     // MARK: - func
     
     func setupUI() {
-        view.setBackgroundColor(color: cEEEFF1)
+        view.setBackgroundColor(color: cF2F3F6)
         
         let groupBg = UIView()
         groupBg.set(superview: view, backgroundColor: cFFF)
