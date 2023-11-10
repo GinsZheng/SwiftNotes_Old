@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupCommonUI()
-        setupForm0()
+        setupUI()
     }
     
     
