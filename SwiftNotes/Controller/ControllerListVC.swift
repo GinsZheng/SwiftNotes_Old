@@ -33,7 +33,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
         ("Operator @", CSOperatorAtPage()),
         ("Protocol", CSProtocolPage()),
         ("Reload Data", CSReloadDataPage()),
-        ("Switch View", SwitchViewPage()),
+        ("Switch View", SwitchViewListPage()),
         ("Timer", CSTimerPage()),
         ("Try", CSTryPage()),
         ("上传(文字/图片等)", CSUploadDataPage()),

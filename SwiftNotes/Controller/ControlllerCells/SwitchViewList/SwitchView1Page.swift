@@ -1,6 +1,14 @@
+//
+//  SwitchView1Page.swift
+//  SwiftNotes
+//
+//  Created by GinsMac on 2023/10/20.
+//  Copyright © 2023 GinsMac. All rights reserved.
+//
+
 import UIKit
 
-class ViewController: UIViewController {
+class SwitchView1Page: UIViewController {
 
     
     // MARK: - 生命周期方法
@@ -16,16 +24,16 @@ class ViewController: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cF2F3F6)
         
-        let switchFormView = SwitchFormView()
-        switchFormView.set(superview: view)
-        switchFormView.setupCommonUI()
-        switchFormView.setupUI()
+        let formView = FormView()
+        formView.set(superview: view)
+        formView.setupCommonUI()
+        formView.setupUI()
     }
     
 }
 
 
-class SwitchFormView: UIView {
+class FormView: UIView {
     
     var currentUIForm: UIForm = .form0
     
