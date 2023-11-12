@@ -2,6 +2,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var currentUIForm: UIForm = .form0
     
     // MARK: - 生命周期方法
     
@@ -16,24 +17,16 @@ class ViewController: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cF2F3F6)
         
-        let switchFormView = SwitchFormView()
-        switchFormView.set(superview: view)
-        switchFormView.setupCommonUI()
-        switchFormView.setupUI()
+        setupCommonUI()
+        setupFormViewUI()
     }
     
-}
-
-
-class SwitchFormView: UIView {
-    
-    var currentUIForm: UIForm = .form0
     
     func setupCommonUI() {
-        self.setBackgroundColor(color: cF2F3F6)
+        view.setBackgroundColor(color: cF2F3F6)
     }
     
-    func setupUI() {
+    func setupFormViewUI() {
         switch currentUIForm {
         case .form0:
             setupForm0()
@@ -43,11 +36,14 @@ class SwitchFormView: UIView {
     }
     
     func setupForm0() {
-        self.removeAllSubviews()
-        self.setFrame(left: 20, top: 20, right: 20, height: 48)
+        view.removeAllSubviews()
+        
+        let contentView = UIView()
+        contentView.set(superview: view)
+        contentView.setFrame(left: 20, top: 20, right: 20, height: 48)
 
         let bgView = UIView()
-        bgView.set(superview: self, backgroundColor: cFFF)
+        bgView.set(superview: contentView, backgroundColor: cFFF)
         bgView.setFrame(allEdges: 0)
         bgView.setCornerRadius(radius: 10)
         
@@ -59,11 +55,14 @@ class SwitchFormView: UIView {
     }
     
     func setupForm1() {
-        self.removeAllSubviews()
-        self.setFrame(left: 20, top: 20, right: 20, height: 200)
+        view.removeAllSubviews()
+        
+        let contentView = UIView()
+        contentView.set(superview: view)
+        contentView.setFrame(left: 20, top: 20, right: 20, height: 200)
         
         let bgView = UIView()
-        bgView.set(superview: self, backgroundColor: cFFF)
+        bgView.set(superview: contentView, backgroundColor: cFFF)
         bgView.setFrame(allEdges: 0)
         bgView.setCornerRadius(radius: 10)
 
@@ -87,4 +86,8 @@ class SwitchFormView: UIView {
 }
 
 
-
+class SwitchFormView: UIView {
+    
+    var currentUIForm: UIForm = .form0
+    
+}
