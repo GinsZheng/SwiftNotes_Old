@@ -33,7 +33,7 @@ class AnimationPage: UIViewController {
         
         solidButton.set(superview: view, target: self, action: #selector(startAnimation))
         solidButton.setStyleSolidButton(title: "Start Animation", titleSize: 17, titleColor: cFEFEFE, bgImage: getImageWithColor(color: cThemeFill), radius: 10)
-        solidButton.setFrame(left: 20, bottom: kTabBarHeight + 20 + 44, width: kScreenWidth - 40, height: 44)
+        solidButton.setFrame(left: 20, bottom: 34, width: kScreenWidth - 40, height: 44)
     }
     
     

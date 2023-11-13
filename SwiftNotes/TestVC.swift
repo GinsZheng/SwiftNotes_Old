@@ -6,7 +6,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // 输出参数
     let titleOffset: CGFloat = 24
-    let itemInterval: CGFloat = 3
+    let itemInterval: CGFloat = 6
     let itemHeight: CGFloat = 40
     
     var collectionView: UICollectionView!
@@ -60,12 +60,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let contentView = UIView()
         contentView.set(superview: view)
-        contentView.setFrame(left: 20, top: 20, right: 20, height: 48)
+//        contentView.setFrame(left: 0, top: 20, right: 0, height: 48)
+        contentView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
 
         let bgView = UIView()
         bgView.set(superview: contentView, backgroundColor: cFFF)
         bgView.setFrame(allEdges: 0)
-        bgView.setCornerRadius(radius: 10)
+        bgView.setCornerRadiusWithMask(radius: 10)
         
         let buttonList = CSHorizonalScrollingButtonList(target: self, frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 48))
         buttonList.set(superview: bgView)
@@ -82,7 +83,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let contentView = UIView()
         contentView.set(superview: view)
-        contentView.setFrame(left: 20, top: 20, right: 20, height: 200)
+        contentView.setFrame(left: 0, top: 20, right: 0, height: 200)
         
         let bgView = UIView()
         bgView.set(superview: contentView, backgroundColor: cFFF)
@@ -135,7 +136,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         var titleWidths: [CGFloat] = []
         for i in 0..<dateSource.count {
             // ⚠️这里fontSize和weight要和下面的AutoLayoutCollectionViewCell2中的保持一致
-            let width = getLabelWidth(text: dateSource[i]["title"] ?? "", fontSize: 17, weight: .medium)
+            let width = getLabelWidth(text: dateSource[i]["title"] ?? "", fontSize: 14, weight: .medium)
             titleWidths.append(width)
         }
         

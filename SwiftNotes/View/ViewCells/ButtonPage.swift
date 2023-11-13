@@ -19,6 +19,8 @@ class ButtonPage: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+        print("sta", kNavBarHeight, kStatusBarHeight)
+        
     }
     
     
@@ -62,6 +64,21 @@ class ButtonPage: UIViewController {
         // 测试UserDefualt内容(1)
         print("testInt初始值", kUserDefaults.integer(forKey: testInt))
         
+        // 测试用，以后要删
+//        let vv = UIView()
+//        vv.set(superview: view, backgroundColor: cRed_FF635A)
+//        vv.setFrame(left: 10, top: 100, right: 10, height: 500)
+//        
+//        let AButton = UIButton(type: .custom)
+//        AButton.set(superview: vv, target: self, action: #selector(changeSetting))
+//        AButton.setStyleSolid17ptWhiteThemeButton(title: "Here")
+//        AButton.setFrame(left: 5, bottom: 5, right: 5, height: 44)
+//        let bButton = UIButton(type: .custom)
+//        bButton.set(superview: view, target: self, action: #selector(changeSetting))
+//        bButton.setStyleSolid17ptWhiteThemeButton(title: "Here")
+//        bButton.setFrame(left: 5, bottom: 5, right: 5, height: 44)
+//
+//        // view的高度是全屏高，但view的y值的0点却是导航栏底边
     }
     
     
