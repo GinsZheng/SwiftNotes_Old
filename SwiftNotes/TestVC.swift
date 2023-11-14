@@ -60,21 +60,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let contentView = UIView()
         contentView.set(superview: view)
-//        contentView.setFrame(left: 0, top: 20, right: 0, height: 48)
         contentView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
 
         let bgView = UIView()
         bgView.set(superview: contentView, backgroundColor: cFFF)
         bgView.setFrame(allEdges: 0)
-        bgView.setCornerRadiusWithMask(radius: 10)
+        bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
-        let buttonList = CSHorizonalScrollingButtonList(target: self, frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 48))
+        let buttonList = CSHorizonalScrollingButtonList(target: self, action: #selector(pushToTest), frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 48))
         buttonList.set(superview: bgView)
+        buttonList.scrollView.showsHorizontalScrollIndicator = false
+        buttonList.scrollView.contentSize.width += 48
+        
+        let switchButtonBg = UIImageView()
+        switchButtonBg.set(superview: contentView, imageName: "groupBar_gradientMask")
+        switchButtonBg.setFrame(right: 0, top: 0, width: 72, height: 48)
         
         let switchButton = UIButton(type: .custom)
-        switchButton.set(superview: bgView, target: self, action: #selector(switchView))
-        switchButton.setStyleIconButton(imageName: "groupBar_fold")
-        switchButton.setFrame(right: 12, centerY: bgView.height / 2, width: 28, height: 28)
+        switchButton.set(superview: contentView, target: self, action: #selector(switchView))
+        switchButton.setStyleIconButton(imageName: "groupBar_unfold")
+        switchButton.setFrame(right: 12, centerY: contentView.height / 2, width: 28, height: 28)
+
         
     }
     
@@ -83,7 +89,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let contentView = UIView()
         contentView.set(superview: view)
-        contentView.setFrame(left: 0, top: 20, right: 0, height: 200)
+        contentView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 200)
         
         let bgView = UIView()
         bgView.set(superview: contentView, backgroundColor: cFFF)
@@ -97,10 +103,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.register(AutoLayoutCollectionViewCell2.self, forCellWithReuseIdentifier: String(describing: AutoLayoutCollectionViewCell2.self))
         collectionView.set(superview: bgView, delegate: self, dataSource: self, viewController: self)
         
+        let switchButtonBg = UIImageView()
+        switchButtonBg.set(superview: contentView, imageName: "groupBar_gradientMask")
+        switchButtonBg.setFrame(right: 0, top: 0, width: 72, height: 48)
+        
         let switchButton = UIButton(type: .custom)
-        switchButton.set(superview: bgView, target: self, action: #selector(switchView))
-        switchButton.setStyleIconButton(imageName: "groupBar_unfold")
-        switchButton.setFrame(right: 12, bottom: 12, width: 28, height: 28)
+        switchButton.set(superview: contentView, target: self, action: #selector(switchView))
+        switchButton.setStyleIconButton(imageName: "groupBar_fold")
+        switchButton.setFrame(right: 12, top: 10, width: 28, height: 28)
     }
     
     
@@ -157,11 +167,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         setupUI()
     }
     
+    // MARK: - @objc func
+    @objc func pushToTest() {
+        self.push(toTarget: CSGeneralSubpage())
+    }
+    
 }
 
 
-class SwitchFormView: UIView {
-    
-    var currentUIForm: UIForm = .form0
-    
-}
+//class SwitchFormView: UIView {
+//    
+//    var currentUIForm: UIForm = .form0
+//    
+//}

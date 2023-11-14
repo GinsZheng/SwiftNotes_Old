@@ -28,7 +28,7 @@ class ScrollViewHorizonalPage: UIViewController {
         groupBg.set(superview: view, backgroundColor: cFFF)
         groupBg.setFrame(left: 0, top: 100, width: kScreenWidth, height: 48)
 
-        let buttonList = CSHorizonalScrollingButtonList(target: self, frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 48))
+        let buttonList = CSHorizonalScrollingButtonList(target: self, action: #selector(pushToTest), frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 48))
         buttonList.set(superview: groupBg)
     }
     
@@ -45,20 +45,23 @@ class ScrollViewHorizonalPage: UIViewController {
 
 // MARK: - scrollView 横滑按钮列表View
 class CSHorizonalScrollingButtonList: UIView {
-
+    // ❓下一步：把buttonTitles加入init的参数
     let scrollView = UIScrollView()
     var buttons: [UIButton] = []
+    
     var target: UIViewController
+    var action: Selector
 
-    init(target: UIViewController, frame: CGRect) {
+    init(target: UIViewController, action: Selector, forEvent: UIControl.Event = UIControl.Event.touchUpInside, frame: CGRect) {
         self.target = target
+        self.action = action
         super.init(frame: frame)
         
         setupScrollView()
         createButtons()
 
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -79,7 +82,7 @@ class CSHorizonalScrollingButtonList: UIView {
         
         for (i, title) in buttonTitles.enumerated() {
             let button = UIButton(type: .custom)
-            button.set(superview: scrollView, target: target, action: #selector(pushToTest))
+            button.set(superview: scrollView, target: target, action: action)
             button.setTitle(title, for: .normal)
             button.setTitleColor(.hex(c666), for: .normal)
             button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
@@ -101,11 +104,6 @@ class CSHorizonalScrollingButtonList: UIView {
         }
         
         scrollView.contentSize = CGSize(width: frameRight + 4, height: 48)
-    }
-    
-    // MARK: - objc
-    @objc func pushToTest() {
-        target.push(toTarget: CSGeneralSubpage())
     }
     
 }
