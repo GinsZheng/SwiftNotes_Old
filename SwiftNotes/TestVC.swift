@@ -11,7 +11,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var collectionView: UICollectionView!
     
-    let dateSource = [
+    let dataSource = [
         ["title":"0 Swift","bgColor":cBlue_5393FF],
         ["title":"1 Xcode","bgColor":cPurple_BF62F8],
         ["title":"2 Java","bgColor":cMagenta_FC5AAE],
@@ -23,6 +23,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         ["title":"8 C# ","bgColor":cPurple_BF62F8],
         ["title":"9 C++","bgColor":cPurple_BF62F8],
     ]
+    
+    lazy var titles: [String] = dataSource.compactMap { $0["title"] }
     
     // MARK: - 生命周期方法
     
@@ -67,7 +69,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         bgView.setFrame(allEdges: 0)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
-        let buttonList = CSHorizonalScrollingButtonList(target: self, action: #selector(pushToTest), frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 48))
+        let buttonList = CSHorizonalScrollingButtonList(titles: titles, target: self, action: #selector(pushToTest), frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 48))
         buttonList.set(superview: bgView)
         buttonList.scrollView.showsHorizontalScrollIndicator = false
         buttonList.scrollView.contentSize.width += 48
@@ -80,7 +82,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         switchButton.set(superview: contentView, target: self, action: #selector(switchView))
         switchButton.setStyleIconButton(imageName: "groupBar_unfold")
         switchButton.setFrame(right: 12, centerY: contentView.height / 2, width: 28, height: 28)
-
         
     }
     
@@ -119,7 +120,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dateSource.count
+        return dataSource.count
     }
     
     // 设置点击事件
@@ -133,8 +134,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AutoLayoutCollectionViewCell2.self), for: indexPath) as! AutoLayoutCollectionViewCell2
         cell.delegate = self
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
-        let data = dateSource[indexPath.row]
-        cell.setData(title: data["title"] ?? "")
+        cell.setData(title: titles[indexPath.row])
         
         return cell
     }
@@ -144,9 +144,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func fetchTitleWidths() -> [CGFloat] {
         var titleWidths: [CGFloat] = []
-        for i in 0..<dateSource.count {
+        for i in 0..<dataSource.count {
             // ⚠️这里fontSize和weight要和下面的AutoLayoutCollectionViewCell2中的保持一致
-            let width = getLabelWidth(text: dateSource[i]["title"] ?? "", fontSize: 14, weight: .medium)
+            let width = getLabelWidth(text: dataSource[i]["title"] ?? "", fontSize: 14, weight: .medium)
             titleWidths.append(width)
         }
         
