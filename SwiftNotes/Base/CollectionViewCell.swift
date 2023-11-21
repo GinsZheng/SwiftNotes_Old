@@ -51,7 +51,7 @@ class AutoLayoutCollectionViewCell2: UICollectionViewCell {
     func setButton(title: String) {
         button.set(superview: contentView, target: target, action: #selector(pushToTest))
         button.setStyleSolidButton(title: title, titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
-        button.setFrame(left: 10, top: 10, width: 10, height: 28)
+        button.setFrame(left: 0, top: 10, width: 10, height: 28)
     }
     
     func resetWidth() {

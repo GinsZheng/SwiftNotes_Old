@@ -125,7 +125,6 @@ class CSHorizonalScrollingButtons: UIView {
     
     // MARK: - 代理方法
     @objc private func buttonTapped(_ button: UIButton) {
-        print("here", button.tag)
         delegate?.buttons(self, didSelectButtonAtIndex: button.tag)
     }
 

@@ -160,12 +160,11 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     
     weak var delegate: AutoLayoutCollectionViewLayoutDelegate?
     
-    // 初始化参数
     var titleOffset: CGFloat = 0
     var itemInterval: CGFloat = 0
     var itemHeight: CGFloat = 0
     
-    var contentHeight: CGFloat = 0
+    var contentHeight: CGFloat = 0 // 视图高度
     var itemCount = 0
     var titleWidths: [CGFloat] {
         return delegate?.fetchTitleWidths() ?? []
@@ -173,6 +172,10 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     
     var layoutAttributes: [UICollectionViewLayoutAttributes] = []
     
+    /// 初始化参数：
+    /// - titleOffset：标题两边的偏移之和
+    /// - itemInterval：两个单元格之前的间隔
+    /// - itemHeight：单元格高度
     init(titleOffset: CGFloat, itemInterval: CGFloat, itemHeight: CGFloat) {
         super.init()
         

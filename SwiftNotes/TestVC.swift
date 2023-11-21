@@ -3,7 +3,7 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AutoLayoutCollectionViewLayoutDelegate, AutoLayoutCollectionViewCellDelegate, HorizonalScrollingButtonsDelegate {
 
     
-    var currentUIForm: UIForm = .form0
+    var currentUIForm: UIForm = .form1
     
     // 输出参数
     let titleOffset: CGFloat = 24
@@ -17,7 +17,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         ["title":"1 Xcode","bgColor":cPurple_BF62F8],
         ["title":"2 Java","bgColor":cMagenta_FC5AAE],
         ["title":"3 PHP","bgColor":cRed_FF635A],
-        ["title":"4 JS","bgColor":cOrange_F9AD18],
+        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
         ["title":"5 Reac","bgColor":cGreen_25BE3C],
         ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
         ["title":"7 HTML","bgColor":cBlue_5393FF],
@@ -58,7 +58,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func setupForm0() {
+    func setupForm0() { // 单行
         view.removeAllSubviews()
         
         let contentView = UIView()
@@ -69,7 +69,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         bgView.set(superview: contentView, backgroundColor: cFFF)
         bgView.setFrame(allEdges: 0)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
-
+        
         let buttons = CSHorizonalScrollingButtons(titles: titles, delegate: self, target: self)
         buttons.set(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
@@ -87,19 +87,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    func setupForm1() {
+    func setupForm1() { // 折行
         view.removeAllSubviews()
+        
+//        let height =
         
         let contentView = UIView()
         contentView.set(superview: view)
-        contentView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 200)
+        contentView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 100)
         
         let bgView = UIView()
         bgView.set(superview: contentView, backgroundColor: cFFF)
         bgView.setFrame(allEdges: 0)
-        bgView.setCornerRadiusWithMask(radius: 10)
+        bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
-        let frame = CGRect(x: 0, y: 0, width: kScreenWidth - 40, height: kWithoutNavBarHeight)
+        let frame = CGRect(x: 10, y: 0, width: kScreenWidth - 20, height: kWithoutNavBarHeight)
         let layout = AutoLayoutCollectionViewLayout(titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight)
         layout.delegate = self
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
@@ -108,19 +110,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         let switchButtonBg = UIImageView()
         switchButtonBg.set(superview: contentView, imageName: "groupBar_gradientMask")
-        switchButtonBg.setFrame(right: 0, top: 0, width: 72, height: 48)
+        switchButtonBg.setFrame(right: 0, bottom: 0, width: 72, height: 48)
         
         let switchButton = UIButton(type: .custom)
         switchButton.set(superview: contentView, target: self, action: #selector(switchView))
         switchButton.setStyleIconButton(imageName: "groupBar_fold")
-        switchButton.setFrame(right: 12, top: 10, width: 28, height: 28)
+        switchButton.setFrame(right: 12, bottom: 10, width: 28, height: 28)
+        
+//        contentView.height = autolayoutcoview
+        // ⚠️下一步：写一个函数来获取CollectionView的高度 (同时超过10行时写一个上限值)
     }
     
     
     // MARK: - CSHorizonalScrollingButtons 代理方法
     
     func buttons(_ buttons: CSHorizonalScrollingButtons, didSelectButtonAtIndex index: Int) {
-        print("nope")
         self.push(toTarget: CSGeneralSubpage())
     }
     
