@@ -1,7 +1,8 @@
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AutoLayoutCollectionViewLayoutDelegate, AutoLayoutCollectionViewCellDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AutoLayoutCollectionViewLayoutDelegate, AutoLayoutCollectionViewCellDelegate, HorizonalScrollingButtonsDelegate {
 
+    
     var currentUIForm: UIForm = .form0
     
     // 输出参数
@@ -68,11 +69,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         bgView.set(superview: contentView, backgroundColor: cFFF)
         bgView.setFrame(allEdges: 0)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
-        
-        let buttonList = CSHorizonalScrollingButtonList(titles: titles, target: self, action: #selector(pushToTest), frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 48))
-        buttonList.set(superview: bgView)
-        buttonList.scrollView.showsHorizontalScrollIndicator = false
-        buttonList.scrollView.contentSize.width += 48
+
+        let buttons = CSHorizonalScrollingButtons(titles: titles, delegate: self, target: self)
+        buttons.set(superview: bgView)
+        buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
+        buttons.setupUI(showsHorizontalScrollIndicator: false)
+        buttons.scrollView.contentSize.width += 48
         
         let switchButtonBg = UIImageView()
         switchButtonBg.set(superview: contentView, imageName: "groupBar_gradientMask")
@@ -115,7 +117,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     
-    // MARK: - 代理方法
+    // MARK: - CSHorizonalScrollingButtons 代理方法
+    
+    func buttons(_ buttons: CSHorizonalScrollingButtons, didSelectButtonAtIndex index: Int) {
+        print("nope")
+        self.push(toTarget: CSGeneralSubpage())
+    }
+    
+    
     // MARK: - CollectionView 代理方法
     
     // 设置数量
