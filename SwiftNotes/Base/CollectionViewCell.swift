@@ -37,15 +37,8 @@ class AutoLayoutCollectionViewCell2: UICollectionViewCell {
     // MARK: - func
     
     func setData(title: String) {
-        setBg()
-//        setTitle(text: title)
         setButton(title: title)
         resetWidth()
-    }
-    
-    func setBg() {
-//        scrollView.set(superview: contentView, backgroundColor: cF0F1F3)
-//        scrollView.setFrame(left: 0, top: 0, width: kScreenWidth, height: 200)
     }
     
     func setButton(title: String) {
@@ -58,15 +51,6 @@ class AutoLayoutCollectionViewCell2: UICollectionViewCell {
         button.width = (button.titleLabel?.getLabelWidth() ?? 10) + titleOffset
     }
     
-//    func setTitle(text: String) {
-//        titleLabel.set(superview: imageView, text: text)
-//        titleLabel.setFontStyle(size: fontsize, color: cFFF, weight: weight, alignment: .center)
-//        titleLabel.setFrame(left: 10, centerY: imageView.centerY, width: titleLabel.getLabelWidth(), height: 20)
-//    }
-    
-//    func resetImageWidth() {
-//        imageView.width = titleLabel.getLabelWidth() + titleOffset
-//    }
     
     // MARK: - @objc func
     @objc func pushToTest() {

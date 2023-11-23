@@ -11,8 +11,89 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     let itemHeight: CGFloat = 40
     
     var collectionView: UICollectionView!
+    let bgView = UIView()
     
     let dataSource = [
+        ["title":"0 Swift","bgColor":cBlue_5393FF],
+        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
+        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
+        ["title":"3 PHP","bgColor":cRed_FF635A],
+        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
+        ["title":"5 Reac","bgColor":cGreen_25BE3C],
+        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
+        ["title":"7 HTML","bgColor":cBlue_5393FF],
+        ["title":"8 C# ","bgColor":cPurple_BF62F8],
+        ["title":"9 C++","bgColor":cPurple_BF62F8],
+        ["title":"0 Swift","bgColor":cBlue_5393FF],
+        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
+        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
+        ["title":"3 PHP","bgColor":cRed_FF635A],
+        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
+        ["title":"5 Reac","bgColor":cGreen_25BE3C],
+        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
+        ["title":"7 HTML","bgColor":cBlue_5393FF],
+        ["title":"8 C# ","bgColor":cPurple_BF62F8],
+        ["title":"9 C++","bgColor":cPurple_BF62F8],
+        ["title":"0 Swift","bgColor":cBlue_5393FF],
+        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
+        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
+        ["title":"3 PHP","bgColor":cRed_FF635A],
+        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
+        ["title":"5 Reac","bgColor":cGreen_25BE3C],
+        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
+        ["title":"7 HTML","bgColor":cBlue_5393FF],
+        ["title":"8 C# ","bgColor":cPurple_BF62F8],
+        ["title":"9 C++","bgColor":cPurple_BF62F8],
+        ["title":"0 Swift","bgColor":cBlue_5393FF],
+        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
+        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
+        ["title":"3 PHP","bgColor":cRed_FF635A],
+        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
+        ["title":"5 Reac","bgColor":cGreen_25BE3C],
+        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
+        ["title":"7 HTML","bgColor":cBlue_5393FF],
+        ["title":"8 C# ","bgColor":cPurple_BF62F8],
+        ["title":"9 C++","bgColor":cPurple_BF62F8],
+        ["title":"0 Swift","bgColor":cBlue_5393FF],
+        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
+        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
+        ["title":"3 PHP","bgColor":cRed_FF635A],
+        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
+        ["title":"5 Reac","bgColor":cGreen_25BE3C],
+        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
+        ["title":"7 HTML","bgColor":cBlue_5393FF],
+        ["title":"8 C# ","bgColor":cPurple_BF62F8],
+        ["title":"9 C++","bgColor":cPurple_BF62F8],
+        ["title":"0 Swift","bgColor":cBlue_5393FF],
+        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
+        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
+        ["title":"3 PHP","bgColor":cRed_FF635A],
+        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
+        ["title":"5 Reac","bgColor":cGreen_25BE3C],
+        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
+        ["title":"7 HTML","bgColor":cBlue_5393FF],
+        ["title":"8 C# ","bgColor":cPurple_BF62F8],
+        ["title":"9 C++","bgColor":cPurple_BF62F8],
+        ["title":"0 Swift","bgColor":cBlue_5393FF],
+        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
+        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
+        ["title":"3 PHP","bgColor":cRed_FF635A],
+        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
+        ["title":"5 Reac","bgColor":cGreen_25BE3C],
+        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
+        ["title":"7 HTML","bgColor":cBlue_5393FF],
+        ["title":"8 C# ","bgColor":cPurple_BF62F8],
+        ["title":"9 C++","bgColor":cPurple_BF62F8],
+        ["title":"0 Swift","bgColor":cBlue_5393FF],
+        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
+        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
+        ["title":"3 PHP","bgColor":cRed_FF635A],
+        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
+        ["title":"5 Reac","bgColor":cGreen_25BE3C],
+        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
+        ["title":"7 HTML","bgColor":cBlue_5393FF],
+        ["title":"8 C# ","bgColor":cPurple_BF62F8],
+        ["title":"9 C++","bgColor":cPurple_BF62F8],
         ["title":"0 Swift","bgColor":cBlue_5393FF],
         ["title":"1 Xcode","bgColor":cPurple_BF62F8],
         ["title":"2 Java","bgColor":cMagenta_FC5AAE],
@@ -59,15 +140,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func setupForm0() { // 单行
-        view.removeAllSubviews()
-        
-        let contentView = UIView()
-        contentView.set(superview: view)
-        contentView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
-
-        let bgView = UIView()
-        bgView.set(superview: contentView, backgroundColor: cFFF)
-        bgView.setFrame(allEdges: 0)
+        bgView.removeAllSubviews()
+        bgView.set(superview: view, backgroundColor: cFFF)
+        bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
         let buttons = CSHorizonalScrollingButtons(titles: titles, delegate: self, target: self)
@@ -77,28 +152,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         buttons.scrollView.contentSize.width += 48
         
         let switchButtonBg = UIImageView()
-        switchButtonBg.set(superview: contentView, imageName: "groupBar_gradientMask")
+        switchButtonBg.set(superview: bgView, imageName: "groupBar_gradientMask")
         switchButtonBg.setFrame(right: 0, top: 0, width: 72, height: 48)
         
         let switchButton = UIButton(type: .custom)
-        switchButton.set(superview: contentView, target: self, action: #selector(switchView))
+        switchButton.set(superview: bgView, target: self, action: #selector(switchView))
         switchButton.setStyleIconButton(imageName: "groupBar_unfold")
-        switchButton.setFrame(right: 12, centerY: contentView.height / 2, width: 28, height: 28)
+        switchButton.setFrame(right: 12, centerY: bgView.height / 2, width: 28, height: 28)
         
     }
     
     func setupForm1() { // 折行
-        view.removeAllSubviews()
-        
-//        let height =
-        
-        let contentView = UIView()
-        contentView.set(superview: view)
-        contentView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 100)
-        
-        let bgView = UIView()
-        bgView.set(superview: contentView, backgroundColor: cFFF)
-        bgView.setFrame(allEdges: 0)
+        bgView.removeAllSubviews()
+        bgView.set(superview: view, backgroundColor: cFFF)
+        bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 100)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
         let frame = CGRect(x: 10, y: 0, width: kScreenWidth - 20, height: kWithoutNavBarHeight)
@@ -107,18 +174,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(AutoLayoutCollectionViewCell2.self, forCellWithReuseIdentifier: String(describing: AutoLayoutCollectionViewCell2.self))
         collectionView.set(superview: bgView, delegate: self, dataSource: self, viewController: self)
-        
-        let switchButtonBg = UIImageView()
-        switchButtonBg.set(superview: contentView, imageName: "groupBar_gradientMask")
-        switchButtonBg.setFrame(right: 0, bottom: 0, width: 72, height: 48)
-        
-        let switchButton = UIButton(type: .custom)
-        switchButton.set(superview: contentView, target: self, action: #selector(switchView))
-        switchButton.setStyleIconButton(imageName: "groupBar_fold")
-        switchButton.setFrame(right: 12, bottom: 10, width: 28, height: 28)
-        
-//        contentView.height = autolayoutcoview
-        // ⚠️下一步：写一个函数来获取CollectionView的高度 (同时超过10行时写一个上限值)
+        collectionView.setBackgroundColor(color: cRed_FF635A)
     }
     
     
@@ -148,6 +204,46 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.delegate = self
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
         cell.setData(title: titles[indexPath.row])
+        
+        // 设置CollectionView内容的高度
+        if indexPath.row == dataSource.count - 1 {
+            let collectionMaxHeight: CGFloat = 4 + 440 - 6 - 6 // 10.5行 (4:顶部多出4pt，440: 11行高度，6:按钮外边距，6:刻意隐藏)
+            // CollectionView如果超过10.5行，高度就设为最大值，否则就设为实际行高
+//            let collectionViewHeight = kCollectionViewContentHeight > collectionMaxHeight ? collectionMaxHeight :
+            print("kCollectionViewContentHeight", kCollectionViewContentHeight)
+            let realCollectionViewContentHeight = kCollectionViewContentHeight + 8
+            let collectionViewHeight = kCollectionViewContentHeight > collectionMaxHeight ? collectionMaxHeight : realCollectionViewContentHeight
+            let bgViewHeight = collectionViewHeight + 48
+//            collectionView.height = kCollectionViewContentHeight
+
+            collectionView.setFrame(left: 10, top: 0, right: 10, height: collectionViewHeight)
+            bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: bgViewHeight)
+            bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
+            
+            let bottomLineBg = UIView()
+            bottomLineBg.set(superview: bgView, backgroundColor: cFFF)
+            bottomLineBg.setFrame(left: 0, bottom: 0, right: 0, height: 48)
+            
+            let trashButton = UIButton(type: .custom)
+            trashButton.set(superview: bgView, target: self, action: #selector(pushToTest))
+            trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
+            trashButton.setFrame(left: 10, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
+            
+            let switchButtonBg = UIImageView()
+            switchButtonBg.set(superview: bgView, imageName: "groupBar_gradientMask")
+            switchButtonBg.setFrame(right: 0, bottom: 0, width: 72, height: 48)
+            
+            let switchButton = UIButton(type: .custom)
+            switchButton.set(superview: bgView, target: self, action: #selector(switchView))
+            switchButton.setStyleIconButton(imageName: "groupBar_fold")
+            switchButton.setFrame(right: 12, bottom: 10, width: 28, height: 28)
+            
+            let settingButton = UIButton(type: .custom)
+            settingButton.set(superview: bgView, target: self, action: #selector(pushToTest))
+            settingButton.setStyleIconButton(imageName: "home_settings")
+            settingButton.setFrame(right: 57, bottom: 10, width: 28, height: 28)
+            
+        }
         
         return cell
     }
