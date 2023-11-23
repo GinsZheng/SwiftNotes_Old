@@ -60,7 +60,9 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
     
     // 设置 cell 逻辑
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: EgCollectionViewCell.self), for: indexPath) as! EgCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: EgCollectionViewCell.self), for: indexPath) as? EgCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         // 把UI逻辑放在自定义的 EgCollectionViewCell，把数据放在此
         let data = dateSource[indexPath.row]
         cell.titleLabel.setText(text: data["title"] ?? "")

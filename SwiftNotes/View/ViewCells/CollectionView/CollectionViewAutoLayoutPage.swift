@@ -10,14 +10,14 @@ import UIKit
 
 class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AutoLayoutCollectionViewLayoutDelegate, AutoLayoutCollectionViewCellDelegate {
     
-    // 输出参数
+    // 输入参数
     let titleOffset: CGFloat = 20
     let itemInterval: CGFloat = 6
     let itemHeight: CGFloat = 66
     
     var collectionView: UICollectionView!
     
-    let dateSource = [
+    let dataSource = [
         ["title":"0 Swift","bgColor":cBlue_5393FF],
         ["title":"1 Xcode","bgColor":cPurple_BF62F8],
         ["title":"2 Java","bgColor":cMagenta_FC5AAE],
@@ -35,7 +35,6 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -57,7 +56,7 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dateSource.count
+        return dataSource.count
     }
     
     // 设置点击事件
@@ -68,10 +67,12 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     
     // 设置 cell 逻辑
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AutoLayoutCollectionViewCell.self), for: indexPath) as! AutoLayoutCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AutoLayoutCollectionViewCell.self), for: indexPath) as? AutoLayoutCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         cell.delegate = self
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
-        let data = dateSource[indexPath.row]
+        let data = dataSource[indexPath.row]
         cell.setData(title: data["title"] ?? "", color: data["bgColor"] ?? "")
         
         return cell
@@ -82,9 +83,9 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     
     func fetchTitleWidths() -> [CGFloat] {
         var titleWidths: [CGFloat] = []
-        for i in 0..<dateSource.count {
+        for i in 0..<dataSource.count {
             // ⚠️这里fontSize和weight要和下面的AutoLayoutCollectionViewCell中的保持一致
-            let width = getLabelWidth(text: dateSource[i]["title"] ?? "", fontSize: 17, weight: .medium)
+            let width = getLabelWidth(text: dataSource[i]["title"] ?? "", fontSize: 17, weight: .medium)
             titleWidths.append(width)
         }
         
@@ -105,7 +106,7 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
 
 class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
-    // 输出参数(用于代理传递信息)
+    // 输入参数(用于代理传递信息)
     let fontsize: CGFloat = 17
     let weight: UIFont.Weight = .medium
     

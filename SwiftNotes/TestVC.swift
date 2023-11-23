@@ -54,56 +54,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         ["title":"7 HTML","bgColor":cBlue_5393FF],
         ["title":"8 C# ","bgColor":cPurple_BF62F8],
         ["title":"9 C++","bgColor":cPurple_BF62F8],
-        ["title":"0 Swift","bgColor":cBlue_5393FF],
-        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
-        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
-        ["title":"3 PHP","bgColor":cRed_FF635A],
-        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
-        ["title":"5 Reac","bgColor":cGreen_25BE3C],
-        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
-        ["title":"7 HTML","bgColor":cBlue_5393FF],
-        ["title":"8 C# ","bgColor":cPurple_BF62F8],
-        ["title":"9 C++","bgColor":cPurple_BF62F8],
-        ["title":"0 Swift","bgColor":cBlue_5393FF],
-        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
-        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
-        ["title":"3 PHP","bgColor":cRed_FF635A],
-        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
-        ["title":"5 Reac","bgColor":cGreen_25BE3C],
-        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
-        ["title":"7 HTML","bgColor":cBlue_5393FF],
-        ["title":"8 C# ","bgColor":cPurple_BF62F8],
-        ["title":"9 C++","bgColor":cPurple_BF62F8],
-        ["title":"0 Swift","bgColor":cBlue_5393FF],
-        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
-        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
-        ["title":"3 PHP","bgColor":cRed_FF635A],
-        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
-        ["title":"5 Reac","bgColor":cGreen_25BE3C],
-        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
-        ["title":"7 HTML","bgColor":cBlue_5393FF],
-        ["title":"8 C# ","bgColor":cPurple_BF62F8],
-        ["title":"9 C++","bgColor":cPurple_BF62F8],
-        ["title":"0 Swift","bgColor":cBlue_5393FF],
-        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
-        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
-        ["title":"3 PHP","bgColor":cRed_FF635A],
-        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
-        ["title":"5 Reac","bgColor":cGreen_25BE3C],
-        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
-        ["title":"7 HTML","bgColor":cBlue_5393FF],
-        ["title":"8 C# ","bgColor":cPurple_BF62F8],
-        ["title":"9 C++","bgColor":cPurple_BF62F8],
-        ["title":"0 Swift","bgColor":cBlue_5393FF],
-        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
-        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
-        ["title":"3 PHP","bgColor":cRed_FF635A],
-        ["title":"4 JIIIIII","bgColor":cOrange_F9AD18],
-        ["title":"5 Reac","bgColor":cGreen_25BE3C],
-        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
-        ["title":"7 HTML","bgColor":cBlue_5393FF],
-        ["title":"8 C# ","bgColor":cPurple_BF62F8],
-        ["title":"9 C++","bgColor":cPurple_BF62F8],
+        
     ]
     
     lazy var titles: [String] = dataSource.compactMap { $0["title"] }
@@ -174,7 +125,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(AutoLayoutCollectionViewCell2.self, forCellWithReuseIdentifier: String(describing: AutoLayoutCollectionViewCell2.self))
         collectionView.set(superview: bgView, delegate: self, dataSource: self, viewController: self)
-        collectionView.setBackgroundColor(color: cRed_FF635A)
+//        collectionView.setBackgroundColor(color: cRed_FF635A)
     }
     
     
@@ -209,12 +160,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if indexPath.row == dataSource.count - 1 {
             let collectionMaxHeight: CGFloat = 4 + 440 - 6 - 6 // 10.5行 (4:顶部多出4pt，440: 11行高度，6:按钮外边距，6:刻意隐藏)
             // CollectionView如果超过10.5行，高度就设为最大值，否则就设为实际行高
-//            let collectionViewHeight = kCollectionViewContentHeight > collectionMaxHeight ? collectionMaxHeight :
             print("kCollectionViewContentHeight", kCollectionViewContentHeight)
-            let realCollectionViewContentHeight = kCollectionViewContentHeight + 8
-            let collectionViewHeight = kCollectionViewContentHeight > collectionMaxHeight ? collectionMaxHeight : realCollectionViewContentHeight
+            let collectionViewHeight = kCollectionViewContentHeight > collectionMaxHeight ? collectionMaxHeight : kCollectionViewContentHeight
             let bgViewHeight = collectionViewHeight + 48
-//            collectionView.height = kCollectionViewContentHeight
 
             collectionView.setFrame(left: 10, top: 0, right: 10, height: collectionViewHeight)
             bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: bgViewHeight)
@@ -225,21 +173,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             bottomLineBg.setFrame(left: 0, bottom: 0, right: 0, height: 48)
             
             let trashButton = UIButton(type: .custom)
-            trashButton.set(superview: bgView, target: self, action: #selector(pushToTest))
+            trashButton.set(superview: bottomLineBg, target: self, action: #selector(pushToTest))
             trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
             trashButton.setFrame(left: 10, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
             
             let switchButtonBg = UIImageView()
-            switchButtonBg.set(superview: bgView, imageName: "groupBar_gradientMask")
+            switchButtonBg.set(superview: bottomLineBg, imageName: "groupBar_gradientMask")
             switchButtonBg.setFrame(right: 0, bottom: 0, width: 72, height: 48)
             
             let switchButton = UIButton(type: .custom)
-            switchButton.set(superview: bgView, target: self, action: #selector(switchView))
+            switchButton.set(superview: bottomLineBg, target: self, action: #selector(switchView))
             switchButton.setStyleIconButton(imageName: "groupBar_fold")
             switchButton.setFrame(right: 12, bottom: 10, width: 28, height: 28)
             
             let settingButton = UIButton(type: .custom)
-            settingButton.set(superview: bgView, target: self, action: #selector(pushToTest))
+            settingButton.set(superview: bottomLineBg, target: self, action: #selector(pushToTest))
             settingButton.setStyleIconButton(imageName: "home_settings")
             settingButton.setFrame(right: 57, bottom: 10, width: 28, height: 28)
             
