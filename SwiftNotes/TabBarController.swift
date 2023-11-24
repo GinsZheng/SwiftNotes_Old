@@ -13,18 +13,20 @@ class TabBarController {
 
     static func getTabBar() -> ESTabBarController {
         
-        let selectedIndex = 3
+        let selectedIndex = 4
         
         let tabBarController = ESTabBarController()
         let v1 = ViewListVC()
         let v2 = CSControllerListVC()
         let v3 = CSModelListVC()
         let v4 = ViewController()
+        let v5 = TestVCListPage()
         
         v1.tabBarItem = ESTabBarItem.init(title: "View", image: UIImage(named: "tab_discovery"), selectedImage: UIImage(named: "tab_discovery_s"))
         v2.tabBarItem = ESTabBarItem.init(title: "Controller", image: UIImage(named: "tab_saved"), selectedImage: UIImage(named: "tab_saved_s"))
         v3.tabBarItem = ESTabBarItem.init(title: "Model", image: UIImage(named: "tab_tickets"), selectedImage: UIImage(named: "tab_tickets_s"))
         v4.tabBarItem = ESTabBarItem.init(title: "Test", image: UIImage(named: "tab_mine"), selectedImage: UIImage(named: "tab_mine_s"))
+        v5.tabBarItem = ESTabBarItem.init(title: "TestList", image: UIImage(named: "tab_tickets"), selectedImage: UIImage(named: "tab_service"))
         
         // tabBarController.tabBar.shadowImage = nil
         
@@ -32,8 +34,9 @@ class TabBarController {
         let v2Nav = CSRootNavController(rootViewController: v2)
         let v3Nav = CSRootNavController(rootViewController: v3)
         let v4Nav = CSRootNavController(rootViewController: v4)
+        let v5Nav = CSRootNavController(rootViewController: v5)
         
-        tabBarController.viewControllers = [v1Nav, v2Nav, v3Nav, v4Nav]
+        tabBarController.viewControllers = [v1Nav, v2Nav, v3Nav, v4Nav, v5Nav]
         // tabBarController.tabBar.barTintColor = .hex(cFFF)
         // tabBarController.tabBar.isTranslucent = false
         // tabBarController.tabBar.shadowImage = getImageWithColor(color: cF5F6F8)
