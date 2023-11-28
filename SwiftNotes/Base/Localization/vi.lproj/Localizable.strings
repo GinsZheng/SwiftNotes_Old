@@ -20,3 +20,5 @@
 "完成" = "Hoàn thành";
 "全部" = "Tất cả";
 "已完成" = "Xong";
+"定时播报  %@个时间点" = "Phát sóng theo lịch trình tại %@ điểm thời gian";
+"定时播报  %@ %@" = "Phát sóng theo lịch trình %@ %@";

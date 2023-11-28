@@ -20,3 +20,5 @@
 "完成" = "Complété";
 "全部" = "Tous";
 "已完成" = "Fait";
+"定时播报  %@个时间点" = "Diffusion planifiée à% @ temps de temps";
+"定时播报  %@ %@" = "Diffusion planifiée% @% @";

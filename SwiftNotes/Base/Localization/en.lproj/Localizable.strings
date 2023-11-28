@@ -20,3 +20,5 @@
 "完成" = "Completed";
 "全部" = "All";
 "已完成" = "Done";
+"定时播报  %@个时间点" = "Scheduled Broadcast at %@ Time Points";
+"定时播报  %@ %@" = "Scheduled Broadcast %@ %@";

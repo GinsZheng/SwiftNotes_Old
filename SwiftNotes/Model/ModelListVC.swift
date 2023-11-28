@@ -21,6 +21,7 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         ("Enum", CSEnumPage()),
         ("Int", CSIntPage()),
         ("Item Model (Basic)", CSItemSearchPage()),
+        ("Localization", LocalizationPage()),
         ("plist", CSPlistPage()),
         ("Private", PrivatePage()),
         ("Progress Model (Joined)", CSProgressSearchPage()),

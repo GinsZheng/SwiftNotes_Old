@@ -1,15 +1,15 @@
 //
-//  Test1VC.swift
+//  Localization.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2023/11/24.
+//  Created by GinsMac on 2023/11/27.
 //  Copyright © 2023 GinsMac. All rights reserved.
 //
 
 import UIKit
 import Localize_Swift
 
-class Test1VC: UIViewController {
+class LocalizationPage: UIViewController {
     
     // MARK: - 生命周期方法
     

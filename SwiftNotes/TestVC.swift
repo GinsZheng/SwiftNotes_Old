@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AutoLayoutCollectionViewLayoutDelegate, AutoLayoutCollectionViewCellDelegate, HorizonalScrollingButtonsDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AutoLayoutCollectionViewLayoutDelegate, AutoLayoutCollectionViewCellDelegate, HorizonalScrollingGroupButtonsDelegate {
 
     
     var currentUIForm: UIForm = .form1
@@ -96,7 +96,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
-        let buttons = CSHorizonalScrollingButtons(titles: titles, delegate: self, target: self)
+        let buttons = CSHorizonalScrollingGroupButtons(titles: titles, delegate: self, target: self)
         buttons.set(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupUI(showsHorizontalScrollIndicator: false)
@@ -125,13 +125,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(AutoLayoutCollectionViewCell2.self, forCellWithReuseIdentifier: String(describing: AutoLayoutCollectionViewCell2.self))
         collectionView.set(superview: bgView, delegate: self, dataSource: self, viewController: self)
-//        collectionView.setBackgroundColor(color: cRed_FF635A)
     }
     
     
-    // MARK: - CSHorizonalScrollingButtons 代理方法
+    // MARK: - CSHorizonalScrollingGroupButtons 代理方法
     
-    func buttons(_ buttons: CSHorizonalScrollingButtons, didSelectButtonAtIndex index: Int) {
+    func buttons(_ buttons: CSHorizonalScrollingGroupButtons, didSelectButtonAtIndex index: Int) {
         self.push(toTarget: CSGeneralSubpage())
     }
     
@@ -232,8 +231,85 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 }
 
 
-//class SwitchFormView: UIView {
-//    
-//    var currentUIForm: UIForm = .form0
-//    
-//}
+// MARK: - 用于代理横向滑动的按钮列表的点击事件
+protocol HorizonalScrollingGroupButtonsDelegate: AnyObject {
+    func buttons(_ buttons: CSHorizonalScrollingGroupButtons, didSelectButtonAtIndex index: Int)
+}
+
+class CSHorizonalScrollingGroupButtons: UIView {
+    let scrollView = UIScrollView()
+    var buttons: [UIButton] = []
+    
+    var titles: [String]
+    var target: UIViewController
+    var forEvent: UIControl.Event
+    
+    weak var delegate: HorizonalScrollingGroupButtonsDelegate?
+    
+    /// - 参数:
+    ///   - titles: 每个按钮的标题
+    ///   - target: 填self。用于处理scrollView侧滑冲突
+    ///   - forEvent: 触发事件，默认为 touchUpInside
+    ///   - delegate: 填self。为指定 HorizonalScrollingGroupButtonsDelegate 的代理
+    init(titles: [String], delegate: HorizonalScrollingGroupButtonsDelegate, target: UIViewController, forEvent: UIControl.Event = .touchUpInside) {
+        self.titles = titles
+        self.target = target
+        self.forEvent = forEvent
+        self.delegate = delegate
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - func
+    
+    func setupUI(showsHorizontalScrollIndicator: Bool) {
+        setupScrollView(showsHorizontalScrollIndicator: showsHorizontalScrollIndicator)
+        createButtons()
+    }
+    
+    func setupScrollView(showsHorizontalScrollIndicator: Bool) {
+        scrollView.set(superview: self)
+        scrollView.setFrame(allEdges: 0)
+        scrollView.OptimizeEdgePanGesture(of: target)
+        scrollView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator
+    }
+    
+    func createButtons() {
+        
+        var buttonLeft: CGFloat = 10 // 用于记录下一个按钮的左边界位置
+        
+        for (i, title) in titles.enumerated() {
+            let button = UIButton(type: .custom)
+            button.tag = i // 用于标识是哪个button，以便在代理中赋值给didSelectButtonAtIndex，实现按不同按钮响应不同操作
+            button.set(superview: scrollView, target: self, action: #selector(buttonTapped), forEvent: forEvent)
+            button.setStyleSolidButton(title: title, titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
+            
+            // 计算按钮frame的参数
+            let labelWidth = button.titleLabel?.getLabelWidth() ?? 0
+            let buttonWidth = labelWidth + 24
+            let buttonHeight: CGFloat = 28
+            let buttonCenterY = scrollView.centerY
+            // 设置按钮的frame
+            button.setFrame(left: buttonLeft, centerY: buttonCenterY, width: buttonWidth, height: buttonHeight)
+            
+            // 更新buttonLeft以便下一个按钮使用
+            buttonLeft = button.right + 6
+            
+            buttons.append(button)
+        }
+        
+        // ⚠️接下来，把后面几个按钮也写上
+        
+        scrollView.contentSize = CGSize(width: buttonLeft + 4, height: 48)
+    }
+    
+    // MARK: - 代理方法
+    @objc private func buttonTapped(_ button: UIButton) {
+        delegate?.buttons(self, didSelectButtonAtIndex: button.tag)
+    }
+
+}
+

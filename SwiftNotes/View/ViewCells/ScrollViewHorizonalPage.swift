@@ -50,10 +50,6 @@ class ScrollViewHorizonalPage: UIViewController, HorizonalScrollingButtonsDelega
 
 // MARK: - scrollView 横滑按钮列表View
 
-// 用于代理按钮们的点击事件
-protocol HorizonalScrollingButtonsDelegate: AnyObject {
-    func buttons(_ buttons: CSHorizonalScrollingButtons, didSelectButtonAtIndex index: Int)
-}
 
 class CSHorizonalScrollingButtons: UIView {
     let scrollView = UIScrollView()

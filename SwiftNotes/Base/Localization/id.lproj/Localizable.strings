@@ -20,3 +20,5 @@
 "完成" = "Lengkap";
 "全部" = "Semua";
 "已完成" = "Selesai";
+"定时播报  %@个时间点" = "Broadcast yang dijadwalkan pada %@ poin waktu";
+"定时播报  %@ %@" = "Terjadwal siaran %@ %@";

@@ -20,3 +20,5 @@
 "完成" = "Tamamlanmış";
 "全部" = "Tüm";
 "已完成" = "Tamamlamak";
+"定时播报  %@个时间点" = "%@ Zaman noktalarında planlanan yayın";
+"定时播报  %@ %@" = "Zamanlanmış yayın %@ %@";
