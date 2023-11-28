@@ -25,10 +25,20 @@ class LocalizationPage: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
-        let label = UILabel()
-        label.set(superview: view, text: "已完成".localized())
-        label.setStyle17pt222()
-        label.setFrame(left: 20, top: 100, right: 20, height: 40)
+        // 固定文案
+        let fixText = "已完成".localized()
+        print(fixText)
+        
+        // 带1个变量文案
+        let timeCount = 3
+        let oneVarText = "定时播报  %@个时间点".localizedFormat(String(timeCount))
+        print(oneVarText)
+        
+        // 带多个变量文案(按顺序写)
+        let time = "18:00"
+        let repeatDays = "工作日"
+        let multiVarText = "定时播报  %@ %@".localizedFormat(time, repeatDays)
+        print(multiVarText)
     }
     
     

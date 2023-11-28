@@ -1,7 +1,7 @@
 "开启视频通话后设备将暂时关闭休眠" = "O dispositivo desativará temporariamente o modo de suspensão durante as chamadas de vídeo";
 "视频通话结束后将自动恢复休眠" = "O dispositivo retomará automaticamente o modo de suspensão após o término da chamada";
-"麦克风已开" = "Microfone está ligado";
-"麦克风已关" = "Microfone está desligado";
+"定时播报  %@个时间点" = "Transmissão programada em %@ horário";
+"定时播报  %@ %@" = "Broadcast agendado %@ %@";
 "任务" = "Tarefa";
 "日历" = "Calendário";
 "统计" = "Estatisticas";
@@ -20,5 +20,3 @@
 "完成" = "Concluído";
 "全部" = "Todos";
 "已完成" = "Feito";
-"定时播报  %@个时间点" = "Transmissão programada em %@ horário";
-"定时播报  %@ %@" = "Broadcast agendado %@ %@";

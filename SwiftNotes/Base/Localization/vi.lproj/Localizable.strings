@@ -1,7 +1,7 @@
 "开启视频通话后设备将暂时关闭休眠" = "Thiết bị sẽ tạm thời vô hiệu hóa chế độ ngủ trong các cuộc gọi video";
 "视频通话结束后将自动恢复休眠" = "Thiết bị sẽ tự động tiếp tục chế độ ngủ sau khi cuộc gọi video kết thúc";
-"麦克风已开" = "Micro là BẬT";
-"麦克风已关" = "Micro bị tắt";
+"定时播报  %@个时间点" = "Phát sóng theo lịch trình tại %@ điểm thời gian";
+"定时播报  %@ %@" = "Phát sóng theo lịch trình %@ %@";
 "任务" = "Nhiệm vụ";
 "日历" = "Lịch";
 "统计" = "Số liệu thống kê";
@@ -20,5 +20,3 @@
 "完成" = "Hoàn thành";
 "全部" = "Tất cả";
 "已完成" = "Xong";
-"定时播报  %@个时间点" = "Phát sóng theo lịch trình tại %@ điểm thời gian";
-"定时播报  %@ %@" = "Phát sóng theo lịch trình %@ %@";

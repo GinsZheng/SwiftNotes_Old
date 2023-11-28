@@ -1,7 +1,7 @@
 "开启视频通话后设备将暂时关闭休眠" = "Video görüşmeleri sırasında cihaz uyku modunu geçici olarak devre dışı bırakacaktır";
 "视频通话结束后将自动恢复休眠" = "Video görüşmesi bittikten sonra cihaz otomatik olarak uyku moduna devam edecek";
-"麦克风已开" = "Mikrofon açık";
-"麦克风已关" = "Mikrofon kapalı";
+"定时播报  %@个时间点" = "%@ Zaman noktalarında planlanan yayın";
+"定时播报  %@ %@" = "Zamanlanmış yayın %@ %@";
 "任务" = "Görev";
 "日历" = "Takvim";
 "统计" = "İstatistik";
@@ -20,5 +20,3 @@
 "完成" = "Tamamlanmış";
 "全部" = "Tüm";
 "已完成" = "Tamamlamak";
-"定时播报  %@个时间点" = "%@ Zaman noktalarında planlanan yayın";
-"定时播报  %@ %@" = "Zamanlanmış yayın %@ %@";
