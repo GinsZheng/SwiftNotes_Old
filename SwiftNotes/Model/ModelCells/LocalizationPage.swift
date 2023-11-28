@@ -39,6 +39,13 @@ class LocalizationPage: UIViewController {
         let repeatDays = "工作日"
         let multiVarText = "定时播报  %@ %@".localizedFormat(time, repeatDays)
         print(multiVarText)
+        
+        /*
+         注：
+         1. 如果key输入错误，会直接返回key作为字符串
+         2. 如果值类型错误，会崩溃(危险)，我的做法是所有文案都输出为⌜%@⌟，在localizedFormat中转化为String(好处有2：1. 简化翻译文档的输入和查找 2. 如果出错，不必去改翻译文档，直接在代码中改，比较高效)
+         */
+        
     }
     
     
