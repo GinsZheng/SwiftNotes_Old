@@ -43,7 +43,7 @@ class ButtonPage: UIViewController {
         
         let WordBgButton = UIButton(type: .custom)
         WordBgButton.set(superview: view, target: self, action: #selector(changeSetting))
-        WordBgButton.setStyleSolid17ptWhiteThemeButton(title: "文字&背景")
+        WordBgButton.setStyleSolid17ptFgWhiteThemeButton(title: "文字&背景")
         WordBgButton.setFrame(left: 20, top: IconButton.bottom + 20, right: 20, height: 44)
         
         let ghostButton = UIButton(type: .custom)
@@ -71,11 +71,11 @@ class ButtonPage: UIViewController {
 //        
 //        let AButton = UIButton(type: .custom)
 //        AButton.set(superview: vv, target: self, action: #selector(changeSetting))
-//        AButton.setStyleSolid17ptWhiteThemeButton(title: "Here")
+//        AButton.setStyleSolid17ptFgWhiteThemeButton(title: "Here")
 //        AButton.setFrame(left: 5, bottom: 5, right: 5, height: 44)
 //        let bButton = UIButton(type: .custom)
 //        bButton.set(superview: view, target: self, action: #selector(changeSetting))
-//        bButton.setStyleSolid17ptWhiteThemeButton(title: "Here")
+//        bButton.setStyleSolid17ptFgWhiteThemeButton(title: "Here")
 //        bButton.setFrame(left: 5, bottom: 5, right: 5, height: 44)
 //
 //        // view的高度是全屏高，但view的y值的0点却是导航栏底边

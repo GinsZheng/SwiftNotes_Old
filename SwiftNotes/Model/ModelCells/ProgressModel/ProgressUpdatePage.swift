@@ -67,7 +67,7 @@ class CSProgressUpdatePage: UIViewController, UITextFieldDelegate {
         itemIdTextField.setFrame(left: 20, top: endTimeTextField.bottom + 20, right: 20, height: 48)
         
         updateButton.set(superview: view, target: self, action: #selector(updateProgress))
-        updateButton.setStyleSolid17ptWhiteThemeButton(title: "update")
+        updateButton.setStyleSolid17ptFgWhiteThemeButton(title: "update")
         updateButton.setFrame(left: 20, top: itemIdTextField.bottom + 20, right: 20, height: 48)
         
         // 删除

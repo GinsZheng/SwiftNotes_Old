@@ -59,7 +59,7 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
         colorTextField.setFrame(left: 20, top: totalProgressTextField.bottom + 20, right: 20, height: 48)
         
         addingButton.set(superview: view, target: self, action: #selector(addItem))
-        addingButton.setStyleSolid17ptWhiteThemeButton(title: "Insert")
+        addingButton.setStyleSolid17ptFgWhiteThemeButton(title: "Insert")
         addingButton.setFrame(left: 20, top: colorTextField.bottom + 20, right: 20, height: 48)
     }
     

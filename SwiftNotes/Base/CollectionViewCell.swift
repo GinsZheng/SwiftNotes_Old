@@ -43,7 +43,7 @@ class AutoLayoutCollectionViewCell2: UICollectionViewCell {
     
     func setButton(title: String) {
         button.set(superview: contentView, target: target, action: #selector(pushToTest))
-        button.setStyleSolidButton(title: title, titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
+        button.setStyleSolid14pt666LightGrayRoundedButton(title: title)
         button.setFrame(left: 0, top: 10, width: 10, height: 28)
     }
     
@@ -60,30 +60,3 @@ class AutoLayoutCollectionViewCell2: UICollectionViewCell {
     
 }
 
-//
-//var frameRight: CGFloat = 0
-//
-//for (i, title) in buttonTitles.enumerated() {
-//    let button = UIButton(type: .custom)
-//    button.set(superview: scrollView, target: target, action: #selector(pushToTest))
-//    button.setTitle(title, for: .normal)
-//    button.setTitleColor(.hex(c666), for: .normal)
-//    button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
-//    button.setBackgroundColor(color: cF0F1F3)
-//    button.setCornerRadiusWithMask(radius: 14)
-//    button.setBackgroundImage(getImageWithColor(color: cDDDEE0), for: .highlighted)
-//    
-//
-//    let labelWidth = button.titleLabel?.getLabelWidth() ?? 0
-//    if i == 0 {
-//        button.setFrame(left: 10, centerY: scrollView.centerY, width: labelWidth + 24, height: 28)
-//    } else {
-//        button.setFrame(left: frameRight, centerY: scrollView.centerY, width: labelWidth + 24, height: 28)
-//    }
-//    
-//    frameRight = button.right + 6
-//    
-//    buttons.append(button)
-//}
-//
-//scrollView.contentSize = CGSize(width: frameRight + 4, height: 48)

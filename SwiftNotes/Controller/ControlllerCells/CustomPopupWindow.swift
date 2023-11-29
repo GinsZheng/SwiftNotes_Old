@@ -27,7 +27,7 @@ class CSCustomPopupWindowPage: UIViewController {
         view.backgroundColor = .white
         
         btn.set(superview: view, target: self, action: #selector(popup))
-        btn.setStyleSolid17ptWhiteThemeButton(title: "添加")
+        btn.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
         btn.setFrame(left: 20, top: 100, right: 20, height: 48)
     }
     
@@ -92,7 +92,7 @@ class CSCustomPopupWindow: UIViewController {
         messageLabel.setFrame(centerX: titleLabel.centerX, top: titleLabel.bottom + 8)
         
         addingButton.set(superview: bgView, target: self, action: #selector(confirm))
-        addingButton.setStyleSolid17ptWhiteThemeButton(title: "添加")
+        addingButton.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
         addingButton.setFrame(left: 20, top: messageLabel.bottom + 16, right: 20, height: 48)
         
         cancelButton.set(superview: bgView, target: self, action: #selector(cancel))

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Localize_Swift
 
 class Test1VC: UIViewController {
     
@@ -25,10 +24,11 @@ class Test1VC: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
-        let label = UILabel()
-        label.set(superview: view, text: "已完成".localized())
-        label.setStyle17pt222()
-        label.setFrame(left: 20, top: 100, right: 20, height: 40)
+        let customView = CustomView()
+        customView.fetchDataClosure = {
+            // 这里返回需要传递给CustomView的数据
+            return "这里是需要的数据"
+        }
     }
     
     
@@ -45,3 +45,13 @@ class Test1VC: UIViewController {
 }
 
 
+class CustomView: UIView {
+    // 定义一个闭包类型的属性，它返回一个字符串数据
+    var fetchDataClosure: (() -> String)?
+    
+    func updateData() {
+        // 在需要数据时调用闭包
+        let data = fetchDataClosure?() ?? ""
+        // 使用获取到的数据...
+    }
+}

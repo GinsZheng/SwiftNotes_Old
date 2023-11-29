@@ -68,7 +68,7 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
         colorTextField.setFrame(left: 20, top: totalProgressTextField.bottom + 20, right: 20, height: 48)
         
         updateButton.set(superview: view, target: self, action: #selector(updateItem))
-        updateButton.setStyleSolid17ptWhiteThemeButton(title: "Update")
+        updateButton.setStyleSolid17ptFgWhiteThemeButton(title: "Update")
         updateButton.setFrame(left: 20, top: colorTextField.bottom + 20, right: 20, height: 48)
         
         // 删除
