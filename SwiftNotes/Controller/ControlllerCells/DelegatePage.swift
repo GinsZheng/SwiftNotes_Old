@@ -15,6 +15,60 @@ protocol CSNameEditorDelegate: NSObjectProtocol {
 }
 
 
+// 受托人
+// 1.继承协议类A
+class CSDelegatePage: UIViewController, CSNameEditorDelegate {
+
+    let label = UILabel()
+    let button = UIButton()
+    
+    
+    // MARK: - 生命周期方法
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupUI()
+    }
+    
+    // MARK: - func
+    
+    func setupUI() {
+        view.backgroundColor = UIColor.white
+
+        label.set(superview: view, text: "这行文字将通过下个页面编辑")
+        label.setFontStyle(size: 24, color: cBlue_5393FF)
+        label.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 60)
+
+        button.set(superview: view, target: self, action: #selector(editName))
+        button.setStyleSolid17ptFgWhiteThemeButton(title: "下一页")
+        button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
+    }
+    
+
+    // MARK: - 代理方法
+    
+    // 2.遵循协议的函数，里面写了具体的类A要做的事
+    func fetchName(name: String) {
+        self.label.text = name
+    }
+    
+    
+    // MARK: - @objc func
+
+    @objc func editName() {
+        // 3.受托
+        let nameEditorPage = CSNameEditorPage() // 类A，实例化委托人-类B
+        nameEditorPage.delegate = self // 让类B实例.delegate = self，表示接受类B的委托
+        self.push(toTarget: nameEditorPage)
+        // Push的时候，toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
+        // 而不是CSNameEditorPage(),是一个大坑
+    }
+
+}
+
+
+
 // 委托人
 class CSNameEditorPage: UIViewController, UITextFieldDelegate {
 
@@ -22,7 +76,7 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     let nameTextField = UITextField()
     let button = UIButton()
     
-    // 1.定义委托变量delegate
+    // 4.定义委托变量delegate
     weak var delegate: CSNameEditorDelegate?
     
     
@@ -59,7 +113,7 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     @objc func refreshSuperView() {
         let name = nameTextField.text
         if name != "" {
-            // 2.委托开始，委托的事为fetchName
+            // 5.委托开始，委托的事为fetchName
             delegate?.fetchName(name: name!)
         }
         self.pop()
@@ -68,58 +122,6 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
 
 }
 
-
-// 受托人
-// 3.继承协议类A
-class CSDelegatePage: UIViewController, CSNameEditorDelegate {
-
-    let label = UILabel()
-    let button = UIButton()
-    
-    
-    // MARK: - 生命周期方法
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        setupUI()
-    }
-    
-    // MARK: - func
-    
-    func setupUI() {
-        view.backgroundColor = UIColor.white
-
-        label.set(superview: view, text: "这行文字将通过下个页面编辑")
-        label.setFontStyle(size: 24, color: cBlue_5393FF)
-        label.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 60)
-
-        button.set(superview: view, target: self, action: #selector(editName))
-        button.setStyleSolid17ptFgWhiteThemeButton(title: "下一页")
-        button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
-    }
-    
-
-    // MARK: - 代理方法
-    
-    // 4.遵循协议的函数，里面写了具体的类A要做的事
-    func fetchName(name: String) {
-        self.label.text = name
-    }
-    
-    
-    // MARK: - @objc func
-
-    @objc func editName() {
-        // 5.受托
-        let nameEditorPage = CSNameEditorPage() // 类A，实例化委托人-类B
-        nameEditorPage.delegate = self // 让类B实例.delegate = self，表示接受类B的委托
-        self.push(toTarget: nameEditorPage)
-        // Push的时候，toTarget参数后面跟的一定要是刚才实例化的nameEditorPage，
-        // 而不是CSNameEditorPage(),是一个大坑
-    }
-
-}
 
 
 

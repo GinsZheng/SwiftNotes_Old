@@ -1,25 +1,19 @@
 //
-//  TransferDataListPage.swift
+//  ClosureListPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2023/11/30.
 //  Copyright © 2023 GinsMac. All rights reserved.
 //
 
-/*
- 值传递的方式除了代理，还有其他方式。比如：闭包。本页用来呈现不同传值方式的使用示例，找出他们各自的使用场景
- 1. 代理：直接以 DelegatePage.swift为例 (类名为：CSNameEditorPage)
- 2. 闭包：直接以 Closure2VC为例
- 
- */
-
 import UIKit
 
-class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ClosureListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let list: [(String, UIViewController)] = [
-        ("Delegate", CSDelegatePage()),
-        ("Closure", Closure2VC()),
+        ("Closure1", Closure1VC()), // 闭包的简单示例与知识
+        ("Closure2", Closure2VC()), // 闭包替代代理的示例
+        ("Closure Enum", ClosureEnumVC()) // 常见的闭包写法(A 定义、设置、调用，B 0参数，1参数，多参数，C 可选)
     ]
     
     let tableView = UITableView()

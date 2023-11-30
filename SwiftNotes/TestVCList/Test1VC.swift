@@ -29,58 +29,13 @@ class Test1VC: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
-        let customView = CustomView(frame: CGRect(x: 50, y: 100, width: 200, height: 50))
+        let customView = ClosureCustomView(frame: CGRect(x: 50, y: 100, width: 200, height: 50))
         view.addSubview(customView)
         
         customView.fetchDataClosure = {
             return "Hello from ViewController"
         }
         
-        customView.updateData()
     }
-    
-    
-    // MARK: - 代理方法
-    
-    
-    
-    
-    // MARK: - @objc func
-    
-    
-    
     
 }
-
-
-// MARK: - 自定义视图
-class CustomView: UIView {
-    var fetchDataClosure: (() -> String)?
-
-    private let dataLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.backgroundColor = .lightGray
-        return label
-    }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(dataLabel)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        dataLabel.frame = bounds
-    }
-
-    func updateData() {
-        let data = fetchDataClosure?() ?? "No data"
-        dataLabel.text = data
-    }
-}
-
