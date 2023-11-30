@@ -6,6 +6,11 @@
 //  Copyright © 2023 GinsMac. All rights reserved.
 //
 
+/// 本页为使用闭包在ViewController和CustomView之前传递数据的示例
+/// 视图控制器 (ViewController): 主要的控制器，它包含一个自定义视图
+/// 自定义视图 (CustomView): 一个简单的视图，它有一个方法updateData，用于更新其显示的数据。
+/// 数据传递：CustomView使用闭包从ViewController获取数据。
+
 import UIKit
 
 class Test1VC: UIViewController {
@@ -24,11 +29,14 @@ class Test1VC: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
-        let customView = CustomView()
+        let customView = CustomView(frame: CGRect(x: 50, y: 100, width: 200, height: 50))
+        view.addSubview(customView)
+        
         customView.fetchDataClosure = {
-            // 这里返回需要传递给CustomView的数据
-            return "这里是需要的数据"
+            return "Hello from ViewController"
         }
+        
+        customView.updateData()
     }
     
     
@@ -45,13 +53,34 @@ class Test1VC: UIViewController {
 }
 
 
+// MARK: - 自定义视图
 class CustomView: UIView {
-    // 定义一个闭包类型的属性，它返回一个字符串数据
     var fetchDataClosure: (() -> String)?
-    
+
+    private let dataLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.backgroundColor = .lightGray
+        return label
+    }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(dataLabel)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        dataLabel.frame = bounds
+    }
+
     func updateData() {
-        // 在需要数据时调用闭包
-        let data = fetchDataClosure?() ?? ""
-        // 使用获取到的数据...
+        let data = fetchDataClosure?() ?? "No data"
+        dataLabel.text = data
     }
 }
+

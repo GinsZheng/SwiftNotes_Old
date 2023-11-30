@@ -10,6 +10,8 @@
 		7A0258A82434EF42006D4AB5 /* PopToSpecificPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0258A72434EF42006D4AB5 /* PopToSpecificPage.swift */; };
 		7A0258AA2434EF58006D4AB5 /* DismissAllPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0258A92434EF58006D4AB5 /* DismissAllPage.swift */; };
 		7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */; };
+		7A02AEA12B1823C100E9E6D7 /* TransferDataListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A02AEA02B1823C100E9E6D7 /* TransferDataListPage.swift */; };
+		7A02AEA32B18272500E9E6D7 /* ClosurePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A02AEA22B18272500E9E6D7 /* ClosurePage.swift */; };
 		7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */; };
 		7A04CB802A9482B80021B9DF /* CollectionViewEqualDivisionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04CB7F2A9482B80021B9DF /* CollectionViewEqualDivisionPage.swift */; };
 		7A04CB822A9484640021B9DF /* CollectionViewAutoLayoutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04CB812A9484640021B9DF /* CollectionViewAutoLayoutPage.swift */; };
@@ -535,6 +537,8 @@
 		7A0258A72434EF42006D4AB5 /* PopToSpecificPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopToSpecificPage.swift; sourceTree = "<group>"; };
 		7A0258A92434EF58006D4AB5 /* DismissAllPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAllPage.swift; sourceTree = "<group>"; };
 		7A0258AB2434F0D8006D4AB5 /* PopAndDismissPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopAndDismissPage.swift; sourceTree = "<group>"; };
+		7A02AEA02B1823C100E9E6D7 /* TransferDataListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferDataListPage.swift; sourceTree = "<group>"; };
+		7A02AEA22B18272500E9E6D7 /* ClosurePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosurePage.swift; sourceTree = "<group>"; };
 		7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerBasicNote.swift; sourceTree = "<group>"; };
 		7A04CB7F2A9482B80021B9DF /* CollectionViewEqualDivisionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEqualDivisionPage.swift; sourceTree = "<group>"; };
 		7A04CB812A9484640021B9DF /* CollectionViewAutoLayoutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewAutoLayoutPage.swift; sourceTree = "<group>"; };
@@ -767,6 +771,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A02AE9F2B18239C00E9E6D7 /* TransferData */ = {
+			isa = PBXGroup;
+			children = (
+				7A02AEA02B1823C100E9E6D7 /* TransferDataListPage.swift */,
+			);
+			path = TransferData;
+			sourceTree = "<group>";
+		};
 		7A04CB7E2A9482350021B9DF /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1290,6 +1302,7 @@
 			children = (
 				7A7B5D3B23C05A150079A931 /* ArraysPage.swift */,
 				7A3C6B052884111F00C1D7AC /* CSVPage.swift */,
+				7A02AEA22B18272500E9E6D7 /* ClosurePage.swift */,
 				7A62A1A6244CB51C0090D128 /* DataOperate.swift */,
 				7AC4F56028B7615600F18E2F /* DeviceInfoPage.swift */,
 				7A62A1FA24645CA30090D128 /* DataSave */,
@@ -1477,6 +1490,7 @@
 				7A1EF03B23FAEF4B00BDEEBF /* ReloadDataPage.swift */,
 				7A9219502B00BDFE00FE65FC /* SwitchViewList */,
 				7AF7B16E2436351800738C65 /* TimerPage.swift */,
+				7A02AE9F2B18239C00E9E6D7 /* TransferData */,
 				7A871E7923CE122A007CCA90 /* TryPage.swift */,
 				7A74D10C28D4868300FB4FB3 /* UploadDataPage.swift */,
 			);
@@ -2014,10 +2028,12 @@
 				7A3A2B552AB30AE20067AEB0 /* PrivatePage.swift in Sources */,
 				7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */,
 				7A4736D4246DAD940071115F /* PanGesturePage.swift in Sources */,
+				7A02AEA12B1823C100E9E6D7 /* TransferDataListPage.swift in Sources */,
 				7A21613F238986AA00D5A93A /* GeneralSubpage.swift in Sources */,
 				7A5507442A83E4290019F17F /* ScrollViewHorizonalPage.swift in Sources */,
 				7A216161238986AF00D5A93A /* SegmentControlPage.swift in Sources */,
 				7AE5EF512B149DA000ECD038 /* LocalizationPage.swift in Sources */,
+				7A02AEA32B18272500E9E6D7 /* ClosurePage.swift in Sources */,
 				7A8DF69B2AA378000048146F /* Protocol.swift in Sources */,
 				7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */,
 				7AA325BD243CDB6A00D5308D /* LayerView.swift in Sources */,
