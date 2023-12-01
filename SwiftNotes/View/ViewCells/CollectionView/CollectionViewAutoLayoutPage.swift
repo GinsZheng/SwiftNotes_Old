@@ -8,6 +8,14 @@
 
 import UIKit
 
+struct CollectionViewAutoLayoutStyles {
+    static let titleFontSize: CGFloat = 17
+    static let titleFontWeight: UIFont.Weight = .medium
+    static let titleOffset: CGFloat = 20
+    static let itemInterval: CGFloat = 6
+    static let itemHeight: CGFloat = 66
+}
+
 class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     // 输入参数
@@ -41,7 +49,7 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     
     // MARK: - func
     func setupUI() {
-        let layout = AutoLayoutCollectionViewLayout(titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight)
+        let layout = AutoLayoutCollectionViewLayout(titleOffset: CollectionViewAutoLayoutStyles.titleOffset, itemInterval: itemInterval, itemHeight: itemHeight)
         // 设置闭包
         layout.fetchTitleWidthsClosure = { [weak self] in
             guard let self = self else { return [] }
@@ -222,6 +230,5 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     }
     
 }
-
 
 
