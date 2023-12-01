@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AutoLayoutCollectionViewCellDelegate {
+class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     // 输入参数
     let titleOffset: CGFloat = 20
@@ -80,17 +80,17 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AutoLayoutCollectionViewCell.self), for: indexPath) as? AutoLayoutCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.delegate = self
+        
+        // 设置闭包传递titleOffset
+        cell.getTitleOffsetClosure = { [weak self] in
+            return self?.titleOffset ?? 0 // 这里和 guard let self = self else { return 0 } \n return self.titleOffset 一致
+        }
+        
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
         let data = dataSource[indexPath.row]
         cell.setData(title: data["title"] ?? "", color: data["bgColor"] ?? "")
         
         return cell
-    }
-    
-    // MARK: - AutoLayoutCollectionViewCellDelegate 代理方法
-    func fetchTitleOffset() -> CGFloat {
-        return titleOffset
     }
     
 }
@@ -105,10 +105,10 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     let fontsize: CGFloat = 17
     let weight: UIFont.Weight = .medium
     
-    weak var delegate: AutoLayoutCollectionViewCellDelegate?
+    var getTitleOffsetClosure: (() -> CGFloat)?
     
     var titleOffset: CGFloat {
-        return delegate?.fetchTitleOffset() ?? 0
+        return getTitleOffsetClosure?() ?? 0
     }
     
     let titleLabel = UILabel()
