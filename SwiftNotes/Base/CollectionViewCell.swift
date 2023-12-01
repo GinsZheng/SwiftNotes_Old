@@ -16,11 +16,11 @@ class AutoLayoutCollectionViewCell2: UICollectionViewCell {
     let fontsize: CGFloat = 17
     let weight: UIFont.Weight = .medium
     
-    weak var delegate: AutoLayoutCollectionViewCellDelegate?
-    
-    var titleOffset: CGFloat {
-        return delegate?.fetchTitleOffset() ?? 0
-    }
+//    weak var delegate: AutoLayoutCollectionViewCellDelegate?
+//    
+//    var titleOffset: CGFloat {
+//        return delegate?.fetchTitleOffset() ?? 0
+//    }
     
     let scrollView = UIScrollView()
     let button = UIButton(type: .custom)
@@ -48,7 +48,7 @@ class AutoLayoutCollectionViewCell2: UICollectionViewCell {
     }
     
     func resetWidth() {
-        button.width = (button.titleLabel?.getLabelWidth() ?? 10) + titleOffset
+//        button.width = (button.titleLabel?.getLabelWidth() ?? 10) + titleOffset
     }
     
     

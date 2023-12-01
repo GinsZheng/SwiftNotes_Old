@@ -37,11 +37,11 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
     // MARK: - func
     
     func setupUI() {
-        let frame = CGRect(x:0, y:0, width: kScreenWidth, height:kWithoutNavBarHeight)
         let layout = EgCollectionViewLayout(eachLineCount: 3, itemHeight: 500)
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(EgCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EgCollectionViewCell.self))
         collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        collectionView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
     }
     
     

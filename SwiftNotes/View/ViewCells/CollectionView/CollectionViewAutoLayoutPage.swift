@@ -41,7 +41,6 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     
     // MARK: - func
     func setupUI() {
-        let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kWithoutNavBarHeight)
         let layout = AutoLayoutCollectionViewLayout(titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight)
         // 设置闭包
         layout.fetchTitleWidthsClosure = { [weak self] in
@@ -55,9 +54,10 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
             return titleWidths
         }
         
-        collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(AutoLayoutCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AutoLayoutCollectionViewCell.self))
         collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        collectionView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         
     }
     
