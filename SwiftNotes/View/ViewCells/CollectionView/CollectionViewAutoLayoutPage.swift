@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AutoLayoutCollectionViewLayoutDelegate, AutoLayoutCollectionViewCellDelegate {
+class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AutoLayoutCollectionViewCellDelegate {
     
     // 输入参数
     let titleOffset: CGFloat = 20
@@ -43,7 +43,17 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     func setupUI() {
         let frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kWithoutNavBarHeight)
         let layout = AutoLayoutCollectionViewLayout(titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight)
-        layout.delegate = self
+        // 设置闭包
+        layout.fetchTitleWidthsClosure = { [weak self] in
+            guard let self = self else { return [] }
+            var titleWidths: [CGFloat] = []
+            for i in 0..<self.dataSource.count {
+                // ⚠️这里fontSize和weight要和下面的AutoLayoutCollectionViewCell中的保持一致
+                let width = getLabelWidth(text: self.dataSource[i]["title"] ?? "", fontSize: 17, weight: .medium)
+                titleWidths.append(width)
+            }
+            return titleWidths
+        }
         
         collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
         collectionView.register(AutoLayoutCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AutoLayoutCollectionViewCell.self))
@@ -77,21 +87,6 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
         
         return cell
     }
-    
-    
-    // MARK: - AutoLayoutCollectionViewLayoutDelegate 代理方法
-    
-    func fetchTitleWidths() -> [CGFloat] {
-        var titleWidths: [CGFloat] = []
-        for i in 0..<dataSource.count {
-            // ⚠️这里fontSize和weight要和下面的AutoLayoutCollectionViewCell中的保持一致
-            let width = getLabelWidth(text: dataSource[i]["title"] ?? "", fontSize: 17, weight: .medium)
-            titleWidths.append(width)
-        }
-        
-        return titleWidths
-    }
-    
     
     // MARK: - AutoLayoutCollectionViewCellDelegate 代理方法
     func fetchTitleOffset() -> CGFloat {
@@ -159,7 +154,7 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
 
 class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     
-    weak var delegate: AutoLayoutCollectionViewLayoutDelegate?
+    var fetchTitleWidthsClosure: (() -> [CGFloat])?
     
     var titleOffset: CGFloat = 0
     var itemInterval: CGFloat = 0
@@ -168,7 +163,7 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     var contentHeight: CGFloat = 0 // 视图高度
     var itemCount = 0
     var titleWidths: [CGFloat] {
-        return delegate?.fetchTitleWidths() ?? []
+        return fetchTitleWidthsClosure?() ?? []
     }
     
     var layoutAttributes: [UICollectionViewLayoutAttributes] = []

@@ -1,5 +1,5 @@
 //
-//  CollectionViewPage.swift
+//  CollectionViewListPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2020/12/9.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionViewPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let list: [(String, UIViewController)] = [
         ("Equal Division", CollectionViewEqualDivisionPage()),

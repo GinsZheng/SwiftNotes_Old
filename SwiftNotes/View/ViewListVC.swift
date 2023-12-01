@@ -14,7 +14,7 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         ("Animation", AnimationPage()),
         ("Button", ButtonPage()),
         ("Camera and Photos", CameraAndPhotosPage()),
-        ("Collection View", CollectionViewPage()),
+        ("Collection View", CollectionViewListPage()),
         ("Date Picker", DatePickerPage()),
         ("Image View", ImageViewPage()),
         ("Label", LabelPage()),

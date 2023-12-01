@@ -56,12 +56,8 @@ class ClosureEnumVC: UIViewController {
         // B3 多个参数闭包：已初始化
         
         
-        // MARK: - C 函数参数闭包
-        // C1 1个闭包参数函数
-        
-        
-        // C2 3个闭包参数函数
-        
+        // MARK: - C 函数参数闭包：已初始化
+
         
         
         
@@ -130,10 +126,11 @@ class ClosureEnumCustomView: UIView {
     }
     
     
-    
-    
-    
-    // ⚠️下一步：设备闭包、调用闭包
+    // MARK: - D 带self的闭包 ⚠️待完善。大概是说：如果我所在
+//    layout.fetchTitleWidthsClosure = { [weak self] in
+//        guard let self = self else { return [] }
+//        return self.calculateTitleWidths()
+//    }
     
     
     
