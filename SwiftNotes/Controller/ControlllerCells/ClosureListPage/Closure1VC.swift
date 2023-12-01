@@ -17,6 +17,8 @@ import UIKit
 
 class Closure1VC: UIViewController {
     
+    let value = "这是一个Closure1VC中的值"
+    
     // MARK: - 生命周期方法
     
     override func viewDidLoad() {
@@ -36,8 +38,8 @@ class Closure1VC: UIViewController {
         
         // 1. 设置闭包
         ClosureCustomView.fetchDataClosure = {
-            return "Hello from ViewController"
-        }
+            return self.value
+        } // 由于需要把类ClosureEnumVC中的值传递给类ClosureEnumCustomView，所以才要在类ClosureEnumVC来设置闭包
     }
     
 }
