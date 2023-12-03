@@ -8,20 +8,27 @@
 
 import UIKit
 
+// 输入参数
+struct CollectionViewEqualDivisionStyles {
+    static let eachLineCount: CGFloat = 3
+    static let itemHeight: CGFloat = 400
+}
+
 class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var collectionView: UICollectionView!
     
-    let dateSource = [
-        ["title":"Swift","bgColor":cBlue_5393FF],
-        ["title":"Xcode","bgColor":cPurple_BF62F8],
-        ["title":"Java","bgColor":cMagenta_FC5AAE],
-        ["title":"PHP","bgColor":cRed_FF635A],
-        ["title":"JS","bgColor":cOrange_F9AD18],
-        ["title":"React","bgColor":cGreen_25BE3C],
-        ["title":"Ruby","bgColor":cBluishGreen_01C7BD],
-        ["title":"HTML","bgColor":cBlue_5393FF],
-        ["title":"C#","bgColor":cPurple_BF62F8],
+    let dataSource: [(title: String, bgColor: String)] = [
+        (title: "0 Swift", bgColor: cBlue_5393FF),
+        (title: "1 Xcode", bgColor: cPurple_BF62F8),
+        (title: "2 Java", bgColor: cMagenta_FC5AAE),
+        (title: "3 PHP", bgColor: cRed_FF635A),
+        (title: "4 JS", bgColor: cOrange_F9AD18),
+        (title: "5 React", bgColor: cGreen_25BE3C),
+        (title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
+        (title: "7 HTML", bgColor: cBlue_5393FF),
+        (title: "8 C#", bgColor: cPurple_BF62F8),
+        (title: "9 C++", bgColor: cPurple_BF62F8),
     ]
     
     
@@ -29,7 +36,6 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -37,9 +43,9 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
     // MARK: - func
     
     func setupUI() {
-        let layout = EgCollectionViewLayout(eachLineCount: 3, itemHeight: 500)
+        let layout = EqualDivisionCollectionViewLayout()
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(EgCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EgCollectionViewCell.self))
+        collectionView.register(EqualDivisionCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: EqualDivisionCollectionViewCell.self))
         collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         collectionView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
     }
@@ -49,7 +55,7 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
     
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dateSource.count
+        return dataSource.count
     }
     
     // 设置点击事件
@@ -60,13 +66,13 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
     
     // 设置 cell 逻辑
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: EgCollectionViewCell.self), for: indexPath) as? EgCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: EqualDivisionCollectionViewCell.self), for: indexPath) as? EqualDivisionCollectionViewCell else {
             return UICollectionViewCell()
         }
-        // 把UI逻辑放在自定义的 EgCollectionViewCell，把数据放在此
-        let data = dateSource[indexPath.row]
-        cell.titleLabel.setText(text: data["title"] ?? "")
-        cell.imageView.setImage(image: getImageWithColor(color: data["bgColor"] ?? ""))
+        // 把UI逻辑放在自定义的 EqualDivisionCollectionViewCell，把数据放在此
+        let data = dataSource[indexPath.row]
+        cell.titleLabel.setText(text: data.title)
+        cell.imageView.setImage(image: getImageWithColor(color: data.bgColor))
         
         return cell
     }
@@ -76,18 +82,17 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
 
 
 
-// MARK: - 创建一个 EgCollectionViewCell，方便复用
+// MARK: - 创建一个 EqualDivisionCollectionViewCell，方便复用
 
-class EgCollectionViewCell: UICollectionViewCell {
+class EqualDivisionCollectionViewCell: UICollectionViewCell {
     
-    let eachLineCount: CGFloat = 3
+    let eachLineCount = CollectionViewEqualDivisionStyles.eachLineCount
     
     let titleLabel = UILabel()
     let imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupUI()
     }
     
@@ -110,29 +115,18 @@ class EgCollectionViewCell: UICollectionViewCell {
 
 
 
-// MARK: - 创建一个 EgCollectionViewLayout，用于设置布局
+// MARK: - 创建一个 EqualDivisionCollectionViewLayout，用于设置布局
 
-class EgCollectionViewLayout: UICollectionViewLayout {
+class EqualDivisionCollectionViewLayout: UICollectionViewLayout {
     
-    var eachLineCount = 0
-    var itemHeight: CGFloat = 0
+    var eachLineCount = CollectionViewEqualDivisionStyles.eachLineCount
+    var itemHeight = CollectionViewEqualDivisionStyles.itemHeight
     
     var itemCount = 0
     var itemWidth: CGFloat = 0
     var contentHeight: CGFloat = 0
     
     var layoutAttributes: [UICollectionViewLayoutAttributes] = []
-    
-    init(eachLineCount: Int, itemHeight: CGFloat) {
-        super.init()
-        
-        self.eachLineCount = eachLineCount
-        self.itemHeight = itemHeight
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // 初始化一些参数与布局
     override func prepare() {
@@ -141,8 +135,8 @@ class EgCollectionViewLayout: UICollectionViewLayout {
         guard let collectionView = collectionView else { return }
         
         itemCount = collectionView.numberOfItems(inSection: 0)
-        itemWidth = (collectionView.bounds.width) / CGFloat(eachLineCount)
-        contentHeight = CGFloat(ceil(Double(itemCount) / Double(eachLineCount))) * itemHeight
+        itemWidth = (collectionView.bounds.width) / eachLineCount
+        contentHeight = CGFloat(ceil(Double(itemCount) / eachLineCount)) * itemHeight
         
         // 设置所有单元格的位置属性
         layoutAttributes.removeAll()
@@ -166,7 +160,7 @@ class EgCollectionViewLayout: UICollectionViewLayout {
     
     // 设置单个单元格的位置属性
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return createEqualDivisionLayoutAttributes(indexPath: indexPath, eachLineCount: CGFloat(eachLineCount), itemWidth: itemWidth, itemHeight: itemHeight)
+        return createEqualDivisionLayoutAttributes(indexPath: indexPath, eachLineCount: eachLineCount, itemWidth: itemWidth, itemHeight: itemHeight)
     }
     
     

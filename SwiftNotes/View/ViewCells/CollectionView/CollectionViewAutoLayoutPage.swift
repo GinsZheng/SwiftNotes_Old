@@ -10,14 +10,17 @@ import UIKit
 
 // 输入CollectionView的参数
 struct CollectionViewAutoLayoutStyles {
-    static let titleFontSize: CGFloat = 17
-    static let titleFontWeight: UIFont.Weight = .medium
+    static let fontSize: CGFloat = 17
+    static let weight: UIFont.Weight = .medium
     static let titleOffset: CGFloat = 20
     static let itemInterval: CGFloat = 6
     static let itemHeight: CGFloat = 66
 }
 
 class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    let fontSize = CollectionViewAutoLayoutStyles.fontSize
+    let fontWeight = CollectionViewAutoLayoutStyles.weight
     
     var collectionView: UICollectionView!
     var collectionViewContentHeight: CGFloat = 0 // (可选项)获取collectionView内容高度(用于布局)
@@ -56,7 +59,7 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
             guard let self = self else { return [] }
             var titleWidths: [CGFloat] = []
             for i in 0..<self.dataSource.count {
-                let width = getLabelWidth(text: self.dataSource[i].title , fontSize: CollectionViewAutoLayoutStyles.titleFontSize, weight: CollectionViewAutoLayoutStyles.titleFontWeight)
+                let width = getLabelWidth(text: self.dataSource[i].title , fontSize: fontSize, weight: fontWeight)
                 titleWidths.append(width)
             }
             return titleWidths
@@ -105,6 +108,10 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
 
 class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
+    let fontSize = CollectionViewAutoLayoutStyles.fontSize
+    let fontWeight = CollectionViewAutoLayoutStyles.weight
+    let titleOffset = CollectionViewAutoLayoutStyles.titleOffset
+    
     let titleLabel = UILabel()
     let imageView = UIImageView()
     
@@ -124,12 +131,12 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
     func setTitle(text: String) {
         titleLabel.set(superview: imageView, text: text)
-        titleLabel.setFontStyle(size: CollectionViewAutoLayoutStyles.titleFontSize, color: cFFF, weight: CollectionViewAutoLayoutStyles.titleFontWeight, alignment: .center)
+        titleLabel.setFontStyle(size: fontSize, color: cFFF, weight: fontWeight, alignment: .center)
         titleLabel.setFrame(left: 10, centerY: imageView.centerY, width: titleLabel.getLabelWidth(), height: 20)
     }
     
     func resetImageWidth() {
-        imageView.width = titleLabel.getLabelWidth() + CollectionViewAutoLayoutStyles.titleOffset
+        imageView.width = titleLabel.getLabelWidth() + titleOffset
     }
     
 }
@@ -139,6 +146,10 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
 // MARK: - 自定义Layout
 
 class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
+    
+    let titleOffset = CollectionViewAutoLayoutStyles.titleOffset
+    let itemInterval: CGFloat = CollectionViewAutoLayoutStyles.itemInterval
+    let itemHeight: CGFloat = CollectionViewAutoLayoutStyles.itemHeight
     
     var onHeightUpdate: ((CGFloat) -> Void)?     // 获取高度的闭包
     var fetchTitleWidthsClosure: (() -> [CGFloat])? // 获取标题宽度的闭包
