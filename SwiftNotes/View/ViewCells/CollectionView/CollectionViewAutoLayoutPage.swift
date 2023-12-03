@@ -8,6 +8,7 @@
 
 import UIKit
 
+// 输入CollectionView的参数
 struct CollectionViewAutoLayoutStyles {
     static let titleFontSize: CGFloat = 17
     static let titleFontWeight: UIFont.Weight = .medium
@@ -17,11 +18,6 @@ struct CollectionViewAutoLayoutStyles {
 }
 
 class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    // 输入参数
-    let titleOffset: CGFloat = 20
-    let itemInterval: CGFloat = 6
-    let itemHeight: CGFloat = 66
     
     var collectionView: UICollectionView!
     
@@ -49,24 +45,25 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     
     // MARK: - func
     func setupUI() {
-        let layout = AutoLayoutCollectionViewLayout(titleOffset: CollectionViewAutoLayoutStyles.titleOffset, itemInterval: itemInterval, itemHeight: itemHeight)
+        let layout = AutoLayoutCollectionViewLayout()
         // 设置闭包
         layout.fetchTitleWidthsClosure = { [weak self] in
             guard let self = self else { return [] }
             var titleWidths: [CGFloat] = []
             for i in 0..<self.dataSource.count {
-                // ⚠️这里fontSize和weight要和下面的AutoLayoutCollectionViewCell中的保持一致
-                let width = getLabelWidth(text: self.dataSource[i]["title"] ?? "", fontSize: 17, weight: .medium)
+                let width = getLabelWidth(text: self.dataSource[i]["title"] ?? "", fontSize: CollectionViewAutoLayoutStyles.titleFontSize, weight: CollectionViewAutoLayoutStyles.titleFontWeight)
                 titleWidths.append(width)
             }
             return titleWidths
         }
+
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(AutoLayoutCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AutoLayoutCollectionViewCell.self))
         collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         collectionView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         
+
     }
     
     
@@ -89,14 +86,12 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
             return UICollectionViewCell()
         }
         
-        // 设置闭包传递titleOffset
-        cell.getTitleOffsetClosure = { [weak self] in
-            return self?.titleOffset ?? 0 // 这里和 guard let self = self else { return 0 } \n return self.titleOffset 一致
-        }
-        
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
         let data = dataSource[indexPath.row]
         cell.setData(title: data["title"] ?? "", color: data["bgColor"] ?? "")
+        
+
+        print("kHeight", kCollectionViewContentHeight)
         
         return cell
     }
@@ -108,16 +103,6 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
 // MARK: - 自定义 Cell
 
 class AutoLayoutCollectionViewCell: UICollectionViewCell {
-    
-    // 输入参数(用于代理传递信息)
-    let fontsize: CGFloat = 17
-    let weight: UIFont.Weight = .medium
-    
-    var getTitleOffsetClosure: (() -> CGFloat)?
-    
-    var titleOffset: CGFloat {
-        return getTitleOffsetClosure?() ?? 0
-    }
     
     let titleLabel = UILabel()
     let imageView = UIImageView()
@@ -146,12 +131,12 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
     func setTitle(text: String) {
         titleLabel.set(superview: imageView, text: text)
-        titleLabel.setFontStyle(size: fontsize, color: cFFF, weight: weight, alignment: .center)
+        titleLabel.setFontStyle(size: CollectionViewAutoLayoutStyles.titleFontSize, color: cFFF, weight: CollectionViewAutoLayoutStyles.titleFontWeight, alignment: .center)
         titleLabel.setFrame(left: 10, centerY: imageView.centerY, width: titleLabel.getLabelWidth(), height: 20)
     }
     
     func resetImageWidth() {
-        imageView.width = titleLabel.getLabelWidth() + titleOffset
+        imageView.width = titleLabel.getLabelWidth() + CollectionViewAutoLayoutStyles.titleOffset
     }
     
 }
@@ -163,34 +148,13 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
 class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     
     var fetchTitleWidthsClosure: (() -> [CGFloat])?
-    
-    var titleOffset: CGFloat = 0
-    var itemInterval: CGFloat = 0
-    var itemHeight: CGFloat = 0
-    
-    var contentHeight: CGFloat = 0 // 视图高度
-    var itemCount = 0
     var titleWidths: [CGFloat] {
         return fetchTitleWidthsClosure?() ?? []
     }
+    var contentHeight: CGFloat = 0 // 视图高度
+    var itemCount = 0
     
     var layoutAttributes: [UICollectionViewLayoutAttributes] = []
-    
-    /// 初始化参数：
-    /// - titleOffset：标题两边的偏移之和
-    /// - itemInterval：两个单元格之前的间隔
-    /// - itemHeight：单元格高度
-    init(titleOffset: CGFloat, itemInterval: CGFloat, itemHeight: CGFloat) {
-        super.init()
-        
-        self.titleOffset = titleOffset
-        self.itemInterval = itemInterval
-        self.itemHeight = itemHeight
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     // 初始化一些参数与布局
     override func prepare() {
@@ -221,11 +185,11 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     
     // 设置单个单元格的位置属性
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        contentHeight = getAutoLayoutContentHeight(indexPath: indexPath, titleWidths: titleWidths, titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
+        contentHeight = getAutoLayoutContentHeight(indexPath: indexPath, titleWidths: titleWidths, titleOffset: CollectionViewAutoLayoutStyles.titleOffset, itemInterval: CollectionViewAutoLayoutStyles.itemInterval, itemHeight: CollectionViewAutoLayoutStyles.itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
         
         kCollectionViewContentHeight = contentHeight
         
-        let attributes = createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
+        let attributes = createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: CollectionViewAutoLayoutStyles.titleOffset, itemInterval: CollectionViewAutoLayoutStyles.itemInterval, itemHeight: CollectionViewAutoLayoutStyles.itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
         return attributes
     }
     
