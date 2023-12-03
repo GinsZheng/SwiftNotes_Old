@@ -6,6 +6,11 @@
 //  Copyright © 2020 GinsMac. All rights reserved.
 //
 
+/*
+ map 函数作用：用于对集合（如数组或字典）中的每个元素执行同一个操作，并返回一个新的集合
+ 以下为一些具体应用与示例
+ */
+
 import UIKit
 
 class CSMapPage: UIViewController {
@@ -17,33 +22,13 @@ class CSMapPage: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let arr = [1, 2, 3, 4]
-        let squ = arr.map {$0 * $0}
-        print(squ)
+        // 转换元素类型：可以将集合中的元素从一种类型转换为另一种类型。例如，将 Int 数组转换为 String 数组
+        let numbers = [1, 2, 3]
+        let stringArray = numbers.map { "\($0)" }
         
-        let arr2 = ["a", "b", "c"]
-        let indexAndNum = arr2.enumerated().map {(index, element) in
-            return "\(index): \(element)"
-        }
-        print(indexAndNum)
-        
-        let arr3 = ["a", "b", "c", "d"]
-        let indexAndNum2 = arr3.enumerated().map {"\($0): \($1)"}
-        print(indexAndNum2)
-        
-        let arr4 = [("a", 100), ("b", 200), ("c", 255)]
-        let tuples = arr4.enumerated().map {
-            "index: \($0), t0: \($1.0), t1: \($1.1)"
-        }
-        print(tuples)
+        // 应用函数或闭包：对集合中的每个元素应用一个函数或闭包。这可以用来执行诸如计算、格式化等操作。
+
     }
-    
-    
-    
-    
-    
-    
-    
     
     
 }
