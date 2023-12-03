@@ -22,19 +22,19 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
     var collectionView: UICollectionView!
     var collectionViewContentHeight: CGFloat = 0 // (可选项)获取collectionView内容高度(用于布局)
     
-    let dataSource = [
-        ["title":"0 Swift","bgColor":cBlue_5393FF],
-        ["title":"1 Xcode","bgColor":cPurple_BF62F8],
-        ["title":"2 Java","bgColor":cMagenta_FC5AAE],
-        ["title":"3 PHP","bgColor":cRed_FF635A],
-        ["title":"4 JS","bgColor":cOrange_F9AD18],
-        ["title":"5 Reac","bgColor":cGreen_25BE3C],
-        ["title":"6 Ruby","bgColor":cBluishGreen_01C7BD],
-        ["title":"7 HTML","bgColor":cBlue_5393FF],
-        ["title":"8 C# ","bgColor":cPurple_BF62F8],
-        ["title":"9 C++","bgColor":cPurple_BF62F8],
+    let dataSource: [(title: String, bgColor: String)] = [
+        (title: "0 Swift", bgColor: cBlue_5393FF),
+        (title: "1 Xcode", bgColor: cPurple_BF62F8),
+        (title: "2 Java", bgColor: cMagenta_FC5AAE),
+        (title: "3 PHP", bgColor: cRed_FF635A),
+        (title: "4 JS", bgColor: cOrange_F9AD18),
+        (title: "5 React", bgColor: cGreen_25BE3C),
+        (title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
+        (title: "7 HTML", bgColor: cBlue_5393FF),
+        (title: "8 C#", bgColor: cPurple_BF62F8),
+        (title: "9 C++", bgColor: cPurple_BF62F8),
     ]
-    
+
     
     // MARK: - 生命周期方法
     
@@ -56,7 +56,7 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
             guard let self = self else { return [] }
             var titleWidths: [CGFloat] = []
             for i in 0..<self.dataSource.count {
-                let width = getLabelWidth(text: self.dataSource[i]["title"] ?? "", fontSize: CollectionViewAutoLayoutStyles.titleFontSize, weight: CollectionViewAutoLayoutStyles.titleFontWeight)
+                let width = getLabelWidth(text: self.dataSource[i].title , fontSize: CollectionViewAutoLayoutStyles.titleFontSize, weight: CollectionViewAutoLayoutStyles.titleFontWeight)
                 titleWidths.append(width)
             }
             return titleWidths
@@ -91,9 +91,9 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
         
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
         let data = dataSource[indexPath.row]
-        cell.setData(title: data["title"] ?? "", color: data["bgColor"] ?? "")
+        cell.setData(title: data.title, color: data.bgColor)
         
-        print("Height", collectionViewContentHeight) // (可选)如果用到了高度，要在这里调用(在前面还没有加载内容时还没有高度)
+        print("ContentHeight", collectionViewContentHeight) // (可选)如果用到了高度，要在这里调用(在前面还没有加载内容时还没有高度)
         return cell
     }
     
@@ -145,10 +145,6 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     var titleWidths: [CGFloat] {
         return fetchTitleWidthsClosure?() ?? []
     }
-    
-    
-    
-    
     var contentHeight: CGFloat = 0 // 视图高度
     var itemCount = 0
     
