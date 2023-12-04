@@ -18,7 +18,6 @@ class ScrollViewHorizonalPage: UIViewController, HorizonalScrollingButtonsDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -49,7 +48,6 @@ class ScrollViewHorizonalPage: UIViewController, HorizonalScrollingButtonsDelega
 
 
 // MARK: - scrollView 横滑按钮列表View
-
 
 class CSHorizonalScrollingButtons: UIView {
     let scrollView = UIScrollView()
@@ -95,18 +93,18 @@ class CSHorizonalScrollingButtons: UIView {
     func createButtons() {
         
         var buttonLeft: CGFloat = 10 // 用于记录下一个按钮的左边界位置
+        let buttonHeight: CGFloat = 28
+        let buttonCenterY = scrollView.centerY
         
         for (i, title) in titles.enumerated() {
             let button = UIButton(type: .custom)
             button.tag = i // 用于标识是哪个button，以便在代理中赋值给didSelectButtonAtIndex，实现按不同按钮响应不同操作
             button.set(superview: scrollView, target: self, action: #selector(buttonTapped), forEvent: forEvent)
-            button.setStyleSolidButton(title: title, titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
+            button.setStyleSolid14pt666LightGrayRoundedButton(title: title)
             
             // 计算按钮frame的参数
             let labelWidth = button.titleLabel?.getLabelWidth() ?? 0
             let buttonWidth = labelWidth + 24
-            let buttonHeight: CGFloat = 28
-            let buttonCenterY = scrollView.centerY
             // 设置按钮的frame
             button.setFrame(left: buttonLeft, centerY: buttonCenterY, width: buttonWidth, height: buttonHeight)
             
