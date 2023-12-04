@@ -137,6 +137,7 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
     func resetImageWidth() {
         imageView.width = titleLabel.getLabelWidth() + titleOffset
+        print("imageView.width", imageView.width)
     }
     
 }
@@ -190,13 +191,13 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     
     // 设置单个单元格的位置属性
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        contentHeight = getAutoLayoutContentHeight(indexPath: indexPath, titleWidths: titleWidths, titleOffset: CollectionViewAutoLayoutStyles.titleOffset, itemInterval: CollectionViewAutoLayoutStyles.itemInterval, itemHeight: CollectionViewAutoLayoutStyles.itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
+        contentHeight = getAutoLayoutContentHeight(indexPath: indexPath, titleWidths: titleWidths, titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
         
         if indexPath.row == itemCount - 1 { // 对于最后一个元素
             onHeightUpdate?(contentHeight) // 调用闭包：设置高度
         }
         
-        let attributes = createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: CollectionViewAutoLayoutStyles.titleOffset, itemInterval: CollectionViewAutoLayoutStyles.itemInterval, itemHeight: CollectionViewAutoLayoutStyles.itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
+        let attributes = createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
         return attributes
     }
     

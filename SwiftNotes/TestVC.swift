@@ -5,7 +5,7 @@ struct GroupCollectionViewStyles {
     static let fontSize: CGFloat = 17
     static let weight: UIFont.Weight = .medium
     static let titleOffset: CGFloat = 24
-    static let itemInterval: CGFloat = 6
+    static let itemInterval: CGFloat = -2
     static let itemHeight: CGFloat = 40
 }
 
@@ -342,6 +342,7 @@ class GroupCollectionViewCell: UICollectionViewCell {
     
     func resetWidth() {
         button.width = (button.titleLabel?.getLabelWidth() ?? 10) + titleOffset
+//        print("here ", button.width)
     }
     
     
@@ -387,6 +388,7 @@ class GroupCollectionViewLayout: UICollectionViewLayout {
                 layoutAttributes.append(attributes)
             }
         }
+
     }
     
     // 设置内容区域总大小，是不可见区域
