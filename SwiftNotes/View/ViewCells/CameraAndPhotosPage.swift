@@ -21,7 +21,6 @@ class CameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     

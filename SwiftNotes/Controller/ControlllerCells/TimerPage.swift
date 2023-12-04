@@ -19,7 +19,6 @@ class CSTimerPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
         setupTimer()
     }

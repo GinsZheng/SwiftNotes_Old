@@ -19,7 +19,6 @@ class Closure2VC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     

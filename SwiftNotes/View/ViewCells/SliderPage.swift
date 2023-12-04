@@ -14,7 +14,6 @@ class SliderPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     

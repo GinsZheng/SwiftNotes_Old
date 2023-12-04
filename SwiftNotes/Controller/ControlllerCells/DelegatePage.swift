@@ -27,7 +27,6 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     

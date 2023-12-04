@@ -20,11 +20,9 @@ struct CollectionViewAutoLayoutStyles {
 class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let fontSize = CollectionViewAutoLayoutStyles.fontSize
-    let fontWeight = CollectionViewAutoLayoutStyles.weight
+    let weight = CollectionViewAutoLayoutStyles.weight
     
-    var collectionView: UICollectionView!
     var collectionViewContentHeight: CGFloat = 0 // (可选项)获取collectionView内容高度(用于布局)
-    
     let dataSource: [(title: String, bgColor: String)] = [
         (title: "0 Swift", bgColor: cBlue_5393FF),
         (title: "1 Xcode", bgColor: cPurple_BF62F8),
@@ -37,6 +35,8 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
         (title: "8 C#", bgColor: cPurple_BF62F8),
         (title: "9 C++", bgColor: cPurple_BF62F8),
     ]
+    
+    var collectionView: UICollectionView!
 
     
     // MARK: - 生命周期方法
@@ -59,7 +59,7 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
             guard let self = self else { return [] }
             var titleWidths: [CGFloat] = []
             for i in 0..<self.dataSource.count {
-                let width = getLabelWidth(text: self.dataSource[i].title , fontSize: fontSize, weight: fontWeight)
+                let width = getLabelWidth(text: self.dataSource[i].title , fontSize: fontSize, weight: weight)
                 titleWidths.append(width)
             }
             return titleWidths
@@ -109,7 +109,7 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
 class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
     let fontSize = CollectionViewAutoLayoutStyles.fontSize
-    let fontWeight = CollectionViewAutoLayoutStyles.weight
+    let weight = CollectionViewAutoLayoutStyles.weight
     let titleOffset = CollectionViewAutoLayoutStyles.titleOffset
     
     let titleLabel = UILabel()
@@ -131,7 +131,7 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
     func setTitle(text: String) {
         titleLabel.set(superview: imageView, text: text)
-        titleLabel.setFontStyle(size: fontSize, color: cFFF, weight: fontWeight, alignment: .center)
+        titleLabel.setFontStyle(size: fontSize, color: cFFF, weight: weight, alignment: .center)
         titleLabel.setFrame(left: 10, centerY: imageView.centerY, width: titleLabel.getLabelWidth(), height: 20)
     }
     

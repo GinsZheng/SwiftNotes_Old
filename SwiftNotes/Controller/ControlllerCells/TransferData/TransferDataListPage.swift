@@ -47,7 +47,7 @@
   2. (全局)结构体/类，如：
   struct GlobalStyles {
       static let sharedFontSize: CGFloat = 17
-      static let sharedFontWeight: UIFont.Weight = .medium
+      static let sharedWeight: UIFont.Weight = .medium
   }
   
  */
