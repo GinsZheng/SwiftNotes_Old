@@ -7,8 +7,18 @@
 //
 
 /*
- 值传递与处理的方式除了代理，还有其他方式。比如：闭包。本页用来呈现不同传值方式的使用示例
+ 值传递与处理的方式除了代理，还有其他方式。本页用来呈现不同传值方式的使用示例
+ ———— 传递值的方法
+ 1. 全局常量/全局变量
+ 2. (全局)结构体/类，如：
+ struct GlobalStyles {
+     static let sharedFontSize: CGFloat = 17
+     static let sharedWeight: UIFont.Weight = .medium
+ }
+ 3. 闭包：对于简单的事件处理，闭包通常是最简洁和直接的选择。但对于需要广播或者观察属性变化的场景，通知(NotificationCenter)或KVO可能更合适
+ 4. 代理
  */
+
 
  /*
  常见的数据传递方式的优劣、使用场景:
@@ -41,14 +51,6 @@
  优点：在不同类之间提供了一个中介层，可以处理复杂的逻辑和交互。
  劣点：可能增加了系统的层次和复杂性。
  使用场景：适用于需要将业务逻辑与数据访问逻辑分离的场合。
-  
- ———— 此外，运用好命名空间也可更好地在不同类中传递，包括
-  1. 全局常量/全局变量
-  2. (全局)结构体/类，如：
-  struct GlobalStyles {
-      static let sharedFontSize: CGFloat = 17
-      static let sharedWeight: UIFont.Weight = .medium
-  }
   
  */
 

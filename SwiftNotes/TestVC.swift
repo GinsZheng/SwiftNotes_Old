@@ -9,7 +9,7 @@ struct GroupCollectionViewStyles {
     static let itemHeight: CGFloat = 40
 }
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, HorizonalScrollingGroupButtonsDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let fontSize = GroupCollectionViewStyles.fontSize
     let weight = GroupCollectionViewStyles.weight
@@ -74,7 +74,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
-        let buttons = CSHorizonalScrollingGroupButtons(titles: titles, delegate: self, target: self)
+        let buttons = CSHorizonalScrollingGroupButtons(titles: titles, target: self) { [weak self] btn in
+            self?.pushToTest()
+        }
         buttons.set(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupUI(showsHorizontalScrollIndicator: false)
@@ -203,11 +205,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 }
 
 
-// MARK: - 用于代理横向滑动的按钮列表的点击事件
-protocol HorizonalScrollingGroupButtonsDelegate: AnyObject {
-    func buttons(_ buttons: CSHorizonalScrollingGroupButtons, didSelectButtonAtIndex index: Int)
-}
-
 class CSHorizonalScrollingGroupButtons: UIView {
     // 初始化参数
     var titles: [String]
@@ -219,18 +216,19 @@ class CSHorizonalScrollingGroupButtons: UIView {
     
     var buttonLeft: CGFloat = 10 // 用于记录下一个按钮的左边界位置
     
-    weak var delegate: HorizonalScrollingGroupButtonsDelegate?
+    var buttonAction: ((Int) -> Void)?
     
     /// - 参数:
     ///   - titles: 每个按钮的标题
     ///   - target: 填self。用于处理scrollView侧滑冲突
+    ///   - buttonAction: 闭包，填点击button时的操作逻辑
     ///   - forEvent: 触发事件，默认为 touchUpInside
-    ///   - delegate: 填self。为指定 HorizonalScrollingGroupButtonsDelegate 的代理
-    init(titles: [String], delegate: HorizonalScrollingGroupButtonsDelegate, target: UIViewController, forEvent: UIControl.Event = .touchUpInside) {
+
+    init(titles: [String], target: UIViewController, buttonAction: @escaping (Int) -> Void, forEvent: UIControl.Event = .touchUpInside) {
         self.titles = titles
         self.target = target
         self.forEvent = forEvent
-        self.delegate = delegate
+        self.buttonAction = buttonAction
         super.init(frame: .zero)
     }
     
@@ -302,7 +300,7 @@ class CSHorizonalScrollingGroupButtons: UIView {
     
     // MARK: - @objc func
     @objc private func buttonTapped(_ button: UIButton) {
-        delegate?.buttons(self, didSelectButtonAtIndex: button.tag)
+        buttonAction?(button.tag)
     }
     
     @objc func trashButtonTapped() {

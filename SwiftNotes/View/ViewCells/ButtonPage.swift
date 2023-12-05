@@ -20,7 +20,6 @@ class ButtonPage: UIViewController {
         
         setupUI()
         print("sta", kNavBarHeight, kStatusBarHeight)
-        
     }
     
     

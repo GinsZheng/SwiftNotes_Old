@@ -61,17 +61,17 @@ class CSHorizonalScrollingButtons: UIView {
     var forEvent: UIControl.Event
     
     // 定义闭包属性
-    var buttonSelected: ((Int) -> Void)?
+    var buttonAction: ((Int) -> Void)?
     
     /// - 参数:
     ///   - titles: 每个按钮的标题
     ///   - target: 填self。用于处理scrollView侧滑冲突
+    ///   - buttonAction: 闭包，填点击button时的操作逻辑
     ///   - forEvent: 触发事件，默认为 touchUpInside
-    ///   - delegate: 填self。为指定 HorizonalScrollingButtonsDelegate 的代理
-    init(titles: [String], target: UIViewController, buttonSelected: @escaping (Int) -> Void, forEvent: UIControl.Event = .touchUpInside) {
+    init(titles: [String], target: UIViewController, buttonAction: @escaping (Int) -> Void, forEvent: UIControl.Event = .touchUpInside) {
         self.titles = titles
         self.target = target
-        self.buttonSelected = buttonSelected
+        self.buttonAction = buttonAction
         self.forEvent = forEvent
         super.init(frame: .zero)
     }
@@ -127,7 +127,7 @@ class CSHorizonalScrollingButtons: UIView {
     
     // MARK: - 代理方法
     @objc private func buttonTapped(_ button: UIButton) {
-        buttonSelected?(button.tag)
+        buttonAction?(button.tag)
     }
 
 }
