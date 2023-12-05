@@ -76,8 +76,8 @@ class CSHorizonalScrollingButtons: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - func
     
+    // MARK: - func
     func setupUI(showsHorizontalScrollIndicator: Bool) {
         setupScrollView(showsHorizontalScrollIndicator: showsHorizontalScrollIndicator)
         createButtons()
@@ -95,6 +95,9 @@ class CSHorizonalScrollingButtons: UIView {
         var buttonLeft: CGFloat = 10 // 用于记录下一个按钮的左边界位置
         let buttonHeight: CGFloat = 28
         let buttonCenterY = scrollView.centerY
+        let titleOffset: CGFloat = 24
+        let itemInterval: CGFloat = 6
+        let scrollViewTailOffset: CGFloat = 4
         
         for (i, title) in titles.enumerated() {
             let button = UIButton(type: .custom)
@@ -104,18 +107,19 @@ class CSHorizonalScrollingButtons: UIView {
             
             // 计算按钮frame的参数
             let labelWidth = button.titleLabel?.getLabelWidth() ?? 0
-            let buttonWidth = labelWidth + 24
+            let buttonWidth = labelWidth + titleOffset
             // 设置按钮的frame
             button.setFrame(left: buttonLeft, centerY: buttonCenterY, width: buttonWidth, height: buttonHeight)
             
             // 更新buttonLeft以便下一个按钮使用
-            buttonLeft = button.right + 6
+            buttonLeft = button.right + itemInterval
             
             buttons.append(button)
         }
         
-        scrollView.contentSize = CGSize(width: buttonLeft + 4, height: 48)
+        scrollView.contentSize = CGSize(width: buttonLeft + scrollViewTailOffset, height: 48)
     }
+    
     
     // MARK: - 代理方法
     @objc private func buttonTapped(_ button: UIButton) {
@@ -127,3 +131,7 @@ class CSHorizonalScrollingButtons: UIView {
 /// 注：CSHorizonalScrollingButtons可以继续抽象出一个更通用的类，就像UITableView一样。比如把 createButtons() 抽象成一个像：
 /// func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 /// 这样的函数
+
+
+
+
