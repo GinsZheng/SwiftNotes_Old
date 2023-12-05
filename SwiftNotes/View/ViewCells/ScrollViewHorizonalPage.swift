@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ScrollViewHorizonalPage: UIViewController, HorizonalScrollingButtonsDelegate {
+class ScrollViewHorizonalPage: UIViewController {
     
     var titles = ["默认", "今天", "Button 3", "Button 4", "Button 5",
                   "Button 6", "Button 7", "Button 8", "Button 9", "Button 10",
@@ -31,7 +31,9 @@ class ScrollViewHorizonalPage: UIViewController, HorizonalScrollingButtonsDelega
         groupBg.set(superview: view, backgroundColor: cFFF)
         groupBg.setFrame(left: 0, top: 100, width: kScreenWidth, height: 48)
         
-        let buttons = CSHorizonalScrollingButtons(titles: titles, delegate: self, target: self)
+        let buttons = CSHorizonalScrollingButtons(titles: titles, target: self) { [weak self] index in
+            self?.push(toTarget: CSGeneralSubpage())
+        }
         buttons.set(superview: groupBg)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupUI(showsHorizontalScrollIndicator: false)
@@ -50,6 +52,7 @@ class ScrollViewHorizonalPage: UIViewController, HorizonalScrollingButtonsDelega
 // MARK: - scrollView 横滑按钮列表View
 
 class CSHorizonalScrollingButtons: UIView {
+    
     let scrollView = UIScrollView()
     var buttons: [UIButton] = []
     
@@ -57,18 +60,19 @@ class CSHorizonalScrollingButtons: UIView {
     var target: UIViewController
     var forEvent: UIControl.Event
     
-    weak var delegate: HorizonalScrollingButtonsDelegate?
+    // 定义闭包属性
+    var buttonSelected: ((Int) -> Void)?
     
     /// - 参数:
     ///   - titles: 每个按钮的标题
     ///   - target: 填self。用于处理scrollView侧滑冲突
     ///   - forEvent: 触发事件，默认为 touchUpInside
     ///   - delegate: 填self。为指定 HorizonalScrollingButtonsDelegate 的代理
-    init(titles: [String], delegate: HorizonalScrollingButtonsDelegate, target: UIViewController, forEvent: UIControl.Event = .touchUpInside) {
+    init(titles: [String], target: UIViewController, buttonSelected: @escaping (Int) -> Void, forEvent: UIControl.Event = .touchUpInside) {
         self.titles = titles
         self.target = target
+        self.buttonSelected = buttonSelected
         self.forEvent = forEvent
-        self.delegate = delegate
         super.init(frame: .zero)
     }
     
@@ -123,7 +127,7 @@ class CSHorizonalScrollingButtons: UIView {
     
     // MARK: - 代理方法
     @objc private func buttonTapped(_ button: UIButton) {
-        delegate?.buttons(self, didSelectButtonAtIndex: button.tag)
+        buttonSelected?(button.tag)
     }
 
 }
