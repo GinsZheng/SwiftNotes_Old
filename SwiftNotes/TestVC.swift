@@ -223,7 +223,6 @@ class CSHorizonalScrollingGroupButtons: UIView {
     ///   - target: 填self。用于处理scrollView侧滑冲突
     ///   - buttonAction: 闭包，填点击button时的操作逻辑
     ///   - forEvent: 触发事件，默认为 touchUpInside
-
     init(titles: [String], target: UIViewController, buttonAction: @escaping (Int) -> Void, forEvent: UIControl.Event = .touchUpInside) {
         self.titles = titles
         self.target = target
