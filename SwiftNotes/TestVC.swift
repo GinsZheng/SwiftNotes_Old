@@ -223,7 +223,6 @@ class CSHorizonalScrollingGroupButtons: UIView {
     ///   - target: 填self。用于处理scrollView侧滑冲突
     ///   - buttonAction: 闭包，填点击button时的操作逻辑
     ///   - forEvent: 触发事件，默认为 touchUpInside
-
     init(titles: [String], target: UIViewController, buttonAction: @escaping (Int) -> Void, forEvent: UIControl.Event = .touchUpInside) {
         self.titles = titles
         self.target = target
@@ -413,3 +412,12 @@ class GroupCollectionViewLayout: UICollectionViewLayout {
 }
 
 
+
+
+/*
+ @escaping:
+ 此关键字用于标识一个闭包是逃逸闭包（escaping closure）：
+ 含义：当一个闭包作为参数传递给一个函数时，如果这个闭包在函数返回后才被调用，那么这个闭包就是逃逸闭包。
+ 使用场景：最常见的使用场景包括异步执行（例如网络请求的回调）和存储传递进来的闭包以便以后执行（例如在事件触发时）
+ 本例中：buttonSelected: @escaping (Int) -> Void 表明这个闭包可能在函数返回后的某个时间点被调用。这是因为闭包是作为按钮点击事件的响应而存储起来的，只有在用户实际点击按钮时闭包才会执行
+ */
