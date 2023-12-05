@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewListVC: UIViewController {
     
     let list: [(String, UIViewController)] = [
         ("Animation", AnimationPage()),
@@ -46,7 +46,6 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "View" // 导航栏标题
@@ -56,7 +55,6 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     // MARK: - func
-    
     func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
@@ -64,19 +62,17 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    // MARK: - tableview 代理方法
     
+    // MARK: - @objc func
+    
+    
+}
+
+
+// MARK: - tableview 代理方法
+extension ViewListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kCellHeight
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: list[indexPath.row].1)
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,14 +82,20 @@ class ViewListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-    
-    // MARK: - @objc func
-    
-    
-    
 }
 
+
+// MARK: - tableview 代理方法
+extension ViewListVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return kCellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.pushFromRootPage(toTarget: list[indexPath.row].1)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
 
 
 /*

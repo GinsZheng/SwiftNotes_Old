@@ -32,6 +32,7 @@ class TableViewPage: UIViewController {
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
     }
     
+    
     // MARK: - @objc func
     
     
@@ -40,7 +41,6 @@ class TableViewPage: UIViewController {
 
 // MARK: - 代理方法：UITableViewDelegate
 extension TableViewPage: UITableViewDelegate {
-    
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
@@ -56,7 +56,6 @@ extension TableViewPage: UITableViewDelegate {
 
 // MARK: - 代理方法：UITableViewDataSource
 extension TableViewPage: UITableViewDataSource {
-    
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
@@ -72,7 +71,6 @@ extension TableViewPage: UITableViewDataSource {
 
 
 // MARK: - 自定义 tableViewCell
-
 class DefaultTableViewCell: UITableViewCell {
     
     let titleLabel = UILabel()
@@ -81,7 +79,6 @@ class DefaultTableViewCell: UITableViewCell {
     
     
     // MARK: - 初始化
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -103,7 +100,6 @@ class DefaultTableViewCell: UITableViewCell {
         separator.set(superview: contentView, backgroundColor: cSeparator)
         separator.setSeparatorFrame(left: 16, right: 16)
     }
-    
     
 }
 
