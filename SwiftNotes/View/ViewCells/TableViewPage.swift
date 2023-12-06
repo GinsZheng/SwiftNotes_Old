@@ -10,7 +10,8 @@ import UIKit
 
 class TableViewPage: UIViewController {
     
-    let list: [(String, UIViewController)] = [
+    // tableView数据
+    let dataSource: [(String, UIViewController)] = [
         ("Animation", CSGeneralSubpage()),
         ("Button", CSGeneralSubpage()),
     ]
@@ -27,7 +28,7 @@ class TableViewPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
+        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
     }
@@ -48,7 +49,7 @@ extension TableViewPage: UITableViewDelegate {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: CSGeneralSubpage())
+        self.push(toTarget: dataSource[indexPath.row].1)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -58,13 +59,13 @@ extension TableViewPage: UITableViewDelegate {
 extension TableViewPage: UITableViewDataSource {
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return dataSource.count
     }
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.titleLabel.setText(text: list[indexPath.row].0)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
+        cell.configure(title: dataSource[indexPath.row].0)
         return cell
     }
 }
@@ -73,23 +74,32 @@ extension TableViewPage: UITableViewDataSource {
 // MARK: - 自定义 tableViewCell
 class DefaultTableViewCell: UITableViewCell {
     
+    static let identifier = String(describing: DefaultTableViewCell.self)
+    
     let titleLabel = UILabel()
     let nextIcon = UIImageView()
     let separator = UIView()
     
     
     // MARK: - 初始化
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupViews()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        setupViews()
+    }
+    
+    // MARK: - func
+    // 设置UI
+    private func setupViews() {
         titleLabel.set(superview: contentView)
         titleLabel.setStyle17pt222()
         titleLabel.setFrame(left: 16, centerY: contentView.centerY)
@@ -99,6 +109,11 @@ class DefaultTableViewCell: UITableViewCell {
         
         separator.set(superview: contentView, backgroundColor: cSeparator)
         separator.setSeparatorFrame(left: 16, right: 16)
+    }
+    
+    // 配置参数
+    func configure(title: String) {
+        titleLabel.text = title
     }
     
 }
@@ -137,6 +152,10 @@ class DefaultTableViewCell: UITableViewCell {
  switchView.setOn(true, animated: false)
  */
 
+/*
+ 此函数：func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+ 主要是用来设置数据，而不是设置UI，所以应当把UI放到另一个自定义的UITableViewCell类中
+ */
 /*
  ⚠️如果是做成卡片等视觉区域与与响应区域不重叠时，一定要把视觉区域置于响应区域中间，否则会出现响应区域偏差
  */
