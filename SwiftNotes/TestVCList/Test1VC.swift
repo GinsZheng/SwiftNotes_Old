@@ -28,7 +28,7 @@ class Test1VC: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
+        tableView.register(DefaultTableViewCell22.self, forCellReuseIdentifier: DefaultTableViewCell22.identifier)
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
     }
@@ -41,7 +41,7 @@ class Test1VC: UIViewController {
 
 
 // MARK: - 代理方法：UITableViewDelegate
-extension TableViewPage: UITableViewDelegate {
+extension Test1VC: UITableViewDelegate {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
@@ -56,7 +56,7 @@ extension TableViewPage: UITableViewDelegate {
 
 
 // MARK: - 代理方法：UITableViewDataSource
-extension TableViewPage: UITableViewDataSource {
+extension Test1VC: UITableViewDataSource {
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
@@ -64,24 +64,17 @@ extension TableViewPage: UITableViewDataSource {
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell22.identifier, for: indexPath) as? DefaultTableViewCell22 else { return UITableViewCell() }
         cell.configure(title: dataSource[indexPath.row].title)
         return cell
     }
 }
 
 
-// MARK: - TableView 默认数据结构体
-struct DefaultTableViewItem {
-    let title: String
-    let viewController: UIViewController
-}
-
-
 // MARK: - 自定义的默认 tableViewCell
-class DefaultTableViewCell: UITableViewCell {
+class DefaultTableViewCell22: UITableViewCell {
     
-    static let identifier = String(describing: DefaultTableViewCell.self)
+    static let identifier = String(describing: DefaultTableViewCell22.self)
     
     private let titleLabel = UILabel()
     private let nextIcon = UIImageView()
@@ -125,3 +118,4 @@ class DefaultTableViewCell: UITableViewCell {
     }
     
 }
+
