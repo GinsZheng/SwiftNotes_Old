@@ -127,9 +127,13 @@ class DefaultTableViewCell: UITableViewCell {
 
 
 /*
- DefaultTableViewCell 类中，为什么要把分为 setupUI() 和 layoutSubviews()
- 前者(主要是非布局内容)只会在初始化时调用一次，后者(主要是布局内容)则会经常刷新，时机有：视图大小改变时、添加或移除子视图时、改变约束时等等
- 为了性能考虑，应当区分二者
+ DefaultTableViewCell 类中，为什么要各控件的内容分开写入 setupUI() 和 layoutSubviews() 和 configure()
+ 因为每一个代码的调用机制不一样：
+ setupUI(主要是非布局内容)只会在初始化时调用一次
+ layoutSubviews()(主要是布局内容)会在布局有变化时调用一次 (时机有：视图大小改变时、添加或移除子视图时、改变约束时)
+ configure()则是每次数据有更新是调用一次。configure很多时候是专用于处理数据的，但如果遇到需要依据数据来调整布局时，就应当把布局写入configure
+ 注：用configure布局的实例见CollectionViewAutoLayoutPage
+ 为了优化性能，应当尽量把代码放在setupUI，其次是layoutSubviews与configure(具体业务要求)
  */
 
 /*

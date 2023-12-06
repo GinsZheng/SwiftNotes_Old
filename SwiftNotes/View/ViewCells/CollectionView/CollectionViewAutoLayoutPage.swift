@@ -106,7 +106,7 @@ extension CollectionViewAutoLayoutPage: UICollectionViewDataSource {
         
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
         let data = dataSource[indexPath.row]
-        cell.setData(title: data.title, color: data.bgColor)
+        cell.configure(with: data.title, color: data.bgColor)
         
         print("ContentHeight", collectionViewContentHeight) // (可选)如果用到了高度，要在这里调用(在前面还没有加载内容时还没有高度)
         return cell
@@ -125,33 +125,39 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     let weight = CollectionViewAutoLayoutStyles.weight
     let titleOffset = CollectionViewAutoLayoutStyles.titleOffset
     
-    let titleLabel = UILabel()
-    let imageView = UIImageView()
+    private let titleLabel = UILabel()
+    private let imageView = UIImageView()
+    
+    
+    // MARK: - 初始化
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     
     // MARK: - func
-    
-    func setData(title: String, color: String) {
-        setImageView(color: color)
-        setTitle(text: title)
-        resetImageWidth()
-    }
-    
-    func setImageView(color: String) {
-        imageView.set(superview: contentView, image: getImageWithColor(color: color), cornerRadius: 10)
+    func setupViews() {
+        imageView.set(superview: contentView, cornerRadius: 10)
         imageView.setFrame(left: 0, top: 0, width: 0, height: 60)
-    }
-    
-    func setTitle(text: String) {
-        titleLabel.set(superview: imageView, text: text)
+        
+        titleLabel.set(superview: imageView)
         titleLabel.setFontStyle(size: fontSize, color: cFFF, weight: weight, alignment: .center)
-        titleLabel.setFrame(left: 10, centerY: imageView.centerY, width: titleLabel.getLabelWidth(), height: 20)
     }
     
-    func resetImageWidth() {
+    func configure(with title: String, color: String) {
+        titleLabel.text = title
+        titleLabel.setFrame(left: 10, centerY: imageView.centerY, width: titleLabel.getLabelWidth(), height: 20)
+        
+        imageView.image = getImageWithColor(color: color)
         imageView.width = titleLabel.getLabelWidth() + titleOffset
-        print("imageView.width", imageView.width)
+    
     }
+    
     
 }
 
@@ -215,4 +221,5 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     }
     
 }
+
 
