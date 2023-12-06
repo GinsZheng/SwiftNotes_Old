@@ -8,7 +8,7 @@
 
 import UIKit
 
-// 输入CollectionView的参数
+// CollectionView的参数
 struct CollectionViewAutoLayoutStyles {
     static let fontSize: CGFloat = 17
     static let weight: UIFont.Weight = .medium
@@ -17,23 +17,29 @@ struct CollectionViewAutoLayoutStyles {
     static let itemHeight: CGFloat = 66
 }
 
-class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionViewAutoLayoutPage: UIViewController {
+    
+    // collectionView数据的结构体
+    struct Item {
+        let title: String
+        let bgColor: String
+    }
     
     let fontSize = CollectionViewAutoLayoutStyles.fontSize
     let weight = CollectionViewAutoLayoutStyles.weight
     
     var collectionViewContentHeight: CGFloat = 0 // (可选项)获取collectionView内容高度(用于布局)
-    let dataSource: [(title: String, bgColor: String)] = [
-        (title: "0 Swift", bgColor: cBlue_5393FF),
-        (title: "1 Xcode", bgColor: cPurple_BF62F8),
-        (title: "2 Java", bgColor: cMagenta_FC5AAE),
-        (title: "3 PHP", bgColor: cRed_FF635A),
-        (title: "4 JS", bgColor: cOrange_F9AD18),
-        (title: "5 React", bgColor: cGreen_25BE3C),
-        (title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
-        (title: "7 HTML", bgColor: cBlue_5393FF),
-        (title: "8 C#", bgColor: cPurple_BF62F8),
-        (title: "9 C++", bgColor: cPurple_BF62F8),
+    let dataSource: [Item] = [
+        Item(title: "0 Swift", bgColor: cBlue_5393FF),
+        Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
+        Item(title: "2 Java", bgColor: cMagenta_FC5AAE),
+        Item(title: "3 PHP", bgColor: cRed_FF635A),
+        Item(title: "4 JS", bgColor: cOrange_F9AD18),
+        Item(title: "5 React", bgColor: cGreen_25BE3C),
+        Item(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
+        Item(title: "7 HTML", bgColor: cBlue_5393FF),
+        Item(title: "8 C#", bgColor: cPurple_BF62F8),
+        Item(title: "9 C++", bgColor: cPurple_BF62F8),
     ]
     
     var collectionView: UICollectionView!
@@ -66,29 +72,35 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
         }
 
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(AutoLayoutCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: AutoLayoutCollectionViewCell.self))
+        collectionView.register(AutoLayoutCollectionViewCell.self, forCellWithReuseIdentifier: AutoLayoutCollectionViewCell.identifier)
         collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         collectionView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         
     }
     
-    
-    // MARK: - CollectionView 代理方法
-    
-    // 设置数量
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
-    }
-    
+}
+
+
+// MARK: - 代理方法：UICollectionViewDelegate
+extension CollectionViewAutoLayoutPage: UICollectionViewDelegate {
     // 设置点击事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.push(toTarget: CSGeneralSubpage())
         collectionView.deselectItem(at: indexPath, animated: true)
     }
+}
+
+
+// MARK: - 代理方法：UICollectionViewDataSource
+extension CollectionViewAutoLayoutPage: UICollectionViewDataSource {
+    // 设置数量
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return dataSource.count
+    }
     
     // 设置 cell 逻辑
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AutoLayoutCollectionViewCell.self), for: indexPath) as? AutoLayoutCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AutoLayoutCollectionViewCell.identifier, for: indexPath) as? AutoLayoutCollectionViewCell else {
             return UICollectionViewCell()
         }
         
@@ -99,7 +111,6 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
         print("ContentHeight", collectionViewContentHeight) // (可选)如果用到了高度，要在这里调用(在前面还没有加载内容时还没有高度)
         return cell
     }
-    
 }
 
 
@@ -107,6 +118,8 @@ class CollectionViewAutoLayoutPage: UIViewController, UICollectionViewDelegate, 
 // MARK: - 自定义 Cell
 
 class AutoLayoutCollectionViewCell: UICollectionViewCell {
+    
+    static let identifier = String(describing: AutoLayoutCollectionViewCell.self)
     
     let fontSize = CollectionViewAutoLayoutStyles.fontSize
     let weight = CollectionViewAutoLayoutStyles.weight
@@ -202,5 +215,4 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     }
     
 }
-
 

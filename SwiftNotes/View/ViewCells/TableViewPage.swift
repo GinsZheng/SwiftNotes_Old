@@ -8,6 +8,13 @@
 
 import UIKit
 
+// MARK: - TableView 默认数据结构体
+struct DefaultTableViewItem {
+    let title: String
+    let viewController: UIViewController
+}
+
+
 class TableViewPage: UIViewController {
     
     let dataSource: [DefaultTableViewItem] = [
@@ -116,13 +123,6 @@ class DefaultTableViewCell: UITableViewCell {
         titleLabel.text = title
     }
     
-}
-
-
-// MARK: - TableView 默认数据结构体
-struct DefaultTableViewItem {
-    let title: String
-    let viewController: UIViewController
 }
 
 
