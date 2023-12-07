@@ -23,13 +23,13 @@ class TuplePage: UIViewController {
             print(x, y)
         }
         
-        let list: [(String, UIViewController)] = [
-            ("Animation", AnimationPage()),
-            ("Button", ButtonPage()),
-            ("Camera and Photos", CameraAndPhotosPage()),
+        let dataSource: [DefaultTableViewItem] = [
+            DefaultTableViewItem(title: "Animation", viewController: AnimationPage()),
+            DefaultTableViewItem(title: "Button", viewController: ButtonPage()),
+            DefaultTableViewItem(title: "Camera and Photos", viewController: CameraAndPhotosPage())
         ]
         
-        let c1 = list[0].0
+        let c1 = dataSource[0].title
         print("c1", c1)
             
     }

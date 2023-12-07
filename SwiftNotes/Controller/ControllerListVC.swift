@@ -11,35 +11,35 @@ import UIKit
 
 class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let list: [(String, UIViewController)] = [
-        ("TestVC", ViewController()),
-        ("TestPresentVC", TestPresentVC()),
-        ("ActionSheet", ActionSheetPage()),
-        ("Alamofire", CSAlamofirePage()),
-        ("Alert", CSAlertListPage()),
-        ("Class", CSClassPage()),
-        ("Closure", ClosureListVC()),
-        ("Custom Popup Window", CSCustomPopupWindowPage()),
-        ("Decorator", CSDecoratorPage()),
-        ("Delegate", CSDelegatePage()),
-        ("Delegate2", CSDelegate2Page()),
-        ("Delegate3", CSDelegate3Page()),
-        ("DidSet", DidSetVC()),
-        ("For & While", CSForWhilePage()),
-        ("Formatter", FormatterListPage()),
-        ("Gesture", CSGestureListPage()),
-        ("Jump", CSJumpListPage()),
-        ("Loading", CSLoadingPage()),
-        ("Map", CSMapPage()),
-        ("Menu Controller", CSMenuControllerPage()),
-        ("Operator @", CSOperatorAtPage()),
-        ("Protocol", CSProtocolPage()),
-        ("Reload Data", CSReloadDataPage()),
-        ("Switch View", SwitchViewListPage()),
-        ("Timer", CSTimerPage()),
-        ("Transfer Data", TransferDataListVC()),
-        ("Try", CSTryPage()),
-        ("上传(文字/图片等)", CSUploadDataPage()),
+    let dataSource: [DefaultTableViewItem] = [
+        DefaultTableViewItem(title: "TestVC", viewController: ViewController()),
+        DefaultTableViewItem(title: "TestPresentVC", viewController: TestPresentVC()),
+        DefaultTableViewItem(title: "ActionSheet", viewController: ActionSheetPage()),
+        DefaultTableViewItem(title: "Alamofire", viewController: CSAlamofirePage()),
+        DefaultTableViewItem(title: "Alert", viewController: CSAlertListPage()),
+        DefaultTableViewItem(title: "Class", viewController: CSClassPage()),
+        DefaultTableViewItem(title: "Closure", viewController: ClosureListVC()),
+        DefaultTableViewItem(title: "Custom Popup Window", viewController: CSCustomPopupWindowPage()),
+        DefaultTableViewItem(title: "Decorator", viewController: CSDecoratorPage()),
+        DefaultTableViewItem(title: "Delegate", viewController: CSDelegatePage()),
+        DefaultTableViewItem(title: "Delegate2", viewController: CSDelegate2Page()),
+        DefaultTableViewItem(title: "Delegate3", viewController: CSDelegate3Page()),
+        DefaultTableViewItem(title: "DidSet", viewController: DidSetVC()),
+        DefaultTableViewItem(title: "For & While", viewController: CSForWhilePage()),
+        DefaultTableViewItem(title: "Formatter", viewController: FormatterListPage()),
+        DefaultTableViewItem(title: "Gesture", viewController: CSGestureListPage()),
+        DefaultTableViewItem(title: "Jump", viewController: CSJumpListPage()),
+        DefaultTableViewItem(title: "Loading", viewController: CSLoadingPage()),
+        DefaultTableViewItem(title: "Map", viewController: CSMapPage()),
+        DefaultTableViewItem(title: "Menu Controller", viewController: CSMenuControllerPage()),
+        DefaultTableViewItem(title: "Operator @", viewController: CSOperatorAtPage()),
+        DefaultTableViewItem(title: "Protocol", viewController: CSProtocolPage()),
+        DefaultTableViewItem(title: "Reload Data", viewController: CSReloadDataPage()),
+        DefaultTableViewItem(title: "Switch View", viewController: SwitchViewListPage()),
+        DefaultTableViewItem(title: "Timer", viewController: CSTimerPage()),
+        DefaultTableViewItem(title: "Transfer Data", viewController: TransferDataListVC()),
+        DefaultTableViewItem(title: "Try", viewController: CSTryPage()),
+        DefaultTableViewItem(title: "上传(文字/图片等)", viewController: CSUploadDataPage())
     ]
     
     let tableView = UITableView()
@@ -66,7 +66,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - tableView代理方法
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -79,7 +79,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
         cell.setSeparator(left: 20, right: 0)
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: list[indexPath.row].0)
+        cellTitle.set(superview: cell, text: dataSource[indexPath.row].title)
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
@@ -91,9 +91,9 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
-            self.present(toTarget: list[indexPath.row].1)
+            self.present(toTarget: dataSource[indexPath.row].viewController)
         } else {
-            self.push(toTarget: list[indexPath.row].1)
+            self.push(toTarget: dataSource[indexPath.row].viewController)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -10,26 +10,26 @@ import UIKit
 
 class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let list: [(String, UIViewController)] = [
-        ("Array", CSArrayPage()),
-        ("CSV", CSVPage()),
-        ("Data Operate", CSDataOperate()),
-        ("Data Save List", CSDataSaveListVC()),
-        ("设备信息", CSDeviceInfoPage()),
-        ("Dictionary", CSDictionaryPage()),
-        ("Double", DoublePage()),
-        ("Enum", CSEnumPage()),
-        ("Int", CSIntPage()),
-        ("Item Model (Basic)", CSItemSearchPage()),
-        ("Localization", LocalizationPage()),
-        ("plist", CSPlistPage()),
-        ("Private", PrivatePage()),
-        ("Progress Model (Joined)", CSProgressSearchPage()),
-        ("Read File", CSReadFilePage()),
-        ("Request", CSRequestPage()),
-        ("String", CSStringPage()),
-        ("SwiftyJSON", CSSwiftyJSONPage()),
-        ("Time", CSTimePage()),
+    let dataSource: [DefaultTableViewItem] = [
+        DefaultTableViewItem(title: "Array", viewController: CSArrayPage()),
+        DefaultTableViewItem(title: "CSV", viewController: CSVPage()),
+        DefaultTableViewItem(title: "Data Operate", viewController: CSDataOperate()),
+        DefaultTableViewItem(title: "Data Save List", viewController: CSDataSaveListVC()),
+        DefaultTableViewItem(title: "设备信息", viewController: CSDeviceInfoPage()),
+        DefaultTableViewItem(title: "Dictionary", viewController: CSDictionaryPage()),
+        DefaultTableViewItem(title: "Double", viewController: DoublePage()),
+        DefaultTableViewItem(title: "Enum", viewController: CSEnumPage()),
+        DefaultTableViewItem(title: "Int", viewController: CSIntPage()),
+        DefaultTableViewItem(title: "Item Model (Basic)", viewController: CSItemSearchPage()),
+        DefaultTableViewItem(title: "Localization", viewController: LocalizationPage()),
+        DefaultTableViewItem(title: "plist", viewController: CSPlistPage()),
+        DefaultTableViewItem(title: "Private", viewController: PrivatePage()),
+        DefaultTableViewItem(title: "Progress Model (Joined)", viewController: CSProgressSearchPage()),
+        DefaultTableViewItem(title: "Read File", viewController: CSReadFilePage()),
+        DefaultTableViewItem(title: "Request", viewController: CSRequestPage()),
+        DefaultTableViewItem(title: "String", viewController: CSStringPage()),
+        DefaultTableViewItem(title: "SwiftyJSON", viewController: CSSwiftyJSONPage()),
+        DefaultTableViewItem(title: "Time", viewController: CSTimePage())
     ]
     
     let tableView = UITableView()
@@ -58,7 +58,7 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     // MARK: - tableView代理方法
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,7 +71,7 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.setSeparator(left: 20, right: 0)
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: list[indexPath.row].0)
+        cellTitle.set(superview: cell, text: dataSource[indexPath.row].title)
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
@@ -82,7 +82,7 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: list[indexPath.row].1)
+        self.pushFromRootPage(toTarget: dataSource[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

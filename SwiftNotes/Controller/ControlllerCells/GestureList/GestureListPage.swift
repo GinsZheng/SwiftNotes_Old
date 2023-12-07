@@ -10,17 +10,17 @@ import UIKit
 
 class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let list: [(String, UIViewController)] = [
-        ("Disable Pop", CSDisablePopGesturePage()),
-        ("Long Press", CSLongPressGesturePage()),
-        ("Pan", CSPanGesturePage()),
-        ("Pinch", CSPinchGesturePage()),
-        ("Swipe", CSSwipeGesturePage()),
-        ("Tap", CSTapGesturePage()),
-        ("TouchesBegan", CSTouchesBeganGesturePage()),
-        ("TouchesMoved", CSTouchesMovedGesturePage()),
+    let dataSource: [DefaultTableViewItem] = [
+        DefaultTableViewItem(title: "Disable Pop", viewController: CSDisablePopGesturePage()),
+        DefaultTableViewItem(title: "Long Press", viewController: CSLongPressGesturePage()),
+        DefaultTableViewItem(title: "Pan", viewController: CSPanGesturePage()),
+        DefaultTableViewItem(title: "Pinch", viewController: CSPinchGesturePage()),
+        DefaultTableViewItem(title: "Swipe", viewController: CSSwipeGesturePage()),
+        DefaultTableViewItem(title: "Tap", viewController: CSTapGesturePage()),
+        DefaultTableViewItem(title: "TouchesBegan", viewController: CSTouchesBeganGesturePage()),
+        DefaultTableViewItem(title: "TouchesMoved", viewController: CSTouchesMovedGesturePage())
     ]
-    
+        
     let tableView = UITableView()
     
     
@@ -45,7 +45,7 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     // MARK: - tableview 代理方法
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -53,14 +53,14 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: list[indexPath.row].1)
+        self.push(toTarget: dataSource[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(title: list[indexPath.row].0)
+        cell.configure(title: dataSource[indexPath.row].title)
         
         return cell
     }
@@ -109,7 +109,7 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
 //
 //
 //    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return titleList.count
+//        return titledataSource.count
 //    }
 //
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

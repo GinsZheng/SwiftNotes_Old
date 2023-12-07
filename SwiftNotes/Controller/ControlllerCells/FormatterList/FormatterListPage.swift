@@ -10,9 +10,9 @@ import UIKit
 
 class FormatterListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let list: [(String, UIViewController)] = [
-        ("Date Formatter", DateFormatterPage()),
-        ("Number Formatter", NumberFormatterPage()),
+    let dataSource: [DefaultTableViewItem] = [
+        DefaultTableViewItem(title: "Date Formatter", viewController: DateFormatterPage()),
+        DefaultTableViewItem(title: "Number Formatter", viewController: NumberFormatterPage())
     ]
     
     let tableView = UITableView()
@@ -40,7 +40,7 @@ class FormatterListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return dataSource.count
     }
     
     // 行高
@@ -50,14 +50,14 @@ class FormatterListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: list[indexPath.row].1)
+        self.push(toTarget: dataSource[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(title: list[indexPath.row].0)
+        cell.configure(title: dataSource[indexPath.row].title)
         
         return cell
     }

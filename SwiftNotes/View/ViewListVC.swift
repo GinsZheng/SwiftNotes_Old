@@ -10,36 +10,36 @@ import UIKit
 
 class ViewListVC: UIViewController {
     
-    let list: [(String, UIViewController)] = [
-        ("Animation", AnimationPage()),
-        ("Button", ButtonPage()),
-        ("Camera and Photos", CameraAndPhotosPage()),
-        ("Collection View", CollectionViewListPage()),
-        ("Date Picker", DatePickerPage()),
-        ("Image View", ImageViewPage()),
-        ("Label", LabelPage()),
-        ("Layer", LayerView()),
-        ("Nav Controller", NavControllerPage()),
-        ("Page Control", PageControlPage()),
-        ("Picker View", PickerViewPage()),
-        ("Scroll View", ScrollViewPage()),
-        ("Scroll View Horizonal", ScrollViewHorizonalPage()),
-        ("Segment Control", SegmentControlPage()),
-        ("Slider", SliderPage()),
-        ("Stack View", StackViewPage()),
-        ("Stepper", StepperPage()),
-        ("Styles", StylesPage()),
-        ("Switch", SwitchPage()),
-        ("Table View", TableViewPage()),
-        ("Text Field", TextFieldPage()),
-        ("Text View", TextViewPage()),
-        ("Transition", TransitionListPage()),
-        ("UIList", UIListPage()),
-        ("Video Player", VideoPlayerPage()),
-        ("View", ViewPage()),
-        ("ViewController", ViewControllerPage()),
-        ("Web View", WebViewPage()),
-        ("Window", WindowPage()),
+    let dataSource: [DefaultTableViewItem] = [
+        DefaultTableViewItem(title: "Animation", viewController: AnimationPage()),
+        DefaultTableViewItem(title: "Button", viewController: ButtonPage()),
+        DefaultTableViewItem(title: "Camera and Photos", viewController: CameraAndPhotosPage()),
+        DefaultTableViewItem(title: "Collection View", viewController: CollectionViewListPage()),
+        DefaultTableViewItem(title: "Date Picker", viewController: DatePickerPage()),
+        DefaultTableViewItem(title: "Image View", viewController: ImageViewPage()),
+        DefaultTableViewItem(title: "Label", viewController: LabelPage()),
+        DefaultTableViewItem(title: "Layer", viewController: LayerView()),
+        DefaultTableViewItem(title: "Nav Controller", viewController: NavControllerPage()),
+        DefaultTableViewItem(title: "Page Control", viewController: PageControlPage()),
+        DefaultTableViewItem(title: "Picker View", viewController: PickerViewPage()),
+        DefaultTableViewItem(title: "Scroll View", viewController: ScrollViewPage()),
+        DefaultTableViewItem(title: "Scroll View Horizonal", viewController: ScrollViewHorizonalPage()),
+        DefaultTableViewItem(title: "Segment Control", viewController: SegmentControlPage()),
+        DefaultTableViewItem(title: "Slider", viewController: SliderPage()),
+        DefaultTableViewItem(title: "Stack View", viewController: StackViewPage()),
+        DefaultTableViewItem(title: "Stepper", viewController: StepperPage()),
+        DefaultTableViewItem(title: "Styles", viewController: StylesPage()),
+        DefaultTableViewItem(title: "Switch", viewController: SwitchPage()),
+        DefaultTableViewItem(title: "Table View", viewController: TableViewPage()),
+        DefaultTableViewItem(title: "Text Field", viewController: TextFieldPage()),
+        DefaultTableViewItem(title: "Text View", viewController: TextViewPage()),
+        DefaultTableViewItem(title: "Transition", viewController: TransitionListPage()),
+        DefaultTableViewItem(title: "UIList", viewController: UIListPage()),
+        DefaultTableViewItem(title: "Video Player", viewController: VideoPlayerPage()),
+        DefaultTableViewItem(title: "View", viewController: ViewPage()),
+        DefaultTableViewItem(title: "ViewController", viewController: ViewControllerPage()),
+        DefaultTableViewItem(title: "Web View", viewController: WebViewPage()),
+        DefaultTableViewItem(title: "Window", viewController: WindowPage())
     ]
     
     let tableView = UITableView()
@@ -71,13 +71,13 @@ class ViewListVC: UIViewController {
 // MARK: - tableview 代理方法
 extension ViewListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(title: list[indexPath.row].0)
+        cell.configure(title: dataSource[indexPath.row].title)
         return cell
     }
 }
@@ -90,7 +90,7 @@ extension ViewListVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: list[indexPath.row].1)
+        self.pushFromRootPage(toTarget: dataSource[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

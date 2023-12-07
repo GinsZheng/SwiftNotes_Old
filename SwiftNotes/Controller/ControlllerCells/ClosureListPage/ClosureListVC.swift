@@ -10,11 +10,13 @@ import UIKit
 
 class ClosureListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let list: [(String, UIViewController)] = [
-        ("Closure1", Closure1VC()), // 闭包的简单示例与知识
-        ("Closure2", Closure2VC()), // 闭包替代代理的示例
-        ("Closure Enum", ClosureEnumVC()) // 常见的闭包写法(A 定义、设置、调用，B 0参数，1参数，多参数，C 可选)
+    let dataSource: [DefaultTableViewItem] = [
+        DefaultTableViewItem(title: "Closure1", viewController: Closure1VC()), // 闭包的简单示例与知识
+        DefaultTableViewItem(title: "Closure2", viewController: Closure2VC()), // 闭包替代代理的示例
+        DefaultTableViewItem(title: "Closure Enum", viewController: ClosureEnumVC()) // 常见的闭包写法(A 定义、设置、调用，B 0参数，1参数，多参数，C 可选)
     ]
+
+
     
     let tableView = UITableView()
     
@@ -41,7 +43,7 @@ class ClosureListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        return dataSource.count
     }
     
     // 行高
@@ -51,14 +53,14 @@ class ClosureListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: list[indexPath.row].1)
+        self.push(toTarget: dataSource[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(title: list[indexPath.row].0)
+        cell.configure(title: dataSource[indexPath.row].title)
         
         return cell
     }
