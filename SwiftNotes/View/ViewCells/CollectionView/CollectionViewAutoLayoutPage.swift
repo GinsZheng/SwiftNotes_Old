@@ -55,6 +55,7 @@ class CollectionViewAutoLayoutPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
+        // 创建collectionView用到的Layout
         let layout = AutoLayoutCollectionViewLayout()
         // 设置闭包：更新collectionView内容高度
         layout.onHeightUpdate = { [weak self] newHeight in
@@ -105,10 +106,10 @@ extension CollectionViewAutoLayoutPage: UICollectionViewDataSource {
         }
         
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
-        let data = dataSource[indexPath.row]
-        cell.configure(with: data.title, color: data.bgColor)
+        let item = dataSource[indexPath.row]
+        cell.configure(with: item.title, color: item.bgColor)
         
-        print("ContentHeight", collectionViewContentHeight) // (可选)如果用到了高度，要在这里调用(在前面还没有加载内容时还没有高度)
+        // (可选)如果用到了高度collectionViewContentHeight，要在这里调用(在前面还没有加载内容时还没有高度)
         return cell
     }
 }
@@ -187,9 +188,9 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
         
         guard let collectionView = collectionView else { return }
         itemCount = collectionView.numberOfItems(inSection: 0)
+        layoutAttributes.removeAll()
         
         // 设置所有单元格的位置属性
-        layoutAttributes.removeAll()
         for i in 0..<itemCount {
             let indexPath = IndexPath(item: i, section: 0)
             if let attributes = layoutAttributesForItem(at: indexPath) {
