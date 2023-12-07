@@ -43,7 +43,7 @@ class CollectionViewAutoLayoutPage: UIViewController {
     ]
     
     var collectionView: UICollectionView!
-
+    
     
     // MARK: - 生命周期方法
     
@@ -71,7 +71,7 @@ class CollectionViewAutoLayoutPage: UIViewController {
             }
             return titleWidths
         }
-
+        
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(AutoLayoutCollectionViewCell.self, forCellWithReuseIdentifier: AutoLayoutCollectionViewCell.identifier)
         collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
@@ -108,7 +108,7 @@ extension CollectionViewAutoLayoutPage: UICollectionViewDataSource {
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
         let item = dataSource[indexPath.row]
         cell.configure(with: item.title, color: item.bgColor)
-        
+
         // (可选)如果用到了高度collectionViewContentHeight，要在这里调用(在前面还没有加载内容时还没有高度)
         return cell
     }
@@ -156,7 +156,6 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
         
         imageView.image = getImageWithColor(color: color)
         imageView.width = titleLabel.getLabelWidth() + titleOffset
-    
     }
     
     
@@ -165,62 +164,109 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
 
 
 // MARK: - 自定义Layout
+//
+//class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
+//    
+//    let titleOffset = CollectionViewAutoLayoutStyles.titleOffset
+//    let itemInterval: CGFloat = CollectionViewAutoLayoutStyles.itemInterval
+//    let itemHeight: CGFloat = CollectionViewAutoLayoutStyles.itemHeight
+//    
+//    var onHeightUpdate: ((CGFloat) -> Void)?     // 获取高度的闭包
+//    var fetchTitleWidthsClosure: (() -> [CGFloat])? // 获取标题宽度的闭包
+//    var titleWidths: [CGFloat] {
+//        return fetchTitleWidthsClosure?() ?? []
+//    }
+//    var contentHeight: CGFloat = 0 // 视图高度
+//    var itemCount = 0
+//    
+//    var layoutAttributes: [UICollectionViewLayoutAttributes] = []
+//    
+//    // 初始化一些参数与布局
+//    override func prepare() {
+//        super.prepare()
+//        
+//        guard let collectionView = collectionView else { return }
+//        itemCount = collectionView.numberOfItems(inSection: 0)
+//        layoutAttributes.removeAll()
+//        
+//        // 设置所有单元格的位置属性
+//        for i in 0..<itemCount {
+//            let indexPath = IndexPath(item: i, section: 0)
+//            if let attributes = layoutAttributesForItem(at: indexPath) {
+//                layoutAttributes.append(attributes)
+//            }
+//        }
+//    }
+//    
+//    // 设置内容区域总大小，是不可见区域
+//    override var collectionViewContentSize: CGSize {
+//        return CGSize(width: collectionView?.bounds.width ?? 0, height: contentHeight)
+//    }
+//    
+//    // 设为只有在可见区域内的单元格的布局属性会被返回，以减少不必要的计算和绘制，提高性能
+//    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+//        return layoutAttributes.filter { $0.frame.intersects(rect) }
+//    }
+//    
+//    // 设置单个单元格的位置属性
+//    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+//        contentHeight = getAutoLayoutContentHeight(indexPath: indexPath, titleWidths: titleWidths, titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
+//        
+//        if indexPath.row == itemCount - 1 { // 对于最后一个元素
+//            onHeightUpdate?(contentHeight) // 调用闭包：设置高度
+//        }
+//        
+//        let attributes = createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
+//        return attributes
+//    }
+//    
+//}
+
 
 class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
-    
     let titleOffset = CollectionViewAutoLayoutStyles.titleOffset
     let itemInterval: CGFloat = CollectionViewAutoLayoutStyles.itemInterval
     let itemHeight: CGFloat = CollectionViewAutoLayoutStyles.itemHeight
     
-    var onHeightUpdate: ((CGFloat) -> Void)?     // 获取高度的闭包
-    var fetchTitleWidthsClosure: (() -> [CGFloat])? // 获取标题宽度的闭包
+    var onHeightUpdate: ((CGFloat) -> Void)?
+    var fetchTitleWidthsClosure: (() -> [CGFloat])?
     var titleWidths: [CGFloat] {
         return fetchTitleWidthsClosure?() ?? []
     }
-    var contentHeight: CGFloat = 0 // 视图高度
+    var contentHeight: CGFloat = 0
     var itemCount = 0
     
     var layoutAttributes: [UICollectionViewLayoutAttributes] = []
-    
-    // 初始化一些参数与布局
+
     override func prepare() {
         super.prepare()
-        
+
         guard let collectionView = collectionView else { return }
         itemCount = collectionView.numberOfItems(inSection: 0)
         layoutAttributes.removeAll()
         
-        // 设置所有单元格的位置属性
+        var lastIndex = IndexPath(item: 0, section: 0)
         for i in 0..<itemCount {
             let indexPath = IndexPath(item: i, section: 0)
-            if let attributes = layoutAttributesForItem(at: indexPath) {
-                layoutAttributes.append(attributes)
-            }
+            lastIndex = indexPath
+            let attributes = createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight, collectionViewWidth: collectionView.bounds.width)
+            layoutAttributes.append(attributes)
         }
+
+        // 更新内容高度
+        contentHeight = getAutoLayoutContentHeight(indexPath: lastIndex, titleWidths: titleWidths, titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight, collectionViewWidth: collectionView.bounds.width)
+        onHeightUpdate?(contentHeight)
     }
-    
-    // 设置内容区域总大小，是不可见区域
+
     override var collectionViewContentSize: CGSize {
         return CGSize(width: collectionView?.bounds.width ?? 0, height: contentHeight)
     }
-    
-    // 设为只有在可见区域内的单元格的布局属性会被返回，以减少不必要的计算和绘制，提高性能
+
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return layoutAttributes.filter { $0.frame.intersects(rect) }
     }
-    
-    // 设置单个单元格的位置属性
+
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        contentHeight = getAutoLayoutContentHeight(indexPath: indexPath, titleWidths: titleWidths, titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
-        
-        if indexPath.row == itemCount - 1 { // 对于最后一个元素
-            onHeightUpdate?(contentHeight) // 调用闭包：设置高度
-        }
-        
-        let attributes = createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: titleOffset, itemInterval: itemInterval, itemHeight: itemHeight, collectionViewWidth: collectionView?.bounds.width ?? 0)
-        return attributes
+        return indexPath.item < layoutAttributes.count ? layoutAttributes[indexPath.item] : nil
     }
-    
 }
-
-
