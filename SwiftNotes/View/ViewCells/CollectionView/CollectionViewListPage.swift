@@ -10,11 +10,11 @@ import UIKit
 
 class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let list: [(String, UIViewController)] = [
-        ("Equal Division", CollectionViewEqualDivisionPage()),
-        ("Auto Layout", CollectionViewAutoLayoutPage())
+    let list: [DefaultTableViewItem] = [
+        DefaultTableViewItem(title: "Equal Division", viewController: CollectionViewEqualDivisionPage()),
+        DefaultTableViewItem(title: "Auto Layout", viewController: CollectionViewAutoLayoutPage())
     ]
-    
+
     let tableView = UITableView()
     
     
@@ -47,14 +47,14 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: list[indexPath.row].1)
+        self.push(toTarget: list[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(title: list[indexPath.row].0)
+        cell.configure(title: list[indexPath.row].title)
         
         return cell
     }
