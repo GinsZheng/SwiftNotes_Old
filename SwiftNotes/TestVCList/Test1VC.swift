@@ -31,6 +31,12 @@ class Test1VC: UIViewController {
         tableView.register(DefaultTableViewCell22.self, forCellReuseIdentifier: DefaultTableViewCell22.identifier)
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
+        
+        let titles = dataSource.map { $0.viewController }
+        print("t", titles)
+        let vc = dataSource.map {
+            $0.viewController
+        }
     }
     
     
