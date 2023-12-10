@@ -17,10 +17,14 @@ struct DefaultTableViewItem {
 
 class TableViewPage: UIViewController {
     
-    let dataSource: [DefaultTableViewItem] = [
+    var dataSource: [DefaultTableViewItem] = [
         DefaultTableViewItem(title: "Animation", viewController: CSGeneralSubpage()),
         DefaultTableViewItem(title: "Button", viewController: CSGeneralSubpage()),
-    ]
+    ] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     let tableView = UITableView()
     

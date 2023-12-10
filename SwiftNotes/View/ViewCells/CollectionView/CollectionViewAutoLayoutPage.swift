@@ -62,12 +62,9 @@ class CollectionViewAutoLayoutPage: UIViewController {
         // 设置闭包：计算标题宽度
         layout.fetchTitleWidthsClosure = { [weak self] in
             guard let self = self else { return [] }
-            var titleWidths: [CGFloat] = []
-            for i in 0..<self.dataSource.count {
-                let width = getLabelWidth(text: self.dataSource[i].title , fontSize: Styles.fontSize, weight: Styles.weight)
-                titleWidths.append(width)
+            return dataSource.map {
+                getLabelWidth(withMaxWidth: 136, text: $0.title, fontSize: Styles.fontSize, weight: Styles.weight)
             }
-            return titleWidths
         }
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -109,7 +106,6 @@ extension CollectionViewAutoLayoutPage: UICollectionViewDataSource {
         return cell
     }
 }
-
 
 
 // MARK: - 自定义 Cell
@@ -156,7 +152,6 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
 }
 
 
-
 // MARK: - 自定义Layout
 class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     
@@ -175,23 +170,21 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     // MARK: - 初始化
     override func prepare() {
         super.prepare()
-
         guard let collectionView = collectionView else { return }
         itemCount = collectionView.numberOfItems(inSection: 0)
-        layoutAttributes.removeAll()
-        
-        // 设置所有单元格的位置属性
-        var lastIndex = IndexPath(item: 0, section: 0)
-        for i in 0..<itemCount {
-            let indexPath = IndexPath(item: i, section: 0)
-            lastIndex = indexPath
-            let attributes = createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: Styles.titleOffset, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
-            layoutAttributes.append(attributes)
-        }
 
+        // 设置所有单元格的位置属性
+        layoutAttributes = (0..<itemCount).map({ index in
+            let indexPath = IndexPath(item: index, section: 0)
+            return createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: Styles.titleOffset, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
+        })
+        
         // 更新内容高度
-        contentHeight = getAutoLayoutContentHeight(indexPath: lastIndex, titleWidths: titleWidths, titleOffset: Styles.titleOffset, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
-        onHeightUpdate?(contentHeight)
+        if let lastIndexPath = layoutAttributes.last?.indexPath {
+            contentHeight = getAutoLayoutContentHeight(indexPath: lastIndexPath, titleWidths: titleWidths, titleOffset: Styles.titleOffset, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
+            onHeightUpdate?(contentHeight)
+        }
+        
     }
 
     // (维持不变)设置内容区域总大小，是不可见区域
