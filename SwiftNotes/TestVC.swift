@@ -62,7 +62,6 @@ class ViewController: UIViewController {
         setupFormViewUI()
     }
     
-    
     func setupCommonUI() {
         view.setBackgroundColor(color: cF2F3F6)
     }
@@ -82,8 +81,8 @@ class ViewController: UIViewController {
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
-        let buttons = CSHorizonalScrollingGroupButtons(titles: titles, target: self) { [weak self] btn in
-            self?.pushToTest()
+        let buttons = CSHorizonalScrollingGroupButtons(titles: titles, target: self) { [weak self] _ in
+            self?.push(toTarget: CSGeneralSubpage())
         }
         buttons.set(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
@@ -204,7 +203,9 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCollectionViewCell.identifier, for: indexPath) as? GroupCollectionViewCell else { return UICollectionViewCell() }
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
-        cell.configure(withTitle: titles[indexPath.row])
+        cell.configure(withTitle: titles[indexPath.row]) { [weak self] in
+            self?.push(toTarget: CSGeneralSubpage())
+        }
         
         return cell
     }
@@ -325,12 +326,13 @@ class CSHorizonalScrollingGroupButtons: UIView {
 
 
 // MARK: - 自定义 Cell
-
 class GroupCollectionViewCell: UICollectionViewCell {
     
     typealias Styles = GroupCollectionViewStyles
     
     static let identifier = String(describing: GroupCollectionViewCell.self)
+    
+    var buttonAction: (() -> Void)?
     
     private let button = UIButton(type: .custom)
     
@@ -348,20 +350,25 @@ class GroupCollectionViewCell: UICollectionViewCell {
     
     // MARK: - func
     private func setupViews() {
-        button.set(superview: contentView, target: target, action: #selector(pushToTest))
+        button.set(superview: contentView)
         button.setStyleSolidButton(title: "", titleSize: Styles.fontSize, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
     }
     
-    func configure(withTitle title: String) {
+    func configure(withTitle title: String, action: (() -> Void)?, forEvent: UIControl.Event = UIControl.Event.touchUpInside) {
         button.setTitle(title, for: .normal)
         let bottomWidth = (button.titleLabel?.getLabelWidth() ?? 0) + Styles.titleOffset
         button.setFrame(left: 0, top: 10, width: bottomWidth, height: 28)
+        
+        // 存储闭包
+        buttonAction = action
+        button.addTarget(self, action: #selector(handleButtonAction), for: forEvent)
+
     }
     
     
     // MARK: - @objc func
-    @objc func pushToTest() {
-        print("done")
+    @objc func handleButtonAction() {
+        buttonAction?()
     }
     
 }

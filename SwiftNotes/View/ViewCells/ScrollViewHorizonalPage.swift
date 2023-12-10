@@ -104,7 +104,7 @@ class CSHorizonalScrollingButtons: UIView {
         for (i, title) in titles.enumerated() {
             let button = UIButton(type: .custom)
             button.tag = i // 用于标识是哪个button，以便在代理中赋值给didSelectButtonAtIndex，实现按不同按钮响应不同操作
-            button.set(superview: scrollView, target: self, action: #selector(buttonTapped), forEvent: forEvent)
+            button.set(superview: scrollView, target: self, action: #selector(handleButtonAction), forEvent: forEvent)
             button.setStyleSolid14pt666LightGrayRoundedButton(title: title)
             
             // 计算按钮frame的参数
@@ -124,7 +124,7 @@ class CSHorizonalScrollingButtons: UIView {
     
     
     // MARK: - @objc func
-    @objc private func buttonTapped(_ button: UIButton) {
+    @objc private func handleButtonAction(_ button: UIButton) {
         buttonAction?(button.tag)
     }
 
