@@ -28,7 +28,7 @@ class CollectionViewAutoLayoutPage: UIViewController {
     typealias Styles = CollectionViewAutoLayoutStyles
     
     var collectionViewContentHeight: CGFloat = 0 // (可选项)获取collectionView内容高度(用于布局)
-    let dataSource: [Item] = [
+    var dataSource: [Item] = [
         Item(title: "0 Swift", bgColor: cBlue_5393FF),
         Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
         Item(title: "2 Java", bgColor: cMagenta_FC5AAE),
@@ -39,7 +39,11 @@ class CollectionViewAutoLayoutPage: UIViewController {
         Item(title: "7 HTML", bgColor: cBlue_5393FF),
         Item(title: "8 C#", bgColor: cPurple_BF62F8),
         Item(title: "9 C++", bgColor: cPurple_BF62F8),
-    ]
+    ] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     var collectionView: UICollectionView!
     
