@@ -52,13 +52,13 @@ class ScrollViewHorizonalPage: UIViewController {
 // MARK: - scrollView 横滑按钮列表View
 
 class CSHorizonalScrollingButtons: UIView {
-    
-    let scrollView = UIScrollView()
-    var buttons: [UIButton] = []
-    
+    // 初始化参数
     var titles: [String]
     var target: UIViewController
     var forEvent: UIControl.Event
+    
+    let scrollView = UIScrollView()
+    var buttons: [UIButton] = []
     
     // 定义闭包属性
     var buttonAction: ((Int) -> Void)?
@@ -125,7 +125,7 @@ class CSHorizonalScrollingButtons: UIView {
     }
     
     
-    // MARK: - 代理方法
+    // MARK: - @objc func
     @objc private func buttonTapped(_ button: UIButton) {
         buttonAction?(button.tag)
     }

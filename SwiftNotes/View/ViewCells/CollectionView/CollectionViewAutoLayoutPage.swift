@@ -19,15 +19,14 @@ struct CollectionViewAutoLayoutStyles {
 
 class CollectionViewAutoLayoutPage: UIViewController {
     
+    typealias Styles = CollectionViewAutoLayoutStyles
+    
     // collectionView数据的结构体
     struct Item {
         let title: String
         let bgColor: String
     }
-    
-    typealias Styles = CollectionViewAutoLayoutStyles
-    
-    var collectionViewContentHeight: CGFloat = 0 // (可选项)获取collectionView内容高度(用于布局)
+
     var dataSource: [Item] = [
         Item(title: "0 Swift", bgColor: cBlue_5393FF),
         Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
@@ -44,6 +43,8 @@ class CollectionViewAutoLayoutPage: UIViewController {
             collectionView.reloadData()
         }
     }
+    
+    var collectionViewContentHeight: CGFloat = 0 // (可选项)获取collectionView内容高度(用于布局)
     
     var collectionView: UICollectionView!
     
@@ -101,11 +102,10 @@ extension CollectionViewAutoLayoutPage: UICollectionViewDataSource {
     // 设置 cell 逻辑
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AutoLayoutCollectionViewCell.identifier, for: indexPath) as? AutoLayoutCollectionViewCell else { return UICollectionViewCell() }
-        
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
         let item = dataSource[indexPath.row]
-        cell.configure(with: item.title, color: item.bgColor)
-
+        cell.configure(withTitle: item.title, color: item.bgColor)
+        
         // (可选)如果用到了高度collectionViewContentHeight，要在这里调用(在前面还没有加载内容时还没有高度)
         return cell
     }
@@ -144,7 +144,7 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
         titleLabel.setFontStyle(size: Styles.fontSize, color: cFFF, weight: Styles.weight, alignment: .center)
     }
     
-    func configure(with title: String, color: String) {
+    func configure(withTitle title: String, color: String) {
         titleLabel.text = title
         titleLabel.setFrame(left: 10, centerY: imageView.centerY, width: titleLabel.getLabelWidth(), height: 20)
         
@@ -176,7 +176,7 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
         super.prepare()
         guard let collectionView = collectionView else { return }
         itemCount = collectionView.numberOfItems(inSection: 0)
-
+        
         // 设置所有单元格的位置属性
         layoutAttributes = (0..<itemCount).map({ index in
             let indexPath = IndexPath(item: index, section: 0)
@@ -190,17 +190,17 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
         }
         
     }
-
+    
     // (维持不变)设置内容区域总大小，是不可见区域
     override var collectionViewContentSize: CGSize {
         return CGSize(width: collectionView?.width ?? 0, height: contentHeight)
     }
-
+    
     // (维持不变)设为只有在可见区域内的单元格的布局属性会被返回，以减少不必要的计算和绘制，提高性能
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         return layoutAttributes.filter { $0.frame.intersects(rect) }
     }
-
+    
     // (维持不变)设置单个单元格的位置属性
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return indexPath.item < layoutAttributes.count ? layoutAttributes[indexPath.item] : nil
