@@ -69,26 +69,26 @@ class ViewController: UIViewController {
     func setupFormViewUI() {
         switch currentUIForm {
         case .form0:
-            setupForm0()
+            setupOneLineUI()
         case .form1:
-            setupForm1()
+            setupMultiLineUI()
         }
     }
     
     // 单行视图
-    func setupForm0() {
+    func setupOneLineUI() {
         bgView.set(superview: view, backgroundColor: cFFF)
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
-        let buttons = CSHorizonalScrollingGroupButtons(titles: titles, target: self) { [weak self] _ in
+        let buttons = HorizonalScrollingGroupButtonsView(titles: titles, target: self) { [weak self] _ in
             self?.push(toTarget: CSGeneralSubpage())
         }
         buttons.set(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupUI(showsHorizontalScrollIndicator: false)
-        buttons.createTrashButton()
-        buttons.createSettingsButton()
+        buttons.addTrashButton()
+        buttons.addSettingsButton()
         buttons.scrollView.contentSize.width += 48 // 因为右侧的箭头按钮背景占了48pt
         
         let switchButtonBg = UIImageView()
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
     }
     
     // 多行视图
-    func setupForm1() {
+    func setupMultiLineUI() {
         bgView.set(superview: view, backgroundColor: cFFF)
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 100)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
@@ -213,7 +213,7 @@ extension ViewController: UICollectionViewDataSource {
 
 
 // MARK: - 横向滚动视图
-class CSHorizonalScrollingGroupButtons: UIView {
+class HorizonalScrollingGroupButtonsView: UIView {
     // 初始化参数
     var titles: [String]
     var target: UIViewController
@@ -242,7 +242,7 @@ class CSHorizonalScrollingGroupButtons: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
     // MARK: - func
     func setupUI(showsHorizontalScrollIndicator: Bool) {
@@ -258,7 +258,6 @@ class CSHorizonalScrollingGroupButtons: UIView {
     }
     
     func createButtons() {
-        
         let buttonHeight: CGFloat = 28
         let buttonCenterY = scrollView.centerY
         let titleOffset: CGFloat = 24
@@ -279,14 +278,13 @@ class CSHorizonalScrollingGroupButtons: UIView {
             
             // 更新buttonLeft以便下一个按钮使用
             buttonLeft = button.right + itemInterval
-            
             buttons.append(button)
         }
         
         scrollView.contentSize = CGSize(width: buttonLeft + scrollViewTailOffset, height: 48)
     }
     
-    func createTrashButton() {
+    func addTrashButton() {
         let trashButton = UIButton(type: .custom)
         trashButton.set(superview: scrollView, target: self, action: #selector(trashButtonTapped))
         trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
@@ -297,7 +295,7 @@ class CSHorizonalScrollingGroupButtons: UIView {
         scrollView.contentSize.width = buttonLeft + 10
     }
     
-    func createSettingsButton() {
+    func addSettingsButton() {
         let settingsButton = UIButton(type: .custom)
         settingsButton.set(superview: scrollView, target: self, action: #selector(settingsButtonTapped))
         settingsButton.setStyleIconButton(imageName: "home_settings")
@@ -358,11 +356,9 @@ class GroupCollectionViewCell: UICollectionViewCell {
         button.setTitle(title, for: .normal)
         let bottomWidth = (button.titleLabel?.getLabelWidth() ?? 0) + Styles.titleOffset
         button.setFrame(left: 0, top: 10, width: bottomWidth, height: 28)
-        
-        // 存储闭包
-        buttonAction = action
+        buttonAction = action // 存储闭包
         button.addTarget(self, action: #selector(handleButtonAction), for: forEvent)
-
+        
     }
     
     
@@ -407,7 +403,7 @@ class GroupCollectionViewLayout: UICollectionViewLayout {
             contentHeight = getAutoLayoutContentHeight(indexPath: lastIndexPath, titleWidths: titleWidths, titleOffset: Styles.titleOffset, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
             onHeightUpdate?(contentHeight)
         }
-
+        
     }
     
     // (维持不变)设置内容区域总大小，是不可见区域
