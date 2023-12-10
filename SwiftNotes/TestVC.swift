@@ -19,6 +19,11 @@ class ViewController: UIViewController {
         let bgColor: String
     }
     
+    enum UIForm {
+        case form0
+        case form1
+    }
+    
     var dataSource: [Item] = [
         Item(title: "0 Swift", bgColor: cBlue_5393FF),
         Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
@@ -73,7 +78,6 @@ class ViewController: UIViewController {
     
     // 单行视图
     func setupForm0() {
-        bgView.removeAllSubviews()
         bgView.set(superview: view, backgroundColor: cFFF)
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
@@ -100,7 +104,6 @@ class ViewController: UIViewController {
     
     // 多行视图
     func setupForm1() {
-        bgView.removeAllSubviews()
         bgView.set(superview: view, backgroundColor: cFFF)
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 100)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])

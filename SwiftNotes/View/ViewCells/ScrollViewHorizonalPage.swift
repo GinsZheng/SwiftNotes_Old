@@ -55,13 +55,11 @@ class CSHorizonalScrollingButtons: UIView {
     // 初始化参数
     var titles: [String]
     var target: UIViewController
+    var buttonAction: ((Int) -> Void)? // 定义闭包属性
     var forEvent: UIControl.Event
     
     let scrollView = UIScrollView()
     var buttons: [UIButton] = []
-    
-    // 定义闭包属性
-    var buttonAction: ((Int) -> Void)?
     
     /// - 参数:
     ///   - titles: 每个按钮的标题
