@@ -161,30 +161,20 @@ extension ViewController: UICollectionViewDelegate {
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: bgViewHeight)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
-        let bottomLineBg = UIView()
-        bottomLineBg.set(superview: bgView, backgroundColor: cFFF)
-        bottomLineBg.setFrame(left: 0, bottom: 0, right: 0, height: bottomLineHeight)
-        
-        let trashButton = UIButton(type: .custom)
-        trashButton.set(superview: bottomLineBg, target: self, action: #selector(pushToTest))
-        trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
-        trashButton.setFrame(left: 10, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
-        
-        let switchButtonBg = UIImageView()
-        switchButtonBg.set(superview: bottomLineBg, imageName: "groupBar_gradientMask")
-        switchButtonBg.setFrame(right: 0, bottom: 0, width: 72, height: 48)
-        
-        let switchButton = UIButton(type: .custom)
-        switchButton.set(superview: bottomLineBg, target: self, action: #selector(switchView))
-        switchButton.setStyleIconButton(imageName: "groupBar_fold")
-        switchButton.setFrame(right: 12, bottom: 10, width: 28, height: 28)
-        
-        let settingsButton = UIButton(type: .custom)
-        settingsButton.set(superview: bottomLineBg, target: self, action: #selector(pushToTest))
-        settingsButton.setStyleIconButton(imageName: "home_settings")
-        settingsButton.setFrame(right: 57, bottom: 10, width: 28, height: 28)
+        let bottomView = GroupBottomButtonsView()
+        bottomView.set(superview: bgView, backgroundColor: cFFF)
+        bottomView.setFrame(left: 0, bottom: 0, right: 0, height: bottomLineHeight)
+        bottomView.setupView(showTrashButton: true)
+        bottomView.onTrashButtonTapped = { [weak self] in
+            self?.pushToTest()
+        }
+        bottomView.onSwitchButtonTapped = { [weak self] in
+            self?.switchView()
+        }
+        bottomView.onSettingsButtonTapped = { [weak self] in
+            self?.pushToTest()
+        }
     }
-    
 }
 
 
@@ -447,49 +437,51 @@ class GroupCollectionViewLayout: UICollectionViewLayout {
 
 class GroupBottomButtonsView: UIView {
     
-    init(showTrashButton: Bool) {
-        super.init(frame: .zero)
-        setupView()
+    var onTrashButtonTapped: (() -> Void)?
+    var onSwitchButtonTapped: (() -> Void)?
+    var onSettingsButtonTapped: (() -> Void)?
+
+    let trashButton = UIButton(type: .custom)
+    let switchButtonBg = UIImageView()
+    let switchButton = UIButton(type: .custom)
+    let settingsButton = UIButton(type: .custom)
+    
+    
+    // MARK: - func
+    func setupView(showTrashButton: Bool) {
+        switchButtonBg.set(superview: self, imageName: "groupBar_gradientMask")
+        switchButtonBg.setFrame(right: 0, bottom: 0, width: 72, height: 48)
+        
+        switchButton.set(superview: self, target: self, action: #selector(switchButtonTapped))
+        switchButton.setStyleIconButton(imageName: "groupBar_fold")
+        switchButton.setFrame(right: 12, bottom: 10, width: 28, height: 28)
+
+        settingsButton.set(superview: self, target: self, action: #selector(settingsButtonTapped))
+        settingsButton.setStyleIconButton(imageName: "home_settings")
+        settingsButton.setFrame(right: 57, bottom: 10, width: 28, height: 28)
+        
+        if showTrashButton {
+            addTrashButton()
+        }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+     private func addTrashButton() {
+        trashButton.set(superview: self, target: self, action: #selector(trashButtonTapped))
+        trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
+        trashButton.setFrame(left: 10, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
     }
     
-    // ⚠️下一步：把setupView写好
-    private func setupView() {
-        // 设置CollectionView的高度(最大高度为10.5行)
-//        let collectionMaxHeight: CGFloat = 4 + 440 - 6 - 6 // 10.5行 (4:顶部多出4pt，440: 11行高度，6:按钮外边距，6:刻意隐藏)
-//        let collectionViewHeight = collectionViewContentHeight > collectionMaxHeight ? collectionMaxHeight : collectionViewContentHeight
-//        collectionView.setFrame(left: 10, top: 0, right: 10, height: collectionViewHeight)
-//        
-//        let bottomLineHeight: CGFloat = 48 // 底栏(含废纸蒌栏的)高度
-//        let bgViewHeight = collectionViewHeight + bottomLineHeight
-//        bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: bgViewHeight)
-//        bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
-//        
-//        let bottomLineBg = UIView()
-//        bottomLineBg.set(superview: bgView, backgroundColor: cFFF)
-//        bottomLineBg.setFrame(left: 0, bottom: 0, right: 0, height: bottomLineHeight)
-//        
-//        let trashButton = UIButton(type: .custom)
-//        trashButton.set(superview: bottomLineBg, target: self, action: #selector(pushToTest))
-//        trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
-//        trashButton.setFrame(left: 10, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
-//        
-//        let switchButtonBg = UIImageView()
-//        switchButtonBg.set(superview: bottomLineBg, imageName: "groupBar_gradientMask")
-//        switchButtonBg.setFrame(right: 0, bottom: 0, width: 72, height: 48)
-//        
-//        let switchButton = UIButton(type: .custom)
-//        switchButton.set(superview: bottomLineBg, target: self, action: #selector(switchView))
-//        switchButton.setStyleIconButton(imageName: "groupBar_fold")
-//        switchButton.setFrame(right: 12, bottom: 10, width: 28, height: 28)
-//        
-//        let settingsButton = UIButton(type: .custom)
-//        settingsButton.set(superview: bottomLineBg, target: self, action: #selector(pushToTest))
-//        settingsButton.setStyleIconButton(imageName: "home_settings")
-//        settingsButton.setFrame(right: 57, bottom: 10, width: 28, height: 28)
+    
+    // MARK: - @objc func
+    @objc private func trashButtonTapped() {
+        onTrashButtonTapped?()
     }
     
+    @objc private func switchButtonTapped() {
+        onSwitchButtonTapped?()
+    }
+    
+    @objc private func settingsButtonTapped() {
+        onSettingsButtonTapped?()
+    }
 }
