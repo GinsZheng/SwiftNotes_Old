@@ -42,8 +42,8 @@ class ViewController: UIViewController {
     }
     
     private let dataSource = DataManager()
-    
     lazy var titles: [String] = dataSource.map { $0.title }
+    
     var currentUIForm: UIForm = .form0
     var collectionViewContentHeight: CGFloat = 0 // 获取collectionView内容高度(用于布局)
     
@@ -89,16 +89,23 @@ class ViewController: UIViewController {
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
-        let buttons = HorizonalScrollingGroupButtonsView(titles: titles, target: self) { [weak self] _ in
-            self?.push(toTarget: CSGeneralSubpage())
-        }
+        let buttons = HorizonalScrollingGroupButtonsView(titles: titles, target: self)
         buttons.set(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
-        buttons.setupUI(showsHorizontalScrollIndicator: false) { [weak self] in
+        buttons.setupUI(showsHorizontalScrollIndicator: false, showTrashButton: true)
+        buttons.onButtonsTapped = { [weak self] _ in
+            self?.push(toTarget: CSGeneralSubpage())
+        }
+        buttons.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
         }
-        buttons.addTrashButton()
-        buttons.addSettingsButton()
+        buttons.onSettingsButtonTapped = { [weak self] in
+            self?.push(toTarget: CSGeneralSubpage())
+        }
+        buttons.onTrashButtonTapped = { [weak self] in
+            self?.push(toTarget: CSGeneralSubpage())
+        }
+        
     }
     
     // 多行视图
@@ -135,10 +142,6 @@ class ViewController: UIViewController {
         setupUI()
     }
     
-    @objc func pushToTest() {
-        self.push(toTarget: CSGeneralSubpage())
-    }
-    
 }
 
 
@@ -173,15 +176,16 @@ extension ViewController: UICollectionViewDelegate {
         bottomView.setFrame(left: 0, bottom: 0, right: 0, height: bottomLineHeight)
         bottomView.setupView(showTrashButton: true)
         bottomView.onTrashButtonTapped = { [weak self] in
-            self?.pushToTest()
+            self?.push(toTarget: CSGeneralSubpage())
         }
         bottomView.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
         }
         bottomView.onSettingsButtonTapped = { [weak self] in
-            self?.pushToTest()
+            self?.push(toTarget: CSGeneralSubpage())
         }
     }
+    
 }
 
 
@@ -210,26 +214,28 @@ class HorizonalScrollingGroupButtonsView: UIView {
     // 初始化参数
     var titles: [String]
     var target: UIViewController
-    var forEvent: UIControl.Event
+    
     var buttonLeft: CGFloat = 10 // 用于记录下一个按钮的左边界位置
+    let itemInterval: CGFloat = 6
+    let tailOffset: CGFloat = 10
+    let buttonHeight: CGFloat = 28
+    let titleOffset: CGFloat = 24
     
     let scrollView = UIScrollView()
     var buttons: [UIButton] = []
     
     // 定义闭包属性
-    var buttonAction: ((Int) -> Void)?
-    var switchButtonAction: (() -> Void)?
+    var onButtonsTapped: ((Int) -> Void)?
+    var onSwitchButtonTapped: (() -> Void)?
+    var onTrashButtonTapped: (() -> Void)?
+    var onSettingsButtonTapped: (() -> Void)?
     
     /// - 参数:
     ///   - titles: 每个按钮的标题
     ///   - target: 填self。用于处理scrollView侧滑冲突
-    ///   - buttonAction: 闭包，填点击button时的操作逻辑
-    ///   - forEvent: 触发事件，默认为 touchUpInside
-    init(titles: [String], target: UIViewController, buttonAction: @escaping (Int) -> Void, forEvent: UIControl.Event = .touchUpInside) {
+    init(titles: [String], target: UIViewController) {
         self.titles = titles
         self.target = target
-        self.buttonAction = buttonAction
-        self.forEvent = forEvent
         super.init(frame: .zero)
     }
     
@@ -239,107 +245,98 @@ class HorizonalScrollingGroupButtonsView: UIView {
     
     
     // MARK: - func
-    func setupUI(showsHorizontalScrollIndicator: Bool, switchButtonAction: @escaping () -> Void) {
+    func setupUI(showsHorizontalScrollIndicator: Bool, showTrashButton: Bool) {
         setupScrollView(showsHorizontalScrollIndicator: showsHorizontalScrollIndicator)
         createButtons()
-        addSwitchButton(action: switchButtonAction)
+        addSwitchButton()
+        if showTrashButton {
+            addTrashButton()
+        }
+        addSettingsButton()
     }
     
-    func setupScrollView(showsHorizontalScrollIndicator: Bool) {
+    private func setupScrollView(showsHorizontalScrollIndicator: Bool) {
         scrollView.set(superview: self)
         scrollView.setFrame(left: 0, top: 0, width: kScreenWidth - 48, height: self.height) // 因为右侧的箭头按钮背景占了48pt
         scrollView.OptimizeEdgePanGesture(of: target)
         scrollView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator
     }
     
-    func createButtons() {
-        let buttonHeight: CGFloat = 28
-        let buttonCenterY = scrollView.centerY
-        let titleOffset: CGFloat = 24
-        let itemInterval: CGFloat = 6
-        let scrollViewTailOffset: CGFloat = 4
-        
+    private func createButtons() {
         for (i, title) in titles.enumerated() {
             let button = UIButton(type: .custom)
             button.tag = i // 用于标识是哪个button，以便在代理中赋值给didSelectButtonAtIndex，实现按不同按钮响应不同操作
-            button.set(superview: scrollView, target: self, action: #selector(handleButtonAction), forEvent: forEvent)
+            button.set(superview: scrollView, target: self, action: #selector(buttonsTapped), forEvent: .touchUpInside)
             button.setStyleSolid14pt666LightGrayRoundedButton(title: title)
             
             // 计算按钮frame的参数
             let labelWidth = button.titleLabel?.getLabelWidth() ?? 0
             let buttonWidth = labelWidth + titleOffset
             // 设置按钮的frame
-            button.setFrame(left: buttonLeft, centerY: buttonCenterY, width: buttonWidth, height: buttonHeight)
+            button.setFrame(left: buttonLeft, centerY: scrollView.centerY, width: buttonWidth, height: buttonHeight)
+            button.extendTouchArea()
             
             // 更新buttonLeft以便下一个按钮使用
             buttonLeft = button.right + itemInterval
             buttons.append(button)
         }
         
-        scrollView.contentSize = CGSize(width: buttonLeft + scrollViewTailOffset, height: 48)
+        scrollView.contentSize.width = buttonLeft + tailOffset
     }
     
-    func addSwitchButton(action: @escaping () -> Void) {
-        switchButtonAction = action // 保存传的闭包，以便在后面的 @objc func 中调用
-        
+    private func addSwitchButton() {
         let switchButtonBg = UIImageView()
         switchButtonBg.set(superview: self, imageName: "groupBar_gradientMask")
         switchButtonBg.setFrame(right: 0, top: 0, width: 72, height: 48)
         
         let switchButton = UIButton(type: .custom)
-        switchButton.set(superview: self, target: self, action: #selector(handleSwitchButtonAction))
+        switchButton.set(superview: self, target: self, action: #selector(switchButtonTapped))
         switchButton.setStyleIconButton(imageName: "groupBar_unfold")
         switchButton.setFrame(right: 12, centerY: self.height / 2, width: 28, height: 28)
-        
+        switchButton.extendTouchArea()
     }
     
-    
-    // MARK: - @objc func
-    @objc private func handleButtonAction(_ button: UIButton) {
-        buttonAction?(button.tag)
-    }
-    
-    @objc func handleSwitchButtonAction() {
-        switchButtonAction?()
-    }
-    
-}
-
-
-// MARK: - 扩展 HorizonalScrollingGroupButtonsView
-extension HorizonalScrollingGroupButtonsView {
-    
-    func addTrashButton() {
+    private func addTrashButton() {
         let trashButton = UIButton(type: .custom)
         trashButton.set(superview: scrollView, target: self, action: #selector(trashButtonTapped))
         trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
         trashButton.setFrame(left: buttonLeft, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
         trashButton.extendTouchArea()
         
-        buttonLeft = trashButton.right + 6
-        scrollView.contentSize.width = buttonLeft + 10
+        buttonLeft = trashButton.right + itemInterval
+        scrollView.contentSize.width = buttonLeft + tailOffset
     }
     
-    func addSettingsButton() {
+    private func addSettingsButton() {
         let settingsButton = UIButton(type: .custom)
         settingsButton.set(superview: scrollView, target: self, action: #selector(settingsButtonTapped))
         settingsButton.setStyleIconButton(imageName: "home_settings")
         settingsButton.setFrame(left: buttonLeft, bottom: 10, width: 28, height: 28)
         settingsButton.extendTouchArea()
         
-        buttonLeft = settingsButton.right + 6
-        scrollView.contentSize.width = buttonLeft + 10
+        buttonLeft = settingsButton.right + itemInterval
+        scrollView.contentSize.width = buttonLeft + tailOffset
     }
     
-    @objc func trashButtonTapped() {
-        target.push(toTarget: CSGeneralSubpage())
+    
+    // MARK: - @objc func
+    @objc private func buttonsTapped(_ button: UIButton) {
+        onButtonsTapped?(button.tag)
     }
     
-    @objc func settingsButtonTapped() {
-        target.push(toTarget: CSGeneralSubpage())
+    @objc private func switchButtonTapped() {
+        onSwitchButtonTapped?()
     }
+    
+    @objc private func trashButtonTapped() {
+        onTrashButtonTapped?()
+    }
+    
+    @objc private func settingsButtonTapped() {
+        onSettingsButtonTapped?()
+    }
+    
 }
-
 
 
 // MARK: - 自定义 Cell
@@ -376,13 +373,14 @@ class GroupCollectionViewCell: UICollectionViewCell {
         let bottomWidth = (button.titleLabel?.getLabelWidth() ?? 0) + Styles.titleOffset
         button.setFrame(left: 0, top: 10, width: bottomWidth, height: 28)
         buttonAction = action // 存储闭包
-        button.addTarget(self, action: #selector(handleButtonAction), for: forEvent)
-        
+        button.addTarget(self, action: #selector(buttonsTapped), for: forEvent)
+        button.extendTouchArea()
+        // ⚠️下一步：确认CollectionView的点击事件为什么那么小
     }
     
     
     // MARK: - @objc func
-    @objc func handleButtonAction() {
+    @objc func buttonsTapped() {
         buttonAction?()
     }
     
@@ -462,10 +460,12 @@ class GroupBottomButtonsView: UIView {
         switchButton.set(superview: self, target: self, action: #selector(switchButtonTapped))
         switchButton.setStyleIconButton(imageName: "groupBar_fold")
         switchButton.setFrame(right: 12, bottom: 10, width: 28, height: 28)
+        switchButton.extendTouchArea()
 
         settingsButton.set(superview: self, target: self, action: #selector(settingsButtonTapped))
         settingsButton.setStyleIconButton(imageName: "home_settings")
         settingsButton.setFrame(right: 57, bottom: 10, width: 28, height: 28)
+        settingsButton.extendTouchArea()
         
         if showTrashButton {
             addTrashButton()
@@ -476,6 +476,7 @@ class GroupBottomButtonsView: UIView {
         trashButton.set(superview: self, target: self, action: #selector(trashButtonTapped))
         trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
         trashButton.setFrame(left: 10, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
+         trashButton.extendTouchArea()
     }
     
     

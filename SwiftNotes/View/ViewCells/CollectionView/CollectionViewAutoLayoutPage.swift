@@ -43,7 +43,7 @@ struct CollectionViewAutoLayoutStyles {
 class CollectionViewAutoLayoutPage: UIViewController {
     
     typealias Styles = CollectionViewAutoLayoutStyles
-
+    
     private var dataSource = DataManager()
     
     var collectionViewContentHeight: CGFloat = 0 // (可选项)获取collectionView内容高度(用于布局)
@@ -112,7 +112,6 @@ extension CollectionViewAutoLayoutPage: UICollectionViewDataSource {
         let item = dataSource[indexPath.row]
         cell.configure(withTitle: item.title, color: item.bgColor)
         
-        // (可选)如果用到了高度collectionViewContentHeight，要在这里调用(在前面还没有加载内容时还没有高度)
         return cell
     }
 }
@@ -133,7 +132,7 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     // MARK: - 初始化
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
@@ -142,7 +141,7 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
     
     // MARK: - func
-    private func setupViews() {
+    private func setupView() {
         imageView.set(superview: contentView, cornerRadius: 10)
         imageView.setFrame(left: 0, top: 0, width: 0, height: 60)
         

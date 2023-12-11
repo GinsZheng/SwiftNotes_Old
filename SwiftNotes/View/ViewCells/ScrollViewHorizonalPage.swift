@@ -35,7 +35,7 @@ class ScrollViewHorizonalPage: UIViewController {
         buttons.set(superview: groupBg)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupUI(showsHorizontalScrollIndicator: false)
-        buttons.onButtonTapped = { [weak self] index in
+        buttons.onButtonsTapped = { [weak self] index in
             print("Done")
             self?.push(toTarget: CSGeneralSubpage())
         }
@@ -51,7 +51,7 @@ class CSHorizonalScrollingButtons: UIView {
     // 初始化参数
     var titles: [String]
     var target: UIViewController
-    var onButtonTapped: ((Int) -> Void)? // 定义闭包属性
+    var onButtonsTapped: ((Int) -> Void)? // 定义闭包属性
     
     let scrollView = UIScrollView()
     var buttons: [UIButton] = []
@@ -59,7 +59,7 @@ class CSHorizonalScrollingButtons: UIView {
     /// - 参数:
     ///   - titles: 每个按钮的标题
     ///   - target: 填self。用于处理scrollView侧滑冲突
-    ///   - onButtonTapped: 闭包，填点击button时的操作逻辑
+    ///   - onButtonsTapped: 闭包，填点击button时的操作逻辑
     ///   - forEvent: 触发事件，默认为 touchUpInside
     init(titles: [String], target: UIViewController) {
         self.titles = titles
@@ -70,7 +70,7 @@ class CSHorizonalScrollingButtons: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
     // MARK: - func
     func setupUI(showsHorizontalScrollIndicator: Bool) {
@@ -86,7 +86,6 @@ class CSHorizonalScrollingButtons: UIView {
     }
     
     private func createButtons() {
-        
         var buttonLeft: CGFloat = 10 // 用于记录下一个按钮的左边界位置
         let buttonHeight: CGFloat = 28
         let buttonCenterY = scrollView.centerY
@@ -94,10 +93,11 @@ class CSHorizonalScrollingButtons: UIView {
         let itemInterval: CGFloat = 6
         let scrollViewTailOffset: CGFloat = 4
         
+        // 将创建并布局buttons
         for (i, title) in titles.enumerated() {
             let button = UIButton(type: .custom)
             button.tag = i // 用于标识是哪个button，以便在代理中赋值给didSelectButtonAtIndex，实现按不同按钮响应不同操作
-            button.set(superview: scrollView, target: self, action: #selector(handleonButtonTapped), forEvent: .touchUpInside)
+            button.set(superview: scrollView, target: self, action: #selector(buttonsTapped), forEvent: .touchUpInside)
             button.setStyleSolid14pt666LightGrayRoundedButton(title: title)
             
             // 计算按钮frame的参数
@@ -108,7 +108,6 @@ class CSHorizonalScrollingButtons: UIView {
             
             // 更新buttonLeft以便下一个按钮使用
             buttonLeft = button.right + itemInterval
-            
             buttons.append(button)
         }
         
@@ -116,10 +115,10 @@ class CSHorizonalScrollingButtons: UIView {
     }
     
     // MARK: - @objc func
-    @objc private func handleonButtonTapped(_ button: UIButton) {
-        onButtonTapped?(button.tag)
+    @objc private func buttonsTapped(_ button: UIButton) {
+        onButtonsTapped?(button.tag)
     }
-
+    
 }
 
 /// 注：CSHorizonalScrollingButtons可以继续抽象出一个更通用的类，就像UITableView一样。比如把 createButtons() 抽象成一个像：

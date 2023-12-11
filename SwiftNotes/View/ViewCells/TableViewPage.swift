@@ -190,3 +190,12 @@ class DefaultTableViewCell: UITableViewCell {
     eg：需要在最后一个单元格渲染完成后，再执行一些操作时，如果写在cellForItemAt中，则每个单元格都要执行相应的逻辑
     但
  */
+
+/*
+ 为什么用：guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
+ 而不是直接 let cell = AutoLayoutCollectionViewCell() ？
+ 因为前者的做法更优：
+ 1. 单元格重用：这是处理大量数据的集合视图的关键性能优化。当您滚动集合视图时，离开屏幕的单元格会被放入重用池。
+ 2. 自动布局和尺寸处理
+ 3. 与集合视图的集成：确保单元格正确响应数据更改和视图更新
+ */
