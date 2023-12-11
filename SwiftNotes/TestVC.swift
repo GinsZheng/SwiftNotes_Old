@@ -55,11 +55,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
-        // 设置数据源更新时的操作
-        dataSource.onItemsUpdated = { [weak self] in
-            self?.collectionView.reloadData()
-        }
     }
     
     
@@ -67,6 +62,11 @@ class ViewController: UIViewController {
     func setupUI() {
         setupCommonUI()
         setupFormViewUI()
+        
+        // 设置数据源更新时的操作
+        dataSource.onItemsUpdated = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     func setupCommonUI() {
