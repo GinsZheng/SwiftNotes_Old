@@ -1,5 +1,28 @@
 import UIKit
 
+// collectionView数据的结构体
+private struct Item {
+    let title: String
+    let bgColor: String
+}
+
+private class DataManager: BaseDataManager<Item> {
+    init() {
+        super.init(initialItems: [
+            Item(title: "0 Swift", bgColor: cBlue_5393FF),
+            Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
+            Item(title: "2 Java", bgColor: cMagenta_FC5AAE),
+            Item(title: "3 PHP", bgColor: cRed_FF635A),
+            Item(title: "4 JS", bgColor: cOrange_F9AD18),
+            Item(title: "5 React", bgColor: cGreen_25BE3C),
+            Item(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
+            Item(title: "7 HTML", bgColor: cBlue_5393FF),
+            Item(title: "8 C#", bgColor: cPurple_BF62F8),
+            Item(title: "9 C++", bgColor: cPurple_BF62F8),
+        ])
+    }
+}
+
 // CollectionView的参数
 struct GroupCollectionViewStyles {
     static let fontSize: CGFloat = 14
@@ -13,35 +36,14 @@ class ViewController: UIViewController {
     
     typealias Styles = GroupCollectionViewStyles
     
-    // collectionView数据的结构体
-    struct Item {
-        let title: String
-        let bgColor: String
-    }
-    
     enum UIForm {
         case form0
         case form1
     }
     
-    var dataSource: [Item] = [
-        Item(title: "0 Swift", bgColor: cBlue_5393FF),
-        Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
-        Item(title: "2 Java", bgColor: cMagenta_FC5AAE),
-        Item(title: "3 PHP", bgColor: cRed_FF635A),
-        Item(title: "4 JS", bgColor: cOrange_F9AD18),
-        Item(title: "5 React", bgColor: cGreen_25BE3C),
-        Item(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
-        Item(title: "7 HTML", bgColor: cBlue_5393FF),
-        Item(title: "8 C#", bgColor: cPurple_BF62F8),
-        Item(title: "9 C++", bgColor: cPurple_BF62F8),
-    ] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    private let dataSource = DataManager()
     
-    lazy var titles: [String] = dataSource.compactMap { $0.title }
+    lazy var titles: [String] = dataSource.map { $0.title }
     var currentUIForm: UIForm = .form0
     var collectionViewContentHeight: CGFloat = 0 // 获取collectionView内容高度(用于布局)
     
@@ -53,6 +55,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        // 设置数据源更新时的操作
+        dataSource.onItemsUpdated = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     

@@ -8,23 +8,19 @@
 
 import UIKit
 
-// MARK: - TableView 默认数据结构体
-struct DefaultTableViewItem {
-    let title: String
-    let viewController: UIViewController
+private class DataManager: BaseDataManager<DefaultTableViewItem> {
+    init() {
+        super.init(initialItems: [
+            DefaultTableViewItem(title: "Animation", viewController: CSGeneralSubpage()),
+            DefaultTableViewItem(title: "Button", viewController: CSGeneralSubpage()),
+        ])
+    }
 }
 
 
 class TableViewPage: UIViewController {
     
-    var dataSource: [DefaultTableViewItem] = [
-        DefaultTableViewItem(title: "Animation", viewController: CSGeneralSubpage()),
-        DefaultTableViewItem(title: "Button", viewController: CSGeneralSubpage()),
-    ] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    private let dataSource = DataManager()
     
     let tableView = UITableView()
     
@@ -41,6 +37,10 @@ class TableViewPage: UIViewController {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
+        
+        dataSource.onItemsUpdated = {  [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     

@@ -8,6 +8,29 @@
 
 import UIKit
 
+// collectionView数据的结构体
+private struct Item {
+    let title: String
+    let bgColor: String
+}
+
+private class DataManager: BaseDataManager<Item> {
+    init() {
+        super.init(initialItems: [
+            Item(title: "0 Swift", bgColor: cBlue_5393FF),
+            Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
+            Item(title: "2 Java", bgColor: cMagenta_FC5AAE),
+            Item(title: "3 PHP", bgColor: cRed_FF635A),
+            Item(title: "4 JS", bgColor: cOrange_F9AD18),
+            Item(title: "5 React", bgColor: cGreen_25BE3C),
+            Item(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
+            Item(title: "7 HTML", bgColor: cBlue_5393FF),
+            Item(title: "8 C#", bgColor: cPurple_BF62F8),
+            Item(title: "9 C++", bgColor: cPurple_BF62F8),
+        ])
+    }
+}
+
 // 输入参数
 struct CollectionViewEqualDivisionStyles {
     static let eachLineCount: CGFloat = 3
@@ -18,18 +41,7 @@ class CollectionViewEqualDivisionPage: UIViewController, UICollectionViewDelegat
     
     var collectionView: UICollectionView!
     
-    let dataSource: [(title: String, bgColor: String)] = [
-        (title: "0 Swift", bgColor: cBlue_5393FF),
-        (title: "1 Xcode", bgColor: cPurple_BF62F8),
-        (title: "2 Java", bgColor: cMagenta_FC5AAE),
-        (title: "3 PHP", bgColor: cRed_FF635A),
-        (title: "4 JS", bgColor: cOrange_F9AD18),
-        (title: "5 React", bgColor: cGreen_25BE3C),
-        (title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
-        (title: "7 HTML", bgColor: cBlue_5393FF),
-        (title: "8 C#", bgColor: cPurple_BF62F8),
-        (title: "9 C++", bgColor: cPurple_BF62F8),
-    ]
+    private let dataSource = DataManager()
     
     
     // MARK: - 生命周期方法

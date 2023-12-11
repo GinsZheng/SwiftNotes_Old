@@ -8,6 +8,29 @@
 
 import UIKit
 
+// collectionView数据的结构体
+private struct Item {
+    let title: String
+    let bgColor: String
+}
+
+private class DataManager: BaseDataManager<Item> {
+    init() {
+        super.init(initialItems: [
+            Item(title: "0 Swift", bgColor: cBlue_5393FF),
+            Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
+            Item(title: "2 Java", bgColor: cMagenta_FC5AAE),
+            Item(title: "3 PHP", bgColor: cRed_FF635A),
+            Item(title: "4 JS", bgColor: cOrange_F9AD18),
+            Item(title: "5 React", bgColor: cGreen_25BE3C),
+            Item(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
+            Item(title: "7 HTML", bgColor: cBlue_5393FF),
+            Item(title: "8 C#", bgColor: cPurple_BF62F8),
+            Item(title: "9 C++", bgColor: cPurple_BF62F8),
+        ])
+    }
+}
+
 // CollectionView的参数
 struct CollectionViewAutoLayoutStyles {
     static let fontSize: CGFloat = 17
@@ -20,29 +43,8 @@ struct CollectionViewAutoLayoutStyles {
 class CollectionViewAutoLayoutPage: UIViewController {
     
     typealias Styles = CollectionViewAutoLayoutStyles
-    
-    // collectionView数据的结构体
-    struct Item {
-        let title: String
-        let bgColor: String
-    }
 
-    var dataSource: [Item] = [
-        Item(title: "0 Swift", bgColor: cBlue_5393FF),
-        Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
-        Item(title: "2 Java", bgColor: cMagenta_FC5AAE),
-        Item(title: "3 PHP", bgColor: cRed_FF635A),
-        Item(title: "4 JS", bgColor: cOrange_F9AD18),
-        Item(title: "5 React", bgColor: cGreen_25BE3C),
-        Item(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
-        Item(title: "7 HTML", bgColor: cBlue_5393FF),
-        Item(title: "8 C#", bgColor: cPurple_BF62F8),
-        Item(title: "9 C++", bgColor: cPurple_BF62F8),
-    ] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    private var dataSource = DataManager()
     
     var collectionViewContentHeight: CGFloat = 0 // (可选项)获取collectionView内容高度(用于布局)
     
@@ -53,6 +55,10 @@ class CollectionViewAutoLayoutPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        dataSource.onItemsUpdated = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     
