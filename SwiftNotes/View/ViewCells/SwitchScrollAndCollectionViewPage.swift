@@ -49,8 +49,8 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
         case form1
     }
     
-    private let dataSource = DataManager()
-    lazy var titles: [String] = dataSource.map { $0.title }
+    private let groupData = DataManager()
+    lazy var titles: [String] = groupData.map { $0.title }
     
     var currentUIForm: UIForm = .form0
     var collectionViewContentHeight: CGFloat = 0 // 获取collectionView内容高度(用于布局)
@@ -72,7 +72,7 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
         setupFormViewUI()
         
         // 设置数据源更新时的操作
-        dataSource.onItemsUpdated = { [weak self] in
+        groupData.onItemsUpdated = { [weak self] in
             self?.collectionView.reloadData()
         }
     }
@@ -132,7 +132,7 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
         // 设置闭包：计算标题宽度
         layout.fetchTitleWidths = { [weak self] in
             guard let self = self else { return [] }
-            return dataSource.map {
+            return groupData.map {
                 getLabelWidth(withMaxWidth: 136, text: $0.title, fontSize: Styles.fontSize, weight: Styles.weight)
             }
         }
@@ -163,7 +163,7 @@ extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate {
     
     // 设置单元格渲染完成后的逻辑
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == dataSource.count - 1 {
+        if indexPath.row == groupData.count - 1 {
             addBottomButtons(in: collectionView)
         }
     }
@@ -201,7 +201,7 @@ extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate {
 extension SwitchScrollAndCollectionViewPage: UICollectionViewDataSource {
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
+        return groupData.count
     }
     
     // 设置 cell 逻辑

@@ -13,6 +13,7 @@ private class DataManager: BaseDataManager<DefaultTableViewItem> {
 class ViewController: UIViewController {
     
     private let tableData = DataManager()
+    var sectionExpanded: [Bool] = [true, true, false]
     
     let tableView = UITableView()
     
@@ -29,7 +30,6 @@ class ViewController: UIViewController {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
-        
         tableData.onItemsUpdated = {  [weak self] in
             self?.tableView.reloadData()
         }
@@ -59,9 +59,14 @@ extension ViewController: UITableViewDelegate {
 
 // MARK: - 代理方法：UITableViewDataSource
 extension ViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionExpanded.count
+    }
+    
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count
+        return sectionExpanded[section] ? tableData.count : 0
     }
     
     // cell
@@ -70,5 +75,10 @@ extension ViewController: UITableViewDataSource {
         cell.configure(title: tableData[indexPath.row].title)
         return cell
     }
+    
+    // 表头
+    
 }
 
+
+// ❓对于有多个section的内容，应该怎么写数据结构

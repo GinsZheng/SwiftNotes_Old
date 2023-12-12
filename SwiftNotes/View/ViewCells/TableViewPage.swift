@@ -20,7 +20,7 @@ private class DataManager: BaseDataManager<DefaultTableViewItem> {
 
 class TableViewPage: UIViewController {
     
-    private let dataSource = DataManager()
+    private let tableData = DataManager()
     
     let tableView = UITableView()
     
@@ -38,7 +38,7 @@ class TableViewPage: UIViewController {
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         
-        dataSource.onItemsUpdated = {  [weak self] in
+        tableData.onItemsUpdated = {  [weak self] in
             self?.tableView.reloadData()
         }
     }
@@ -59,7 +59,7 @@ extension TableViewPage: UITableViewDelegate {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: dataSource[indexPath.row].viewController)
+        self.push(toTarget: tableData[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -69,13 +69,13 @@ extension TableViewPage: UITableViewDelegate {
 extension TableViewPage: UITableViewDataSource {
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return tableData.count
     }
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
-        cell.configure(title: dataSource[indexPath.row].title)
+        cell.configure(title: tableData[indexPath.row].title)
         return cell
     }
 }
