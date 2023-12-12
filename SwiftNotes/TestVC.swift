@@ -82,7 +82,7 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let titleLabel = UILabel()
         titleLabel.text = "已完成"
-        titleLabel.setStyle17pt222()
+        titleLabel.setStyle14pt666MedCenter()
         titleLabel.setFrame(left: 0, top: 0, width: 100, height: 148)
         
         return titleLabel
