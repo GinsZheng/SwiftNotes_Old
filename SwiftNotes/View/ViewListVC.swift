@@ -30,6 +30,7 @@ class ViewListVC: UIViewController {
         DefaultTableViewItem(title: "Stepper", viewController: StepperPage()),
         DefaultTableViewItem(title: "Styles", viewController: StylesPage()),
         DefaultTableViewItem(title: "Switch", viewController: SwitchPage()),
+        DefaultTableViewItem(title: "Switch Scroll And Collection View", viewController: SwitchScrollAndCollectionViewPage()),
         DefaultTableViewItem(title: "Table View", viewController: TableViewPage()),
         DefaultTableViewItem(title: "Text Field", viewController: TextFieldPage()),
         DefaultTableViewItem(title: "Text View", viewController: TextViewPage()),

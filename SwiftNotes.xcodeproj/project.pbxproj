@@ -204,6 +204,7 @@
 		7ACF48522B27052700759E0A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF48512B27052700759E0A /* DataManager.swift */; };
 		7ACF48542B270DB800759E0A /* DataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF48532B270DB800759E0A /* DataStruct.swift */; };
 		7ACF48562B270FBF00759E0A /* Test2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF48552B270FBF00759E0A /* Test2VC.swift */; };
+		7ACF48582B28067F00759E0A /* SwitchScrollAndCollectionViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF48572B28067F00759E0A /* SwitchScrollAndCollectionViewPage.swift */; };
 		7AD3C6132B104ECF00B9A752 /* Test1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD3C6122B104ECE00B9A752 /* Test1VC.swift */; };
 		7AD3C6162B104F0F00B9A752 /* TestVCListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD3C6152B104F0F00B9A752 /* TestVCListPage.swift */; };
 		7AD5C3B728BDFF530002CCE1 /* ViewCellList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AD5C3B628BDFF530002CCE1 /* ViewCellList.plist */; };
@@ -740,6 +741,7 @@
 		7ACF48512B27052700759E0A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		7ACF48532B270DB800759E0A /* DataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStruct.swift; sourceTree = "<group>"; };
 		7ACF48552B270FBF00759E0A /* Test2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2VC.swift; sourceTree = "<group>"; };
+		7ACF48572B28067F00759E0A /* SwitchScrollAndCollectionViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchScrollAndCollectionViewPage.swift; sourceTree = "<group>"; };
 		7AD3C6122B104ECE00B9A752 /* Test1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test1VC.swift; sourceTree = "<group>"; };
 		7AD3C6152B104F0F00B9A752 /* TestVCListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVCListPage.swift; sourceTree = "<group>"; };
 		7AD5C3B628BDFF530002CCE1 /* ViewCellList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ViewCellList.plist; sourceTree = "<group>"; };
@@ -1407,6 +1409,7 @@
 				7A216147238986AF00D5A93A /* StackViewPage.swift */,
 				7A36487523926CC8000BBECD /* StylesPage.swift */,
 				7A216144238986AF00D5A93A /* SwitchPage.swift */,
+				7ACF48572B28067F00759E0A /* SwitchScrollAndCollectionViewPage.swift */,
 				7A21614C238986AF00D5A93A /* TableViewPage.swift */,
 				7A21614D238986AF00D5A93A /* TextFieldPage.swift */,
 				7A216146238986AF00D5A93A /* TextViewPage.swift */,
@@ -2091,6 +2094,7 @@
 				7A62A2002465B8F60090D128 /* OperatorAtPage.swift in Sources */,
 				7A216154238986AF00D5A93A /* LabelPage.swift in Sources */,
 				7A77BDFC2AE285DA009F9185 /* SwitchView1Page.swift in Sources */,
+				7ACF48582B28067F00759E0A /* SwitchScrollAndCollectionViewPage.swift in Sources */,
 				7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */,
 				7AA789C528D03F4900B58537 /* CameraAndPhotosPage.swift in Sources */,
 				7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */,
