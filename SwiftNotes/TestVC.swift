@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     private let tableData = DataManager()
     var sectionExpanded: [Bool] = [true, true, false]
+    let headerHeight: CGFloat = 44
     
     let tableView = UITableView()
     
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
         tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
+        
         tableData.onItemsUpdated = {  [weak self] in
             self?.tableView.reloadData()
         }
@@ -59,7 +61,7 @@ extension ViewController: UITableViewDelegate {
 
 // MARK: - 代理方法：UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-    
+    // 组数
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionExpanded.count
     }
@@ -77,7 +79,19 @@ extension ViewController: UITableViewDataSource {
     }
     
     // 表头
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let titleLabel = UILabel()
+        titleLabel.text = "已完成"
+        titleLabel.setStyle17pt222()
+        titleLabel.setFrame(left: 0, top: 0, width: 100, height: 148)
+        
+        return titleLabel
+    }
     
+    // 表头高度
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerHeight
+    }
 }
 
 
