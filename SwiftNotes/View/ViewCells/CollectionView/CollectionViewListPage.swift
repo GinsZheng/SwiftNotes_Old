@@ -11,8 +11,9 @@ import UIKit
 private class DataManager: BaseDataManager<DefaultTableViewItem> {
     init() {
         super.init(initialItems: [
-            DefaultTableViewItem(title: "Equal Division", viewController: CollectionViewEqualDivisionPage()),
-            DefaultTableViewItem(title: "Auto Layout", viewController: CollectionViewAutoLayoutPage())
+            DefaultTableViewItem(title: "Equal Size", viewController: EqualSizeCollectionViewPage()),
+            DefaultTableViewItem(title: "Equal Division", viewController: EqualDivisionCollectionViewPage()),
+            DefaultTableViewItem(title: "Auto Layout", viewController: AutoLayoutCollectionViewPage())
         ])
     }
 }
@@ -66,8 +67,10 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-    
-    // MARK: - @objc func
-    
 }
 
+/*
+ EqualSizeCollectionViewPage：使用了内置布局 UICollectionViewFlowLayout()，好处是简单易懂，适用于宽高一致的布局
+ EqualDivisionCollectionViewPage：自定义的等宽布局，适用于单元格宽度相同高度不同的布局(如瀑布流)
+ CollectionViewAutoLayoutPage: 自定义的自适应布局，适用于单元格宽度随着文字长度变化的布局
+ */

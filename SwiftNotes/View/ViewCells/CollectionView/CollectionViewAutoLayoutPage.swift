@@ -1,5 +1,5 @@
 //
-//  CollectionViewAutoLayoutPage.swift
+//  AutoLayoutCollectionViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2023/8/22.
@@ -32,7 +32,7 @@ private class DataManager: BaseDataManager<Item> {
 }
 
 // CollectionView的参数
-struct CollectionViewAutoLayoutStyles {
+struct AutoLayoutCollectionViewStyles {
     static let fontSize: CGFloat = 17
     static let weight: UIFont.Weight = .medium
     static let titleOffset: CGFloat = 20
@@ -40,11 +40,11 @@ struct CollectionViewAutoLayoutStyles {
     static let itemHeight: CGFloat = 66
 }
 
-class CollectionViewAutoLayoutPage: UIViewController {
+class AutoLayoutCollectionViewPage: UIViewController {
     
-    typealias Styles = CollectionViewAutoLayoutStyles
+    typealias Styles = AutoLayoutCollectionViewStyles
     
-    private var dataSource = DataManager()
+    private var collectionData = DataManager()
     
     var collectionViewContentHeight: CGFloat = 0 // (可选项)获取collectionView内容高度(用于布局)
     
@@ -56,7 +56,7 @@ class CollectionViewAutoLayoutPage: UIViewController {
         super.viewDidLoad()
         setupUI()
         
-        dataSource.onItemsUpdated = { [weak self] in
+        collectionData.onItemsUpdated = { [weak self] in
             self?.collectionView.reloadData()
         }
     }
@@ -73,7 +73,7 @@ class CollectionViewAutoLayoutPage: UIViewController {
         // 设置闭包：计算标题宽度
         layout.fetchTitleWidthsClosure = { [weak self] in
             guard let self = self else { return [] }
-            return dataSource.map {
+            return collectionData.map {
                 getLabelWidth(withMaxWidth: 136, text: $0.title, fontSize: Styles.fontSize, weight: Styles.weight)
             }
         }
@@ -89,7 +89,7 @@ class CollectionViewAutoLayoutPage: UIViewController {
 
 
 // MARK: - 代理方法：UICollectionViewDelegate
-extension CollectionViewAutoLayoutPage: UICollectionViewDelegate {
+extension AutoLayoutCollectionViewPage: UICollectionViewDelegate {
     // 设置点击事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.push(toTarget: CSGeneralSubpage())
@@ -99,19 +99,18 @@ extension CollectionViewAutoLayoutPage: UICollectionViewDelegate {
 
 
 // MARK: - 代理方法：UICollectionViewDataSource
-extension CollectionViewAutoLayoutPage: UICollectionViewDataSource {
+extension AutoLayoutCollectionViewPage: UICollectionViewDataSource {
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
+        return collectionData.count
     }
     
     // 设置 cell 逻辑
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AutoLayoutCollectionViewCell.identifier, for: indexPath) as? AutoLayoutCollectionViewCell else { return UICollectionViewCell() }
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
-        let item = dataSource[indexPath.row]
+        let item = collectionData[indexPath.row]
         cell.configure(withTitle: item.title, color: item.bgColor)
-        
         return cell
     }
 }
@@ -121,7 +120,7 @@ extension CollectionViewAutoLayoutPage: UICollectionViewDataSource {
 
 class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
-    typealias Styles = CollectionViewAutoLayoutStyles
+    typealias Styles = AutoLayoutCollectionViewStyles
     
     static let identifier = String(describing: AutoLayoutCollectionViewCell.self)
     
@@ -164,7 +163,7 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
 // MARK: - 自定义Layout
 class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
     
-    typealias Styles = CollectionViewAutoLayoutStyles
+    typealias Styles = AutoLayoutCollectionViewStyles
     
     var onHeightUpdate: ((CGFloat) -> Void)?     // 获取collectionView高度的闭包
     var fetchTitleWidthsClosure: (() -> [CGFloat])? // 获取标题宽度的闭包
