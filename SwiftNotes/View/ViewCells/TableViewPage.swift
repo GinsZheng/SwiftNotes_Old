@@ -81,55 +81,6 @@ extension TableViewPage: UITableViewDataSource {
 }
 
 
-// MARK: - 自定义的默认 tableViewCell
-class DefaultTableViewCell: UITableViewCell {
-    
-    static let identifier = String(describing: DefaultTableViewCell.self)
-    
-    private let titleLabel = UILabel()
-    private let nextIcon = UIImageView()
-    private let separator = UIView()
-    
-    
-    // MARK: - 初始化
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    // MARK: - func
-    // 设置控件非布局内容 (严谨说是一次性设置的内容，这通常都是非布局内容)
-    private func setupUI() {
-        titleLabel.set(superview: contentView)
-        titleLabel.setStyle17pt222()
-        
-        nextIcon.set(superview: contentView, imageName: "next")
-        
-        separator.set(superview: contentView, backgroundColor: cSeparator)
-        
-    }
-    
-    // 设置控件布局 (严谨说是布局刷新时需要刷新的内容，这通常都是布局内容)
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        titleLabel.setFrame(left: 16, centerY: contentView.centerY)
-        nextIcon.setFrame(right: 16, centerY: contentView.centerY, width: 18, height: 18)
-        separator.setSeparatorFrame(left: 16, right: 16)
-    }
-    
-    // 配置数据
-    func configure(title: String) {
-        titleLabel.text = title
-    }
-    
-}
-
-
 /*
  DefaultTableViewCell 类中，为什么要各控件的内容分开写入 setupUI() 和 layoutSubviews() 和 configure()
  因为每一个代码的调用机制不一样：
