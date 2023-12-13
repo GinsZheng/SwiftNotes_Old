@@ -55,10 +55,6 @@ class AutoLayoutCollectionViewPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
-        collectionData.onItemsUpdated = { [weak self] in
-            self?.collectionView.reloadData()
-        }
     }
     
     
@@ -82,24 +78,23 @@ class AutoLayoutCollectionViewPage: UIViewController {
         collectionView.register(AutoLayoutCollectionViewCell.self, forCellWithReuseIdentifier: AutoLayoutCollectionViewCell.identifier)
         collectionView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         collectionView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
-        
+        // 数据更新时刷新列表
+        collectionData.onItemsUpdated = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
 }
 
 
-// MARK: - 代理方法：UICollectionViewDelegate
-extension AutoLayoutCollectionViewPage: UICollectionViewDelegate {
+// MARK: - CollectionView 代理方法
+extension AutoLayoutCollectionViewPage: UICollectionViewDelegate, UICollectionViewDataSource {
     // 设置点击事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.push(toTarget: CSGeneralSubpage())
         collectionView.deselectItem(at: indexPath, animated: true)
     }
-}
 
-
-// MARK: - 代理方法：UICollectionViewDataSource
-extension AutoLayoutCollectionViewPage: UICollectionViewDataSource {
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionData.count

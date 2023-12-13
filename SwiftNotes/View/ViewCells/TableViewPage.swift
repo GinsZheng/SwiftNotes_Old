@@ -37,7 +37,7 @@ class TableViewPage: UIViewController {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
-        
+        // 数据更新时刷新列表
         tableData.onItemsUpdated = {  [weak self] in
             self?.tableView.reloadData()
         }
@@ -49,8 +49,8 @@ class TableViewPage: UIViewController {
 }
 
 
-// MARK: - 代理方法：UITableViewDelegate
-extension TableViewPage: UITableViewDelegate {
+// MARK: - TableView 代理方法
+extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
@@ -61,11 +61,7 @@ extension TableViewPage: UITableViewDelegate {
         self.push(toTarget: tableData[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-}
-
-
-// MARK: - 代理方法：UITableViewDataSource
-extension TableViewPage: UITableViewDataSource {
+    
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count

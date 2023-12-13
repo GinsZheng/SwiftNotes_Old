@@ -1,20 +1,18 @@
-//
-//  Test1VC.swift
-//  SwiftNotes
-//
-//  Created by GinsMac on 2023/11/24.
-//  Copyright © 2023 GinsMac. All rights reserved.
-//
-//  Test1VC
-
 import UIKit
+
+private class DataManager: BaseDataManager<DefaultTableViewItem> {
+    init() {
+        super.init(initialItems: [
+            DefaultTableViewItem(title: "Animation", viewController: CSGeneralSubpage()),
+            DefaultTableViewItem(title: "Button", viewController: CSGeneralSubpage()),
+        ])
+    }
+}
+
 
 class Test1VC: UIViewController {
     
-    let dataSource: [DefaultTableViewItem] = [
-        DefaultTableViewItem(title: "Animation", viewController: CSGeneralSubpage()),
-        DefaultTableViewItem(title: "Button", viewController: CSGeneralSubpage()),
-    ]
+    private let tableData = DataManager()
     
     let tableView = UITableView()
     
@@ -31,11 +29,9 @@ class Test1VC: UIViewController {
         tableView.register(DefaultTableViewCell22.self, forCellReuseIdentifier: DefaultTableViewCell22.identifier)
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
-        
-        let titles = dataSource.map { $0.viewController }
-        print("t", titles)
-        let vc = dataSource.map {
-            $0.viewController
+        // 数据更新时刷新列表
+        tableData.onItemsUpdated = {  [weak self] in
+            self?.tableView.reloadData()
         }
     }
     
@@ -45,8 +41,8 @@ class Test1VC: UIViewController {
 }
 
 
-// MARK: - 代理方法：UITableViewDelegate
-extension Test1VC: UITableViewDelegate {
+// MARK: - 代理方法：UITableViewDelegate, UITableViewDataSource
+extension Test1VC: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
@@ -54,29 +50,25 @@ extension Test1VC: UITableViewDelegate {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: dataSource[indexPath.row].viewController)
+        self.push(toTarget: tableData[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-}
-
-
-// MARK: - 代理方法：UITableViewDataSource
-extension Test1VC: UITableViewDataSource {
+    
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return tableData.count
     }
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell22.identifier, for: indexPath) as? DefaultTableViewCell22 else { return UITableViewCell() }
-        cell.configure(title: dataSource[indexPath.row].title)
+        cell.configure(title: tableData[indexPath.row].title)
         return cell
     }
 }
 
 
-// MARK: - 自定义的默认 tableViewCell
+// MARK: - 自定义的 tableViewCell
 class DefaultTableViewCell22: UITableViewCell {
     
     static let identifier = String(describing: DefaultTableViewCell22.self)

@@ -34,10 +34,15 @@ class ViewController: UIViewController {
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         tableView.setBackgroundColor(color: cLightRed)
-        
+        // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        // 数据更新时刷新列表
         tableData.onItemsUpdated = {  [weak self] in
             self?.tableView.reloadData()
         }
+        
     }
     
     
@@ -57,6 +62,11 @@ extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.push(toTarget: tableData[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // 表头高度
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerHeight
     }
 }
 
@@ -86,18 +96,12 @@ extension ViewController: UITableViewDataSource {
         bgView.setBackgroundColor(color: cLightTheme)
         bgView.setFrame(left: 0, top: 0, width: kScreenWidth, height: headerHeight)
         
-//        let titleLabel = UILabel()
-//        titleLabel.text = "已完成"
-//        titleLabel.setStyle14pt666MedCenter()
-//        titleLabel.setFrame(left: 0, top: 0, width: 100, height: 148)
-        
         return bgView
     }
     
-    // 表头高度
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return headerHeight
-    }
+
+    
+
 }
 
 

@@ -68,18 +68,14 @@ class EqualSizeCollectionViewPage: UIViewController {
 }
 
 
-// MARK: - 代理方法：UICollectionViewDelegate
-extension EqualSizeCollectionViewPage: UICollectionViewDelegate {
+// MARK: - CollectionView 代理方法
+extension EqualSizeCollectionViewPage: UICollectionViewDelegate, UICollectionViewDataSource {
     // 设置点击事件
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.push(toTarget: CSGeneralSubpage())
         collectionView.deselectItem(at: indexPath, animated: true)
     }
-}
 
-
-// MARK: - 代理方法：UICollectionViewDataSource
-extension EqualSizeCollectionViewPage: UICollectionViewDataSource {
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionData.count
