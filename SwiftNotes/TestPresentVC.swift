@@ -40,10 +40,6 @@ class TestPresentVC: UIViewController {
             let point = t.location(in: self.view)
             print("移动中\(point)")
             
-//            actionSheet(actionsTitle: ["放弃"], actionsStyle: [.destructive], actionsHandler: [{
-//                (x) in
-//                self.dismiss()
-//                }])
         }
     }
     

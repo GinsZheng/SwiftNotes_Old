@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
+        tableView.setBackgroundColor(color: cMainRed)
         
         tableData.onItemsUpdated = {  [weak self] in
             self?.tableView.reloadData()
@@ -80,12 +81,16 @@ extension ViewController: UITableViewDataSource {
     
     // 表头
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let titleLabel = UILabel()
-        titleLabel.text = "已完成"
-        titleLabel.setStyle14pt666MedCenter()
-        titleLabel.setFrame(left: 0, top: 0, width: 100, height: 148)
+        let bgView = UIView()
+        bgView.setBackgroundColor(color: cLightTheme)
+        bgView.setFrame(left: 0, top: 0, width: kScreenWidth, height: headerHeight)
         
-        return titleLabel
+//        let titleLabel = UILabel()
+//        titleLabel.text = "已完成"
+//        titleLabel.setStyle14pt666MedCenter()
+//        titleLabel.setFrame(left: 0, top: 0, width: 100, height: 148)
+        
+        return bgView
     }
     
     // 表头高度
