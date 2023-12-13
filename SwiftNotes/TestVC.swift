@@ -28,10 +28,12 @@ class ViewController: UIViewController {
     
     // MARK: - func
     func setupUI() {
+        view.setBackgroundColor(color: cFFF)
+        
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
-        tableView.setBackgroundColor(color: cMainRed)
+        tableView.setBackgroundColor(color: cLightRed)
         
         tableData.onItemsUpdated = {  [weak self] in
             self?.tableView.reloadData()
