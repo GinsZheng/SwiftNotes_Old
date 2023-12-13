@@ -35,11 +35,11 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
     func setupUI() {
         view.backgroundColor = UIColor.white
 
-        label.set(superview: view, text: "这行文字将通过下个页面编辑")
+        label.setup(superview: view, text: "这行文字将通过下个页面编辑")
         label.setFontStyle(size: 24, color: cBlue_5393FF)
         label.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 60)
 
-        button.set(superview: view, target: self, action: #selector(editName))
+        button.setup(superview: view, target: self, action: #selector(editName))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "下一页")
         button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
     }
@@ -93,11 +93,11 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     func setupUI() {
         view.backgroundColor = UIColor.white
 
-        nameTextField.set(superview: view, placeholder: "请输入", delegate: self)
+        nameTextField.setup(superview: view, placeholder: "请输入", delegate: self)
         nameTextField.setStyleOneLineTextField()
         nameTextField.setFrame(left: 20, top: 20, right: 20, height: 44)
 
-        button.set(superview: view, target: self, action: #selector(refreshSuperView))
+        button.setup(superview: view, target: self, action: #selector(refreshSuperView))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "返回")
         button.setFrame(left: 20, top: 84, right: 20, height: 44)
 

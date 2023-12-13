@@ -17,7 +17,7 @@ class CSGeneralSubpage: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        label.set(superview: view, text: textStr)
+        label.setup(superview: view, text: textStr)
         label.setFontStyle(size: 34, color: "222")
         label.setFrame(centerX: view.centerX, top: 200)
         

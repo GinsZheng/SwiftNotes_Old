@@ -33,23 +33,23 @@ class CSProgressInsertPage: UIViewController, UITextFieldDelegate {
         navPresent.setTitleLabel(superview: view, title: "Insert")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
         
-        currentProgressTextField.set(superview: view, placeholder: "currentProgress", delegate: self)
+        currentProgressTextField.setup(superview: view, placeholder: "currentProgress", delegate: self)
         currentProgressTextField.setStyleOneLineTextField()
         currentProgressTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
         
-        startTimeTextField.set(superview: view, placeholder: "startTime", delegate: self)
+        startTimeTextField.setup(superview: view, placeholder: "startTime", delegate: self)
         startTimeTextField.setStyleOneLineTextField()
         startTimeTextField.setFrame(left: 20, top: currentProgressTextField.bottom + 20, right: 20, height: 48)
         
-        endTimeTextField.set(superview: view, placeholder: "entTime", delegate: self)
+        endTimeTextField.setup(superview: view, placeholder: "entTime", delegate: self)
         endTimeTextField.setStyleOneLineTextField()
         endTimeTextField.setFrame(left: 20, top: startTimeTextField.bottom + 20, right: 20, height: 48)
         
-        itemIdTextField.set(superview: view, placeholder: "itemId", delegate: self)
+        itemIdTextField.setup(superview: view, placeholder: "itemId", delegate: self)
         itemIdTextField.setStyleOneLineTextField()
         itemIdTextField.setFrame(left: 20, top: endTimeTextField.bottom + 20, right: 20, height: 48)
         
-        insertButton.set(superview: view, target: self, action: #selector(addProgress))
+        insertButton.setup(superview: view, target: self, action: #selector(addProgress))
         insertButton.setStyleSolid17ptFgWhiteThemeButton(title: "Insert")
         insertButton.setFrame(left: 20, top: itemIdTextField.bottom + 20, right: 20, height: 48)
     }

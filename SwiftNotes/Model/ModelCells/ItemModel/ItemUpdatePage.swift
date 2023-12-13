@@ -51,28 +51,28 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
         navPresent.setTitleLabel(superview: view, title: "Update")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
         
-        nameTextField.set(superview: view, placeholder: "itemName", delegate: self, text: model.itemName)
+        nameTextField.setup(superview: view, placeholder: "itemName", delegate: self, text: model.itemName)
         nameTextField.setStyleOneLineTextField()
         nameTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
         
-        resumeTextField.set(superview: view, placeholder: "resume", delegate: self, text: model.resume)
+        resumeTextField.setup(superview: view, placeholder: "resume", delegate: self, text: model.resume)
         resumeTextField.setStyleOneLineTextField()
         resumeTextField.setFrame(left: 20, top: nameTextField.bottom + 20, right: 20, height: 48)
         
-        totalProgressTextField.set(superview: view, placeholder: "totalProgress", delegate: self, text: "\(model.totalProgress)")
+        totalProgressTextField.setup(superview: view, placeholder: "totalProgress", delegate: self, text: "\(model.totalProgress)")
         totalProgressTextField.setStyleOneLineTextField()
         totalProgressTextField.setFrame(left: 20, top: resumeTextField.bottom + 20, right: 20, height: 48)
         
-        colorTextField.set(superview: view, placeholder: "color(Int)", delegate: self, text: "\(model.color)")
+        colorTextField.setup(superview: view, placeholder: "color(Int)", delegate: self, text: "\(model.color)")
         colorTextField.setStyleOneLineTextField()
         colorTextField.setFrame(left: 20, top: totalProgressTextField.bottom + 20, right: 20, height: 48)
         
-        updateButton.set(superview: view, target: self, action: #selector(updateItem))
+        updateButton.setup(superview: view, target: self, action: #selector(updateItem))
         updateButton.setStyleSolid17ptFgWhiteThemeButton(title: "Update")
         updateButton.setFrame(left: 20, top: colorTextField.bottom + 20, right: 20, height: 48)
         
         // 删除
-        deleteButton.set(superview: view, target: self, action: #selector(deleteItem))
+        deleteButton.setup(superview: view, target: self, action: #selector(deleteItem))
         deleteButton.setStyleWord17ptRedButton(title: "Delete")
         deleteButton.setFrame(centerX: view.centerX, top: updateButton.bottom + 10, width: 80, height: 44)
         

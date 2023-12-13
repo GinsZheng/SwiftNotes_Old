@@ -93,12 +93,12 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
     // 单行视图
     func setupOneLineUI() {
         bgView.removeAllSubviews()
-        bgView.set(superview: view, backgroundColor: cFFF)
+        bgView.setup(superview: view, backgroundColor: cFFF)
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
         let buttons = HorizonalScrollingGroupButtonsView(titles: titles, target: self)
-        buttons.set(superview: bgView)
+        buttons.setup(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupUI(showsHorizontalScrollIndicator: false, showTrashButton: true)
         buttons.onButtonsTapped = { [weak self] _ in
@@ -119,7 +119,7 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
     // 多行视图
     func setupMultiLineUI() {
         bgView.removeAllSubviews()
-        bgView.set(superview: view, backgroundColor: cFFF)
+        bgView.setup(superview: view, backgroundColor: cFFF)
         bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 100)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
@@ -139,7 +139,7 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(GroupCollectionViewCell.self, forCellWithReuseIdentifier: GroupCollectionViewCell.identifier)
-        collectionView.set(superview: bgView, delegate: self, dataSource: self, viewController: self)
+        collectionView.setup(superview: bgView, delegate: self, dataSource: self, viewController: self)
         collectionView.setFrame(left: 10, top: 0, right: 10, height: kWithoutNavBarHeight)
     }
     
@@ -175,7 +175,7 @@ extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate {
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
         let bottomView = GroupBottomButtonsView()
-        bottomView.set(superview: bgView, backgroundColor: cFFF)
+        bottomView.setup(superview: bgView, backgroundColor: cFFF)
         bottomView.setFrame(left: 0, bottom: 0, right: 0, height: bottomLineHeight)
         bottomView.setupView(showTrashButton: true)
         bottomView.onTrashButtonTapped = { [weak self] in
@@ -259,7 +259,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
     }
     
     private func setupScrollView(showsHorizontalScrollIndicator: Bool) {
-        scrollView.set(superview: self)
+        scrollView.setup(superview: self)
         scrollView.setFrame(left: 0, top: 0, width: kScreenWidth - 48, height: self.height) // 因为右侧的箭头按钮背景占了48pt
         scrollView.OptimizeEdgePanGesture(of: target)
         scrollView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator
@@ -269,7 +269,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
         for (i, title) in titles.enumerated() {
             let button = UIButton(type: .custom)
             button.tag = i // 用于标识是哪个button，以便在代理中赋值给didSelectButtonAtIndex，实现按不同按钮响应不同操作
-            button.set(superview: scrollView, target: self, action: #selector(buttonsTapped), forEvent: .touchUpInside)
+            button.setup(superview: scrollView, target: self, action: #selector(buttonsTapped), forEvent: .touchUpInside)
             button.setStyleSolid14pt666GrayRoundedButton(title: title)
             
             // 计算按钮frame的参数
@@ -289,11 +289,11 @@ class HorizonalScrollingGroupButtonsView: UIView {
     
     private func addSwitchButton() {
         let switchButtonBg = UIImageView()
-        switchButtonBg.set(superview: self, imageName: "groupBar_gradientMask")
+        switchButtonBg.setup(superview: self, imageName: "groupBar_gradientMask")
         switchButtonBg.setFrame(right: 0, top: 0, width: 72, height: 48)
         
         let switchButton = UIButton(type: .custom)
-        switchButton.set(superview: self, target: self, action: #selector(switchButtonTapped))
+        switchButton.setup(superview: self, target: self, action: #selector(switchButtonTapped))
         switchButton.setStyleIconButton(imageName: "groupBar_unfold")
         switchButton.setFrame(right: 12, centerY: self.height / 2, width: 28, height: 28)
         switchButton.extendTouchArea()
@@ -301,7 +301,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
     
     private func addTrashButton() {
         let trashButton = UIButton(type: .custom)
-        trashButton.set(superview: scrollView, target: self, action: #selector(trashButtonTapped))
+        trashButton.setup(superview: scrollView, target: self, action: #selector(trashButtonTapped))
         trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
         trashButton.setFrame(left: buttonLeft, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
         trashButton.extendTouchArea()
@@ -312,7 +312,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
     
     private func addSettingsButton() {
         let settingsButton = UIButton(type: .custom)
-        settingsButton.set(superview: scrollView, target: self, action: #selector(settingsButtonTapped))
+        settingsButton.setup(superview: scrollView, target: self, action: #selector(settingsButtonTapped))
         settingsButton.setStyleIconButton(imageName: "home_settings")
         settingsButton.setFrame(left: buttonLeft, bottom: 10, width: 28, height: 28)
         settingsButton.extendTouchArea()
@@ -367,7 +367,7 @@ class GroupCollectionViewCell: UICollectionViewCell {
     
     // MARK: - func
     private func setupViews() {
-        button.set(superview: contentView)
+        button.setup(superview: contentView)
         button.setStyleSolidButton(title: "", titleSize: Styles.fontSize, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
     }
     
@@ -457,15 +457,15 @@ class GroupBottomButtonsView: UIView {
     
     // MARK: - func
     func setupView(showTrashButton: Bool) {
-        switchButtonBg.set(superview: self, imageName: "groupBar_gradientMask")
+        switchButtonBg.setup(superview: self, imageName: "groupBar_gradientMask")
         switchButtonBg.setFrame(right: 0, bottom: 0, width: 72, height: 48)
         
-        switchButton.set(superview: self, target: self, action: #selector(switchButtonTapped))
+        switchButton.setup(superview: self, target: self, action: #selector(switchButtonTapped))
         switchButton.setStyleIconButton(imageName: "groupBar_fold")
         switchButton.setFrame(right: 12, bottom: 10, width: 28, height: 28)
         switchButton.extendTouchArea()
 
-        settingsButton.set(superview: self, target: self, action: #selector(settingsButtonTapped))
+        settingsButton.setup(superview: self, target: self, action: #selector(settingsButtonTapped))
         settingsButton.setStyleIconButton(imageName: "home_settings")
         settingsButton.setFrame(right: 57, bottom: 10, width: 28, height: 28)
         settingsButton.extendTouchArea()
@@ -476,7 +476,7 @@ class GroupBottomButtonsView: UIView {
     }
     
      private func addTrashButton() {
-        trashButton.set(superview: self, target: self, action: #selector(trashButtonTapped))
+        trashButton.setup(superview: self, target: self, action: #selector(trashButtonTapped))
         trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
         trashButton.setFrame(left: 10, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
          trashButton.extendTouchArea()

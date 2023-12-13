@@ -25,7 +25,7 @@ class PageControlPage: UIViewController {
     
     func setupUI() {
         let pageControl = UIPageControl()
-        pageControl.set(superview: view, numberOfPages: 3)
+        pageControl.setup(superview: view, numberOfPages: 3)
         pageControl.setFrame(left: 0, top: 0, width: kScreenWidth, height: 100)
     }
 

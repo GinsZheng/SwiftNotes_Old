@@ -36,7 +36,7 @@ class CSDelegator: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
-        button.set(superview: view, target: self, action: #selector(backToSuperpage))
+        button.setup(superview: view, target: self, action: #selector(backToSuperpage))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "返回上页并隐藏按钮")
         button.setFrame(left: 20, top: 20, right: 20, height: 44)
     }
@@ -75,7 +75,7 @@ class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
-        button.set(superview: view, target: self, action: #selector(pushToSubpage))
+        button.setup(superview: view, target: self, action: #selector(pushToSubpage))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "下一页")
         button.setFrame(left: 20, top: 20, right: 20, height: 44)
     }

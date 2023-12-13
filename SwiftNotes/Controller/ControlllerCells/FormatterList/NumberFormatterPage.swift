@@ -28,7 +28,7 @@ class NumberFormatterPage: UIViewController {
         
         // ———————— String(format)格式化
         
-        floatFormat.set(superview: view)
+        floatFormat.setup(superview: view)
         floatFormat.setFrame(left: 20, top: 20, width: 300, height: 44)
         floatFormat.text = String(format: "%.2f", float)
         // %：指其后跟随的参数数值。多个 % 对应多个参数，与Python一样。
@@ -36,12 +36,12 @@ class NumberFormatterPage: UIViewController {
         // %.2f： %与f要组合在一起才是格式化
         // pi：参数，可有多个，参数是数值型
 
-        stringFormat.set(superview: view)
+        stringFormat.setup(superview: view)
         stringFormat.setFrame(left: 20, top: 140, width: 300, height: 44)
         stringFormat.text = String(format: "%@ Zheng", str)
         // @：指字符串的格式化
         
-        intFormat.set(superview: view)
+        intFormat.setup(superview: view)
         intFormat.setFrame(left: 20, top: 180, width: 300, height: 44)
         intFormat.text = String(format: "%02d 个", int)
         print(String(format: "%5d 个", int))
@@ -49,7 +49,7 @@ class NumberFormatterPage: UIViewController {
         // %02d：指数果int不足2位，那以0在前面补位-> “06 个”
         // %5d：指如果整数int不足5位，那以空格在前面补位 -> “    6 个”
         
-        multicpleFormat.set(superview: view)
+        multicpleFormat.setup(superview: view)
         multicpleFormat.setFrame(left: 20, top: 220, width: 300, height: 44)
         multicpleFormat.text = String(format: "%.2f, %@'s reciting", float, str)
         // 多个参数逗号隔开

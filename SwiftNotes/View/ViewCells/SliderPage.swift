@@ -23,7 +23,7 @@ class SliderPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let slider = UISlider()
-        slider.set(superview: view)
+        slider.setup(superview: view)
         slider.setFrame(left: 50, top: 20, right: 50, height: 40)
         slider.setThumbImage(UIImage(named: "tickets-refund-reason-s"), for: .normal)
         slider.setMinimumTrackImage(getImageWithColor(color: cBlue_5393FF), for: .normal)

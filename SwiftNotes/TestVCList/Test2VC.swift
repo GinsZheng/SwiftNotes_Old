@@ -35,7 +35,7 @@ class ViewController2: UIViewController {
     // MARK: - func
     func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         
         dataSource.onItemsUpdated = {  [weak self] in

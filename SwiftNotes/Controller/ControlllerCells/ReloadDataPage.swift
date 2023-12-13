@@ -47,11 +47,11 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     func setupUI() {
         view.backgroundColor = .white
         
-        addItemBtn.set(superview: view, target: self, action: #selector(presentAddItemVC))
+        addItemBtn.setup(superview: view, target: self, action: #selector(presentAddItemVC))
         addItemBtn.setFrame(right: 20, top: 0, width: 25, height: 20)
         addItemBtn.setImage(UIImage(named: "progress_addItem"), for: .normal)
         
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 20, right: 0, height: kWithoutNavAndTabBarHeight - 40)
     }
     
@@ -126,12 +126,12 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
-        nameTextField.set(superview: view, placeholder: "名称", delegate: self)
+        nameTextField.setup(superview: view, placeholder: "名称", delegate: self)
         nameTextField.setStyleOneLineTextField()
         nameTextField.setFrame(left: 20, top: 20, right: 20, height: 48)
         nameTextField.addTarget(self, action: #selector(checkInputtedValue), for: .allEditingEvents)
         
-        addingButton.set(superview: view, target: self, action: #selector(addItem))
+        addingButton.setup(superview: view, target: self, action: #selector(addItem))
         addingButton.setFrame(left: 20, top: 84, right: 20, height: 48)
         addingButton.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
     }

@@ -70,7 +70,7 @@ class CSTouchesMovedGesturePage: UIViewController {
     func setupUI() {
         view.backgroundColor = .white
         
-        myView.set(superview: view, backgroundColor: cBlue_5393FF)
+        myView.setup(superview: view, backgroundColor: cBlue_5393FF)
         myView.setCornerRadius(radius: 4)
         myView.setFrame(left: 20, top: 20, width: 44, height: 44)
     }

@@ -50,28 +50,28 @@ class CSProgressUpdatePage: UIViewController, UITextFieldDelegate {
         navPresent.setTitleLabel(superview: view, title: "Update")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
         
-        currentProgressTextField.set(superview: view, placeholder: "currentProgress", delegate: self, text: String(currentProgressNum))
+        currentProgressTextField.setup(superview: view, placeholder: "currentProgress", delegate: self, text: String(currentProgressNum))
         currentProgressTextField.setStyleOneLineTextField()
         currentProgressTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
         
-        startTimeTextField.set(superview: view, placeholder: "startTime", delegate: self, text: String(startTimeNum))
+        startTimeTextField.setup(superview: view, placeholder: "startTime", delegate: self, text: String(startTimeNum))
         startTimeTextField.setStyleOneLineTextField()
         startTimeTextField.setFrame(left: 20, top: currentProgressTextField.bottom + 20, right: 20, height: 48)
         
-        endTimeTextField.set(superview: view, placeholder: "entTime", delegate: self, text: String(endTimeNum))
+        endTimeTextField.setup(superview: view, placeholder: "entTime", delegate: self, text: String(endTimeNum))
         endTimeTextField.setStyleOneLineTextField()
         endTimeTextField.setFrame(left: 20, top: startTimeTextField.bottom + 20, right: 20, height: 48)
         
-        itemIdTextField.set(superview: view, placeholder: "itemId", delegate: self, text: String(itemIdNum))
+        itemIdTextField.setup(superview: view, placeholder: "itemId", delegate: self, text: String(itemIdNum))
         itemIdTextField.setStyleOneLineTextField()
         itemIdTextField.setFrame(left: 20, top: endTimeTextField.bottom + 20, right: 20, height: 48)
         
-        updateButton.set(superview: view, target: self, action: #selector(updateProgress))
+        updateButton.setup(superview: view, target: self, action: #selector(updateProgress))
         updateButton.setStyleSolid17ptFgWhiteThemeButton(title: "update")
         updateButton.setFrame(left: 20, top: itemIdTextField.bottom + 20, right: 20, height: 48)
         
         // 删除
-        deleteButton.set(superview: view, target: self, action: #selector(deleteProgress))
+        deleteButton.setup(superview: view, target: self, action: #selector(deleteProgress))
         deleteButton.setStyleWord17ptRedButton(title: "Delete")
         deleteButton.setFrame(centerX: view.centerX, top: updateButton.bottom + 10, width: 80, height: 44)
     }

@@ -28,11 +28,11 @@ class CSUIClass: UIView {
     }
     
     
-    func set(superview: UIView, percentage: Double) {
+    func setup(superview: UIView, percentage: Double) {
         innerPercentage = percentage
-        progressBarBg.set(superview: superview)
-        progressBar.set(superview: progressBarBg)
-        progressBarLabel.set(superview: progressBar, text: "\(Int(innerPercentage*100))%")
+        progressBarBg.setup(superview: superview)
+        progressBar.setup(superview: progressBarBg)
+        progressBarLabel.setup(superview: progressBar, text: "\(Int(innerPercentage*100))%")
     }
     
     func setStyles(color: String) {

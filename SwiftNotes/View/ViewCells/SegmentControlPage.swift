@@ -25,7 +25,7 @@ class SegmentControlPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let segmentControl = UISegmentedControl(items: ["FirstSegment", "SecondSegment"])
-        segmentControl.set(superview: view, target: self, action: #selector(showSelectedSegment(_:)), for: .valueChanged)
+        segmentControl.setup(superview: view, target: self, action: #selector(showSelectedSegment(_:)), for: .valueChanged)
         segmentControl.setFrame(left: 20, top: 20, right: 20, height: 36)
     }
     

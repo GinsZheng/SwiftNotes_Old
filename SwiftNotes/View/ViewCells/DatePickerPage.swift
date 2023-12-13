@@ -28,7 +28,7 @@ class DatePickerPage: UIViewController {
     func setupUI() {
         view.backgroundColor = UIColor.white
         
-        datePicker.set(superview: view)
+        datePicker.setup(superview: view)
         datePicker.setFrame(centerX: view.centerX, top: 0, width: 320, height: 215)
         datePicker.locale = Locale(identifier: "zh_CN")
         datePicker.datePickerMode = .dateAndTime
@@ -38,7 +38,7 @@ class DatePickerPage: UIViewController {
             // Fallback on earlier versions
         }
         
-        datePicker2.set(superview: view)
+        datePicker2.setup(superview: view)
         datePicker2.setFrame(centerX: view.centerX, top: 300, width: 320, height: 215)
         // 设置tag(可通过tag来获取其对象)
         datePicker2.tag = 1
@@ -63,7 +63,7 @@ class DatePickerPage: UIViewController {
         
         // 确定按钮
         let button = UIButton()
-        button.set(superview: view, target: self, action: #selector(getValue))
+        button.setup(superview: view, target: self, action: #selector(getValue))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "打印时间")
         button.setFrame(left: 20, top: 235, right: 20, height: 56)
         

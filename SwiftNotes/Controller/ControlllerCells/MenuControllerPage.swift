@@ -18,7 +18,7 @@ class CSMenuControllerPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let label = CSInteractiveUILabel()
-        label.set(superview: view, text: "heheda")
+        label.setup(superview: view, text: "heheda")
         label.setFontStyle(size: 17, color: c222)
         label.setFrame(left: 20, top: 20)
         

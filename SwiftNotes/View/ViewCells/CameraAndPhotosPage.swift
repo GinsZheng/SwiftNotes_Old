@@ -29,11 +29,11 @@ class CameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & U
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
-        imageAddingBtn.set(superview: view, target: self, action: #selector(addImage))
+        imageAddingBtn.setup(superview: view, target: self, action: #selector(addImage))
         imageAddingBtn.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
         imageAddingBtn.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 56)
         
-        imageView.set(superview: view, image: getImageWithColor(color: cDDDEE0))
+        imageView.setup(superview: view, image: getImageWithColor(color: cDDDEE0))
         imageView.setCornerRadius(radius: 8)
         imageView.setFrame(centerX: view.centerX, top: 100, width: 200, height: 200)
     }

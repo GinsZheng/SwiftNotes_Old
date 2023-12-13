@@ -34,7 +34,7 @@ class StackViewPage: UIViewController {
         stackBlock3.backgroundColor = .hex(cBlue_5393FF)
         
         let stack = UIStackView(arrangedSubviews: [stackBlock1, stackBlock2, stackBlock3])
-        stack.set(superview: view)
+        stack.setup(superview: view)
         stack.setStyleStackView(spacing: 20)
         stack.setFrame(left: 20, top: 20, width: kScreenWidth-40, height: 100)
         
@@ -54,13 +54,13 @@ class StackViewPage: UIViewController {
             stackBlockBArray.append(stackBlockB)
             
             let separator = UIView()
-            separator.set(superview: stackBlockBArray[i])
+            separator.setup(superview: stackBlockBArray[i])
             separator.setBackgroundColor(color: c222)
             separator.setFrame(right: 0, top: 0, width: kSeparatorHeight, height: 100)
         }
 
         let stackB = UIStackView(arrangedSubviews: [stackBlockBArray[0], stackBlockBArray[1], stackBlockBArray[2]])
-        stackB.set(superview: view)
+        stackB.setup(superview: view)
         stackB.setStyleStackView(spacing: 0)
         stackB.setFrame(left: 0, top: stack.bottom + 20, width: kScreenWidth, height: 100)
     }

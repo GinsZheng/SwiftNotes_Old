@@ -46,7 +46,7 @@ class DateFormatterPage: UIViewController {
         
         // 显示在屏幕上
         let label = UILabel()
-        label.set(superview: view, text: formattedDate)
+        label.setup(superview: view, text: formattedDate)
         label.setStyle17pt222Med()
         label.setFrame(left: 20, top: 100)
         

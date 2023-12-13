@@ -58,7 +58,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - func
     
     func setupUI() {
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
     }
     
@@ -79,11 +79,11 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
         cell.setSeparator(left: 20, right: 0)
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: dataSource[indexPath.row].title)
+        cellTitle.setup(superview: cell, text: dataSource[indexPath.row].title)
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
-        next.set(superview: cell, imageName: "next")
+        next.setup(superview: cell, imageName: "next")
         next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
         
         return cell

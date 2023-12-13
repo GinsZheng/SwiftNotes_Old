@@ -61,7 +61,7 @@ class EqualSizeCollectionViewPage: UIViewController {
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(EqualSizeCollectionViewCell.self, forCellWithReuseIdentifier: EqualSizeCollectionViewCell.identifier)
-        collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        collectionView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         collectionView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
     }
 
@@ -119,10 +119,10 @@ class EqualSizeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - func
     func setupUI() {
-        imageView.set(superview: self, cornerRadius: 0)
+        imageView.setup(superview: self, cornerRadius: 0)
         imageView.setFrame(left: 0, top: 0, width: ceil(kScreenWidth/Styles.eachLineCount), height: Styles.itemHeight)
         
-        titleLabel.set(superview: self)
+        titleLabel.setup(superview: self)
         titleLabel.self.setStyle17ptFgWhiteMedCenter()
         titleLabel.setFrame(left: 0, centerY: imageView.centerY, width: ceil(kScreenWidth/Styles.eachLineCount), height: 20)
     }

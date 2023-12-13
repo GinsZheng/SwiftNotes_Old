@@ -27,10 +27,10 @@ class AnimationPage: UIViewController {
     func setupUI() {
         view.backgroundColor = UIColor.white
         
-        myView.set(superview: view, backgroundColor: cBlue_5393FF)
+        myView.setup(superview: view, backgroundColor: cBlue_5393FF)
         myView.setFrame(centerX: view.centerX, top: 20, width: 100, height: 100)
         
-        solidButton.set(superview: view, target: self, action: #selector(startAnimation))
+        solidButton.setup(superview: view, target: self, action: #selector(startAnimation))
         solidButton.setStyleSolidButton(title: "Start Animation", titleSize: 17, titleColor: cFEFEFE, bgImage: getImageWithColor(color: cThemeFill), radius: 10)
         solidButton.setFrame(left: 20, bottom: 34, width: kScreenWidth - 40, height: 44)
     }

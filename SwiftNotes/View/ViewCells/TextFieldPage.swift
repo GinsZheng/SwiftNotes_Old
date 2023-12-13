@@ -51,27 +51,27 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
     func setupUI() {
         view.backgroundColor = UIColor.white
 
-        textField.set(superview: view, placeholder: "Input something", delegate: self)
+        textField.setup(superview: view, placeholder: "Input something", delegate: self)
         textField.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 44)
         textField.addTarget(self, action: #selector(checkInputtedValue), for: .allEditingEvents)
         textField.becomeFirstResponder() // 获取焦点
         textField.delegate = self
         
-        textField2.set(superview: view, placeholder: "NumberPad", delegate: self)
+        textField2.setup(superview: view, placeholder: "NumberPad", delegate: self)
         textField2.setFrame(left: 20, top: textField.bottom + 20, width: kScreenWidth - 40, height: 44)
         textField2.keyboardType = .numberPad
         
-        textField3.set(superview: view, placeholder: "Scale", delegate: self)
+        textField3.setup(superview: view, placeholder: "Scale", delegate: self)
         textField3.setFrame(left: 20, top: textField2.bottom + 20, width: kScreenWidth - 40, height: 44)
         textField3.adjustsFontSizeToFitWidth = true
         textField3.minimumFontSize = 12
         
 
-        button.set(superview: view, target: self, action: #selector(resign))
+        button.setup(superview: view, target: self, action: #selector(resign))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "hehe")
         button.setFrame(left: 20, top: textField3.bottom + 20, right: 20, height: 48)
         
-        myView.set(superview: view, backgroundColor: cF0F1F3)
+        myView.setup(superview: view, backgroundColor: cF0F1F3)
         myView.setFrame(left: 20, top: button.bottom + 20, right: 20, height: 100)
     }
     

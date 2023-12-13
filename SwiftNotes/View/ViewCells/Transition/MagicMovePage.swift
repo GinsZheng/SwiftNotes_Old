@@ -36,11 +36,11 @@ class MagicMoveFromVC: UIViewController {
     func setupUI() {
         view.backgroundColor = .white
         
-        grayView.set(superview: view, backgroundColor: c000_22)
+        grayView.setup(superview: view, backgroundColor: c000_22)
         grayView.setCornerRadiusWithMask(radius: 15)
         grayView.setFrame(left: 40, top: 180, width: kScreenWidth - 80, height: 56)
         
-        blueView.set(superview: view, backgroundColor: cF0F1F3)
+        blueView.setup(superview: view, backgroundColor: cF0F1F3)
         blueView.setCornerRadiusWithMask(radius: 10)
         blueView.setFrame(left: 90, top: 270, width: kScreenWidth - 180, height: 260)
         
@@ -79,16 +79,16 @@ class MagicMoveToVC: UIViewController {
         view.backgroundColor = .white
         
         // 设置终态的View
-        blueView.set(superview: view, backgroundColor: cF0F1F3)
+        blueView.setup(superview: view, backgroundColor: cF0F1F3)
         blueView.setCornerRadiusWithMask(radius: 0) // 这句可以省略，只需给出始态与终态
         blueView.setFrame(allEdges: 0)
         
-        grayView.set(superview: view, backgroundColor: cOrange_F9AD18)
+        grayView.setup(superview: view, backgroundColor: cOrange_F9AD18)
         grayView.setCornerRadiusWithMask(radius: 15)
         grayView.setFrame(centerX: view.centerX, top: 100, width: 100, height: 100)
         
         // 新增的UIView也为终态
-        whiteView.set(superview: view, backgroundColor: cBlue_5393FF_40)
+        whiteView.setup(superview: view, backgroundColor: cBlue_5393FF_40)
         whiteView.setCornerRadiusWithMask(radius: 15)
         whiteView.setFrame(centerX: view.centerX, top: 400, width: 300, height: 400)
         

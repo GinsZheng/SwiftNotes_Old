@@ -30,7 +30,7 @@ class SwitchPage: UIViewController {
         print("初始boolValue1", userDefaultsboolValue1)
         
         let mySwitch = UISwitch()
-        mySwitch.set(superview: view, setOn: userDefaultsboolValue1, target: self, action: #selector(switchChanged(_:)))
+        mySwitch.setup(superview: view, setOn: userDefaultsboolValue1, target: self, action: #selector(switchChanged(_:)))
         mySwitch.setFrame(left: 20, top: 20, width: 50, height: 30)
         
         mySwitch.onTintColor = UIColor.hex(cBlue_5393FF)

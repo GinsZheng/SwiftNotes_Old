@@ -44,7 +44,7 @@ class TransitionListPage: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: 15, left: 0, bottom: 15, right: 0)
         
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
-        collectionView.set(superview: view)
+        collectionView.setup(superview: view)
         collectionView.backgroundColor = .white
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -71,7 +71,7 @@ extension TransitionListPage: UICollectionViewDataSource, UICollectionViewDelega
         cell.setShadow(y: 2, radius: 12)
         
         let titleLabel = UILabel()
-        titleLabel.set(superview: cell.contentView, text: titleArray[indexPath.item])
+        titleLabel.setup(superview: cell.contentView, text: titleArray[indexPath.item])
         titleLabel.setStyle17pt222()
         titleLabel.setFrame(left: 15, centerY: cell.contentView.centerY)
         

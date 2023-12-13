@@ -21,11 +21,11 @@ class CSPopAndDismissPage3: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        label.set(superview: view, text: textStr)
+        label.setup(superview: view, text: textStr)
         label.setFontStyle(size: 34, color: "222")
         label.setFrame(centerX: view.centerX, top: 200)
         
-        button.set(superview: view, target: self, action: #selector(presentAgain))
+        button.setup(superview: view, target: self, action: #selector(presentAgain))
         button.setStyleWord17ptThemeButton(title: "Pop and dismiss")
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
@@ -50,11 +50,11 @@ class CSPopAndDismissPage1: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        label.set(superview: view, text: textStr)
+        label.setup(superview: view, text: textStr)
         label.setFontStyle(size: 34, color: "222")
         label.setFrame(centerX: view.centerX, top: 200)
         
-        button.set(superview: view, target: self, action: #selector(pushFirst))
+        button.setup(superview: view, target: self, action: #selector(pushFirst))
         button.setStyleWord17ptThemeButton(title: "Push First")
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }
@@ -77,11 +77,11 @@ class CSPopAndDismissPage2: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
-        label.set(superview: view, text: textStr)
+        label.setup(superview: view, text: textStr)
         label.setFontStyle(size: 34, color: "222")
         label.setFrame(centerX: view.centerX, top: 200)
         
-        button.set(superview: view, target: self, action: #selector(presentThen))
+        button.setup(superview: view, target: self, action: #selector(presentThen))
         button.setStyleWord17ptThemeButton(title: "Present then")
         button.setFrame(centerX: view.centerX, top: label.bottom, width: 200, height: 44)
     }

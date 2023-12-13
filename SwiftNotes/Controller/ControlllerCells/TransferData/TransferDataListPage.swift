@@ -81,7 +81,7 @@ class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewData
     
     func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
     }
     

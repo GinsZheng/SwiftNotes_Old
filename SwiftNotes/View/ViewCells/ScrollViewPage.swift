@@ -24,13 +24,13 @@ class ScrollViewPage: UIViewController {
         view.backgroundColor = UIColor.white
         
         let scrollView = UIScrollView()
-        scrollView.set(superview: view)
+        scrollView.setup(superview: view)
         scrollView.setFrame(left: 0, top: 0, width: kScreenWidth, height: 400)
         scrollView.OptimizeEdgePanGesture(of: self)
         scrollView.contentSize = CGSize(width: kScreenWidth, height: kScreenWidth/375*812)
         
         let image = UIImageView()
-        image.set(superview: scrollView, imageName: "iPhoneX")
+        image.setup(superview: scrollView, imageName: "iPhoneX")
         image.setFrame(left: 0, top: 0, width: kScreenWidth, height: kScreenWidth/375*812)
     }
 }

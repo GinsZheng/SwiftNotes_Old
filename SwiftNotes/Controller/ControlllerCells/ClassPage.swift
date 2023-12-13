@@ -24,7 +24,7 @@ class CSClassPage: UIViewController {
     // 多态：可以返回目标类的子类
     func getView(superview: UIView) -> UIView {
         let img = UIImageView()
-        img.set(superview: superview, imageName: "mine_face")
+        img.setup(superview: superview, imageName: "mine_face")
         img.setCornerRadius(radius: 8)
         img.setFrame(left: 20, top: 100, width: 100, height: 100)
         return img

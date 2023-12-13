@@ -42,7 +42,7 @@ class TabBarController {
         // tabBarController.tabBar.shadowImage = getImageWithColor(color: cF5F6F8)
         
         let tabBg = UIImageView()
-        tabBg.set(superview: tabBarController.tabBar, imageName: "tab_background")
+        tabBg.setup(superview: tabBarController.tabBar, imageName: "tab_background")
         tabBg.setFrame(left: 0, top: 0, right: 0, height: 120)
         tabBg.setShadow(y: 2, radius: 14)
         tabBg.sendToback()
@@ -68,7 +68,7 @@ class TabBarController {
         tabBarController.tabBar.shadowImage = nil
         
         let tabShadow = UIImageView()
-        tabShadow.set(superview: tabBarController.tabBar, imageName: "tab_shadow")
+        tabShadow.setup(superview: tabBarController.tabBar, imageName: "tab_shadow")
         tabShadow.setFrame(left: 0, top: -10, right: 0, height: 10)
 
         tabBarController.shouldHijackHandler = {
@@ -108,7 +108,7 @@ class TabBarController {
         
         // 中间的+按钮
         let addingBtn = UIButton()
-        addingBtn.set(superview: tabBarController.tabBar)
+        addingBtn.setup(superview: tabBarController.tabBar)
         addingBtn.setFrame(centerX: tabBarController.tabBar.centerX, top: -4, width: kScreenWidth/3 + 2, height: 48)
         addingBtn.setImage(UIImage(named: "tab_adding"), for: .normal)
         addingBtn.isUserInteractionEnabled = false

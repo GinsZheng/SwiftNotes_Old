@@ -28,11 +28,11 @@ class ScrollViewHorizonalPage: UIViewController {
         view.setBackgroundColor(color: cF2F3F6)
         
         let groupBg = UIView()
-        groupBg.set(superview: view, backgroundColor: cFFF)
+        groupBg.setup(superview: view, backgroundColor: cFFF)
         groupBg.setFrame(left: 0, top: 100, width: kScreenWidth, height: 48)
         
         let buttons = CSHorizonalScrollingButtons(titles: titles, target: self)
-        buttons.set(superview: groupBg)
+        buttons.setup(superview: groupBg)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupUI(showsHorizontalScrollIndicator: false)
         buttons.onButtonsTapped = { [weak self] index in
@@ -79,7 +79,7 @@ class CSHorizonalScrollingButtons: UIView {
     }
     
     private func setupScrollView(showsHorizontalScrollIndicator: Bool) {
-        scrollView.set(superview: self)
+        scrollView.setup(superview: self)
         scrollView.setFrame(allEdges: 0)
         scrollView.OptimizeEdgePanGesture(of: target)
         scrollView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator
@@ -97,7 +97,7 @@ class CSHorizonalScrollingButtons: UIView {
         for (i, title) in titles.enumerated() {
             let button = UIButton(type: .custom)
             button.tag = i // 用于标识是哪个button，以便在代理中赋值给didSelectButtonAtIndex，实现按不同按钮响应不同操作
-            button.set(superview: scrollView, target: self, action: #selector(buttonsTapped), forEvent: .touchUpInside)
+            button.setup(superview: scrollView, target: self, action: #selector(buttonsTapped), forEvent: .touchUpInside)
             button.setStyleSolid14pt666GrayRoundedButton(title: title)
             
             // 计算按钮frame的参数

@@ -92,11 +92,11 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.selectionStyle = .none // 无按下效果
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: slidesTitle[indexPath.row])
+        cellTitle.setup(superview: cell, text: slidesTitle[indexPath.row])
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
-        next.set(superview: cell, imageName: "next")
+        next.setup(superview: cell, imageName: "next")
         next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
         
         return cell
@@ -157,7 +157,7 @@ private struct Slide: Decodable {
          self.slidesType = model3.slidesType
          print("CSSwiftyModel3 slidesTitle \(model3.slidesTitle)")
 
-         self.tableView.set(superview: self.view, delegate: self, dataSource: self, viewController: self)
+         self.tableView.setup(superview: self.view, delegate: self, dataSource: self, viewController: self)
          self.tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
          self.tableView.contentSize = CGSize(width: kScreenWidth, height: kCellHeight * CGFloat(self.slidesTitle.count))
      }

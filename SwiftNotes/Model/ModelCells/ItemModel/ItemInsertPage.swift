@@ -42,23 +42,23 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
         navPresent.setTitleLabel(superview: view, title: "Insert")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
         
-        nameTextField.set(superview: view, placeholder: "itemName", delegate: self)
+        nameTextField.setup(superview: view, placeholder: "itemName", delegate: self)
         nameTextField.setStyleOneLineTextField()
         nameTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
         
-        resumeTextField.set(superview: view, placeholder: "resume", delegate: self)
+        resumeTextField.setup(superview: view, placeholder: "resume", delegate: self)
         resumeTextField.setStyleOneLineTextField()
         resumeTextField.setFrame(left: 20, top: nameTextField.bottom + 20, right: 20, height: 48)
         
-        totalProgressTextField.set(superview: view, placeholder: "totalProgress", delegate: self)
+        totalProgressTextField.setup(superview: view, placeholder: "totalProgress", delegate: self)
         totalProgressTextField.setStyleOneLineTextField()
         totalProgressTextField.setFrame(left: 20, top: resumeTextField.bottom + 20, right: 20, height: 48)
         
-        colorTextField.set(superview: view, placeholder: "color(Int)", delegate: self)
+        colorTextField.setup(superview: view, placeholder: "color(Int)", delegate: self)
         colorTextField.setStyleOneLineTextField()
         colorTextField.setFrame(left: 20, top: totalProgressTextField.bottom + 20, right: 20, height: 48)
         
-        addingButton.set(superview: view, target: self, action: #selector(addItem))
+        addingButton.setup(superview: view, target: self, action: #selector(addItem))
         addingButton.setStyleSolid17ptFgWhiteThemeButton(title: "Insert")
         addingButton.setFrame(left: 20, top: colorTextField.bottom + 20, right: 20, height: 48)
     }

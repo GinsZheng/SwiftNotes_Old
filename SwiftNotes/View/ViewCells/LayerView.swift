@@ -19,7 +19,7 @@ class LayerView: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        label.set(superview: view, text: "subview")
+        label.setup(superview: view, text: "subview")
         label.setFrame(centerX: view.centerX, top: 20)
         
         // 获取子对象

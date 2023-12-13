@@ -35,7 +35,7 @@ class TableViewPage: UIViewController {
     // MARK: - func
     func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         
         tableData.onItemsUpdated = {  [weak self] in
@@ -117,7 +117,7 @@ extension TableViewPage: UITableViewDataSource {
  cell.selectionStyle = .none
  
  let switchView = UISwitch()
- switchView.set(superview: cell.contentView)
+ switchView.setup(superview: cell.contentView)
  switchView.setFrame(right: 20, centerY: cardBg.centerY, width: switchView.width, height: switchView.height)
  switchView.onTintColor = UIColor.hex(cBlue_5393FF)
  switchView.setOn(true, animated: false)

@@ -26,7 +26,7 @@ class CSCustomPopupWindowPage: UIViewController {
     func setupUI() {
         view.backgroundColor = .white
         
-        btn.set(superview: view, target: self, action: #selector(popup))
+        btn.setup(superview: view, target: self, action: #selector(popup))
         btn.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
         btn.setFrame(left: 20, top: 100, right: 20, height: 48)
     }
@@ -73,29 +73,29 @@ class CSCustomPopupWindow: UIViewController {
     func setupUI() {
         view.backgroundColor = .white
         
-        bgImageView.set(superview: view, image: bgImage)
+        bgImageView.setup(superview: view, image: bgImage)
         bgImageView.setFrame(left: 0, top: 0, width: bgImage.size.width, height: bgImage.size.height)
         
-        maskView.set(superview: view, backgroundColor: c000309_40_mask)
+        maskView.setup(superview: view, backgroundColor: c000309_40_mask)
         maskView.setFrame(allEdges: 0)
 
-        bgView.set(superview: maskView, backgroundColor: cFFF)
+        bgView.setup(superview: maskView, backgroundColor: cFFF)
         bgView.setCornerRadius(radius: 8)
         bgView.setFrame(center: maskView, width: 270, height: 184)
 
-        titleLabel.set(superview: bgView, text: "添加上次")
+        titleLabel.setup(superview: bgView, text: "添加上次")
         titleLabel.setStyle20pt222MedCenter()
         titleLabel.setFrame(centerX: bgView.centerX - bgView.x, top: 20)
 
-        messageLabel.set(superview: bgView, text: "说明内容")
+        messageLabel.setup(superview: bgView, text: "说明内容")
         messageLabel.setStyle14pt666Center()
         messageLabel.setFrame(centerX: titleLabel.centerX, top: titleLabel.bottom + 8)
         
-        addingButton.set(superview: bgView, target: self, action: #selector(confirm))
+        addingButton.setup(superview: bgView, target: self, action: #selector(confirm))
         addingButton.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
         addingButton.setFrame(left: 20, top: messageLabel.bottom + 16, right: 20, height: 48)
         
-        cancelButton.set(superview: bgView, target: self, action: #selector(cancel))
+        cancelButton.setup(superview: bgView, target: self, action: #selector(cancel))
         cancelButton.setStyleWord14pt999Button(title: "放弃")
         cancelButton.setFrame(centerX: bgView.centerX - bgView.x, top: addingButton.bottom + 12, width: 44, height: 20)
         cancelButton.extendTouchArea()

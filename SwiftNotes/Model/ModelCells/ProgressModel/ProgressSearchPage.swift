@@ -37,11 +37,11 @@ class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDa
         currentProgressArray = model.currentProgress
         itemIdArray = model.itemId
         
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
         tableView.reloadData()
         
-        deleteAllButton.set(superview: view, target: self, action: #selector(deleteAll))
+        deleteAllButton.setup(superview: view, target: self, action: #selector(deleteAll))
         deleteAllButton.setStyleIconButton(imageName: "delete")
         deleteAllButton.setShadow(y: 2, radius: 16)
         deleteAllButton.setFrame(right: 20, bottom: 20 + kNavBarHeight + kBottomBarHeight, width: 44, height: 44)
@@ -54,11 +54,11 @@ class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDa
         cell.setSeparator(left: 20, right: 0)
         
         let cellTitle = UILabel()
-        cellTitle.set(superview: cell, text: "itemId: \(itemIdArray[indexPath.row])    currentProgress: \(currentProgressArray[indexPath.row])")
+        cellTitle.setup(superview: cell, text: "itemId: \(itemIdArray[indexPath.row])    currentProgress: \(currentProgressArray[indexPath.row])")
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
-        next.set(superview: cell, imageName: "next")
+        next.setup(superview: cell, imageName: "next")
         next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
         
         return cell

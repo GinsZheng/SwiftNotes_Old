@@ -29,7 +29,7 @@ class Test1VC: UIViewController {
     // MARK: - func
     func setupUI() {
         tableView.register(DefaultTableViewCell22.self, forCellReuseIdentifier: DefaultTableViewCell22.identifier)
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         
         let titles = dataSource.map { $0.viewController }
@@ -101,12 +101,12 @@ class DefaultTableViewCell22: UITableViewCell {
     // MARK: - func
     // 设置控件非布局内容 (严谨说是一次性设置的内容，这通常都是非布局内容)
     private func setupUI() {
-        titleLabel.set(superview: contentView)
+        titleLabel.setup(superview: contentView)
         titleLabel.setStyle17pt222()
         
-        nextIcon.set(superview: contentView, imageName: "next")
+        nextIcon.setup(superview: contentView, imageName: "next")
         
-        separator.set(superview: contentView, backgroundColor: cSeparator)
+        separator.setup(superview: contentView, backgroundColor: cSeparator)
         
     }
     

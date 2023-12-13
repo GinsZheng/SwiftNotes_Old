@@ -80,7 +80,7 @@ class AutoLayoutCollectionViewPage: UIViewController {
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(AutoLayoutCollectionViewCell.self, forCellWithReuseIdentifier: AutoLayoutCollectionViewCell.identifier)
-        collectionView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        collectionView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         collectionView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         
     }
@@ -141,10 +141,10 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
     // MARK: - func
     private func setupView() {
-        imageView.set(superview: contentView, cornerRadius: 10)
+        imageView.setup(superview: contentView, cornerRadius: 10)
         imageView.setFrame(left: 0, top: 0, width: 0, height: 60)
         
-        titleLabel.set(superview: imageView)
+        titleLabel.setup(superview: imageView)
         titleLabel.setFontStyle(size: Styles.fontSize, color: cFFF, weight: Styles.weight, alignment: .center)
     }
     

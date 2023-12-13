@@ -29,7 +29,7 @@ class PickerViewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
-        pickerView.set(superview: view, delegate: self, dataSource: self)
+        pickerView.setup(superview: view, delegate: self, dataSource: self)
         pickerView.setFrame(left: 10, top: 100, width: kScreenWidth - 20, height: 215)
     }
     

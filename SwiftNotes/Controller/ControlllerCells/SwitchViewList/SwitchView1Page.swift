@@ -25,7 +25,7 @@ class SwitchView1Page: UIViewController {
         view.setBackgroundColor(color: cF2F3F6)
         
         let formView = FormView()
-        formView.set(superview: view)
+        formView.setup(superview: view)
         formView.setupCommonUI()
         formView.setupUI()
     }
@@ -55,12 +55,12 @@ class FormView: UIView {
         self.setFrame(left: 20, top: 20, right: 20, height: 48)
 
         let bgView = UIView()
-        bgView.set(superview: self, backgroundColor: cFFF)
+        bgView.setup(superview: self, backgroundColor: cFFF)
         bgView.setFrame(allEdges: 0)
         bgView.setCornerRadius(radius: 10)
         
         let switchButton = UIButton(type: .custom)
-        switchButton.set(superview: bgView, target: self, action: #selector(switchView))
+        switchButton.setup(superview: bgView, target: self, action: #selector(switchView))
         switchButton.setStyleIconButton(imageName: "groupBar_fold")
         switchButton.setFrame(right: 12, centerY: bgView.height / 2, width: 28, height: 28)
         
@@ -71,12 +71,12 @@ class FormView: UIView {
         self.setFrame(left: 20, top: 20, right: 20, height: 200)
         
         let bgView = UIView()
-        bgView.set(superview: self, backgroundColor: cFFF)
+        bgView.setup(superview: self, backgroundColor: cFFF)
         bgView.setFrame(allEdges: 0)
         bgView.setCornerRadius(radius: 10)
 
         let switchButton = UIButton(type: .custom)
-        switchButton.set(superview: bgView, target: self, action: #selector(switchView))
+        switchButton.setup(superview: bgView, target: self, action: #selector(switchView))
         switchButton.setStyleIconButton(imageName: "groupBar_unfold")
         switchButton.setFrame(right: 12, bottom: 12, width: 28, height: 28)
     }

@@ -26,7 +26,7 @@ class CSPlistPage: UIViewController {
         
         // feedback
         let label = UILabel()
-        label.set(superview: view, text: firstBook)
+        label.setup(superview: view, text: firstBook)
         label.setFrame(left: 20, top: 20)
         
     }

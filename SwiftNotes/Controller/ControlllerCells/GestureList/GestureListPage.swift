@@ -37,7 +37,7 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
-        tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
     }
     
@@ -86,7 +86,7 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
 //        super.viewDidLoad()
 //        view.backgroundColor = UIColor.white
 //
-//        self.tableView.set(superview: view, delegate: self, dataSource: self, viewController: self)
+//        self.tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
 //        tableView.setFrame(left: 0, top: 0, right: 0, bottom: 0)
 //    }
 //
@@ -97,11 +97,11 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
 //        cell.setSeparator(left: 20, right: 0)
 //
 //        let cellTitle = UILabel()
-//        cellTitle.set(superview: cell, text: titleList[indexPath.row])
+//        cellTitle.setup(superview: cell, text: titleList[indexPath.row])
 //        cellTitle.setFrame(left: 20, centerY: cell.centerY)
 //
 //        let next = UIImageView()
-//        next.set(superview: cell, imageName: "next")
+//        next.setup(superview: cell, imageName: "next")
 //        next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
 //
 //        return cell

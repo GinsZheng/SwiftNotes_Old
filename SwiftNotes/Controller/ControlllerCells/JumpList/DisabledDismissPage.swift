@@ -26,7 +26,7 @@ class CSDisabledDismissParentPage: UIViewController {
     func setupUI() {
         view.backgroundColor = .white
 
-        button.set(superview: view, target: self, action: #selector(presentNext))
+        button.setup(superview: view, target: self, action: #selector(presentNext))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "Present")
         button.setFrame(left: 20, top: 10, right: 20, height: 44)
     }

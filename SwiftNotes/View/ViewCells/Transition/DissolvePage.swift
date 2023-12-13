@@ -27,7 +27,7 @@ class CSDissolveFromVC: UIViewController {
     func setupUI() {
         view.backgroundColor = .white
         
-        button.set(superview: view, target: self, action: #selector(goNext))
+        button.setup(superview: view, target: self, action: #selector(goNext))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "渐隐渐现")
         button.setCornerRadiusWithMask(radius: 50)
         button.setFrame(centerX: view.centerX, top: 200, width: 100, height: 100)
@@ -68,10 +68,10 @@ class DissolveToVC: UIViewController {
     func setupUI() {
         view.backgroundColor = .white
         
-        blackView.set(superview: view, backgroundColor: c000_97)
+        blackView.setup(superview: view, backgroundColor: c000_97)
         blackView.setFrame(allEdges: 0)
         
-        bgImage.set(superview: view, imageName: "adding_background")
+        bgImage.setup(superview: view, imageName: "adding_background")
         bgImage.setFrame(allEdges: 0)
         
         blackView.hero.modifiers = [.opacity(0), .duration(1), .useGlobalCoordinateSpace]
