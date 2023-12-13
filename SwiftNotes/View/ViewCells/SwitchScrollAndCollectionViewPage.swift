@@ -270,7 +270,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
             let button = UIButton(type: .custom)
             button.tag = i // 用于标识是哪个button，以便在代理中赋值给didSelectButtonAtIndex，实现按不同按钮响应不同操作
             button.set(superview: scrollView, target: self, action: #selector(buttonsTapped), forEvent: .touchUpInside)
-            button.setStyleSolid14pt666LightGrayRoundedButton(title: title)
+            button.setStyleSolid14pt666GrayRoundedButton(title: title)
             
             // 计算按钮frame的参数
             let labelWidth = button.titleLabel?.getLabelWidth() ?? 0

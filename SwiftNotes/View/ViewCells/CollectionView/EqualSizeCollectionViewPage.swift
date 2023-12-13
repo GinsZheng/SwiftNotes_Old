@@ -123,7 +123,7 @@ class EqualSizeCollectionViewCell: UICollectionViewCell {
         imageView.setFrame(left: 0, top: 0, width: ceil(kScreenWidth/Styles.eachLineCount), height: Styles.itemHeight)
         
         titleLabel.set(superview: self)
-        titleLabel.setStyle17ptFFFMedCent()
+        titleLabel.self.setStyle17ptFgWhiteMedCenter()
         titleLabel.setFrame(left: 0, centerY: imageView.centerY, width: ceil(kScreenWidth/Styles.eachLineCount), height: 20)
     }
     

@@ -32,33 +32,34 @@ class ButtonPage: UIViewController {
         
         let wordButton = UIButton(type: .custom)
         wordButton.set(superview: view, target: self, action: #selector(changeSetting))
-        wordButton.setStyleWord17ptThemeButton(title: "纯文")
         wordButton.setFrame(left: 20, top: 20, right: 20, height: 44)
-        
+        wordButton.setStyleWord17ptThemeButton(title: "纯文")
+
         let IconButton = UIButton(type: .custom)
         IconButton.set(superview: view, target: self, action: #selector(changeSetting))
-        IconButton.setStyleIconButton(imageName: "mine_item")
         IconButton.setFrame(centerX: view.centerX, top: wordButton.bottom + 20, width: 26, height: 26)
-        
-        let WordBgButton = UIButton(type: .custom)
-        WordBgButton.set(superview: view, target: self, action: #selector(changeSetting))
-        WordBgButton.setStyleSolid17ptFgWhiteThemeButton(title: "文字&背景")
-        WordBgButton.setFrame(left: 20, top: IconButton.bottom + 20, right: 20, height: 44)
+        IconButton.setStyleIconButton(imageName: "mine_item")
+        IconButton.extendTouchArea()
+
+        let solidButton = UIButton(type: .custom)
+        solidButton.set(superview: view, target: self, action: #selector(changeSetting))
+        solidButton.setFrame(left: 20, top: IconButton.bottom + 20, right: 20, height: 44)
+        solidButton.setStyleSolid17ptFgWhiteThemeButton(title: "文字&背景")
         
         let ghostButton = UIButton(type: .custom)
         ghostButton.set(superview: view, target: self, action: #selector(changeSetting))
-        ghostButton.setStyleGhostButton(title: "幽灵", titleSize: 17, titleColor: cThemeWord, borderColor: cThemeWord, radius: 10)
-        ghostButton.setFrame(left: 20, top: WordBgButton.bottom + 20, right: 20, height: 44)
+        ghostButton.setFrame(left: 20, top: solidButton.bottom + 20, right: 20, height: 44)
+        ghostButton.setStyleGhost17ptThemeThemeButton(title: "幽灵")
         
         let wordIconButton = UIButton(type: .custom)
         wordIconButton.set(superview: view, target: self, action: #selector(changeSetting))
-        wordIconButton.setStyleWordIconButton(title: "图文", titleSize: 17, titleColor: cThemeWord, imageName: "tickets_refund", imageLocation: .left, interval: 3)
         wordIconButton.setFrame(left: 20, top: ghostButton.bottom + 20, right: 20, height: 44)
+        wordIconButton.setStyleWordIcon17ptThemeButton(title: "图文", imageName: "tickets_refund", interval: 3)
         
         let WordIconBgButton = UIButton(type: .custom)
         WordIconBgButton.set(superview: view, target: self, action: #selector(changeSetting))
-        WordIconBgButton.setStyleWordIconBgButton(title: "图文&背景", titleSize: 17, titleColor: cFgWhite, imageName: "general_adding_btn", imageLocation: .left, interval: 3, bgImage: getImageWithColor(color: cThemeFill), radius: 10)
         WordIconBgButton.setFrame(left: 20, top: wordIconButton.bottom + 20, right: 20, height: 44)
+        WordIconBgButton.setStyleWordIconBg17ptFgWhiteThemeButton(title: "图文&背景", imageName: "general_adding_btn", interval: 3)
         
         // 测试UserDefualt内容(1)
         print("testInt初始值", kUserDefaults.integer(forKey: testInt))

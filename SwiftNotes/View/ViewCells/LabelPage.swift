@@ -62,3 +62,7 @@ class LabelPage: UIViewController {
     
 }
 
+/*
+ UILabel需要将 setFontStyle 放在 setFrame 之前，其他适合把setFrame放在紧接set之后的位置：
+ 因为UILabelsetFrame时可以不设置宽高，而此时它的宽高的自动计算依赖于它的fontStyle(小字和大字的宽高不同)
+ */
