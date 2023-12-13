@@ -27,7 +27,6 @@ class CSMaskPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         

@@ -35,7 +35,6 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         
@@ -65,7 +64,6 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - @objc func
-    
     @objc func dismissPage() {
         self.dismiss()
     }

@@ -34,7 +34,6 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     // MARK: - func
-    
     func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)

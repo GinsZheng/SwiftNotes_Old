@@ -22,7 +22,6 @@ class CSFontPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         

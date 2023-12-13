@@ -30,7 +30,6 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,7 +42,6 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         
@@ -87,7 +85,6 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     // MARK: - @objc func
-    
     @objc func presentAddItemVC() {
         // 3.受托
         let addItemVc = AddItemVC()
@@ -122,7 +119,6 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         

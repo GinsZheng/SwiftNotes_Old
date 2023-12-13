@@ -22,7 +22,6 @@ class CSLongPressGesturePage: UIViewController {
     
     
     // MARK: - func
-    
     func setupLongPress() {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture(_:)))
         view.addGestureRecognizer(longPress)

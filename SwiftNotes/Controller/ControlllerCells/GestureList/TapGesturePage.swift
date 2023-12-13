@@ -22,7 +22,6 @@ class CSTapGesturePage: UIViewController {
     
     
     // MARK: - func
-    
     func setupTapGesture() {
         // 单击
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))

@@ -20,7 +20,6 @@ class SegmentControlPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
         
@@ -31,7 +30,6 @@ class SegmentControlPage: UIViewController {
     
     
     // MARK: - @objc func
-    
     @objc func showSelectedSegment(_ segmentControl:UISegmentedControl) {
         print(segmentControl.selectedSegmentIndex)
         print(segmentControl.titleForSegment(at: segmentControl.selectedSegmentIndex)!)

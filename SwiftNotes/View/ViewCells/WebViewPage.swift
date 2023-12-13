@@ -23,7 +23,6 @@ class WebViewPage: UIViewController {
     }()
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,7 +38,6 @@ class WebViewPage: UIViewController {
 
     
     // MARK: - func
-    
     func setupUI() {
         // 3添加webView
         view.addSubview(webView)

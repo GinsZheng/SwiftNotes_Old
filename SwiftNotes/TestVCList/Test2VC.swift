@@ -46,7 +46,6 @@ class ViewController2: UIViewController {
     
     // MARK: - @objc func
     
-    
 }
 
 

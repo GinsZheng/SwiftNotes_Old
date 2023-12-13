@@ -32,7 +32,6 @@ class MagicMoveFromVC: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         
@@ -61,7 +60,6 @@ class MagicMoveToVC: UIViewController {
     
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,7 +72,6 @@ class MagicMoveToVC: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         

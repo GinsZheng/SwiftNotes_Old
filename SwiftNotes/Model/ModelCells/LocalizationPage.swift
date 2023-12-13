@@ -12,7 +12,6 @@ import Localize_Swift
 class LocalizationPage: UIViewController {
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,7 +20,6 @@ class LocalizationPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
@@ -55,7 +53,6 @@ class LocalizationPage: UIViewController {
     
     
     // MARK: - @objc func
-    
     
     
     

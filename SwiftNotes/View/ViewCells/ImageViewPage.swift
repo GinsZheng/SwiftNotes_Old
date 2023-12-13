@@ -23,7 +23,6 @@ class ImageViewPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
         

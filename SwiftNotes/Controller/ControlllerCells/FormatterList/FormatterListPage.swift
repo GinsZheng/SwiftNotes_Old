@@ -19,7 +19,6 @@ class FormatterListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +27,6 @@ class FormatterListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     // MARK: - func
-    
     func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
@@ -37,7 +35,6 @@ class FormatterListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     // MARK: - tableview 代理方法
-    
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
@@ -64,7 +61,6 @@ class FormatterListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     
     
     // MARK: - @objc func
-    
     
 }
 

@@ -24,7 +24,6 @@ class CSPanGesturePage: UIViewController {
     
     
     // MARK: - func
-    
     func setupPan() {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panGes))
         view.addGestureRecognizer(pan)
@@ -32,7 +31,6 @@ class CSPanGesturePage: UIViewController {
     
     
     // MARK: - @objc func
-    
     @objc func panGes() {
         print("pan")
     }

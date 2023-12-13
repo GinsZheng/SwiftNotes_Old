@@ -32,7 +32,6 @@ class CSDelegator: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
@@ -71,7 +70,6 @@ class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
@@ -88,7 +86,6 @@ class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
     
     
     // MARK: - @objc func
-    
     @objc func pushToSubpage() {
         let delegator = CSDelegator()
         delegator.delegate = self

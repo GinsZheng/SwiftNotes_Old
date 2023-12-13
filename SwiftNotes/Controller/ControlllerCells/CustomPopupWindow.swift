@@ -22,7 +22,6 @@ class CSCustomPopupWindowPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         
@@ -69,7 +68,6 @@ class CSCustomPopupWindow: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         

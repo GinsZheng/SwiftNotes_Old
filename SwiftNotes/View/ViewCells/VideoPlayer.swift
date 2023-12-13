@@ -24,7 +24,6 @@ class VideoPlayerPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         

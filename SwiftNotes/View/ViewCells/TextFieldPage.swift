@@ -47,7 +47,6 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
 
@@ -98,7 +97,6 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - @objc func
-    
     @objc func checkInputtedValue(textField: UITextField) {
         
     }

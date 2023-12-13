@@ -12,7 +12,6 @@ class SwitchView1Page: UIViewController {
 
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,7 +19,6 @@ class SwitchView1Page: UIViewController {
     }
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cF2F3F6)
         
@@ -86,7 +84,6 @@ class FormView: UIView {
     
     
     // MARK: - @objc func
-    
     @objc func switchView() {
         currentUIForm = currentUIForm == .form0 ? .form1 : .form0
         setupUI()

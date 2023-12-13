@@ -22,7 +22,6 @@ class PageControlPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         let pageControl = UIPageControl()
         pageControl.setup(superview: view, numberOfPages: 3)

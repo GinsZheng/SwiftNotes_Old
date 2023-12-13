@@ -23,7 +23,6 @@ class Closure2VC: UIViewController {
     }
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
 
@@ -38,7 +37,6 @@ class Closure2VC: UIViewController {
     
     
     // MARK: - @objc func
-    
     @objc func editName() {
         let nameEditorPage = Closure2SubVC()
         // 1.设置闭包 (闭包内写明拿到传递的值后要做的事)
@@ -71,7 +69,6 @@ class Closure2SubVC: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
 

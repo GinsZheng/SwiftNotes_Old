@@ -20,7 +20,6 @@ class StackViewPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
         

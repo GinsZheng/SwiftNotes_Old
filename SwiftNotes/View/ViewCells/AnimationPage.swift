@@ -23,7 +23,6 @@ class AnimationPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
         
@@ -37,7 +36,6 @@ class AnimationPage: UIViewController {
     
     
     // MARK: - @objc func
-    
     @objc func startAnimation() {
         
         UIView.animate(withDuration: 4, delay: 0.4, options: [.autoreverse], animations: {

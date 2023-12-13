@@ -25,7 +25,6 @@ class CSTimerPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         

@@ -31,7 +31,6 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
     }
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
 
@@ -89,7 +88,6 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
 

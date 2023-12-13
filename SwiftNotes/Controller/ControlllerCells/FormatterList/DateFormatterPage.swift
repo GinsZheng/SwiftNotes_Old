@@ -14,7 +14,6 @@ class DateFormatterPage: UIViewController {
     
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,7 +22,6 @@ class DateFormatterPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
 
@@ -59,7 +57,6 @@ class DateFormatterPage: UIViewController {
     
     
     // MARK: - @objc func
-    
     
     
     

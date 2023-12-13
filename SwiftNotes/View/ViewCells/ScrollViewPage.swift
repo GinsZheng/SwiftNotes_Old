@@ -11,7 +11,6 @@ import UIKit
 class ScrollViewPage: UIViewController {
     
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -19,7 +18,6 @@ class ScrollViewPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
         

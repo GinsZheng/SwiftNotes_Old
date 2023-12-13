@@ -117,7 +117,6 @@ extension AutoLayoutCollectionViewPage: UICollectionViewDataSource {
 
 
 // MARK: - 自定义 Cell
-
 class AutoLayoutCollectionViewCell: UICollectionViewCell {
     
     typealias Styles = AutoLayoutCollectionViewStyles

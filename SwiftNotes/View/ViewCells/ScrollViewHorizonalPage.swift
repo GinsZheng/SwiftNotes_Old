@@ -15,7 +15,6 @@ class ScrollViewHorizonalPage: UIViewController {
                   "Button 11", "Button 12", "Button 13", "Button 14", "Button 15"]
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -23,7 +22,6 @@ class ScrollViewHorizonalPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cF2F3F6)
         
@@ -46,7 +44,6 @@ class ScrollViewHorizonalPage: UIViewController {
 
 
 // MARK: - scrollView 横滑按钮列表View
-
 class CSHorizonalScrollingButtons: UIView {
     // 初始化参数
     var titles: [String]

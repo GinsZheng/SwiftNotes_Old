@@ -13,7 +13,6 @@ class CSDisabledDismissParentPage: UIViewController {
     let button = UIButton()
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +21,6 @@ class CSDisabledDismissParentPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
 

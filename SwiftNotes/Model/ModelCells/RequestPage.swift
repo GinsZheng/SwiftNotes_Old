@@ -32,7 +32,6 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     // MARK: - func
-    
     func simpleRequest() {
         let url = "https://go.ginkgeek.com/firstRequest"
         AF.request(url).responseDecodable(of: Slides.self) { response in

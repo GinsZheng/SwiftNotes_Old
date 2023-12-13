@@ -19,7 +19,6 @@ class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +27,6 @@ class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
@@ -38,7 +36,6 @@ class CSAlamofirePage: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     // MARK: - tableview 代理方法
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titleArray.count
     }

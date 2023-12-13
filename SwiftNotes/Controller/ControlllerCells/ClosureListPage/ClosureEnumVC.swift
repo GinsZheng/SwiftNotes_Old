@@ -13,7 +13,6 @@ class ClosureEnumVC: UIViewController {
     let optionalClosureValue = "optionalClosure"
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +21,6 @@ class ClosureEnumVC: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         

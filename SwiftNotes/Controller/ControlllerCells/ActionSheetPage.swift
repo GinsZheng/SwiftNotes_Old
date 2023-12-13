@@ -19,7 +19,6 @@ class ActionSheetPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupActionSheet() {
         actionSheet(actionsTitle: ["返回", "跳转", "打印"], actionsStyle: [.default, .default, .destructive], actionsHandler: [
             { (x) in

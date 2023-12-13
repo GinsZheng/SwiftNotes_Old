@@ -24,7 +24,6 @@ class ButtonPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
         
@@ -83,7 +82,6 @@ class ButtonPage: UIViewController {
     
     
     // MARK: - @objc func
-    
     // 测试UserDefualt内容(2)
     @objc func changeSetting() {
         if kUserDefaults.integer(forKey: testInt) == 0 {

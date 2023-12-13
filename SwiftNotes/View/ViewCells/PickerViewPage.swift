@@ -25,7 +25,6 @@ class PickerViewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         

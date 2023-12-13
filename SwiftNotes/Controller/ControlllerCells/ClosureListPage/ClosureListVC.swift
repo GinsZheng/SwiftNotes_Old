@@ -22,7 +22,6 @@ class ClosureListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +30,6 @@ class ClosureListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     // MARK: - func
-    
     func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
@@ -40,7 +38,6 @@ class ClosureListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     // MARK: - tableview 代理方法
-    
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
@@ -67,7 +64,6 @@ class ClosureListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     // MARK: - @objc func
-    
     
 }
 

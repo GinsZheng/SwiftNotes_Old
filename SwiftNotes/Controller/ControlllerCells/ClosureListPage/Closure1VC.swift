@@ -20,7 +20,6 @@ class Closure1VC: UIViewController {
     let value = "这是一个Closure1VC中的值"
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +28,6 @@ class Closure1VC: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
         

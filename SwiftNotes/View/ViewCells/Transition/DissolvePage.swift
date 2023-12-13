@@ -23,7 +23,6 @@ class CSDissolveFromVC: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         
@@ -36,7 +35,6 @@ class CSDissolveFromVC: UIViewController {
     
     
     // MARK: - @objc func
-    
     @objc func goNext() {
         let vc = DissolveToVC()
         vc.hero.isEnabled = true
@@ -64,7 +62,6 @@ class DissolveToVC: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = .white
         

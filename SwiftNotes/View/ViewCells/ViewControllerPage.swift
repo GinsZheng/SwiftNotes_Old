@@ -29,7 +29,6 @@ class ViewControllerPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.setBackgroundColor(color: cFFF)
     }

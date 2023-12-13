@@ -15,7 +15,6 @@ class DatePickerPage: UIViewController {
     
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +23,6 @@ class DatePickerPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
         
@@ -71,7 +69,6 @@ class DatePickerPage: UIViewController {
     
     
     // MARK: - @objc func
-    
     @objc func getValue() {
         let datePicker2 = self.view.viewWithTag(1)as! UIDatePicker // 通过tag获取datePicker对象
         let date = datePicker2.date // 获取选定的值

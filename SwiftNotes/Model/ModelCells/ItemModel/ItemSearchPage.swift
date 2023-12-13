@@ -27,7 +27,6 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +41,6 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     // MARK: - func
-    
     func setupUI() {
         let editButton = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(presentToInsertPage))
         editButton.tintColor = .hex(cRed_FF635A)
@@ -60,7 +58,6 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     // MARK: - tableview 代理方法
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return idArray.count
     }
@@ -99,7 +96,6 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     // MARK: - @objc func
-    
     @objc func deleteAll() {
         table.delete()
         idArray = []

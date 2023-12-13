@@ -46,7 +46,6 @@ class CSModelListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
         

@@ -22,7 +22,6 @@ class CSPinchGesturePage: UIViewController {
     
     
     // MARK: - func
-    
     func setupPinch() {
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pinchGesture))
         view.addGestureRecognizer(pinch)
@@ -30,7 +29,6 @@ class CSPinchGesturePage: UIViewController {
     
     
     // MARK: - @objc func
-    
     @objc func pinchGesture() {
         print("Pinch")
     }

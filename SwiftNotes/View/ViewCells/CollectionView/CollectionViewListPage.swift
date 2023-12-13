@@ -27,7 +27,6 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
     
     
     // MARK: - 生命周期方法
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +35,6 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
     
     
     // MARK: - func
-    
     func setupUI() {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
@@ -45,7 +43,6 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
     
     
     // MARK: - tableview 代理方法
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }

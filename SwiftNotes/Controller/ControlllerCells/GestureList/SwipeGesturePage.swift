@@ -19,7 +19,6 @@ class CSSwipeGesturePage: UIViewController {
     
     
     // MARK: - func
-    
     func setupSwipeGesture() {
         let swipeUp = UISwipeGestureRecognizer(target:self, action:#selector(swipeGesture(_:)))
         swipeUp.direction = UISwipeGestureRecognizer.Direction.up

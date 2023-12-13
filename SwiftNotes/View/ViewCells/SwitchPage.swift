@@ -23,7 +23,6 @@ class SwitchPage: UIViewController {
     
     
     // MARK: - func
-    
     func setupUI() {
         view.backgroundColor = UIColor.white
         
@@ -39,7 +38,6 @@ class SwitchPage: UIViewController {
     
     
     // MARK: - @objc func
-    
     @objc func switchChanged(_ mySwitch: UISwitch) {
         // 点击后，isOn已经转变，即isOn相当于是点击开关发生切换后的值
         if mySwitch.isOn == true { //
