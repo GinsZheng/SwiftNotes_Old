@@ -35,7 +35,7 @@ private class DataManager: BaseDataManager<Item> {
 struct AutoLayoutCollectionViewStyles {
     static let fontSize: CGFloat = 17
     static let weight: UIFont.Weight = .medium
-    static let titleOffset: CGFloat = 20
+    static let buttonPadding: CGFloat = 20
     static let itemInterval: CGFloat = 6
     static let itemHeight: CGFloat = 66
 }
@@ -147,7 +147,7 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
         titleLabel.setFrame(left: 10, centerY: imageView.centerY, width: titleLabel.getLabelWidth(), height: 20)
         
         imageView.image = getImageWithColor(color: color)
-        imageView.width = titleLabel.getLabelWidth() + Styles.titleOffset
+        imageView.width = titleLabel.getLabelWidth() + Styles.buttonPadding
     }
     
     
@@ -178,12 +178,12 @@ class AutoLayoutCollectionViewLayout: UICollectionViewLayout {
         // 设置所有单元格的位置属性
         layoutAttributes = (0..<itemCount).map({ index in
             let indexPath = IndexPath(item: index, section: 0)
-            return createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: Styles.titleOffset, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
+            return createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, buttonPadding: Styles.buttonPadding, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
         })
         
         // 更新内容高度
         if let lastIndexPath = layoutAttributes.last?.indexPath {
-            contentHeight = getAutoLayoutContentHeight(indexPath: lastIndexPath, titleWidths: titleWidths, titleOffset: Styles.titleOffset, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
+            contentHeight = getAutoLayoutContentHeight(indexPath: lastIndexPath, titleWidths: titleWidths, buttonPadding: Styles.buttonPadding, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
             onHeightUpdate?(contentHeight)
         }
         

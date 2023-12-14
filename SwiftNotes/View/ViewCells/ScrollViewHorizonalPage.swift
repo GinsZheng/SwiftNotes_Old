@@ -86,9 +86,9 @@ class CSHorizonalScrollingButtons: UIView {
         var buttonLeft: CGFloat = 10 // 用于记录下一个按钮的左边界位置
         let buttonHeight: CGFloat = 28
         let buttonCenterY = scrollView.centerY
-        let titleOffset: CGFloat = 24
+        let buttonPadding: CGFloat = 24
         let itemInterval: CGFloat = 6
-        let scrollViewTailOffset: CGFloat = 4
+        let scrollViewTailPadding: CGFloat = 4
         
         // 将创建并布局buttons
         for (i, title) in titles.enumerated() {
@@ -100,7 +100,7 @@ class CSHorizonalScrollingButtons: UIView {
             
             // 计算按钮frame的参数
             let labelWidth = button.titleLabel?.getLabelWidth() ?? 0
-            let buttonWidth = labelWidth + titleOffset
+            let buttonWidth = labelWidth + buttonPadding
             // 设置按钮的frame
             button.setFrame(left: buttonLeft, centerY: buttonCenterY, width: buttonWidth, height: buttonHeight)
             button.extendTouchArea()
@@ -110,7 +110,7 @@ class CSHorizonalScrollingButtons: UIView {
             buttons.append(button)
         }
         
-        scrollView.contentSize = CGSize(width: buttonLeft + scrollViewTailOffset, height: 48)
+        scrollView.contentSize = CGSize(width: buttonLeft + scrollViewTailPadding, height: 48)
     }
     
     // MARK: - @objc func

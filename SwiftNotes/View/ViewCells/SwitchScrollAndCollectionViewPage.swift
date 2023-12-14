@@ -35,7 +35,7 @@ private class DataManager: BaseDataManager<Item> {
 struct GroupCollectionViewStyles {
     static let fontSize: CGFloat = 14
     static let weight: UIFont.Weight = .medium
-    static let titleOffset: CGFloat = 24
+    static let buttonPadding: CGFloat = 24
     static let itemInterval: CGFloat = 6
     static let itemHeight: CGFloat = 40
 }
@@ -220,9 +220,9 @@ class HorizonalScrollingGroupButtonsView: UIView {
     
     var buttonLeft: CGFloat = 10 // 用于记录下一个按钮的左边界位置
     let itemInterval: CGFloat = 6
-    let tailOffset: CGFloat = 10
+    let tailPadding: CGFloat = 10
     let buttonHeight: CGFloat = 28
-    let titleOffset: CGFloat = 24
+    let buttonPadding: CGFloat = 24
     
     let scrollView = UIScrollView()
     var buttons: [UIButton] = []
@@ -275,7 +275,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
             
             // 计算按钮frame的参数
             let labelWidth = button.titleLabel?.getLabelWidth() ?? 0
-            let buttonWidth = labelWidth + titleOffset
+            let buttonWidth = labelWidth + buttonPadding
             // 设置按钮的frame
             button.setFrame(left: buttonLeft, centerY: scrollView.centerY, width: buttonWidth, height: buttonHeight)
             button.extendTouchArea()
@@ -285,7 +285,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
             buttons.append(button)
         }
         
-        scrollView.contentSize.width = buttonLeft + tailOffset
+        scrollView.contentSize.width = buttonLeft + tailPadding
     }
     
     private func addSwitchButton() {
@@ -308,7 +308,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
         trashButton.extendTouchArea()
         
         buttonLeft = trashButton.right + itemInterval
-        scrollView.contentSize.width = buttonLeft + tailOffset
+        scrollView.contentSize.width = buttonLeft + tailPadding
     }
     
     private func addSettingsButton() {
@@ -319,7 +319,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
         settingsButton.extendTouchArea()
         
         buttonLeft = settingsButton.right + itemInterval
-        scrollView.contentSize.width = buttonLeft + tailOffset
+        scrollView.contentSize.width = buttonLeft + tailPadding
     }
     
     
@@ -374,7 +374,7 @@ class GroupCollectionViewCell: UICollectionViewCell {
     
     func configure(withTitle title: String, action: (() -> Void)?, forEvent: UIControl.Event = UIControl.Event.touchUpInside) {
         button.setTitle(title, for: .normal)
-        let bottomWidth = (button.titleLabel?.getLabelWidth() ?? 0) + Styles.titleOffset
+        let bottomWidth = (button.titleLabel?.getLabelWidth() ?? 0) + Styles.buttonPadding
         button.setFrame(left: 0, top: 10, width: bottomWidth, height: 28)
         buttonAction = action // 存储闭包
         button.addTarget(self, action: #selector(buttonsTapped), for: forEvent)
@@ -414,12 +414,12 @@ class GroupCollectionViewLayout: UICollectionViewLayout {
         // 设置所有单元格的位置属性
         layoutAttributes = (0..<itemCount).map({ index in
             let indexPath = IndexPath(item: index, section: 0)
-            return createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, titleOffset: Styles.titleOffset, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
+            return createAutoLayoutAttributes(indexPath: indexPath, titleWidths: titleWidths, buttonPadding: Styles.buttonPadding, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
         })
         
         // 更新内容高度
         if let lastIndexPath = layoutAttributes.last?.indexPath {
-            contentHeight = getAutoLayoutContentHeight(indexPath: lastIndexPath, titleWidths: titleWidths, titleOffset: Styles.titleOffset, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
+            contentHeight = getAutoLayoutContentHeight(indexPath: lastIndexPath, titleWidths: titleWidths, buttonPadding: Styles.buttonPadding, itemInterval: Styles.itemInterval, itemHeight: Styles.itemHeight, collectionViewWidth: collectionView.width)
             onHeightUpdate?(contentHeight)
         }
         
