@@ -1,13 +1,63 @@
 import UIKit
 
-private class DataManager: BaseDataManager<DefaultTableViewItem> {
+//private struct Items {
+//    let sectionHeaderTitle: String
+//    let sectionExpanded: Bool
+//    let cellContent: []
+//}
+//
+//private class DataManager: BaseDataManager<DefaultTableViewItem> {
+//    init() {
+//        super.init(initialItems: [
+//            DefaultTableViewItem(title: "Animation", viewController: CSGeneralSubpage()),
+//            DefaultTableViewItem(title: "Button", viewController: CSGeneralSubpage()),
+//        ])
+//    }
+//}
+
+struct Section {
+    var sectionTitle: String
+    var cells: [CellData]
+}
+
+struct CellData {
+    var title: String
+    var number: Int
+}
+
+
+
+private class DataManager: BaseDataManager<Section> {
     init() {
         super.init(initialItems: [
-            DefaultTableViewItem(title: "Animation", viewController: CSGeneralSubpage()),
-            DefaultTableViewItem(title: "Button", viewController: CSGeneralSubpage()),
+            Section(
+                sectionTitle: "Section 1",
+                cells: [
+                    CellData(title: "标题1", number: 1),
+                    CellData(title: "标题2", number: 2),
+                    CellData(title: "标题3", number: 3)
+                ]
+            ),
+            Section(
+                sectionTitle: "Section 2",
+                cells: [
+                    CellData(title: "标题4", number: 4),
+                    CellData(title: "标题5", number: 5),
+                    CellData(title: "标题6", number: 6)
+                ]
+            ),
+            Section(
+                sectionTitle: "Section 3",
+                cells: [
+                    CellData(title: "标题7", number: 7),
+                    CellData(title: "标题8", number: 8),
+                    CellData(title: "标题9", number: 9)
+                ]
+            )
         ])
     }
 }
+
 
 
 class ViewController: UIViewController {
