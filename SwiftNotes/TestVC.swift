@@ -1,57 +1,49 @@
+/*
+ 本页演示了tableView怎么加表头表尾，具体包括了：
+ 1. 多个section且有表头时数据结构怎么写怎么调用 A1 -A4
+ 2. 每个section展开/折叠怎么写 B
+ */
+
 import UIKit
 
-//private struct Items {
-//    let sectionHeaderTitle: String
-//    let sectionExpanded: Bool
-//    let cellContent: []
-//}
-//
-//private class DataManager: BaseDataManager<DefaultTableViewItem> {
-//    init() {
-//        super.init(initialItems: [
-//            DefaultTableViewItem(title: "Animation", viewController: CSGeneralSubpage()),
-//            DefaultTableViewItem(title: "Button", viewController: CSGeneralSubpage()),
-//        ])
-//    }
-//}
-
-struct Section {
+// A1. 表头与cell写两个Struct，表头的struct 遵循 SectionProtocol以实现cellData方法
+private struct Section: SectionProtocol {
     var sectionTitle: String
     var cells: [CellData]
 }
 
-struct CellData {
+// A2. cell的struct
+private struct CellData {
     var title: String
-    var number: Int
+    var viewController: UIViewController
 }
 
-
-
-private class DataManager: BaseDataManager<Section> {
+// A3. DataManager 遵循 SectionedDataManager 以实现cellData方法
+private class DataManager: BaseDataManager<Section>, SectionedDataManager {
     init() {
         super.init(initialItems: [
             Section(
                 sectionTitle: "Section 1",
                 cells: [
-                    CellData(title: "标题1", number: 1),
-                    CellData(title: "标题2", number: 2),
-                    CellData(title: "标题3", number: 3)
+                    CellData(title: "标题1", viewController: CSGeneralSubpage()),
+                    CellData(title: "标题2", viewController: CSGeneralSubpage()),
+                    CellData(title: "标题3", viewController: CSGeneralSubpage())
                 ]
             ),
             Section(
                 sectionTitle: "Section 2",
                 cells: [
-                    CellData(title: "标题4", number: 4),
-                    CellData(title: "标题5", number: 5),
-                    CellData(title: "标题6", number: 6)
+                    CellData(title: "标题4", viewController: CSGeneralSubpage()),
+                    CellData(title: "标题5", viewController: CSGeneralSubpage())
                 ]
             ),
             Section(
                 sectionTitle: "Section 3",
                 cells: [
-                    CellData(title: "标题7", number: 7),
-                    CellData(title: "标题8", number: 8),
-                    CellData(title: "标题9", number: 9)
+                    CellData(title: "标题6", viewController: CSGeneralSubpage()),
+                    CellData(title: "标题7", viewController: CSGeneralSubpage()),
+                    CellData(title: "标题8", viewController: CSGeneralSubpage()),
+                    CellData(title: "标题9", viewController: CSGeneralSubpage()),
                 ]
             )
         ])
@@ -59,12 +51,12 @@ private class DataManager: BaseDataManager<Section> {
 }
 
 
-
 class ViewController: UIViewController {
     
     private let tableData = DataManager()
-    var sectionExpanded: [Bool] = [true, true, false]
     let headerHeight: CGFloat = 44
+    // B1. 定义用于记录是否展开列表的变量
+    var sectionExpanded: [Bool] = []
     
     let tableView = UITableView()
     
@@ -72,21 +64,22 @@ class ViewController: UIViewController {
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
+        // B2. 变量初始化(因为tableData的使用需要先初始化)
+        sectionExpanded = Array(repeating: true, count: tableData.count)
         setupUI()
     }
     
     
     // MARK: - func
     func setupUI() {
-        view.setBackgroundColor(color: cFFF)
+        view.setBackgroundColor(color: cF2F3F6)
         
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
-        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
-        tableView.setBackgroundColor(color: cLightRed)
+        tableView.setFrame(left: 0, top: 8, right: 0, height: kWithoutNavBarHeight)
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
         tableView.hideSectionHeaderTopPadding()
-        // 数据更新时刷新列表
+        tableView.setBackgroundColor(color: cNoColor)
         tableData.onItemsUpdated = {  [weak self] in
             self?.tableView.reloadData()
         }
@@ -105,7 +98,8 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: tableData[indexPath.row].viewController)
+        let viewController = tableData.cellData(for: indexPath).viewController // cellData函数调用
+        self.push(toTarget: viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -126,38 +120,38 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     // 组数
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionExpanded.count
+        return tableData.count
     }
     
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionExpanded[section] ? tableData.count : 0
+        // B3. 设置行数：当折叠列表时cell行数返回0(即隐藏了cell)
+        return sectionExpanded[section] ? tableData.numberOfCells(in: section) : 0
     }
     
     // 表头视图
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let bgView = UIView()
-        bgView.setBackgroundColor(color: cFFF)
-        bgView.setFrame(left: 0, top: 0, width: kScreenWidth, height: headerHeight)
+        let header = DefaultSectionHeader()
+        header.setFrame(left: 0, top: 0, width: kScreenWidth, height: headerHeight)
+        header.setupView()
+        header.configure(title: tableData[section].sectionTitle)
+        // B4. 配置切换按钮 (这里看起来配不配tag都行)
+        // header.toggleButton.tag = section
+        header.onToggleSection = { [weak self] in
+            guard let self = self else { return }
+            self.sectionExpanded[section].toggle() // 切换 section 的展开状态(toggle为bool属性自带函数，切换true与false状态)
+            tableView.reloadSections([section], with: .automatic) // 刷新该 section
+        }
         
-        let titleLabel = UILabel()
-        titleLabel.setup(superview: bgView, text: "Header")
-        titleLabel.setStyle20pt000Med()
-        titleLabel.setFrame(left: 16, centerY: bgView.centerY)
-        
-        let toggleButton = UIButton(type: .custom)
-        toggleButton.setup(superview: bgView, target: self, action: #selector(toggleScetion))
-        toggleButton.setStyleIconButton(imageName: "location_upArrow")
-        toggleButton.setFrame(right: 16, centerY: bgView.centerY, width: 16, height: 16)
-        
-        return bgView
+        return header
     }
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
-        let item = tableData[indexPath.row]
+        let item = tableData.cellData(for: indexPath)
         cell.configure(title: item.title)
+        
         return cell
     }
     
@@ -168,65 +162,47 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         // 所以，如果只是希望两个分组之间有个间隔而设置了表尾，那就直接写 return UIView() 即可
     }
     
-    
-    
 }
 
 
-// ❓对于有多个section的内容，应该怎么写数据结构
-// 写一个cell的通用表达式：包括：1. 有Header/Footer时圆角怎么处理，无Header时怎么处理。注意：有Header并不意味着第一个cell就要无圆角，因为Header/Footer有可能不是白底，而只是文字描述
-
-
-
-// MARK: - 自定义的 tableViewCell
-class TaskTableViewCell: UITableViewCell {
+class DefaultSectionHeader: UIView {
     
-    let cellBg = UIView()
+    var onToggleSection: (() -> Void)?
     
-    
-    static let identifier = String(describing: TaskTableViewCell.self)
-    
-    private let titleLabel = UILabel()
-    private let nextIcon = UIImageView()
-    private let separator = UIView()
-    
-    
-    // MARK: - 初始化
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    let bgView = UIView()
+    let titleLabel = UILabel()
+    let toggleButton = UIButton(type: .custom)
     
     // MARK: - func
-    // 设置控件非布局内容 (严谨说是一次性设置的内容，这通常都是非布局内容)
-    private func setupUI() {
-
-        titleLabel.setup(superview: contentView)
-        titleLabel.setStyle17pt222()
+    func setupView() {
+        bgView.setup(superview: self, backgroundColor: cFFF)
+        bgView.setBackgroundColor(color: cFFF)
+        bgView.setFrame(allEdges: 0)
         
-        nextIcon.setup(superview: contentView, imageName: "next")
+        titleLabel.setup(superview: bgView)
+        titleLabel.setStyle20pt000Med()
+        titleLabel.setFrame(left: 16, centerY: bgView.centerY, width: 300)
         
-        separator.setup(superview: contentView, backgroundColor: cSeparator)
-        
+        toggleButton.setup(superview: bgView, target: self, action: #selector(toggleScetion))
+        toggleButton.setStyleIconButton(imageName: "location_upArrow")
+        toggleButton.setFrame(right: 16, centerY: bgView.centerY, width: 16, height: 16)
     }
     
-    // 设置控件布局 (严谨说是布局刷新时需要刷新的内容，这通常都是布局内容)
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        titleLabel.setFrame(left: 16, centerY: contentView.centerY)
-
-    }
-    
-    // 配置数据
-    func configure(title: String, index: Int, dataCount: Int) {
+    func configure(title: String) {
         titleLabel.text = title
-        cellBg.setCellCornerRadius(radius: kRadius, index: index, dataCount: dataCount)
+    }
+    
+    // MARK: - @objc func
+    @objc func toggleScetion() {
+        onToggleSection?()
     }
     
 }
 
+
+
+/*
+ indexPath.section 与 indexPath.row：
+ 前者是section的下标，总数为 numberOfSections 返回
+ 后者是cell的下标，或者说每个cell就是一个row，总数为numberOfRowsInSection 返回
+ */

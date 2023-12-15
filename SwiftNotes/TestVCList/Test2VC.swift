@@ -493,3 +493,59 @@ import UIKit
 //
 //
 //
+
+
+
+//
+//
+//// MARK: - 自定义的 tableViewCell
+//class TaskTableViewCell: UITableViewCell {
+//    
+//    let cellBg = UIView()
+//    
+//    
+//    static let identifier = String(describing: TaskTableViewCell.self)
+//    
+//    private let titleLabel = UILabel()
+//    private let nextIcon = UIImageView()
+//    private let separator = UIView()
+//    
+//    
+//    // MARK: - 初始化
+//    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        setupUI()
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//    
+//    
+//    // MARK: - func
+//    // 设置控件非布局内容 (严谨说是一次性设置的内容，这通常都是非布局内容)
+//    private func setupUI() {
+//        
+//        titleLabel.setup(superview: contentView)
+//        titleLabel.setStyle17pt222()
+//        
+//        nextIcon.setup(superview: contentView, imageName: "next")
+//        
+//        separator.setup(superview: contentView, backgroundColor: cSeparator)
+//        
+//    }
+//    
+//    // 设置控件布局 (严谨说是布局刷新时需要刷新的内容，这通常都是布局内容)
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        titleLabel.setFrame(left: 16, centerY: contentView.centerY)
+//        
+//    }
+//    
+//    // 配置数据
+//    func configure(title: String, index: Int, dataCount: Int) {
+//        titleLabel.text = title
+//        cellBg.setCellCornerRadius(radius: kRadius, index: index, dataCount: dataCount)
+//    }
+//    
+//}
