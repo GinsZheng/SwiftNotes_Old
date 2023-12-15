@@ -20,6 +20,7 @@
 		7A04CB802A9482B80021B9DF /* EqualDivisionCollectionViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04CB7F2A9482B80021B9DF /* EqualDivisionCollectionViewPage.swift */; };
 		7A04CB822A9484640021B9DF /* CollectionViewAutoLayoutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04CB812A9484640021B9DF /* CollectionViewAutoLayoutPage.swift */; };
 		7A06A7342B2C382E0014033E /* TableViewWithHeaderAndFooterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06A7332B2C382E0014033E /* TableViewWithHeaderAndFooterPage.swift */; };
+		7A06A7362B2C43AD0014033E /* Test4VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06A7352B2C43AD0014033E /* Test4VC.swift */; };
 		7A0715DA243650C7002A5371 /* FontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0715D9243650C7002A5371 /* FontPage.swift */; };
 		7A0FBCAF2A724D6000AC7BCA /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0FBCAE2A724D6000AC7BCA /* VideoPlayer.swift */; };
 		7A0FBCDC2A725B7E00AC7BCA /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7A0FBCDA2A7253BB00AC7BCA /* testVideo.mp4 */; };
@@ -560,6 +561,7 @@
 		7A04CB7F2A9482B80021B9DF /* EqualDivisionCollectionViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualDivisionCollectionViewPage.swift; sourceTree = "<group>"; };
 		7A04CB812A9484640021B9DF /* CollectionViewAutoLayoutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewAutoLayoutPage.swift; sourceTree = "<group>"; };
 		7A06A7332B2C382E0014033E /* TableViewWithHeaderAndFooterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewWithHeaderAndFooterPage.swift; sourceTree = "<group>"; };
+		7A06A7352B2C43AD0014033E /* Test4VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test4VC.swift; sourceTree = "<group>"; };
 		7A0715D9243650C7002A5371 /* FontPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPage.swift; sourceTree = "<group>"; };
 		7A0FBCAE2A724D6000AC7BCA /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		7A0FBCDA2A7253BB00AC7BCA /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
@@ -1470,6 +1472,7 @@
 				7AD3C6122B104ECE00B9A752 /* Test1VC.swift */,
 				7ACF48552B270FBF00759E0A /* Test2VC.swift */,
 				7AD4DC1A2B2B084D00C93813 /* Test3VC.swift */,
+				7A06A7352B2C43AD0014033E /* Test4VC.swift */,
 			);
 			path = TestVCList;
 			sourceTree = "<group>";
@@ -2173,6 +2176,7 @@
 				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,
 				7A1EF03E23FAF0E100BDEEBF /* ReloadDataTable.swift in Sources */,
+				7A06A7362B2C43AD0014033E /* Test4VC.swift in Sources */,
 				7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */,
 				7A3647F9238AD062000BBECD /* ItemTable.swift in Sources */,
 				7A92194F2B00BD3B00FE65FC /* Enum.swift in Sources */,
