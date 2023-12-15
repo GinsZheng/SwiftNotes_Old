@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
-    let dataSource: [DefaultTableViewItem] = [
+    let tableData: [DefaultTableViewItem] = [
         DefaultTableViewItem(title: "Animation", viewController: CSGeneralSubpage()),
         DefaultTableViewItem(title: "Button", viewController: CSGeneralSubpage())
     ]
@@ -74,7 +74,9 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(title: nameArray[indexPath.row])
+        cell.configure(title: nameArray[indexPath.row],
+                       indexPath: indexPath,
+                       dataCount: nameArray.count)
         
         return cell
     }

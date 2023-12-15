@@ -11,7 +11,7 @@ import UIKit
 
 class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let dataSource: [DefaultTableViewItem] = [
+    let tableData: [DefaultTableViewItem] = [
         DefaultTableViewItem(title: "TestVC", viewController: ViewController()),
         DefaultTableViewItem(title: "TestPresentVC", viewController: TestPresentVC()),
         DefaultTableViewItem(title: "ActionSheet", viewController: ActionSheetPage()),
@@ -65,7 +65,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - tableView代理方法
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return tableData.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -78,7 +78,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
         cell.setSeparator(left: 20, right: 0)
         
         let cellTitle = UILabel()
-        cellTitle.setup(superview: cell, text: dataSource[indexPath.row].title)
+        cellTitle.setup(superview: cell, text: tableData[indexPath.row].title)
         cellTitle.setFrame(left: 20, centerY: cell.centerY)
         
         let next = UIImageView()
@@ -90,9 +90,9 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
-            self.present(toTarget: dataSource[indexPath.row].viewController)
+            self.present(toTarget: tableData[indexPath.row].viewController)
         } else {
-            self.push(toTarget: dataSource[indexPath.row].viewController)
+            self.push(toTarget: tableData[indexPath.row].viewController)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

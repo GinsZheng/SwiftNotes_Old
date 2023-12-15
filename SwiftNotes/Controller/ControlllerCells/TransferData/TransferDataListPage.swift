@@ -60,7 +60,7 @@ import UIKit
 
 class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let dataSource: [DefaultTableViewItem] = [
+    let tableData: [DefaultTableViewItem] = [
         DefaultTableViewItem(title: "Delegate", viewController: CSDelegatePage()),
         DefaultTableViewItem(title: "Closure", viewController: Closure2VC())
     ]
@@ -87,7 +87,7 @@ class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - tableview 代理方法
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return tableData.count
     }
     
     // 行高
@@ -97,14 +97,16 @@ class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewData
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: dataSource[indexPath.row].viewController)
+        self.push(toTarget: tableData[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(title: dataSource[indexPath.row].title)
+        cell.configure(title: tableData[indexPath.row].title,
+                       indexPath: indexPath,
+                       dataCount: tableData.count)
         
         return cell
     }

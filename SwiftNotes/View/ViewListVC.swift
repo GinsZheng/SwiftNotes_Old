@@ -10,7 +10,7 @@ import UIKit
 
 class ViewListVC: UIViewController {
     
-    let dataSource: [DefaultTableViewItem] = [
+    let tableData: [DefaultTableViewItem] = [
         DefaultTableViewItem(title: "Animation", viewController: AnimationPage()),
         DefaultTableViewItem(title: "Button", viewController: ButtonPage()),
         DefaultTableViewItem(title: "Camera and Photos", viewController: CameraAndPhotosPage()),
@@ -56,9 +56,11 @@ class ViewListVC: UIViewController {
     
     // MARK: - func
     func setupUI() {
+        
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
+        tableView.setBackgroundColor(color: cF2F3F6)
     }
     
     
@@ -71,13 +73,15 @@ class ViewListVC: UIViewController {
 // MARK: - tableview 代理方法
 extension ViewListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return tableData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(title: dataSource[indexPath.row].title)
+        cell.configure(title: tableData[indexPath.row].title,
+                       indexPath: indexPath,
+                       dataCount: tableData.count)
         return cell
     }
 }
@@ -90,7 +94,7 @@ extension ViewListVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: dataSource[indexPath.row].viewController)
+        self.pushFromRootPage(toTarget: tableData[indexPath.row].viewController)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

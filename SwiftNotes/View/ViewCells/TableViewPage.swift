@@ -34,6 +34,8 @@ class TableViewPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
+        view.setBackgroundColor(color: cF2F3F6)
+        
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
@@ -70,7 +72,9 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
-        cell.configure(title: tableData[indexPath.row].title)
+        cell.configure(title: tableData[indexPath.row].title,
+                       indexPath: indexPath,
+                       dataCount: tableData.count)
         return cell
     }
 }
@@ -81,6 +85,7 @@ class DefaultTableViewCell: UITableViewCell {
     
     static let identifier = String(describing: DefaultTableViewCell.self)
     
+    private let bgView = UIView()
     private let titleLabel = UILabel()
     private let nextIcon = UIImageView()
     private let separator = UIView()
@@ -100,12 +105,19 @@ class DefaultTableViewCell: UITableViewCell {
     // MARK: - func
     // 设置控件非布局内容 (严谨说是一次性设置的内容，这通常都是非布局内容)
     private func setupUI() {
-        titleLabel.setup(superview: contentView)
+        self.setFrame(left: 0, top: 0, width: kScreenWidth, height: 0)
+        self.setBackgroundColor(color: cF2F3F6)
+        
+        bgView.setup(superview: contentView, backgroundColor: cFFF)
+        bgView.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: kCellHeight)
+
+        
+        titleLabel.setup(superview: bgView)
         titleLabel.setStyle17pt222()
         
-        nextIcon.setup(superview: contentView, imageName: "next")
+        nextIcon.setup(superview: bgView, imageName: "next")
         
-        separator.setup(superview: contentView, backgroundColor: cSeparator)
+        separator.setup(superview: bgView, backgroundColor: cSeparator)
         
     }
     
@@ -118,8 +130,9 @@ class DefaultTableViewCell: UITableViewCell {
     }
     
     // 配置数据
-    func configure(title: String) {
+    func configure(title: String, indexPath: IndexPath, dataCount: Int) {
         titleLabel.text = title
+        bgView.setCellCornerRadius(radius: kRadius, index: indexPath.row, dataCount: dataCount)
     }
     
 }
