@@ -82,6 +82,11 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
 
 
 // MARK: - 自定义的默认 tableViewCell
+enum TableViewCellType {
+    case titleWithArrow(title: String)
+    case titleWithSwitch(title: String, switchIsOn: Bool)
+}
+
 class DefaultTableViewCell: UITableViewCell {
     
     static let identifier = String(describing: DefaultTableViewCell.self)
@@ -148,10 +153,17 @@ class DefaultTableViewCell: UITableViewCell {
     }
     
     // 配置数据
-    func configure(title: String, indexPath: IndexPath, dataCount: Int) {
+    func configure(type: TableViewCellType = .titleWithArrow(title: "标题"), title: String, indexPath: IndexPath, dataCount: Int) {
         titleLabel.text = title
         bgView.setCellCornerRadius(radius: kRadius, index: indexPath.row, dataCount: dataCount)
         separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
+        
+        switch type {
+        case .titleWithArrow(title: let title):
+            print("hey")
+        case .titleWithSwitch(title: let title, switchIsOn: let switchIsOn):
+            print("2")
+        }
     }
     
 }
