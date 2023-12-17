@@ -33,7 +33,7 @@ class CameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & U
         imageAddingBtn.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 56)
         
         imageView.setup(superview: view, image: getImageWithColor(color: cDDDEE0))
-        imageView.setCornerRadius(radius: 8)
+        imageView.setCornerRadius(radius: kRadius)
         imageView.setFrame(centerX: view.centerX, top: 100, width: 200, height: 200)
     }
     

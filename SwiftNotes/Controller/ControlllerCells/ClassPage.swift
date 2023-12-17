@@ -25,7 +25,7 @@ class CSClassPage: UIViewController {
     func getView(superview: UIView) -> UIView {
         let img = UIImageView()
         img.setup(superview: superview, imageName: "mine_face")
-        img.setCornerRadius(radius: 8)
+        img.setCornerRadius(radius: kRadius)
         img.setFrame(left: 20, top: 100, width: 100, height: 100)
         return img
     }

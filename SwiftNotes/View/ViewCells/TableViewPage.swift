@@ -11,8 +11,8 @@ import UIKit
 private class DataManager: BaseDataManager<DefaultTableViewItem> {
     init() {
         super.init(initialItems: [
-            DefaultTableViewItem(title: "Animation", viewController: CSGeneralSubpage()),
-            DefaultTableViewItem(title: "Button", viewController: CSGeneralSubpage()),
+            DefaultTableViewItem(title: "Animation", viewController: AnimationPage()),
+            DefaultTableViewItem(title: "Button", viewController: ButtonPage()),
         ])
     }
 }
@@ -39,8 +39,9 @@ class TableViewPage: UIViewController {
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: kVertMargin, right: 0)
         // 数据更新时刷新列表
-        tableData.onItemsUpdated = {  [weak self] in
+        tableData.onItemsUpdated = { [weak self] in
             self?.tableView.reloadData()
         }
     }
@@ -86,9 +87,11 @@ class DefaultTableViewCell: UITableViewCell {
     static let identifier = String(describing: DefaultTableViewCell.self)
     
     private let bgView = UIView()
+    private let separator = UIView()
+    private let highlightView = UIView()
     private let titleLabel = UILabel()
     private let nextIcon = UIImageView()
-    private let separator = UIView()
+    
     
     
     // MARK: - 初始化
@@ -106,33 +109,49 @@ class DefaultTableViewCell: UITableViewCell {
     // 设置控件非布局内容 (严谨说是一次性设置的内容，这通常都是非布局内容)
     private func setupUI() {
         self.setFrame(left: 0, top: 0, width: kScreenWidth, height: 0)
-        self.setBackgroundColor(color: cF2F3F6)
+        self.setBackgroundColor(color: cNoColor)
+        self.selectionStyle = .none
         
         bgView.setup(superview: contentView, backgroundColor: cFFF)
         bgView.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: kCellHeight)
-
+        
+        separator.setup(superview: bgView, backgroundColor: cSeparator)
+        
+        highlightView.setup(superview: bgView, backgroundColor: c000_10)
+        highlightView.setFrame(allEdges: 0)
+        highlightView.isHidden = true
         
         titleLabel.setup(superview: bgView)
         titleLabel.setStyle17pt222()
         
         nextIcon.setup(superview: bgView, imageName: "next")
         
-        separator.setup(superview: bgView, backgroundColor: cSeparator)
-        
+    }
+    
+    // 设置高亮
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        highlightView.isHidden = !highlighted
+    }
+    
+    // 设置选中
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        highlightView.isHidden = !selected
     }
     
     // 设置控件布局 (严谨说是布局刷新时需要刷新的内容，这通常都是布局内容)
     override func layoutSubviews() {
         super.layoutSubviews()
-        titleLabel.setFrame(left: 16, centerY: contentView.centerY)
-        nextIcon.setFrame(right: 16, centerY: contentView.centerY, width: 18, height: 18)
-        separator.setSeparatorFrame(left: 16, right: 16)
+        titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
+        nextIcon.setFrame(right: kHorizPadding, centerY: contentView.centerY, width: 18, height: 18)
     }
     
     // 配置数据
     func configure(title: String, indexPath: IndexPath, dataCount: Int) {
         titleLabel.text = title
         bgView.setCellCornerRadius(radius: kRadius, index: indexPath.row, dataCount: dataCount)
+        separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
     }
     
 }
@@ -197,8 +216,8 @@ class DefaultTableViewCell: UITableViewCell {
  2. 预加载内容：如果你需要根据单元格的内容进行一些预加载操作（如数据预加载或图像异步加载），这个方法提供了一个合适的地方来启动这些操作
  3. 跟踪单元格的展示：可以用于跟踪哪些单元格即将显示在用户界面上
  4. 性能优化：由于这个方法在单元格展示前调用，你可以利用它来减少单元格初始化时的计算量，从而提高滚动的流畅度
-    eg：需要在最后一个单元格渲染完成后，再执行一些操作时，如果写在cellForItemAt中，则每个单元格都要执行相应的逻辑
-    但
+ eg：需要在最后一个单元格渲染完成后，再执行一些操作时，如果写在cellForItemAt中，则每个单元格都要执行相应的逻辑
+ 但
  */
 
 /*

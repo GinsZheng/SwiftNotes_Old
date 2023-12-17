@@ -29,7 +29,7 @@
 //        bgView.setBorder(color: c000_5, borderWidth: 0.5)
 //        bgView.setShadow(y: 2, radius: 10)
 //        bgView.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 214)
-//        bgView.setCornerRadius(radius: 8)
+//        bgView.setCornerRadius(radius: kRadius)
 //        
 //        // 单独画y=0的虚线
 //        let xAxisLine = UIImageView()

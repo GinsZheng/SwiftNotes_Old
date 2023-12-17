@@ -123,7 +123,7 @@ extension TableViewWithHeaderAndFooterPage: UITableViewDelegate, UITableViewData
     
     // 表尾高度
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return kVerticalInterval
+        return kVertMargin
     }
     
     // 组数

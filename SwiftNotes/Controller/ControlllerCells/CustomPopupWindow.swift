@@ -78,7 +78,7 @@ class CSCustomPopupWindow: UIViewController {
         maskView.setFrame(allEdges: 0)
 
         bgView.setup(superview: maskView, backgroundColor: cFFF)
-        bgView.setCornerRadius(radius: 8)
+        bgView.setCornerRadius(radius: kRadius)
         bgView.setFrame(center: maskView, width: 270, height: 184)
 
         titleLabel.setup(superview: bgView, text: "添加上次")

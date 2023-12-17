@@ -40,7 +40,7 @@ class ViewListVC: UIViewController {
         DefaultTableViewItem(title: "View", viewController: ViewPage()),
         DefaultTableViewItem(title: "ViewController", viewController: ViewControllerPage()),
         DefaultTableViewItem(title: "Web View", viewController: WebViewPage()),
-        DefaultTableViewItem(title: "Window", viewController: WindowPage())
+        DefaultTableViewItem(title: "Window", viewController: WindowPage()),
     ]
     
     let tableView = UITableView()
@@ -56,11 +56,10 @@ class ViewListVC: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        
         tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
-        tableView.setBackgroundColor(color: cF2F3F6)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: kVertMargin, right: 0)
     }
     
     

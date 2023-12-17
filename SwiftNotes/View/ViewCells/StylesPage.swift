@@ -37,7 +37,7 @@ class StylesPage: UIViewController {
         
         shadowView.setup(superview: view, backgroundColor: cFFF)
         shadowView.setShadow(color: "40133660", x: 0, y: 4, radius: 20)
-        shadowView.setCornerRadius(radius: 8)
+        shadowView.setCornerRadius(radius: kRadius)
         shadowView.setFrame(centerX: view.centerX, top: 100, width: 180, height: 58)
         
         header.setup(superview: shadowView, text: "iOS投影扩散值: 20")
