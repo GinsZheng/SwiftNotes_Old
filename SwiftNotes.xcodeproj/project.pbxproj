@@ -1331,6 +1331,13 @@
 			path = Transition;
 			sourceTree = "<group>";
 		};
+		7A8E2CFE2B30827E00C9BA62 /* Pattern */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Pattern;
+			sourceTree = "<group>";
+		};
 		7A9219502B00BDFE00FE65FC /* SwitchViewList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1536,6 +1543,7 @@
 				7A2A7E3C23F43A0300146C38 /* Delegate2Page.swift */,
 				7A8DF6692A9F8D5C0048146F /* Delegate3Page.swift */,
 				7A02AEAA2B1832AE00E9E6D7 /* DidSetVC.swift */,
+				7A8E2CFE2B30827E00C9BA62 /* Pattern */,
 				7A3E8E652AB1D27C00E50925 /* FormatterList */,
 				7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */,
 				7A62A19F244C93670090D128 /* GestureList */,

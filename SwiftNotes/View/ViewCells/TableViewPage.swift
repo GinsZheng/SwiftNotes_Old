@@ -73,7 +73,8 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
-        cell.configure(title: tableData[indexPath.row].title,
+        cell.configure(uiType: 1,
+                       title: tableData[indexPath.row].title,
                        indexPath: indexPath,
                        dataCount: tableData.count)
         return cell
@@ -83,12 +84,36 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - 自定义的默认 tableViewCell
 enum TableViewCellType {
-    case titleRightArrow(title: String)
-    case titleSwitch(title: String, isSwitchOn: Bool)
+    case titleRightArrow(TitleRightArrowParams)
+    case titleSwitch(TitleSwitchParams)
+    
+    
+    struct TitleRightArrowParams {
+        let title: String
+    }
+    
+    struct TitleSwitchParams {
+        let title: String
+        let isSwitchOn: Bool
+    }
+    
 }
 
 extension TableViewCellType {
-    
+    static func createType(uiType: Int, params: [String: Any]) -> TableViewCellType? {
+        switch uiType {
+        case 0: // titleRightArrow
+            guard let title = params["title"] as? String else { return nil }
+            return .titleRightArrow(TitleRightArrowParams(title: title))
+        case 1: // titleSwitch
+            guard let title = params["title"] as? String,
+                  let isSwitchOn = params["isSwitchOn"] as? Bool else { return nil }
+            return .titleSwitch(TitleSwitchParams(title: title, isSwitchOn: isSwitchOn))
+        default:
+            return nil
+        }
+        
+    }
 }
 
 
@@ -99,8 +124,10 @@ class DefaultTableViewCell: UITableViewCell {
     private let bgView = UIView()
     private let separator = UIView()
     private let highlightView = UIView()
+    
     private let titleLabel = UILabel()
     private let nextIcon = UIImageView()
+    private let switchControl = UISwitch()
     
     
     // MARK: - 初始化
@@ -133,6 +160,9 @@ class DefaultTableViewCell: UITableViewCell {
         titleLabel.setup(superview: bgView)
         titleLabel.setStyle17pt222()
         
+        switchControl.setup(superview: bgView)
+        switchControl.isHidden = true  // 默认隐藏
+        
         nextIcon.setup(superview: bgView, imageName: "next")
         
     }
@@ -154,23 +184,38 @@ class DefaultTableViewCell: UITableViewCell {
         super.layoutSubviews()
         titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
         nextIcon.setFrame(right: kHorizPadding, centerY: contentView.centerY, width: 18, height: 18)
+        switchControl.setFrame(right: kHorizPadding, centerY: bgView.centerY, width: 51, height: 31)
     }
     
     // 配置数据
-    func configure(type: TableViewCellType = .titleRightArrow(title: "标题"), title: String, indexPath: IndexPath, dataCount: Int) {
+    func configure(uiType: Int = 1, params: [String: Any] = ["title": "标题", "isSwitchOn": 1], title: String, indexPath: IndexPath, dataCount: Int) {
         titleLabel.text = title
         bgView.setCellCornerRadius(radius: kRadius, index: indexPath.row, dataCount: dataCount)
         separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
         
-        switch type {
-        case .titleRightArrow(title: let title):
+        let cellType = TableViewCellType.createType(uiType: uiType, params: params)
+        
+        switch cellType {
+        case .titleRightArrow(let params):
+            nextIcon.isHidden = false
+            switchControl.isHidden = true
+            titleLabel.text = params.title
             print("hey")
-        case .titleSwitch(title: let title, isSwitchOn: let isSwitchOn):
-            print("2")
+            
+        case .titleSwitch(let params):
+            nextIcon.isHidden = true
+            switchControl.isHidden = false
+            switchControl.isOn = params.isSwitchOn
+            print("ha")
+            
+        default:
+            print("出错")
         }
+        
     }
     
 }
+
 
 
 
