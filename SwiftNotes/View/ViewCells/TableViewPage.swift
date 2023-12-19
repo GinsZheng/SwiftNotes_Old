@@ -73,50 +73,58 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
-        cell.configure(uiType: 1,
-                       title: tableData[indexPath.row].title,
+        cell.configure(cellType: .titleRightArrow,
                        indexPath: indexPath,
-                       dataCount: tableData.count)
+                       dataCount: tableData.count,
+                       title: tableData[indexPath.row].title)
         return cell
     }
 }
 
 
+// MARK: - CellType：UITableViewCell的UI类型
+enum CellType {
+    case titleRightArrow
+    case titleSwitch
+//    case titleRightArrow(TitleRightArrowParams) // 0
+//    case titleSwitch(TitleSwitchParams) // 1
+    
+    
+//    struct TitleRightArrowParams {
+//        let title: String
+//    }
+//    
+//    struct TitleSwitchParams {
+//        let title: String
+//        let isSwitchOn: Bool
+//    }
+    
+}
+
+//extension CellType {
+//    static func createType(cellType: Int, title: String, isSwitchOn: Bool = true) -> CellType? {
+//        switch cellType {
+//        case 0: // titleRightArrow
+//            return .titleRightArrow(TitleRightArrowParams(title: title))
+//        case 1: // titleSwitch
+//            return .titleSwitch(TitleSwitchParams(title: title, isSwitchOn: isSwitchOn))
+//        default:
+//            return nil
+//        }
+//        
+//    }
+//    
+//    static func titleRightArrow(title: String) -> CellType {
+//        return .titleRightArrow(TitleRightArrowParams(title: title))
+//    }
+//
+//    static func titleSwitch(title: String, isSwitchOn: Bool) -> CellType {
+//        return .titleSwitch(TitleSwitchParams(title: title, isSwitchOn: isSwitchOn))
+//    }
+//}
+
+
 // MARK: - 自定义的默认 tableViewCell
-enum TableViewCellType {
-    case titleRightArrow(TitleRightArrowParams)
-    case titleSwitch(TitleSwitchParams)
-    
-    
-    struct TitleRightArrowParams {
-        let title: String
-    }
-    
-    struct TitleSwitchParams {
-        let title: String
-        let isSwitchOn: Bool
-    }
-    
-}
-
-extension TableViewCellType {
-    static func createType(uiType: Int, params: [String: Any]) -> TableViewCellType? {
-        switch uiType {
-        case 0: // titleRightArrow
-            guard let title = params["title"] as? String else { return nil }
-            return .titleRightArrow(TitleRightArrowParams(title: title))
-        case 1: // titleSwitch
-            guard let title = params["title"] as? String,
-                  let isSwitchOn = params["isSwitchOn"] as? Bool else { return nil }
-            return .titleSwitch(TitleSwitchParams(title: title, isSwitchOn: isSwitchOn))
-        default:
-            return nil
-        }
-        
-    }
-}
-
-
 class DefaultTableViewCell: UITableViewCell {
     
     static let identifier = String(describing: DefaultTableViewCell.self)
@@ -151,19 +159,9 @@ class DefaultTableViewCell: UITableViewCell {
         bgView.setup(superview: contentView, backgroundColor: cFFF)
         bgView.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: kCellHeight)
         
-        separator.setup(superview: bgView, backgroundColor: cSeparator)
-        
         highlightView.setup(superview: bgView, backgroundColor: c000_10)
         highlightView.setFrame(allEdges: 0)
         highlightView.isHidden = true
-        
-        titleLabel.setup(superview: bgView)
-        titleLabel.setStyle17pt222()
-        
-        switchControl.setup(superview: bgView)
-        switchControl.isHidden = true  // 默认隐藏
-        
-        nextIcon.setup(superview: bgView, imageName: "next")
         
     }
     
@@ -180,33 +178,39 @@ class DefaultTableViewCell: UITableViewCell {
     }
     
     // 设置控件布局 (严谨说是布局刷新时需要刷新的内容，这通常都是布局内容)
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
-        nextIcon.setFrame(right: kHorizPadding, centerY: contentView.centerY, width: 18, height: 18)
-        switchControl.setFrame(right: kHorizPadding, centerY: bgView.centerY, width: 51, height: 31)
-    }
+    //    override func layoutSubviews() {
+    //        super.layoutSubviews()
+    //    }
     
     // 配置数据
-    func configure(uiType: Int = 1, params: [String: Any] = ["title": "标题", "isSwitchOn": 1], title: String, indexPath: IndexPath, dataCount: Int) {
-        titleLabel.text = title
+    func configure(cellType: CellType, indexPath: IndexPath, dataCount: Int, title: String) {
         bgView.setCellCornerRadius(radius: kRadius, index: indexPath.row, dataCount: dataCount)
-        separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
-        
-        let cellType = TableViewCellType.createType(uiType: uiType, params: params)
+
+//        let cellType = CellType.createType(cellType: cellType, title: title, isSwitchOn: true) // ❓这行后面参数的作用是什么
+//        let cellType = CellType.titleSwitch(title: title, isSwitchOn: true)
         
         switch cellType {
-        case .titleRightArrow(let params):
-            nextIcon.isHidden = false
-            switchControl.isHidden = true
-            titleLabel.text = params.title
-            print("hey")
+        case .titleRightArrow:
+            titleLabel.setup(superview: bgView, text: title)
+            titleLabel.setStyle17pt222()
+            titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
+
+            separator.setup(superview: bgView, backgroundColor: cSeparator)
+            separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
             
-        case .titleSwitch(let params):
-            nextIcon.isHidden = true
-            switchControl.isHidden = false
-            switchControl.isOn = params.isSwitchOn
-            print("ha")
+            nextIcon.setup(superview: bgView, imageName: "next")
+            nextIcon.setFrame(right: kHorizPadding, centerY: contentView.centerY, width: 18, height: 18)
+            
+        case .titleSwitch:
+            titleLabel.setup(superview: bgView, text: title)
+            titleLabel.setStyle17pt222()
+            titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
+            
+            separator.setup(superview: bgView, backgroundColor: cSeparator)
+            separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
+            
+            switchControl.setup(superview: bgView)
+            switchControl.setFrame(right: kHorizPadding, centerY: bgView.centerY, width: 51, height: 31)
             
         default:
             print("出错")

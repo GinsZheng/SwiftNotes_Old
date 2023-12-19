@@ -104,10 +104,10 @@ class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewData
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(title: tableData[indexPath.row].title,
+        cell.configure(cellType: .titleRightArrow,
                        indexPath: indexPath,
-                       dataCount: tableData.count)
-        
+                       dataCount: tableData.count,
+                       title: tableData[indexPath.row].title)
         return cell
     }
     
