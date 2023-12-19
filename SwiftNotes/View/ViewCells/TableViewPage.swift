@@ -62,7 +62,6 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.push(toTarget: tableData[indexPath.row].viewController)
-        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // 行数
@@ -82,46 +81,32 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
 }
 
 
+
+
 // MARK: - CellType：UITableViewCell的UI类型
 enum CellType {
+    case title
     case titleRightArrow
     case titleSwitch
-//    case titleRightArrow(TitleRightArrowParams) // 0
-//    case titleSwitch(TitleSwitchParams) // 1
-    
-    
-//    struct TitleRightArrowParams {
-//        let title: String
-//    }
-//    
-//    struct TitleSwitchParams {
-//        let title: String
-//        let isSwitchOn: Bool
-//    }
-    
+    case titleIconRightArrow
+    case titleIconSwitch
+    case titleDesc
+    case titleDescNext
+    case titleDescSwitch
 }
 
-//extension CellType {
-//    static func createType(cellType: Int, title: String, isSwitchOn: Bool = true) -> CellType? {
-//        switch cellType {
-//        case 0: // titleRightArrow
-//            return .titleRightArrow(TitleRightArrowParams(title: title))
-//        case 1: // titleSwitch
-//            return .titleSwitch(TitleSwitchParams(title: title, isSwitchOn: isSwitchOn))
-//        default:
-//            return nil
-//        }
-//        
-//    }
-//    
-//    static func titleRightArrow(title: String) -> CellType {
-//        return .titleRightArrow(TitleRightArrowParams(title: title))
-//    }
-//
-//    static func titleSwitch(title: String, isSwitchOn: Bool) -> CellType {
-//        return .titleSwitch(TitleSwitchParams(title: title, isSwitchOn: isSwitchOn))
-//    }
-//}
+extension CellType {
+    static func getType(fromTypeId typeId: Int) -> CellType {
+        switch typeId {
+        case 0:
+            return .titleRightArrow
+        case 1:
+            return .titleSwitch
+        default:
+            return .titleRightArrow
+        }
+    }
+}
 
 
 // MARK: - 自定义的默认 tableViewCell
@@ -162,7 +147,6 @@ class DefaultTableViewCell: UITableViewCell {
         highlightView.setup(superview: bgView, backgroundColor: c000_10)
         highlightView.setFrame(allEdges: 0)
         highlightView.isHidden = true
-        
     }
     
     // 设置高亮
@@ -177,19 +161,19 @@ class DefaultTableViewCell: UITableViewCell {
         highlightView.isHidden = !selected
     }
     
-    // 设置控件布局 (严谨说是布局刷新时需要刷新的内容，这通常都是布局内容)
-    //    override func layoutSubviews() {
-    //        super.layoutSubviews()
-    //    }
-    
     // 配置数据
     func configure(cellType: CellType, indexPath: IndexPath, dataCount: Int, title: String) {
         bgView.setCellCornerRadius(radius: kRadius, index: indexPath.row, dataCount: dataCount)
-
-//        let cellType = CellType.createType(cellType: cellType, title: title, isSwitchOn: true) // ❓这行后面参数的作用是什么
-//        let cellType = CellType.titleSwitch(title: title, isSwitchOn: true)
         
         switch cellType {
+        case .title:
+            titleLabel.setup(superview: bgView, text: title)
+            titleLabel.setStyle17pt222()
+            titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
+
+            separator.setup(superview: bgView, backgroundColor: cSeparator)
+            separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
+            
         case .titleRightArrow:
             titleLabel.setup(superview: bgView, text: title)
             titleLabel.setStyle17pt222()
@@ -213,9 +197,16 @@ class DefaultTableViewCell: UITableViewCell {
             switchControl.setFrame(right: kHorizPadding, centerY: bgView.centerY, width: 51, height: 31)
             
         default:
-            print("出错")
+            print("错误")
         }
-        
+        //    case title
+        //    case titleRightArrow
+        //    case titleSwitch
+        //    case titleIconRightArrow
+        //    case titleIconSwitch
+        //    case titleDesc
+        //    case titleDescNext
+        //    case titleDescSwitch
     }
     
 }
