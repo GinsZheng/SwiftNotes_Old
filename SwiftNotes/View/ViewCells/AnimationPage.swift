@@ -24,7 +24,7 @@ class AnimationPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         myView.setup(superview: view, backgroundColor: cBlue_5393FF)
         myView.setFrame(centerX: view.centerX, top: 20, width: 100, height: 100)

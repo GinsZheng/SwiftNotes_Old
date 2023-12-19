@@ -15,7 +15,7 @@ class CSMenuControllerPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         let label = CSInteractiveUILabel()
         label.setup(superview: view, text: "heheda")

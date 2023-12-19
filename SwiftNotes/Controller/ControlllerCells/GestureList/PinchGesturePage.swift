@@ -15,7 +15,7 @@ class CSPinchGesturePage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         setupPinch()
     }

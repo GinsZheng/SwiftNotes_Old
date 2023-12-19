@@ -20,7 +20,7 @@ class CSArrayPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         // 调用
         let firstElement = arr3[0]

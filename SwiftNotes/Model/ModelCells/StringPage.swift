@@ -20,7 +20,7 @@ class CSStringPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         let strA1 = String(format: "%.2f", doubleNum)
         print("保留2位小数：\(strA1)")

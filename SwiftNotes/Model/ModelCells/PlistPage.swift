@@ -16,7 +16,7 @@ class CSPlistPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
 
         let myPlist: String = Bundle.main.path(forResource: "Books", ofType: "plist")!
         let BooksList = NSArray(contentsOfFile: myPlist)!

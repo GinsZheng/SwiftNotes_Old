@@ -21,7 +21,7 @@ class CSDictionaryPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 设置key默认值。不设置时，如果没有此key，会返回nil
         let delta = dict["d", default: "Unknown"]

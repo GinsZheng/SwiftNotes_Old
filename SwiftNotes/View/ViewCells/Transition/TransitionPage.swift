@@ -34,7 +34,7 @@ class TransitionListPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 20
@@ -44,7 +44,7 @@ class TransitionListPage: UIViewController {
         
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         collectionView.setup(superview: view)
-        collectionView.backgroundColor = .white
+        collectionView.setBackgroundColor(color: cFFF)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = false

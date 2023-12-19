@@ -24,7 +24,7 @@ class NumberFormatterPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         // ———————— String(format)格式化
         

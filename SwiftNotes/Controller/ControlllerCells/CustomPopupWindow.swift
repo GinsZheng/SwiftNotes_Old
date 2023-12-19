@@ -23,7 +23,7 @@ class CSCustomPopupWindowPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         btn.setup(superview: view, target: self, action: #selector(popup))
         btn.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
@@ -69,7 +69,7 @@ class CSCustomPopupWindow: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         bgImageView.setup(superview: view, image: bgImage)
         bgImageView.setFrame(left: 0, top: 0, width: bgImage.size.width, height: bgImage.size.height)

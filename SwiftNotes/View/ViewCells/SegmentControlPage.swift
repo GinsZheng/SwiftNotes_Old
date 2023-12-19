@@ -21,7 +21,7 @@ class SegmentControlPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         let segmentControl = UISegmentedControl(items: ["FirstSegment", "SecondSegment"])
         segmentControl.setup(superview: view, target: self, action: #selector(showSelectedSegment(_:)), for: .valueChanged)

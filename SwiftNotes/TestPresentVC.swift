@@ -15,7 +15,7 @@ class TestPresentVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         label.setup(superview: view, text: "TestPresent")
         label.setStyle24pt222Med()
         label.setFrame(left: 20, top: 20)

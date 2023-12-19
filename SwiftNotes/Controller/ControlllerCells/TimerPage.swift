@@ -26,7 +26,7 @@ class CSTimerPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         timerLabel.setup(superview: view)
         timerLabel.setStyle24pt222MedCenter()

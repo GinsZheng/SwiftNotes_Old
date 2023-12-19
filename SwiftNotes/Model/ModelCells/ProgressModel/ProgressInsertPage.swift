@@ -28,7 +28,7 @@ class CSProgressInsertPage: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         navPresent.setTitleLabel(superview: view, title: "Insert")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))

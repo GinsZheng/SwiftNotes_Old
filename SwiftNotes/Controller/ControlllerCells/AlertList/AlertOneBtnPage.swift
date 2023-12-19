@@ -12,7 +12,7 @@ class CSAlertOneBtnPage: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         alertOneBtn(title: "单个按钮", message: "随便的消息", btnTitle: "我知道了", btnStyle: .default) { (action) in
             print("点击了❲我知道了❳")

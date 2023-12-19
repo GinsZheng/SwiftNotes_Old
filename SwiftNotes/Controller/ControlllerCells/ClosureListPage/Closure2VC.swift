@@ -24,7 +24,7 @@ class Closure2VC: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
 
         label.setup(superview: view, text: "这行文字将通过下个页面编辑")
         label.setFontStyle(size: 24, color: cBlue_5393FF)
@@ -70,7 +70,7 @@ class Closure2SubVC: UIViewController, UITextFieldDelegate {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
 
         nameTextField.setup(superview: view, placeholder: "请输入", delegate: self)
         nameTextField.setStyleOneLineTextField()

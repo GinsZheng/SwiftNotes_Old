@@ -19,7 +19,7 @@ class SliderPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         let slider = UISlider()
         slider.setup(superview: view)

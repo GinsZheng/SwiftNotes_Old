@@ -24,7 +24,7 @@ class ImageViewPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         let image = UIImageView()
         image.setup(superview: view, imageName: "big_MacStudio")

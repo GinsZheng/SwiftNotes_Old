@@ -33,7 +33,7 @@ class MagicMoveFromVC: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         grayView.setup(superview: view, backgroundColor: c000_22)
         grayView.setCornerRadiusWithMask(radius: 15)
@@ -73,7 +73,7 @@ class MagicMoveToVC: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 设置终态的View
         blueView.setup(superview: view, backgroundColor: cF0F1F3)

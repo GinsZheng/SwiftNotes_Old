@@ -15,7 +15,7 @@ class TuplePage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 作为元组可以以此方式遍历，但不能写能 for (x, y) in (num1, num2)
         let tuples = [(1, 1), (2, 2), (3, 6), (4, 9)]

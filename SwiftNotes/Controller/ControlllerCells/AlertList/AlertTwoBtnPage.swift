@@ -12,7 +12,7 @@ class CSAlertTwoBtnPage: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         alertTwoBtn(title: "两个按钮", okBtnTitle: "确定") { (action) in
             print("点击了确定")

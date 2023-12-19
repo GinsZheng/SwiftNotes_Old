@@ -23,7 +23,7 @@ class CSFontPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 设置字体
         timerLabel.setup(superview: view, text: "00:00")

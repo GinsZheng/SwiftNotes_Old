@@ -18,7 +18,7 @@ class CSSwiftyJSONPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         // 解析变量 (解析也叫反序列化)
         let baseInfo: [String : Any] = ["build_name":"置信·原墅",

@@ -12,7 +12,7 @@ class CSDisablePopGesturePage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 禁用侧滑返回
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false

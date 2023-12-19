@@ -15,7 +15,7 @@ class CSProtocolPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         let studentA = Students()
         studentA.age = 18

@@ -12,7 +12,7 @@ class ActionSheetPage: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         setupActionSheet()
     }

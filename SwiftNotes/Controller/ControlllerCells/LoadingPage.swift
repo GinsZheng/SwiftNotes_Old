@@ -16,7 +16,7 @@ class CSLoadingPage: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         print("Reload this Page")
     }

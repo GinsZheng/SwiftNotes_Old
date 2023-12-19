@@ -23,7 +23,7 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         simpleRequest() // MARK: - 简单请求
         normalRequest() // MARK: - 常见请求

@@ -28,7 +28,7 @@ class CSMaskPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 把遮罩加到UIWindow上，才能覆盖导航栏，处于(除状态栏外的)最顶层
         UIApplication.shared.windows[0].addSubview(mask)

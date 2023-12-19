@@ -15,7 +15,7 @@ class DoublePage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         let d1 = 3.0
         let d2 = 3.5

@@ -35,7 +35,7 @@ class CSProgressUpdatePage: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 从本地数据库取JSON值(以赋值给相应控件)、建模
         let result = table.getJSONOneRow(id: updatedId)

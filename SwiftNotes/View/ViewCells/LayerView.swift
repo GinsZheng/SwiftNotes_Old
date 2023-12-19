@@ -17,7 +17,7 @@ class LayerView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         label.setup(superview: view, text: "subview")
         label.setFrame(centerX: view.centerX, top: 20)

@@ -21,7 +21,7 @@ class StackViewPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         let stackBlock1 = UIView()
         stackBlock1.backgroundColor = .hex(cRed_FF635A)

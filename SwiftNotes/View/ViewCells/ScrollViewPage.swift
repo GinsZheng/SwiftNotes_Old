@@ -19,7 +19,7 @@ class ScrollViewPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         let scrollView = UIScrollView()
         scrollView.setup(superview: view)

@@ -15,7 +15,7 @@ class CSTimePage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         let timeStrLabel = UILabel()
         timeStrLabel.setup(superview: view, text: getTimeStrWithTimeStamp(timeStamp: 1463637807, dateFormat: "yyyy/M/d HH:mm:ss"))

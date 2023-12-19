@@ -48,7 +48,7 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
 
         textField.setup(superview: view, placeholder: "Input something", delegate: self)
         textField.setFrame(left: 20, top: 20, width: kScreenWidth - 40, height: 44)

@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }
     
     func setupViews() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 配置触发按钮
         overlayButton.setTitle("显示叠加层", for: .normal)
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         view.addSubview(overlayButton)
         
         // 配置前景视图
-        foregroundView.backgroundColor = .white
+        foregroundView.setBackgroundColor(color: cFFF)
         view.addSubview(foregroundView)
         
         // 配置输入框

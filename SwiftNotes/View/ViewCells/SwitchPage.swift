@@ -24,7 +24,7 @@ class SwitchPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         print("初始boolValue1", userDefaultsboolValue1)
         

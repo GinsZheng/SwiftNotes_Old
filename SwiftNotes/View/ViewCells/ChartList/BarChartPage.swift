@@ -13,7 +13,7 @@
 //    
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
-//        view.backgroundColor = .white
+//        view.setBackgroundColor(color: cFFF)
 //        
 //        let chartConfig = BarsChartConfig(
 //            valsAxisConfig: ChartAxisConfig(from: 0, to: 8, by: 2)

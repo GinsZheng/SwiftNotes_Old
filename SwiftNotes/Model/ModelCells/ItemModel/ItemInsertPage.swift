@@ -36,7 +36,7 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         navPresent.setTitleLabel(superview: view, title: "Insert")
         navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))

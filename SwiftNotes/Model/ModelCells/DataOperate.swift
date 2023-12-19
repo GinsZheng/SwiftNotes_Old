@@ -15,7 +15,7 @@ class CSDataOperate: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // trim
         let trimingText = "  123  ".trimmingCharacters(in: .whitespaces)

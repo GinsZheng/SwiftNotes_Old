@@ -21,7 +21,7 @@ class ViewPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         let myView = UIView()
         myView.setup(superview: view, backgroundColor: cF5F6F8)

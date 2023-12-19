@@ -22,7 +22,7 @@ class CSDisabledDismissParentPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
 
         button.setup(superview: view, target: self, action: #selector(presentNext))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "Present")
@@ -50,7 +50,7 @@ class CSDisabledDismissChildPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
     }
     

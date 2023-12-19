@@ -19,7 +19,7 @@ class CSVPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // MARK: -读取CSV文件
         

@@ -15,7 +15,7 @@ class CSEnumPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 基本调用，值为枚举名称
         let r1 = CompassPoint.north

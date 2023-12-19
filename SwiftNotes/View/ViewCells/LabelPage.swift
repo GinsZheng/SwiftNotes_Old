@@ -28,7 +28,7 @@ class LabelPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         label.setup(superview: view, text: "在在在在在在在在在在在在在在在在")
         label.setFontStyle(size: 24, color: c222)

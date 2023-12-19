@@ -41,7 +41,7 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 从本地数据库取JSON值(以赋值给相应控件)、建模
         let result = itemTable.getJSONOneRow(id: updatedId)

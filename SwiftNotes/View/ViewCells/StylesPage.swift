@@ -21,7 +21,7 @@ class StylesPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         // 设置部分圆角
         let myView = UIView()

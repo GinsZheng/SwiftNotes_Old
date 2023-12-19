@@ -22,7 +22,7 @@
 //    
 //    // MARK: - func
 //    func setupUI() {
-//        view.backgroundColor = .white
+//        view.setBackgroundColor(color: cFFF)
 //        
 //        let bgView = UIView()
 //        bgView.set(superview: view, backgroundColor: cFFF)

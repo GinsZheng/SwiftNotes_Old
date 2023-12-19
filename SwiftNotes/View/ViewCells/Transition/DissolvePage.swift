@@ -24,7 +24,7 @@ class CSDissolveFromVC: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         button.setup(superview: view, target: self, action: #selector(goNext))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "渐隐渐现")
@@ -63,7 +63,7 @@ class DissolveToVC: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         blackView.setup(superview: view, backgroundColor: c000_97)
         blackView.setFrame(allEdges: 0)

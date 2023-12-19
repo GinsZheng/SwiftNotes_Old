@@ -26,7 +26,7 @@ class TextViewPage: UIViewController, UITextViewDelegate {
      // MARK: - func
      
      func setupUI() {
-          view.backgroundColor = UIColor.white
+          view.setBackgroundColor(color: cFFF)
           
           textView.setup(superview: view, text: "美国或将推出中东和平方案巴以危机出路何在何在何在在在", maxLines: 3)
           textView.setFontStyle(size: 17, color: c222)

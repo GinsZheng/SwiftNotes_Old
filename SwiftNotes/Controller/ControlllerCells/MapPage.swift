@@ -20,7 +20,7 @@ class CSMapPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // 转换元素类型：可以将集合中的元素从一种类型转换为另一种类型。例如，将 Int 数组转换为 String 数组
         let numbers = [1, 2, 3]

@@ -33,7 +33,7 @@ class WindowPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         myview.setup(superview: window, backgroundColor: cBlue_5393FF)
         myview.setFrame(left: 20, top: 20, width: 100, height: 100)

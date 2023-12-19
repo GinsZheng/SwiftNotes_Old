@@ -18,7 +18,7 @@ class CSReadFilePage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         let fileToString = CSFileManager.readFileAsString(fileNameStr: "index", type: "html") ?? ""
         print("fileToString \(fileToString)")

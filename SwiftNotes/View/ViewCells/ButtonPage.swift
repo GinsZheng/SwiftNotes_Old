@@ -25,7 +25,7 @@ class ButtonPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         print("当前机型的逻辑分辨率：\(kScreenWidth) * \(kScreenHeight)")
         

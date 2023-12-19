@@ -42,7 +42,7 @@ class CSTouchesBeganGesturePage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         myView.setup(superview: view, backgroundColor: cBlue_5393FF)
         myView.setCornerRadius(radius: 4)

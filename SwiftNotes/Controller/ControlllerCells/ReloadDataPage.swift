@@ -43,7 +43,7 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         addItemBtn.setup(superview: view, target: self, action: #selector(presentAddItemVC))
         addItemBtn.setFrame(right: 20, top: 0, width: 25, height: 20)

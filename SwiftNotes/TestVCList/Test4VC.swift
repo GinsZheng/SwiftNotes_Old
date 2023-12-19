@@ -32,7 +32,7 @@
 //        self.view.addSubview(customView)
 //        
 //        // 配置自定义视图的其他UI组件
-//        customView.backgroundColor = .white
+//        customview.setBackgroundColor(color: cFFF)
 //        customView.frame = CGRect(x: 20, y: 200, width: self.view.frame.width - 40, height: 300) // 设置自定义视图的位置和大小
 //        customView.layer.cornerRadius = 10
 //        

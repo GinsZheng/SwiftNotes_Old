@@ -24,7 +24,7 @@ class DatePickerPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         datePicker.setup(superview: view)
         datePicker.setFrame(centerX: view.centerX, top: 0, width: 320, height: 215)

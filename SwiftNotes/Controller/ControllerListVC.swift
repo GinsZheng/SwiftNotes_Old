@@ -48,7 +48,7 @@ class CSControllerListVC: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         self.title = "Controller"
         
         setupUI()

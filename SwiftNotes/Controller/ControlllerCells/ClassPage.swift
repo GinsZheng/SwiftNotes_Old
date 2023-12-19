@@ -12,7 +12,7 @@ class CSClassPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         _ = getView(superview: view)
         
@@ -38,7 +38,7 @@ class CSClassInheritance: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         let myDish = PackageDishDecorator(dish: SaltDishDecorator(dish: Dish(name: "松鼠桂鱼", price: 15)))
         print(myDish.description)

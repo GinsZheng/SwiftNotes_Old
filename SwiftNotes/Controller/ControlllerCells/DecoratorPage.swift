@@ -12,7 +12,7 @@ class CSDecoratorPage: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         // 有@discardableResult，会忽略函数结果未赋值的警告
         // 替代方案为： _ = testDiscardableResult()

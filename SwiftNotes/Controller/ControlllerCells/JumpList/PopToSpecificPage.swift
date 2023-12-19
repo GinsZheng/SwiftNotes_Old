@@ -19,7 +19,7 @@ class CSPopToSpecificPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.setBackgroundColor(color: cFFF)
         
         label.setup(superview: view, text: textStr)
         label.setFontStyle(size: 34, color: "222")

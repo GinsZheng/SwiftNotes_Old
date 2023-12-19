@@ -15,7 +15,7 @@ class CSUserDefaultsPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.setBackgroundColor(color: cFFF)
         
         // MARK: - 优雅的做法
 
