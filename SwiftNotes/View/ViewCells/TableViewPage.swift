@@ -119,7 +119,7 @@ class DefaultTableViewCell: UITableViewCell {
     private let highlightView = UIView()
     
     private let titleLabel = UILabel()
-    private let nextIcon = UIImageView()
+    private let rightIcon = UIImageView()
     private let switchControl = UISwitch()
     
     
@@ -162,10 +162,11 @@ class DefaultTableViewCell: UITableViewCell {
     }
     
     // 配置数据
-    func configure(cellType: CellType, indexPath: IndexPath, dataCount: Int, title: String) {
+    func configure(cellType: CellType, indexPath: IndexPath, dataCount: Int, title: String, description: String = "", leftIconName: String = "", isSwitchOn: Bool = false) {
         bgView.setCellCornerRadius(radius: kRadius, index: indexPath.row, dataCount: dataCount)
         
-        switch cellType {
+        var cellType1: CellType = .titleSwitch
+        switch cellType1 {
         case .title:
             titleLabel.setup(superview: bgView, text: title)
             titleLabel.setStyle17pt222()
@@ -182,8 +183,8 @@ class DefaultTableViewCell: UITableViewCell {
             separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
             
-            nextIcon.setup(superview: bgView, imageName: "next")
-            nextIcon.setFrame(right: kHorizPadding, centerY: contentView.centerY, width: 18, height: 18)
+            rightIcon.setup(superview: bgView, imageName: "next")
+            rightIcon.setFrame(right: kHorizPadding, centerY: contentView.centerY, width: 18, height: 18)
             
         case .titleSwitch:
             titleLabel.setup(superview: bgView, text: title)
@@ -196,6 +197,17 @@ class DefaultTableViewCell: UITableViewCell {
             switchControl.setup(superview: bgView)
             switchControl.setFrame(right: kHorizPadding, centerY: bgView.centerY, width: 51, height: 31)
             
+        case .titleIconRightArrow:
+            titleLabel.setup(superview: bgView, text: title)
+            titleLabel.setStyle17pt222()
+            titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
+
+            separator.setup(superview: bgView, backgroundColor: cSeparator)
+            separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
+            
+            rightIcon.setup(superview: bgView, imageName: "next")
+            rightIcon.setFrame(right: kHorizPadding, centerY: contentView.centerY, width: 18, height: 18)
+        
         default:
             print("错误")
         }
@@ -207,6 +219,7 @@ class DefaultTableViewCell: UITableViewCell {
         //    case titleDesc
         //    case titleDescNext
         //    case titleDescSwitch
+        // 右侧图标不是next(可以把next作为默认值)
     }
     
 }
