@@ -147,7 +147,6 @@ class DefaultTableViewCell: UITableViewCell {
         self.setBackgroundColor(color: cNoColor)
         self.selectionStyle = .none
         
-        print("contentView", self.height)
         bgView.setup(superview: contentView, backgroundColor: cFFF)
         bgView.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: contentView.height)
         
@@ -170,12 +169,19 @@ class DefaultTableViewCell: UITableViewCell {
     
     // 配置数据
     func configure(cellType: CellType, indexPath: IndexPath, dataCount: Int, title: String, description: String = "", descriptionLine: Int = 1, leftIconName: String = "", isSwitchOn: Bool = false) {
+        // 只对于双行的Cell重设高度
+        if cellType == .titleDesc || cellType == .titleDescNext || cellType == .titleDescSwitch  {
+            self.height = k2LineCellHeight
+            bgView.height = k2LineCellHeight
+            highlightView.height = k2LineCellHeight
+        }
+        
         bgView.setCellCornerRadius(radius: kRadius, index: indexPath.row, dataCount: dataCount)
         
         titleLabel.setup(superview: bgView, text: title)
         titleLabel.setStyle17pt222()
         
-        var cellType1: CellType = .titleIconSwitch
+        var cellType1: CellType = .titleNext
         switch cellType1 {
             // MARK: - title
         case .title:
@@ -198,6 +204,7 @@ class DefaultTableViewCell: UITableViewCell {
             titleLabel.setFrame(left: kCellPadding, centerY: bgView.centerY, width: titleLabel.getLabelWidth(withMaxWidth: titleLabelMaxWidth), height: kCellHeight)
             
             rightIcon.setup(superview: bgView, imageName: "next")
+            print("size", rightIcon.image?.size)
             rightIcon.setFrame(right: kCellPadding, centerY: bgView.centerY, width: kCellIconWidth, height: kCellIconHeight)
             
             // 描述文本宽度 = cell白色背景宽度 - 标题右侧坐标(=标题左侧留白+标题宽) - 标题与描述间隔 + 箭头图标宽 + 图标右侧留白)
