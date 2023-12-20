@@ -28,19 +28,19 @@ class SwitchPage: UIViewController {
         
         print("初始boolValue1", userDefaultsboolValue1)
         
-        let mySwitch = UISwitch()
-        mySwitch.setup(superview: view, setOn: userDefaultsboolValue1, target: self, action: #selector(switchChanged(_:)))
-        mySwitch.setFrame(left: 20, top: 20, width: 50, height: 30)
+        let switchControl = UISwitch()
+        switchControl.setup(superview: view, setOn: userDefaultsboolValue1, target: self, action: #selector(switchChanged(_:)))
+        switchControl.setFrame(right: 20, top: 20)
         
-        mySwitch.onTintColor = UIColor.hex(cBlue_5393FF)
-        print("初始isOn", mySwitch.isOn)
+        switchControl.onTintColor = UIColor.hex(cBlue_5393FF)
+        print("初始isOn", switchControl.isOn)
     }
     
     
     // MARK: - @objc func
-    @objc func switchChanged(_ mySwitch: UISwitch) {
+    @objc func switchChanged(_ switchControl: UISwitch) {
         // 点击后，isOn已经转变，即isOn相当于是点击开关发生切换后的值
-        if mySwitch.isOn == true { //
+        if switchControl.isOn == true { //
             kUserDefaults.set(true, forKey: boolValue1)
         } else {
             kUserDefaults.set(false, forKey: boolValue1)
