@@ -168,7 +168,7 @@ class DefaultTableViewCell: UITableViewCell {
     }
     
     // 配置数据
-    func configure(cellType: CellType, indexPath: IndexPath, dataCount: Int, title: String, description: String = "", descriptionLine: Int = 1, leftIconName: String = "", isSwitchOn: Bool = false) {
+    func configure(cellType: CellType, indexPath: IndexPath, dataCount: Int, title: String, description: String = "", descriptionLine: Int = 1, leftIconName: String = "", rightIconName: String = "next", isSwitchOn: Bool = false) {
         // 只对于双行的Cell重设高度
         if cellType == .titleDesc || cellType == .titleDescNext || cellType == .titleDescSwitch  {
             self.height = k2LineCellHeight
@@ -181,7 +181,17 @@ class DefaultTableViewCell: UITableViewCell {
         titleLabel.setup(superview: bgView, text: title)
         titleLabel.setStyle17pt222()
         
-        var cellType1: CellType = .title
+        /*
+         case title
+         case titleNext
+         case titleSwitch
+         case titleIconNext
+         case titleIconSwitch
+         case titleDesc
+         case titleDescNext
+         case titleDescSwitch
+         */
+        var cellType1: CellType = .titleIconSwitch
         switch cellType1 {
             // MARK: - title
         case .title:
@@ -200,7 +210,7 @@ class DefaultTableViewCell: UITableViewCell {
             
             // MARK: - titleNext
         case .titleNext:
-            rightIcon.setup(superview: bgView, imageName: "next")
+            rightIcon.setup(superview: bgView, imageName: rightIconName)
             rightIcon.setFrame(right: kCellPadding, centerY: bgView.centerY, width: rightIcon.getImageWidth(), height: rightIcon.getImageHeight())
             
             let titleLabelMaxWidth = bgView.width - kCellPadding*2 - rightIcon.getImageWidth()
@@ -219,21 +229,22 @@ class DefaultTableViewCell: UITableViewCell {
             
             // MARK: - titleSwitch
         case .titleSwitch:
+            switchControl.setup(superview: bgView, setOn: isSwitchOn, target: self, action: #selector(switchTapped))
+            switchControl.setFrame(right: kCellPadding, centerY: bgView.centerY)
+            
             let titleLabelMaxWidth = bgView.width - kCellPadding*2 - kSwitchWidth - kCellInterval
             titleLabel.setFrame(left: kCellPadding, centerY: bgView.centerY, width: titleLabel.getLabelWidth(withMaxWidth: titleLabelMaxWidth), height: kCellHeight)
             
             separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: kCellPadding, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
             
-            switchControl.setup(superview: bgView, setOn: isSwitchOn, target: self, action: #selector(switchTapped))
-            switchControl.setFrame(right: kCellPadding, centerY: bgView.centerY)
             
             // MARK: - titleIconNext
         case .titleIconNext:
             leftIcon.setup(superview: bgView, imageName: leftIconName)
             leftIcon.setFrame(left: kCellPadding, centerY: bgView.centerY, width: leftIcon.getImageWidth(), height: leftIcon.getImageHeight())
             
-            rightIcon.setup(superview: bgView, imageName: "next")
+            rightIcon.setup(superview: bgView, imageName: rightIconName)
             rightIcon.setFrame(right: kCellPadding, centerY: bgView.centerY, width: rightIcon.getImageWidth(), height: rightIcon.getImageHeight())
             
             let titleLabelMaxWidth = bgView.width - leftIcon.right - kCellInterval - kCellPadding - rightIcon.getImageWidth() - kCellInterval
@@ -255,11 +266,11 @@ class DefaultTableViewCell: UITableViewCell {
             leftIcon.setup(superview: bgView, imageName: leftIconName)
             leftIcon.setFrame(left: kCellPadding, centerY: bgView.centerY, width: leftIcon.getImageWidth(), height: leftIcon.getImageHeight())
             
-            let titleLabelMaxWidth = bgView.width - leftIcon.right - kCellInterval - kCellPadding - kSwitchWidth - kCellInterval
-            titleLabel.setFrame(left: leftIcon.right + kCellInterval, centerY: bgView.centerY, width: titleLabel.getLabelWidth(withMaxWidth: titleLabelMaxWidth), height: kCellHeight)
-            
             switchControl.setup(superview: bgView, setOn: isSwitchOn, target: self, action: #selector(switchTapped))
             switchControl.setFrame(right: kCellPadding, centerY: bgView.centerY)
+            
+            let titleLabelMaxWidth = bgView.width - leftIcon.right - kCellInterval - kCellPadding - kSwitchWidth - kCellInterval
+            titleLabel.setFrame(left: leftIcon.right + kCellInterval, centerY: bgView.centerY, width: titleLabel.getLabelWidth(withMaxWidth: titleLabelMaxWidth), height: kCellHeight)
             
             separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: leftIcon.right + kCellPadding, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
