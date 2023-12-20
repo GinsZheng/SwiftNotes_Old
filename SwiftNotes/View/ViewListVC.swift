@@ -87,7 +87,7 @@ extension ViewListVC: UITableViewDelegate {
                        dataCount: tableData.count,
                        title: tableData[indexPath.row].title,
                        description: "描述描述描述描述描述描述描述描述描述",
-                       leftIconName: "checkmark",
+                       leftIconName: "mine_personalInfo_female_s",
                        isSwitchOn: false
         )
         return cell
