@@ -191,6 +191,7 @@ class DefaultTableViewCell: UITableViewCell {
          case titleDescNext
          case titleDescSwitch
          */
+        // ⚠️下一步：再写一个右侧按钮的UI样式类型(找找实例)
         var cellType1: CellType = .titleIconSwitch
         switch cellType1 {
             // MARK: - title
