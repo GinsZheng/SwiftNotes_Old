@@ -74,7 +74,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(cellType: .titleRightArrow, indexPath: indexPath, dataCount: nameArray.count, title: nameArray[indexPath.row])
+        cell.configure(cellType: .titleNext, indexPath: indexPath, dataCount: nameArray.count, title: nameArray[indexPath.row])
         
         return cell
     }

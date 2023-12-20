@@ -30,7 +30,7 @@ class ViewListVC: UIViewController {
         DefaultTableViewItem(title: "Stepper", viewController: StepperPage()),
         DefaultTableViewItem(title: "Styles", viewController: StylesPage()),
         DefaultTableViewItem(title: "Switch", viewController: SwitchPage()),
-        DefaultTableViewItem(title: "Switch Scroll And Collection View", viewController: SwitchScrollAndCollectionViewPage()),
+        DefaultTableViewItem(title: "Switch Scroll And Collection View Switch Scroll And Collection View", viewController: SwitchScrollAndCollectionViewPage()),
         DefaultTableViewItem(title: "Table View", viewController: TableViewPage()),
         DefaultTableViewItem(title: "Text Field", viewController: TextFieldPage()),
         DefaultTableViewItem(title: "Text View", viewController: TextViewPage()),
@@ -78,10 +78,18 @@ extension ViewListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(cellType: .titleRightArrow,
+//        cell.configure(cellType: .titleNext,
+//                       indexPath: indexPath,
+//                       dataCount: tableData.count,
+//                       title:  tableData[indexPath.row].title)
+        cell.configure(cellType: .titleNext,
                        indexPath: indexPath,
                        dataCount: tableData.count,
-                       title:  tableData[indexPath.row].title)
+                       title: tableData[indexPath.row].title,
+                       description: "描述描述描述描述描述描述描述描述描述",
+                       leftIconName: "checkmark",
+                       isSwitchOn: false
+        )
         return cell
     }
 }

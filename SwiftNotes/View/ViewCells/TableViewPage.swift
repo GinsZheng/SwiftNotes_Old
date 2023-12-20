@@ -72,10 +72,14 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
-        cell.configure(cellType: .titleRightArrow,
+        cell.configure(cellType: .titleNext,
                        indexPath: indexPath,
                        dataCount: tableData.count,
-                       title: tableData[indexPath.row].title)
+                       title: tableData[indexPath.row].title,
+                       description: "描述描述描述描述描述描述描述描述描述",
+                       leftIconName: "next",
+                       isSwitchOn: true
+        )
         return cell
     }
 }
@@ -86,9 +90,9 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
 // MARK: - CellType：UITableViewCell的UI类型
 enum CellType {
     case title
-    case titleRightArrow
+    case titleNext
     case titleSwitch
-    case titleIconRightArrow
+    case titleIconNext
     case titleIconSwitch
     case titleDesc
     case titleDescNext
@@ -99,11 +103,11 @@ extension CellType {
     static func getType(fromTypeId typeId: Int) -> CellType {
         switch typeId {
         case 0:
-            return .titleRightArrow
+            return .titleNext
         case 1:
             return .titleSwitch
         default:
-            return .titleRightArrow
+            return .titleNext
         }
     }
 }
@@ -115,12 +119,14 @@ class DefaultTableViewCell: UITableViewCell {
     static let identifier = String(describing: DefaultTableViewCell.self)
     
     private let bgView = UIView()
-    private let separator = UIView()
     private let highlightView = UIView()
     
     private let titleLabel = UILabel()
+    private let descriptionLabel = UILabel()
+    private let leftIcon = UIImageView()
     private let rightIcon = UIImageView()
     private let switchControl = UISwitch()
+    private let separator = UIView()
     
     
     // MARK: - 初始化
@@ -162,64 +168,102 @@ class DefaultTableViewCell: UITableViewCell {
     }
     
     // 配置数据
-    func configure(cellType: CellType, indexPath: IndexPath, dataCount: Int, title: String, description: String = "", leftIconName: String = "", isSwitchOn: Bool = false) {
+    func configure(cellType: CellType, indexPath: IndexPath, dataCount: Int, title: String, description: String = "", descriptionLine: Int = 1, leftIconName: String = "", isSwitchOn: Bool = false) {
         bgView.setCellCornerRadius(radius: kRadius, index: indexPath.row, dataCount: dataCount)
         
-        var cellType1: CellType = .titleSwitch
+        titleLabel.setup(superview: bgView, text: title)
+        titleLabel.setStyle17pt222()
+        
+        var cellType1: CellType = .titleNext
         switch cellType1 {
         case .title:
-            titleLabel.setup(superview: bgView, text: title)
-            titleLabel.setStyle17pt222()
-            titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
+            titleLabel.setFrame(left: kHorizPadding, centerY: bgView.centerY, width: titleLabel.getLabelWidth(withMaxWidth: bgView.width - kHorizPadding*2), height: kCellHeight)
+            
+            // 描述文本宽度 = cell白色背景宽度 - 标题右侧坐标(= 标题左侧留白 + 标题宽度) - 描述左侧留白 - 描述右侧留白
+            let descriptionLabelWidth = bgView.width - titleLabel.right - kHorizPadding - kHorizPadding
+            descriptionLabel.setup(superview: bgView, text: description, numberOfLines: descriptionLine)
+            descriptionLabel.setStyle14pt999Right()
+            descriptionLabel.setFrame(right: kHorizPadding, centerY: bgView.centerY, width: descriptionLabelWidth, height: kCellHeight)
+            if descriptionLabel.width < 14 { descriptionLabel.isHidden = true } // 如果描述文本宽度不够一个字，就隐藏
 
             separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
             
-        case .titleRightArrow:
-            titleLabel.setup(superview: bgView, text: title)
-            titleLabel.setStyle17pt222()
-            titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
-
-            separator.setup(superview: bgView, backgroundColor: cSeparator)
-            separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
+        case .titleNext:
+            titleLabel.setFrame(left: kHorizPadding, centerY: bgView.centerY, width: titleLabel.getLabelWidth(withMaxWidth: bgView.width - kHorizPadding*2 - kCellIconWidth), height: kCellHeight)
             
             rightIcon.setup(superview: bgView, imageName: "next")
-            rightIcon.setFrame(right: kHorizPadding, centerY: contentView.centerY, width: 18, height: 18)
+            rightIcon.setFrame(right: kHorizPadding, centerY: bgView.centerY, width: kCellIconWidth, height: kCellIconHeight)
+            
+            // 描述文本宽度 = cell白色背景宽度 - 标题右侧坐标(=标题左侧留白+标题宽) - 描述左侧留白 - 描述右侧留白(=图标宽+图标右侧留白)
+            let descriptionLabelWidth = bgView.width - titleLabel.right - kHorizPadding - kHorizPadding - kCellIconWidth
+            descriptionLabel.setup(superview: bgView, text: description, numberOfLines: descriptionLine)
+            descriptionLabel.setStyle14pt999Right()
+            descriptionLabel.setFrame(right: kHorizPadding + kCellIconWidth, centerY: bgView.centerY, width: descriptionLabelWidth, height: kCellHeight)
+            if descriptionLabel.width < 14 { descriptionLabel.isHidden = true } // 如果描述文本宽度不够一个字，就隐藏
+            
+            separator.setup(superview: bgView, backgroundColor: cSeparator)
+            separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
             
         case .titleSwitch:
-            titleLabel.setup(superview: bgView, text: title)
-            titleLabel.setStyle17pt222()
-            titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
+            titleLabel.setFrame(left: kHorizPadding, centerY: bgView.centerY)
             
             separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
             
-            switchControl.setup(superview: bgView)
+            switchControl.setup(superview: bgView, setOn: isSwitchOn, target: self, action: #selector(switchTapped))
             switchControl.setFrame(right: kHorizPadding, centerY: bgView.centerY, width: 51, height: 31)
             
-        case .titleIconRightArrow:
-            titleLabel.setup(superview: bgView, text: title)
-            titleLabel.setStyle17pt222()
-            titleLabel.setFrame(left: kHorizPadding, centerY: contentView.centerY)
+        case .titleIconNext:
+            titleLabel.setFrame(left: kHorizPadding, centerY: bgView.centerY)
 
             separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
             
             rightIcon.setup(superview: bgView, imageName: "next")
-            rightIcon.setFrame(right: kHorizPadding, centerY: contentView.centerY, width: 18, height: 18)
+            rightIcon.setFrame(right: kHorizPadding, centerY: bgView.centerY, width: 18, height: 18)
+            
+        case .titleIconSwitch:
+            leftIcon.setup(superview: bgView, imageName: leftIconName)
+            leftIcon.setFrame(left: kHorizPadding, centerY: bgView.centerY, width: 18, height: 18)
+            
+            titleLabel.setFrame(left: leftIcon.right + kHorizPadding, centerY: bgView.centerY)
+            
+            switchControl.setup(superview: bgView, setOn: isSwitchOn, target: self, action: #selector(switchTapped))
+            switchControl.setFrame(right: kHorizPadding, centerY: bgView.centerY, width: 51, height: 31)
+            
+            separator.setup(superview: bgView, backgroundColor: cSeparator)
+            separator.setSeparatorFrame(left: leftIcon.right + kHorizPadding, right: kHorizPadding, index: indexPath.row, dataCount: dataCount)
+            
+//        case .titleDesc:
+            
+//
+//            
+//        case .titleDescNext:
+//            
+//        case .titleDescSwitch:
         
         default:
             print("错误")
         }
+        
+
+    }
+        
         //    case title
-        //    case titleRightArrow
+        //    case titleNext
         //    case titleSwitch
-        //    case titleIconRightArrow
+        //    case titleIconNext
         //    case titleIconSwitch
         //    case titleDesc
         //    case titleDescNext
         //    case titleDescSwitch
         // 右侧图标不是next(可以把next作为默认值)
+
+    
+    // MARK: - @objc func
+    @objc func switchTapped() {
+        print("hey")
     }
     
 }
