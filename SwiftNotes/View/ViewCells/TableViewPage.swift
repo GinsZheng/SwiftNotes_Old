@@ -197,18 +197,7 @@ class DefaultTableViewCell: UITableViewCell {
         switch cellType {
             // MARK: - title
         case .title:
-            let titleLabelMaxWidth = bgView.width - kCellPadding*2
-            titleLabel.setFrame(left: kCellPadding, centerY: bgView.centerY, width: titleLabel.getLabelWidth(withMaxWidth: titleLabelMaxWidth), height: kCellHeight)
-            
-            // 描述文本宽度 = cell白色背景宽度 - 标题右侧坐标(= 标题左侧留白 + 标题宽度) - 标题与描述间隔 - 描述右侧留白
-            let descriptionLabelWidth = bgView.width - titleLabel.right - kCellInterval - kCellPadding
-            descriptionLabel.setup(superview: bgView, text: description, numberOfLines: descriptionLine)
-            descriptionLabel.setStyle14pt999Right()
-            descriptionLabel.setFrame(right: kCellPadding, centerY: bgView.centerY, width: descriptionLabelWidth, height: kCellHeight)
-            if descriptionLabel.width < 14 { descriptionLabel.isHidden = true } // 如果描述文本宽度不够一个字(14pt)，就隐藏
-            
-            separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
-            
+            setupTitle(indexPath: indexPath, dataCount: dataCount, title: title, description: description, descriptionLine: descriptionLine)
             
             // MARK: - titleRightIcon
         case .titleRightIcon:
@@ -327,7 +316,37 @@ class DefaultTableViewCell: UITableViewCell {
 }
 
 
+//case title                      // 11 只有标题 (右侧说明非开关的cell都有。11指数据传来的typeId)
+//case titleRightIcon             // 12 标题 + 右图标
+//case titleSwitch                // 13 标题 + 开关
+//case titleLeftIconRightIcon     // 14 标题 + 左图标(标题前) + 右图标
+//case titleLeftIconSwitch        // 15 标题 + 左图标(标题前) + 开关
+//case titleDesc                  // 21 双行：标题 + 说明
+//case titleDescRightIcon         // 22 双行：标题 + 说明 + 右图标
+//case titleDescSwitch            // 23 双行：标题 + 说明 + 开关
+
 extension DefaultTableViewCell {
+    func setupTitle(indexPath: IndexPath, dataCount: Int, title: String, description: String, descriptionLine: Int) {
+        let titleLabelMaxWidth = bgView.width - kCellPadding*2
+        titleLabel.setFrame(left: kCellPadding, centerY: bgView.centerY, width: titleLabel.getLabelWidth(withMaxWidth: titleLabelMaxWidth), height: kCellHeight)
+        
+        // 描述文本宽度 = cell白色背景宽度 - 标题右侧坐标(= 标题左侧留白 + 标题宽度) - 标题与描述间隔 - 描述右侧留白
+        let descriptionLabelWidth = bgView.width - titleLabel.right - kCellInterval - kCellPadding
+        descriptionLabel.setup(superview: bgView, text: description, numberOfLines: descriptionLine)
+        descriptionLabel.setStyle14pt999Right()
+        descriptionLabel.setFrame(right: kCellPadding, centerY: bgView.centerY, width: descriptionLabelWidth, height: kCellHeight)
+        if descriptionLabel.width < 14 { descriptionLabel.isHidden = true } // 如果描述文本宽度不够一个字(14pt)，就隐藏
+        
+        separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
+        
+    }
+    
+    
+    func setupTitleRightIcon() {
+        
+    }
+    
+//    (indexPath: IndexPath, dataCount: Int, title: String, description: String, descriptionLine: Int, leftIconName: String, rightIconName: String, isSwitchOn: Bool)
     
 }
 
