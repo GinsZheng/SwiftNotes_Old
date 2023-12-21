@@ -78,16 +78,17 @@ extension ViewListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-//        cell.configure(cellType: .titleNext,
+//        cell.configure(cellType: .titleRightIcon,
 //                       indexPath: indexPath,
 //                       dataCount: tableData.count,
 //                       title:  tableData[indexPath.row].title)
-        cell.configure(cellType: .titleNext,
+        cell.configure(cellType: .titleRightIcon,
                        indexPath: indexPath,
                        dataCount: tableData.count,
                        title: tableData[indexPath.row].title,
                        description: "描述描述描述描述描述描述描述描述描述",
                        leftIconName: "mine_personalInfo_female_s",
+                       rightIconName: "tickets_refund_procession_done",
                        isSwitchOn: false
         )
         return cell

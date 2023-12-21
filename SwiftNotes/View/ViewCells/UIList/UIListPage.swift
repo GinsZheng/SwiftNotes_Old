@@ -54,7 +54,7 @@ class UIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-        cell.configure(cellType: .titleNext,
+        cell.configure(cellType: .titleRightIcon,
                        indexPath: indexPath,
                        dataCount: tableData.count,
                        title:  tableData[indexPath.row].title)
