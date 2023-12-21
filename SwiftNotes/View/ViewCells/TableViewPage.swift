@@ -56,7 +56,7 @@ class TableViewPage: UIViewController {
 extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        return kCellHeight
     }
     
     // 点击
@@ -72,13 +72,10 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
-        cell.configure(cellType: .titleDesc,
+        cell.configure(cellType: .titleRightIcon,
                        indexPath: indexPath,
                        dataCount: tableData.count,
-                       title: tableData[indexPath.row].title,
-                       description: "描述描述描述描述描述描述描述描述描述",
-                       leftIconName: "mine_personalInfo_female_s",
-                       isSwitchOn: true
+                       title: tableData[indexPath.row].title
         )
         return cell
     }
@@ -87,25 +84,39 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
 
 
 
-// MARK: - CellType：UITableViewCell的UI类型
+// MARK: - CellType：默认的表格视图UI类型
 enum CellType {
-    case title                      // 只有标题 (右侧说明非开关的cell都有)
-    case titleRightIcon             // 标题 + 右图标
-    case titleSwitch                // 标题 + 开关
-    case titleLeftIconRightIcon     // 标题 + 左图标(标题前) + 右图标
-    case titleLeftIconSwitch        // 标题 + 左图标(标题前) + 开关
-    case titleDesc                  // 双行：标题 + 说明
-    case titleDescRightIcon         // 双行：标题 + 说明 + 右图标
-    case titleDescSwitch            // 双行：标题 + 说明 + 开关
+    case title                      // 11 只有标题 (右侧说明非开关的cell都有。11指数据传来的typeId)
+    case titleRightIcon             // 12 标题 + 右图标
+    case titleSwitch                // 13 标题 + 开关
+    case titleLeftIconRightIcon     // 14 标题 + 左图标(标题前) + 右图标
+    case titleLeftIconSwitch        // 15 标题 + 左图标(标题前) + 开关
+    case titleDesc                  // 21 双行：标题 + 说明
+    case titleDescRightIcon         // 22 双行：标题 + 说明 + 右图标
+    case titleDescSwitch            // 23 双行：标题 + 说明 + 开关
 }
 
+
 extension CellType {
+    // MARK: - 把UI类型值从typeId转换为CellType
     static func getType(fromTypeId typeId: Int) -> CellType {
         switch typeId {
-        case 0:
+        case 11:
             return .titleRightIcon
-        case 1:
+        case 12:
+            return .titleRightIcon
+        case 13:
             return .titleSwitch
+        case 14:
+            return .titleLeftIconRightIcon
+        case 15:
+            return .titleLeftIconSwitch
+        case 21:
+            return .titleDesc
+        case 22:
+            return .titleDescRightIcon
+        case 23:
+            return .titleDescSwitch
         default:
             return .titleRightIcon
         }
@@ -153,6 +164,8 @@ class DefaultTableViewCell: UITableViewCell {
         highlightView.setup(superview: bgView, backgroundColor: c000_10)
         highlightView.setFrame(allEdges: 0)
         highlightView.isHidden = true
+        
+        separator.setup(superview: bgView, backgroundColor: cSeparator)
     }
     
     // 设置高亮
@@ -180,20 +193,8 @@ class DefaultTableViewCell: UITableViewCell {
         
         titleLabel.setup(superview: bgView, text: title)
         titleLabel.setStyle17pt222Med()
-        
-        /*
-         case title
-         case titleRightIcon
-         case titleSwitch
-         case titleLeftIconRightIcon
-         case titleLeftIconSwitch
-         case titleDesc
-         case titleDescRightIcon
-         case titleDescSwitch
-         */
-        // ⚠️下一步：再写一个右侧按钮的UI样式类型(找找实例)
-        var cellType1: CellType = .titleDescSwitch
-        switch cellType1 {
+
+        switch cellType {
             // MARK: - title
         case .title:
             let titleLabelMaxWidth = bgView.width - kCellPadding*2
@@ -206,7 +207,6 @@ class DefaultTableViewCell: UITableViewCell {
             descriptionLabel.setFrame(right: kCellPadding, centerY: bgView.centerY, width: descriptionLabelWidth, height: kCellHeight)
             if descriptionLabel.width < 14 { descriptionLabel.isHidden = true } // 如果描述文本宽度不够一个字(14pt)，就隐藏
             
-            separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
             
             
@@ -225,7 +225,6 @@ class DefaultTableViewCell: UITableViewCell {
             descriptionLabel.setFrame(right: kCellPadding + rightIcon.width + kCellInterval, centerY: bgView.centerY, width: descriptionLabelWidth, height: kCellHeight)
             if descriptionLabel.width < 14 { descriptionLabel.isHidden = true } // 如果描述文本宽度不够一个字(14pt)，就隐藏
             
-            separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
             
             
@@ -237,7 +236,6 @@ class DefaultTableViewCell: UITableViewCell {
             let titleLabelMaxWidth = bgView.width - kCellPadding*2 - kSwitchWidth - kCellInterval
             titleLabel.setFrame(left: kCellPadding, centerY: bgView.centerY, width: titleLabel.getLabelWidth(withMaxWidth: titleLabelMaxWidth), height: kCellHeight)
             
-            separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
             
             
@@ -259,7 +257,6 @@ class DefaultTableViewCell: UITableViewCell {
             descriptionLabel.setFrame(right: kCellPadding + rightIcon.width + kCellInterval, centerY: bgView.centerY, width: descriptionLabelWidth, height: kCellHeight)
             if descriptionLabel.width < 14 { descriptionLabel.isHidden = true } // 如果描述文本宽度不够一个字(14pt)，就隐藏
             
-            separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
             
             
@@ -274,7 +271,6 @@ class DefaultTableViewCell: UITableViewCell {
             let titleLabelMaxWidth = bgView.width - leftIcon.right - kCellInterval - kCellPadding - kSwitchWidth - kCellInterval
             titleLabel.setFrame(left: leftIcon.right + kCellInterval, centerY: bgView.centerY, width: titleLabel.getLabelWidth(withMaxWidth: titleLabelMaxWidth), height: kCellHeight)
             
-            separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
             
             
@@ -287,7 +283,6 @@ class DefaultTableViewCell: UITableViewCell {
             descriptionLabel.setStyle12pt999()
             descriptionLabel.setFrame(left: kCellPadding, top: titleLabel.bottom + kCell2LineDescTopMargin, width: labelWidth)
             
-            separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
             
             
@@ -303,7 +298,6 @@ class DefaultTableViewCell: UITableViewCell {
             descriptionLabel.setStyle12pt999()
             descriptionLabel.setFrame(left: kCellPadding, top: titleLabel.bottom + kCell2LineDescTopMargin, width: labelWidth)
             
-            separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
             
             
@@ -319,26 +313,11 @@ class DefaultTableViewCell: UITableViewCell {
             descriptionLabel.setStyle12pt999()
             descriptionLabel.setFrame(left: kCellPadding, top: titleLabel.bottom + kCell2LineDescTopMargin, width: labelWidth)
             
-            separator.setup(superview: bgView, backgroundColor: cSeparator)
             separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: indexPath.row, dataCount: dataCount)
-            
-        default:
-            print("错误")
         }
         
         
     }
-    
-    //    case title
-    //    case titleRightIcon
-    //    case titleSwitch
-    //    case titleLeftIconRightIcon
-    //    case titleLeftIconSwitch
-    //    case titleDesc
-    //    case titleDescRightIcon
-    //    case titleDescSwitch
-    // 右侧图标不是next(可以把next作为默认值)
-    
     
     // MARK: - @objc func
     @objc func switchTapped() {

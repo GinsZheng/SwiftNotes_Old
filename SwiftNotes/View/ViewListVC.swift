@@ -30,7 +30,7 @@ class ViewListVC: UIViewController {
         DefaultTableViewItem(title: "Stepper", viewController: StepperPage()),
         DefaultTableViewItem(title: "Styles", viewController: StylesPage()),
         DefaultTableViewItem(title: "Switch", viewController: SwitchPage()),
-        DefaultTableViewItem(title: "Switch Scroll And Collection View Switch Scroll And Collection View", viewController: SwitchScrollAndCollectionViewPage()),
+        DefaultTableViewItem(title: "Switch Scroll And Collection View", viewController: SwitchScrollAndCollectionViewPage()),
         DefaultTableViewItem(title: "Table View", viewController: TableViewPage()),
         DefaultTableViewItem(title: "Text Field", viewController: TextFieldPage()),
         DefaultTableViewItem(title: "Text View", viewController: TextViewPage()),
@@ -78,18 +78,10 @@ extension ViewListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
-//        cell.configure(cellType: .titleRightIcon,
-//                       indexPath: indexPath,
-//                       dataCount: tableData.count,
-//                       title:  tableData[indexPath.row].title)
-        cell.configure(cellType: .titleDesc,
+        cell.configure(cellType: .titleRightIcon,
                        indexPath: indexPath,
                        dataCount: tableData.count,
-                       title: tableData[indexPath.row].title,
-                       description: "描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述",
-                       leftIconName: "mine_personalInfo_female_s",
-                       rightIconName: "tickets_refund_procession_done",
-                       isSwitchOn: false
+                       title: tableData[indexPath.row].title
         )
         return cell
     }
@@ -99,7 +91,7 @@ extension ViewListVC: UITableViewDelegate {
 // MARK: - tableview 代理方法
 extension ViewListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        return kCellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
