@@ -68,7 +68,7 @@
 //        titleLabel.setStyle17pt222()
 //        titleLabel.setFrame(left: 16, centerY: contentView.centerY)
 //        
-//        nextIcon.set(superview: contentView, imageName: "next")
+//        nextIcon.set(superview: contentView, imageName: kIconNext)
 //        nextIcon.setFrame(right: 16, centerY: contentView.centerY, width: 18, height: 18)
 //
 //        separator.set(superview: contentView, backgroundColor: cSeparator)

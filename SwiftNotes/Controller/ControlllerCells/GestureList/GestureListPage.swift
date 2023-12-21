@@ -103,7 +103,7 @@ class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataS
 //        cellTitle.setFrame(left: 20, centerY: cell.centerY)
 //
 //        let next = UIImageView()
-//        next.setup(superview: cell, imageName: "next")
+//        next.setup(superview: cell, imageName: kIconNext)
 //        next.setFrame(right: 20, centerY: cell.centerY, width: 16, height: 16)
 //
 //        return cell

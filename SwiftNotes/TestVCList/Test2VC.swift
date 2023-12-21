@@ -529,7 +529,7 @@ import UIKit
 //        titleLabel.setup(superview: contentView)
 //        titleLabel.setStyle17pt222()
 //        
-//        nextIcon.setup(superview: contentView, imageName: "next")
+//        nextIcon.setup(superview: contentView, imageName: kIconNext)
 //        
 //        separator.setup(superview: contentView, backgroundColor: cSeparator)
 //        

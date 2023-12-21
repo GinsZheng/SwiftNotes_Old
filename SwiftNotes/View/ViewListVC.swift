@@ -82,11 +82,11 @@ extension ViewListVC: UITableViewDelegate {
 //                       indexPath: indexPath,
 //                       dataCount: tableData.count,
 //                       title:  tableData[indexPath.row].title)
-        cell.configure(cellType: .titleRightIcon,
+        cell.configure(cellType: .titleDesc,
                        indexPath: indexPath,
                        dataCount: tableData.count,
                        title: tableData[indexPath.row].title,
-                       description: "描述描述描述描述描述描述描述描述描述",
+                       description: "描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述",
                        leftIconName: "mine_personalInfo_female_s",
                        rightIconName: "tickets_refund_procession_done",
                        isSwitchOn: false
@@ -99,7 +99,7 @@ extension ViewListVC: UITableViewDelegate {
 // MARK: - tableview 代理方法
 extension ViewListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kCellHeight
+        return 56
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
