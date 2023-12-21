@@ -327,6 +327,9 @@ class DefaultTableViewCell: UITableViewCell {
 }
 
 
+extension DefaultTableViewCell {
+    
+}
 
 
 
@@ -398,4 +401,10 @@ class DefaultTableViewCell: UITableViewCell {
  1. 单元格重用：这是处理大量数据的集合视图的关键性能优化。当您滚动集合视图时，离开屏幕的单元格会被放入重用池。
  2. 自动布局和尺寸处理
  3. 与集合视图的集成：确保单元格正确响应数据更改和视图更新
+ */
+
+/*
+ 实验过将switch cellType {} 中的内容封装成独立于自定义Cell类的函数，发现：
+ 1. 如果把控件的初始化放入函数中，会出现滚动到列表下一页后，出现titleLabel等元素重复创建导致文本重叠，不可行
+ 2. 而如果不把初始化放入函数，那么方法相对麻烦，不如不用：1. 使用协议 2. 使用视图标签
  */
