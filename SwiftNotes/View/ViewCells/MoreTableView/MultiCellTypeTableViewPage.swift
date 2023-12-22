@@ -1,42 +1,26 @@
 //
-//  CSModelListVC.swift
+//  TableViewWithMultiCellType.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2019/6/10.
-//  Copyright © 2019 GinsMac. All rights reserved.
+//  Created by GinsMac on 2023/12/22.
+//  Copyright © 2023 GinsMac. All rights reserved.
 //
-//
+
+
 
 import UIKit
 
 private class DataManager: BaseDataManager<DefaultTableViewItem> {
     init() {
         super.init(initialItems: [
-            DefaultTableViewItem(title: "Array", viewController: CSArrayPage()),
-            DefaultTableViewItem(title: "CSV", viewController: CSVPage()),
-            DefaultTableViewItem(title: "Data Operate", viewController: CSDataOperate()),
-            DefaultTableViewItem(title: "Data Save List", viewController: CSDataSaveListVC()),
-            DefaultTableViewItem(title: "设备信息", viewController: CSDeviceInfoPage()),
-            DefaultTableViewItem(title: "Dictionary", viewController: CSDictionaryPage()),
-            DefaultTableViewItem(title: "Double", viewController: DoublePage()),
-            DefaultTableViewItem(title: "Enum", viewController: CSEnumPage()),
-            DefaultTableViewItem(title: "Int", viewController: CSIntPage()),
-            DefaultTableViewItem(title: "Item Model (Basic)", viewController: CSItemSearchPage()),
-            DefaultTableViewItem(title: "Localization", viewController: LocalizationPage()),
-            DefaultTableViewItem(title: "plist", viewController: CSPlistPage()),
-            DefaultTableViewItem(title: "Private", viewController: PrivatePage()),
-            DefaultTableViewItem(title: "Progress Model (Joined)", viewController: CSProgressSearchPage()),
-            DefaultTableViewItem(title: "Read File", viewController: CSReadFilePage()),
-            DefaultTableViewItem(title: "Request", viewController: CSRequestPage()),
-            DefaultTableViewItem(title: "String", viewController: CSStringPage()),
-            DefaultTableViewItem(title: "SwiftyJSON", viewController: CSSwiftyJSONPage()),
-            DefaultTableViewItem(title: "Time", viewController: CSTimePage()),
+            DefaultTableViewItem(title: "Animation", viewController: AnimationPage()),
+            DefaultTableViewItem(title: "Button", viewController: ButtonPage()),
         ])
     }
 }
 
 
-class CSModelListVC: UIViewController {
+class MultiCellTypeTableView: UIViewController {
     
     private let tableData = DataManager()
     
@@ -71,7 +55,7 @@ class CSModelListVC: UIViewController {
 
 
 // MARK: - TableView 代理方法
-extension CSModelListVC: UITableViewDelegate, UITableViewDataSource {
+extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
