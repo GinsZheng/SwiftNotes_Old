@@ -11,13 +11,13 @@ import UIKit
 
 class CSJumpListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableData: [DefaultTableViewItem] = [
-        DefaultTableViewItem(title: "Disabled Dismiss", viewController: CSDisabledDismissParentPage()),
-        DefaultTableViewItem(title: "Dismiss", viewController: CSDismissPage1()),
-        DefaultTableViewItem(title: "Dismiss all Page", viewController: CSDismissAllPage1()),
-        DefaultTableViewItem(title: "Pop to specific page", viewController: CSPopToSpecificPage()),
-        DefaultTableViewItem(title: "Pop and dismiss Page", viewController: CSPopAndDismissPage1()),
-        DefaultTableViewItem(title: "Present", viewController: CSPresentPage())
+    let tableData: [DefaultTableItem] = [
+        DefaultTableItem(title: "Disabled Dismiss", viewController: CSDisabledDismissParentPage()),
+        DefaultTableItem(title: "Dismiss", viewController: CSDismissPage1()),
+        DefaultTableItem(title: "Dismiss all Page", viewController: CSDismissAllPage1()),
+        DefaultTableItem(title: "Pop to specific page", viewController: CSPopToSpecificPage()),
+        DefaultTableItem(title: "Pop and dismiss Page", viewController: CSPopAndDismissPage1()),
+        DefaultTableItem(title: "Present", viewController: CSPresentPage())
     ]
         
     let tableView = UITableView()

@@ -11,9 +11,9 @@ import UIKit
 
 class CSAlertListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableData: [DefaultTableViewItem] = [
-        DefaultTableViewItem(title: "One Button", viewController: CSAlertOneBtnPage()),
-        DefaultTableViewItem(title: "Two Button", viewController: CSAlertTwoBtnPage())
+    let tableData: [DefaultTableItem] = [
+        DefaultTableItem(title: "One Button", viewController: CSAlertOneBtnPage()),
+        DefaultTableItem(title: "Two Button", viewController: CSAlertTwoBtnPage())
     ]
     
     let tableView = UITableView()

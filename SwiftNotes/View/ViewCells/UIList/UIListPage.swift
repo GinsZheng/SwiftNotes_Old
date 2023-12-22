@@ -10,9 +10,9 @@ import UIKit
 
 class UIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableData: [DefaultTableViewItem] = [
-        DefaultTableViewItem(title: "Mask", viewController: CSMaskPage()),
-        DefaultTableViewItem(title: "Font", viewController: CSFontPage())
+    let tableData: [DefaultTableItem] = [
+        DefaultTableItem(title: "Mask", viewController: CSMaskPage()),
+        DefaultTableItem(title: "Font", viewController: CSFontPage())
     ]
     
     let tableView = UITableView()

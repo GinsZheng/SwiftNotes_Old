@@ -23,10 +23,10 @@ class TuplePage: UIViewController {
             print(x, y)
         }
         
-        let tableData: [DefaultTableViewItem] = [
-            DefaultTableViewItem(title: "Animation", viewController: AnimationPage()),
-            DefaultTableViewItem(title: "Button", viewController: ButtonPage()),
-            DefaultTableViewItem(title: "Camera and Photos", viewController: CameraAndPhotosPage())
+        let tableData: [DefaultTableItem] = [
+            DefaultTableItem(title: "Animation", viewController: AnimationPage()),
+            DefaultTableItem(title: "Button", viewController: ButtonPage()),
+            DefaultTableItem(title: "Camera and Photos", viewController: CameraAndPhotosPage())
         ]
         
         let c1 = tableData[0].title
