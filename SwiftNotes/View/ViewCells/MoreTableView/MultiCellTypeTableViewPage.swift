@@ -19,11 +19,12 @@ import UIKit
 //    }
 //}
 
+// 下一步：1. 把多类别的写出来 2. 单类与多类应当很容易切换(因为列表很可能在迭代时增加一个类)
 private class DataManager: BaseDataManager<TableCellItem> {
     init() {
         super.init(initialItems: [
             .title(title: "Animation", viewController: AnimationPage()),
-            .titleSwitch(title: "Button", viewController: ButtonPage(), isSwitchOn: true),
+            .titleSwitch(title: "Button", isSwitchOn: true, viewController: ButtonPage()),
             // 添加更多的items
         ])
     }
@@ -80,7 +81,7 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
         switch item {
         case .title(_, let viewController):
             self.push(toTarget: viewController)
-        case .titleSwitch(_, let viewController, _):
+        case .titleSwitch(_, _, let viewController):
             self.push(toTarget: viewController)
         // 根据需要添加更多的case
         }
@@ -102,7 +103,7 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
         case .title(let title, _):
             cell.prepare(cellType: .title, row: indexPath.row, dataCount: tableData.count)
             cell.configure(title: title)
-        case .titleSwitch(let title, _, let isSwitchOn):
+        case .titleSwitch(let title, let isSwitchOn, _):
             cell.configure(title: title, isSwitchOn: isSwitchOn)
         }
         return cell
