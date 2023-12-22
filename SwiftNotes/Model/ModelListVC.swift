@@ -9,28 +9,28 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<DefaultTableItem> {
+private class DataManager: BaseDataManager<DefaultCellItem> {
     init() {
         super.init(initialItems: [
-            DefaultTableItem(title: "Array", viewController: CSArrayPage()),
-            DefaultTableItem(title: "CSV", viewController: CSVPage()),
-            DefaultTableItem(title: "Data Operate", viewController: CSDataOperate()),
-            DefaultTableItem(title: "Data Save List", viewController: CSDataSaveListVC()),
-            DefaultTableItem(title: "设备信息", viewController: CSDeviceInfoPage()),
-            DefaultTableItem(title: "Dictionary", viewController: CSDictionaryPage()),
-            DefaultTableItem(title: "Double", viewController: DoublePage()),
-            DefaultTableItem(title: "Enum", viewController: CSEnumPage()),
-            DefaultTableItem(title: "Int", viewController: CSIntPage()),
-            DefaultTableItem(title: "Item Model (Basic)", viewController: CSItemSearchPage()),
-            DefaultTableItem(title: "Localization", viewController: LocalizationPage()),
-            DefaultTableItem(title: "plist", viewController: CSPlistPage()),
-            DefaultTableItem(title: "Private", viewController: PrivatePage()),
-            DefaultTableItem(title: "Progress Model (Joined)", viewController: CSProgressSearchPage()),
-            DefaultTableItem(title: "Read File", viewController: CSReadFilePage()),
-            DefaultTableItem(title: "Request", viewController: CSRequestPage()),
-            DefaultTableItem(title: "String", viewController: CSStringPage()),
-            DefaultTableItem(title: "SwiftyJSON", viewController: CSSwiftyJSONPage()),
-            DefaultTableItem(title: "Time", viewController: CSTimePage()),
+            DefaultCellItem(title: "Array", viewController: CSArrayPage()),
+            DefaultCellItem(title: "CSV", viewController: CSVPage()),
+            DefaultCellItem(title: "Data Operate", viewController: CSDataOperate()),
+            DefaultCellItem(title: "Data Save List", viewController: CSDataSaveListVC()),
+            DefaultCellItem(title: "设备信息", viewController: CSDeviceInfoPage()),
+            DefaultCellItem(title: "Dictionary", viewController: CSDictionaryPage()),
+            DefaultCellItem(title: "Double", viewController: DoublePage()),
+            DefaultCellItem(title: "Enum", viewController: CSEnumPage()),
+            DefaultCellItem(title: "Int", viewController: CSIntPage()),
+            DefaultCellItem(title: "Item Model (Basic)", viewController: CSItemSearchPage()),
+            DefaultCellItem(title: "Localization", viewController: LocalizationPage()),
+            DefaultCellItem(title: "plist", viewController: CSPlistPage()),
+            DefaultCellItem(title: "Private", viewController: PrivatePage()),
+            DefaultCellItem(title: "Progress Model (Joined)", viewController: CSProgressSearchPage()),
+            DefaultCellItem(title: "Read File", viewController: CSReadFilePage()),
+            DefaultCellItem(title: "Request", viewController: CSRequestPage()),
+            DefaultCellItem(title: "String", viewController: CSStringPage()),
+            DefaultCellItem(title: "SwiftyJSON", viewController: CSSwiftyJSONPage()),
+            DefaultCellItem(title: "Time", viewController: CSTimePage()),
         ])
     }
 }

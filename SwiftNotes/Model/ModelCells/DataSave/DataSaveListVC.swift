@@ -10,8 +10,8 @@ import UIKit
 
 class CSDataSaveListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableData: [DefaultTableItem] = [
-        DefaultTableItem(title: "UserDefaults", viewController: CSUserDefaultsPage())
+    let tableData: [DefaultCellItem] = [
+        DefaultCellItem(title: "UserDefaults", viewController: CSUserDefaultsPage())
     ]
     
     let tableView = UITableView()

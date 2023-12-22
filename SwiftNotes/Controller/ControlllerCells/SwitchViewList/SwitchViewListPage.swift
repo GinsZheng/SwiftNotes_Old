@@ -10,8 +10,8 @@ import UIKit
 
 class SwitchViewListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableData: [DefaultTableItem] = [
-        DefaultTableItem(title: "Switch View 1", viewController: SwitchView1Page())
+    let tableData: [DefaultCellItem] = [
+        DefaultCellItem(title: "Switch View 1", viewController: SwitchView1Page())
     ]
         
     let tableView = UITableView()

@@ -8,11 +8,11 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<DefaultTableItem> {
+private class DataManager: BaseDataManager<DefaultCellItem> {
     init() {
         super.init(initialItems: [
-            DefaultTableItem(title: "Test1", viewController: Test1VC()),
-            DefaultTableItem(title: "Multi", viewController: MultiCellTypeTableView())
+            DefaultCellItem(title: "Test1", viewController: Test1VC()),
+            DefaultCellItem(title: "Multi", viewController: MultiCellTypeTableView())
         ])
     }
 }

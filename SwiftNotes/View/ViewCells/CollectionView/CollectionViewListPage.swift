@@ -8,12 +8,12 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<DefaultTableItem> {
+private class DataManager: BaseDataManager<DefaultCellItem> {
     init() {
         super.init(initialItems: [
-            DefaultTableItem(title: "Equal Size", viewController: EqualSizeCollectionViewPage()),
-            DefaultTableItem(title: "Equal Division", viewController: EqualDivisionCollectionViewPage()),
-            DefaultTableItem(title: "Auto Layout", viewController: AutoLayoutCollectionViewPage())
+            DefaultCellItem(title: "Equal Size", viewController: EqualSizeCollectionViewPage()),
+            DefaultCellItem(title: "Equal Division", viewController: EqualDivisionCollectionViewPage()),
+            DefaultCellItem(title: "Auto Layout", viewController: AutoLayoutCollectionViewPage())
         ])
     }
 }

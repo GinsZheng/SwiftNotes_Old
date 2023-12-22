@@ -60,9 +60,9 @@ import UIKit
 
 class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableData: [DefaultTableItem] = [
-        DefaultTableItem(title: "Delegate", viewController: CSDelegatePage()),
-        DefaultTableItem(title: "Closure", viewController: Closure2VC())
+    let tableData: [DefaultCellItem] = [
+        DefaultCellItem(title: "Delegate", viewController: CSDelegatePage()),
+        DefaultCellItem(title: "Closure", viewController: Closure2VC())
     ]
     
     let tableView = UITableView()

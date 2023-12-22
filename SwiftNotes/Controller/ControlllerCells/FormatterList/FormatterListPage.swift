@@ -10,9 +10,9 @@ import UIKit
 
 class FormatterListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableData: [DefaultTableItem] = [
-        DefaultTableItem(title: "Date Formatter", viewController: DateFormatterPage()),
-        DefaultTableItem(title: "Number Formatter", viewController: NumberFormatterPage())
+    let tableData: [DefaultCellItem] = [
+        DefaultCellItem(title: "Date Formatter", viewController: DateFormatterPage()),
+        DefaultCellItem(title: "Number Formatter", viewController: NumberFormatterPage())
     ]
     
     let tableView = UITableView()

@@ -8,37 +8,37 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<DefaultTableItem> {
+private class DataManager: BaseDataManager<DefaultCellItem> {
     init() {
         super.init(initialItems: [
-            DefaultTableItem(title: "TestVC", viewController: ViewController()),
-            DefaultTableItem(title: "TestPresentVC", viewController: TestPresentVC()),
-            DefaultTableItem(title: "ActionSheet", viewController: ActionSheetPage()),
-            DefaultTableItem(title: "Alamofire", viewController: CSAlamofirePage()),
-            DefaultTableItem(title: "Alert", viewController: CSAlertListPage()),
-            DefaultTableItem(title: "Class", viewController: CSClassPage()),
-            DefaultTableItem(title: "Closure", viewController: ClosureListVC()),
-            DefaultTableItem(title: "Custom Popup Window", viewController: CSCustomPopupWindowPage()),
-            DefaultTableItem(title: "Decorator", viewController: CSDecoratorPage()),
-            DefaultTableItem(title: "Delegate", viewController: CSDelegatePage()),
-            DefaultTableItem(title: "Delegate2", viewController: CSDelegate2Page()),
-            DefaultTableItem(title: "Delegate3", viewController: CSDelegate3Page()),
-            DefaultTableItem(title: "DidSet", viewController: DidSetVC()),
-            DefaultTableItem(title: "For & While", viewController: CSForWhilePage()),
-            DefaultTableItem(title: "Formatter", viewController: FormatterListPage()),
-            DefaultTableItem(title: "Gesture", viewController: CSGestureListPage()),
-            DefaultTableItem(title: "Jump", viewController: CSJumpListPage()),
-            DefaultTableItem(title: "Loading", viewController: CSLoadingPage()),
-            DefaultTableItem(title: "Map", viewController: CSMapPage()),
-            DefaultTableItem(title: "Menu Controller", viewController: CSMenuControllerPage()),
-            DefaultTableItem(title: "Operator @", viewController: CSOperatorAtPage()),
-            DefaultTableItem(title: "Protocol", viewController: CSProtocolPage()),
-            DefaultTableItem(title: "Reload Data", viewController: CSReloadDataPage()),
-            DefaultTableItem(title: "Switch View", viewController: SwitchViewListPage()),
-            DefaultTableItem(title: "Timer", viewController: CSTimerPage()),
-            DefaultTableItem(title: "Transfer Data", viewController: TransferDataListVC()),
-            DefaultTableItem(title: "Try", viewController: CSTryPage()),
-            DefaultTableItem(title: "上传(文字/图片等)", viewController: CSUploadDataPage())
+            DefaultCellItem(title: "TestVC", viewController: ViewController()),
+            DefaultCellItem(title: "TestPresentVC", viewController: TestPresentVC()),
+            DefaultCellItem(title: "ActionSheet", viewController: ActionSheetPage()),
+            DefaultCellItem(title: "Alamofire", viewController: CSAlamofirePage()),
+            DefaultCellItem(title: "Alert", viewController: CSAlertListPage()),
+            DefaultCellItem(title: "Class", viewController: CSClassPage()),
+            DefaultCellItem(title: "Closure", viewController: ClosureListVC()),
+            DefaultCellItem(title: "Custom Popup Window", viewController: CSCustomPopupWindowPage()),
+            DefaultCellItem(title: "Decorator", viewController: CSDecoratorPage()),
+            DefaultCellItem(title: "Delegate", viewController: CSDelegatePage()),
+            DefaultCellItem(title: "Delegate2", viewController: CSDelegate2Page()),
+            DefaultCellItem(title: "Delegate3", viewController: CSDelegate3Page()),
+            DefaultCellItem(title: "DidSet", viewController: DidSetVC()),
+            DefaultCellItem(title: "For & While", viewController: CSForWhilePage()),
+            DefaultCellItem(title: "Formatter", viewController: FormatterListPage()),
+            DefaultCellItem(title: "Gesture", viewController: CSGestureListPage()),
+            DefaultCellItem(title: "Jump", viewController: CSJumpListPage()),
+            DefaultCellItem(title: "Loading", viewController: CSLoadingPage()),
+            DefaultCellItem(title: "Map", viewController: CSMapPage()),
+            DefaultCellItem(title: "Menu Controller", viewController: CSMenuControllerPage()),
+            DefaultCellItem(title: "Operator @", viewController: CSOperatorAtPage()),
+            DefaultCellItem(title: "Protocol", viewController: CSProtocolPage()),
+            DefaultCellItem(title: "Reload Data", viewController: CSReloadDataPage()),
+            DefaultCellItem(title: "Switch View", viewController: SwitchViewListPage()),
+            DefaultCellItem(title: "Timer", viewController: CSTimerPage()),
+            DefaultCellItem(title: "Transfer Data", viewController: TransferDataListVC()),
+            DefaultCellItem(title: "Try", viewController: CSTryPage()),
+            DefaultCellItem(title: "上传(文字/图片等)", viewController: CSUploadDataPage())
         ])
     }
 }
