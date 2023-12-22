@@ -82,7 +82,7 @@ class TableViewWithHeaderAndFooterPage: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cF2F3F6)
         
-        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
+        tableView.register(DefaultCell.self, forCellReuseIdentifier: DefaultCell.identifier)
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 8, right: 0, height: kWithoutNavBarHeight)
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
@@ -156,7 +156,7 @@ extension TableViewWithHeaderAndFooterPage: UITableViewDelegate, UITableViewData
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         let item = tableData.cellData(for: indexPath)
         cell.configure(cellType: .titleRightIcon,
                        indexPath: indexPath,

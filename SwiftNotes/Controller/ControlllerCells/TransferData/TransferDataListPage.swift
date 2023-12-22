@@ -78,7 +78,7 @@ class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: - func
     func setupUI() {
-        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
+        tableView.register(DefaultCell.self, forCellReuseIdentifier: String(describing: DefaultCell.self))
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
     }
@@ -103,7 +103,7 @@ class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewData
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
         cell.configure(cellType: .titleRightIcon,
                        indexPath: indexPath,
                        dataCount: tableData.count,

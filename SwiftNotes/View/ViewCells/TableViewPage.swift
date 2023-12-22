@@ -36,7 +36,7 @@ class TableViewPage: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cF2F3F6)
         
-        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: DefaultTableViewCell.identifier)
+        tableView.register(DefaultCell.self, forCellReuseIdentifier: DefaultCell.identifier)
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: kVertMargin, right: 0)
@@ -71,7 +71,7 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         cell.configure(cellType: .titleRightIcon,
                        indexPath: indexPath,
                        dataCount: tableData.count,
@@ -102,9 +102,9 @@ extension CellType {
 
 
 // MARK: - 自定义的默认 tableViewCell
-class DefaultTableViewCell: UITableViewCell {
+class DefaultCell: UITableViewCell {
     
-    static let identifier = String(describing: DefaultTableViewCell.self)
+    static let identifier = String(describing: DefaultCell.self)
     
     var onSwitchTapped: (() -> Void)?
     
@@ -175,8 +175,8 @@ class DefaultTableViewCell: UITableViewCell {
 }
 
 
-// DefaultTableViewCell 的 configure函数中具体的UI设置函数
-extension DefaultTableViewCell {
+// DefaultCell 的 configure函数中具体的UI设置函数
+extension DefaultCell {
     func setupGeneralUI(cellType: CellType, indexPath: IndexPath, dataCount: Int, title: String) {
         // 只对于双行的Cell重设高度(同时要修改代理函数heightForRowAt中的高度)
         if cellType == .titleDesc || cellType == .titleDescRightIcon || cellType == .titleDescSwitch {
@@ -330,7 +330,7 @@ extension DefaultTableViewCell {
 
 
 /*
- DefaultTableViewCell 类中，为什么要各控件的内容分开写入 setupUI() 和 layoutSubviews() 和 configure()
+ DefaultCell 类中，为什么要各控件的内容分开写入 setupUI() 和 layoutSubviews() 和 configure()
  因为每一个代码的调用机制不一样：
  setupUI(主要是非布局内容)只会在初始化时调用一次
  layoutSubviews()(主要是布局内容)会在布局有变化时调用一次 (时机有：视图大小改变时、添加或移除子视图时、改变约束时)
@@ -391,7 +391,7 @@ extension DefaultTableViewCell {
  */
 
 /*
- 为什么用：guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultTableViewCell.identifier, for: indexPath) as? DefaultTableViewCell else { return UITableViewCell() }
+ 为什么用：guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
  而不是直接 let cell = AutoLayoutCollectionViewCell() ？
  因为前者的做法更优：
  1. 单元格重用：这是处理大量数据的集合视图的关键性能优化。当您滚动集合视图时，离开屏幕的单元格会被放入重用池。

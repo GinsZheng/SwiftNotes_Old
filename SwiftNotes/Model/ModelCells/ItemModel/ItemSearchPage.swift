@@ -46,7 +46,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         editButton.tintColor = .hex(cRed_FF635A)
         self.navigationItem.rightBarButtonItem = editButton
         
-        tableView.register(DefaultTableViewCell.self, forCellReuseIdentifier: String(describing: DefaultTableViewCell.self))
+        tableView.register(DefaultCell.self, forCellReuseIdentifier: String(describing: DefaultCell.self))
         tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
         
@@ -73,7 +73,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultTableViewCell.self), for: indexPath) as! DefaultTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
         cell.configure(cellType: .titleRightIcon, indexPath: indexPath, dataCount: nameArray.count, title: nameArray[indexPath.row])
         
         return cell
