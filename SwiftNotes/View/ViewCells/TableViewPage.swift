@@ -109,7 +109,7 @@ class DefaultCell: UITableViewCell {
     var row: Int = 0
     var dataCount: Int = 0
     var cellType: CellType = .titleRightIcon
-    var title = ""
+    var descriptionLine: Int = 1
     
     private let bgView = UIView()
     private let highlightView = UIView()
@@ -166,10 +166,11 @@ class DefaultCell: UITableViewCell {
     }
     
     // 配置通用参数
-    func prepare(cellType: CellType, row: Int, dataCount: Int) {
+    func prepare(cellType: CellType, row: Int, dataCount: Int, descriptionLine: Int = 1) {
         self.cellType = cellType
         self.row = row
         self.dataCount = dataCount
+        self.descriptionLine = descriptionLine
     }
     
     // 配置数据
