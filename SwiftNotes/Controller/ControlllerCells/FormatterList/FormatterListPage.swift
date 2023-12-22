@@ -54,10 +54,8 @@ class FormatterListPage: UIViewController, UITableViewDelegate, UITableViewDataS
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
-        cell.configure(cellType: .titleRightIcon,
-                       indexPath: indexPath,
-                       dataCount: tableData.count,
-                       title:  tableData[indexPath.row].title)
+        cell.prepare(cellType: .titleRightIcon, title: tableData[indexPath.row].title, row: indexPath.row, dataCount: tableData.count)
+        cell.configure()
         
         return cell
     }

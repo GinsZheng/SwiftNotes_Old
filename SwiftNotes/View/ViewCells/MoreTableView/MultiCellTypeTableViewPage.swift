@@ -10,14 +10,25 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<DefaultCellItem> {
+//private class DataManager: BaseDataManager<DefaultCellItem> {
+//    init() {
+//        super.init(initialItems: [
+//            DefaultCellItem(title: "Animation", viewController: AnimationPage()),
+//            DefaultCellItem(title: "Button", viewController: ButtonPage()),
+//        ])
+//    }
+//}
+
+private class DataManager: BaseDataManager<TableCellItem> {
     init() {
         super.init(initialItems: [
-            DefaultCellItem(title: "Animation", viewController: AnimationPage()),
-            DefaultCellItem(title: "Button", viewController: ButtonPage()),
+            .title(title: "Animation", viewController: AnimationPage()),
+            .titleSwitch(title: "Button", viewController: ButtonPage(), isSwitchOn: true),
+            // 添加更多的items
         ])
     }
 }
+
 
 
 class MultiCellTypeTableView: UIViewController {
@@ -63,7 +74,17 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: tableData[indexPath.row].viewController)
+//        self.push(toTarget: tableData[indexPath.row].viewController)
+        let item = tableData[indexPath.row]
+
+        switch item {
+        case .title(_, let viewController):
+            self.push(toTarget: viewController)
+        case .titleSwitch(_, let viewController, _):
+            self.push(toTarget: viewController)
+        // 根据需要添加更多的case
+        }
+        
     }
     
     // 行数
@@ -74,11 +95,14 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
-        cell.configure(cellType: .titleRightIcon,
-                       indexPath: indexPath,
-                       dataCount: tableData.count,
-                       title: tableData[indexPath.row].title
-        )
+//        cell.prepare(cellType: <#T##CellType#>, title: <#T##String#>, row: <#T##Int#>, dataCount: <#T##Int#>)
+        let item = tableData[indexPath.row]
+        switch item {
+        case .title(let title, _):
+            cell.configure()
+        case .titleSwitch(let title, _, let isSwitchOn):
+            cell.configure(isSwitchOn: isSwitchOn)
+        }
         return cell
     }
 }

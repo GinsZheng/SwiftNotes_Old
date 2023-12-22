@@ -158,10 +158,8 @@ extension TableViewWithHeaderAndFooterPage: UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         let item = tableData.cellData(for: indexPath)
-        cell.configure(cellType: .titleRightIcon,
-                       indexPath: indexPath,
-                       dataCount: tableData.count,
-                       title: item.title)
+        cell.prepare(cellType: .titleRightIcon, title: item.title, row: indexPath.row, dataCount: tableData.count)
+        cell.configure()
         return cell
     }
     
