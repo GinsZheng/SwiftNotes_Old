@@ -85,6 +85,7 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
         // 根据需要添加更多的case
         }
         
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // 行数
@@ -95,13 +96,14 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
-//        cell.prepare(cellType: <#T##CellType#>, title: <#T##String#>, row: <#T##Int#>, dataCount: <#T##Int#>)
         let item = tableData[indexPath.row]
+
         switch item {
         case .title(let title, _):
-            cell.configure()
+            cell.prepare(cellType: .title, row: indexPath.row, dataCount: tableData.count)
+            cell.configure(title: title)
         case .titleSwitch(let title, _, let isSwitchOn):
-            cell.configure(isSwitchOn: isSwitchOn)
+            cell.configure(title: title, isSwitchOn: isSwitchOn)
         }
         return cell
     }

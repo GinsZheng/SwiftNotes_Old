@@ -52,8 +52,8 @@ class CSJumpListPage: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
-        cell.prepare(cellType: .titleRightIcon, title: tableData[indexPath.row].title, row: indexPath.row, dataCount: tableData.count)
-        cell.configure()
+        cell.prepare(cellType: .titleRightIcon, row: indexPath.row, dataCount: tableData.count)
+        cell.configure(title: tableData[indexPath.row].title)
         
         return cell
     }
