@@ -10,26 +10,21 @@
 
 import UIKit
 
-//private class DataManager: BaseDataManager<DefaultCellItem> {
-//    init() {
-//        super.init(initialItems: [
-//            DefaultCellItem(title: "Animation", viewController: AnimationPage()),
-//            DefaultCellItem(title: "Button", viewController: ButtonPage()),
-//        ])
-//    }
-//}
-
 // 下一步：1. 把多类别的tableView写出来 2. 单类与多类应当很容易切换(因为列表很可能在迭代时增加一个类)
 private class DataManager: BaseDataManager<TableCellItem> {
     init() {
         super.init(initialItems: [
-            .titleVC(title: "Animation", viewController: AnimationPage()),
-            .titleSwitchVC(title: "Button", isSwitchOn: true, viewController: ButtonPage()),
-            // 添加更多的items
+            .title(title: "Animation"),
+            .titleRightIcon(title: "Button", rightIconName: "checkmark"),
+            .titleDesc(title: "Label", description: "描述"),
+            .titleDesc(title: "Layer", description: "哈哈"),
+            .titleVC(title: "Nav Controller", viewController: NavControllerPage()),
+            .titleLeftIconRightIconVC(title: "Picker View", leftIconName: "tab_tickets_s", rightIconName: "next", viewController: PickerViewPage()),
+            .titleDescVC(title: "Scroll View", description: "哈哈", viewController: ScrollViewPage()),
+            .titleDescLeftIconSwitchVC(title: "Scroll View Horizonal", description: "hey", leftIconName: "tab_tickets_s", isSwitchOn: true, viewController: ScrollViewHorizonalPage())
         ])
     }
 }
-
 
 
 class MultiCellTypeTableView: UIViewController {
@@ -75,13 +70,19 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.push(toTarget: tableData[indexPath.row].viewController)
+        /// 本例中，Cell是否有点击事件取决于是否viewController参数，所以用tableData来判断
+        /// 常见情况有：
+        /// 1. 各个Cell跳转与否，跳转到哪都不同(常见于我的页列表)，需要配viewController参数：用tableData来判断
+        /// 2. 各个Cell跳转与否，跳转到哪都相同(常见于首页列表)，无需viewController参数，分3情情况：1. 无需判断(即每个列表都跳转到相同的页面) 2. 用固定的逻辑判断(比如判断是否离线等，不用tableData或cellTypeData来判断) 3. 用cellTypeData来判断(属于比较省事的做法，把跳转的逻辑与CellType绑定)
         let item = tableData[indexPath.row]
-
         switch item {
         case .titleVC(_, let viewController):
             self.push(toTarget: viewController)
-        case .titleSwitchVC(_, _, let viewController):
+        case .titleLeftIconRightIconVC(_, _, _, let viewController):
+            self.push(toTarget: viewController)
+        case .titleDescVC(_, _, let viewController):
+            self.push(toTarget: viewController)
+        case .titleDescLeftIconSwitchVC(_, _, _, _, let viewController):
             self.push(toTarget: viewController)
         default:
             print("done")
@@ -99,18 +100,32 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         let item = tableData[indexPath.row]
-
-        switch item {
-        case .titleVC(let title, _):
-            cell.prepare(cellType: .title, row: indexPath.row, dataCount: tableData.count)
-            cell.configure(title: title)
-        case .titleSwitchVC(let title, let isSwitchOn, _):
-            cell.configure(title: title, isSwitchOn: isSwitchOn)
-        default:
-            print("done")
-        }
+        
+//        cell.prepare(cellType: cellTypeItem, row: indexPath.row, dataCount: cellTypeData.count)
+        
+        // 这里我想先判断
+        
+//        switch item {
+//        case .titleVC(let title, _):
+//            cell.prepare(cellType: .title, row: indexPath.row, dataCount: tableData.count)
+//            cell.configure(title: title)
+//        case .titleSwitchVC(let title, let isSwitchOn, _):
+//            cell.configure(title: title, isSwitchOn: isSwitchOn)
+//        default:
+//            print("done")
+//        }
         
         return cell
     }
 }
+
+
+//.title(title: "Animation"),
+//.titleRightIcon(title: "Button", rightIconName: "checkmark"),
+//.titleDesc(title: "Label", description: "描述"),
+//.titleDesc(title: "Layer", description: "哈哈"),
+//.titleVC(title: "Nav Controller", viewController: NavControllerPage()),
+//.titleLeftIconRightIconVC(title: "Picker View", leftIconName: "tab_tickets_s", rightIconName: "next", viewController: PickerViewPage()),
+//.titleDescVC(title: "Scroll View", description: "哈哈", viewController: ScrollViewPage()),
+//.titleDescLeftIconSwitchVC(title: "Scroll View Horizonal", description: "hey", leftIconName: "tab_tickets_s", isSwitchOn: true, viewController: ScrollViewHorizonalPage())
 
