@@ -17,6 +17,7 @@ private class DataManager: BaseDataManager<TableCellItem> {
             .title(title: "Animation"),
             .titleDesc(title: "Label", description: "描述"),
             .titleRightIcon(title: "Button", rightIconName: "checkmark"),
+            .titleSwitch(title: "Image View", isSwitchOn: true),
             .titleLeftIconRightIconVC(title: "Picker View", leftIconName: "tab_tickets_s", rightIconName: "next", viewController: PickerViewPage()),
         ])
     }
@@ -91,7 +92,7 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         let item = tableData[indexPath.row]
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-
+        
         switch item {
         case .title(let title):
             cell.configure(cellType: .title, title: title)
@@ -99,6 +100,8 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
             cell.configure(cellType: .title, title: title, description: description)
         case .titleRightIcon(let title, let rightIconName):
             cell.configure(cellType: .titleRightIcon, title: title, rightIconName: rightIconName)
+        case .titleSwitch(let title, let isSwitchOn):
+            cell.configure(cellType: .titleSwitch, title: title)
         case .titleLeftIconRightIconVC(let title, let leftIconName, let rightIconName, _):
             cell.configure(cellType: .titleLeftIconRightIcon, title: title, leftIconName: leftIconName, rightIconName: rightIconName)
         default:
