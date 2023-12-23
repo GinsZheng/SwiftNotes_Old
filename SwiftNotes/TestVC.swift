@@ -54,6 +54,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.push(toTarget: tableData[indexPath.row].viewController)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // 行数
