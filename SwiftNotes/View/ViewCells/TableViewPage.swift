@@ -87,9 +87,9 @@ enum CellType: Int {
     case titleSwitch = 13                // 标题 + 开关
     case titleLeftIconRightIcon = 14     // 标题 + 左图标(标题前) + 右图标
     case titleLeftIconSwitch = 15        // 标题 + 左图标(标题前) + 开关
-    case titleDesc = 21                  // 双行：标题 + 说明
-    case titleDescRightIcon = 22         // 双行：标题 + 说明 + 右图标
-    case titleDescSwitch = 23            // 双行：标题 + 说明 + 开关
+    case title2Line = 21                  // 双行：标题 + 说明
+    case titleRightIcon2Line = 22         // 双行：标题 + 说明 + 右图标
+    case titleSwitch2Line = 23            // 双行：标题 + 说明 + 开关
 }
 
 extension CellType {
@@ -190,7 +190,7 @@ class DefaultCell: UITableViewCell {
 extension DefaultCell {
     func setupGeneralUI(title: String) {
         // 只对于双行的Cell重设高度(同时要修改代理函数heightForRowAt中的高度)
-        if cellType == .titleDesc || cellType == .titleDescRightIcon || cellType == .titleDescSwitch {
+        if cellType == .title2Line || cellType == .titleRightIcon2Line || cellType == .titleSwitch2Line {
             self.height = k2LineCellHeight
             bgView.height = k2LineCellHeight
             highlightView.height = k2LineCellHeight
@@ -214,12 +214,12 @@ extension DefaultCell {
             setupTitleLeftIconRightIcon(description: description, descriptionLine: descriptionLine, leftIconName: leftIconName, rightIconName: rightIconName)
         case .titleLeftIconSwitch:
             setupTitleLeftIconSwitch(leftIconName: leftIconName, isSwitchOn: isSwitchOn)
-        case .titleDesc:
-            setupTitleDesc(description: description, descriptionLine: descriptionLine)
-        case .titleDescRightIcon:
-            setupTitleRightIcon(description: description, descriptionLine: descriptionLine, rightIconName: rightIconName)
-        case .titleDescSwitch:
-            setupTitleDescSwitch(description: description, descriptionLine: descriptionLine, isSwitchOn: isSwitchOn)
+        case .title2Line:
+            setupTitle2Line(description: description, descriptionLine: descriptionLine)
+        case .titleRightIcon2Line:
+            setupTitleRightIcon2Line(description: description, descriptionLine: descriptionLine, rightIconName: rightIconName)
+        case .titleSwitch2Line:
+            setupTitleSwitch2Line(description: description, descriptionLine: descriptionLine, isSwitchOn: isSwitchOn)
         }
     }
     
@@ -297,7 +297,7 @@ extension DefaultCell {
         separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: row, dataCount: dataCount)
     }
     
-    func setupTitleDesc(description: String, descriptionLine: Int) {
+    func setupTitle2Line(description: String, descriptionLine: Int) {
         let labelWidth = bgView.width - kCellPadding*2 // 同时用于titleLabel和descriptionLabel
         titleLabel.setFrame(left: kCellPadding, top: kCell2LineTitleTopMargin, width: labelWidth)
         
@@ -308,7 +308,7 @@ extension DefaultCell {
         separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: row, dataCount: dataCount)
     }
     
-    func setupTitleDescRightIcon(description: String, descriptionLine: Int, rightIconName: String) {
+    func setupTitleRightIcon2Line(description: String, descriptionLine: Int, rightIconName: String) {
         rightIcon.setup(superview: bgView, imageName: rightIconName)
         rightIcon.setFrame(right: kCellPadding, centerY: bgView.centerY)
         
@@ -322,7 +322,7 @@ extension DefaultCell {
         separator.setSeparatorFrame(left: titleLabel.left, right: kCellPadding, index: row, dataCount: dataCount)
     }
     
-    func setupTitleDescSwitch(description: String, descriptionLine: Int, isSwitchOn: Bool) {
+    func setupTitleSwitch2Line(description: String, descriptionLine: Int, isSwitchOn: Bool) {
         switchControl.setup(superview: bgView, setOn: isSwitchOn, target: self, action: #selector(switchTapped))
         switchControl.setFrame(right: kCellPadding, centerY: bgView.centerY)
         

@@ -79,11 +79,12 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
         let item = tableData[indexPath.row]
 
         switch item {
-        case .title(_, let viewController):
+        case .titleVC(_, let viewController):
             self.push(toTarget: viewController)
-        case .titleSwitch(_, _, let viewController):
+        case .titleSwitchVC(_, _, let viewController):
             self.push(toTarget: viewController)
-        // 根据需要添加更多的case
+        default:
+            print("done")
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -100,12 +101,15 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
         let item = tableData[indexPath.row]
 
         switch item {
-        case .title(let title, _):
+        case .titleVC(let title, _):
             cell.prepare(cellType: .title, row: indexPath.row, dataCount: tableData.count)
             cell.configure(title: title)
-        case .titleSwitch(let title, let isSwitchOn, _):
+        case .titleSwitchVC(let title, let isSwitchOn, _):
             cell.configure(title: title, isSwitchOn: isSwitchOn)
+        default:
+            print("done")
         }
+        
         return cell
     }
 }
