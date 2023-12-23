@@ -18,8 +18,8 @@
 		7A02AEAD2B18826C00E9E6D7 /* ClosureEnumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A02AEAC2B18826C00E9E6D7 /* ClosureEnumVC.swift */; };
 		7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */; };
 		7A04CB802A9482B80021B9DF /* EqualDivisionCollectionViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04CB7F2A9482B80021B9DF /* EqualDivisionCollectionViewPage.swift */; };
-		7A04CB822A9484640021B9DF /* CollectionViewAutoLayoutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04CB812A9484640021B9DF /* CollectionViewAutoLayoutPage.swift */; };
-		7A06A7342B2C382E0014033E /* TableViewWithHeaderAndFooterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06A7332B2C382E0014033E /* TableViewWithHeaderAndFooterPage.swift */; };
+		7A04CB822A9484640021B9DF /* AutoLayoutCollectionViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A04CB812A9484640021B9DF /* AutoLayoutCollectionViewPage.swift */; };
+		7A06A7342B2C382E0014033E /* HeaderAndFooterTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06A7332B2C382E0014033E /* HeaderAndFooterTableViewPage.swift */; };
 		7A06A7362B2C43AD0014033E /* Test4VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06A7352B2C43AD0014033E /* Test4VC.swift */; };
 		7A0715DA243650C7002A5371 /* FontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0715D9243650C7002A5371 /* FontPage.swift */; };
 		7A0FBCAF2A724D6000AC7BCA /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0FBCAE2A724D6000AC7BCA /* VideoPlayer.swift */; };
@@ -218,6 +218,7 @@
 		7AD5C3E628BE06070002CCE1 /* test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AD5C3E528BE06070002CCE1 /* test.csv */; };
 		7AE5EF512B149DA000ECD038 /* LocalizationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5EF502B149DA000ECD038 /* LocalizationPage.swift */; };
 		7AEA78B524C32F0F00909C62 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7AEA78B424C32F0F00909C62 /* index.html */; };
+		7AEE5A682B371C260020A2B1 /* JsonDataTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE5A672B371C260020A2B1 /* JsonDataTableViewPage.swift */; };
 		7AF1454E25810E3600B98393 /* DoublePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1454D25810E3600B98393 /* DoublePage.swift */; };
 		7AF5BBBD23C86DBD002464D7 /* UIControlEventNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */; };
 		7AF7B16F2436351800738C65 /* TimerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7B16E2436351800738C65 /* TimerPage.swift */; };
@@ -560,8 +561,8 @@
 		7A02AEAC2B18826C00E9E6D7 /* ClosureEnumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureEnumVC.swift; sourceTree = "<group>"; };
 		7A032A1D2414DC7400579F02 /* ControllerBasicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerBasicNote.swift; sourceTree = "<group>"; };
 		7A04CB7F2A9482B80021B9DF /* EqualDivisionCollectionViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualDivisionCollectionViewPage.swift; sourceTree = "<group>"; };
-		7A04CB812A9484640021B9DF /* CollectionViewAutoLayoutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewAutoLayoutPage.swift; sourceTree = "<group>"; };
-		7A06A7332B2C382E0014033E /* TableViewWithHeaderAndFooterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewWithHeaderAndFooterPage.swift; sourceTree = "<group>"; };
+		7A04CB812A9484640021B9DF /* AutoLayoutCollectionViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutCollectionViewPage.swift; sourceTree = "<group>"; };
+		7A06A7332B2C382E0014033E /* HeaderAndFooterTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderAndFooterTableViewPage.swift; sourceTree = "<group>"; };
 		7A06A7352B2C43AD0014033E /* Test4VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test4VC.swift; sourceTree = "<group>"; };
 		7A0715D9243650C7002A5371 /* FontPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontPage.swift; sourceTree = "<group>"; };
 		7A0FBCAE2A724D6000AC7BCA /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
@@ -763,6 +764,7 @@
 		7AD5C3E528BE06070002CCE1 /* test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.csv; sourceTree = "<group>"; };
 		7AE5EF502B149DA000ECD038 /* LocalizationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationPage.swift; sourceTree = "<group>"; };
 		7AEA78B424C32F0F00909C62 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		7AEE5A672B371C260020A2B1 /* JsonDataTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTableViewPage.swift; sourceTree = "<group>"; };
 		7AF1454D25810E3600B98393 /* DoublePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePage.swift; sourceTree = "<group>"; };
 		7AF5BBBC23C86DBD002464D7 /* UIControlEventNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlEventNote.swift; sourceTree = "<group>"; };
 		7AF7B16E2436351800738C65 /* TimerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPage.swift; sourceTree = "<group>"; };
@@ -826,7 +828,7 @@
 				7A2D34A72580D1FB00207996 /* CollectionViewListPage.swift */,
 				7ACF488B2B283C0700759E0A /* EqualSizeCollectionViewPage.swift */,
 				7A04CB7F2A9482B80021B9DF /* EqualDivisionCollectionViewPage.swift */,
-				7A04CB812A9484640021B9DF /* CollectionViewAutoLayoutPage.swift */,
+				7A04CB812A9484640021B9DF /* AutoLayoutCollectionViewPage.swift */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -1469,8 +1471,9 @@
 		7ACF488A2B28323400759E0A /* MoreTableView */ = {
 			isa = PBXGroup;
 			children = (
+				7A06A7332B2C382E0014033E /* HeaderAndFooterTableViewPage.swift */,
 				7A25A5522B355883001C47B9 /* MultiCellTypeTableViewPage.swift */,
-				7A06A7332B2C382E0014033E /* TableViewWithHeaderAndFooterPage.swift */,
+				7AEE5A672B371C260020A2B1 /* JsonDataTableViewPage.swift */,
 			);
 			path = MoreTableView;
 			sourceTree = "<group>";
@@ -2122,7 +2125,7 @@
 				7A8DF66A2A9F8D5C0048146F /* Delegate3Page.swift in Sources */,
 				7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */,
 				7ACF48522B27052700759E0A /* DataManager.swift in Sources */,
-				7A06A7342B2C382E0014033E /* TableViewWithHeaderAndFooterPage.swift in Sources */,
+				7A06A7342B2C382E0014033E /* HeaderAndFooterTableViewPage.swift in Sources */,
 				7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */,
 				7A62A1F7245CAD890090D128 /* WindowPage.swift in Sources */,
 				7A2161282389868500D5A93A /* TestVC.swift in Sources */,
@@ -2135,7 +2138,7 @@
 				7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */,
 				7AA789C528D03F4900B58537 /* CameraAndPhotosPage.swift in Sources */,
 				7A032A1E2414DC7400579F02 /* ControllerBasicNote.swift in Sources */,
-				7A04CB822A9484640021B9DF /* CollectionViewAutoLayoutPage.swift in Sources */,
+				7A04CB822A9484640021B9DF /* AutoLayoutCollectionViewPage.swift in Sources */,
 				7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */,
 				7A25A5532B355883001C47B9 /* MultiCellTypeTableViewPage.swift in Sources */,
 				7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */,
@@ -2152,6 +2155,7 @@
 				7ACF48562B270FBF00759E0A /* Test2VC.swift in Sources */,
 				7A4736CE246C4B580071115F /* TouchesBeganGesturePage.swift in Sources */,
 				7A2AC3722409106000B95E43 /* TimePage.swift in Sources */,
+				7AEE5A682B371C260020A2B1 /* JsonDataTableViewPage.swift in Sources */,
 				7ACF49792B294AFB00759E0A /* ButtonStyles.swift in Sources */,
 				7A21615C238986AF00D5A93A /* DatePickerPage.swift in Sources */,
 				7A9219872B0118FE00FE65FC /* CollectionViewCellAndLayout.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  TableViewWithHeaderAndFooterPage.swift
+//  HeaderAndFooterTableViewPage.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2023/12/15.
@@ -59,7 +59,7 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
 }
 
 
-class TableViewWithHeaderAndFooterPage: UIViewController {
+class HeaderAndFooterTableViewPage: UIViewController {
     
     private let tableData = DataManager()
     let headerHeight: CGFloat = 44
@@ -103,7 +103,7 @@ class TableViewWithHeaderAndFooterPage: UIViewController {
 
 
 // MARK: - tableView 代理方法
-extension TableViewWithHeaderAndFooterPage: UITableViewDelegate, UITableViewDataSource {
+extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let viewController = tableData.cellData(for: indexPath).viewController // cellData函数调用

@@ -1,8 +1,8 @@
 //
-//  TestVCListPage.swift
+//  JsonDataTableViewPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2023/11/24.
+//  Created by GinsMac on 2023/12/23.
 //  Copyright © 2023 GinsMac. All rights reserved.
 //
 
@@ -11,14 +11,14 @@ import UIKit
 private class DataManager: BaseDataManager<DefaultCellItem> {
     init() {
         super.init(initialItems: [
-            DefaultCellItem(title: "Test1", viewController: Test1VC()),
-            DefaultCellItem(title: "JsonDataTableViewPage", viewController: JsonDataTableViewPage())
+            DefaultCellItem(title: "Animation", viewController: AnimationPage()),
+            DefaultCellItem(title: "Button", viewController: ButtonPage()),
         ])
     }
 }
 
 
-class TestVCListPage: UIViewController {
+class JsonDataTableViewPage: UIViewController {
     
     private let tableData = DataManager()
     
@@ -53,7 +53,7 @@ class TestVCListPage: UIViewController {
 
 
 // MARK: - TableView 代理方法
-extension TestVCListPage: UITableViewDelegate, UITableViewDataSource {
+extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return kCellHeight
