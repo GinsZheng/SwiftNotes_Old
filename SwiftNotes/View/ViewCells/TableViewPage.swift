@@ -73,8 +73,8 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
-        cell.prepare(cellType: .titleRightIcon, row: indexPath.row, dataCount: tableData.count)
-        cell.configure(title: tableData[indexPath.row].title)
+        cell.prepare(row: indexPath.row, dataCount: tableData.count)
+        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
         return cell
     }
 }
@@ -108,7 +108,6 @@ class DefaultCell: UITableViewCell {
     
     var row: Int = 0
     var dataCount: Int = 0
-    var cellType: CellType = .titleRightIcon
     var descriptionLine: Int = 1
     
     private let bgView = UIView()
@@ -166,17 +165,16 @@ class DefaultCell: UITableViewCell {
     }
     
     // 配置通用参数
-    func prepare(cellType: CellType, row: Int, dataCount: Int, descriptionLine: Int = 1) {
-        self.cellType = cellType
+    func prepare(row: Int, dataCount: Int, descriptionLine: Int = 1) {
         self.row = row
         self.dataCount = dataCount
         self.descriptionLine = descriptionLine
     }
     
     // 配置数据
-    func configure(title: String, description: String = "", descriptionLine: Int = 1, leftIconName: String = "", rightIconName: String = kIconNext, isSwitchOn: Bool = false) {
-        setupGeneralUI(title: title)
-        setupSpecificUI(description: description, descriptionLine: descriptionLine, leftIconName: leftIconName, rightIconName: rightIconName, isSwitchOn: isSwitchOn)
+    func configure(cellType: CellType = .titleRightIcon, title: String, description: String = "", descriptionLine: Int = 1, leftIconName: String = "", rightIconName: String = kIconNext, isSwitchOn: Bool = false) {
+        setupGeneralUI(cellType: cellType, title: title)
+        setupSpecificUI(cellType: cellType, description: description, descriptionLine: descriptionLine, leftIconName: leftIconName, rightIconName: rightIconName, isSwitchOn: isSwitchOn)
     }
     
     // MARK: - @objc func
@@ -188,7 +186,7 @@ class DefaultCell: UITableViewCell {
 
 // DefaultCell 的 configure函数中具体的UI设置函数
 extension DefaultCell {
-    func setupGeneralUI(title: String) {
+    func setupGeneralUI(cellType: CellType, title: String) {
         // 只对于双行的Cell重设高度(同时要修改代理函数heightForRowAt中的高度)
         if cellType == .title2Line || cellType == .titleRightIcon2Line || cellType == .titleSwitch2Line {
             self.height = k2LineCellHeight
@@ -201,7 +199,7 @@ extension DefaultCell {
         titleLabel.setText(text: title)
     }
     
-    func setupSpecificUI(description: String, descriptionLine: Int, leftIconName: String, rightIconName: String, isSwitchOn: Bool) {
+    func setupSpecificUI(cellType: CellType, description: String, descriptionLine: Int, leftIconName: String, rightIconName: String, isSwitchOn: Bool) {
         // 根据不同cellType设置不同UI
         switch cellType {
         case .title:

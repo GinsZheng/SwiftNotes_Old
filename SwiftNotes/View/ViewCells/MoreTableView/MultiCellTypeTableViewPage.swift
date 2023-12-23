@@ -101,16 +101,14 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         let item = tableData[indexPath.row]
         
-//        cell.prepare(cellType: cellTypeItem, row: indexPath.row, dataCount: cellTypeData.count)
+        cell.prepare(row: indexPath.row, dataCount: tableData.count)
         
         // 这里我想先判断
         
         switch item {
         case .title(let title):
-            cell.prepare(cellType: .title, row: indexPath.row, dataCount: tableData.count)
             cell.configure(title: title)
         case .titleRightIcon(let title, let rightIconName):
-            cell.prepare(cellType: .titleRightIcon, row: indexPath.row, dataCount: tableData.count)
             cell.configure(title: title, rightIconName: rightIconName)
         default:
             print("done")
