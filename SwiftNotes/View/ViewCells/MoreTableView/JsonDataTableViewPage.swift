@@ -8,18 +8,18 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<DefaultCellItem> {
+private class DataManager: BaseDataManager<TableCellItem> {
     init() {
         super.init(initialItems: [
-            DefaultCellItem(title: "Animation", viewController: AnimationPage()),
-            DefaultCellItem(title: "Button", viewController: ButtonPage()),
+            .title(title: "Animation"),
+            .titleDesc(title: "Label", description: "描述"),
+            .titleRightIcon(title: "Button", rightIconName: "checkmark"),
         ])
     }
 }
 
 
 class JsonDataTableViewPage: UIViewController {
-    
     private let tableData = DataManager()
     
     let tableView = UITableView()
@@ -61,7 +61,7 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: tableData[indexPath.row].viewController)
+        self.push(toTarget: CSGeneralSubpage())
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -74,7 +74,19 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
+        let item = tableData[indexPath.row]
+        
+        switch item {
+        case .title(let title):
+            cell.configure(cellType: .title, title: title)
+        case .titleDesc(let title, let description):
+            cell.configure(cellType: .title, title: title, description: description)
+        case .titleRightIcon(let title, let rightIconName):
+            cell.configure(cellType: .titleRightIcon, title: title, rightIconName: "checkmark")
+        default:
+            print("出错")
+        }
+        
         return cell
     }
 }
