@@ -82,7 +82,7 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - CellType：默认的表格视图UI类型
 enum CellType: Int {
-    case title = 11                      // 只有标题 (右侧说明非开关的cell都有。11指数据传来的typeId)
+    case title = 11                      // 只有标题 (描述文本非开关的cell都有。11指数据传来的typeId)
     case titleRightIcon = 12             // 标题 + 右图标
     case titleSwitch = 13                // 标题 + 开关
     case titleLeftIconRightIcon = 14     // 标题 + 左图标(标题前) + 右图标
