@@ -159,7 +159,7 @@ extension TableViewWithHeaderAndFooterPage: UITableViewDelegate, UITableViewData
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         let item = tableData.cellData(for: indexPath)
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(title: item.title)
+        cell.configure(cellType: .titleRightIcon, title: item.title)
         return cell
     }
     

@@ -54,7 +54,7 @@ class SwitchViewListPage: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(title: tableData[indexPath.row].title)
+        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
         return cell
     }
     

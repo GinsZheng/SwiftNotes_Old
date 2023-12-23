@@ -107,9 +107,9 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
         
         switch item {
         case .title(let title):
-            cell.configure(title: title)
+            cell.configure(cellType: .title, title: title)
         case .titleRightIcon(let title, let rightIconName):
-            cell.configure(title: title, rightIconName: rightIconName)
+            cell.configure(cellType: .titleRightIcon, title: title, rightIconName: rightIconName)
         default:
             print("done")
         }
@@ -123,13 +123,7 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
 //            .titleDescVC(title: "Scroll View", description: "哈哈", viewController: ScrollViewPage()),
 //            .titleDescLeftIconSwitchVC(title: "Scroll View Horizonal", description: "hey", leftIconName: "tab_tickets_s", isSwitchOn: true, viewController: ScrollViewHorizonalPage())
         
-        
-//    case .titleVC(let title, _):
-//        cell.prepare(cellType: .title, row: indexPath.row, dataCount: tableData.count)
-//        cell.configure(title: title)
-//    case .titleSwitchVC(let title, let isSwitchOn, _):
-//        cell.configure(title: title, isSwitchOn: isSwitchOn)
-        
+    
         
         
         return cell

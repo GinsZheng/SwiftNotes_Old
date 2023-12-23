@@ -172,7 +172,7 @@ class DefaultCell: UITableViewCell {
     }
     
     // 配置数据
-    func configure(cellType: CellType = .titleRightIcon, title: String, description: String = "", descriptionLine: Int = 1, leftIconName: String = "", rightIconName: String = kIconNext, isSwitchOn: Bool = false) {
+    func configure(cellType: CellType, title: String, description: String = "", descriptionLine: Int = 1, leftIconName: String = "", rightIconName: String = kIconNext, isSwitchOn: Bool = false) {
         setupGeneralUI(cellType: cellType, title: title)
         setupSpecificUI(cellType: cellType, description: description, descriptionLine: descriptionLine, leftIconName: leftIconName, rightIconName: rightIconName, isSwitchOn: isSwitchOn)
     }
