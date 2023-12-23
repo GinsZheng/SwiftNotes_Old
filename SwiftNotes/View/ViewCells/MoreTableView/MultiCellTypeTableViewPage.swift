@@ -105,15 +105,34 @@ extension MultiCellTypeTableView: UITableViewDelegate, UITableViewDataSource {
         
         // 这里我想先判断
         
-//        switch item {
-//        case .titleVC(let title, _):
-//            cell.prepare(cellType: .title, row: indexPath.row, dataCount: tableData.count)
-//            cell.configure(title: title)
-//        case .titleSwitchVC(let title, let isSwitchOn, _):
-//            cell.configure(title: title, isSwitchOn: isSwitchOn)
-//        default:
-//            print("done")
-//        }
+        switch item {
+        case .title(let title):
+            cell.prepare(cellType: .title, row: indexPath.row, dataCount: tableData.count)
+            cell.configure(title: title)
+        case .titleRightIcon(let title, let rightIconName):
+            cell.prepare(cellType: .titleRightIcon, row: indexPath.row, dataCount: tableData.count)
+            cell.configure(title: title, rightIconName: rightIconName)
+        default:
+            print("done")
+        }
+
+//            .title(title: "Animation"),
+//            .titleRightIcon(title: "Button", rightIconName: "checkmark"),
+//            .titleDesc(title: "Label", description: "描述"),
+//            .titleDesc(title: "Layer", description: "哈哈"),
+//            .titleVC(title: "Nav Controller", viewController: NavControllerPage()),
+//            .titleLeftIconRightIconVC(title: "Picker View", leftIconName: "tab_tickets_s", rightIconName: "next", viewController: PickerViewPage()),
+//            .titleDescVC(title: "Scroll View", description: "哈哈", viewController: ScrollViewPage()),
+//            .titleDescLeftIconSwitchVC(title: "Scroll View Horizonal", description: "hey", leftIconName: "tab_tickets_s", isSwitchOn: true, viewController: ScrollViewHorizonalPage())
+        
+        
+//    case .titleVC(let title, _):
+//        cell.prepare(cellType: .title, row: indexPath.row, dataCount: tableData.count)
+//        cell.configure(title: title)
+//    case .titleSwitchVC(let title, let isSwitchOn, _):
+//        cell.configure(title: title, isSwitchOn: isSwitchOn)
+        
+        
         
         return cell
     }
