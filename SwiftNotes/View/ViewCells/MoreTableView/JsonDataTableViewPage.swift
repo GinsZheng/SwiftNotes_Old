@@ -15,33 +15,54 @@ private class DataManager: BaseDataManager<TableCellItem> {
 
 extension DataManager {
     func updateItems(with newItems: [Items]) {
-        // 清除旧数据
-        self.items.removeAll()
+        
+        self.items = newItems.map { item in
+            let title = item.title
+//            let description = item.description
+//            let leftIconName = item.leftIconName
+//            let rightIconName = item.rightIconName
+            let isSwitchOn = bool(item.isSwitchOn ?? 0)
+            let viewController = ViewControllerFactory.viewController(for: item.typeId)
 
-        // 遍历新数据，并转换为TableCellItem
-        for item in newItems {
             switch item.typeId {
             case 11:
-                if let description = item.description {
-                    self.items.append(.titleDesc(title: item.title, description: description))
-                } else {
-                    self.items.append(.title(title: item.title))
-                }
+                return item.description == nil ?
+                    .title(title: title) :
+                    .titleDesc(title: title, description: item.description!)
             case 12:
-                if let rightIconName = item.rightIconName {
-                    self.items.append(.titleRightIcon(title: item.title, rightIconName: rightIconName))
-                } else {
-                    self.items.append(.title(title: item.title))
-                }
+                return item.description == nil ?
+                    .titleNextVC(title: title, viewController: viewController) :
+                    .titleDescNextVC(title: title, description: item.description!, viewController: viewController)
+//            case 31: // 测试用
+//                return .titleDescNextVC(title: title, description: item.description!, viewController: viewController)
             default:
                 print("未知的typeId: \(item.typeId)")
+                return .title(title: title)
             }
         }
-
+        
+        // ⚠️下一步，把初始化逻辑完善，测试有pageId的情况下是否可以正常跳转
         // 通知数据已更新
         self.onItemsUpdated?()
     }
 }
+
+// 映射 pageId 到 viewController
+class ViewControllerFactory {
+    static var viewControllerMapping: [Int: UIViewController.Type] = [
+        1: ViewListVC.self,
+        2: CSControllerListVC.self,
+    ]
+
+    static func viewController(for pageId: Int) -> UIViewController {
+        if let vcType = viewControllerMapping[pageId] {
+            return vcType.init()
+        } else {
+            return ViewListVC() // 或者其他默认处理
+        }
+    }
+}
+
 
 
 private struct Response: Decodable {
@@ -51,12 +72,16 @@ private struct Response: Decodable {
 }
 
 private struct Items: Decodable {
-    var typeId: Int
+    var typeId: Int // UI类型id
     var title: String
     var description: String?
+    var leftIconName: String?
     var rightIconName: String?
+    var isSwitchOn: Int?
+    var pageId: Int? // 要跳转的页面id
 }
 
+//cellType: CellType, title: String, description: String = "", descriptionLine: Int = 1, leftIconName: String = "", rightIconName: String = kIconNext, isSwitchOn: Bool = false
 
 class JsonDataTableViewPage: UIViewController {
     
@@ -76,14 +101,15 @@ class JsonDataTableViewPage: UIViewController {
                 let code = value.code
                 let message = value.message
                 let items = value.items
-                for item in items {
-                    let typeId = item.typeId
-                    let title = item.title
-                    let description = item.description ?? ""
-                    let rightIconName = item.rightIconName ?? "next"
-                    print("typeId", typeId, "title", title, description)
-                }
                 self.tableData.updateItems(with: items)
+//                for item in items {
+//                    let typeId = item.typeId
+//                    let title = item.title
+//                    let description = item.description ?? ""
+//                    let rightIconName = item.rightIconName ?? "next"
+//                    print("typeId", typeId, "title", title, description)
+//                }
+
             } else {
                 print(response.error!)
             }
@@ -139,9 +165,11 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
         case .title(let title):
             cell.configure(cellType: .title, title: title)
         case .titleDesc(let title, let description):
-            cell.configure(cellType: .title, title: title, description: description)
+            cell.configure(cellType: .title, title: title, description: description )
         case .titleRightIcon(let title, let rightIconName):
             cell.configure(cellType: .titleRightIcon, title: title, rightIconName: rightIconName)
+//        case .titleNextVC(title: <#T##String#>, viewController: <#T##UIViewController#>)
+            // ⚠️下一步：这里加上有VC的UI类型，以便能够渲染相关内容
         default:
             print("出错")
         }
