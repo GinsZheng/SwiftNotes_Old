@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 private class DataManager: BaseDataManager<TableCellItem> {
     init() {
@@ -20,6 +21,20 @@ private class DataManager: BaseDataManager<TableCellItem> {
 
 
 class JsonDataTableViewPage: UIViewController {
+    
+    struct Response: Decodable {
+        var code: Int
+        var message: String
+        var items: [Items]
+    }
+    
+    struct Items: Decodable {
+        var typeId: Int
+        var title: String
+        var description: String?
+        var rightIconName: String?
+    }
+    
     private let tableData = DataManager()
     
     let tableView = UITableView()
@@ -28,6 +43,28 @@ class JsonDataTableViewPage: UIViewController {
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        let url = "http://127.0.0.1:8009/returnJson"
+        AF.request(url).responseDecodable(of: Response.self) { response in
+            if let value = response.value {
+//                print("value", value)
+                let code = value.code
+                let message = value.message
+                let items = value.items
+//                print("items", items)
+                for item in items {
+                    let typeId = item.typeId
+                    let title = item.title
+                    print("typeId", typeId, "title", title)
+                }
+
+            } else {
+                print(response.error!)
+            }
+        }
+        
         setupUI()
     }
     
@@ -82,7 +119,7 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
         case .titleDesc(let title, let description):
             cell.configure(cellType: .title, title: title, description: description)
         case .titleRightIcon(let title, let rightIconName):
-            cell.configure(cellType: .titleRightIcon, title: title, rightIconName: "checkmark")
+            cell.configure(cellType: .titleRightIcon, title: title, rightIconName: rightIconName)
         default:
             print("出错")
         }
