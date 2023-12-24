@@ -10,30 +10,55 @@ import UIKit
 import Alamofire
 
 private class DataManager: BaseDataManager<TableCellItem> {
-    init() {
-        super.init(initialItems: [
-            .title(title: "Animation"),
-            .titleDesc(title: "Label", description: "描述"),
-            .titleRightIcon(title: "Button", rightIconName: "checkmark"),
-        ])
+    
+}
+
+extension DataManager {
+    func updateItems(with newItems: [Items]) {
+        // 清除旧数据
+        self.items.removeAll()
+
+        // 遍历新数据，并转换为TableCellItem
+        for item in newItems {
+            switch item.typeId {
+            case 11:
+                if let description = item.description {
+                    self.items.append(.titleDesc(title: item.title, description: description))
+                } else {
+                    self.items.append(.title(title: item.title))
+                }
+            case 12:
+                if let rightIconName = item.rightIconName {
+                    self.items.append(.titleRightIcon(title: item.title, rightIconName: rightIconName))
+                } else {
+                    self.items.append(.title(title: item.title))
+                }
+            default:
+                print("未知的typeId: \(item.typeId)")
+            }
+        }
+
+        // 通知数据已更新
+        self.onItemsUpdated?()
     }
 }
 
 
+private struct Response: Decodable {
+    var code: Int
+    var message: String
+    var items: [Items]
+}
+
+private struct Items: Decodable {
+    var typeId: Int
+    var title: String
+    var description: String?
+    var rightIconName: String?
+}
+
+
 class JsonDataTableViewPage: UIViewController {
-    
-    struct Response: Decodable {
-        var code: Int
-        var message: String
-        var items: [Items]
-    }
-    
-    struct Items: Decodable {
-        var typeId: Int
-        var title: String
-        var description: String?
-        var rightIconName: String?
-    }
     
     private let tableData = DataManager()
     
@@ -43,29 +68,26 @@ class JsonDataTableViewPage: UIViewController {
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        setupUI()
         
         let url = "http://127.0.0.1:8009/returnJson"
         AF.request(url).responseDecodable(of: Response.self) { response in
             if let value = response.value {
-//                print("value", value)
                 let code = value.code
                 let message = value.message
                 let items = value.items
-//                print("items", items)
                 for item in items {
                     let typeId = item.typeId
                     let title = item.title
-                    print("typeId", typeId, "title", title)
+                    let description = item.description ?? ""
+                    let rightIconName = item.rightIconName ?? "next"
+                    print("typeId", typeId, "title", title, description)
                 }
-
+                self.tableData.updateItems(with: items)
             } else {
                 print(response.error!)
             }
         }
-        
-        setupUI()
     }
     
     
