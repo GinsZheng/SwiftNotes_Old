@@ -22,43 +22,60 @@ extension DataManager {
             let leftIconName = item.leftIconName
             let rightIconName = item.rightIconName
             let isSwitchOn = item.isSwitchOn
+            let viewController = ViewControllerManager.viewController(for: item.pageId)
             
-            let viewController = ViewControllerFactory.viewController(for: item.pageId ?? 0)
-
+            //        case titleNext(title: String)
+            //        case titleDescNext(title: String, description: String)
+            //        case titleNextVC(title: String, viewController: UIViewController)
+            //        case titleDescNextVC(title: String, description: String, viewController: UIViewController)
+            //
+            //        // MARK: - case titleRightIcon = 12 & RightIcon非默认
+            //        case titleRightIcon(title: String, rightIconName: String)
+            //        case titleDescRightIcon(title: String, description: String, rightIconName: String)
+            
             switch item.typeId {
             case 11:
                 return description == nil ?
                     .title(title: title) :
                     .titleDesc(title: title, description: item.description!)
             case 12:
-                if description == nil {
-                    return .titleNextVC(title: title, viewController: viewController ?? ButtonPage())
+                if rightIconName == nil && description == nil && viewController == nil {
+                    return .titleNext(title: title)
+                } else if rightIconName == nil && description != nil && viewController == nil {
+                    return .titleDescNext(title: title, description: description!)
+                } else if rightIconName == nil && description == nil && viewController != nil {
+                    return .titleNextVC(title: title, viewController: viewController!)
+                } else if rightIconName == nil && description != nil && viewController != nil {
+                    return .titleDescNextVC(title: title, description: description!, viewController: viewController!)
+                } else if rightIconName != nil && description == nil && viewController == nil {
+                    return .titleRightIcon(title: title, rightIconName: rightIconName!)
+                } else if rightIconName != nil && description != nil && viewController == nil {
+                    return .titleDescRightIcon(title: title, description: description!, rightIconName: rightIconName!)
+                } else { // 这是为了穷举(因为3个判断8个条件中还有两个条件没写出来)
+                    return .title(title: title)
                 }
-                return .titleDescNextVC(title: title, description: item.description!, viewController: viewController ?? ButtonPage())
-//                return item.description == nil ?
-//                    .titleNextVC(title: title, viewController: viewController) :
-//                    .titleDescNextVC(title: title, description: item.description!, viewController: viewController)
             default:
                 print("未知的typeId: \(item.typeId)")
                 return .title(title: title)
             }
+            
         }
-        
         // ⚠️下一步，把初始化逻辑完善，测试有pageId的情况下是否可以正常跳转
         // 通知数据已更新
         self.onItemsUpdated?()
+        
     }
 }
 
 // 映射 pageId 到 viewController
-class ViewControllerFactory {
-    static var viewControllerMapping: [Int: UIViewController.Type] = [
+class ViewControllerManager {
+    static var viewControllers: [Int: UIViewController.Type] = [
         1: ButtonPage.self,
         2: ImageViewPage.self,
     ]
-
+    
     static func viewController(for pageId: Int?) -> UIViewController? {
-        guard let pageId = pageId, let vcType = viewControllerMapping[pageId] else {
+        guard let pageId = pageId, let vcType = viewControllers[pageId] else {
             print("pageId为nil 或 pageId值对应的页面不存在")
             return nil
         }
@@ -106,14 +123,14 @@ class JsonDataTableViewPage: UIViewController {
                 let message = value.message
                 let items = value.items
                 self.tableData.updateItems(with: items)
-//                for item in items {
-//                    let typeId = item.typeId
-//                    let title = item.title
-//                    let description = item.description ?? ""
-//                    let rightIconName = item.rightIconName ?? "next"
-//                    print("typeId", typeId, "title", title, description)
-//                }
-
+                //                for item in items {
+                //                    let typeId = item.typeId
+                //                    let title = item.title
+                //                    let description = item.description ?? ""
+                //                    let rightIconName = item.rightIconName ?? "next"
+                //                    print("typeId", typeId, "title", title, description)
+                //                }
+                
             } else {
                 print(response.error!)
             }
@@ -150,7 +167,7 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.push(toTarget: CSGeneralSubpage())
+        //        self.push(toTarget: CSGeneralSubpage())
         let item = tableData[indexPath.row]
         
         switch item {

@@ -16,7 +16,7 @@ private class DataManager: BaseDataManager<TableCellItem> {
             .titleDesc(title: "Label", description: "描述"),
             .titleRightIcon(title: "Button", rightIconName: "checkmark"),
             .titleSwitch(title: "Image View", isSwitchOn: true),
-            .titleLeftIconRightIconVC(title: "Picker View", leftIconName: "tab_tickets_s", rightIconName: "next", viewController: PickerViewPage()),
+            .titleDescNextVC(title: "Picker View", description: "hey", viewController: PickerViewPage())
         ])
     }
 }
@@ -71,7 +71,7 @@ extension MultiCellTypeTableViewPage: UITableViewDelegate, UITableViewDataSource
         /// 2. 各个Cell跳转与否，跳转到哪都相同(常见于首页列表)，无需viewController参数，分3情情况：1. 无需判断(即每个列表都跳转到相同的页面) 2. 用固定的逻辑判断(比如判断是否离线等，不用tableData来判断) 3. 用tableData中的UI类型来判断(属于比较省事的做法，把跳转的逻辑与tableData绑定)
         let item = tableData[indexPath.row]
         switch item {
-        case .titleLeftIconRightIconVC(_, _, _, let viewController):
+        case .titleDescNextVC(_, _, let viewController):
             self.push(toTarget: viewController)
         default:
             print("done")
@@ -99,9 +99,9 @@ extension MultiCellTypeTableViewPage: UITableViewDelegate, UITableViewDataSource
         case .titleRightIcon(let title, let rightIconName):
             cell.configure(cellType: .titleRightIcon, title: title, rightIconName: rightIconName)
         case .titleSwitch(let title, let isSwitchOn):
-            cell.configure(cellType: .titleSwitch, title: title)
-        case .titleLeftIconRightIconVC(let title, let leftIconName, let rightIconName, _):
-            cell.configure(cellType: .titleLeftIconRightIcon, title: title, leftIconName: leftIconName, rightIconName: rightIconName)
+            cell.configure(cellType: .titleSwitch, title: title, isSwitchOn: isSwitchOn)
+        case .titleDescNextVC(let title, let description, _):
+            cell.configure(cellType: .titleLeftIconRightIcon, title: title, description: description)
         default:
             print("出错")
         }
