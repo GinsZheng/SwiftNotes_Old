@@ -18,11 +18,12 @@ extension DataManager {
         
         self.items = newItems.map { item in
             let title = item.title
-//            let description = item.description
-//            let leftIconName = item.leftIconName
-//            let rightIconName = item.rightIconName
-            let isSwitchOn = bool(item.isSwitchOn ?? 0)
-            let viewController = ViewControllerFactory.viewController(for: item.typeId)
+            let description = item.description
+            let leftIconName = item.leftIconName
+            let rightIconName = item.rightIconName
+            let isSwitchOn = item.isSwitchOn
+            
+            let viewController = ViewControllerFactory.viewController(for: item.pageId ?? 0)
 
             switch item.typeId {
             case 11:
@@ -30,11 +31,13 @@ extension DataManager {
                     .title(title: title) :
                     .titleDesc(title: title, description: item.description!)
             case 12:
-                return item.description == nil ?
-                    .titleNextVC(title: title, viewController: viewController) :
-                    .titleDescNextVC(title: title, description: item.description!, viewController: viewController)
-//            case 31: // 测试用
-//                return .titleDescNextVC(title: title, description: item.description!, viewController: viewController)
+                if description == nil {
+                    return .titleNextVC(title: title, viewController: viewController ?? ButtonPage())
+                }
+                return .titleDescNextVC(title: title, description: item.description!, viewController: viewController ?? ButtonPage())
+//                return item.description == nil ?
+//                    .titleNextVC(title: title, viewController: viewController) :
+//                    .titleDescNextVC(title: title, description: item.description!, viewController: viewController)
             default:
                 print("未知的typeId: \(item.typeId)")
                 return .title(title: title)
@@ -50,15 +53,17 @@ extension DataManager {
 // 映射 pageId 到 viewController
 class ViewControllerFactory {
     static var viewControllerMapping: [Int: UIViewController.Type] = [
-        1: ViewListVC.self,
-        2: CSControllerListVC.self,
+        1: ButtonPage.self,
+        2: ImageViewPage.self,
     ]
 
-    static func viewController(for pageId: Int) -> UIViewController {
+    static func viewController(for pageId: Int) -> UIViewController? {
         if let vcType = viewControllerMapping[pageId] {
+            print(vcType)
             return vcType.init()
         } else {
-            return ViewListVC() // 或者其他默认处理
+            print("出错")
+            return nil // 或者其他默认处理
         }
     }
 }
@@ -77,7 +82,7 @@ private struct Items: Decodable {
     var description: String?
     var leftIconName: String?
     var rightIconName: String?
-    var isSwitchOn: Int?
+    var isSwitchOn: Bool?
     var pageId: Int? // 要跳转的页面id
 }
 
@@ -146,7 +151,20 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: CSGeneralSubpage())
+//        self.push(toTarget: CSGeneralSubpage())
+        let item = tableData[indexPath.row]
+        
+        switch item {
+        case .titleNextVC(_, let viewController):
+            self.push(toTarget: viewController)
+        case .titleDescNextVC(_, _, let viewController):
+            self.push(toTarget: viewController)
+            // ⚠️下一步：这里加上有VC的UI类型，以便能够渲染相关内容
+        default:
+            print("出错")
+        }
+        
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -168,7 +186,10 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
             cell.configure(cellType: .title, title: title, description: description )
         case .titleRightIcon(let title, let rightIconName):
             cell.configure(cellType: .titleRightIcon, title: title, rightIconName: rightIconName)
-//        case .titleNextVC(title: <#T##String#>, viewController: <#T##UIViewController#>)
+        case .titleNextVC(let title, _):
+            cell.configure(cellType: .titleRightIcon, title: title)
+        case .titleDescNextVC(let title, let description, _):
+            cell.configure(cellType: .titleRightIcon, title: title)
             // ⚠️下一步：这里加上有VC的UI类型，以便能够渲染相关内容
         default:
             print("出错")
