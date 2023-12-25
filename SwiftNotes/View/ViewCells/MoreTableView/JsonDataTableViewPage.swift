@@ -24,15 +24,6 @@ extension DataManager {
             let isSwitchOn = item.isSwitchOn
             let viewController = ViewControllerManager.viewController(for: item.pageId)
             
-            //        case titleNext(title: String)
-            //        case titleDescNext(title: String, description: String)
-            //        case titleNextVC(title: String, viewController: UIViewController)
-            //        case titleDescNextVC(title: String, description: String, viewController: UIViewController)
-            //
-            //        // MARK: - case titleRightIcon = 12 & RightIcon非默认
-            //        case titleRightIcon(title: String, rightIconName: String)
-            //        case titleDescRightIcon(title: String, description: String, rightIconName: String)
-            
             switch item.typeId {
             case 11:
                 return description == nil ?
@@ -51,16 +42,62 @@ extension DataManager {
                     return .titleRightIcon(title: title, rightIconName: rightIconName!)
                 } else if rightIconName != nil && description != nil && viewController == nil {
                     return .titleDescRightIcon(title: title, description: description!, rightIconName: rightIconName!)
-                } else { // 这是为了穷举(因为3个判断8个条件中还有两个条件没写出来)
+                } else {
+                    print("数据异常") // 这是为了穷举(因为3个判断8个条件中还有两个条件没写出来)
                     return .title(title: title)
                 }
+            case 13:
+                print("hey")
+                guard let isSwitchOn = isSwitchOn else { return .title(title: title) }
+                return .titleSwitch(title: title, isSwitchOn: isSwitchOn)
+            case 14:
+                guard let leftIconName = leftIconName else { return .title(title: title)}
+                
+                if rightIconName == nil && description == nil && viewController == nil {
+                    return .titleLeftIconNext(title: title, leftIconName: leftIconName)
+                } else if rightIconName == nil && description != nil && viewController == nil {
+                    return .titleDescLeftIconNext(title: title, description: description!, leftIconName: leftIconName)
+                } else if rightIconName == nil && description == nil && viewController != nil {
+                    return .titleLeftIconNextVC(title: title, leftIconName: leftIconName, viewController: viewController!)
+                } else if rightIconName == nil && description != nil && viewController != nil {
+                    return .titleDescLeftIconNextVC(title: title, description: description!, leftIconName: leftIconName, viewController: viewController!)
+                } else if rightIconName != nil && description == nil && viewController == nil {
+                    return .titleLeftIconRightIcon(title: title, leftIconName: leftIconName, rightIconName: rightIconName!)
+                } else if rightIconName != nil && description != nil && viewController == nil {
+                    return .titleDescLeftIconRightIcon(title: title, description: description!, leftIconName: leftIconName, rightIconName: rightIconName!)
+                } else {
+                    print("数据异常") // 这是为了穷举(因为3个判断8个条件中还有两个条件没写出来)
+                    return .title(title: title)
+                }
+            case 15:
+                guard let isSwitchOn = isSwitchOn, let leftIconName = leftIconName else { return .title(title: title) }
+                return .titleLeftIconSwitch(title: title, leftIconName: leftIconName, isSwitchOn: isSwitchOn)
+            case 21:
+                guard let description = description else { return .title(title: title)}
+                return .titleDesc2Line(title: title, description: description)
+            case 22:
+                guard let description = description else { return .title(title: title)}
+                if rightIconName == nil && viewController == nil {
+                    return .titleDescNext2Line(title: title, description: description)
+                } else if rightIconName == nil && viewController != nil {
+                    return .titleDescNextVC2Line(title: title, description: description, viewController: viewController!)
+                } else if rightIconName != nil && viewController == nil {
+                    return .titleDescRightIcon2Line(title: title, description: description, rightIconName: rightIconName!)
+                } else {
+                    print("数据异常") // 这是为了穷举
+                    return .title(title: title)
+                }
+            case 23:
+                guard let description = description, let isSwitchOn = isSwitchOn else { return .title(title: title) }
+                return viewController == nil ?
+                    .titleDescSwitch2Line(title: title, description: description, isSwitchOn: isSwitchOn):
+                    .titleDescSwitchVC2Line(title: title, description: description, isSwitchOn: isSwitchOn, viewController: viewController!)
             default:
                 print("未知的typeId: \(item.typeId)")
                 return .title(title: title)
             }
             
         }
-        // ⚠️下一步，把初始化逻辑完善，测试有pageId的情况下是否可以正常跳转
         // 通知数据已更新
         self.onItemsUpdated?()
         
@@ -76,7 +113,6 @@ class ViewControllerManager {
     
     static func viewController(for pageId: Int?) -> UIViewController? {
         guard let pageId = pageId, let vcType = viewControllers[pageId] else {
-            print("pageId为nil 或 pageId值对应的页面不存在")
             return nil
         }
         return vcType.init()
@@ -102,7 +138,6 @@ private struct Items: Decodable {
     var pageId: Int? // 要跳转的页面id
 }
 
-//cellType: CellType, title: String, description: String = "", descriptionLine: Int = 1, leftIconName: String = "", rightIconName: String = kIconNext, isSwitchOn: Bool = false
 
 class JsonDataTableViewPage: UIViewController {
     
@@ -119,18 +154,8 @@ class JsonDataTableViewPage: UIViewController {
         let url = "http://127.0.0.1:8009/returnJson"
         AF.request(url).responseDecodable(of: Response.self) { response in
             if let value = response.value {
-                let code = value.code
-                let message = value.message
                 let items = value.items
                 self.tableData.updateItems(with: items)
-                //                for item in items {
-                //                    let typeId = item.typeId
-                //                    let title = item.title
-                //                    let description = item.description ?? ""
-                //                    let rightIconName = item.rightIconName ?? "next"
-                //                    print("typeId", typeId, "title", title, description)
-                //                }
-                
             } else {
                 print(response.error!)
             }
@@ -175,11 +200,9 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
             self.push(toTarget: viewController)
         case .titleDescNextVC(_, _, let viewController):
             self.push(toTarget: viewController)
-            // ⚠️下一步：这里加上有VC的UI类型，以便能够渲染相关内容
         default:
-            print("出错")
+            print("无跳转")
         }
-        
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -199,14 +222,15 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
         case .title(let title):
             cell.configure(cellType: .title, title: title)
         case .titleDesc(let title, let description):
-            cell.configure(cellType: .title, title: title, description: description )
+            cell.configure(cellType: .title, title: title, description: description)
         case .titleRightIcon(let title, let rightIconName):
             cell.configure(cellType: .titleRightIcon, title: title, rightIconName: rightIconName)
         case .titleNextVC(let title, _):
             cell.configure(cellType: .titleRightIcon, title: title)
         case .titleDescNextVC(let title, let description, _):
-            cell.configure(cellType: .titleRightIcon, title: title)
-            // ⚠️下一步：这里加上有VC的UI类型，以便能够渲染相关内容
+            cell.configure(cellType: .titleRightIcon, title: title, description: description)
+        case .titleSwitch(let title, let isSwitchOn):
+            cell.configure(cellType: .titleSwitch, title: title, isSwitchOn: isSwitchOn)
         default:
             print("出错")
         }
