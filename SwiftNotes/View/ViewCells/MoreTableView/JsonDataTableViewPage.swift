@@ -27,7 +27,7 @@ extension DataManager {
 
             switch item.typeId {
             case 11:
-                return item.description == nil ?
+                return description == nil ?
                     .title(title: title) :
                     .titleDesc(title: title, description: item.description!)
             case 12:
@@ -57,16 +57,15 @@ class ViewControllerFactory {
         2: ImageViewPage.self,
     ]
 
-    static func viewController(for pageId: Int) -> UIViewController? {
-        if let vcType = viewControllerMapping[pageId] {
-            print(vcType)
-            return vcType.init()
-        } else {
-            print("出错")
-            return nil // 或者其他默认处理
+    static func viewController(for pageId: Int?) -> UIViewController? {
+        guard let pageId = pageId, let vcType = viewControllerMapping[pageId] else {
+            print("pageId为nil 或 pageId值对应的页面不存在")
+            return nil
         }
+        return vcType.init()
     }
 }
+
 
 
 
