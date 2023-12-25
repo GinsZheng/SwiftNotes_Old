@@ -8,11 +8,11 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<DefaultCellItem> {
+private class DataManager: BaseDataManager<TempDefaultCellItem> {
     init() {
         super.init(initialItems: [
-            DefaultCellItem(title: "Test1", viewController: Test1VC()),
-            DefaultCellItem(title: "JsonDataTableViewPage", viewController: JsonDataTableViewPage())
+            TempDefaultCellItem(title: "Test1", viewController: Test1VC()),
+            TempDefaultCellItem(title: "JsonDataTableViewPage", viewController: JsonDataTableViewPage())
         ])
     }
 }

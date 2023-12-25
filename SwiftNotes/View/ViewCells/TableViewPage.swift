@@ -8,11 +8,11 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<DefaultCellItem> {
+private class DataManager: BaseDataManager<TempDefaultCellItem> {
     init() {
         super.init(initialItems: [
-            DefaultCellItem(title: "Animation", viewController: AnimationPage()),
-            DefaultCellItem(title: "Button", viewController: ButtonPage()),
+            TempDefaultCellItem(title: "Animation", viewController: AnimationPage()),
+            TempDefaultCellItem(title: "Button", viewController: ButtonPage()),
         ])
     }
 }

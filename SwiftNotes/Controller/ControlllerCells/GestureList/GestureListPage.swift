@@ -10,15 +10,15 @@ import UIKit
 
 class CSGestureListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableData: [DefaultCellItem] = [
-        DefaultCellItem(title: "Disable Pop", viewController: CSDisablePopGesturePage()),
-        DefaultCellItem(title: "Long Press", viewController: CSLongPressGesturePage()),
-        DefaultCellItem(title: "Pan", viewController: CSPanGesturePage()),
-        DefaultCellItem(title: "Pinch", viewController: CSPinchGesturePage()),
-        DefaultCellItem(title: "Swipe", viewController: CSSwipeGesturePage()),
-        DefaultCellItem(title: "Tap", viewController: CSTapGesturePage()),
-        DefaultCellItem(title: "TouchesBegan", viewController: CSTouchesBeganGesturePage()),
-        DefaultCellItem(title: "TouchesMoved", viewController: CSTouchesMovedGesturePage())
+    let tableData: [TempDefaultCellItem] = [
+        TempDefaultCellItem(title: "Disable Pop", viewController: CSDisablePopGesturePage()),
+        TempDefaultCellItem(title: "Long Press", viewController: CSLongPressGesturePage()),
+        TempDefaultCellItem(title: "Pan", viewController: CSPanGesturePage()),
+        TempDefaultCellItem(title: "Pinch", viewController: CSPinchGesturePage()),
+        TempDefaultCellItem(title: "Swipe", viewController: CSSwipeGesturePage()),
+        TempDefaultCellItem(title: "Tap", viewController: CSTapGesturePage()),
+        TempDefaultCellItem(title: "TouchesBegan", viewController: CSTouchesBeganGesturePage()),
+        TempDefaultCellItem(title: "TouchesMoved", viewController: CSTouchesMovedGesturePage())
     ]
         
     let tableView = UITableView()

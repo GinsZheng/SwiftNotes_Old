@@ -10,10 +10,10 @@ import UIKit
 
 class ClosureListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableData: [DefaultCellItem] = [
-        DefaultCellItem(title: "Closure1", viewController: Closure1VC()), // 闭包的简单示例与知识
-        DefaultCellItem(title: "Closure2", viewController: Closure2VC()), // 闭包替代代理的示例
-        DefaultCellItem(title: "Closure Enum", viewController: ClosureEnumVC()) // 常见的闭包写法(A 定义、设置、调用，B 0参数，1参数，多参数，C 可选)
+    let tableData: [TempDefaultCellItem] = [
+        TempDefaultCellItem(title: "Closure1", viewController: Closure1VC()), // 闭包的简单示例与知识
+        TempDefaultCellItem(title: "Closure2", viewController: Closure2VC()), // 闭包替代代理的示例
+        TempDefaultCellItem(title: "Closure Enum", viewController: ClosureEnumVC()) // 常见的闭包写法(A 定义、设置、调用，B 0参数，1参数，多参数，C 可选)
     ]
 
 

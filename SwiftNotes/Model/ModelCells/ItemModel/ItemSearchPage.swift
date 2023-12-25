@@ -12,9 +12,9 @@ import SwiftyJSON
 
 class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
-    let tableData: [DefaultCellItem] = [
-        DefaultCellItem(title: "Animation", viewController: CSGeneralSubpage()),
-        DefaultCellItem(title: "Button", viewController: CSGeneralSubpage())
+    let tableData: [TempDefaultCellItem] = [
+        TempDefaultCellItem(title: "Animation", viewController: CSGeneralSubpage()),
+        TempDefaultCellItem(title: "Button", viewController: CSGeneralSubpage())
     ]
     
     let table = ItemTable()

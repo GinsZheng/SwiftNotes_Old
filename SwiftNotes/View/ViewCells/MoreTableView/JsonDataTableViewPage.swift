@@ -9,12 +9,12 @@
 import UIKit
 import Alamofire
 
-private class DataManager: BaseDataManager<TableCellItem> {
+private class DataManager: BaseDataManager<DefaultCellItems> {
     
 }
 
 extension DataManager {
-    func updateItems(with newItems: [Items]) {
+    func updateItems(with newItems: [DefaultCellModel]) {
         
         self.items = newItems.map { item in
             let title = item.title
@@ -122,13 +122,13 @@ class ViewControllerManager {
 
 
 
-private struct Response: Decodable {
+struct DefaultTableResponse: Decodable {
     var code: Int
     var message: String
-    var items: [Items]
+    var items: [DefaultCellModel]
 }
 
-private struct Items: Decodable {
+struct DefaultCellModel: Decodable {
     var typeId: Int // UI类型id
     var title: String
     var description: String?
@@ -152,7 +152,7 @@ class JsonDataTableViewPage: UIViewController {
         setupUI()
         
         let url = "http://127.0.0.1:8009/returnJson"
-        AF.request(url).responseDecodable(of: Response.self) { response in
+        AF.request(url).responseDecodable(of: DefaultTableResponse.self) { response in
             if let value = response.value {
                 let items = value.items
                 self.tableData.updateItems(with: items)
