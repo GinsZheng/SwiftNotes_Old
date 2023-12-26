@@ -65,16 +65,7 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = tableData[indexPath.row]
-        
-        switch item {
-        case .titleNextVC(_, let viewController):
-            self.push(toTarget: viewController)
-        case .titleDescNextVC(_, _, let viewController):
-            self.push(toTarget: viewController)
-        default:
-            print("无跳转")
-        }
-        
+        item.handleCellTap(in: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -88,24 +79,7 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
         let item = tableData[indexPath.row]
-        
-        switch item {
-        case .title(let title):
-            cell.configure(cellType: .title, title: title)
-        case .titleDesc(let title, let description):
-            cell.configure(cellType: .title, title: title, description: description)
-        case .titleRightIcon(let title, let rightIconName):
-            cell.configure(cellType: .titleRightIcon, title: title, rightIconName: rightIconName)
-        case .titleNextVC(let title, _):
-            cell.configure(cellType: .titleRightIcon, title: title)
-        case .titleDescNextVC(let title, let description, _):
-            cell.configure(cellType: .titleRightIcon, title: title, description: description)
-        case .titleSwitch(let title, let isSwitchOn):
-            cell.configure(cellType: .titleSwitch, title: title, isSwitchOn: isSwitchOn)
-        default:
-            print("出错")
-        }
-        
+        item.configureCell(cell)
         return cell
     }
 }
