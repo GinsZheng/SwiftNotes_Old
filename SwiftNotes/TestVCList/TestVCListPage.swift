@@ -12,7 +12,8 @@ private class DataManager: BaseDataManager<TempDefaultCellItem> {
     init() {
         super.init(initialItems: [
             TempDefaultCellItem(title: "Test1", viewController: Test1VC()),
-            TempDefaultCellItem(title: "JsonDataTableViewPage", viewController: JsonDataTableViewPage())
+            TempDefaultCellItem(title: "JsonDataTableViewPage", viewController: JsonDataTableViewPage()),
+            TempDefaultCellItem(title: "MultiCellTypeTableViewPage", viewController: MultiCellTypeTableViewPage()),
         ])
     }
 }

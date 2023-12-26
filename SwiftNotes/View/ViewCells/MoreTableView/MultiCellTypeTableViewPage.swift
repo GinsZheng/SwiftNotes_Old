@@ -9,7 +9,7 @@
 import UIKit
 
 // 下一步：1. 把多类别的tableView写出来 2. 单类与多类应当很容易切换(因为列表很可能在迭代时增加一个类)
-private class DataManager: BaseDataManager<DefaultCellItems> {
+private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
             .title(title: "Animation"),
@@ -70,13 +70,7 @@ extension MultiCellTypeTableViewPage: UITableViewDelegate, UITableViewDataSource
         /// 1. 各个Cell跳转与否，跳转到哪都不同(常见于我的页列表)，需要配viewController参数：用tableData来判断
         /// 2. 各个Cell跳转与否，跳转到哪都相同(常见于首页列表)，无需viewController参数，分3情情况：1. 无需判断(即每个列表都跳转到相同的页面) 2. 用固定的逻辑判断(比如判断是否离线等，不用tableData来判断) 3. 用tableData中的UI类型来判断(属于比较省事的做法，把跳转的逻辑与tableData绑定)
         let item = tableData[indexPath.row]
-        switch item {
-        case .titleDescNextVC(_, _, let viewController):
-            self.push(toTarget: viewController)
-        default:
-            print("done")
-        }
-        
+        item.handleCellTap(in: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -88,24 +82,9 @@ extension MultiCellTypeTableViewPage: UITableViewDelegate, UITableViewDataSource
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
-        let item = tableData[indexPath.row]
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        
-        switch item {
-        case .title(let title):
-            cell.configure(cellType: .title, title: title)
-        case .titleDesc(let title, let description):
-            cell.configure(cellType: .title, title: title, description: description)
-        case .titleRightIcon(let title, let rightIconName):
-            cell.configure(cellType: .titleRightIcon, title: title, rightIconName: rightIconName)
-        case .titleSwitch(let title, let isSwitchOn):
-            cell.configure(cellType: .titleSwitch, title: title, isSwitchOn: isSwitchOn)
-        case .titleDescNextVC(let title, let description, _):
-            cell.configure(cellType: .titleLeftIconRightIcon, title: title, description: description)
-        default:
-            print("出错")
-        }
-        
+        let item = tableData[indexPath.row]
+        item.configureCell(cell)
         return cell
     }
 }
