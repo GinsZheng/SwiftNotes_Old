@@ -8,12 +8,12 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<TempDefaultCellItem> {
+private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
-            TempDefaultCellItem(title: "Equal Size", viewController: EqualSizeCollectionViewPage()),
-            TempDefaultCellItem(title: "Equal Division", viewController: EqualDivisionCollectionViewPage()),
-            TempDefaultCellItem(title: "Auto Layout", viewController: AutoLayoutCollectionViewPage())
+            .titleNextVC(title: "Equal Size", viewController: EqualSizeCollectionViewPage()),
+            .titleNextVC(title: "Equal Division", viewController: EqualDivisionCollectionViewPage()),
+            .titleNextVC(title: "Auto Layout", viewController: AutoLayoutCollectionViewPage())
         ])
     }
 }
@@ -52,7 +52,8 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: tableData[indexPath.row].viewController)
+        let item = tableData[indexPath.row]
+        item.handleCellTap(in: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -60,8 +61,8 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
-        
+        let item = tableData[indexPath.row]
+        item.configureCell(cell)
         return cell
     }
     

@@ -8,12 +8,12 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<TempDefaultCellItem> {
+private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
-            TempDefaultCellItem(title: "Test1", viewController: Test1VC()),
-            TempDefaultCellItem(title: "JsonDataTableViewPage", viewController: JsonDataTableViewPage()),
-            TempDefaultCellItem(title: "MultiCellTypeTableViewPage", viewController: MultiCellTypeTableViewPage()),
+            .titleNextVC(title: "Test1", viewController: Test1VC()),
+            .titleNextVC(title: "JsonDataTableViewPage", viewController: JsonDataTableViewPage()),
+            .titleNextVC(title: "MultiCellTypeTableViewPage", viewController: MultiCellTypeTableViewPage()),
         ])
     }
 }
@@ -62,7 +62,8 @@ extension TestVCListPage: UITableViewDelegate, UITableViewDataSource {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: tableData[indexPath.row].viewController)
+        let item = tableData[indexPath.row]
+        item.handleCellTap(in: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -75,7 +76,8 @@ extension TestVCListPage: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
+        let item = tableData[indexPath.row]
+        item.configureCell(cell)
         return cell
     }
 }

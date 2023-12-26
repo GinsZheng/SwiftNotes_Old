@@ -9,28 +9,28 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<TempDefaultCellItem> {
+private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
-            TempDefaultCellItem(title: "Array", viewController: CSArrayPage()),
-            TempDefaultCellItem(title: "CSV", viewController: CSVPage()),
-            TempDefaultCellItem(title: "Data Operate", viewController: CSDataOperate()),
-            TempDefaultCellItem(title: "Data Save List", viewController: CSDataSaveListVC()),
-            TempDefaultCellItem(title: "设备信息", viewController: CSDeviceInfoPage()),
-            TempDefaultCellItem(title: "Dictionary", viewController: CSDictionaryPage()),
-            TempDefaultCellItem(title: "Double", viewController: DoublePage()),
-            TempDefaultCellItem(title: "Enum", viewController: CSEnumPage()),
-            TempDefaultCellItem(title: "Int", viewController: CSIntPage()),
-            TempDefaultCellItem(title: "Item Model (Basic)", viewController: CSItemSearchPage()),
-            TempDefaultCellItem(title: "Localization", viewController: LocalizationPage()),
-            TempDefaultCellItem(title: "plist", viewController: CSPlistPage()),
-            TempDefaultCellItem(title: "Private", viewController: PrivatePage()),
-            TempDefaultCellItem(title: "Progress Model (Joined)", viewController: CSProgressSearchPage()),
-            TempDefaultCellItem(title: "Read File", viewController: CSReadFilePage()),
-            TempDefaultCellItem(title: "Request", viewController: CSRequestPage()),
-            TempDefaultCellItem(title: "String", viewController: CSStringPage()),
-            TempDefaultCellItem(title: "SwiftyJSON", viewController: CSSwiftyJSONPage()),
-            TempDefaultCellItem(title: "Time", viewController: CSTimePage()),
+            .titleNextVC(title: "Array", viewController: CSArrayPage()),
+            .titleNextVC(title: "CSV", viewController: CSVPage()),
+            .titleNextVC(title: "Data Operate", viewController: CSDataOperate()),
+            .titleNextVC(title: "Data Save List", viewController: CSDataSaveListVC()),
+            .titleNextVC(title: "设备信息", viewController: CSDeviceInfoPage()),
+            .titleNextVC(title: "Dictionary", viewController: CSDictionaryPage()),
+            .titleNextVC(title: "Double", viewController: DoublePage()),
+            .titleNextVC(title: "Enum", viewController: CSEnumPage()),
+            .titleNextVC(title: "Int", viewController: CSIntPage()),
+            .titleNextVC(title: "Item Model (Basic)", viewController: CSItemSearchPage()),
+            .titleNextVC(title: "Localization", viewController: LocalizationPage()),
+            .titleNextVC(title: "plist", viewController: CSPlistPage()),
+            .titleNextVC(title: "Private", viewController: PrivatePage()),
+            .titleNextVC(title: "Progress Model (Joined)", viewController: CSProgressSearchPage()),
+            .titleNextVC(title: "Read File", viewController: CSReadFilePage()),
+            .titleNextVC(title: "Request", viewController: CSRequestPage()),
+            .titleNextVC(title: "String", viewController: CSStringPage()),
+            .titleNextVC(title: "SwiftyJSON", viewController: CSSwiftyJSONPage()),
+            .titleNextVC(title: "Time", viewController: CSTimePage()),
         ])
     }
 }
@@ -79,7 +79,8 @@ extension CSModelListVC: UITableViewDelegate, UITableViewDataSource {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: tableData[indexPath.row].viewController)
+        let item = tableData[indexPath.row]
+        item.handleCellTap(in: self)
     }
     
     // 行数
@@ -91,7 +92,8 @@ extension CSModelListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
+        let item = tableData[indexPath.row]
+        item.configureCell(cell)
         return cell
     }
 }
