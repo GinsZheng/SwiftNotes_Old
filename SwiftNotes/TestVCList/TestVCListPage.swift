@@ -12,6 +12,7 @@ private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
             .titleNextVC(title: "Test1", viewController: Test1VC()),
+            .titleNextVC(title: "Table View", viewController: TableViewPage()),
             .titleNextVC(title: "JsonDataTableViewPage", viewController: JsonDataTableViewPage()),
             .titleNextVC(title: "MultiCellTypeTableViewPage", viewController: MultiCellTypeTableViewPage()),
         ])
