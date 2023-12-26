@@ -115,7 +115,8 @@ class MultiCellTypeTableViewPage: UIViewController {
 extension MultiCellTypeTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kCellHeight
+        let item = tableData[indexPath.row]
+        return item.setCellHeight()
     }
     
     // 点击
