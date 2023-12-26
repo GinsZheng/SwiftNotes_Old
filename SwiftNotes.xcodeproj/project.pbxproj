@@ -217,6 +217,7 @@
 		7AD5C3B728BDFF530002CCE1 /* ViewCellList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AD5C3B628BDFF530002CCE1 /* ViewCellList.plist */; };
 		7AD5C3E628BE06070002CCE1 /* test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AD5C3E528BE06070002CCE1 /* test.csv */; };
 		7AE5EF512B149DA000ECD038 /* LocalizationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5EF502B149DA000ECD038 /* LocalizationPage.swift */; };
+		7AE8EB6E2B3AA1AF003AF47D /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8EB6D2B3AA1AF003AF47D /* ViewControllerManager.swift */; };
 		7AEA78B524C32F0F00909C62 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7AEA78B424C32F0F00909C62 /* index.html */; };
 		7AEE5A682B371C260020A2B1 /* JsonDataTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE5A672B371C260020A2B1 /* JsonDataTableViewPage.swift */; };
 		7AF1454E25810E3600B98393 /* DoublePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1454D25810E3600B98393 /* DoublePage.swift */; };
@@ -763,6 +764,7 @@
 		7AD5C3E128BE002B0002CCE1 /* ViewCellExcel.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = ViewCellExcel.xlsx; sourceTree = "<group>"; };
 		7AD5C3E528BE06070002CCE1 /* test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.csv; sourceTree = "<group>"; };
 		7AE5EF502B149DA000ECD038 /* LocalizationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationPage.swift; sourceTree = "<group>"; };
+		7AE8EB6D2B3AA1AF003AF47D /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
 		7AEA78B424C32F0F00909C62 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		7AEE5A672B371C260020A2B1 /* JsonDataTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDataTableViewPage.swift; sourceTree = "<group>"; };
 		7AF1454D25810E3600B98393 /* DoublePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublePage.swift; sourceTree = "<group>"; };
@@ -1205,6 +1207,7 @@
 				7A88C7572A892B6B00D61E33 /* ColorsInApp.swift */,
 				7A88C78C2A8A62A800D61E33 /* StylesInApp.swift */,
 				7A88C6362A8925C500D61E33 /* VariablesInApp.swift */,
+				7AE8EB6D2B3AA1AF003AF47D /* ViewControllerManager.swift */,
 			);
 			name = InApp;
 			path = ../SwiftGeneral/InApp;
@@ -2117,6 +2120,7 @@
 				7A4736D2246DA6500071115F /* DismissPage.swift in Sources */,
 				7A2A7E3D23F43A0300146C38 /* Delegate2Page.swift in Sources */,
 				7AA3C2B1241CCC6000F77711 /* ItemUpdatePage.swift in Sources */,
+				7AE8EB6E2B3AA1AF003AF47D /* ViewControllerManager.swift in Sources */,
 				7A21615E238986AF00D5A93A /* TableViewPage.swift in Sources */,
 				7A0FBCAF2A724D6000AC7BCA /* VideoPlayer.swift in Sources */,
 				7AD3C6162B104F0F00B9A752 /* TestVCListPage.swift in Sources */,

@@ -9,51 +9,9 @@
 import UIKit
 import Alamofire
 
-
-// ⚠️下一步：看GPT，把TableCellDataManager这个子类实现
-private class DataManager: DefaultCellDataManager {
-    
-}
-
-
-// 映射 pageId 到 viewController
-class ViewControllerManager {
-    static var viewControllers: [Int: UIViewController.Type] = [
-        1: ButtonPage.self,
-        2: ImageViewPage.self,
-    ]
-    
-    static func viewController(for pageId: Int?) -> UIViewController? {
-        guard let pageId = pageId, let vcType = viewControllers[pageId] else {
-            return nil
-        }
-        return vcType.init()
-    }
-}
-
-
-
-
-struct DefaultTableResponse: Decodable {
-    var code: Int
-    var message: String
-    var items: [DefaultCellModel]
-}
-
-struct DefaultCellModel: Decodable {
-    var typeId: Int // UI类型id
-    var title: String
-    var description: String?
-    var leftIconName: String?
-    var rightIconName: String?
-    var isSwitchOn: Bool?
-    var pageId: Int? // 要跳转的页面id
-}
-
-
 class JsonDataTableViewPage: UIViewController {
     
-    private let tableData = DataManager()
+    private let tableData = DefaultCellDataManager() // 1. 初始化默认Cell的DataManager
     
     let tableView = UITableView()
     
@@ -62,16 +20,7 @@ class JsonDataTableViewPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
-        let url = "https://gotest.ginkgeek.com/returnJson"
-        AF.request(url).responseDecodable(of: DefaultTableResponse.self) { response in
-            if let value = response.value {
-                let items = value.items
-                self.tableData.updateItems(with: items)
-            } else {
-                print(response.error!)
-            }
-        }
+        fetchTableData()
     }
     
     
@@ -86,6 +35,17 @@ class JsonDataTableViewPage: UIViewController {
         // 数据更新时刷新列表
         tableData.onItemsUpdated = { [weak self] in
             self?.tableView.reloadData()
+        }
+    }
+    
+    func fetchTableData() {
+        let url = "https://gotest.ginkgeek.com/returnJson"
+        AF.request(url).responseDecodable(of: DefaultTableResponse.self) { response in
+            if let value = response.value {
+                self.tableData.updateItems(with: value.items)  // 2. 调用 updateItems 函数为 tableData 更新值
+            } else {
+                print(response.error!)
+            }
         }
     }
     
@@ -104,7 +64,6 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        self.push(toTarget: CSGeneralSubpage())
         let item = tableData[indexPath.row]
         
         switch item {
