@@ -8,11 +8,11 @@
 
 import UIKit
 
-private class DataManager: BaseDataManager<TempDefaultCellItem> {
+private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
-            TempDefaultCellItem(title: "Animation", viewController: AnimationPage()),
-            TempDefaultCellItem(title: "Button", viewController: ButtonPage()),
+            .titleNextVC(title: "Animation", viewController: AnimationPage()),
+            .titleNextVC(title: "Button", viewController: ButtonPage()),
         ])
     }
 }
@@ -61,7 +61,8 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: tableData[indexPath.row].viewController)
+        let item = tableData[indexPath.row]
+        item.handleCellTap(in: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -74,7 +75,8 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
+        let item = tableData[indexPath.row]
+        item.configureCell(cell)
         return cell
     }
 }
