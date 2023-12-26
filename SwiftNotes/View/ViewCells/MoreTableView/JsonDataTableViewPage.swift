@@ -11,100 +11,10 @@ import Alamofire
 
 
 // ⚠️下一步：看GPT，把TableCellDataManager这个子类实现
-private class DataManager: BaseDataManager<DefaultCellItems> {
+private class DataManager: DefaultCellDataManager {
     
 }
 
-extension DataManager {
-    func updateItems(with newItems: [DefaultCellModel]) {
-        
-        self.items = newItems.map { item in
-            let title = item.title
-            let description = item.description
-            let leftIconName = item.leftIconName
-            let rightIconName = item.rightIconName
-            let isSwitchOn = item.isSwitchOn
-            let viewController = ViewControllerManager.viewController(for: item.pageId)
-            
-            switch item.typeId {
-            case 11:
-                return description == nil ?
-                    .title(title: title) :
-                    .titleDesc(title: title, description: item.description!)
-            case 12:
-                if rightIconName == nil && description == nil && viewController == nil {
-                    return .titleNext(title: title)
-                } else if rightIconName == nil && description != nil && viewController == nil {
-                    return .titleDescNext(title: title, description: description!)
-                } else if rightIconName == nil && description == nil && viewController != nil {
-                    return .titleNextVC(title: title, viewController: viewController!)
-                } else if rightIconName == nil && description != nil && viewController != nil {
-                    return .titleDescNextVC(title: title, description: description!, viewController: viewController!)
-                } else if rightIconName != nil && description == nil && viewController == nil {
-                    return .titleRightIcon(title: title, rightIconName: rightIconName!)
-                } else if rightIconName != nil && description != nil && viewController == nil {
-                    return .titleDescRightIcon(title: title, description: description!, rightIconName: rightIconName!)
-                } else {
-                    print("数据异常") // 这是为了穷举(因为3个判断8个条件中还有两个条件没写出来)
-                    return .title(title: title)
-                }
-            case 13:
-                print("hey")
-                guard let isSwitchOn = isSwitchOn else { return .title(title: title) }
-                return .titleSwitch(title: title, isSwitchOn: isSwitchOn)
-            case 14:
-                guard let leftIconName = leftIconName else { return .title(title: title)}
-                
-                if rightIconName == nil && description == nil && viewController == nil {
-                    return .titleLeftIconNext(title: title, leftIconName: leftIconName)
-                } else if rightIconName == nil && description != nil && viewController == nil {
-                    return .titleDescLeftIconNext(title: title, description: description!, leftIconName: leftIconName)
-                } else if rightIconName == nil && description == nil && viewController != nil {
-                    return .titleLeftIconNextVC(title: title, leftIconName: leftIconName, viewController: viewController!)
-                } else if rightIconName == nil && description != nil && viewController != nil {
-                    return .titleDescLeftIconNextVC(title: title, description: description!, leftIconName: leftIconName, viewController: viewController!)
-                } else if rightIconName != nil && description == nil && viewController == nil {
-                    return .titleLeftIconRightIcon(title: title, leftIconName: leftIconName, rightIconName: rightIconName!)
-                } else if rightIconName != nil && description != nil && viewController == nil {
-                    return .titleDescLeftIconRightIcon(title: title, description: description!, leftIconName: leftIconName, rightIconName: rightIconName!)
-                } else {
-                    print("数据异常") // 这是为了穷举(因为3个判断8个条件中还有两个条件没写出来)
-                    return .title(title: title)
-                }
-            case 15:
-                guard let isSwitchOn = isSwitchOn, let leftIconName = leftIconName else { return .title(title: title) }
-                return .titleLeftIconSwitch(title: title, leftIconName: leftIconName, isSwitchOn: isSwitchOn)
-            case 21:
-                guard let description = description else { return .title(title: title)}
-                return .titleDesc2Line(title: title, description: description)
-            case 22:
-                guard let description = description else { return .title(title: title)}
-                if rightIconName == nil && viewController == nil {
-                    return .titleDescNext2Line(title: title, description: description)
-                } else if rightIconName == nil && viewController != nil {
-                    return .titleDescNextVC2Line(title: title, description: description, viewController: viewController!)
-                } else if rightIconName != nil && viewController == nil {
-                    return .titleDescRightIcon2Line(title: title, description: description, rightIconName: rightIconName!)
-                } else {
-                    print("数据异常") // 这是为了穷举
-                    return .title(title: title)
-                }
-            case 23:
-                guard let description = description, let isSwitchOn = isSwitchOn else { return .title(title: title) }
-                return viewController == nil ?
-                    .titleDescSwitch2Line(title: title, description: description, isSwitchOn: isSwitchOn):
-                    .titleDescSwitchVC2Line(title: title, description: description, isSwitchOn: isSwitchOn, viewController: viewController!)
-            default:
-                print("未知的typeId: \(item.typeId)")
-                return .title(title: title)
-            }
-            
-        }
-        // 通知数据已更新
-        self.onItemsUpdated?()
-        
-    }
-}
 
 // 映射 pageId 到 viewController
 class ViewControllerManager {
@@ -153,7 +63,7 @@ class JsonDataTableViewPage: UIViewController {
         super.viewDidLoad()
         setupUI()
         
-        let url = "http://127.0.0.1:8009/returnJson"
+        let url = "https://gotest.ginkgeek.com/returnJson"
         AF.request(url).responseDecodable(of: DefaultTableResponse.self) { response in
             if let value = response.value {
                 let items = value.items
