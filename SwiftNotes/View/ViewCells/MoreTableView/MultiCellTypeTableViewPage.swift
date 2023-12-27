@@ -32,46 +32,6 @@ private class DataManager: DefaultCellDataManager {
             .titleDescRightIcon2Line(title: "22 titleDescRightIcon2Line", description: "hey", rightIconName: kIconCheckbox),
             .titleDescSwitch2Line(title: "23 titleDescSwitch2Line", description: "hey", isSwitchOn: true),
             .titleDescSwitchVC2Line(title: "23 titleDescSwitchVC2Line", description: "hey", isSwitchOn: false, viewController: ButtonPage()),
-            // ————
-            .title(title: "11 title"),
-            .titleDesc(title: "11 titleDesc", description: "描述"),
-            .titleNext(title: "12 titleNext"),
-            .titleDescNext(title: "12 titleDescNext", description: "描述描述描述描述描述描述描述描述描述描述描述"),
-            .titleNextVC(title: "12 titleNextVC", viewController: ViewControllerManager.viewController(for: 1) ?? ImageViewPage()),
-            .titleDescNextVC(title: "12 titleDescNextVC", description: "hey", viewController: ButtonPage()),
-            .titleRightIcon(title: "12 titleRightIcon", rightIconName: kIconCheckbox_s),
-            .titleDescRightIcon(title: "12 titleDescRightIcon", description: "hey", rightIconName: kIconCheckbox_s),
-            .titleSwitch(title: "13 titleSwitch", isSwitchOn: true),
-            .titleLeftIconNext(title: "14 titleLeftIconNext", leftIconName: kIconCheckbox_s),
-            .titleDescLeftIconNext(title: "14 titleDescLeftIconNext", description: "hey", leftIconName: kIconCheckbox_s),
-            .titleLeftIconNextVC(title: "14 titleLeftIconNextVC", leftIconName: kIconCheckbox_s, viewController: ButtonPage()),
-            .titleDescLeftIconNextVC(title: "14 titleDescLeftIconNextVC", description: "hey", leftIconName: kIconCheckbox, viewController: ButtonPage()),
-            .titleLeftIconSwitch(title: "15 titleLeftIconSwitch", leftIconName: kIconCheckbox, isSwitchOn: true),
-            .titleDesc2Line(title: "21 titleDesc2Line", description: "hey"),
-            .titleDescNext2Line(title: "22 titleDescNext2Line", description: "hey"),
-            .titleDescNextVC2Line(title: "22 titleDescNextVC2Line", description: "hey", viewController: ButtonPage()),
-            .titleDescRightIcon2Line(title: "22 titleDescRightIcon2Line", description: "hey", rightIconName: kIconCheckbox),
-            .titleDescSwitch2Line(title: "23 titleDescSwitch2Line", description: "hey", isSwitchOn: true),
-            .titleDescSwitchVC2Line(title: "23 titleDescSwitchVC2Line", description: "hey", isSwitchOn: false, viewController: ButtonPage()),            .title(title: "11 title"),
-            .titleDesc(title: "11 titleDesc", description: "描述"),
-            .titleNext(title: "12 titleNext"),
-            .titleDescNext(title: "12 titleDescNext", description: "描述描述描述描述描述描述描述描述描述描述描述"),
-            .titleNextVC(title: "12 titleNextVC", viewController: ViewControllerManager.viewController(for: 1) ?? ImageViewPage()),
-            .titleDescNextVC(title: "12 titleDescNextVC", description: "hey", viewController: ButtonPage()),
-            .titleRightIcon(title: "12 titleRightIcon", rightIconName: kIconCheckbox_s),
-            .titleDescRightIcon(title: "12 titleDescRightIcon", description: "hey", rightIconName: kIconCheckbox_s),
-            .titleSwitch(title: "13 titleSwitch", isSwitchOn: true),
-            .titleLeftIconNext(title: "14 titleLeftIconNext", leftIconName: kIconCheckbox_s),
-            .titleDescLeftIconNext(title: "14 titleDescLeftIconNext", description: "hey", leftIconName: kIconCheckbox_s),
-            .titleLeftIconNextVC(title: "14 titleLeftIconNextVC", leftIconName: kIconCheckbox_s, viewController: ButtonPage()),
-            .titleDescLeftIconNextVC(title: "14 titleDescLeftIconNextVC", description: "hey", leftIconName: kIconCheckbox, viewController: ButtonPage()),
-            .titleLeftIconSwitch(title: "15 titleLeftIconSwitch", leftIconName: kIconCheckbox, isSwitchOn: true),
-            .titleDesc2Line(title: "21 titleDesc2Line", description: "hey"),
-            .titleDescNext2Line(title: "22 titleDescNext2Line", description: "hey"),
-            .titleDescNextVC2Line(title: "22 titleDescNextVC2Line", description: "hey", viewController: ButtonPage()),
-            .titleDescRightIcon2Line(title: "22 titleDescRightIcon2Line", description: "hey", rightIconName: kIconCheckbox),
-            .titleDescSwitch2Line(title: "23 titleDescSwitch2Line", description: "hey", isSwitchOn: true),
-            .titleDescSwitchVC2Line(title: "23 titleDescSwitchVC2Line", description: "hey", isSwitchOn: false, viewController: ButtonPage()),
         ])
     }
 }
@@ -111,9 +71,7 @@ class MultiCellTypeTableViewPage: UIViewController {
 extension MultiCellTypeTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        let item = tableData[indexPath.row]
-//        return item.setCellHeight()
-        return kCellHeight
+        return tableData[indexPath.row].setCellHeight()
     }
     
     // 点击

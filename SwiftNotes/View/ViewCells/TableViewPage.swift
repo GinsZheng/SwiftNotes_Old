@@ -52,13 +52,12 @@ class TableViewPage: UIViewController {
 extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kCellHeight
+        return tableData[indexPath.row].setCellHeight()
     }
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = tableData[indexPath.row]
-        item.handleCellTap(in: self)
+        tableData[indexPath.row].handleCellTap(in: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -71,8 +70,7 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        let item = tableData[indexPath.row]
-        item.configureCell(cell)
+        tableData[indexPath.row].configureCell(cell)
         return cell
     }
 }
