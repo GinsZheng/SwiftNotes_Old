@@ -81,13 +81,11 @@ class HeaderAndFooterTableViewPage: UIViewController {
     // MARK: - func
     func setupUI() {
         view.setBackgroundColor(color: cF2F3F6)
-        
-        tableView.register(DefaultCell.self, forCellReuseIdentifier: DefaultCell.identifier)
-        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
-        tableView.setFrame(left: 0, top: 8, right: 0, height: kWithoutNavBarHeight)
+        setupDefaultTableView(tableView)
+        tableView.setBackgroundColor(color: cNoColor)
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
         tableView.hideSectionHeaderTopPadding()
-        tableView.setBackgroundColor(color: cNoColor)
+        // 数据更新时刷新列表
         tableData.onItemsUpdated = {  [weak self] in
             self?.tableView.reloadData()
         }
