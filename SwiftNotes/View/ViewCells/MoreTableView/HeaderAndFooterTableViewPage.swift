@@ -17,14 +17,14 @@ import UIKit
 // A1. 表头与cell写两个Struct，表头的struct 遵循 SectionProtocol以实现cellData方法
 private struct Section: SectionProtocol {
     var sectionTitle: String
-    var cells: [CellData]
+    var cells: [DefaultCellItems]
 }
 
 // A2. cell的struct
-private struct CellData {
-    var title: String
-    var viewController: UIViewController
-}
+//private struct DefaultCellItems {
+//    var title: String
+//    var viewController: UIViewController
+//}
 
 // A3. DataManager 遵循 SectionedDataManager 以实现cellData方法
 private class DataManager: BaseDataManager<Section>, SectionedDataManager {
@@ -33,25 +33,25 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
             Section(
                 sectionTitle: "Section 1",
                 cells: [
-                    CellData(title: "标题1", viewController: CSGeneralSubpage()),
-                    CellData(title: "标题2", viewController: CSGeneralSubpage()),
-                    CellData(title: "标题3", viewController: CSGeneralSubpage())
+                    .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题3", viewController: CSGeneralSubpage())
                 ]
             ),
             Section(
                 sectionTitle: "Section 2",
                 cells: [
-                    CellData(title: "标题4", viewController: CSGeneralSubpage()),
-                    CellData(title: "标题5", viewController: CSGeneralSubpage())
+                    .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题5", viewController: CSGeneralSubpage())
                 ]
             ),
             Section(
                 sectionTitle: "Section 3",
                 cells: [
-                    CellData(title: "标题6", viewController: CSGeneralSubpage()),
-                    CellData(title: "标题7", viewController: CSGeneralSubpage()),
-                    CellData(title: "标题8", viewController: CSGeneralSubpage()),
-                    CellData(title: "标题9", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题6", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题7", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题8", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题9", viewController: CSGeneralSubpage()),
                 ]
             )
         ])
@@ -99,9 +99,9 @@ class HeaderAndFooterTableViewPage: UIViewController {
 extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = tableData.cellData(for: indexPath).viewController // cellData函数调用
-        self.push(toTarget: viewController)
-        tableView.deselectRow(at: indexPath, animated: true)
+//        let viewController = tableData.cellData(for: indexPath).viewController // cellData函数调用
+//        self.push(toTarget: viewController)
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // 表头高度
@@ -154,8 +154,11 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         // 获取当前 section 的 cell 数量
         let cellCountInSection = tableView.numberOfRows(inSection: indexPath.section)
         cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: true)
-        let item = tableData.cellData(for: indexPath)
-        cell.configure(cellType: .titleRightIcon, title: item.title)
+        
+        // 获取 cell 的数据
+        let item = tableData.items[indexPath.section].cells[indexPath.row]
+        item.configureCell(cell)
+
         return cell
     }
     
