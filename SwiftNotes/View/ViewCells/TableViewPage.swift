@@ -13,7 +13,6 @@ private class DataManager: DefaultCellDataManager {
         super.init(initialItems: [
             .titleNextVC(title: "Animation", viewController: AnimationPage()),
             .titleNextVC(title: "Button", viewController: ButtonPage()),
-            .titleNext(title: "hey")
         ])
     }
 }
