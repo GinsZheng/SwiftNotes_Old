@@ -10,12 +10,19 @@ import UIKit
 import SQLite
 import SwiftyJSON
 
+private class DataManager: DefaultCellDataManager {
+    init() {
+        super.init(initialItems: [
+            .titleNextVC(title: "Animation", viewController: CSGeneralSubpage()),
+            .titleNextVC(title: "Button", viewController: CSGeneralSubpage())
+        ])
+    }
+}
+
+
 class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSource, CSReloadDelegate {
     
-    let tableData: [TempDefaultCellItem] = [
-        TempDefaultCellItem(title: "Animation", viewController: CSGeneralSubpage()),
-        TempDefaultCellItem(title: "Button", viewController: CSGeneralSubpage())
-    ]
+    private let tableData = DataManager()
     
     let table = ItemTable()
     
@@ -75,7 +82,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
+        tableData[indexPath.row].configureCell(cell)
         
         return cell
     }

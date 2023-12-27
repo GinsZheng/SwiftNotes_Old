@@ -8,12 +8,19 @@
 
 import UIKit
 
+private class DataManager: DefaultCellDataManager {
+    init() {
+        super.init(initialItems: [
+            .titleNextVC(title: "Mask", viewController: CSMaskPage()),
+            .titleNextVC(title: "Font", viewController: CSFontPage())
+        ])
+    }
+}
+
+
 class UIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let tableData: [TempDefaultCellItem] = [
-        TempDefaultCellItem(title: "Mask", viewController: CSMaskPage()),
-        TempDefaultCellItem(title: "Font", viewController: CSFontPage())
-    ]
+    private let tableData = DataManager()
     
     let tableView = UITableView()
     
@@ -47,16 +54,14 @@ class UIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: tableData[indexPath.row].viewController)
+        tableData[indexPath.row].handleCellTap(in: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
-        
+        tableData[indexPath.row].configureCell(cell)
         return cell
     }
     

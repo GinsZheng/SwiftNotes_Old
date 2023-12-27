@@ -8,40 +8,47 @@
 
 import UIKit
 
+private class DataManager: DefaultCellDataManager {
+    init() {
+        super.init(initialItems: [
+            .titleNextVC(title: "Animation", viewController: AnimationPage()),
+            .titleNextVC(title: "Button", viewController: ButtonPage()),
+            .titleNextVC(title: "Camera and Photos", viewController: CameraAndPhotosPage()),
+            .titleNextVC(title: "Collection View", viewController: CollectionViewListPage()),
+            .titleNextVC(title: "Date Picker", viewController: DatePickerPage()),
+            .titleNextVC(title: "Image View", viewController: ImageViewPage()),
+            .titleNextVC(title: "Label", viewController: LabelPage()),
+            .titleNextVC(title: "Layer", viewController: LayerView()),
+            .titleNextVC(title: "Nav Controller", viewController: NavControllerPage()),
+            .titleNextVC(title: "Page Control", viewController: PageControlPage()),
+            .titleNextVC(title: "Picker View", viewController: PickerViewPage()),
+            .titleNextVC(title: "Scroll View", viewController: ScrollViewPage()),
+            .titleNextVC(title: "Scroll View Horizonal", viewController: ScrollViewHorizonalPage()),
+            .titleNextVC(title: "Segment Control", viewController: SegmentControlPage()),
+            .titleNextVC(title: "Slider", viewController: SliderPage()),
+            .titleNextVC(title: "Stack View", viewController: StackViewPage()),
+            .titleNextVC(title: "Stepper", viewController: StepperPage()),
+            .titleNextVC(title: "Styles", viewController: StylesPage()),
+            .titleNextVC(title: "Switch", viewController: SwitchPage()),
+            .titleNextVC(title: "Switch Scroll And Collection View", viewController: SwitchScrollAndCollectionViewPage()),
+            .titleNextVC(title: "Table View", viewController: TableViewPage()),
+            .titleNextVC(title: "Text Field", viewController: TextFieldPage()),
+            .titleNextVC(title: "Text View", viewController: TextViewPage()),
+            .titleNextVC(title: "Transition", viewController: TransitionListPage()),
+            .titleNextVC(title: "UIList", viewController: UIListPage()),
+            .titleNextVC(title: "Video Player", viewController: VideoPlayerPage()),
+            .titleNextVC(title: "View", viewController: ViewPage()),
+            .titleNextVC(title: "ViewController", viewController: ViewControllerPage()),
+            .titleNextVC(title: "Web View", viewController: WebViewPage()),
+            .titleNextVC(title: "Window", viewController: WindowPage()),
+        ])
+    }
+}
+
+
 class ViewListVC: UIViewController {
     
-    let tableData: [TempDefaultCellItem] = [
-        TempDefaultCellItem(title: "Animation", viewController: AnimationPage()),
-        TempDefaultCellItem(title: "Button", viewController: ButtonPage()),
-        TempDefaultCellItem(title: "Camera and Photos", viewController: CameraAndPhotosPage()),
-        TempDefaultCellItem(title: "Collection View", viewController: CollectionViewListPage()),
-        TempDefaultCellItem(title: "Date Picker", viewController: DatePickerPage()),
-        TempDefaultCellItem(title: "Image View", viewController: ImageViewPage()),
-        TempDefaultCellItem(title: "Label", viewController: LabelPage()),
-        TempDefaultCellItem(title: "Layer", viewController: LayerView()),
-        TempDefaultCellItem(title: "Nav Controller", viewController: NavControllerPage()),
-        TempDefaultCellItem(title: "Page Control", viewController: PageControlPage()),
-        TempDefaultCellItem(title: "Picker View", viewController: PickerViewPage()),
-        TempDefaultCellItem(title: "Scroll View", viewController: ScrollViewPage()),
-        TempDefaultCellItem(title: "Scroll View Horizonal", viewController: ScrollViewHorizonalPage()),
-        TempDefaultCellItem(title: "Segment Control", viewController: SegmentControlPage()),
-        TempDefaultCellItem(title: "Slider", viewController: SliderPage()),
-        TempDefaultCellItem(title: "Stack View", viewController: StackViewPage()),
-        TempDefaultCellItem(title: "Stepper", viewController: StepperPage()),
-        TempDefaultCellItem(title: "Styles", viewController: StylesPage()),
-        TempDefaultCellItem(title: "Switch", viewController: SwitchPage()),
-        TempDefaultCellItem(title: "Switch Scroll And Collection View", viewController: SwitchScrollAndCollectionViewPage()),
-        TempDefaultCellItem(title: "Table View", viewController: TableViewPage()),
-        TempDefaultCellItem(title: "Text Field", viewController: TextFieldPage()),
-        TempDefaultCellItem(title: "Text View", viewController: TextViewPage()),
-        TempDefaultCellItem(title: "Transition", viewController: TransitionListPage()),
-        TempDefaultCellItem(title: "UIList", viewController: UIListPage()),
-        TempDefaultCellItem(title: "Video Player", viewController: VideoPlayerPage()),
-        TempDefaultCellItem(title: "View", viewController: ViewPage()),
-        TempDefaultCellItem(title: "ViewController", viewController: ViewControllerPage()),
-        TempDefaultCellItem(title: "Web View", viewController: WebViewPage()),
-        TempDefaultCellItem(title: "Window", viewController: WindowPage()),
-    ]
+    private let tableData = DataManager()
     
     let tableView = UITableView()
     
@@ -49,19 +56,19 @@ class ViewListVC: UIViewController {
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "View" // 导航栏标题
         setupUI()
     }
     
     
     // MARK: - func
     func setupUI() {
-        tableView.register(DefaultCell.self, forCellReuseIdentifier: String(describing: DefaultCell.self))
-        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
-        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavAndTabBarHeight)
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: kVertMargin, right: 0)
+        view.setBackgroundColor(color: cF2F3F6)
+        setupDefaultTableView(tableView)
+        // 数据更新时刷新列表
+        tableData.onItemsUpdated = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
-    
     
     
     // MARK: - @objc func
@@ -69,33 +76,33 @@ class ViewListVC: UIViewController {
 }
 
 
-// MARK: - tableview 代理方法
-extension ViewListVC: UITableViewDelegate {
+// MARK: - TableView 代理方法
+extension ViewListVC: UITableViewDelegate, UITableViewDataSource {
+    // 行高
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableData[indexPath.row].setCellHeight()
+    }
+    
+    // 点击
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableData[indexPath.row].handleCellTap(in: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
     }
     
+    // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
+        tableData[indexPath.row].configureCell(cell)
         return cell
     }
 }
 
-
-// MARK: - tableview 代理方法
-extension ViewListVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kCellHeight
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: tableData[indexPath.row].viewController)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
 
 
 /*

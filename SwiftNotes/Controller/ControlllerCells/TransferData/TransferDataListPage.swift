@@ -54,16 +54,21 @@
   
  */
 
-
-
 import UIKit
 
-class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+private class DataManager: DefaultCellDataManager {
+    init() {
+        super.init(initialItems: [
+            .titleNextVC(title: "Delegate", viewController: CSDelegatePage()),
+            .titleNextVC(title: "Closure", viewController: Closure2VC())
+        ])
+    }
+}
+
+
+class TransferDataListVC: UIViewController {
     
-    let tableData: [TempDefaultCellItem] = [
-        TempDefaultCellItem(title: "Delegate", viewController: CSDelegatePage()),
-        TempDefaultCellItem(title: "Closure", viewController: Closure2VC())
-    ]
+    private let tableData = DataManager()
     
     let tableView = UITableView()
     
@@ -71,42 +76,18 @@ class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
     
     // MARK: - func
     func setupUI() {
-        tableView.register(DefaultCell.self, forCellReuseIdentifier: String(describing: DefaultCell.self))
-        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
-        tableView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
-    }
-    
-    
-    // MARK: - tableview 代理方法
-    // 行数
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableData.count
-    }
-    
-    // 行高
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kCellHeight
-    }
-    
-    // 点击
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: tableData[indexPath.row].viewController)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    // cell
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
-        cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
-        return cell
+        view.setBackgroundColor(color: cF2F3F6)
+        setupDefaultTableView(tableView)
+        // 数据更新时刷新列表
+        tableData.onItemsUpdated = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     
@@ -114,4 +95,31 @@ class TransferDataListVC: UIViewController, UITableViewDelegate, UITableViewData
     
 }
 
+
+// MARK: - TableView 代理方法
+extension TransferDataListVC: UITableViewDelegate, UITableViewDataSource {
+    // 行高
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableData[indexPath.row].setCellHeight()
+    }
+    
+    // 点击
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableData[indexPath.row].handleCellTap(in: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // 行数
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData.count
+    }
+    
+    // cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
+        cell.prepare(row: indexPath.row, dataCount: tableData.count)
+        tableData[indexPath.row].configureCell(cell)
+        return cell
+    }
+}
 
