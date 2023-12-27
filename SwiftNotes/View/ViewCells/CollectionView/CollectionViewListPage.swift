@@ -60,7 +60,7 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
-        cell.prepare(row: indexPath.row, dataCount: tableData.count)
+        cell.prepare(row: indexPath.row, cellCountInSection: tableData.count)
         let item = tableData[indexPath.row]
         item.configureCell(cell)
         return cell

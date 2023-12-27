@@ -60,7 +60,7 @@ class UIListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
-        cell.prepare(row: indexPath.row, dataCount: tableData.count)
+        cell.prepare(row: indexPath.row, cellCountInSection: tableData.count)
         tableData[indexPath.row].configureCell(cell)
         return cell
     }

@@ -157,7 +157,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         // 获取当前 section 的 cell 数量
         let sectionCellCount = tableView.numberOfRows(inSection: indexPath.section)
-        cell.prepare(row: indexPath.row, dataCount: sectionCellCount, isWhiteHeader: true)
+        cell.prepare(row: indexPath.row, cellCountInSection: sectionCellCount, isWhiteHeader: true)
         let item = tableData.cellData(for: indexPath)
         cell.configure(cellType: .titleRightIcon, title: item.title)
         return cell

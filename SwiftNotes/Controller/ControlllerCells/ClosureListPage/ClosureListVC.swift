@@ -70,7 +70,7 @@ extension ClosureListVC: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
-        cell.prepare(row: indexPath.row, dataCount: tableData.count)
+        cell.prepare(row: indexPath.row, cellCountInSection: tableData.count)
         tableData[indexPath.row].configureCell(cell)
         return cell
     }

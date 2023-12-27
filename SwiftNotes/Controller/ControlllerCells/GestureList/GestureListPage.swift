@@ -76,7 +76,7 @@ extension CSGestureListPage: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
-        cell.prepare(row: indexPath.row, dataCount: tableData.count)
+        cell.prepare(row: indexPath.row, cellCountInSection: tableData.count)
         let item = tableData[indexPath.row]
         item.configureCell(cell)
         return cell
@@ -125,7 +125,7 @@ extension CSGestureListPage: UITableViewDelegate, UITableViewDataSource {
 //    
 //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DefaultCell.self), for: indexPath) as! DefaultCell
-//        cell.prepare(row: indexPath.row, dataCount: tableData.count)
+//        cell.prepare(row: indexPath.row, cellCountInSection: tableData.count)
 //        cell.configure(cellType: .titleRightIcon, title: tableData[indexPath.row].title)
 //        return cell
 //    }
