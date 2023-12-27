@@ -8,7 +8,7 @@
 
 /*
  本页演示了tableView怎么加表头表尾，具体包括了：
- 1. 多个section且有表头时数据结构怎么写怎么调用 A1 -A4
+ 1. 多个section且有表头时数据结构怎么写怎么调用 A
  2. 每个section展开/折叠怎么写 B
  */
 
@@ -20,13 +20,8 @@ private struct Section: SectionProtocol {
     var cells: [DefaultCellItems]
 }
 
-// A2. cell的struct
-//private struct DefaultCellItems {
-//    var title: String
-//    var viewController: UIViewController
-//}
 
-// A3. DataManager 遵循 SectionedDataManager 以实现cellData方法
+// A2. DataManager 遵循 SectionedDataManager 以实现cellData方法
 private class DataManager: BaseDataManager<Section>, SectionedDataManager {
     init() {
         super.init(initialItems: [
@@ -188,21 +183,29 @@ class DefaultSectionHeader: UIView {
         
         titleLabel.setup(superview: bgView)
         titleLabel.setStyle20pt000Med()
-        titleLabel.setFrame(left: 16, centerY: bgView.centerY, width: 300)
+        titleLabel.setFrame(left: kEdgeMargin, centerY: bgView.centerY, width: 300)
         
         toggleButton.setup(superview: bgView, target: self, action: #selector(toggleScetion))
-        toggleButton.setStyleIconButton(imageName: "location_upArrow")
-        toggleButton.setFrame(right: 16, centerY: bgView.centerY, width: 16, height: 16)
+        toggleButton.setStyleIconButton(imageName: kIconArrowUp)
+        toggleButton.setFrame(right: kEdgeMargin, centerY: bgView.centerY, width: toggleButton.imageView?.getImageWidth() ?? 100, height: toggleButton.imageView?.getImageHeight() ?? 100)
+        // ⚠️为UIButton(IconButton)的加一个setFrame逻辑
     }
     
     func configure(title: String, isExpanded: Bool) {
         titleLabel.text = title
         updateCornerRadius(isExpanded: isExpanded)
+        updateToggleButtonImage(isExpanded: isExpanded)
     }
     
     func updateCornerRadius(isExpanded: Bool) {
         let corners: UIRectCorner = isExpanded ? [.topLeft, .topRight] : [.allCorners]
         bgView.setEachCornerRadiusWithMask(radius: kRadius, corners: corners)
+    }
+    
+    func updateToggleButtonImage(isExpanded: Bool) {
+        isExpanded == true ?
+        toggleButton.setStyleIconButton(imageName: kIconArrowUp):
+        toggleButton.setStyleIconButton(imageName: kIconArrowDown)
     }
 
     
