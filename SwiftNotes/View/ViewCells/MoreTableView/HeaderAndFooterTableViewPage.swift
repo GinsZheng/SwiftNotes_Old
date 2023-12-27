@@ -91,12 +91,7 @@ class HeaderAndFooterTableViewPage: UIViewController {
         }
         
     }
-    
-    
-    // MARK: - @objc func
-    @objc func toggleScetion() {
-        print("Yes")
-    }
+
 }
 
 
@@ -140,13 +135,14 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         let header = DefaultSectionHeader()
         header.setFrame(left: 0, top: 0, width: kScreenWidth, height: headerHeight)
         header.setupView()
-        header.configure(title: tableData[section].sectionTitle)
+        header.configure(title: tableData[section].sectionTitle, isExpanded: sectionExpanded[section])
         // B4. 配置切换按钮 (这里看起来配不配tag都行)
         // header.toggleButton.tag = section
         header.onToggleSection = { [weak self] in
             guard let self = self else { return }
             self.sectionExpanded[section].toggle() // 切换 section 的展开状态(toggle为bool属性自带函数，切换true与false状态)
             tableView.reloadSections([section], with: .automatic) // 刷新该 section
+
         }
         
         return header
@@ -156,8 +152,8 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         // 获取当前 section 的 cell 数量
-        let sectionCellCount = tableView.numberOfRows(inSection: indexPath.section)
-        cell.prepare(row: indexPath.row, cellCountInSection: sectionCellCount, isWhiteHeader: true)
+        let cellCountInSection = tableView.numberOfRows(inSection: indexPath.section)
+        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: true)
         let item = tableData.cellData(for: indexPath)
         cell.configure(cellType: .titleRightIcon, title: item.title)
         return cell
@@ -185,7 +181,7 @@ class DefaultSectionHeader: UIView {
     func setupView() {
         bgView.setup(superview: self, backgroundColor: cFFF)
         bgView.setBackgroundColor(color: cFFF)
-        bgView.setFrame(allEdges: 0)
+        bgView.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: kWhiteHeaderHeight)
         
         titleLabel.setup(superview: bgView)
         titleLabel.setStyle20pt000Med()
@@ -196,9 +192,16 @@ class DefaultSectionHeader: UIView {
         toggleButton.setFrame(right: 16, centerY: bgView.centerY, width: 16, height: 16)
     }
     
-    func configure(title: String) {
+    func configure(title: String, isExpanded: Bool) {
         titleLabel.text = title
+        updateCornerRadius(isExpanded: isExpanded)
     }
+    
+    func updateCornerRadius(isExpanded: Bool) {
+        let corners: UIRectCorner = isExpanded ? [.topLeft, .topRight] : [.allCorners]
+        bgView.setEachCornerRadiusWithMask(radius: kRadius, corners: corners)
+    }
+
     
     // MARK: - @objc func
     @objc func toggleScetion() {
