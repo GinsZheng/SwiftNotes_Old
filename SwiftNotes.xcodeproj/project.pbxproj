@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -82,6 +82,19 @@
 		7A3647F9238AD062000BBECD /* ItemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* ItemTable.swift */; };
 		7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
+		7A3985DC2B3C2336004E0721 /* ESTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 7A3985DB2B3C2336004E0721 /* ESTabBarController */; };
+		7A3986072B3C2336004E0721 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EB7F2B3C21E4003AF47D /* Alamofire.framework */; };
+		7A3986082B3C2336004E0721 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EB7F2B3C21E4003AF47D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A3986092B3C2336004E0721 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EB9C2B3C21F4003AF47D /* Hero.framework */; };
+		7A39860A2B3C2336004E0721 /* Hero.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EB9C2B3C21F4003AF47D /* Hero.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A39860B2B3C2336004E0721 /* Localize_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EBAE2B3C21FB003AF47D /* Localize_Swift.framework */; };
+		7A39860C2B3C2336004E0721 /* Localize_Swift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EBAE2B3C21FB003AF47D /* Localize_Swift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A39860D2B3C2336004E0721 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EBC22B3C2201003AF47D /* SQLite.framework */; };
+		7A39860E2B3C2336004E0721 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EBC22B3C2201003AF47D /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A39860F2B3C2336004E0721 /* SwiftCSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EBDA2B3C220A003AF47D /* SwiftCSV.framework */; };
+		7A3986102B3C2336004E0721 /* SwiftCSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EBDA2B3C220A003AF47D /* SwiftCSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7A3986112B3C2336004E0721 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EBF32B3C220E003AF47D /* SwiftyJSON.framework */; };
+		7A3986122B3C2336004E0721 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EBF32B3C220E003AF47D /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7A3A2B552AB30AE20067AEB0 /* PrivatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3A2B542AB30AE20067AEB0 /* PrivatePage.swift */; };
 		7A3C6B062884111F00C1D7AC /* CSVPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3C6B052884111F00C1D7AC /* CSVPage.swift */; };
 		7A3C6B3F2884135900C1D7AC /* item.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A3C6B3D2884135900C1D7AC /* item.csv */; };
@@ -526,6 +539,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7A3986102B3C2336004E0721 /* SwiftCSV.framework in Embed Frameworks */,
+				7A39860A2B3C2336004E0721 /* Hero.framework in Embed Frameworks */,
+				7A3986122B3C2336004E0721 /* SwiftyJSON.framework in Embed Frameworks */,
+				7A39860C2B3C2336004E0721 /* Localize_Swift.framework in Embed Frameworks */,
+				7A39860E2B3C2336004E0721 /* SQLite.framework in Embed Frameworks */,
+				7A3986082B3C2336004E0721 /* Alamofire.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +780,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A3985DC2B3C2336004E0721 /* ESTabBarController in Frameworks */,
+				7A39860F2B3C2336004E0721 /* SwiftCSV.framework in Frameworks */,
+				7A3986072B3C2336004E0721 /* Alamofire.framework in Frameworks */,
+				7A3986092B3C2336004E0721 /* Hero.framework in Frameworks */,
+				7A3986112B3C2336004E0721 /* SwiftyJSON.framework in Frameworks */,
+				7A39860D2B3C2336004E0721 /* SQLite.framework in Frameworks */,
+				7A39860B2B3C2336004E0721 /* Localize_Swift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1567,6 +1593,7 @@
 			);
 			name = SwiftNotes;
 			packageProductDependencies = (
+				7A3985DB2B3C2336004E0721 /* ESTabBarController */,
 			);
 			productName = SwiftNotes;
 			productReference = 7A27506222ABA25600C8A474 /* SwiftNotes.app */;
@@ -2694,6 +2721,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7A3985DB2B3C2336004E0721 /* ESTabBarController */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ESTabBarController;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7A27505A22ABA25600C8A474 /* Project object */;
 }
