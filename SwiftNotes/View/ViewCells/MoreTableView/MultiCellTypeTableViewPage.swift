@@ -80,8 +80,9 @@ extension MultiCellTypeTableViewPage: UITableViewDelegate, UITableViewDataSource
         /// 常见情况有：
         /// 1. 各个Cell跳转与否，跳转到哪都不同(常见于我的页列表)，需要配viewController参数：用tableData来判断
         /// 2. 各个Cell跳转与否，跳转到哪都相同(常见于首页列表)，无需viewController参数，分3情情况：1. 无需判断(即每个列表都跳转到相同的页面) 2. 用固定的逻辑判断(比如判断是否离线等，不用tableData来判断) 3. 用tableData中的UI类型来判断(属于比较省事的做法，把跳转的逻辑与tableData绑定)
-        let item = tableData[indexPath.row]
-        item.handleCellTap(in: self)
+        tableData[indexPath.row].handleCellTapForPushOrClosure(from: self) {
+            self.push(toTarget: CSGeneralSubpage())
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

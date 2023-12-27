@@ -53,7 +53,7 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = tableData[indexPath.row]
-        item.handleCellTap(in: self)
+        item.pushViewControllerOnTap(from: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

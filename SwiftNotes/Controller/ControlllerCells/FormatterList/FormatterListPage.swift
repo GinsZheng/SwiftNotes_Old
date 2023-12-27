@@ -57,7 +57,7 @@ extension FormatterListPage: UITableViewDelegate, UITableViewDataSource {
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableData[indexPath.row].handleCellTap(in: self)
+        tableData[indexPath.row].pushViewControllerOnTap(from: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
