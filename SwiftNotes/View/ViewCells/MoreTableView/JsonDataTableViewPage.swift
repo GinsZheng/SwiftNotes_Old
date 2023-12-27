@@ -55,13 +55,12 @@ class JsonDataTableViewPage: UIViewController {
 extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kCellHeight
+        return tableData[indexPath.row].setCellHeight()
     }
     
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = tableData[indexPath.row]
-        item.pushViewControllerOnTap(from: self)
+        tableData[indexPath.row].pushViewControllerOnTap(from: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -74,8 +73,7 @@ extension JsonDataTableViewPage: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        let item = tableData[indexPath.row]
-        item.configureCell(cell)
+        tableData[indexPath.row].configureCell(cell)
         return cell
     }
 }

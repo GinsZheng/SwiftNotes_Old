@@ -8,7 +8,7 @@
 
 import UIKit
 
-// 下一步：1. 把多类别的tableView写出来 2. 单类与多类应当很容易切换(因为列表很可能在迭代时增加一个类)
+// 所有UI类型的示例
 private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
@@ -95,8 +95,7 @@ extension MultiCellTypeTableViewPage: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         cell.prepare(row: indexPath.row, dataCount: tableData.count)
-        let item = tableData[indexPath.row]
-        item.configureCell(cell)
+        tableData[indexPath.row].configureCell(cell)
         return cell
     }
     
