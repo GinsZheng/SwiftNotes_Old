@@ -167,54 +167,6 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
 }
 
 
-class DefaultSectionHeader: UIView {
-    
-    var onToggleSection: (() -> Void)?
-    
-    let bgView = UIView()
-    let titleLabel = UILabel()
-    let toggleButton = UIButton(type: .custom)
-    
-    // MARK: - func
-    func setupView() {
-        bgView.setup(superview: self, backgroundColor: cFFF)
-        bgView.setBackgroundColor(color: cFFF)
-        bgView.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: kWhiteHeaderHeight)
-        
-        titleLabel.setup(superview: bgView)
-        titleLabel.setStyle20pt000Med()
-        titleLabel.setFrame(left: kEdgeMargin, centerY: bgView.centerY, width: 300)
-        
-        toggleButton.setup(superview: bgView, target: self, action: #selector(toggleScetion))
-        toggleButton.setStyleIconButton(imageName: kIconArrowUp)
-        toggleButton.setFrame(right: kEdgeMargin, centerY: bgView.centerY, width: toggleButton.imageView?.getImageWidth() ?? 100, height: toggleButton.imageView?.getImageHeight() ?? 100)
-        // ⚠️为UIButton(IconButton)的加一个setFrame逻辑
-    }
-    
-    func configure(title: String, isExpanded: Bool) {
-        titleLabel.text = title
-        updateCornerRadius(isExpanded: isExpanded)
-        updateToggleButtonImage(isExpanded: isExpanded)
-    }
-    
-    func updateCornerRadius(isExpanded: Bool) {
-        let corners: UIRectCorner = isExpanded ? [.topLeft, .topRight] : [.allCorners]
-        bgView.setEachCornerRadiusWithMask(radius: kRadius, corners: corners)
-    }
-    
-    func updateToggleButtonImage(isExpanded: Bool) {
-        isExpanded == true ?
-        toggleButton.setStyleIconButton(imageName: kIconArrowUp):
-        toggleButton.setStyleIconButton(imageName: kIconArrowDown)
-    }
-
-    
-    // MARK: - @objc func
-    @objc func toggleScetion() {
-        onToggleSection?()
-    }
-    
-}
 
 
 

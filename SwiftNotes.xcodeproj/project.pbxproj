@@ -220,7 +220,7 @@
 		7AD5C3E628BE06070002CCE1 /* test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AD5C3E528BE06070002CCE1 /* test.csv */; };
 		7AE5EF512B149DA000ECD038 /* LocalizationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE5EF502B149DA000ECD038 /* LocalizationPage.swift */; };
 		7AE8EB6E2B3AA1AF003AF47D /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8EB6D2B3AA1AF003AF47D /* ViewControllerManager.swift */; };
-		7AE8EB702B3C00F4003AF47D /* TableHeaderAndFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8EB6F2B3C00F4003AF47D /* TableHeaderAndFooter.swift */; };
+		7AE8EB702B3C00F4003AF47D /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AE8EB6F2B3C00F4003AF47D /* TableViewHeader.swift */; };
 		7AEA78B524C32F0F00909C62 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 7AEA78B424C32F0F00909C62 /* index.html */; };
 		7AEE5A682B371C260020A2B1 /* JsonDataTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE5A672B371C260020A2B1 /* JsonDataTableViewPage.swift */; };
 		7AF1454E25810E3600B98393 /* DoublePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1454D25810E3600B98393 /* DoublePage.swift */; };
@@ -760,7 +760,7 @@
 		7AD5C3E528BE06070002CCE1 /* test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.csv; sourceTree = "<group>"; };
 		7AE5EF502B149DA000ECD038 /* LocalizationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationPage.swift; sourceTree = "<group>"; };
 		7AE8EB6D2B3AA1AF003AF47D /* ViewControllerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
-		7AE8EB6F2B3C00F4003AF47D /* TableHeaderAndFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderAndFooter.swift; sourceTree = "<group>"; };
+		7AE8EB6F2B3C00F4003AF47D /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		7AE8EB712B3C21E4003AF47D /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = ../SwiftFrameworks/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		7AE8EB922B3C21EC003AF47D /* ESTabBarController */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ESTabBarController; path = ../SwiftFrameworks/ESTabBarController; sourceTree = "<group>"; };
 		7AE8EB932B3C21F4003AF47D /* Hero.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Hero.xcodeproj; path = ../SwiftFrameworks/Hero/Hero.xcodeproj; sourceTree = "<group>"; };
@@ -1237,7 +1237,7 @@
 				7A88C7392A8929E400D61E33 /* SetFrame.swift */,
 				7A88C73A2A8929E400D61E33 /* SQLiteManager.swift */,
 				7A8006A52B28A9B4004FA72B /* TableViewCell.swift */,
-				7AE8EB6F2B3C00F4003AF47D /* TableHeaderAndFooter.swift */,
+				7AE8EB6F2B3C00F4003AF47D /* TableViewHeader.swift */,
 				7A88C7372A8929E400D61E33 /* Timer.swift */,
 				7A88C7412A8929E400D61E33 /* Toast.swift */,
 				7A88C73C2A8929E400D61E33 /* UIKitExtension.swift */,
@@ -2118,7 +2118,7 @@
 				7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */,
 				7AA325BD243CDB6A00D5308D /* LayerView.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
-				7AE8EB702B3C00F4003AF47D /* TableHeaderAndFooter.swift in Sources */,
+				7AE8EB702B3C00F4003AF47D /* TableViewHeader.swift in Sources */,
 				7A62A1FE24645D420090D128 /* DataSaveListVC.swift in Sources */,
 				7A62A1A3244C99290090D128 /* SwipeGesturePage.swift in Sources */,
 				7A4736D2246DA6500071115F /* DismissPage.swift in Sources */,
