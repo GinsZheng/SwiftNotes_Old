@@ -59,7 +59,7 @@ class HeaderAndFooterTableViewPage: UIViewController {
     private let tableData = DataManager()
     let headerHeight: CGFloat = 44
     // B1. 定义用于记录是否展开列表的变量
-    var sectionExpanded: [Bool] = []
+    var isSectionFolded: [Bool] = []
     
     let tableView = UITableView()
     
@@ -68,7 +68,7 @@ class HeaderAndFooterTableViewPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // B2. 变量初始化(因为tableData的使用需要先初始化)
-        sectionExpanded = Array(repeating: true, count: tableData.count)
+        isSectionFolded = Array(repeating: true, count: tableData.count)
         setupUI()
     }
     
@@ -122,20 +122,20 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // B3. 设置行数：当折叠列表时cell行数返回0(即隐藏了cell)
-        return sectionExpanded[section] ? tableData.numberOfCells(in: section) : 0
+        return isSectionFolded[section] ? tableData.numberOfCells(in: section) : 0
     }
     
     // 表头视图
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = DefaultSectionHeader()
+        let header = DefaultHeader()
         header.setFrame(left: 0, top: 0, width: kScreenWidth, height: headerHeight)
         header.setupView()
-        header.configure(title: tableData[section].sectionTitle, isExpanded: sectionExpanded[section])
+        header.configure(title: tableData[section].sectionTitle, isFolded: isSectionFolded[section])
         // B4. 配置切换按钮 (这里看起来配不配tag都行)
         // header.toggleButton.tag = section
         header.onToggleSection = { [weak self] in
             guard let self = self else { return }
-            self.sectionExpanded[section].toggle() // 切换 section 的展开状态(toggle为bool属性自带函数，切换true与false状态)
+            self.isSectionFolded[section].toggle() // 切换 section 的展开状态(toggle为bool属性自带函数，切换true与false状态)
             tableView.reloadSections([section], with: .automatic) // 刷新该 section
 
         }
