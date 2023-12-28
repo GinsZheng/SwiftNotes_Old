@@ -26,7 +26,6 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
     init() {
         super.init(initialItems: [
             Section(
-//                sectionTitle: "Section 1",
                 header: .title(title: "Section 1"),
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
@@ -35,16 +34,14 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                 ]
             ),
             Section(
-//                sectionTitle: "Section 2",
-                header: .title(title: "Section 2"),
+                header: .titleBg(title: "Section 2"),
                 cells: [
                     .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题5", viewController: CSGeneralSubpage())
                 ]
             ),
             Section(
-//                sectionTitle: "Section 3",
-                header: .title(title: "Section 3"),
+                header: .titleNext(title: "Section 3"),
                 cells: [
                     .titleNextVC(title: "标题6", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题7", viewController: CSGeneralSubpage()),
@@ -60,7 +57,7 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
 class HeaderAndFooterTableViewPage: UIViewController {
     
     private let tableData = DataManager()
-    let headerHeight: CGFloat = 44
+    let headerHeight: CGFloat = kHeaderSmallHeight
     // B1. 定义用于记录是否展开列表的变量
     var isSectionFolded: [Bool] = []
     
@@ -104,7 +101,8 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     
     // 表头高度
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return headerHeight
+        let headerItem = tableData.items[section].header
+        return headerItem.setHeaderHeight()
     }
     
     // 行高
@@ -131,10 +129,9 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     // 表头视图
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = DefaultHeader()
-        header.setFrame(left: 0, top: 0, width: kScreenWidth, height: headerHeight)
-        header.setupView()
-        header.configure(title: "tableData[section].header", isFolded: isSectionFolded[section])
-        
+        let headerItem = tableData.items[section].header
+        headerItem.configureHeader(header)
+
         // B4. 配置切换按钮 (这里看起来配不配tag都行)
         // header.toggleButton.tag = section
         header.onToggleSection = { [weak self] in
