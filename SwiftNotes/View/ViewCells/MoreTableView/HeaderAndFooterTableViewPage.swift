@@ -16,7 +16,7 @@ import UIKit
 
 // A1. 表头与cell写两个Struct，表头的struct 遵循 SectionProtocol以实现cellData方法
 private struct Section: SectionProtocol {
-    var sectionTitle: String
+    var header: DefaultHeaderItems
     var cells: [DefaultCellItems]
 }
 
@@ -26,7 +26,8 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
     init() {
         super.init(initialItems: [
             Section(
-                sectionTitle: "Section 1",
+//                sectionTitle: "Section 1",
+                header: .title(title: "Section 1"),
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
@@ -34,14 +35,16 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                 ]
             ),
             Section(
-                sectionTitle: "Section 2",
+//                sectionTitle: "Section 2",
+                header: .title(title: "Section 2"),
                 cells: [
                     .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题5", viewController: CSGeneralSubpage())
                 ]
             ),
             Section(
-                sectionTitle: "Section 3",
+//                sectionTitle: "Section 3",
+                header: .title(title: "Section 3"),
                 cells: [
                     .titleNextVC(title: "标题6", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题7", viewController: CSGeneralSubpage()),
@@ -130,14 +133,14 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         let header = DefaultHeader()
         header.setFrame(left: 0, top: 0, width: kScreenWidth, height: headerHeight)
         header.setupView()
-        header.configure(title: tableData[section].sectionTitle, isFolded: isSectionFolded[section])
+        header.configure(title: "tableData[section].header", isFolded: isSectionFolded[section])
+        
         // B4. 配置切换按钮 (这里看起来配不配tag都行)
         // header.toggleButton.tag = section
         header.onToggleSection = { [weak self] in
             guard let self = self else { return }
             self.isSectionFolded[section].toggle() // 切换 section 的展开状态(toggle为bool属性自带函数，切换true与false状态)
             tableView.reloadSections([section], with: .automatic) // 刷新该 section
-
         }
         
         return header
