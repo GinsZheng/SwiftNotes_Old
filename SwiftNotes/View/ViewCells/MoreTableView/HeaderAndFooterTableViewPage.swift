@@ -26,7 +26,7 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
     init() {
         super.init(initialItems: [
             Section(
-                header: .title(title: "Section 1"),
+                header: .title(title: "title"),
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
@@ -34,21 +34,47 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                 ]
             ),
             Section(
-                header: .titleBg(title: "Section 2"),
+                header: .titleBg(title: "titleBg"),
                 cells: [
                     .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题5", viewController: CSGeneralSubpage())
                 ]
             ),
             Section(
-                header: .titleNext(title: "Section 3"),
+                header: .titleDescBg(title: "titleDescBg", description: "hey"),
                 cells: [
                     .titleNextVC(title: "标题6", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题7", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题8", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题9", viewController: CSGeneralSubpage()),
                 ]
-            )
+            ),
+            Section(
+                header: .titleDescRightIcon(title: "titleDescRightIcon", description: "hey", rightIconName: "checkmark"),
+                cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
+            ),
+            Section(
+                header: .titleDescRightIcon(title: "titleDescRightIcon", description: "hey", rightIconName: "checkmark"),
+                cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
+            ),
+            Section(
+                header: .titleNext(title: "titleNext"),
+                cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
+            ),
+            Section(
+                header: .titleDescNext(title: "titleDescNext", description: "hey"),
+                cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
+            ),
+            Section(
+                header: .titleFoldBg(title: "titleFoldBg", isFolded: true),
+                cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
+            ),
+            Section(
+                header: .titleDescFoldBg(title: "titleDescFoldBg", description: "hey", isFolded: false),
+                cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
+            ),
+            // ————
+            
         ])
     }
 }
