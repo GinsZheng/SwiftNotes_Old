@@ -26,7 +26,7 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
     init() {
         super.init(initialItems: [
             Section(
-                header: .title(title: "title"),
+                header: .title(title: "titletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitle"),
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
@@ -121,7 +121,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let viewController = tableData.cellData(for: indexPath).viewController // cellData函数调用
 //        self.push(toTarget: viewController)
-//        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // 表头高度
