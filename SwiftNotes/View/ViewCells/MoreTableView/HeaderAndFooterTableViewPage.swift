@@ -34,14 +34,14 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                 ]
             ),
             Section(
-                header: .titleBg(title: "titleBg"),
+                header: .titleBg(title: "titleBg", titleType: .small),
                 cells: [
                     .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题5", viewController: CSGeneralSubpage())
                 ]
             ),
             Section(
-                header: .titleDescBg(title: "titleDescBg", description: "hey"),
+                header: .titleDescBg(title: "titleDescBg", titleType: .medium, description: "hey"),
                 cells: [
                     .titleNextVC(title: "标题6", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题7", viewController: CSGeneralSubpage()),
@@ -50,27 +50,27 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                 ]
             ),
             Section(
-                header: .titleDescRightIcon(title: "titleDescRightIcon", description: "hey", rightIconName: "checkmark"),
+                header: .titleDescRightIcon(title: "titleDescRightIcon", titleType: .large, description: "hey", rightIconName: "checkmark"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
             Section(
-                header: .titleDescRightIcon(title: "titleDescRightIcon", description: "hey", rightIconName: "checkmark"),
+                header: .titleDescRightIcon(title: "titleDescRightIcon", titleType: .small, description: "hey", rightIconName: "checkmark"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
             Section(
-                header: .titleNext(title: "titleNext"),
+                header: .titleNext(title: "titleNext", titleType: .small),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
             Section(
-                header: .titleDescNext(title: "titleDescNext", description: "hey"),
+                header: .titleDescNext(title: "titleDescNext", titleType: .small, description: "hey"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
             Section(
-                header: .titleFoldBg(title: "titleFoldBg", isFolded: true),
+                header: .titleFoldBg(title: "titleFoldBg", titleType: .small, isFolded: true),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
             Section(
-                header: .titleDescFoldBg(title: "titleDescFoldBg", description: "hey", isFolded: false),
+                header: .titleDescFoldBg(title: "titleDescFoldBg", titleType: .small, description: "hey", isFolded: false),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
             // ————
@@ -81,7 +81,6 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
 
 
 class HeaderAndFooterTableViewPage: UIViewController {
-    
     private let tableData = DataManager()
     let headerHeight: CGFloat = kHeaderSmallHeight
     // B1. 定义用于记录是否展开列表的变量
