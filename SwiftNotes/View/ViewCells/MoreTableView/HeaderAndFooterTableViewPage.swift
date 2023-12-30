@@ -164,7 +164,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
             self.isSectionFolded[section].toggle() // 切换 section 的展开状态(toggle为bool属性自带函数，切换true与false状态)
             tableView.reloadSections([section], with: .automatic) // 刷新该 section
         }
-        
+
         return header
     }
     
