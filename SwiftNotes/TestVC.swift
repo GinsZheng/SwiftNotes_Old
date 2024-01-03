@@ -18,18 +18,19 @@ class ViewController: UIViewController {
         
         let text = "在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在在"
         
-//        let hey = getLabelHeight(text: "在在在在在在在在在在在在在在在在在在", numberOfLines: 2, fontSize: 20, weight: .medium, lineHeight: 1.4)
-        let hey = getLabelHeight(forText: text, fontSize: 20, weight: .medium, lineHeightMultiple: 1.4, labelWidth: 200)
-        print("getLabelHeight", hey)
+        let height = getLabelHeight(text: text, fontSize: 20, weight: .medium, lineHeightMultiple: 1.4, labelWidth: 200, numberOfLines: 0)
+        print("getLabelHeight", height)
         
         let label = UILabel()
+        label.setText(text: text, numberOfLines: 0, lineHeightMultiple: 1.4)
         label.setup(superview: view, text: text, numberOfLines: 0)
         label.setStyle20pt222Med()
         label.setFrame(left: 0, top: 100, width: 200, height: label.getLabelHeight(withWidth: 200))
+        label.setBackgroundColor(color: cRed_FF635A)
         print("label", label.height)
         
         let textView = UITextView()
-        textView.setup(superview: view, text: text, maxLines: 0)
+        textView.setup(superview: view, text: text, maxLines: 0, lineHeightMultiple: 1.4)
         textView.setStyle20pt222Med()
         textView.setFrame(left: 0, top: 300, width: 200, height: textView.getTextHeight(withWidth: 200))
         print("textView", textView.height)
@@ -50,7 +51,8 @@ class ViewController: UIViewController {
 //    return totalHeight
 //}
 
-func getLabelHeight(forText text: String, fontSize: CGFloat, weight: UIFont.Weight, lineHeightMultiple: CGFloat, labelWidth: CGFloat) -> CGFloat {
+
+func getLabelHeight(text: String, fontSize: CGFloat, weight: UIFont.Weight, lineHeightMultiple: CGFloat, labelWidth: CGFloat, numberOfLines: Int) -> CGFloat {
     let font = UIFont.systemFont(ofSize: fontSize, weight: weight)
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.lineHeightMultiple = lineHeightMultiple
@@ -64,5 +66,14 @@ func getLabelHeight(forText text: String, fontSize: CGFloat, weight: UIFont.Weig
     let size = CGSize(width: labelWidth, height: .greatestFiniteMagnitude)
 
     let rect = attributedText.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], context: nil)
-    return ceil(rect.size.height)
+    let calculatedHeight = ceil(rect.size.height)
+
+    if numberOfLines == 0 {
+        return calculatedHeight
+    } else {
+        let singleLineHeight = "任意文本".size(withAttributes: [.font: font]).height
+        let adjustedLineHeight = singleLineHeight * lineHeightMultiple
+        let maxLinesHeight = adjustedLineHeight * CGFloat(numberOfLines)
+        return min(calculatedHeight, maxLinesHeight)
+    }
 }
