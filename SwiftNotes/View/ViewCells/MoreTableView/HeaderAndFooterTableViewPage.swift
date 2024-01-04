@@ -119,14 +119,14 @@ class HeaderAndFooterTableViewPage: UIViewController {
 extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let viewController = tableData.cellData(for: indexPath).viewController // cellData函数调用
-//        self.push(toTarget: viewController)
+        let item = tableData.cellData(for: indexPath)
+        item.pushViewControllerOnTap(from: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // 表头高度
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let headerItem = tableData.items[section].header
+        let headerItem = tableData.sectionData(for: section).header
         return headerItem.setHeaderHeight()
     }
     
@@ -148,17 +148,16 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // B3. 设置行数：当折叠列表时cell行数返回0(即隐藏了cell)
-        return isSectionFolded[section] ? tableData.numberOfCells(in: section) : 0
+        return isSectionFolded[section] ? tableData.cellCount(in: section) : 0
     }
     
     // 表头视图
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = DefaultHeader()
-        let headerItem = tableData.items[section].header
+        let headerItem = tableData.sectionData(for: section).header
         headerItem.configureHeader(header)
 
-        // B4. 配置切换按钮 (这里看起来配不配tag都行)
-        // header.toggleButton.tag = section
+        // B4. 配置切换按钮
         header.onToggleSection = { [weak self] in
             guard let self = self else { return }
             self.isSectionFolded[section].toggle() // 切换 section 的展开状态(toggle为bool属性自带函数，切换true与false状态)
@@ -176,7 +175,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: true)
         
         // 获取 cell 的数据
-        let item = tableData.items[indexPath.section].cells[indexPath.row]
+        let item = tableData.cellData(for: indexPath)
         item.configureCell(cell)
 
         return cell
