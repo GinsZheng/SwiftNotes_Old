@@ -1,16 +1,10 @@
 //
-//  HeaderAndFooterTableViewPage.swift
+//  NonStickyHeaderTableViewPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2023/12/15.
-//  Copyright © 2023 GinsMac. All rights reserved.
+//  Created by GinsMac on 2024/1/4.
+//  Copyright © 2024 GinsMac. All rights reserved.
 //
-
-/*
- 本页演示了tableView怎么加表头表尾，具体包括了：
- 1. 多个section且有表头时数据结构怎么写怎么调用 A
- 2. 每个section展开/折叠怎么写 B
- */
 
 import UIKit
 
@@ -26,7 +20,7 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
     init() {
         super.init(initialItems: [
             Section(
-                header: .title(title: "titletitletitletitletitle"),
+                header: .title(title: "titletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitletitle"),
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
@@ -73,18 +67,20 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                 header: .titleDescFoldBg(title: "titleDescFoldBg", titleType: .small, description: "hey", isFolded: false),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
+            // ————
+            
         ])
     }
 }
 
 
-class HeaderAndFooterTableViewPage: UIViewController {
+class NonStickyHeaderTableViewPage: UIViewController {
     private let tableData = DataManager()
     let headerHeight: CGFloat = kHeaderSmallHeight
     // B1. 定义用于记录是否展开列表的变量
-    var isSectionFolded: [Bool] = [] // gh g
+    var isSectionFolded: [Bool] = []
     
-    let tableView = UITableView()
+    let tableView = UITableView(frame: .zero, style: .grouped) // ⚠️默认表头吸顶，不吸顶要在初始化时把style设为.grouped
     
     
     // MARK: - 生命周期方法
@@ -114,7 +110,7 @@ class HeaderAndFooterTableViewPage: UIViewController {
 
 
 // MARK: - tableView 代理方法
-extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSource {
+extension NonStickyHeaderTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = tableData.cellData(for: indexPath)
@@ -187,13 +183,3 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     }
     
 }
-
-
-
-
-
-/*
- indexPath.section 与 indexPath.row：
- 前者是section的下标，总数为 numberOfSections 返回
- 后者是cell的下标，或者说每个cell就是一个row，总数为numberOfRowsInSection 返回
- */
