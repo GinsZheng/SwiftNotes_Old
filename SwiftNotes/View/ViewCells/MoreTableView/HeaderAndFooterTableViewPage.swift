@@ -14,44 +14,18 @@
 
 import UIKit
 
-// A1. 表头/表尾层级的struct 遵循 SectionProtocol以实现cellData方法
-private struct Section: SectionProtocol {
-    var header: DefaultHeaderItems?
-    var cells: [DefaultCellItems]
-    var footer: DefaultFooterItems?
-    
-    func isWhiteHeader() -> Bool {
-        switch header {
-        case .none, .noheader, .title:
-            return false
-        default:
-            return true
-        }
-    }
-    
-    func isWhiteFooter() -> Bool {
-        switch footer {
-        case .none, .nofooter, .title:
-            return false
-        default:
-            return true
-        }
-    }
-}
-
-
-// A2. DataManager 遵循 SectionedDataManager 以实现cellData方法
-private class DataManager: BaseDataManager<Section>, SectionedDataManager {
+// A. DataManager 遵循 SectionedDataManager 以实现cellData方法
+private class DataManager: BaseDataManager<DefaultSection>, SectionedDataManager {
     init() {
         super.init(initialItems: [
-            Section(
+            DefaultSection(
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage())
                 ]
             ),
-            Section(
+            DefaultSection(
                 header: .noheader,
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
@@ -60,16 +34,16 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                 ],
                 footer: .title(title: "title")
             ),
-            Section(
+            DefaultSection(
                 header: .title(title: "titletitletitletitletitle"),
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage())
                 ],
-                footer: .titleBg(title: "titleBg", titleType: .medium)
+                footer: .titleBg(title: "titleBg", titleType: .small)
             ),
-            Section(
+            DefaultSection(
                 header: .titleBg(title: "titleBg", titleType: .small),
                 cells: [
                     .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
@@ -77,7 +51,7 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                 ],
                 footer: .nofooter
             ),
-            Section(
+            DefaultSection(
                 header: .titleDescBg(title: "titleDescBg", titleType: .medium, description: "hey"),
                 cells: [
                     .titleNextVC(title: "标题6", viewController: CSGeneralSubpage()),
@@ -87,27 +61,27 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                 ],
                 footer: .title(title: "title")
             ),
-            Section(
+            DefaultSection(
                 header: .titleDescRightIcon(title: "titleDescRightIcon", titleType: .large, description: "hey", rightIconName: "checkmark"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
-            Section(
+            DefaultSection(
                 header: .titleDescRightIcon(title: "titleDescRightIcon", titleType: .small, description: "hey", rightIconName: "checkmark"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
-            Section(
+            DefaultSection(
                 header: .titleNext(title: "titleNext", titleType: .small),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
-            Section(
+            DefaultSection(
                 header: .titleDescNext(title: "titleDescNext", titleType: .small, description: "hey"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
-            Section(
+            DefaultSection(
                 header: .titleFoldBg(title: "titleFoldBg", titleType: .small, isFolded: false),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
-            Section(
+            DefaultSection(
                 header: .titleDescFoldBg(title: "titleDescFoldBg", titleType: .small, description: "hey", isFolded: false),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
@@ -198,7 +172,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         let sectionItem = tableData.sectionData(for: indexPath.section)
         // 获取当前 section 的 cell 数量
         let cellCountInSection = tableView.numberOfRows(inSection: indexPath.section)
-        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: sectionItem.isWhiteHeader())
+        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: sectionItem.isWhiteHeader(), isWhiteFooter: sectionItem.isWhiteFooter())
         
         // 获取 cell 的数据
         let cellItem = tableData.cellData(for: indexPath)
