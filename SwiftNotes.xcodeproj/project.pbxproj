@@ -84,6 +84,7 @@
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
 		7A393AF82B46FECE001F3FCB /* NonStickyHeaderTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393AF72B46FECE001F3FCB /* NonStickyHeaderTableViewPage.swift */; };
 		7A393AFA2B48E352001F3FCB /* FoldableTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393AF92B48E352001F3FCB /* FoldableTableViewPage.swift */; };
+		7A393AFC2B48FC10001F3FCB /* TableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393AFB2B48FC10001F3FCB /* TableViewFooter.swift */; };
 		7A3985DC2B3C2336004E0721 /* ESTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 7A3985DB2B3C2336004E0721 /* ESTabBarController */; };
 		7A3986072B3C2336004E0721 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EB7F2B3C21E4003AF47D /* Alamofire.framework */; };
 		7A3986082B3C2336004E0721 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7AE8EB7F2B3C21E4003AF47D /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -638,6 +639,7 @@
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7A393AF72B46FECE001F3FCB /* NonStickyHeaderTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonStickyHeaderTableViewPage.swift; sourceTree = "<group>"; };
 		7A393AF92B48E352001F3FCB /* FoldableTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldableTableViewPage.swift; sourceTree = "<group>"; };
+		7A393AFB2B48FC10001F3FCB /* TableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFooter.swift; sourceTree = "<group>"; };
 		7A3A2B542AB30AE20067AEB0 /* PrivatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivatePage.swift; sourceTree = "<group>"; };
 		7A3C6B052884111F00C1D7AC /* CSVPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVPage.swift; sourceTree = "<group>"; };
 		7A3C6B3D2884135900C1D7AC /* item.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = item.csv; sourceTree = "<group>"; };
@@ -1242,6 +1244,7 @@
 				7A88C73A2A8929E400D61E33 /* SQLiteManager.swift */,
 				7A8006A52B28A9B4004FA72B /* TableViewCell.swift */,
 				7AE8EB6F2B3C00F4003AF47D /* TableViewHeader.swift */,
+				7A393AFB2B48FC10001F3FCB /* TableViewFooter.swift */,
 				7A88C7372A8929E400D61E33 /* Timer.swift */,
 				7A88C7412A8929E400D61E33 /* Toast.swift */,
 				7A88C73C2A8929E400D61E33 /* UIKitExtension.swift */,
@@ -2185,6 +2188,7 @@
 				7A88C7492A8929E400D61E33 /* FileManager.swift in Sources */,
 				7ACF488C2B283C0700759E0A /* EqualSizeCollectionViewPage.swift in Sources */,
 				7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */,
+				7A393AFC2B48FC10001F3FCB /* TableViewFooter.swift in Sources */,
 				7A3C6B062884111F00C1D7AC /* CSVPage.swift in Sources */,
 				7A4736CC246B015F0071115F /* EnumPage.swift in Sources */,
 				7ACF48E72B28895200759E0A /* TextViewStyles.swift in Sources */,

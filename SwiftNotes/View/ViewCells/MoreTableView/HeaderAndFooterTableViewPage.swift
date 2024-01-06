@@ -18,10 +18,20 @@ import UIKit
 private struct Section: SectionProtocol {
     var header: DefaultHeaderItems?
     var cells: [DefaultCellItems]
+    var footer: DefaultFooterItems?
     
     func isWhiteHeader() -> Bool {
         switch header {
         case .none, .noheader, .title:
+            return false
+        default:
+            return true
+        }
+    }
+    
+    func isWhiteFooter() -> Bool {
+        switch footer {
+        case .none, .nofooter, .title:
             return false
         default:
             return true
@@ -104,9 +114,6 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
 
 class HeaderAndFooterTableViewPage: UIViewController {
     private let tableData = DataManager()
-    let headerHeight: CGFloat = kHeaderSmallHeight
-    // B1. 定义用于记录是否展开列表的变量
-    var isSectionFolded: [Bool] = [] // gh g
     
     let tableView = UITableView()
     
@@ -114,8 +121,6 @@ class HeaderAndFooterTableViewPage: UIViewController {
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        // B2. 变量初始化(因为tableData的使用需要先初始化)
-        isSectionFolded = Array(repeating: true, count: tableData.count)
         setupUI()
     }
     
@@ -170,7 +175,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // B3. 设置行数：当折叠列表时cell行数返回0(即隐藏了cell)
-        return isSectionFolded[section] ? tableData.cellCount(in: section) : 0
+        return tableData.cellCount(in: section)
     }
     
     // 表头视图
@@ -178,14 +183,6 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         let header = DefaultHeader()
         let headerItem = tableData.sectionData(for: section).header ?? .noheader
         headerItem.configureHeader(header)
-
-        // B4. 配置切换按钮
-        header.onToggleSection = { [weak self] in
-            guard let self = self else { return }
-            self.isSectionFolded[section].toggle() // 切换 section 的展开状态(toggle为bool属性自带函数，切换true与false状态)
-            tableView.reloadSections([section], with: .automatic) // 刷新该 section
-        }
-
         return header
     }
     
@@ -193,14 +190,14 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         // 获取section数据
-        let section = tableData.sectionData(for: indexPath.section)
+        let sectionItem = tableData.sectionData(for: indexPath.section)
         // 获取当前 section 的 cell 数量
         let cellCountInSection = tableView.numberOfRows(inSection: indexPath.section)
-        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: section.isWhiteHeader())
+        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: sectionItem.isWhiteHeader())
         
         // 获取 cell 的数据
-        let item = tableData.cellData(for: indexPath)
-        item.configureCell(cell)
+        let cellItem = tableData.cellData(for: indexPath)
+        cellItem.configureCell(cell)
         return cell
     }
     
