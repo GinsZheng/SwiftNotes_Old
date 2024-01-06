@@ -14,7 +14,6 @@ private class DataManager: DefaultCellDataManager {
             .titleNextVC(title: "Test1", viewController: Test1VC()),
             .titleNextVC(title: "Table View", viewController: TableViewPage()),
             .titleNextVC(title: "HeaderAndFooterTableViewPage", viewController: HeaderAndFooterTableViewPage()),
-            .titleNextVC(title: "NonStickyHeaderTableViewPage", viewController: NonStickyHeaderTableViewPage())
         ])
     }
 }

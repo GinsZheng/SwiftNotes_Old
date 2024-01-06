@@ -82,7 +82,6 @@
 		7A3647F9238AD062000BBECD /* ItemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* ItemTable.swift */; };
 		7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
-		7A393AF82B46FECE001F3FCB /* NonStickyHeaderTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393AF72B46FECE001F3FCB /* NonStickyHeaderTableViewPage.swift */; };
 		7A393AFA2B48E352001F3FCB /* FoldableTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393AF92B48E352001F3FCB /* FoldableTableViewPage.swift */; };
 		7A393AFC2B48FC10001F3FCB /* TableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393AFB2B48FC10001F3FCB /* TableViewFooter.swift */; };
 		7A3985DC2B3C2336004E0721 /* ESTabBarController in Frameworks */ = {isa = PBXBuildFile; productRef = 7A3985DB2B3C2336004E0721 /* ESTabBarController */; };
@@ -637,7 +636,6 @@
 		7A3647F8238AD062000BBECD /* ItemTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTable.swift; sourceTree = "<group>"; };
 		7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
-		7A393AF72B46FECE001F3FCB /* NonStickyHeaderTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonStickyHeaderTableViewPage.swift; sourceTree = "<group>"; };
 		7A393AF92B48E352001F3FCB /* FoldableTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldableTableViewPage.swift; sourceTree = "<group>"; };
 		7A393AFB2B48FC10001F3FCB /* TableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFooter.swift; sourceTree = "<group>"; };
 		7A3A2B542AB30AE20067AEB0 /* PrivatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivatePage.swift; sourceTree = "<group>"; };
@@ -1414,7 +1412,6 @@
 			isa = PBXGroup;
 			children = (
 				7A06A7332B2C382E0014033E /* HeaderAndFooterTableViewPage.swift */,
-				7A393AF72B46FECE001F3FCB /* NonStickyHeaderTableViewPage.swift */,
 				7A25A5522B355883001C47B9 /* MultiCellTypeTableViewPage.swift */,
 				7A393AF92B48E352001F3FCB /* FoldableTableViewPage.swift */,
 				7AEE5A672B371C260020A2B1 /* JsonDataTableViewPage.swift */,
@@ -2126,7 +2123,6 @@
 				7A02AEA32B18272500E9E6D7 /* Closure1VC.swift in Sources */,
 				7A8DF69B2AA378000048146F /* Protocol.swift in Sources */,
 				7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */,
-				7A393AF82B46FECE001F3FCB /* NonStickyHeaderTableViewPage.swift in Sources */,
 				7AA325BD243CDB6A00D5308D /* LayerView.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
 				7AE8EB702B3C00F4003AF47D /* TableViewHeader.swift in Sources */,

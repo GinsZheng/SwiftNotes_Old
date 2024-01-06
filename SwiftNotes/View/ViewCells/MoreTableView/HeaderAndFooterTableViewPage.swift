@@ -84,7 +84,8 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                     .titleNextVC(title: "标题7", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题8", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题9", viewController: CSGeneralSubpage()),
-                ]
+                ],
+                footer: .title(title: "title")
             ),
             Section(
                 header: .titleDescRightIcon(title: "titleDescRightIcon", titleType: .large, description: "hey", rightIconName: "checkmark"),
@@ -117,8 +118,8 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
 
 class HeaderAndFooterTableViewPage: UIViewController {
     private let tableData = DataManager()
-    
-    let tableView = UITableView()
+    // ⚠️默认表头吸顶，不吸顶要在初始化时把style设为.grouped。维持吸顶就直接 let tableView = UITableView()
+    let tableView = UITableView(frame: .zero, style: .grouped)
     
     
     // MARK: - 生命周期方法
@@ -211,7 +212,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         let footerItem = tableData.sectionData(for: section).footer ?? .nofooter
         footerItem.configureFooter(footer)
         return footer
-
+//        return UIView()
         // 所以，如果只是希望两个分组之间有个间隔而设置了表尾，那就直接写 return UIView() 即可 (不写时，即使设置了表尾高度，也不会生效)
     }
     
