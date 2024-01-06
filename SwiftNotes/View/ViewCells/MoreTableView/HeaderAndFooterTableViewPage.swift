@@ -57,7 +57,8 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage())
-                ]
+                ],
+                footer: .title(title: "title")
             ),
             Section(
                 header: .title(title: "titletitletitletitletitle"),
@@ -65,14 +66,16 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage())
-                ]
+                ],
+                footer: .titleBg(title: "titleBg", titleType: .medium)
             ),
             Section(
                 header: .titleBg(title: "titleBg", titleType: .small),
                 cells: [
                     .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题5", viewController: CSGeneralSubpage())
-                ]
+                ],
+                footer: .nofooter
             ),
             Section(
                 header: .titleDescBg(title: "titleDescBg", titleType: .medium, description: "hey"),
@@ -164,7 +167,8 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     
     // 表尾高度
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return kVertMargin
+        let footerItem = tableData.sectionData(for: section).footer ?? .nofooter
+        return footerItem.setFooterHeight()
     }
     
     // 组数
@@ -203,9 +207,12 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     
     // 表尾视图
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
-        // 本函数不写时，即使设置了表尾高度，也不会生效
-        // 所以，如果只是希望两个分组之间有个间隔而设置了表尾，那就直接写 return UIView() 即可
+        let footer = DefaultFooter()
+        let footerItem = tableData.sectionData(for: section).footer ?? .nofooter
+        footerItem.configureFooter(footer)
+        return footer
+
+        // 所以，如果只是希望两个分组之间有个间隔而设置了表尾，那就直接写 return UIView() 即可 (不写时，即使设置了表尾高度，也不会生效)
     }
     
 }

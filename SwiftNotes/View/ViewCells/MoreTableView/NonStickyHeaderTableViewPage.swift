@@ -76,7 +76,7 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
 
 class NonStickyHeaderTableViewPage: UIViewController {
     private let tableData = DataManager()
-    let headerHeight: CGFloat = kHeaderSmallHeight
+    let headerHeight: CGFloat = kHeaderNormalHeight
     // B1. 定义用于记录是否展开列表的变量
     var isSectionFolded: [Bool] = []
     
@@ -278,7 +278,7 @@ extension NonStickyHeaderTableViewPage: UITableViewDelegate, UITableViewDataSour
 //
 //class HeaderAndFooterTableViewPage: UIViewController {
 //    private let tableData = DataManager()
-//    let headerHeight: CGFloat = kHeaderSmallHeight
+//    let headerHeight: CGFloat = kHeaderNormalHeight
 //    // B1. 定义用于记录是否展开列表的变量
 //    var isSectionFolded: [Bool] = [] // gh g
 //    
