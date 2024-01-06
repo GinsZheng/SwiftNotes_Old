@@ -15,7 +15,7 @@
 import UIKit
 
 // A. DataManager 遵循 SectionedDataManager 以实现cellData方法
-private class DataManager: BaseDataManager<DefaultSection>, SectionedDataManager {
+private class DataManager: DefaultSectionAndCellDataManager {
     init() {
         super.init(initialItems: [
             DefaultSection(
@@ -186,7 +186,6 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         let footerItem = tableData.sectionData(for: section).footer ?? .nofooter
         footerItem.configureFooter(footer)
         return footer
-//        return UIView()
         // 所以，如果只是希望两个分组之间有个间隔而设置了表尾，那就直接写 return UIView() 即可 (不写时，即使设置了表尾高度，也不会生效)
     }
     
