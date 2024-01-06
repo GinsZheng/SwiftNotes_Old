@@ -16,12 +16,12 @@ import UIKit
 
 // A1. 表头/表尾层级的struct 遵循 SectionProtocol以实现cellData方法
 private struct Section: SectionProtocol {
-    var header: DefaultHeaderItems
+    var header: DefaultHeaderItems?
     var cells: [DefaultCellItems]
     
-    func isWhiteHeaer() -> Bool {
+    func isWhiteHeader() -> Bool {
         switch header {
-        case .none, .title:
+        case .none, .noheader, .title:
             return false
         default:
             return true
@@ -35,7 +35,14 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
     init() {
         super.init(initialItems: [
             Section(
-                header: .none,
+                cells: [
+                    .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题3", viewController: CSGeneralSubpage())
+                ]
+            ),
+            Section(
+                header: .noheader,
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
@@ -83,7 +90,7 @@ private class DataManager: BaseDataManager<Section>, SectionedDataManager {
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
             Section(
-                header: .titleFoldBg(title: "titleFoldBg", titleType: .small, isFolded: true),
+                header: .titleFoldBg(title: "titleFoldBg", titleType: .small, isFolded: false),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
             Section(
@@ -141,7 +148,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     
     // 表头高度
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let headerItem = tableData.sectionData(for: section).header
+        let headerItem = tableData.sectionData(for: section).header ?? .noheader
         return headerItem.setHeaderHeight()
     }
     
@@ -169,7 +176,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     // 表头视图
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = DefaultHeader()
-        let headerItem = tableData.sectionData(for: section).header
+        let headerItem = tableData.sectionData(for: section).header ?? .noheader
         headerItem.configureHeader(header)
 
         // B4. 配置切换按钮
@@ -189,7 +196,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         let section = tableData.sectionData(for: indexPath.section)
         // 获取当前 section 的 cell 数量
         let cellCountInSection = tableView.numberOfRows(inSection: indexPath.section)
-        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: section.isWhiteHeaer())
+        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: section.isWhiteHeader())
         
         // 获取 cell 的数据
         let item = tableData.cellData(for: indexPath)
