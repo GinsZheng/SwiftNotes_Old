@@ -20,7 +20,7 @@ class SwitchView1Page: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.setBackgroundColor(color: cF2F3F6)
+        view.setBackgroundColor(color: cBgGray)
         
         let formView = FormView()
         formView.setup(superview: view)
@@ -36,7 +36,7 @@ class FormView: UIView {
     var currentUIForm: UIForm = .form0
     
     func setupCommonUI() {
-        self.setBackgroundColor(color: cF2F3F6)
+        self.setBackgroundColor(color: cBgGray)
     }
     
     func setupUI() {

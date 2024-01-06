@@ -26,7 +26,7 @@ class JsonDataTableViewPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.setBackgroundColor(color: cF2F3F6)
+        view.setBackgroundColor(color: cBgGray)
         setupDefaultTableView(tableView)
         // 数据更新时刷新列表
         tableData.onItemsUpdated = { [weak self] in

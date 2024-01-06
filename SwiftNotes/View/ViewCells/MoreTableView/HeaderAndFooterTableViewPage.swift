@@ -9,15 +9,24 @@
 /*
  本页演示了tableView怎么加表头表尾，具体包括了：
  1. 多个section且有表头时数据结构怎么写怎么调用 A
- 2. 每个section展开/折叠怎么写 B
+ 2.
  */
 
 import UIKit
 
-// A1. 表头与cell写两个Struct，表头的struct 遵循 SectionProtocol以实现cellData方法
+// A1. 表头/表尾层级的struct 遵循 SectionProtocol以实现cellData方法
 private struct Section: SectionProtocol {
     var header: DefaultHeaderItems
     var cells: [DefaultCellItems]
+    
+    func isWhiteHeaer() -> Bool {
+        switch header {
+        case .none, .title:
+            return false
+        default:
+            return true
+        }
+    }
 }
 
 
@@ -25,6 +34,14 @@ private struct Section: SectionProtocol {
 private class DataManager: BaseDataManager<Section>, SectionedDataManager {
     init() {
         super.init(initialItems: [
+            Section(
+                header: .none,
+                cells: [
+                    .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题3", viewController: CSGeneralSubpage())
+                ]
+            ),
             Section(
                 header: .title(title: "titletitletitletitletitle"),
                 cells: [
@@ -98,7 +115,7 @@ class HeaderAndFooterTableViewPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.setBackgroundColor(color: cF2F3F6)
+        view.setBackgroundColor(color: cBgGray)
         setupDefaultTableView(tableView)
         tableView.setBackgroundColor(color: cNoColor)
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
@@ -168,14 +185,15 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
+        // 获取section数据
+        let section = tableData.sectionData(for: indexPath.section)
         // 获取当前 section 的 cell 数量
         let cellCountInSection = tableView.numberOfRows(inSection: indexPath.section)
-        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: true)
+        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: section.isWhiteHeaer())
         
         // 获取 cell 的数据
         let item = tableData.cellData(for: indexPath)
         item.configureCell(cell)
-
         return cell
     }
     

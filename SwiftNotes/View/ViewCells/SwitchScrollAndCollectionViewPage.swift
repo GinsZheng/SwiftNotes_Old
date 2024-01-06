@@ -78,7 +78,7 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
     }
     
     func setupCommonUI() {
-        view.setBackgroundColor(color: cF2F3F6)
+        view.setBackgroundColor(color: cBgGray)
     }
     
     func setupFormViewUI() {

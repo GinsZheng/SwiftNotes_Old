@@ -94,7 +94,7 @@ class NonStickyHeaderTableViewPage: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.setBackgroundColor(color: cF2F3F6)
+        view.setBackgroundColor(color: cBgGray)
         setupDefaultTableView(tableView)
         tableView.setBackgroundColor(color: cNoColor)
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
