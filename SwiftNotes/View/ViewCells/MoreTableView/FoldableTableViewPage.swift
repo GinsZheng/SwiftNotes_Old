@@ -21,7 +21,7 @@ private class DataManager: DefaultSectionAndCellDataManager {
                 ]
             ),
             DefaultSection(
-                header: .titleDescFoldBg(title: "titleDescFoldBg", titleType: .small, description: "hey", isFolded: false),
+                header: .titleDescFoldBg(title: "titleDescFoldBg", titleType: .small, description: "hey", isFolded: true),
                 cells: [
                     .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题5", viewController: CSGeneralSubpage())
@@ -35,6 +35,9 @@ private class DataManager: DefaultSectionAndCellDataManager {
 
 class FoldableTableViewPage: UIViewController {
     private var tableData = DataManager()
+    // 1. 定义用于记录是否展开列表的变量
+    private var isSectionFolded: [Bool] = []
+    
     let tableView = UITableView()
     
     
@@ -42,6 +45,7 @@ class FoldableTableViewPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        initializeSectionFoldedStatus() // 2. 变量初始化(读取DataManager中的数据)
     }
     
     
@@ -49,7 +53,6 @@ class FoldableTableViewPage: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cBgGray)
         setupDefaultTableView(tableView)
-        tableView.setBackgroundColor(color: cNoColor)
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
         tableView.hideSectionHeaderTopPadding()
         // 数据更新时刷新列表
@@ -57,6 +60,16 @@ class FoldableTableViewPage: UIViewController {
             self?.tableView.reloadData()
         }
         
+    }
+    
+    func initializeSectionFoldedStatus() {
+        isSectionFolded = tableData.items.map { section in
+            if case let .titleFoldBg(_, _, isFolded) = section.header {
+                return isFolded
+            } else {
+                return false
+            }
+        }
     }
 
 }
@@ -95,8 +108,8 @@ extension FoldableTableViewPage: UITableViewDelegate, UITableViewDataSource {
     
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 设置行数：当折叠列表时cell行数返回0(即隐藏了cell)
-        return tableData.cellCount(in: section)
+        // 3. 设置行数：当折叠列表时cell行数返回0(即隐藏了cell)
+        return isSectionFolded[section] ? 0 : tableData.cellCount(in: section)
     }
     
     // 表头视图
@@ -105,10 +118,10 @@ extension FoldableTableViewPage: UITableViewDelegate, UITableViewDataSource {
         let headerItem = tableData.sectionData(for: section).header ?? .noheader
         headerItem.configureHeader(header)
         
-        // 设置点击事件
+        // 4. 设置点击事件：切换折叠状态 (以及可能有更新本地缓存/后台数据)
         header.headerTapClosure = { [weak self] in
             guard let self = self else { return }
-            self.tableData.toggleFold(forSectionAtIndex: section)
+            self.isSectionFolded[section].toggle()
             self.tableView.reloadSections(IndexSet(integer: section), with: .automatic)
         }
         

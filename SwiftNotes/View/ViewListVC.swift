@@ -32,6 +32,7 @@ private class DataManager: DefaultCellDataManager {
             .titleNextVC(title: "Switch", viewController: SwitchPage()),
             .titleNextVC(title: "Switch Scroll And Collection View", viewController: SwitchScrollAndCollectionViewPage()),
             .titleNextVC(title: "Table View", viewController: TableViewPage()),
+            .titleNextVC(title: "More Table View", viewController: MoreTableViewListPage()),
             .titleNextVC(title: "Text Field", viewController: TextFieldPage()),
             .titleNextVC(title: "Text View", viewController: TextViewPage()),
             .titleNextVC(title: "Transition", viewController: TransitionListPage()),
