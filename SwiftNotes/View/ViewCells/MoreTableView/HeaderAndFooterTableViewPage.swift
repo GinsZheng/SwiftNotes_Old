@@ -32,10 +32,10 @@ private class DataManager: DefaultSectionAndCellDataManager {
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage())
                 ],
-                footer: .title(title: "title")
+                footer: .title(title: "title标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题")
             ),
             DefaultSection(
-                header: .title(title: "titletitletitletitletitle"),
+                header: .title(title: "title标题"),
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
@@ -44,7 +44,7 @@ private class DataManager: DefaultSectionAndCellDataManager {
                 footer: .titleBg(title: "titleBg", titleType: .small)
             ),
             DefaultSection(
-                header: .titleBg(title: "titleBg", titleType: .small),
+                header: .title(title: "title标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标"),
                 cells: [
                     .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题5", viewController: CSGeneralSubpage())
@@ -52,7 +52,7 @@ private class DataManager: DefaultSectionAndCellDataManager {
                 footer: .nofooter
             ),
             DefaultSection(
-                header: .titleDescBg(title: "titleDescBg", titleType: .medium, description: "hey"),
+                header: .titleBg(title: "titleBg", titleType: .small),
                 cells: [
                     .titleNextVC(title: "标题6", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题7", viewController: CSGeneralSubpage()),
@@ -62,11 +62,11 @@ private class DataManager: DefaultSectionAndCellDataManager {
                 footer: .title(title: "title")
             ),
             DefaultSection(
-                header: .titleDescRightIcon(title: "titleDescRightIcon", titleType: .large, description: "hey", rightIconName: "checkmark"),
+                header: .titleDescBg(title: "titleDescBg", titleType: .medium, description: "hey"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
             DefaultSection(
-                header: .titleDescRightIcon(title: "titleDescRightIcon", titleType: .small, description: "hey", rightIconName: "checkmark"),
+                header: .titleDescRightIcon(title: "titleDescRightIcon", titleType: .large, description: "hey", rightIconName: "checkmark"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
             DefaultSection(
