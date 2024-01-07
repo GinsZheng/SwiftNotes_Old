@@ -13,7 +13,7 @@ private class DataManager: DefaultCellDataManager {
         super.init(initialItems: [
             .titleNextVC(title: "Test1", viewController: Test1VC()),
             .titleNextVC(title: "Table View", viewController: TableViewPage()),
-            .titleNextVC(title: "HeaderAndFooterTableViewPage", viewController: HeaderAndFooterTableViewPage()),
+            .titleNextVC(title: "FoldableTableViewPage", viewController: FoldableTableViewPage()),
         ])
     }
 }

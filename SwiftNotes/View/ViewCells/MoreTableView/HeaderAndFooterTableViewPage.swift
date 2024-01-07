@@ -173,7 +173,6 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
         // 获取当前 section 的 cell 数量
         let cellCountInSection = tableView.numberOfRows(inSection: indexPath.section)
         cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: sectionItem.isWhiteHeader(), isWhiteFooter: sectionItem.isWhiteFooter())
-        
         // 获取 cell 的数据
         let cellItem = tableData.cellData(for: indexPath)
         cellItem.configureCell(cell)
