@@ -1,20 +1,18 @@
 //
-//  HeaderAndFooterTableViewPage.swift
+//  MultiSectionsTableViewPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2023/12/15.
-//  Copyright © 2023 GinsMac. All rights reserved.
+//  Created by GinsMac on 2024/1/7.
+//  Copyright © 2024 GinsMac. All rights reserved.
 //
 
 /*
  本页演示了tableView怎么加表头表尾，具体包括了：
- 1. 多个section且有表头时数据结构怎么写怎么调用 A
- 2.
  */
 
 import UIKit
 
-// A. DataManager 遵循 SectionedDataManager 以实现cellData方法
+// 1. DataManager 遵循 DefaultSectionAndCellDataManager 以实现cellData方法
 private class DataManager: DefaultSectionAndCellDataManager {
     init() {
         super.init(initialItems: [
@@ -90,9 +88,9 @@ private class DataManager: DefaultSectionAndCellDataManager {
 }
 
 
-class HeaderAndFooterTableViewPage: UIViewController {
+class MultiSectionsTableViewPage: UIViewController {
     private let tableData = DataManager()
-    // ⚠️默认表头吸顶，不吸顶要在初始化时把style设为.grouped。维持吸顶就直接 let tableView = UITableView()
+    // 2. ⚠️默认表头吸顶，不吸顶要在初始化时把style设为.grouped。维持吸顶就直接 let tableView = UITableView()
     let tableView = UITableView(frame: .zero, style: .grouped)
     
     
@@ -107,7 +105,6 @@ class HeaderAndFooterTableViewPage: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cBgGray)
         setupDefaultTableView(tableView)
-//        tableView.setBackgroundColor(color: cNoColor)
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
         tableView.hideSectionHeaderTopPadding()
         // 数据更新时刷新列表
@@ -121,7 +118,7 @@ class HeaderAndFooterTableViewPage: UIViewController {
 
 
 // MARK: - tableView 代理方法
-extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSource {
+extension MultiSectionsTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = tableData.cellData(for: indexPath)

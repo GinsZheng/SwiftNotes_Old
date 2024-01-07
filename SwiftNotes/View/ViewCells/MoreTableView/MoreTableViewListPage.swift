@@ -11,10 +11,11 @@ import UIKit
 private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
-            .titleNextVC(title: "Header And Footer TableView", viewController: HeaderAndFooterTableViewPage()),
             .titleNextVC(title: "Multi Cell Type TableView", viewController: MultiCellTypeTableViewPage()),
-            .titleNextVC(title: "Foldable Table View", viewController: FoldableTableViewPage()),
-            .titleNextVC(title: "Json Data Table View", viewController: JsonDataTableViewPage()),
+            .titleNextVC(title: "Sections TableView", viewController: SectionsTableViewPage()),
+            .titleNextVC(title: "Multi Sections TableView", viewController: MultiSectionsTableViewPage()),
+            .titleNextVC(title: "Json Data TableView", viewController: JsonDataTableViewPage()),
+            .titleNextVC(title: "Foldable TableView", viewController: FoldableTableViewPage()),
         ])
     }
 }
