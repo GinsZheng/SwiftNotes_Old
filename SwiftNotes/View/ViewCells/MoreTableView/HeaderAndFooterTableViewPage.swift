@@ -153,7 +153,7 @@ extension HeaderAndFooterTableViewPage: UITableViewDelegate, UITableViewDataSour
     
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // B3. 设置行数：当折叠列表时cell行数返回0(即隐藏了cell)
+        // 设置行数：当折叠列表时cell行数返回0(即隐藏了cell)
         return tableData.cellCount(in: section)
     }
     

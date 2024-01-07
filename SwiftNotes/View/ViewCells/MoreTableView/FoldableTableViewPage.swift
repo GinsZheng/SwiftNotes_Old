@@ -159,7 +159,7 @@ extension FoldableTableViewPage: UITableViewDelegate, UITableViewDataSource {
 //
 //class HeaderAndFooterTableViewPage: UIViewController {
 //    private let tableData = DataManager()
-//    let headerHeight: CGFloat = kHeaderNormalHeight
+//    let headerHeight: CGFloat = kHeaderSmallHeight
 //    // B1. 定义用于记录是否展开列表的变量
 //    var isSectionFolded: [Bool] = [] // gh g
 //    
