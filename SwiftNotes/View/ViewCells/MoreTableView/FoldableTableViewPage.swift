@@ -34,7 +34,7 @@ private class DataManager: DefaultSectionAndCellDataManager {
 
 
 class FoldableTableViewPage: UIViewController {
-    private let tableData = DataManager()
+    private var tableData = DataManager()
     let tableView = UITableView()
     
     
@@ -104,6 +104,14 @@ extension FoldableTableViewPage: UITableViewDelegate, UITableViewDataSource {
         let header = DefaultHeader()
         let headerItem = tableData.sectionData(for: section).header ?? .noheader
         headerItem.configureHeader(header)
+        
+        // 设置点击事件
+        header.headerTapClosure = { [weak self] in
+            guard let self = self else { return }
+            self.tableData.toggleFold(forSectionAtIndex: section)
+            self.tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+        }
+        
         return header
     }
     
