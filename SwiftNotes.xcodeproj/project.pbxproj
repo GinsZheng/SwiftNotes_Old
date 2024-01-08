@@ -205,6 +205,7 @@
 		7AA3C2B1241CCC6000F77711 /* ItemUpdatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3C2B0241CCC6000F77711 /* ItemUpdatePage.swift */; };
 		7AA789BD28CE0D9800B58537 /* myPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AA789BC28CE0D9800B58537 /* myPlist.plist */; };
 		7AA789C528D03F4900B58537 /* CameraAndPhotosPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA789C428D03F4900B58537 /* CameraAndPhotosPage.swift */; };
+		7ABEFC5C2B4BEA58002C5A19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
 		7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */; };
 		7AC4F56128B7615600F18E2F /* DeviceInfoPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC4F56028B7615600F18E2F /* DeviceInfoPage.swift */; };
@@ -749,6 +750,7 @@
 		7AA3C2B0241CCC6000F77711 /* ItemUpdatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdatePage.swift; sourceTree = "<group>"; };
 		7AA789BC28CE0D9800B58537 /* myPlist.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = myPlist.plist; sourceTree = "<group>"; };
 		7AA789C428D03F4900B58537 /* CameraAndPhotosPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAndPhotosPage.swift; sourceTree = "<group>"; };
+		7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
 		7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataNote.swift; sourceTree = "<group>"; };
 		7AC4F56028B7615600F18E2F /* DeviceInfoPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoPage.swift; sourceTree = "<group>"; };
@@ -905,6 +907,7 @@
 			isa = PBXGroup;
 			children = (
 				7A27506522ABA25600C8A474 /* AppDelegate.swift */,
+				7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */,
 				7ACD300024042A5100D300A6 /* TabBarController.swift */,
 				7A4736CF246DA0AA0071115F /* TestPresentVC.swift */,
 				7A2161242389868500D5A93A /* TestVC.swift */,
@@ -2091,6 +2094,7 @@
 				7A4736D8247191B90071115F /* LongPressGesturePage.swift in Sources */,
 				7A4040452483EED3000FF8C7 /* MapPage.swift in Sources */,
 				7A88C7502A8929E400D61E33 /* Formatter.swift in Sources */,
+				7ABEFC5C2B4BEA58002C5A19 /* SceneDelegate.swift in Sources */,
 				7A2161292389868500D5A93A /* ControllerListVC.swift in Sources */,
 				7A61FDCF28A8D04000AA3FFC /* ViewControllerPage.swift in Sources */,
 				7A21615B238986AF00D5A93A /* WebViewPage.swift in Sources */,
