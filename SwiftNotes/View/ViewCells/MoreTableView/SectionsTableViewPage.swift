@@ -36,25 +36,20 @@ class SectionsTableViewPage: UIViewController {
     
     let tableView = UITableView(frame: .zero, style: .grouped)
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
-    
     // MARK: - func
     func setupUI() {
         view.setBackgroundColor(color: cBgGray)
-        setupDefaultTableView(tableView)
-        // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
-        tableView.hideSectionHeaderTopPadding()
+        setupDefaultGroupedTableView(tableView)
         // 数据更新时刷新列表
         tableData.onItemsUpdated = {  [weak self] in
             self?.tableView.reloadData()
         }
-        
     }
 
 }
@@ -109,10 +104,9 @@ extension SectionsTableViewPage: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
         let sectionItem = tableData.sectionData(for: indexPath.section)
         let cellCountInSection = tableView.numberOfRows(inSection: indexPath.section) // 获取当前 section 的 cell 数量
-        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: sectionItem.isWhiteHeader(), isWhiteFooter: sectionItem.isWhiteFooter())
-        // 获取 cell 的数据
+        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: sectionItem.isWhiteHeader(), isWhiteFooter: sectionItem.isWhiteFooter()) // 配置基本参数
         let cellItem = tableData.cellData(for: indexPath)
-        cellItem.configureCell(cell)
+        cellItem.configureCell(cell) // 配置Cell数据与UI
         return cell
     }
     
@@ -122,17 +116,6 @@ extension SectionsTableViewPage: UITableViewDelegate, UITableViewDataSource {
         let footerItem = tableData.sectionData(for: section).footer ?? .nofooter
         footerItem.configureFooter(footer)
         return footer
-        // 所以，如果只是希望两个分组之间有个间隔而设置了表尾，那就直接写 return UIView() 即可 (不写时，即使设置了表尾高度，也不会生效)
     }
     
 }
-
-
-
-
-
-/*
- indexPath.section 与 indexPath.row：
- 前者是section的下标，总数为 numberOfSections 返回
- 后者是cell的下标，或者说每个cell就是一个row，总数为numberOfRowsInSection 返回
- */
