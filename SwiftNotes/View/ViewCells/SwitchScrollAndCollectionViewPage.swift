@@ -62,7 +62,7 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        setupUI() // 在⌜计时任务⌟项目中，setupUI要放在viewWillAppear中才能生效，但在本项目中只需放在viewDidLoad，可能原因见文末🐾1
     }
     
     
@@ -497,3 +497,21 @@ class GroupBottomButtonsView: UIView {
         onSettingsButtonTapped?()
     }
 }
+
+
+/*
+ 🐾1：将setup()代码从viewDidLoad移动到viewWillAppear或viewDidLayoutSubviews中解决了问题的原因：
+ 这可能是因为视图控制器的布局生命周期和视图布局过程的特点。具体来说：
+ 1. 视图控制器的生命周期：
+ viewDidLoad仅在视图控制器的视图第一次加载时调用。在这个阶段，视图的大小和布局尚未最终确定，特别是在自动布局环境中。
+ viewWillAppear在视图即将显示在屏幕上时被调用，此时视图的大小可能已经调整，但布局尚未完成。
+ 布局过程：
+ 2. viewDidLayoutSubviews在视图控制器的视图布局子视图后调用。在这个阶段，所有的视图和子视图的大小和位置已经确定。
+ 将代码放在viewDidLayoutSubviews中意味着您是在视图的大小和布局已经确定后才进行布局的调整或添加新视图，这有助于确保新加入的视图能正确地适应已有的布局。
+ 3. 自动布局（Auto Layout）：
+ 在viewDidLoad时，自动布局尚未完全应用，因此视图的尺寸和位置可能还不是最终状态。
+ 在viewWillAppear和viewDidLayoutSubviews中，自动布局约束已被处理，因此您的布局调整更有可能反映在最终界面上。
+ 动态内容适应：
+ 如果您的视图依赖于动态内容（如从网络加载的数据），在viewDidLayoutSubviews中调整布局可以确保内容加载后视图能够正确地适应新尺寸。
+ 总结来说，将代码移动到viewWillAppear或viewDidLayoutSubviews中意味着您在视图布局已经较为稳定时进行修改，这有助于避免布局冲突和不一致，确保布局的正确性和稳定性。
+ */
