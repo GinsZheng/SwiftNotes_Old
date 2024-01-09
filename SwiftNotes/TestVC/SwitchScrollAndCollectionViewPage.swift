@@ -157,16 +157,16 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
 
 
 // MARK: - 代理方法：UICollectionViewDelegate
-extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate {
+extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    // 设置数量
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return groupData.count
+    }
     
     // 设置单元格渲染完成后的逻辑
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == groupData.count - 1 {
-            addBottomButtons(in: collectionView)
-        }
-    }
-    
-    private func addBottomButtons(in collectionView: UICollectionView) {
+        guard indexPath.row == groupData.count - 1 else { return }
         // 设置CollectionView的高度(最大高度为10.5行)
         let collectionMaxHeight: CGFloat = 4 + 440 - 6 - 6 // 10.5行 (4:顶部多出4pt，440: 11行高度，6:按钮外边距，6:刻意隐藏)
         let collectionViewHeight = collectionViewContentHeight > collectionMaxHeight ? collectionMaxHeight : collectionViewContentHeight
@@ -192,16 +192,6 @@ extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate {
         }
     }
     
-}
-
-
-// MARK: - 代理方法：UICollectionViewDataSource
-extension SwitchScrollAndCollectionViewPage: UICollectionViewDataSource {
-    // 设置数量
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return groupData.count
-    }
-    
     // 设置 cell 逻辑
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCollectionViewCell.identifier, for: indexPath) as? GroupCollectionViewCell else { return UICollectionViewCell() }
@@ -209,7 +199,6 @@ extension SwitchScrollAndCollectionViewPage: UICollectionViewDataSource {
         cell.configure(withTitle: titles[indexPath.row]) { [weak self] in
             self?.push(toTarget: CSGeneralSubpage())
         }
-        
         return cell
     }
 }

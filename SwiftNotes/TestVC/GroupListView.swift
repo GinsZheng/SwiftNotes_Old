@@ -23,7 +23,7 @@ private class DataManager: BaseDataManager<Item> {
     }
 }
 
-class CustomTaskListView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
+class CustomTaskListView: UIView {
     // 模仿 TaskListVC 中的属性
     typealias Styles = GroupCollectionViewStyles
     
@@ -103,7 +103,16 @@ class CustomTaskListView: UIView, UICollectionViewDelegate, UICollectionViewData
         // ...
     }
 
-    // MARK: - UICollectionViewDelegate & DataSource
+
+
+    // ⚠️继续封装
+    // 可能还需要其他代理方法的实现
+    // ...
+}
+
+
+// MARK: - UICollectionView 代理方法
+extension CustomTaskListView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groupData.count
     }
@@ -118,7 +127,6 @@ class CustomTaskListView: UIView, UICollectionViewDelegate, UICollectionViewData
         
         return cell
     }
-    // ⚠️继续封装
-    // 可能还需要其他代理方法的实现
-    // ...
+    
+    
 }
