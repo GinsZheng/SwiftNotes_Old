@@ -19,7 +19,8 @@ class TabBarController {
         let v1 = ViewListVC()
         let v2 = CSControllerListVC()
         let v3 = CSModelListVC()
-        let v4 = ViewController()
+//        let v4 = ViewController()
+        let v4 = SwitchScrollAndCollectionViewPage()
         let v5 = TestVCListPage()
         
         v1.tabBarItem = ESTabBarItem.init(title: "View", image: UIImage(named: "tab_discovery"), selectedImage: UIImage(named: "tab_discovery_s"))

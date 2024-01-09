@@ -62,7 +62,11 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI() // 在⌜计时任务⌟项目中，setupUI要放在viewWillAppear中才能生效，但在本项目中只需放在viewDidLoad，可能原因见文末🐾1
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setupUI()
+        /// 把setupUI放到viewWillAppear是因为：有SecenDelegate时(可能的原因)，CollectionView会改变self.view的高度,详见🐾1
     }
     
     
@@ -113,7 +117,6 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
         buttons.onTrashButtonTapped = { [weak self] in
             self?.push(toTarget: CSGeneralSubpage())
         }
-        
     }
     
     // 多行视图
