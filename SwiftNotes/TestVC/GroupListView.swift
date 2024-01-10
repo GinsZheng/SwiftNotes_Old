@@ -143,15 +143,17 @@ extension CustomTaskListView: UICollectionViewDelegate, UICollectionViewDataSour
     // 设置单元格渲染完成后的逻辑
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard indexPath.row == groupData.count - 1 else { return }
+        
         // 设置CollectionView的高度(最大高度为10.5行)
         let collectionMaxHeight: CGFloat = 4 + 440 - 6 - 6 // 10.5行 (4:顶部多出4pt，440: 11行高度，6:按钮外边距，6:刻意隐藏)
         let collectionViewHeight = collectionViewContentHeight > collectionMaxHeight ? collectionMaxHeight : collectionViewContentHeight
-        collectionView.setFrame(left: 10, top: 0, right: 10, height: collectionViewHeight)
-        
         let bottomLineHeight: CGFloat = 48 // 底栏(含废纸蒌栏的)高度
-        let bgViewHeight = collectionViewHeight + bottomLineHeight
-        bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: bgViewHeight)
+        let selfHeight = collectionViewHeight + bottomLineHeight
+        // 设置各个View的布局
+        self.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: selfHeight)
+        bgView.setFrame(allEdges: 0)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
+        collectionView.setFrame(left: 10, top: 0, right: 10, height: collectionViewHeight)
         
         let bottomView = GroupBottomButtonsView()
         bottomView.setup(superview: bgView, backgroundColor: cFFF)
@@ -161,7 +163,6 @@ extension CustomTaskListView: UICollectionViewDelegate, UICollectionViewDataSour
             self.parentVC.push(toTarget: CSGeneralSubpage())
         }
         bottomView.onSwitchButtonTapped = { [weak self] in
-            print("hey")
             self?.switchView()
         }
         bottomView.onSettingsButtonTapped = { [unowned self] in
