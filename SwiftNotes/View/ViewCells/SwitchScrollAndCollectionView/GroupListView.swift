@@ -52,7 +52,7 @@ class GroupListView: UIView {
     let showTrashButton: Bool
     var collectionView: UICollectionView!
     let bgView = UIView()
-
+    
     // 初始化方法
     init(frame: CGRect, viewController: UIViewController, showTrashButton: Bool) {
         self.parentVC = viewController
@@ -63,7 +63,7 @@ class GroupListView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: - UI Setup
     open func setupUI() {
         setupFormViewUI()
@@ -71,7 +71,11 @@ class GroupListView: UIView {
             self?.collectionView.reloadData()
         }
     }
-    
+}
+
+
+// MARK: - 私有函数
+extension GroupListView {
     private func setupFormViewUI() {
         switch currentUIForm {
         case .form0:
@@ -80,7 +84,7 @@ class GroupListView: UIView {
             setupMultiLineUI()
         }
     }
-
+    
     private func setupOneLineUI() {
         self.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         
@@ -88,7 +92,7 @@ class GroupListView: UIView {
         bgView.setup(superview: self, backgroundColor: cFFF) // 假设 cFFF 已定义
         bgView.setFrame(allEdges: 0)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
-
+        
         let buttons = HorizonalScrollingGroupButtonsView(titles: titles, target: parentVC)
         buttons.setup(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
@@ -103,7 +107,7 @@ class GroupListView: UIView {
             self.parentVC.push(targetVC: CSGeneralSubpage())
         }
     }
-
+    
     private func setupMultiLineUI() {
         self.setFrame(left: 0, bottom: 0, right: 0, height: 100)
         
@@ -138,13 +142,12 @@ class GroupListView: UIView {
         currentUIForm = currentUIForm == .form0 ? .form1 : .form0
         setupUI()
     }
-
 }
 
 
 // MARK: - UICollectionView 代理方法
 extension GroupListView: UICollectionViewDelegate, UICollectionViewDataSource {
-
+    
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groupData.count
@@ -325,7 +328,6 @@ class HorizonalScrollingGroupButtonsView: UIView {
 
 // MARK: - 自定义 Cell
 class GroupCollectionViewCell: UICollectionViewCell {
-    
     typealias Styles = GroupCollectionViewStyles
     
     static let identifier = String(describing: GroupCollectionViewCell.self)
@@ -372,7 +374,6 @@ class GroupCollectionViewCell: UICollectionViewCell {
 
 // MARK: - 自定义Layout
 class GroupCollectionViewLayout: UICollectionViewLayout {
-    
     typealias Styles = GroupCollectionViewStyles
     
     var onHeightUpdate: ((CGFloat) -> Void)?     // 获取高度的闭包
@@ -428,7 +429,7 @@ class GroupBottomButtonsView: UIView {
     var onTrashButtonTapped: (() -> Void)?
     var onSwitchButtonTapped: (() -> Void)?
     var onSettingsButtonTapped: (() -> Void)?
-
+    
     let trashButton = UIButton(type: .custom)
     let switchButtonBg = UIImageView()
     let switchButton = UIButton(type: .custom)
@@ -444,7 +445,7 @@ class GroupBottomButtonsView: UIView {
         switchButton.setStyleIconButton(imageName: "groupBar_fold")
         switchButton.setFrame(right: kCellPadding, bottom: 10, width: 28, height: 28)
         switchButton.extendTouchArea()
-
+        
         settingsButton.setup(superview: self, target: self, action: #selector(settingsButtonTapped))
         settingsButton.setStyleIconButton(imageName: "home_settings")
         settingsButton.setFrame(right: 57, bottom: 10, width: 28, height: 28)
