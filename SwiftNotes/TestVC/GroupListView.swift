@@ -89,17 +89,46 @@ class CustomTaskListView: UIView {
         buttons.onButtonsTapped = { [unowned self] _ in
             self.parentVC.push(toTarget: CSGeneralSubpage())
         }
-//        buttons.onSwitchButtonTapped = { [unowned self] in
-//            self.switchView()
-//        }
-//        buttons.onTrashButtonTapped = { [weak self] in
-//            // 你的垃圾按钮点击逻辑
-//        }
+        buttons.onSwitchButtonTapped = { [weak self] in
+            self?.switchView()
+        }
+        buttons.onTrashButtonTapped = { [unowned self] in
+            self.parentVC.push(toTarget: CSGeneralSubpage())
+        }
     }
 
     private func setupMultiLineUI() {
-        // 实现多行视图布局
-        // ...
+        bgView.removeAllSubviews()
+        bgView.setup(superview: self, backgroundColor: cFFF)
+        bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 100)
+        bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
+        
+        // 创建collectionView用到的Layout
+        let layout = GroupCollectionViewLayout()
+        // 设置闭包：更新collectionView内容高度
+        layout.onHeightUpdate = { [weak self] newHeight in
+            self?.collectionViewContentHeight = newHeight
+        }
+        // 设置闭包：计算标题宽度
+        layout.fetchTitleWidths = { [weak self] in
+            guard let self = self else { return [] }
+            return groupData.map {
+                getLabelWidth(withMaxWidth: 136, text: $0.title, fontSize: Styles.fontSize, weight: Styles.weight)
+            }
+        }
+        
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(GroupCollectionViewCell.self, forCellWithReuseIdentifier: GroupCollectionViewCell.identifier)
+        collectionView.setup(superview: bgView, delegate: self, dataSource: self, viewController: parentVC)
+        collectionView.setFrame(left: 10, top: 0, right: 10, height: kWithoutNavBarHeight)
+        collectionView.setBackgroundColor(color: cRed_FF635A) // ⚠️
+    }
+    
+    
+    // MARK: - @objc func
+    @objc func switchView() {
+        currentUIForm = currentUIForm == .form0 ? .form1 : .form0
+        setupUI()
     }
 
 }
@@ -133,12 +162,12 @@ extension CustomTaskListView: UICollectionViewDelegate, UICollectionViewDataSour
         bottomView.onTrashButtonTapped = { [unowned self] in
             self.parentVC.push(toTarget: CSGeneralSubpage())
         }
-//        bottomView.onSwitchButtonTapped = { [weak self] in
-//            self?.switchView()
-//        }
-//        bottomView.onSettingsButtonTapped = { [weak self] in
-//            self?.push(toTarget: CSGeneralSubpage())
-//        }
+        bottomView.onSwitchButtonTapped = { [weak self] in
+            self?.switchView()
+        }
+        bottomView.onSettingsButtonTapped = { [unowned self] in
+            self.parentVC.push(toTarget: CSGeneralSubpage())
+        }
     }
     
     // 设置 cell 逻辑
