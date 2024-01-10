@@ -156,7 +156,7 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
 }
 
 
-// MARK: - 代理方法：UICollectionViewDelegate
+// MARK: - 代理方法：UICollectionView
 extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate, UICollectionViewDataSource {
 
     // 设置数量

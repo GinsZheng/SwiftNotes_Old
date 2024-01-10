@@ -47,7 +47,6 @@ class CustomTaskListView: UIView {
     init(frame: CGRect, viewController: UIViewController) {
         self.parentVC = viewController
         super.init(frame: frame)
-        setupUI()
     }
     
     required init?(coder: NSCoder) {
@@ -55,7 +54,7 @@ class CustomTaskListView: UIView {
     }
 
     // MARK: - UI Setup
-    private func setupUI() {
+    func setupUI() {
         setupCommonUI()
         setupFormViewUI()
         
@@ -103,18 +102,43 @@ class CustomTaskListView: UIView {
         // ...
     }
 
-
-
-    // ⚠️继续封装
-    // 可能还需要其他代理方法的实现
-    // ...
 }
 
 
 // MARK: - UICollectionView 代理方法
 extension CustomTaskListView: UICollectionViewDelegate, UICollectionViewDataSource {
+
+    // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groupData.count
+    }
+    
+    // 设置单元格渲染完成后的逻辑
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard indexPath.row == groupData.count - 1 else { return }
+        // 设置CollectionView的高度(最大高度为10.5行)
+        let collectionMaxHeight: CGFloat = 4 + 440 - 6 - 6 // 10.5行 (4:顶部多出4pt，440: 11行高度，6:按钮外边距，6:刻意隐藏)
+        let collectionViewHeight = collectionViewContentHeight > collectionMaxHeight ? collectionMaxHeight : collectionViewContentHeight
+        collectionView.setFrame(left: 10, top: 0, right: 10, height: collectionViewHeight)
+        
+        let bottomLineHeight: CGFloat = 48 // 底栏(含废纸蒌栏的)高度
+        let bgViewHeight = collectionViewHeight + bottomLineHeight
+        bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: bgViewHeight)
+        bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
+        
+        let bottomView = GroupBottomButtonsView()
+        bottomView.setup(superview: bgView, backgroundColor: cFFF)
+        bottomView.setFrame(left: 0, bottom: 0, right: 0, height: bottomLineHeight)
+        bottomView.setupView(showTrashButton: true)
+        bottomView.onTrashButtonTapped = { [unowned self] in
+            self.parentVC.push(toTarget: CSGeneralSubpage())
+        }
+//        bottomView.onSwitchButtonTapped = { [weak self] in
+//            self?.switchView()
+//        }
+//        bottomView.onSettingsButtonTapped = { [weak self] in
+//            self?.push(toTarget: CSGeneralSubpage())
+//        }
     }
     
     // 设置 cell 逻辑
@@ -124,9 +148,6 @@ extension CustomTaskListView: UICollectionViewDelegate, UICollectionViewDataSour
         cell.configure(withTitle: titles[indexPath.row]) { [unowned self] in
             self.parentVC.push(toTarget: CSGeneralSubpage())
         }
-        
         return cell
     }
-    
-    
 }
