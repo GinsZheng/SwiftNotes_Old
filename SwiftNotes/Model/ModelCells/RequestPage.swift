@@ -111,7 +111,7 @@ class CSRequestPage: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.pushFromRootPage(toTarget: CSGeneralSubpage())
+        self.pushFromRootPage(targetVC: CSGeneralSubpage())
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

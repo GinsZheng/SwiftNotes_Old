@@ -89,7 +89,7 @@ class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
     @objc func pushToSubpage() {
         let delegator = CSDelegator()
         delegator.delegate = self
-        self.push(toTarget: delegator)
+        self.push(targetVC: delegator)
     }
     
     

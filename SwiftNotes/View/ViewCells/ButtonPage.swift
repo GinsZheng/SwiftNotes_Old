@@ -96,11 +96,11 @@ class ButtonPage: UIViewController {
     }
     
     @objc func pushToGeneralSubpage() {
-        self.pushFromSecondaryPage(toTarget: CSGeneralSubpage())
+        self.pushFromSecondaryPage(targetVC: CSGeneralSubpage())
     }
     
     @objc func pushWithParameter(_ button: UIButton) {
-        self.pushFromSecondaryPage(toTarget: CSGeneralSubpage())
+        self.pushFromSecondaryPage(targetVC: CSGeneralSubpage())
     }
     
     

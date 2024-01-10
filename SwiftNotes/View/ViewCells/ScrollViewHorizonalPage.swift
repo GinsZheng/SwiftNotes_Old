@@ -35,7 +35,7 @@ class ScrollViewHorizonalPage: UIViewController {
         buttons.setupUI(showsHorizontalScrollIndicator: false)
         buttons.onButtonsTapped = { [weak self] index in
             print("Done")
-            self?.push(toTarget: CSGeneralSubpage())
+            self?.push(targetVC: CSGeneralSubpage())
         }
     }
     

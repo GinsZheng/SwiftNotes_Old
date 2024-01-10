@@ -83,13 +83,13 @@ class CustomTaskListView: UIView {
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupUI(showsHorizontalScrollIndicator: false, showTrashButton: true)
         buttons.onButtonsTapped = { [unowned self] _ in
-            self.parentVC.push(toTarget: CSGeneralSubpage())
+            self.parentVC.push(targetVC: CSGeneralSubpage())
         }
         buttons.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
         }
         buttons.onTrashButtonTapped = { [unowned self] in
-            self.parentVC.push(toTarget: CSGeneralSubpage())
+            self.parentVC.push(targetVC: CSGeneralSubpage())
         }
     }
 
@@ -160,13 +160,13 @@ extension CustomTaskListView: UICollectionViewDelegate, UICollectionViewDataSour
         bottomView.setFrame(left: 0, bottom: 0, right: 0, height: bottomLineHeight)
         bottomView.setupView(showTrashButton: true)
         bottomView.onTrashButtonTapped = { [unowned self] in
-            self.parentVC.push(toTarget: CSGeneralSubpage())
+            self.parentVC.push(targetVC: CSGeneralSubpage())
         }
         bottomView.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
         }
         bottomView.onSettingsButtonTapped = { [unowned self] in
-            self.parentVC.push(toTarget: CSGeneralSubpage())
+            self.parentVC.push(targetVC: CSGeneralSubpage())
         }
     }
     
@@ -175,7 +175,7 @@ extension CustomTaskListView: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCollectionViewCell.identifier, for: indexPath) as? GroupCollectionViewCell else { return UICollectionViewCell() }
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
         cell.configure(withTitle: titles[indexPath.row]) { [unowned self] in
-            self.parentVC.push(toTarget: CSGeneralSubpage())
+            self.parentVC.push(targetVC: CSGeneralSubpage())
         }
         return cell
     }

@@ -43,7 +43,7 @@ class Closure2VC: UIViewController {
         nameEditorPage.nameClosure = { [weak self] name in // 使用[weak self]来避免潜在的强引用循环
             self?.label.text = name
         }
-        self.push(toTarget: nameEditorPage)
+        self.push(targetVC: nameEditorPage)
     }
 }
 

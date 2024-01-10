@@ -25,7 +25,7 @@ class ActionSheetPage: UIViewController {
                 self.pop()
             },
             { (x) in
-                self.push(toTarget: CSGeneralSubpage())
+                self.push(targetVC: CSGeneralSubpage())
             },
             { (x) in
                 print("点了打印选项")

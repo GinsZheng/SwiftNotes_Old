@@ -30,7 +30,7 @@
 //    }
 //    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.push(toTarget: CSGeneralSubpage())
+//        self.push(targetVC: CSGeneralSubpage())
 //        tableView.deselectRow(at: indexPath, animated: true)
 //    }
 //    

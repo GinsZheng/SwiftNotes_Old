@@ -48,17 +48,17 @@ class NavControllerPage: UIViewController {
     // MARK: - @objc func
 
     @objc func pushToGeneralSubpage() {
-        self.push(toTarget: CSGeneralSubpage())
+        self.push(targetVC: CSGeneralSubpage())
     }
     
     @objc func pushWithValue() {
         let subpage = CSGeneralSubpage()
         subpage.textStr = "传值"
-        self.push(toTarget: subpage)
+        self.push(targetVC: subpage)
     }
     
     @objc func hideNavBarBackBtn() {
-        self.push(toTarget: CSHideBackBtnPage())
+        self.push(targetVC: CSHideBackBtnPage())
     }
     
 }

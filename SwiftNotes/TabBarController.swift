@@ -83,7 +83,7 @@ class TabBarController {
             [weak tabBarController] tabbarController, viewController, index in
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                tabBarController?.present(toTarget: CSGeneralSubpage())
+                tabBarController?.present(targetVC: CSGeneralSubpage())
             }
         }
         

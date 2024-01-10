@@ -39,7 +39,7 @@ class CSCustomPopupWindowPage: UIViewController {
         toVC.bgImage = getImageOfScreenshot(uiView: UIApplication.shared.windows[0])
         toVC.hero.isEnabled = true
         toVC.modalPresentationStyle = .fullScreen
-        self.present(toTarget: toVC)
+        self.present(targetVC: toVC)
     }
 }
 
@@ -107,7 +107,7 @@ class CSCustomPopupWindow: UIViewController {
 
     @objc func confirm() {
         self.dismiss()
-        self.presentingViewController?.present(toTarget: CSGeneralSubpage())
+        self.presentingViewController?.present(targetVC: CSGeneralSubpage())
     }
     
     @objc func cancel() {

@@ -31,7 +31,7 @@ class CSDismissPage1: UIViewController {
     }
     
     @objc func presentPage() {
-        self.present(toTarget: CSDismissPage2()) {
+        self.present(targetVC: CSDismissPage2()) {
             print("heheda")
         }
     }

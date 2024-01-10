@@ -74,7 +74,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.present(toTarget: CSItemUpdatePage())
+        self.present(targetVC: CSItemUpdatePage())
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -115,7 +115,7 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     @objc func presentToInsertPage() {
         let insertPage = CSItemInsertPage()
         insertPage.delegate = self
-        self.present(toTarget: insertPage)
+        self.present(targetVC: insertPage)
     }
     
 

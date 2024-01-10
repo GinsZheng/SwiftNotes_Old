@@ -45,7 +45,7 @@ class CSChartListVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(toTarget: list[indexPath.row].1)
+        self.push(targetVC: list[indexPath.row].1)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

@@ -76,7 +76,7 @@ class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDa
         let updatePage = CSProgressUpdatePage()
         updatePage.delegate = self
         updatePage.updatedId = idArray[indexPath.row]
-        self.present(toTarget: updatePage)
+        self.present(targetVC: updatePage)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -92,7 +92,7 @@ class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func presentToInsertPage() {
         let insertPage = CSProgressInsertPage()
         insertPage.delegate = self
-        self.present(toTarget: insertPage)
+        self.present(targetVC: insertPage)
     }
     
     // 委托的事

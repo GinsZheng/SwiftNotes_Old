@@ -38,7 +38,7 @@ class CSDissolveFromVC: UIViewController {
     @objc func goNext() {
         let vc = DissolveToVC()
         vc.hero.isEnabled = true
-        self.presentFullScreen(toTarget: vc)
+        self.presentFullScreen(targetVC: vc)
     }
 }
 

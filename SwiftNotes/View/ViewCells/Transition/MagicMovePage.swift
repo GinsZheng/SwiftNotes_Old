@@ -27,7 +27,7 @@ class MagicMoveFromVC: UIViewController {
         // 2. 设置跳转
         let toVC = MagicMoveToVC()
         toVC.hero.isEnabled = true
-        self.presentFullScreen(toTarget: toVC)
+        self.presentFullScreen(targetVC: toVC)
     }
     
     

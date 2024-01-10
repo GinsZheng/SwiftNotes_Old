@@ -60,7 +60,7 @@ class CSPopAndDismissPage1: UIViewController {
     }
 
     @objc func pushFirst() {
-        self.push(toTarget: CSPopAndDismissPage2())
+        self.push(targetVC: CSPopAndDismissPage2())
     }
 
 }
@@ -87,7 +87,7 @@ class CSPopAndDismissPage2: UIViewController {
     }
 
     @objc func presentThen() {
-        self.present(toTarget: CSPopAndDismissPage3())
+        self.present(targetVC: CSPopAndDismissPage3())
     }
 
 }

@@ -119,7 +119,7 @@ extension CSGestureListPage: UITableViewDelegate, UITableViewDataSource {
 //    }
 //    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        self.push(toTarget: tableData[indexPath.row].viewController)
+//        self.push(targetVC: tableData[indexPath.row].viewController)
 //        tableView.deselectRow(at: indexPath, animated: true)
 //    }
 //    

@@ -89,7 +89,7 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         // 3.受托
         let addItemVc = AddItemVC()
         addItemVc.delegate = self
-        self.present(toTarget: addItemVc)
+        self.present(targetVC: addItemVc)
     }
     
 }

@@ -106,16 +106,16 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupUI(showsHorizontalScrollIndicator: false, showTrashButton: true)
         buttons.onButtonsTapped = { [weak self] _ in
-            self?.push(toTarget: CSGeneralSubpage())
+            self?.push(targetVC: CSGeneralSubpage())
         }
         buttons.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
         }
         buttons.onSettingsButtonTapped = { [weak self] in
-            self?.push(toTarget: CSGeneralSubpage())
+            self?.push(targetVC: CSGeneralSubpage())
         }
         buttons.onTrashButtonTapped = { [weak self] in
-            self?.push(toTarget: CSGeneralSubpage())
+            self?.push(targetVC: CSGeneralSubpage())
         }
     }
     
@@ -182,13 +182,13 @@ extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate, UICollect
         bottomView.setFrame(left: 0, bottom: 0, right: 0, height: bottomLineHeight)
         bottomView.setupView(showTrashButton: true)
         bottomView.onTrashButtonTapped = { [weak self] in
-            self?.push(toTarget: CSGeneralSubpage())
+            self?.push(targetVC: CSGeneralSubpage())
         }
         bottomView.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
         }
         bottomView.onSettingsButtonTapped = { [weak self] in
-            self?.push(toTarget: CSGeneralSubpage())
+            self?.push(targetVC: CSGeneralSubpage())
         }
     }
     
@@ -197,7 +197,7 @@ extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate, UICollect
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCollectionViewCell.identifier, for: indexPath) as? GroupCollectionViewCell else { return UICollectionViewCell() }
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
         cell.configure(withTitle: titles[indexPath.row]) { [weak self] in
-            self?.push(toTarget: CSGeneralSubpage())
+            self?.push(targetVC: CSGeneralSubpage())
         }
         return cell
     }

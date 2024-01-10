@@ -31,7 +31,7 @@ class CSDismissAllPage1: UIViewController {
     }
     
     @objc func presentPage() {
-        self.present(toTarget: CSDismissAllPage2()) {
+        self.present(targetVC: CSDismissAllPage2()) {
             print("heheda")
         }
     }
@@ -59,7 +59,7 @@ class CSDismissAllPage2: UIViewController {
     }
     
     @objc func presentAgain() {
-        self.present(toTarget: CSDismissAllPage3())
+        self.present(targetVC: CSDismissAllPage3())
     }
 }
 

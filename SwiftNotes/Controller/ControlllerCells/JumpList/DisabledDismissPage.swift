@@ -32,7 +32,7 @@ class CSDisabledDismissParentPage: UIViewController {
     @objc func presentNext() {
         // 禁用子页面下滑手势
         let vc = CSDisabledDismissChildPage()
-        self.present(toTarget: vc, completion: {
+        self.present(targetVC: vc, completion: {
             vc.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
         })
         
