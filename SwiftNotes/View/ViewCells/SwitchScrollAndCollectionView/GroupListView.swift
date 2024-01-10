@@ -1,12 +1,13 @@
-//
-//  SwitchScrollAndCollectionView.swift
-//  SwiftNotes
-//
-//  Created by GinsMac on 2023/12/12.
-//  Copyright © 2023 GinsMac. All rights reserved.
-//
-
 import UIKit
+
+// CollectionView的参数
+struct GroupCollectionViewStyles {
+    static let fontSize: CGFloat = 14
+    static let weight: UIFont.Weight = .medium
+    static let buttonPadding: CGFloat = 24
+    static let itemInterval: CGFloat = 6
+    static let itemHeight: CGFloat = 40
+}
 
 // collectionView数据的结构体
 private struct Item {
@@ -31,17 +32,8 @@ private class DataManager: BaseDataManager<Item> {
     }
 }
 
-// CollectionView的参数
-struct GroupCollectionViewStyles {
-    static let fontSize: CGFloat = 14
-    static let weight: UIFont.Weight = .medium
-    static let buttonPadding: CGFloat = 24
-    static let itemInterval: CGFloat = 6
-    static let itemHeight: CGFloat = 40
-}
-
-class SwitchScrollAndCollectionViewPage: UIViewController {
-    
+class GroupListView: UIView {
+    // 模仿 TaskListVC 中的属性
     typealias Styles = GroupCollectionViewStyles
     
     enum UIForm {
@@ -53,39 +45,34 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
     lazy var titles: [String] = groupData.map { $0.title }
     
     var currentUIForm: UIForm = .form0
-    var collectionViewContentHeight: CGFloat = 0 // 获取collectionView内容高度(用于布局)
+    var collectionViewContentHeight: CGFloat = 0
     
+    // 定义一个 UIViewController 类型的变量
+    unowned var parentVC: UIViewController
+    let showTrashButton: Bool
     var collectionView: UICollectionView!
     let bgView = UIView()
-    
-    
-    // MARK: - 生命周期方法
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    // 初始化方法
+    init(frame: CGRect, viewController: UIViewController, showTrashButton: Bool) {
+        self.parentVC = viewController
+        self.showTrashButton = showTrashButton
+        super.init(frame: frame)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        setupUI()
-        /// 把setupUI放到viewWillAppear是因为：有SecenDelegate时(可能的原因)，CollectionView会改变self.view的高度,详见🐾1
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    // MARK: - func
-    func setupUI() {
-        setupCommonUI()
+
+    // MARK: - UI Setup
+    open func setupUI() {
         setupFormViewUI()
-        
-        // 设置数据源更新时的操作
         groupData.onItemsUpdated = { [weak self] in
             self?.collectionView.reloadData()
         }
     }
     
-    func setupCommonUI() {
-        view.setBackgroundColor(color: cBgGray)
-    }
-    
-    func setupFormViewUI() {
+    private func setupFormViewUI() {
         switch currentUIForm {
         case .form0:
             setupOneLineUI()
@@ -93,37 +80,36 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
             setupMultiLineUI()
         }
     }
-    
-    // 单行视图
-    func setupOneLineUI() {
-        bgView.removeAllSubviews()
-        bgView.setup(superview: view, backgroundColor: cFFF)
-        bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
-        bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
+
+    private func setupOneLineUI() {
+        self.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         
-        let buttons = HorizonalScrollingGroupButtonsView(titles: titles, target: self)
+        bgView.removeAllSubviews()
+        bgView.setup(superview: self, backgroundColor: cFFF) // 假设 cFFF 已定义
+        bgView.setFrame(allEdges: 0)
+        bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
+
+        let buttons = HorizonalScrollingGroupButtonsView(titles: titles, target: parentVC)
         buttons.setup(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupUI(showsHorizontalScrollIndicator: false, showTrashButton: true)
-        buttons.onButtonsTapped = { [weak self] _ in
-            self?.push(targetVC: CSGeneralSubpage())
+        buttons.onButtonsTapped = { [unowned self] _ in
+            self.parentVC.push(targetVC: CSGeneralSubpage())
         }
         buttons.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
         }
-        buttons.onSettingsButtonTapped = { [weak self] in
-            self?.push(targetVC: CSGeneralSubpage())
-        }
-        buttons.onTrashButtonTapped = { [weak self] in
-            self?.push(targetVC: CSGeneralSubpage())
+        buttons.onTrashButtonTapped = { [unowned self] in
+            self.parentVC.push(targetVC: CSGeneralSubpage())
         }
     }
-    
-    // 多行视图
-    func setupMultiLineUI() {
+
+    private func setupMultiLineUI() {
+        self.setFrame(left: 0, bottom: 0, right: 0, height: 100)
+        
         bgView.removeAllSubviews()
-        bgView.setup(superview: view, backgroundColor: cFFF)
-        bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 100)
+        bgView.setup(superview: self, backgroundColor: cFFF)
+        bgView.setFrame(allEdges: 0)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
         // 创建collectionView用到的Layout
@@ -142,53 +128,55 @@ class SwitchScrollAndCollectionViewPage: UIViewController {
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(GroupCollectionViewCell.self, forCellWithReuseIdentifier: GroupCollectionViewCell.identifier)
-        collectionView.setup(superview: bgView, delegate: self, dataSource: self, viewController: self)
+        collectionView.setup(superview: bgView, delegate: self, dataSource: self, viewController: parentVC)
         collectionView.setFrame(left: 10, top: 0, right: 10, height: kWithoutNavBarHeight)
     }
     
     
     // MARK: - @objc func
-    @objc func switchView() {
+    @objc private func switchView() {
         currentUIForm = currentUIForm == .form0 ? .form1 : .form0
         setupUI()
     }
-    
+
 }
 
 
-// MARK: - 代理方法：UICollectionView
-extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate, UICollectionViewDataSource {
+// MARK: - UICollectionView 代理方法
+extension GroupListView: UICollectionViewDelegate, UICollectionViewDataSource {
 
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groupData.count
     }
     
-    // 设置单元格渲染完成后的逻辑
+    // 设置单元格渲染完成后的逻辑 (设置废纸蒌一栏)
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        guard indexPath.row == groupData.count - 1 else { return }
+        guard indexPath.row == groupData.count - 1 else { return } // 判断为最后一行时才添加废纸蒌栏
+        
         // 设置CollectionView的高度(最大高度为10.5行)
         let collectionMaxHeight: CGFloat = 4 + 440 - 6 - 6 // 10.5行 (4:顶部多出4pt，440: 11行高度，6:按钮外边距，6:刻意隐藏)
         let collectionViewHeight = collectionViewContentHeight > collectionMaxHeight ? collectionMaxHeight : collectionViewContentHeight
-        collectionView.setFrame(left: 10, top: 0, right: 10, height: collectionViewHeight)
-        
         let bottomLineHeight: CGFloat = 48 // 底栏(含废纸蒌栏的)高度
-        let bgViewHeight = collectionViewHeight + bottomLineHeight
-        bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: bgViewHeight)
-        bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
+        let selfHeight = collectionViewHeight + bottomLineHeight
+        // 设置各个View的布局
+        self.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: selfHeight)
+        bgView.setFrame(allEdges: 0)
+        bgView.setEachCornerRadiusWithMask(radius: kRadius, corners: [.topLeft, .topRight])
+        collectionView.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: collectionViewHeight)
         
         let bottomView = GroupBottomButtonsView()
-        bottomView.setup(superview: bgView, backgroundColor: cFFF)
+        bottomView.setup(superview: bgView)
         bottomView.setFrame(left: 0, bottom: 0, right: 0, height: bottomLineHeight)
-        bottomView.setupView(showTrashButton: true)
-        bottomView.onTrashButtonTapped = { [weak self] in
-            self?.push(targetVC: CSGeneralSubpage())
+        bottomView.setupView(showTrashButton: showTrashButton)
+        bottomView.onTrashButtonTapped = { [unowned self] in
+            self.parentVC.push(targetVC: CSGeneralSubpage())
         }
         bottomView.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
         }
-        bottomView.onSettingsButtonTapped = { [weak self] in
-            self?.push(targetVC: CSGeneralSubpage())
+        bottomView.onSettingsButtonTapped = { [unowned self] in
+            self.parentVC.push(targetVC: CSGeneralSubpage())
         }
     }
     
@@ -196,8 +184,8 @@ extension SwitchScrollAndCollectionViewPage: UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCollectionViewCell.identifier, for: indexPath) as? GroupCollectionViewCell else { return UICollectionViewCell() }
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
-        cell.configure(withTitle: titles[indexPath.row]) { [weak self] in
-            self?.push(targetVC: CSGeneralSubpage())
+        cell.configure(withTitle: titles[indexPath.row]) { [unowned self] in
+            self.parentVC.push(targetVC: CSGeneralSubpage())
         }
         return cell
     }
@@ -288,7 +276,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
         let switchButton = UIButton(type: .custom)
         switchButton.setup(superview: self, target: self, action: #selector(switchButtonTapped))
         switchButton.setStyleIconButton(imageName: "groupBar_unfold")
-        switchButton.setFrame(right: 12, centerY: self.height / 2, width: 28, height: 28)
+        switchButton.setFrame(right: kCellPadding, centerY: self.height / 2, width: 28, height: 28)
         switchButton.extendTouchArea()
     }
     
@@ -296,7 +284,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
         let trashButton = UIButton(type: .custom)
         trashButton.setup(superview: scrollView, target: self, action: #selector(trashButtonTapped))
         trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
-        trashButton.setFrame(left: buttonLeft, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
+        trashButton.setFrame(left: buttonLeft, bottom: 10, width: (trashButton.titleLabel?.getLabelWidth() ?? 0) + 24, height: 28)
         trashButton.extendTouchArea()
         
         buttonLeft = trashButton.right + itemInterval
@@ -437,7 +425,6 @@ class GroupCollectionViewLayout: UICollectionViewLayout {
 
 // MARK: - 分组底栏(含废纸蒌一栏)视图
 class GroupBottomButtonsView: UIView {
-    
     var onTrashButtonTapped: (() -> Void)?
     var onSwitchButtonTapped: (() -> Void)?
     var onSettingsButtonTapped: (() -> Void)?
@@ -455,7 +442,7 @@ class GroupBottomButtonsView: UIView {
         
         switchButton.setup(superview: self, target: self, action: #selector(switchButtonTapped))
         switchButton.setStyleIconButton(imageName: "groupBar_fold")
-        switchButton.setFrame(right: 12, bottom: 10, width: 28, height: 28)
+        switchButton.setFrame(right: kCellPadding, bottom: 10, width: 28, height: 28)
         switchButton.extendTouchArea()
 
         settingsButton.setup(superview: self, target: self, action: #selector(settingsButtonTapped))
@@ -468,11 +455,11 @@ class GroupBottomButtonsView: UIView {
         }
     }
     
-     private func addTrashButton() {
+    private func addTrashButton() {
         trashButton.setup(superview: self, target: self, action: #selector(trashButtonTapped))
         trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
         trashButton.setFrame(left: 10, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
-         trashButton.extendTouchArea()
+        trashButton.extendTouchArea()
     }
     
     
@@ -488,22 +475,5 @@ class GroupBottomButtonsView: UIView {
     @objc private func settingsButtonTapped() {
         onSettingsButtonTapped?()
     }
+    
 }
-
-
-/*
- 🐾1：将setup()代码从viewDidLoad移动到viewWillAppear或viewDidLayoutSubviews中解决了问题的原因：
- 这可能是因为视图控制器的布局生命周期和视图布局过程的特点。具体来说：
- 1. 视图控制器的生命周期：
- viewDidLoad仅在视图控制器的视图第一次加载时调用。在这个阶段，视图的大小和布局尚未最终确定，特别是在自动布局环境中。
- viewWillAppear在视图即将显示在屏幕上时被调用，此时视图的大小可能已经调整，但布局尚未完成。
- 布局过程：
- 2. viewDidLayoutSubviews在视图控制器的视图布局子视图后调用。在这个阶段，所有的视图和子视图的大小和位置已经确定。
- 将代码放在viewDidLayoutSubviews中意味着您是在视图的大小和布局已经确定后才进行布局的调整或添加新视图，这有助于确保新加入的视图能正确地适应已有的布局。
- 3. 自动布局（Auto Layout）：
- 在viewDidLoad时，自动布局尚未完全应用，因此视图的尺寸和位置可能还不是最终状态。
- 在viewWillAppear和viewDidLayoutSubviews中，自动布局约束已被处理，因此您的布局调整更有可能反映在最终界面上。
- 动态内容适应：
- 如果您的视图依赖于动态内容（如从网络加载的数据），在viewDidLayoutSubviews中调整布局可以确保内容加载后视图能够正确地适应新尺寸。
- 总结来说，将代码移动到viewWillAppear或viewDidLayoutSubviews中意味着您在视图布局已经较为稳定时进行修改，这有助于避免布局冲突和不一致，确保布局的正确性和稳定性。
- */

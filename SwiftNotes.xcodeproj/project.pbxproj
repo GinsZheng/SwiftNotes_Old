@@ -986,8 +986,6 @@
 			isa = PBXGroup;
 			children = (
 				7A2161242389868500D5A93A /* TestVC.swift */,
-				7ACF48572B28067F00759E0A /* SwitchScrollAndCollectionViewPage.swift */,
-				7A3986A32B4D2E33004E0721 /* GroupListView.swift */,
 				7AC798692A98B5AB00C17D11 /* tempFile.swift */,
 			);
 			path = TestVC;
@@ -1313,6 +1311,15 @@
 			path = SwitchViewList;
 			sourceTree = "<group>";
 		};
+		7ABB91552B4EA0BC008ACA65 /* SwitchScrollAndCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				7ACF48572B28067F00759E0A /* SwitchScrollAndCollectionViewPage.swift */,
+				7A3986A32B4D2E33004E0721 /* GroupListView.swift */,
+			);
+			path = SwitchScrollAndCollectionView;
+			sourceTree = "<group>";
+		};
 		7AC3B73A23CA04AF004DB044 /* ModelCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1390,6 +1397,7 @@
 				7A216151238986AF00D5A93A /* PickerViewPage.swift */,
 				7A216143238986AF00D5A93A /* ScrollViewPage.swift */,
 				7A5507432A83E4290019F17F /* ScrollViewHorizonalPage.swift */,
+				7ABB91552B4EA0BC008ACA65 /* SwitchScrollAndCollectionView */,
 				7A21614F238986AF00D5A93A /* SegmentControlPage.swift */,
 				7A216145238986AF00D5A93A /* SliderPage.swift */,
 				7A216150238986AF00D5A93A /* StepperPage.swift */,

@@ -1,6 +1,14 @@
+//
+//  SwitchScrollAndCollectionView.swift
+//  SwiftNotes
+//
+//  Created by GinsMac on 2023/12/12.
+//  Copyright © 2023 GinsMac. All rights reserved.
+// SwitchScrollAndCollectionViewPage
+
 import UIKit
 
-class ViewController: UIViewController {
+class SwitchScrollAndCollectionViewPage: UIViewController {
     
     private var groupListView: GroupListView!
     
