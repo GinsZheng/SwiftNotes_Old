@@ -55,16 +55,10 @@ class CustomTaskListView: UIView {
 
     // MARK: - UI Setup
     func setupUI() {
-        setupCommonUI()
         setupFormViewUI()
-        
         groupData.onItemsUpdated = { [weak self] in
             self?.collectionView.reloadData()
         }
-    }
-    
-    private func setupCommonUI() {
-        self.setBackgroundColor(color: cBgGray) // 假设 cBgGray 已定义
     }
     
     private func setupFormViewUI() {
@@ -77,9 +71,11 @@ class CustomTaskListView: UIView {
     }
 
     private func setupOneLineUI() {
+        self.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
+        
         bgView.removeAllSubviews()
         bgView.setup(superview: self, backgroundColor: cFFF) // 假设 cFFF 已定义
-        bgView.setFrame(left: 0, bottom: 0, right: 0, height: 48)
+        bgView.setFrame(allEdges: 0)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
 
         let buttons = HorizonalScrollingGroupButtonsView(titles: titles, target: parentVC)
@@ -98,9 +94,11 @@ class CustomTaskListView: UIView {
     }
 
     private func setupMultiLineUI() {
+        self.setFrame(left: 0, bottom: 0, right: 0, height: 100)
+        
         bgView.removeAllSubviews()
         bgView.setup(superview: self, backgroundColor: cFFF)
-        bgView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 100)
+        bgView.setFrame(allEdges: 0)
         bgView.setEachCornerRadiusWithMask(radius: 10, corners: [.topLeft, .topRight])
         
         // 创建collectionView用到的Layout
@@ -163,6 +161,7 @@ extension CustomTaskListView: UICollectionViewDelegate, UICollectionViewDataSour
             self.parentVC.push(toTarget: CSGeneralSubpage())
         }
         bottomView.onSwitchButtonTapped = { [weak self] in
+            print("hey")
             self?.switchView()
         }
         bottomView.onSettingsButtonTapped = { [unowned self] in

@@ -19,7 +19,6 @@ class ViewController: UIViewController {
         customTaskListView = CustomTaskListView(frame: .zero, viewController: self)
         // 可以设置 customTaskListView 的其他属性或者约束
         customTaskListView.setup(superview: view, backgroundColor: cRed_FF635A)
-        customTaskListView.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         customTaskListView.setupUI()
     }
     
