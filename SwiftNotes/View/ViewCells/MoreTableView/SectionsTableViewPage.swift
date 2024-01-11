@@ -51,7 +51,7 @@ class SectionsTableViewPage: UIViewController {
             self?.tableView.reloadData()
         }
     }
-
+    
 }
 
 

@@ -1,8 +1,19 @@
 import UIKit
 
+private class DataManager: DefaultCellDataManager {
+    init() {
+        super.init(initialItems: [
+            .titleNextVC(title: "Animation", viewController: AnimationPage()),
+            .titleNextVC(title: "Button", viewController: ButtonPage()),
+        ])
+    }
+}
+
+
 class ViewController: UIViewController {
+    private let tableData = DataManager()
     
-    private var groupListView: GroupListView!
+    let tableView = UITableView()
     
     // MARK: - 生命周期方法
     override func viewDidLoad() {
@@ -12,15 +23,41 @@ class ViewController: UIViewController {
     
     // MARK: - func
     func setupUI() {
-        view.setBackgroundColor(color: cBgGray)
-        groupListView = GroupListView(frame: .zero, viewController: self, showTrashButton: true)
-        // 可以设置 groupListView 的其他属性或者约束
-        groupListView.setup(superview: view)
-        groupListView.setupView()
+        view.setBackgroundColor(color: cF2F3F6)
+        setupDefaultTableView(tableView)
+        // 数据更新时刷新列表
+        tableData.onItemsUpdated = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
-    
-    // MARK: - @objc func
     
 }
 
+
+// MARK: - TableView 代理方法
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    // 行高
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableData[indexPath.row].setCellHeight()
+    }
+    
+    // 点击
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableData[indexPath.row].pushViewControllerOnTap(from: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // 行数
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableData.count
+    }
+    
+    // cell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
+        cell.prepare(row: indexPath.row, cellCountInSection: tableData.count)
+        tableData[indexPath.row].configureCell(cell)
+        return cell
+    }
+}
 

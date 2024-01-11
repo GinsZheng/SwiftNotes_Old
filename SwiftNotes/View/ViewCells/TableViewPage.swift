@@ -19,7 +19,6 @@ private class DataManager: DefaultCellDataManager {
 
 
 class TableViewPage: UIViewController {
-    
     private let tableData = DataManager()
     
     let tableView = UITableView()
@@ -39,8 +38,6 @@ class TableViewPage: UIViewController {
             self?.tableView.reloadData()
         }
     }
-    
-    // MARK: - @objc func
     
 }
 
@@ -70,6 +67,7 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
         tableData[indexPath.row].configureCell(cell)
         return cell
     }
+    
 }
 
 
