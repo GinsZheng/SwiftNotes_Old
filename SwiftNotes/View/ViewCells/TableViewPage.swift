@@ -146,4 +146,8 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
  ▸ 有section：指有多个模块，多个模块之间可能只有一个间隔而没有表头表尾
  ▸ 无section：指只有一个模块
  ▸ 选择：如果确认在相当长的时间内只有一个模块，那么就使用无section，否则使用有section。前者的好处是逻辑简单，后者的好处是兼容性强，可兼容前者
+ ▸ 切换：需要整体替换，包括：
+  ⎯► 1. DataManager
+  ⎯► 2. viewController 中的 let tableView = UITableView() 与 setupDefaultTableView(tableView)
+  ⎯► 3. 代理方法
  */
