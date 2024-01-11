@@ -140,3 +140,10 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
  1. 如果把控件的初始化放入函数中，会出现滚动到列表下一页后，出现titleLabel等元素重复创建导致文本重叠，不可行
  2. 而如果不把初始化放入函数，那么方法相对麻烦，不如不用：1. 使用协议 2. 使用视图标签
  */
+
+/*
+ 有section和无section的选择与切换：
+ ▸ 有section：指有多个模块，多个模块之间可能只有一个间隔而没有表头表尾
+ ▸ 无section：指只有一个模块
+ ▸ 选择：如果确认在相当长的时间内只有一个模块，那么就使用无section，否则使用有section。前者的好处是逻辑简单，后者的好处是兼容性强，可兼容前者
+ */
