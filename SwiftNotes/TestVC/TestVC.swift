@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         groupListView = GroupListView(frame: .zero, viewController: self, showTrashButton: true)
         // 可以设置 groupListView 的其他属性或者约束
         groupListView.setup(superview: view)
-        groupListView.setupUI()
+        groupListView.setupView()
     }
     
     // MARK: - @objc func

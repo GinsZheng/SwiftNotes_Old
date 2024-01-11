@@ -15,6 +15,7 @@ private struct Item {
     let bgColor: String
 }
 
+// 数据
 private class DataManager: BaseDataManager<Item> {
     init() {
         super.init(initialItems: [
@@ -32,6 +33,8 @@ private class DataManager: BaseDataManager<Item> {
     }
 }
 
+
+// MARK: - 分组控件(含单行/多行形态)
 class GroupListView: UIView {
     // 模仿 TaskListVC 中的属性
     typealias Styles = GroupCollectionViewStyles
@@ -64,8 +67,8 @@ class GroupListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - UI Setup
-    open func setupUI() {
+    // MARK: - func
+    open func setupView() {
         setupFormViewUI()
         groupData.onItemsUpdated = { [weak self] in
             self?.collectionView.reloadData()
@@ -74,7 +77,7 @@ class GroupListView: UIView {
 }
 
 
-// MARK: - 私有函数
+// MARK: - setupView 中的私有函数
 extension GroupListView {
     private func setupFormViewUI() {
         switch currentUIForm {
@@ -85,6 +88,7 @@ extension GroupListView {
         }
     }
     
+    // 单行视图(折叠)
     private func setupOneLineUI() {
         self.setFrame(left: 0, bottom: kTabBarHeight, right: 0, height: 48)
         
@@ -96,7 +100,7 @@ extension GroupListView {
         let buttons = HorizonalScrollingGroupButtonsView(titles: titles, target: parentVC)
         buttons.setup(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
-        buttons.setupUI(showsHorizontalScrollIndicator: false, showTrashButton: true)
+        buttons.setupView(showsHorizontalScrollIndicator: false, showTrashButton: true)
         buttons.onButtonsTapped = { [unowned self] _ in
             self.parentVC.push(targetVC: CSGeneralSubpage())
         }
@@ -108,6 +112,7 @@ extension GroupListView {
         }
     }
     
+    // 多行视图(展开)
     private func setupMultiLineUI() {
         self.setFrame(left: 0, bottom: 0, right: 0, height: 100)
         
@@ -139,14 +144,13 @@ extension GroupListView {
     // MARK: - @objc func
     @objc private func switchView() {
         currentUIForm = currentUIForm == .form0 ? .form1 : .form0
-        setupUI()
+        setupView()
     }
 }
 
 
 // MARK: - UICollectionView 代理方法
 extension GroupListView: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     // 设置数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groupData.count
@@ -229,7 +233,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
     }
     
     // MARK: - func
-    func setupUI(showsHorizontalScrollIndicator: Bool, showTrashButton: Bool) {
+    open func setupView(showsHorizontalScrollIndicator: Bool, showTrashButton: Bool) {
         setupScrollView(showsHorizontalScrollIndicator: showsHorizontalScrollIndicator)
         createButtons()
         addSwitchButton()
@@ -238,7 +242,10 @@ class HorizonalScrollingGroupButtonsView: UIView {
         }
         addSettingsButton()
     }
-    
+}
+
+// 以上类的私有方法
+extension HorizonalScrollingGroupButtonsView {
     private func setupScrollView(showsHorizontalScrollIndicator: Bool) {
         scrollView.setup(superview: self)
         scrollView.setFrame(left: 0, top: 0, width: kScreenWidth - 48, height: self.height) // 因为右侧的箭头按钮背景占了48pt
@@ -332,9 +339,7 @@ class GroupCollectionViewCell: UICollectionViewCell {
     var buttonAction: (() -> Void)?
     
     private let button = UIButton(type: .custom)
-    
-    
-    // MARK: - 初始化
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -431,7 +436,7 @@ class GroupBottomButtonsView: UIView {
     let settingsButton = UIButton(type: .custom)
     
     // MARK: - func
-    func setupView(showTrashButton: Bool) {
+    open func setupView(showTrashButton: Bool) {
         switchButtonBg.setup(superview: self, imageName: "groupBar_gradientMask")
         switchButtonBg.setFrame(right: 0, bottom: 0, width: 72, height: 48)
         
@@ -449,7 +454,11 @@ class GroupBottomButtonsView: UIView {
             addTrashButton()
         }
     }
-    
+}
+
+
+// 上方类的私有方法
+extension GroupBottomButtonsView {
     private func addTrashButton() {
         trashButton.setup(superview: self, target: self, action: #selector(trashButtonTapped))
         trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
@@ -469,5 +478,4 @@ class GroupBottomButtonsView: UIView {
     @objc private func settingsButtonTapped() {
         onSettingsButtonTapped?()
     }
-    
 }
