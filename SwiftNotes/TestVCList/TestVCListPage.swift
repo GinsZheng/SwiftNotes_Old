@@ -1,11 +1,3 @@
-//
-//  TestVCListPage.swift
-//  SwiftNotes
-//
-//  Created by GinsMac on 2023/11/24.
-//  Copyright © 2023 GinsMac. All rights reserved.
-//
-
 import UIKit
 
 private class DataManager: DefaultCellDataManager {
@@ -22,7 +14,6 @@ private class DataManager: DefaultCellDataManager {
 
 
 class TestVCListPage: UIViewController {
-    
     private let tableData = DataManager()
     
     let tableView = UITableView()

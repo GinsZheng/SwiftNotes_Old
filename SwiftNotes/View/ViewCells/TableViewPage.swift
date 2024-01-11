@@ -1,11 +1,3 @@
-//
-//  TableViewPage.swift
-//  SwiftNotes
-//
-//  Created by GinsMac on 2019/6/14.
-//  Copyright © 2019 GinsMac. All rights reserved.
-//
-
 import UIKit
 
 private class DataManager: DefaultCellDataManager {
