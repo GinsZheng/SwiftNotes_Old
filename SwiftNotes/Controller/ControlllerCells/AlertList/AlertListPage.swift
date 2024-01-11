@@ -47,15 +47,15 @@ class CSAlertListPage: UIViewController {
 
 // MARK: - TableView 代理方法
 extension CSAlertListPage: UITableViewDelegate, UITableViewDataSource {
-    // 行高
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableData[indexPath.row].setCellHeight()
-    }
-    
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableData[indexPath.row].pushViewControllerOnTap(from: self)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    // 行高
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableData[indexPath.row].setCellHeight()
     }
     
     // 行数

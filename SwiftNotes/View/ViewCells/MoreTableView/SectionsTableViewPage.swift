@@ -23,7 +23,7 @@ private class DataManager: DefaultSectionAndCellDataManager {
                 header: .titleBg(title: "分组2", titleType: .small),
                 cells: [
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage()),
-                    .titleNextVC(title: "标题4", viewController: CSGeneralSubpage())
+                    .titleDesc2Line(title: "标题4", description: "hey"),
                 ]
             ),
         ])
@@ -47,7 +47,7 @@ class SectionsTableViewPage: UIViewController {
         view.setBackgroundColor(color: cBgGray)
         setupDefaultGroupedTableView(tableView)
         // 数据更新时刷新列表
-        tableData.onItemsUpdated = {  [weak self] in
+        tableData.onItemsUpdated = { [weak self] in
             self?.tableView.reloadData()
         }
     }
@@ -72,7 +72,8 @@ extension SectionsTableViewPage: UITableViewDelegate, UITableViewDataSource {
     
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kCellHeight
+        let cellItem = tableData.cellData(for: indexPath)
+        return cellItem.setCellHeight()
     }
     
     // 表尾高度
@@ -83,7 +84,7 @@ extension SectionsTableViewPage: UITableViewDelegate, UITableViewDataSource {
     
     // 组数
     func numberOfSections(in tableView: UITableView) -> Int {
-        return tableData.count
+        return tableData.sectionCount()
     }
     
     // 行数
@@ -102,10 +103,10 @@ extension SectionsTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
-        let sectionItem = tableData.sectionData(for: indexPath.section)
-        let cellCountInSection = tableView.numberOfRows(inSection: indexPath.section) // 获取当前 section 的 cell 数量
+        let sectionItem = tableData.sectionData(for: indexPath.section) // 获取section数据
+        let cellCountInSection = tableData.cellCount(in: indexPath.section) // 获取当前 section 的 cell 数量
         cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: sectionItem.isWhiteHeader(), isWhiteFooter: sectionItem.isWhiteFooter()) // 配置基本参数
-        let cellItem = tableData.cellData(for: indexPath)
+        let cellItem = tableData.cellData(for: indexPath)  // 获取cell数据
         cellItem.configureCell(cell) // 配置Cell数据与UI
         return cell
     }
