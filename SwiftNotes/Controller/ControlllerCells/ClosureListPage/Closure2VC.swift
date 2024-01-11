@@ -16,7 +16,6 @@ class Closure2VC: UIViewController {
 
     
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -34,7 +33,6 @@ class Closure2VC: UIViewController {
         button.setStyleSolid17ptFgWhiteThemeButton(title: "下一页")
         button.setFrame(left: 20, top: 84, width: kScreenWidth - 40, height: 44)
     }
-    
     
     // MARK: - @objc func
     @objc func editName() {
@@ -60,13 +58,10 @@ class Closure2SubVC: UIViewController, UITextFieldDelegate {
 
     
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {

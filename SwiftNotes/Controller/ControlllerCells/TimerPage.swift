@@ -16,13 +16,11 @@ class CSTimerPage: UIViewController {
 
     
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupTimer()
     }
-    
     
     // MARK: - func
     func setupUI() {

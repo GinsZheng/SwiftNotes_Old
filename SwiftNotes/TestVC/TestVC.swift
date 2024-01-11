@@ -9,7 +9,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
-
+    
     // MARK: - func
     func setupUI() {
         view.setBackgroundColor(color: cBgGray)

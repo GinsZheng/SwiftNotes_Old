@@ -10,16 +10,13 @@ import UIKit
 
 class PageControlPage: UIViewController {
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .hex(c999)
         
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {

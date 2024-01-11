@@ -93,13 +93,11 @@ class MultiSectionsTableViewPage: UIViewController {
     // 2. ⚠️默认表头吸顶，不吸顶要在初始化时把style设为.grouped。维持吸顶就直接 let tableView = UITableView()
     let tableView = UITableView(frame: .zero, style: .grouped)
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {

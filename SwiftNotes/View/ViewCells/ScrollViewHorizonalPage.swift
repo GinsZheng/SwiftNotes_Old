@@ -20,7 +20,6 @@ class ScrollViewHorizonalPage: UIViewController {
         setupUI()
     }
     
-    
     // MARK: - func
     func setupUI() {
         view.setBackgroundColor(color: cBgGray)
@@ -67,7 +66,6 @@ class CSHorizonalScrollingButtons: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     // MARK: - func
     func setupUI(showsHorizontalScrollIndicator: Bool) {

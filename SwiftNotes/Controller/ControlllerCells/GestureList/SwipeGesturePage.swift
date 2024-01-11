@@ -17,7 +17,6 @@ class CSSwipeGesturePage: UIViewController {
         setupSwipeGesture()
     }
     
-    
     // MARK: - func
     func setupSwipeGesture() {
         let swipeUp = UISwipeGestureRecognizer(target:self, action:#selector(swipeGesture(_:)))
@@ -30,7 +29,6 @@ class CSSwipeGesturePage: UIViewController {
     }
     
     // MARK: - @objc func
-
     //滑动手势
     @objc func swipeGesture(_ swip: UISwipeGestureRecognizer) {
         if swip.direction == UISwipeGestureRecognizer.Direction.up {

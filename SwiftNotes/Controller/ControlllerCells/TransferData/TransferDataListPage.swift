@@ -72,13 +72,11 @@ class TransferDataListVC: UIViewController {
     
     let tableView = UITableView()
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -89,7 +87,6 @@ class TransferDataListVC: UIViewController {
             self?.tableView.reloadData()
         }
     }
-    
     
     // MARK: - @objc func
     

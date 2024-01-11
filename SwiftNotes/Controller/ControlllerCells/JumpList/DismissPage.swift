@@ -14,9 +14,7 @@ class CSDismissPage1: UIViewController {
     let label = UILabel()
     let button = UIButton()
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)

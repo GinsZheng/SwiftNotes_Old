@@ -16,7 +16,6 @@ class ScrollViewPage: UIViewController {
         setupUI()
     }
     
-    
     // MARK: - func
     func setupUI() {
         view.setBackgroundColor(color: cFFF)

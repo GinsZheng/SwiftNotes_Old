@@ -29,15 +29,11 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
     
     weak var delegate: CSReloadDelegate?
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -76,7 +72,6 @@ class CSItemUpdatePage: UIViewController, UITextFieldDelegate {
         deleteButton.setFrame(centerX: view.centerX, top: updateButton.bottom + 10, width: 80, height: 44)
         
     }
-    
     
     // MARK: - @objc func
     @objc func dismissPage() {

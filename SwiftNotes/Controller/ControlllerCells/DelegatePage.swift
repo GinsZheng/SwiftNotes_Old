@@ -22,9 +22,7 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
     let label = UILabel()
     let button = UIButton()
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -51,9 +49,7 @@ class CSDelegatePage: UIViewController, CSNameEditorDelegate {
         self.label.text = name
     }
     
-    
     // MARK: - @objc func
-
     @objc func editName() {
         // 3.受托
         let nameEditorPage = CSNameEditorPage() // 类A，实例化委托人-类B
@@ -77,15 +73,11 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
     // 4.定义委托变量delegate
     weak var delegate: CSNameEditorDelegate?
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -104,9 +96,7 @@ class CSNameEditorPage: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     // MARK: - @objc func
-
     @objc func refreshSuperView() {
         let name = nameTextField.text
         if name != "" {

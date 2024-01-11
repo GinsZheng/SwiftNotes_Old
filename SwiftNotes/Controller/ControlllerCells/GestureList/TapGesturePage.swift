@@ -10,16 +10,13 @@ import UIKit
 
 class CSTapGesturePage: UIViewController {
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)
         
         setupTapGesture()
     }
-    
     
     // MARK: - func
     func setupTapGesture() {
@@ -41,9 +38,7 @@ class CSTapGesturePage: UIViewController {
         view.addGestureRecognizer(doubleTouchesGesture)
     }
     
-    
     // MARK: - @objc func
-
     @objc func tap() {
         CSToast.showCenterWithText("已单击")
     }

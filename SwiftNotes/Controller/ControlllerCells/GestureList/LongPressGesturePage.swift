@@ -10,9 +10,7 @@ import UIKit
 
 class CSLongPressGesturePage: UIViewController {
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)
@@ -20,16 +18,13 @@ class CSLongPressGesturePage: UIViewController {
         setupLongPress()
     }
     
-    
     // MARK: - func
     func setupLongPress() {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressGesture(_:)))
         view.addGestureRecognizer(longPress)
     }
     
-    
     // MARK: - @objc func
-
     @objc func longPressGesture(_ sender: UILongPressGestureRecognizer) {
         if sender.state != .began {
             return

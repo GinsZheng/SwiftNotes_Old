@@ -13,11 +13,9 @@ class CSTouchesMovedGesturePage: UIViewController {
     let myView = UIView()
     
     // MARK: - 生命周期方法
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -63,7 +61,6 @@ class CSTouchesMovedGesturePage: UIViewController {
     //            view.setCornerRadius(radius: 10)
     //        }
     //    }
-    
     
     // MARK: - func
     func setupUI() {

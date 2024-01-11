@@ -14,13 +14,10 @@ class SwitchPage: UIViewController {
     var userDefaultsboolValue1 = kUserDefaults.bool(forKey: "boolValue1")
     
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -35,7 +32,6 @@ class SwitchPage: UIViewController {
         switchControl.onTintColor = UIColor.hex(cBlue_5393FF)
         print("初始isOn", switchControl.isOn)
     }
-    
     
     // MARK: - @objc func
     @objc func switchChanged(_ switchControl: UISwitch) {

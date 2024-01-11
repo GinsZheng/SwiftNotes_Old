@@ -22,9 +22,7 @@ class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDa
     let tableView = UITableView()
     let deleteAllButton = UIButton(type: .custom)
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)

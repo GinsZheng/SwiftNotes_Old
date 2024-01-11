@@ -14,7 +14,6 @@ class SwitchView1Page: UIViewController {
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -81,7 +80,6 @@ class FormView: UIView {
     
     
     // MARK: - 代理方法
-    
     
     // MARK: - @objc func
     @objc func switchView() {

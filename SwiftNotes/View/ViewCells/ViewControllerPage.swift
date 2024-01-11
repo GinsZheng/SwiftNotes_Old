@@ -10,13 +10,10 @@ import UIKit
 
 class ViewControllerPage: UIViewController {
     
-    
     // MARK: - 生命周期方法
-
     // viewDidLoad: 只在从父页面进入时本页才加载，从子页面返回本页时不加载
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -26,7 +23,6 @@ class ViewControllerPage: UIViewController {
         
         setupUIWhenViewWillAppear()
     }
-    
     
     // MARK: - func
     func setupUI() {

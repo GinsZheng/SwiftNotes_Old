@@ -24,15 +24,11 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
     
     weak var delegate: CSReloadDelegate?
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -61,7 +57,6 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
         addingButton.setStyleSolid17ptFgWhiteThemeButton(title: "Insert")
         addingButton.setFrame(left: 20, top: colorTextField.bottom + 20, right: 20, height: 48)
     }
-    
     
     // MARK: - @objc func
     @objc func dismissPage() {

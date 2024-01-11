@@ -13,14 +13,11 @@ class AnimationPage: UIViewController {
     let myView = UIView()
     let solidButton = UIButton(type: .custom)
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -33,7 +30,6 @@ class AnimationPage: UIViewController {
         solidButton.setStyleSolidButton(title: "Start Animation", titleSize: 17, titleColor: cFEFEFE, bgImage: getImageWithColor(color: cThemeFill), radius: 10)
         solidButton.setFrame(left: 20, bottom: 34, width: kScreenWidth - 40, height: 44)
     }
-    
     
     // MARK: - @objc func
     @objc func startAnimation() {

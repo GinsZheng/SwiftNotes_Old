@@ -12,14 +12,11 @@ class DateFormatterPage: UIViewController {
     
     
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -52,7 +49,6 @@ class DateFormatterPage: UIViewController {
     
     
     // MARK: - 代理方法
-    
     
     
     

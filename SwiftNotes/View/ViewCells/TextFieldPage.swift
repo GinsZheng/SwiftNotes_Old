@@ -17,10 +17,8 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
     let myView = UIView()
     
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -44,7 +42,6 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
      小数键盘：.decimalPad
      整数键盘：.numberPad
      */
-    
     
     // MARK: - func
     func setupUI() {
@@ -94,7 +91,6 @@ class TextFieldPage: UIViewController, UITextFieldDelegate {
         let textLength = text.count + string.count - range.length
         return textLength <= 80
     }
-    
     
     // MARK: - @objc func
     @objc func checkInputtedValue(textField: UITextField) {

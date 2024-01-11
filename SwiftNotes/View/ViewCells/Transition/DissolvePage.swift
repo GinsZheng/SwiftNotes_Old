@@ -15,12 +15,10 @@ class CSDissolveFromVC: UIViewController {
     let button = UIButton()
     
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -32,7 +30,6 @@ class CSDissolveFromVC: UIViewController {
         button.setFrame(centerX: view.centerX, top: 200, width: 100, height: 100)
         
     }
-    
     
     // MARK: - @objc func
     @objc func goNext() {
@@ -52,14 +49,12 @@ class DissolveToVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.dismiss()
     }
-    
     
     // MARK: - func
     func setupUI() {

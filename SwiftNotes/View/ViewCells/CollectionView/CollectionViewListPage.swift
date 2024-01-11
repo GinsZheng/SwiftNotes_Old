@@ -25,14 +25,11 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
 
     let tableView = UITableView()
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {

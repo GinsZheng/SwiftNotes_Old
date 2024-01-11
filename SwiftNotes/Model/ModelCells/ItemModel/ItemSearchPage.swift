@@ -32,7 +32,6 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     let tableView = UITableView()
     let deleteAllButton = UIButton(type: .custom)
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +44,6 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -101,7 +99,6 @@ class CSItemSearchPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         // 关键：reloadData()，刷新页面数据
         tableView.reloadData()
     }
-    
     
     // MARK: - @objc func
     @objc func deleteAll() {

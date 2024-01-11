@@ -16,13 +16,11 @@ class CameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & U
     let imageAddingBtn = UIButton()
     let imageView = UIImageView()
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -37,10 +35,8 @@ class CameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & U
         imageView.setFrame(centerX: view.centerX, top: 100, width: 200, height: 200)
     }
     
-    
-    
-    // MARK: - 代理方法
 
+    // MARK: - 代理方法
     // 2.在代理中设置拍照/调用相册后的照片怎么用(和tableview代理一样的固定句式)
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -98,9 +94,7 @@ class CameraAndPhotosPage: UIViewController, UIImagePickerControllerDelegate & U
         self.dismiss(animated: true, completion: nil)
     }
     
-    
     // MARK: - @objc func
-
     // 3.在选项表中调用函数 callCamera() callPhoto()
     @objc func addImage() {
         actionSheet(actionsTitle: ["拍照", "从相册选取图片"], actionsStyle: [.default, .default], actionsHandler: [

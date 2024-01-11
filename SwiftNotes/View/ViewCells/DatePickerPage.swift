@@ -13,14 +13,11 @@ class DatePickerPage: UIViewController {
     let datePicker = UIDatePicker() // 常规用法
     let datePicker2 = UIDatePicker() // 尽可能多的属性
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -66,7 +63,6 @@ class DatePickerPage: UIViewController {
         button.setFrame(left: 20, top: 235, right: 20, height: 56)
         
     }
-    
     
     // MARK: - @objc func
     @objc func getValue() {

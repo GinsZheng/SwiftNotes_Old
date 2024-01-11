@@ -24,13 +24,11 @@ class FormatterListPage: UIViewController {
     
     let tableView = UITableView()
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -41,7 +39,6 @@ class FormatterListPage: UIViewController {
             self?.tableView.reloadData()
         }
     }
-    
     
     // MARK: - @objc func
     

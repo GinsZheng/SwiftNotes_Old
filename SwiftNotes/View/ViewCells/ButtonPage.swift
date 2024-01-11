@@ -12,16 +12,12 @@ class ButtonPage: UIViewController {
     
     let testInt = "testInt"
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         print("sta", kNavBarHeight, kStatusBarHeight)
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -79,7 +75,6 @@ class ButtonPage: UIViewController {
 //
 //        // view的高度是全屏高，但view的y值的0点却是导航栏底边
     }
-    
     
     // MARK: - @objc func
     // 测试UserDefualt内容(2)

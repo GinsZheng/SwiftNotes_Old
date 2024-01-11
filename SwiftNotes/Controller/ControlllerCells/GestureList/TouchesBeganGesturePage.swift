@@ -12,12 +12,9 @@ class CSTouchesBeganGesturePage: UIViewController {
     
     let myView = UIView()
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -38,7 +35,6 @@ class CSTouchesBeganGesturePage: UIViewController {
             print("点击结束\(t.location(in: self.view))")
         }
     }
-    
     
     // MARK: - func
     func setupUI() {

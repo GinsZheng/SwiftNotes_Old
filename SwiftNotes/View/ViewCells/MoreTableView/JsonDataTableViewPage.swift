@@ -15,14 +15,12 @@ class JsonDataTableViewPage: UIViewController {
     
     let tableView = UITableView()
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         fetchTableData()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -44,7 +42,6 @@ class JsonDataTableViewPage: UIViewController {
             }
         }
     }
-    
     
     // MARK: - @objc func
     

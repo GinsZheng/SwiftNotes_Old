@@ -136,7 +136,6 @@ extension GroupListView {
         collectionView.setFrame(left: 10, top: 0, right: 10, height: kWithoutNavBarHeight)
     }
     
-    
     // MARK: - @objc func
     @objc private func switchView() {
         currentUIForm = currentUIForm == .form0 ? .form1 : .form0
@@ -229,7 +228,6 @@ class HorizonalScrollingGroupButtonsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - func
     func setupUI(showsHorizontalScrollIndicator: Bool, showTrashButton: Bool) {
         setupScrollView(showsHorizontalScrollIndicator: showsHorizontalScrollIndicator)
@@ -305,7 +303,6 @@ class HorizonalScrollingGroupButtonsView: UIView {
         scrollView.contentSize.width = buttonLeft + tailPadding
     }
     
-    
     // MARK: - @objc func
     @objc private func buttonsTapped(_ button: UIButton) {
         onButtonsTapped?(button.tag)
@@ -347,7 +344,6 @@ class GroupCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: - func
     private func setupViews() {
         button.setup(superview: contentView)
@@ -362,7 +358,6 @@ class GroupCollectionViewCell: UICollectionViewCell {
         button.addTarget(self, action: #selector(buttonsTapped), for: forEvent)
         button.extendTouchArea()
     }
-    
     
     // MARK: - @objc func
     @objc func buttonsTapped() {
@@ -435,7 +430,6 @@ class GroupBottomButtonsView: UIView {
     let switchButton = UIButton(type: .custom)
     let settingsButton = UIButton(type: .custom)
     
-    
     // MARK: - func
     func setupView(showTrashButton: Bool) {
         switchButtonBg.setup(superview: self, imageName: "groupBar_gradientMask")
@@ -462,7 +456,6 @@ class GroupBottomButtonsView: UIView {
         trashButton.setFrame(left: 10, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
         trashButton.extendTouchArea()
     }
-    
     
     // MARK: - @objc func
     @objc private func trashButtonTapped() {

@@ -12,9 +12,7 @@ import SQLite
 
 class CSTryPage: UIViewController {
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)

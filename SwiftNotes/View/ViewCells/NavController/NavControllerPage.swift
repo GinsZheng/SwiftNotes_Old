@@ -13,15 +13,11 @@ class NavControllerPage: UIViewController {
     let button = UIButton()
     let button2 = UIButton()
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -44,9 +40,7 @@ class NavControllerPage: UIViewController {
         
     }
     
-    
     // MARK: - @objc func
-
     @objc func pushToGeneralSubpage() {
         self.push(targetVC: CSGeneralSubpage())
     }

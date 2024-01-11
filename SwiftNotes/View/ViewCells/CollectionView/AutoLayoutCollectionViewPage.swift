@@ -50,13 +50,11 @@ class AutoLayoutCollectionViewPage: UIViewController {
     
     var collectionView: UICollectionView!
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -131,7 +129,6 @@ class AutoLayoutCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     // MARK: - func
     private func setupView() {

@@ -16,10 +16,8 @@ class MagicMoveFromVC: UIViewController {
     let blueView = UIView()
     
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -29,7 +27,6 @@ class MagicMoveFromVC: UIViewController {
         toVC.hero.isEnabled = true
         self.presentFullScreen(targetVC: toVC)
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -58,18 +55,15 @@ class MagicMoveToVC: UIViewController {
     let blueView = UIView()
     let whiteView = UIView() // 新增UIView
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.dismiss(animated: true, completion: nil)
     }
-    
     
     // MARK: - func
     func setupUI() {

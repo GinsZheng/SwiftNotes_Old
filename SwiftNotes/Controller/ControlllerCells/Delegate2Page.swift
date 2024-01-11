@@ -21,15 +21,11 @@ class CSDelegator: UIViewController {
     
     weak var delegate: CSRefreshDataDelegate?
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -40,9 +36,7 @@ class CSDelegator: UIViewController {
         button.setFrame(left: 20, top: 20, right: 20, height: 44)
     }
     
-    
     // MARK: - @objc func
-
     @objc func backToSuperpage() {
         if delegate != nil {
             delegate!.refreshData()
@@ -59,15 +53,11 @@ class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
     
     let button = UIButton()
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -83,7 +73,6 @@ class CSDelegate2Page: UIViewController, CSRefreshDataDelegate {
     func refreshData() {
         button.isHidden = true
     }
-    
     
     // MARK: - @objc func
     @objc func pushToSubpage() {

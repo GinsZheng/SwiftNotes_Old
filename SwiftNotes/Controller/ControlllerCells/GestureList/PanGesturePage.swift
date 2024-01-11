@@ -12,9 +12,7 @@ class CSPanGesturePage: UIViewController {
     
     let myView = UIView()
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)
@@ -22,13 +20,11 @@ class CSPanGesturePage: UIViewController {
         setupPan()
     }
     
-    
     // MARK: - func
     func setupPan() {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panGes))
         view.addGestureRecognizer(pan)
     }
-    
     
     // MARK: - @objc func
     @objc func panGes() {

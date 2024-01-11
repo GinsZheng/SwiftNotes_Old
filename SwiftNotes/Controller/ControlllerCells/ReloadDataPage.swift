@@ -28,7 +28,6 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
     let addItemBtn = UIButton(type: .custom)
     let tableView = UITableView()
     
-    
     // MARK: - 生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +38,6 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -83,7 +81,6 @@ class CSReloadDataPage: UIViewController, UITableViewDelegate, UITableViewDataSo
         tableView.reloadData()
     }
     
-    
     // MARK: - @objc func
     @objc func presentAddItemVC() {
         // 3.受托
@@ -108,15 +105,11 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
     // 4.定义委托变量delegate
     weak var delegate: CSReloadDelegate?
     
-    
     // MARK: - 生命周期方法
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
-    
     
     // MARK: - func
     func setupUI() {
@@ -132,9 +125,7 @@ class AddItemVC: UIViewController, UITextFieldDelegate {
         addingButton.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
     }
     
-    
     // MARK: - @objc func
-
     @objc func checkInputtedValue(textField: UITextField) {
         if nameTextField.text == "" {
             addingButton.isEnabled = false
