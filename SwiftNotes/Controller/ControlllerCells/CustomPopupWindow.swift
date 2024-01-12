@@ -12,7 +12,7 @@ class CSCustomPopupWindowPage: UIViewController {
     
     let btn = UIButton()
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -53,7 +53,7 @@ class CSCustomPopupWindow: UIViewController {
     let cancelButton = UIButton()
 
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

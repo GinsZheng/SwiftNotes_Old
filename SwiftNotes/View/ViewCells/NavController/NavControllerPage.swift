@@ -13,7 +13,7 @@ class NavControllerPage: UIViewController {
     let button = UIButton()
     let button2 = UIButton()
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

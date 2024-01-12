@@ -11,7 +11,7 @@ import Localize_Swift
 
 class LocalizationPage: UIViewController {
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

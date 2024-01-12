@@ -19,7 +19,7 @@ class NumberFormatterPage: UIViewController {
     let float = 3.1415926
     let int = 6
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)

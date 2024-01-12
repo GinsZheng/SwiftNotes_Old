@@ -19,7 +19,7 @@ class Closure1VC: UIViewController {
     
     let value = "这是一个Closure1VC中的值"
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

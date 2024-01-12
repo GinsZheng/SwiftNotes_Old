@@ -16,7 +16,7 @@ class CSDictionaryPage: UIViewController {
         "g": "gamma"
     ]
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)

@@ -10,7 +10,7 @@ import UIKit
 
 class SliderPage: UIViewController {
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

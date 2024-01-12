@@ -14,7 +14,7 @@ class ScrollViewHorizonalPage: UIViewController {
                   "Button 6", "Button 7", "Button 8", "Button 9", "Button 10",
                   "Button 11", "Button 12", "Button 13", "Button 14", "Button 15"]
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

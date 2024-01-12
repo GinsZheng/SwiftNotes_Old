@@ -12,7 +12,7 @@ class PrivatePage: UIViewController {
     
     private let weight = 65
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

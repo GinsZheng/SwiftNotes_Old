@@ -15,7 +15,7 @@ class Closure2VC: UIViewController {
     let button = UIButton()
 
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -57,7 +57,7 @@ class Closure2SubVC: UIViewController, UITextFieldDelegate {
     var nameClosure: ((String) -> Void)?
 
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

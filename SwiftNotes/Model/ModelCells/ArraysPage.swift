@@ -16,7 +16,7 @@ class CSArrayPage: UIViewController {
     var arr3 = Array(repeating: 1, count: 5) // 写法3
 
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)

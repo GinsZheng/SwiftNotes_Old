@@ -13,7 +13,7 @@ class SwitchPage: UIViewController {
     var boolValue1 = "boolValue1"
     var userDefaultsboolValue1 = kUserDefaults.bool(forKey: "boolValue1")
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

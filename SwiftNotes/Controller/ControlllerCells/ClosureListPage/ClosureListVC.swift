@@ -25,7 +25,7 @@ class ClosureListVC: UIViewController {
     
     let tableView = UITableView()
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

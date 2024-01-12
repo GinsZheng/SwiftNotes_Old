@@ -17,7 +17,7 @@ class WindowPage: UIViewController {
     // 最后一个Window，即栈的最上层，退出页面时，lastWindow即释放
     let lastWindow = UIApplication.shared.windows.last!
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

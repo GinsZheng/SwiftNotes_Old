@@ -16,7 +16,7 @@ class LabelPage: UIViewController {
     let label4 = UILabel()
     let label5 = UILabel()
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

@@ -43,7 +43,7 @@ class EqualSizeCollectionViewPage: UIViewController {
     
     var collectionView: UICollectionView!
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -99,7 +99,7 @@ class EqualSizeCollectionViewCell: UICollectionViewCell {
     let titleLabel = UILabel()
     let imageView = UIImageView()
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()

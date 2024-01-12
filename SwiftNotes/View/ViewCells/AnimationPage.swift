@@ -13,7 +13,7 @@ class AnimationPage: UIViewController {
     let myView = UIView()
     let solidButton = UIButton(type: .custom)
     
-    // MARK: - 生命周期方法
+    // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
