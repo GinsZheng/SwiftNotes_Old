@@ -47,8 +47,8 @@ private class DataManager: DefaultCellDataManager {
 }
 
 
+// MARK: - 视图控制器
 class ViewListVC: UIViewController {
-    
     private let tableData = DataManager()
     
     let tableView = UITableView()
@@ -59,22 +59,10 @@ class ViewListVC: UIViewController {
         setupUI()
     }
     
-    // MARK: - func
-    func setupUI() {
-        view.setBackgroundColor(color: cBgGray)
-        setupDefaultTableView(tableView)
-        // 数据更新时刷新列表
-        tableData.onItemsUpdated = { [weak self] in
-            self?.tableView.reloadData()
-        }
-    }
-    
-    // MARK: - @objc func
-    
 }
 
 
-// MARK: - TableView 代理方法
+// MARK: - tableView 代理方法
 extension ViewListVC: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -86,7 +74,7 @@ extension ViewListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableData[indexPath.row].setCellHeight()
     }
-    
+
     // 行数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableData.count
@@ -99,6 +87,21 @@ extension ViewListVC: UITableViewDelegate, UITableViewDataSource {
         tableData[indexPath.row].configureCell(cell)
         return cell
     }
+    
+}
+
+
+// MARK: - 私有方法
+extension ViewListVC {
+    private func setupUI() {
+        view.setBackgroundColor(color: cBgGray)
+        setupDefaultTableView(tableView)
+        // 数据更新时刷新列表
+        tableData.onItemsUpdated = { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
 }
 
 
