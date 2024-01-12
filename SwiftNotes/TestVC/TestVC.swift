@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     func setupUI() {
         view.setBackgroundColor(color: cBgGray)
         
-        let myView = DefaultView()
+        let myView = DefaultViewOfCell()
         myView.setup(superview: view)
         myView.prepare(row: 0, cellCountInSection: 1)
         myView.configure(cellType: .title, title: "hey")
