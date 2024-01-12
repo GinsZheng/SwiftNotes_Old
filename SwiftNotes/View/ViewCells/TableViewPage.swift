@@ -10,6 +10,7 @@ private class DataManager: DefaultCellDataManager {
 }
 
 
+// MARK: - 视图控制器
 class TableViewPage: UIViewController {
     private let tableData = DataManager()
     
@@ -19,16 +20,6 @@ class TableViewPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-    
-    // MARK: - func
-    private func setupUI() {
-        view.setBackgroundColor(color: cBgGray)
-        setupDefaultTableView(tableView)
-        // 数据更新时刷新列表
-        tableData.onItemsUpdated = { [weak self] in
-            self?.tableView.reloadData()
-        }
     }
     
 }
@@ -62,6 +53,19 @@ extension TableViewPage: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+
+// MARK: - 私有方法
+extension TableViewPage {
+    private func setupUI() {
+        view.setBackgroundColor(color: cBgGray)
+        setupDefaultTableView(tableView)
+        // 数据更新时刷新列表
+        tableData.onItemsUpdated = { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+}
 
 
 

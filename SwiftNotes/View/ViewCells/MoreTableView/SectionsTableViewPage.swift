@@ -23,6 +23,7 @@ private class DataManager: DefaultSectionAndCellDataManager {
 }
 
 
+// MARK: - 视图控制器
 class SectionsTableViewPage: UIViewController {
     private let tableData = DataManager()
     
@@ -34,20 +35,10 @@ class SectionsTableViewPage: UIViewController {
         setupUI()
     }
     
-    // MARK: - func
-    private func setupUI() {
-        view.setBackgroundColor(color: cBgGray)
-        setupDefaultGroupedTableView(tableView)
-        // 数据更新时刷新列表
-        tableData.onItemsUpdated = { [weak self] in
-            self?.tableView.reloadData()
-        }
-    }
-    
 }
 
 
-// MARK: - tableView 代理方法
+// MARK: - 代理方法
 extension SectionsTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -111,4 +102,17 @@ extension SectionsTableViewPage: UITableViewDelegate, UITableViewDataSource {
         return footer
     }
     
+}
+
+
+// MARK: - 私有方法
+extension SectionsTableViewPage {
+    private func setupUI() {
+        view.setBackgroundColor(color: cBgGray)
+        setupDefaultGroupedTableView(tableView)
+        // 数据更新时刷新列表
+        tableData.onItemsUpdated = { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
 }
