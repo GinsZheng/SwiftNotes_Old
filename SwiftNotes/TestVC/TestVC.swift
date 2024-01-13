@@ -17,11 +17,11 @@ class ViewController: UIViewController {
 //        titleView.setup(superview: view)
 //        titleView.prepare(row: 0, cellCountInSection: 1)
 //        titleView.configure(cellType: .title, title: "时间")
-//
+        
         let titleVCView = DefaultViewOfCell()
         titleVCView.setup(superview: view)
         titleVCView.setFrame(left: 0, top: 100, right: 0, height: kCellHeight)
-        titleVCView.prepare(row: 0, cellCountInSection: 1)
+        titleVCView.prepare(cornerType: .topCorners, row: 0, cellCountInSection: 1)
         titleVCView.configure(cellType: .titleRightIcon, title: "提醒")
     }
     
