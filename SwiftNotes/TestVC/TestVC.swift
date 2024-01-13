@@ -19,11 +19,12 @@ extension ViewController {
         
         let titleVCView = DefaultViewOfCell(cornerType: .allCorners)
         titleVCView.setup(superview: view)
-        titleVCView.setFrame(left: 0, top: 100, right: 0, height: kCellHeight)
-        titleVCView.configure(cellType: .titleRightIcon, title: "提醒")
+        titleVCView.setFrame(left: 0, top: 100, right: 0, height: k2LineCellHeight)
+        titleVCView.configure(cellType: .titleSwitch2Line, title: "提醒", description: "kwkw")
         titleVCView.onTap = {
             self.push(targetVC: CSGeneralSubpage())
         }
+        
     }
-    
+
 }
