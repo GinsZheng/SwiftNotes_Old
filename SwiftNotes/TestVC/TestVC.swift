@@ -9,10 +9,14 @@ class ViewController: UIViewController {
         setupUI()
     }
     
-    // MARK: - func
-    func setupUI() {
-        view.setBackgroundColor(color: cBgGray)
+}
 
+
+// MARK: - 私有方法
+extension ViewController {
+    private func setupUI() {
+        view.setBackgroundColor(color: cBgGray)
+        
         let titleVCView = DefaultViewOfCell(cornerType: .allCorners)
         titleVCView.setup(superview: view)
         titleVCView.setFrame(left: 0, top: 100, right: 0, height: kCellHeight)
@@ -22,7 +26,4 @@ class ViewController: UIViewController {
         }
     }
     
-    
 }
-
-

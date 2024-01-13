@@ -53,8 +53,6 @@ class ClosureEnumVC: UIViewController {
         
         
         // MARK: - C 函数参数闭包：已初始化
-
-        
         
         
         
@@ -121,15 +119,7 @@ class ClosureEnumCustomView: UIView {
         print("第三个闭包的结果是: \(result)")
     }
     
-    
-    // MARK: - D 带self的闭包 ⚠️待完善。大概是说：如果我所在
-//    layout.fetchTitleWidthsClosure = { [weak self] in
-//        guard let self = self else { return [] }
-//        return self.calculateTitleWidths()
-//    }
-    
-    
-    
+
     // MARK: - 这一块可忽略
     override init(frame: CGRect) {
         super.init(frame: frame)
