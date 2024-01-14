@@ -14,7 +14,7 @@ private class DataManager: DefaultCellDataManager {
 class TableViewPage: UIViewController {
     private let tableData = DataManager()
     
-    let tableView = UITableView()
+    private let tableView = UITableView()
     
     // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {

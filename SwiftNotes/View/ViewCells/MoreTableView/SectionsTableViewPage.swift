@@ -27,7 +27,7 @@ private class DataManager: DefaultSectionAndCellDataManager {
 class SectionsTableViewPage: UIViewController {
     private let tableData = DataManager()
     
-    let tableView = UITableView(frame: .zero, style: .grouped)
+    private let tableView = UITableView(frame: .zero, style: .grouped)
     
     // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
@@ -116,3 +116,4 @@ extension SectionsTableViewPage {
         }
     }
 }
+
