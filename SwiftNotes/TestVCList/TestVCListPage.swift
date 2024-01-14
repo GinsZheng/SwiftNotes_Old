@@ -8,6 +8,7 @@ private class DataManager: DefaultCellDataManager {
             .titleNextVC(title: "Sections Table View", viewController: SectionsTableViewPage()),
             .titleNextVC(title: "FoldableTableViewPage", viewController: FoldableTableViewPage()),
             .titleNextVC(title: "SectionsTableViewPage", viewController: SectionsTableViewPage()),
+            .titleNextVC(title: "MoreTableViewListPage", viewController: MoreTableViewListPage()),
         ])
     }
 }

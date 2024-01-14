@@ -12,14 +12,14 @@ import UIKit
 private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
-            .title(title: "11 title"),
-            .titleDesc(title: "11 titleDesc", description: "描述"),
-            .titleNext(title: "12 titleNext"),
-            .titleDescNext(title: "12 titleDescNext", description: "描述描述描述描述描述描述描述描述描述描述描述"),
-            .titleNextVC(title: "12 titleNextVC", viewController: ViewControllerManager.viewController(for: 1) ?? ImageViewPage()),
-            .titleDescNextVC(title: "12 titleDescNextVC", description: "hey", viewController: ButtonPage()),
-            .titleRightIcon(title: "12 titleRightIcon", rightIconName: kIconCheckbox_s),
-            .titleDescRightIcon(title: "12 titleDescRightIcon", description: "hey", rightIconName: kIconCheckbox_s),
+            .title(title: "11 title标题标题标题标题标题标题标题标题标题标题"),
+            .titleDesc(title: "11 titleDesc标题标题标题标题标题标题标题标题标题标题", description: "描述标题标题标题标题标题标题标题标题标题标题"),
+            .titleNext(title: "12 titleNext标题标题标题标题标题标题标题标题标题标题"),
+            .titleDescNext(title: "12 titleDescNext标题标题标题标题标题标题标题标题标题标题", description: "描述描述描述描述描述描述描述描述描述描述描述标题标题标题标题标题标题标题标题标题标题"),
+            .titleNextVC(title: "12 titleNextVC标题标题标题标题标题标题标题标题标题标题", viewController: ViewControllerManager.viewController(for: 1) ?? ImageViewPage()),
+            .titleDescNextVC(title: "12 titleDescNextVC标题标题标题标题标题标题标题标题标题标题", description: "hey", viewController: ButtonPage()),
+            .titleRightIcon(title: "12 titleRightIcon标题标题标题标题标题标题标题标题标题标题", rightIconName: kIconCheckbox_s),
+            .titleDescRightIcon(title: "12 titleDescRightIcon标题标题标题标题标题标题标题标题标题标题", description: "hey", rightIconName: kIconCheckbox_s),
             .titleSwitch(title: "13 titleSwitch", isSwitchOn: true),
             .titleLeftIconNext(title: "14 titleLeftIconNext", leftIconName: kIconCheckbox_s),
             .titleDescLeftIconNext(title: "14 titleDescLeftIconNext", description: "hey", leftIconName: kIconCheckbox_s),
@@ -30,8 +30,8 @@ private class DataManager: DefaultCellDataManager {
             .titleDescNext2Line(title: "22 titleDescNext2Line", description: "hey"),
             .titleDescNextVC2Line(title: "22 titleDescNextVC2Line", description: "hey", viewController: ButtonPage()),
             .titleDescRightIcon2Line(title: "22 titleDescRightIcon2Line", description: "hey", rightIconName: kIconCheckbox),
-            .titleDescSwitch2Line(title: "23 titleDescSwitch2Line", description: "hey", isSwitchOn: true),
-            .titleDescSwitchVC2Line(title: "23 titleDescSwitchVC2Line", description: "hey", isSwitchOn: false, viewController: ButtonPage()),
+            .titleDescSwitch2Line(title: "23 titleDescSwitch2Line标题标题标题标题标题标题标题标题标题标题", description: "hey标题标题标题标题标题标题标题标题标题标题", isSwitchOn: true),
+            .titleDescSwitchVC2Line(title: "23 titleDescSwitchVC2Line标题标题标题标题标题标题标题标题标题标题", description: "hey标题标题标题标题标题标题标题标题标题标题", isSwitchOn: false, viewController: ButtonPage()),
         ])
     }
 }
