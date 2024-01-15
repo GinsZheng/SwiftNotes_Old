@@ -59,6 +59,12 @@ class ButtonPage: UIViewController {
         WordIconBgButton.setFrame(left: 20, top: wordIconButton.bottom + 20, right: 20, height: 44)
         WordIconBgButton.setStyleWordIconBg17ptFgWhiteThemeButton(title: "图文&背景", imageName: "general_adding_btn", interval: 3)
         
+        let noInteractionButton = UIButton(type: .custom)
+        noInteractionButton.setup(superview: view, target: self, action: #selector(changeSetting))
+        noInteractionButton.setFrame(left: 20, top: IconButton.bottom + 20, right: 20, height: 44)
+        noInteractionButton.setStyleSolid17ptFgWhiteThemeButton(title: "文字&背景")
+        noInteractionButton.isUserInteractionEnabled = false // 设置此项后，按钮点击无任何交互，可以作为图片来看待，用于cell中的按钮
+        
         // 测试UserDefualt内容(1)
         print("testInt初始值", kUserDefaults.integer(forKey: testInt))
         
