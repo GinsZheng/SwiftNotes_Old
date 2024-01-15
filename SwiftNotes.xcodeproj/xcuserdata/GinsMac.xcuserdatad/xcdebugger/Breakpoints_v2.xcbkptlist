@@ -3,4 +3,70 @@
    uuid = "3D44A055-7519-44F0-BC6C-FAACBF9A338B"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D3CCA95-B38B-4E73-8A1A-40E0B466E897"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../SwiftGeneral/Global/TableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "614"
+            endingLineNumber = "614"
+            landmarkName = "setupTitleMiddleIconRightIcon(description:middleIconName:rightIconName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3CB0B321-F58D-4DBE-9963-A264655BE98E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../SwiftGeneral/Global/TableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "407"
+            endingLineNumber = "407"
+            landmarkName = "DefaultCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "3CB0B321-F58D-4DBE-9963-A264655BE98E - 54b4d8d655e0c99d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftNotes.DefaultCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; SwiftNotes.DefaultCell"
+                  moduleName = "SwiftNotes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/GinsMac/Downloads/Gins/Software/Library/lib_Xcode/SwiftGeneral/Global/TableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "407"
+                  endingLineNumber = "407"
+                  offsetFromSymbolStart = "696">
+               </Location>
+               <Location
+                  uuid = "3CB0B321-F58D-4DBE-9963-A264655BE98E - 29234c5aaf9a7713"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftNotes.DefaultCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;SwiftNotes.DefaultCell&gt;"
+                  moduleName = "SwiftNotes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/GinsMac/Downloads/Gins/Software/Library/lib_Xcode/SwiftGeneral/Global/TableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "407"
+                  endingLineNumber = "407"
+                  offsetFromSymbolStart = "692">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
