@@ -56,7 +56,7 @@ extension SectionsTableViewPage: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellItem = tableData.cellData(for: indexPath)
-        return cellItem.setCellHeight()
+        return cellItem.getCellHeight()
     }
     
     // 表尾高度

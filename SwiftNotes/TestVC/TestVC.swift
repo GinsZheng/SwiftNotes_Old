@@ -48,8 +48,8 @@ extension ViewController {
         titleVCView.setFrame(left: 0, top: 100, right: 0, height: k2LineCellHeight)
         titleVCView.configure(cellType: .titleMiddleIconRightIcon, title: "提醒", description: "kwkw", middleIconName: "mine_aboutAs")
         titleVCView.onTap = {
-            let customActionSheetVC = CustomActionSheetViewController(viewFrameInWindow: titleVCView.getFrameInWindow())
-            self.present(customActionSheetVC, animated: true, completion: nil)
+            let smallActionSheet = SmallActionSheet(viewFrameInWindow: titleVCView.getFrameInWindow())
+            self.present(smallActionSheet, animated: true, completion: nil)
         }
         
     }
@@ -58,7 +58,7 @@ extension ViewController {
 
 
 // MARK: - 视图控制器
-class CustomActionSheetViewController: UIViewController {
+class SmallActionSheet: UIViewController {
     private let tableData = DataManager()
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
@@ -86,7 +86,7 @@ class CustomActionSheetViewController: UIViewController {
 
 
 // MARK: - 代理方法
-extension CustomActionSheetViewController: UITableViewDelegate, UITableViewDataSource {
+extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = tableData.cellData(for: indexPath)
@@ -103,7 +103,7 @@ extension CustomActionSheetViewController: UITableViewDelegate, UITableViewDataS
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellItem = tableData.cellData(for: indexPath)
-        return cellItem.setCellHeight()
+        return cellItem.getCellHeight(oneLineCellHeight: kSmallOptionCellHeight)
     }
     
     // 表尾高度
@@ -132,7 +132,7 @@ extension CustomActionSheetViewController: UITableViewDelegate, UITableViewDataS
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SmallActionSheet.identifier, for: indexPath) as? SmallActionSheet else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SmallOptionCell.identifier, for: indexPath) as? SmallOptionCell else { return UITableViewCell() }
         let sectionItem = tableData.sectionData(for: indexPath.section) // 获取section数据
         let cellCountInSection = tableData.cellCount(in: indexPath.section) // 获取当前 section 的 cell 数量
         cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: sectionItem.isWhiteHeader(), isWhiteFooter: sectionItem.isWhiteFooter()) // 配置基本参数
@@ -153,18 +153,10 @@ extension CustomActionSheetViewController: UITableViewDelegate, UITableViewDataS
 
 
 // MARK: - 私有方法
-extension CustomActionSheetViewController {
+extension SmallActionSheet {
     private func setupUI() {
-//        view.setBackgroundColor(color: cBgGray)
-        
-        
-        tableView.register(SmallActionSheet.self, forCellReuseIdentifier: SmallActionSheet.identifier)
-        self.view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorColor = .hex(cNoColor)
-        tableView.setBackgroundColor(color: cBgGray)
-        tableView.OptimizeEdgePanGesture(of: self)
+        tableView.register(SmallOptionCell.self, forCellReuseIdentifier: SmallOptionCell.identifier)
+        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
         tableView.setFrame(left: 0, top: 0, width: 250, height: 300)
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
         tableView.hideSectionHeaderTopPadding()
@@ -176,66 +168,17 @@ extension CustomActionSheetViewController {
 }
 
 
-class SmallActionSheet: DefaultCell {
-    override func setFrame() {
-        super.setFrame(left: 0, top: 0, width: 250, height: 44)
+class SmallOptionCell: DefaultCell {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.cellWidth = kSmallOptionCellWidth
+        self.cellHeight = kSmallOptionCellHeight
+        self.updateLayout()
     }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }
 
-
-//
-//class CustomActionSheetViewController: UIViewController {
-//    var viewFrameInWindow: CGRect
-//
-//    // MARK: - 初始化与生命周期方法
-//    init(viewFrameInWindow: CGRect) {
-//        self.viewFrameInWindow = viewFrameInWindow
-//        super.init(nibName: nil, bundle: nil)
-//        self.modalPresentationStyle = .overFullScreen
-//        self.modalTransitionStyle = .crossDissolve
-//    }
-//
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        // 创建菜单视图
-//        let menuView = UIView()
-//        menuView.backgroundColor = .white
-//        menuView.layer.cornerRadius = 12
-//        menuView.layer.masksToBounds = true
-//
-//        // 假设我们在屏幕底部有一个固定高度的菜单
-//        let menuHeight: CGFloat = 250
-//        let screenWidth = UIScreen.main.bounds.width
-//        menuView.frame = CGRect(x: 0, y: view.bounds.height - menuHeight, width: screenWidth, height: menuHeight)
-//        view.addSubview(menuView)
-//
-//        // 添加一个按钮
-//        let button = UIButton(type: .system)
-//        button.setTitle("选项1", for: .normal)
-//        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-//
-//        // 假设按钮在菜单视图中居中显示
-//        button.frame = CGRect(x: 20, y: (menuHeight - 44) / 2, width: screenWidth - 40, height: 44)
-//        menuView.addSubview(button)
-//
-//        // 添加点击关闭视图的手势
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissSelf))
-//        view.addGestureRecognizer(tapGesture)
-//    }
-//
-//    @objc func buttonTapped() {
-//        // 处理按钮点击事件
-//        print("按钮被点击")
-//        dismiss(animated: true, completion: nil)
-//    }
-//
-//    @objc func dismissSelf() {
-//        // 点击背景关闭菜单
-//        dismiss(animated: true, completion: nil)
-//    }
-//}

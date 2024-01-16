@@ -68,5 +68,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EBB9369-EB1B-4C5E-ACD3-EC3BBC16ACF3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../SwiftGeneral/Global/DefaultCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
+            landmarkName = "init(style:reuseIdentifier:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6EBB9369-EB1B-4C5E-ACD3-EC3BBC16ACF3 - 8bf41d54e4d00e37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftNotes.DefaultCell.__allocating_init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; SwiftNotes.DefaultCell"
+                  moduleName = "SwiftNotes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/GinsMac/Downloads/Gins/Software/Library/lib_Xcode/SwiftGeneral/Global/DefaultCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "6EBB9369-EB1B-4C5E-ACD3-EC3BBC16ACF3 - bfe814b0d834ef66"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftNotes.DefaultCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; SwiftNotes.DefaultCell"
+                  moduleName = "SwiftNotes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/GinsMac/Downloads/Gins/Software/Library/lib_Xcode/SwiftGeneral/Global/DefaultCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "395"
+                  endingLineNumber = "395"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -60,7 +60,7 @@ extension CSJumpListPage: UITableViewDelegate, UITableViewDataSource {
     
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableData[indexPath.row].setCellHeight()
+        return tableData[indexPath.row].getCellHeight()
     }
     
     // 行数
