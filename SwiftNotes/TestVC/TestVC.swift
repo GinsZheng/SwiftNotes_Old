@@ -132,7 +132,7 @@ extension CustomActionSheetViewController: UITableViewDelegate, UITableViewDataS
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: DefaultCell.identifier, for: indexPath) as? DefaultCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SmallActionSheet.identifier, for: indexPath) as? SmallActionSheet else { return UITableViewCell() }
         let sectionItem = tableData.sectionData(for: indexPath.section) // 获取section数据
         let cellCountInSection = tableData.cellCount(in: indexPath.section) // 获取当前 section 的 cell 数量
         cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: sectionItem.isWhiteHeader(), isWhiteFooter: sectionItem.isWhiteFooter()) // 配置基本参数
@@ -158,7 +158,7 @@ extension CustomActionSheetViewController {
 //        view.setBackgroundColor(color: cBgGray)
         
         
-        tableView.register(DefaultCell.self, forCellReuseIdentifier: DefaultCell.identifier)
+        tableView.register(SmallActionSheet.self, forCellReuseIdentifier: SmallActionSheet.identifier)
         self.view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -175,6 +175,12 @@ extension CustomActionSheetViewController {
     }
 }
 
+
+class SmallActionSheet: DefaultCell {
+    override func setFrame() {
+        super.setFrame(left: 0, top: 0, width: 250, height: 44)
+    }
+}
 
 
 //
