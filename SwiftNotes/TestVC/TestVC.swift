@@ -1,6 +1,44 @@
 import UIKit
 
-import UIKit
+class ViewController: UIViewController {
+    
+    
+    // MARK: - 初始化与生命周期方法
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+    }
+    
+}
+
+
+// MARK: - 私有方法
+extension ViewController {
+    private func setupUI() {
+        view.setBackgroundColor(color: cBgGray)
+        
+        let bgView = UIView()
+        bgView.setup(superview: view, backgroundColor: cFgWhite)
+        bgView.setFrame(left: 30, top: 100, right: 30, height: 200)
+
+        let button = UIButton(type: .custom)
+        button.setup(superview: bgView)
+        button.setStyleSolid17ptFgWhiteThemeButton(title: "点击出现小选项表")
+        button.setFrame(left: 10, top: 30, right: 10, height: kButtonHeight)
+        button.setEvent {
+            let smallActionSheet = SmallActionSheet(viewFrameInWindow: button.getFrameInWindow())
+            smallActionSheet.didSelectItem = { [weak self] indexPath in
+                self?.push(targetVC: CSGeneralSubpage())
+//                let item = self.tableData.cellData(for: indexPath)
+//                item.pushViewControllerOnTap(from: self)
+            }
+            self.present(smallActionSheet, animated: true, completion: nil)
+        }
+        
+    }
+    
+}
+
 
 private class DataManager: DefaultSectionAndCellDataManager {
     init() {
@@ -22,48 +60,14 @@ private class DataManager: DefaultSectionAndCellDataManager {
 }
 
 
-class ViewController: UIViewController {
-    
-    
-    // MARK: - 初始化与生命周期方法
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
-    
-}
-
-
-// MARK: - 私有方法
-extension ViewController {
-    private func setupUI() {
-        view.setBackgroundColor(color: cBgGray)
-        
-        let myView = UIView()
-        myView.setup(superview: view, backgroundColor: cRed_FF635A)
-        myView.setFrame(left: 30, top: 200, right: 30, bottom: 300)
-        
-        let titleVCView = DefaultViewOfCell(cornerType: .allCorners)
-        titleVCView.setup(superview: myView)
-        titleVCView.setFrame(left: 0, top: 100, right: 0, height: k2LineCellHeight)
-        titleVCView.configure(cellType: .titleMiddleIconRightIcon, title: "提醒", description: "kwkw", middleIconName: "mine_aboutAs")
-        titleVCView.onTap = {
-            let smallActionSheet = SmallActionSheet(viewFrameInWindow: titleVCView.getFrameInWindow())
-            self.present(smallActionSheet, animated: true, completion: nil)
-        }
-        
-    }
-    
-}
-
-
 // MARK: - 视图控制器
 class SmallActionSheet: UIViewController {
+    var didSelectItem: ((IndexPath) -> Void)?     // 回调闭包，当选项被选中时，传递 IndexPath
+    
     private let tableData = DataManager()
+    private var viewFrameInWindow: CGRect
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
-    
-    var viewFrameInWindow: CGRect
     
     // MARK: - 初始化与生命周期方法
     init(viewFrameInWindow: CGRect) {
@@ -89,9 +93,9 @@ class SmallActionSheet: UIViewController {
 extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = tableData.cellData(for: indexPath)
-        item.pushViewControllerOnTap(from: self)
-        tableView.deselectRow(at: indexPath, animated: true)
+        print("hey，在这")
+        didSelectItem?(indexPath)
+        self.dismiss()
     }
     
     // 表头高度
@@ -133,9 +137,9 @@ extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SmallOptionCell.identifier, for: indexPath) as? SmallOptionCell else { return UITableViewCell() }
-        let sectionItem = tableData.sectionData(for: indexPath.section) // 获取section数据
         let cellCountInSection = tableData.cellCount(in: indexPath.section) // 获取当前 section 的 cell 数量
-        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: sectionItem.isWhiteHeader(), isWhiteFooter: sectionItem.isWhiteFooter()) // 配置基本参数
+        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: true, isWhiteFooter: true) // 配置基本参数
+        // 注：这里isWhiteHeader/Footer都设为true是因为：设为true时会让每个section第一个和最后一个cell的不设圆角，而这正是在小选项表中所需要的
         let cellItem = tableData.cellData(for: indexPath)  // 获取cell数据
         cellItem.configureCell(cell) // 配置Cell数据与UI
         return cell
@@ -155,15 +159,26 @@ extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
 // MARK: - 私有方法
 extension SmallActionSheet {
     private func setupUI() {
+        let bgView = UIView()
+        bgView.setup(superview: view, backgroundColor: cNoColor)
+        bgView.setFrame(allEdges: 0)
+//        bgView.setTapAction {
+//            self.dismiss()
+//        }
+        
         tableView.register(SmallOptionCell.self, forCellReuseIdentifier: SmallOptionCell.identifier)
-        tableView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
-        tableView.setFrame(left: 0, top: 0, width: 250, height: 300)
+        tableView.setup(superview: bgView, delegate: self, dataSource: self, viewController: self)
+        tableView.setFrame(left: 0, top: 120, width: kSmallOptionCellWidth, height: 300)
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
         tableView.hideSectionHeaderTopPadding()
         // 数据更新时刷新列表
         tableData.onItemsUpdated = { [weak self] in
             self?.tableView.reloadData()
         }
+    }
+    
+    @objc private func backgroundTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
