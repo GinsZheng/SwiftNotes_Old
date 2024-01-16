@@ -28,7 +28,6 @@ extension ViewController {
         button.setEvent {
             let smallActionSheet = SmallActionSheet(tableData: self.tableData, viewFrameInWindow: button.getFrameInWindow())
             smallActionSheet.didSelectItem = { [weak self] indexPath in
-//                self?.push(targetVC: CSGeneralSubpage())
                 guard let self = self else { return }
                 let item = self.tableData.cellData(for: indexPath)
                 item.pushViewControllerOnTap(from: self)
@@ -53,7 +52,33 @@ private class DataManager: DefaultSectionAndCellDataManager {
             DefaultSection(
                 cells: [
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage()),
-                    .titleDesc2Line(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    .titleDesc(title: "标题4", description: "hey"),
+                    
                 ]
             ),
         ])
@@ -88,10 +113,16 @@ class SmallActionSheet: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // 将tableView的高度设为视图内容的高度
+//        tableView.height = tableView.getContentHeight(maxHeight: 472) // 472高度为10.5行
+        tableView.height = tableView.getContentHeight() // 472高度为10.5行
+    }
+    
 }
 
 
-// MARK: - 代理方法
+// MARK: - 代理方法：tableView
 extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -113,8 +144,7 @@ extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
     
     // 表尾高度
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        let footerItem = tableData.sectionData(for: section).footer ?? .nofooter
-        return footerItem.setFooterHeight()
+        return section == tableData.sectionCount() - 1 ? 0 : kVertMargin
     }
     
     // 组数
@@ -148,12 +178,21 @@ extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
     
     // 表尾视图
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = DefaultFooter()
-        let footerItem = tableData.sectionData(for: section).footer ?? .nofooter
-        footerItem.configureFooter(footer)
-        return footer
+        return UIView()
     }
     
+}
+
+
+// MARK: - 代理方法：透明遮罩手势
+extension SmallActionSheet: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        // 如果触摸的视图是 tableView，则不接收手势
+        if let view = touch.view, view.isDescendant(of: tableView) {
+            return false
+        }
+        return true
+    }
 }
 
 
@@ -163,21 +202,77 @@ extension SmallActionSheet {
         let bgView = UIView()
         bgView.setup(superview: view, backgroundColor: cNoColor)
         bgView.setFrame(allEdges: 0)
-        bgView.setTapAction {
+        bgView.setTapAction(delegate: self) {
             self.dismiss()
         }
         
         tableView.register(SmallOptionCell.self, forCellReuseIdentifier: SmallOptionCell.identifier)
         tableView.setup(superview: bgView, delegate: self, dataSource: self, viewController: self)
-        tableView.setFrame(left: 0, top: 120, width: kSmallOptionCellWidth, height: 300)
+        tableView.width = kSmallOptionCellWidth
+        setTableViewFrame()
+
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
         tableView.hideSectionHeaderTopPadding()
+        tableView.setCornerRadiusWithMask(radius: kRadius)
         // 数据更新时刷新列表
         tableData.onItemsUpdated = { [weak self] in
             self?.tableView.reloadData()
         }
+        
     }
-
+    
+    // 根据控件位置设置tableView的位置
+    private func setTableViewFrame() {
+        let safeAreaInsets = UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets.zero
+        
+        let viewCenterX = viewFrameInWindow.midX
+        let viewCenterY = viewFrameInWindow.midY
+        let viewtop = viewFrameInWindow
+        let viewBottom = viewFrameInWindow.maxY
+//        let farEndY = viewFrameInWindow.maxY // 指远离所点击控件那一端的y值，如果是向下展开的列表，farEndY即为列表底部的y值
+//        print("p", farEndY)
+        
+        // 确定 x 位置
+        var x: CGFloat = 0
+        if abs(viewCenterX - kScreenWidth/2) <= 3 { // 在中间
+            x = (kScreenWidth - kSmallOptionCellWidth) / 2
+        } else if viewCenterX <= kScreenWidth / 2 { // 在左边
+            x = kEdgeMargin
+        } else { // 在右边
+            x = kScreenWidth - kEdgeMargin - kSmallOptionCellWidth
+        }
+        
+        // 确定 y 位置
+        var y: CGFloat = 0
+        let isBelowView = viewCenterY >= kStatusBarHeight + kWithoutStatusAndBottomBarHeight/2
+        if isBelowView {
+            // 下
+//            farEndY = viewFrameInWindow.maxY + kVertMargin // 列表底部坐标
+//            print("farEndY", farEndY)
+//            if tableView.frame.height > maxTableViewHeight {
+//                // 边
+//                y = kScreenHeight - safeAreaInsets.bottom - tableView.frame.height
+//            }
+        } else {
+            // 上
+            
+//            farEndY = viewFrameInWindow.maxY + kVertMargin // 列表底部坐标
+//            print("farEndY", farEndY)
+            y = viewFrameInWindow.minY - tableView.frame.height - kVertMargin
+//            if tableView.frame.height > maxTableViewHeight {
+//                // 边
+//                y= safeAreaInsets.top
+//            }
+        }
+        
+        print()
+        
+        
+        tableView.setFrame(left: x, top: 120, width: kSmallOptionCellWidth, height: 0)
+        
+        
+    }
+    
 }
 
 
@@ -186,6 +281,7 @@ class SmallOptionCell: DefaultCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.cellWidth = kSmallOptionCellWidth
         self.cellHeight = kSmallOptionCellHeight
+        self.bgViewEdgeMargin = 0
         self.updateLayout()
     }
     
