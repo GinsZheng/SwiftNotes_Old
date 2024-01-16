@@ -42,7 +42,7 @@ class CSProgressSearchPage: UIViewController, UITableViewDelegate, UITableViewDa
         deleteAllButton.setup(superview: view, target: self, action: #selector(deleteAll))
         deleteAllButton.setStyleIconButton(imageName: "delete")
         deleteAllButton.setShadow(y: 2, radius: 16)
-        deleteAllButton.setFrame(right: 20, bottom: 20 + kNavBarHeight + kBottomBarHeight, width: 44, height: 44)
+        deleteAllButton.setFrame(right: 20, bottom: 20 + kNavBarHeight + kHomeBarHeight, width: 44, height: 44)
     }
     
     

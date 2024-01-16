@@ -19,7 +19,7 @@ extension ViewController {
         
         let bgView = UIView()
         bgView.setup(superview: view, backgroundColor: cFgWhite)
-        bgView.setFrame(left: 30, top: 100, right: 30, height: 200)
+        bgView.setFrame(left: 30, top: 200, right: 30, height: 200)
 
         let button = UIButton(type: .custom)
         button.setup(superview: bgView)
@@ -74,10 +74,10 @@ private class DataManager: DefaultSectionAndCellDataManager {
                     .titleDesc(title: "标题4", description: "hey"),
                     .titleDesc(title: "标题4", description: "hey"),
                     .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
+//                    .titleDesc(title: "标题4", description: "hey"),
+//                    .titleDesc(title: "标题4", description: "hey"),
+//                    .titleDesc(title: "标题4", description: "hey"),
+//                    .titleDesc(title: "标题4", description: "hey"),
                     
                 ]
             ),
@@ -116,7 +116,8 @@ class SmallActionSheet: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         // 将tableView的高度设为视图内容的高度
 //        tableView.height = tableView.getContentHeight(maxHeight: 472) // 472高度为10.5行
-        tableView.height = tableView.getContentHeight() // 472高度为10.5行
+
+        setTableViewFrame()
     }
     
 }
@@ -210,7 +211,6 @@ extension SmallActionSheet {
         tableView.setup(superview: bgView, delegate: self, dataSource: self, viewController: self)
         tableView.width = kSmallOptionCellWidth
         setTableViewFrame()
-
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
         tableView.hideSectionHeaderTopPadding()
         tableView.setCornerRadiusWithMask(radius: kRadius)
@@ -223,14 +223,15 @@ extension SmallActionSheet {
     
     // 根据控件位置设置tableView的位置
     private func setTableViewFrame() {
-        let safeAreaInsets = UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets.zero
+        let tableMaxHeight: CGFloat = 472
+        let contentHeight = tableView.getContentHeight(maxHeight: tableMaxHeight) // 472高度为10.5行
+//        let contentHeight = tableView.getContentHeight(maxHeight: 472) // 472高度为10.5行
+//        let safeAreaInsets = UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets.zero
         
         let viewCenterX = viewFrameInWindow.midX
         let viewCenterY = viewFrameInWindow.midY
-        let viewtop = viewFrameInWindow
+        let viewtop = viewFrameInWindow.origin.y
         let viewBottom = viewFrameInWindow.maxY
-//        let farEndY = viewFrameInWindow.maxY // 指远离所点击控件那一端的y值，如果是向下展开的列表，farEndY即为列表底部的y值
-//        print("p", farEndY)
         
         // 确定 x 位置
         var x: CGFloat = 0
@@ -244,20 +245,26 @@ extension SmallActionSheet {
         
         // 确定 y 位置
         var y: CGFloat = 0
-        let isBelowView = viewCenterY >= kStatusBarHeight + kWithoutStatusAndBottomBarHeight/2
-        if isBelowView {
+        let isBelowView = viewCenterY <= kStatusBarHeight + kWithoutStatusAndBottomBarHeight/2 // 指触发控件在上半部分，选项表在下
+        if isBelowView { 
             // 下
-//            farEndY = viewFrameInWindow.maxY + kVertMargin // 列表底部坐标
-//            print("farEndY", farEndY)
+            var tableBottom: CGFloat = viewBottom + contentHeight + kVertMargin // 列表底部坐标
+            if tableBottom < kHomeBarTop { // 选项列表未超出安全区域：下邻
+                // 下邻 (选项列表未超出安全区域)
+                y = viewBottom + kVertMargin
+            } else {
+                // 下边
+                print("hey, done")
+                y = kScreenHeight - kHomeBarTop - kVertMargin - tableMaxHeight
+            }
+            
 //            if tableView.frame.height > maxTableViewHeight {
 //                // 边
 //                y = kScreenHeight - safeAreaInsets.bottom - tableView.frame.height
 //            }
         } else {
             // 上
-            
-//            farEndY = viewFrameInWindow.maxY + kVertMargin // 列表底部坐标
-//            print("farEndY", farEndY)
+//            tableBottom = viewBottom + contentHeight + kVertMargin // 列表底部坐标
             y = viewFrameInWindow.minY - tableView.frame.height - kVertMargin
 //            if tableView.frame.height > maxTableViewHeight {
 //                // 边
@@ -265,10 +272,9 @@ extension SmallActionSheet {
 //            }
         }
         
-        print()
         
-        
-        tableView.setFrame(left: x, top: 120, width: kSmallOptionCellWidth, height: 0)
+
+        tableView.setFrame(left: x, top: y, width: kSmallOptionCellWidth, height: contentHeight)
         
         
     }
