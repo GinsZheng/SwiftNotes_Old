@@ -1,7 +1,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    private let tableData = DataManager()
     
     // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
@@ -26,11 +26,12 @@ extension ViewController {
         button.setStyleSolid17ptFgWhiteThemeButton(title: "点击出现小选项表")
         button.setFrame(left: 10, top: 30, right: 10, height: kButtonHeight)
         button.setEvent {
-            let smallActionSheet = SmallActionSheet(viewFrameInWindow: button.getFrameInWindow())
+            let smallActionSheet = SmallActionSheet(tableData: self.tableData, viewFrameInWindow: button.getFrameInWindow())
             smallActionSheet.didSelectItem = { [weak self] indexPath in
-                self?.push(targetVC: CSGeneralSubpage())
-//                let item = self.tableData.cellData(for: indexPath)
-//                item.pushViewControllerOnTap(from: self)
+//                self?.push(targetVC: CSGeneralSubpage())
+                guard let self = self else { return }
+                let item = self.tableData.cellData(for: indexPath)
+                item.pushViewControllerOnTap(from: self)
             }
             self.present(smallActionSheet, animated: true, completion: nil)
         }
@@ -45,8 +46,8 @@ private class DataManager: DefaultSectionAndCellDataManager {
         super.init(initialItems: [
             DefaultSection(
                 cells: [
-                    .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
-                    .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
+                    .titleNextVC(title: "标题1", viewController: ButtonPage()),
+                    .titleNextVC(title: "标题2", viewController: AnimationPage()),
                 ]
             ),
             DefaultSection(
@@ -64,13 +65,14 @@ private class DataManager: DefaultSectionAndCellDataManager {
 class SmallActionSheet: UIViewController {
     var didSelectItem: ((IndexPath) -> Void)?     // 回调闭包，当选项被选中时，传递 IndexPath
     
-    private let tableData = DataManager()
+    private let tableData: DefaultSectionAndCellDataManager
     private var viewFrameInWindow: CGRect
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     
     // MARK: - 初始化与生命周期方法
-    init(viewFrameInWindow: CGRect) {
+    init(tableData: DefaultSectionAndCellDataManager, viewFrameInWindow: CGRect) {
+        self.tableData = tableData
         self.viewFrameInWindow = viewFrameInWindow
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .overFullScreen
@@ -93,9 +95,8 @@ class SmallActionSheet: UIViewController {
 extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("hey，在这")
         didSelectItem?(indexPath)
-        self.dismiss()
+        self.dismiss(animated: false)
     }
     
     // 表头高度
@@ -162,9 +163,9 @@ extension SmallActionSheet {
         let bgView = UIView()
         bgView.setup(superview: view, backgroundColor: cNoColor)
         bgView.setFrame(allEdges: 0)
-//        bgView.setTapAction {
-//            self.dismiss()
-//        }
+        bgView.setTapAction {
+            self.dismiss()
+        }
         
         tableView.register(SmallOptionCell.self, forCellReuseIdentifier: SmallOptionCell.identifier)
         tableView.setup(superview: bgView, delegate: self, dataSource: self, viewController: self)
@@ -176,10 +177,7 @@ extension SmallActionSheet {
             self?.tableView.reloadData()
         }
     }
-    
-    @objc private func backgroundTapped() {
-        self.dismiss(animated: true, completion: nil)
-    }
+
 }
 
 
