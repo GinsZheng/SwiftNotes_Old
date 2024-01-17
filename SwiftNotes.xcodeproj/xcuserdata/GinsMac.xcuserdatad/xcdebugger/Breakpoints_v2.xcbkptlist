@@ -126,8 +126,8 @@
             filePath = "SwiftNotes/TestVC/TestVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "setupUI()"
             landmarkType = "7">
          </BreakpointContent>
