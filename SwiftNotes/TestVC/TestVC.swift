@@ -1,46 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
-    private let tableData = DataManager()
-    
-    // MARK: - 初始化与生命周期方法
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
-    
-}
-
-
-// MARK: - 私有方法
-extension ViewController {
-    private func setupUI() {
-        view.setBackgroundColor(color: cBgGray)
-        
-        let bgView = UIView()
-        bgView.setup(superview: view, backgroundColor: cFgWhite)
-        bgView.setFrame(left: 30, top: 200, right: 30, height: 200)
-
-        let button = UIButton(type: .custom)
-        button.setup(superview: bgView)
-        button.setStyleSolid17ptFgWhiteThemeButton(title: "点击出现小选项表")
-        button.setFrame(left: 10, top: 30, right: 10, height: kButtonHeight)
-        button.setEvent {
-            let smallActionSheet = SmallActionSheet(tableData: self.tableData, viewFrameInWindow: button.getFrameInWindow())
-            smallActionSheet.didSelectItem = { [weak self] indexPath in
-                guard let self = self else { return }
-                let item = self.tableData.cellData(for: indexPath)
-                item.pushViewControllerOnTap(from: self)
-            }
-            self.present(smallActionSheet, animated: true, completion: nil)
-        }
-        
-    }
-    
-}
-
-
-private class DataManager: DefaultSectionAndCellDataManager {
+private class OptionsDataManager: DefaultSectionAndCellDataManager {
     init() {
         super.init(initialItems: [
             DefaultSection(
@@ -55,50 +15,70 @@ private class DataManager: DefaultSectionAndCellDataManager {
                     .titleDesc(title: "标题4", description: "hey"),
                     .titleDesc(title: "标题4", description: "hey"),
                     .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-                    .titleDesc(title: "标题4", description: "hey"),
-//                    .titleDesc(title: "标题4", description: "hey"),
-//                    .titleDesc(title: "标题4", description: "hey"),
-//                    .titleDesc(title: "标题4", description: "hey"),
-//                    .titleDesc(title: "标题4", description: "hey"),
-                    
                 ]
             ),
         ])
     }
 }
 
+class ViewController: UIViewController {
+    private let tableData = OptionsDataManager()
+    
+    private let bgView = UIView()
+    private let button = UIButton(type: .custom)
+    
+    // MARK: - 初始化与生命周期方法
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+    }
+    
+}
+
+
+// MARK: - 私有方法
+extension ViewController {
+    private func setupUI() {
+        view.setBackgroundColor(color: cBgGray)
+
+        bgView.setup(superview: view, backgroundColor: cFgWhite)
+        bgView.setFrame(left: 30, top: 100, right: 30, height: 200)
+
+        button.setup(superview: bgView)
+        button.setStyleSolid17ptFgWhiteThemeButton(title: "点击出现小选项表")
+        button.setFrame(left: 10, top: 30, right: 10, height: kButtonHeight)
+        button.setEvent {
+            let optionSheet = OptionSheet(tableData: self.tableData, senderFrameInWindow: self.button.getFrameInWindow())
+            optionSheet.onTap = { [weak self] indexPath in
+                guard let self = self else { return }
+                let item = self.tableData.cellData(for: indexPath)
+                item.pushViewControllerOnTap(from: self)
+            }
+            self.present(targetVC: optionSheet)
+        }
+        
+    }
+    
+}
+
+
+
 
 // MARK: - 视图控制器
-class SmallActionSheet: UIViewController {
-    var didSelectItem: ((IndexPath) -> Void)?     // 回调闭包，当选项被选中时，传递 IndexPath
+class OptionSheet: UIViewController {
+    var onTap: ((IndexPath) -> Void)?     // 回调闭包，当选项被选中时，传递 IndexPath
     
     private let tableData: DefaultSectionAndCellDataManager
-    private var viewFrameInWindow: CGRect
+    private var senderFrameInWindow: CGRect
     
+    private let maskView = UIView()
+    private let bgView = UIView()
     private let tableView = UITableView(frame: .zero, style: .grouped)
     
     // MARK: - 初始化与生命周期方法
-    init(tableData: DefaultSectionAndCellDataManager, viewFrameInWindow: CGRect) {
+    init(tableData: DefaultSectionAndCellDataManager, senderFrameInWindow: CGRect) {
         self.tableData = tableData
-        self.viewFrameInWindow = viewFrameInWindow
+        self.senderFrameInWindow = senderFrameInWindow
         super.init(nibName: nil, bundle: nil)
         self.modalPresentationStyle = .overFullScreen
         self.modalTransitionStyle = .crossDissolve
@@ -124,10 +104,10 @@ class SmallActionSheet: UIViewController {
 
 
 // MARK: - 代理方法：tableView
-extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
+extension OptionSheet: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didSelectItem?(indexPath)
+        onTap?(indexPath)
         self.dismiss(animated: false)
     }
     
@@ -140,7 +120,7 @@ extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
     // 行高
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellItem = tableData.cellData(for: indexPath)
-        return cellItem.getCellHeight(oneLineCellHeight: kSmallOptionCellHeight)
+        return cellItem.getCellHeight(oneLineCellHeight: kOptionSheetCellHeight)
     }
     
     // 表尾高度
@@ -168,11 +148,13 @@ extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
     
     // cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SmallOptionCell.identifier, for: indexPath) as? SmallOptionCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: OptionSheetCell.identifier, for: indexPath) as? OptionSheetCell else { return UITableViewCell() }
+        // 第一个和最后一个设为圆角 (设为true时会让每个section第一个和最后一个cell的不设圆角)
+        let isWhiteHeader = indexPath.section == 0 && indexPath.row == 0 ? false : true
+        let isWhiteFooter = indexPath.section == tableData.sectionCount() - 1 && indexPath.row == tableData.cellCount(in: tableData.sectionCount() - 1) - 1 ? false : true
         let cellCountInSection = tableData.cellCount(in: indexPath.section) // 获取当前 section 的 cell 数量
-        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: true, isWhiteFooter: true) // 配置基本参数
-        // 注：这里isWhiteHeader/Footer都设为true是因为：设为true时会让每个section第一个和最后一个cell的不设圆角，而这正是在小选项表中所需要的
-        let cellItem = tableData.cellData(for: indexPath)  // 获取cell数据
+        cell.prepare(row: indexPath.row, cellCountInSection: cellCountInSection, isWhiteHeader: isWhiteHeader, isWhiteFooter: isWhiteFooter) // 配置基本参数
+        let cellItem = tableData.cellData(for: indexPath) // 获取cell数据
         cellItem.configureCell(cell) // 配置Cell数据与UI
         return cell
     }
@@ -186,7 +168,7 @@ extension SmallActionSheet: UITableViewDelegate, UITableViewDataSource {
 
 
 // MARK: - 代理方法：透明遮罩手势
-extension SmallActionSheet: UIGestureRecognizerDelegate {
+extension OptionSheet: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         // 如果触摸的视图是 tableView，则不接收手势
         if let view = touch.view, view.isDescendant(of: tableView) {
@@ -198,22 +180,26 @@ extension SmallActionSheet: UIGestureRecognizerDelegate {
 
 
 // MARK: - 私有方法
-extension SmallActionSheet {
+extension OptionSheet {
     private func setupUI() {
-        let bgView = UIView()
-        bgView.setup(superview: view, backgroundColor: cNoColor)
-        bgView.setFrame(allEdges: 0)
-        bgView.setTapAction(delegate: self) {
+        maskView.setup(superview: view, backgroundColor: cNoColor)
+        maskView.setFrame(allEdges: 0)
+        maskView.setTapAction(delegate: self) {
             self.dismiss()
         }
         
-        tableView.register(SmallOptionCell.self, forCellReuseIdentifier: SmallOptionCell.identifier)
+        // 设置tableView的背景(用于加投影，而tableView则加带遮罩圆角)
+        bgView.setup(superview: maskView)
+        bgView.setFrame(allEdges: 0)
+        bgView.setCornerRadius(radius: kRadius)
+        bgView.setShadow(y: 2, radius: 32)
+        
+        tableView.register(OptionSheetCell.self, forCellReuseIdentifier: OptionSheetCell.identifier)
         tableView.setup(superview: bgView, delegate: self, dataSource: self, viewController: self)
-        tableView.width = kSmallOptionCellWidth
-        setTableViewFrame()
+        tableView.setFrame(allEdges: 0)
         // 对于iOS 15.0.由于会有一个默认分组外边距，所以需要做调整，而15.0之前的默认无此外边距，无需处理
         tableView.hideSectionHeaderTopPadding()
-        tableView.setCornerRadiusWithMask(radius: kRadius)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -20, right: 0)
         // 数据更新时刷新列表
         tableData.onItemsUpdated = { [weak self] in
             self?.tableView.reloadData()
@@ -225,68 +211,59 @@ extension SmallActionSheet {
     private func setTableViewFrame() {
         let tableMaxHeight: CGFloat = 472
         let contentHeight = tableView.getContentHeight(maxHeight: tableMaxHeight) // 472高度为10.5行
-//        let contentHeight = tableView.getContentHeight(maxHeight: 472) // 472高度为10.5行
-//        let safeAreaInsets = UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets.zero
         
-        let viewCenterX = viewFrameInWindow.midX
-        let viewCenterY = viewFrameInWindow.midY
-        let viewtop = viewFrameInWindow.origin.y
-        let viewBottom = viewFrameInWindow.maxY
+        let viewCenterX = senderFrameInWindow.midX
+        let viewCenterY = senderFrameInWindow.midY
+        let viewtop = senderFrameInWindow.origin.y
+        let viewBottom = senderFrameInWindow.maxY
         
         // 确定 x 位置
         var x: CGFloat = 0
         if abs(viewCenterX - kScreenWidth/2) <= 3 { // 在中间
-            x = (kScreenWidth - kSmallOptionCellWidth) / 2
+            x = (kScreenWidth - kOptionSheetCellWidth) / 2
         } else if viewCenterX <= kScreenWidth / 2 { // 在左边
             x = kEdgeMargin
         } else { // 在右边
-            x = kScreenWidth - kEdgeMargin - kSmallOptionCellWidth
+            x = kScreenWidth - kEdgeMargin - kOptionSheetCellWidth
         }
         
         // 确定 y 位置
         var y: CGFloat = 0
         let isBelowView = viewCenterY <= kStatusBarHeight + kWithoutStatusAndBottomBarHeight/2 // 指触发控件在上半部分，选项表在下
-        if isBelowView { 
-            // 下
-            var tableBottom: CGFloat = viewBottom + contentHeight + kVertMargin // 列表底部坐标
-            if tableBottom < kHomeBarTop { // 选项列表未超出安全区域：下邻
-                // 下邻 (选项列表未超出安全区域)
+        if isBelowView { // 下
+            let tableBottom: CGFloat = viewBottom + kVertMargin + contentHeight + kVertMargin // 列表底部加间隔后的坐标
+            if tableBottom <= kHomeBarTop { // 选项列表未超出安全区域：下邻
+                // 下邻
                 y = viewBottom + kVertMargin
             } else {
                 // 下边
-                print("hey, done")
-                y = kScreenHeight - kHomeBarTop - kVertMargin - tableMaxHeight
+                y = kScreenHeight - kHomeBarHeight - kVertMargin - contentHeight
             }
-            
-//            if tableView.frame.height > maxTableViewHeight {
-//                // 边
-//                y = kScreenHeight - safeAreaInsets.bottom - tableView.frame.height
-//            }
-        } else {
-            // 上
-//            tableBottom = viewBottom + contentHeight + kVertMargin // 列表底部坐标
-            y = viewFrameInWindow.minY - tableView.frame.height - kVertMargin
-//            if tableView.frame.height > maxTableViewHeight {
-//                // 边
-//                y= safeAreaInsets.top
-//            }
+        } else { // 上
+            let tableTop: CGFloat = viewtop - kVertMargin - contentHeight - kVertMargin // 列表顶部加间隔后的坐标
+            if tableTop >= kStatusBarHeight { // 选项列表未超出安全区域：上邻
+                // 上邻
+                y = tableTop + kVertMargin
+            } else {
+                // 上边
+                y = kStatusBarHeight + kVertMargin
+            }
         }
         
-        
-
-        tableView.setFrame(left: x, top: y, width: kSmallOptionCellWidth, height: contentHeight)
-        
-        
+        bgView.setFrame(left: x, top: y, width: kOptionSheetCellWidth, height: contentHeight)
+        tableView.setFrame(allEdges: 0)
+        tableView.setCornerRadiusWithMask(radius: kRadius)
+        if contentHeight < 472 { tableView.isScrollEnabled = false }
     }
     
 }
 
 
-class SmallOptionCell: DefaultCell {
+class OptionSheetCell: DefaultCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.cellWidth = kSmallOptionCellWidth
-        self.cellHeight = kSmallOptionCellHeight
+        self.cellWidth = kOptionSheetCellWidth
+        self.cellHeight = kOptionSheetCellHeight
         self.bgViewEdgeMargin = 0
         self.updateLayout()
     }
