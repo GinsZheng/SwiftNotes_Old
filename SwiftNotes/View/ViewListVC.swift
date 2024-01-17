@@ -20,6 +20,7 @@ private class DataManager: DefaultCellDataManager {
             .titleNextVC(title: "Label", viewController: LabelPage()),
             .titleNextVC(title: "Layer", viewController: LayerView()),
             .titleNextVC(title: "Nav Controller", viewController: NavControllerPage()),
+            .titleNextVC(title: "Option Sheet", viewController: OptionSheetPage()),
             .titleNextVC(title: "Page Control", viewController: PageControlPage()),
             .titleNextVC(title: "Picker View", viewController: PickerViewPage()),
             .titleNextVC(title: "Scroll View", viewController: ScrollViewPage()),

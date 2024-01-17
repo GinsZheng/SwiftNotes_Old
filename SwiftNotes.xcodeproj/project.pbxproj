@@ -200,6 +200,8 @@
 		7A9219872B0118FE00FE65FC /* CollectionViewCellAndLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9219862B0118FE00FE65FC /* CollectionViewCellAndLayout.swift */; };
 		7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* ProgressTable.swift */; };
 		7A95F4112AB5567C00900E39 /* Modeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95F4102AB5567C00900E39 /* Modeling.swift */; };
+		7A997EC62B57C73D00001608 /* OptionSheetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC52B57C73D00001608 /* OptionSheetPage.swift */; };
+		7A997EC82B57C7D900001608 /* OptionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC72B57C7D900001608 /* OptionSheet.swift */; };
 		7A9B2A2C28E843620027C41D /* imageFlask.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9B2A0228E843620027C41D /* imageFlask.png */; };
 		7AA3259C243B6FC000D5308D /* StringPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3259B243B6FC000D5308D /* StringPage.swift */; };
 		7AA325BD243CDB6A00D5308D /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA325BC243CDB6A00D5308D /* LayerView.swift */; };
@@ -747,6 +749,8 @@
 		7A9219862B0118FE00FE65FC /* CollectionViewCellAndLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellAndLayout.swift; sourceTree = "<group>"; };
 		7A94609023D1A6AB00936DE7 /* ProgressTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTable.swift; sourceTree = "<group>"; };
 		7A95F4102AB5567C00900E39 /* Modeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modeling.swift; sourceTree = "<group>"; };
+		7A997EC52B57C73D00001608 /* OptionSheetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSheetPage.swift; sourceTree = "<group>"; };
+		7A997EC72B57C7D900001608 /* OptionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSheet.swift; sourceTree = "<group>"; };
 		7A9B2A0228E843620027C41D /* imageFlask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageFlask.png; sourceTree = "<group>"; };
 		7AA3259B243B6FC000D5308D /* StringPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringPage.swift; sourceTree = "<group>"; };
 		7AA325BC243CDB6A00D5308D /* LayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
@@ -1257,6 +1261,7 @@
 				7A95F4102AB5567C00900E39 /* Modeling.swift */,
 				7A88C73F2A8929E400D61E33 /* NavViewController.swift */,
 				7A8DF69A2AA378000048146F /* Protocol.swift */,
+				7A997EC72B57C7D900001608 /* OptionSheet.swift */,
 				7A88C7302A8929E400D61E33 /* SetColorInHex.swift */,
 				7A88C7392A8929E400D61E33 /* SetFrame.swift */,
 				7A88C73A2A8929E400D61E33 /* SQLiteManager.swift */,
@@ -1396,6 +1401,7 @@
 				7A216142238986AF00D5A93A /* LabelPage.swift */,
 				7AA325BC243CDB6A00D5308D /* LayerView.swift */,
 				7A74D0E028D4471300FB4FB3 /* NavController */,
+				7A997EC52B57C73D00001608 /* OptionSheetPage.swift */,
 				7A21614B238986AF00D5A93A /* PageControlPage.swift */,
 				7A216151238986AF00D5A93A /* PickerViewPage.swift */,
 				7A216143238986AF00D5A93A /* ScrollViewPage.swift */,
@@ -2126,6 +2132,7 @@
 				7A0258AA2434EF58006D4AB5 /* DismissAllPage.swift in Sources */,
 				7A88C78D2A8A62A800D61E33 /* StylesInApp.swift in Sources */,
 				7A393AFA2B48E352001F3FCB /* FoldableTableViewPage.swift in Sources */,
+				7A997EC62B57C73D00001608 /* OptionSheetPage.swift in Sources */,
 				7A62A1A5244CA9790090D128 /* PinchGesturePage.swift in Sources */,
 				7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */,
 				7A7F97E7241DF290000F1E31 /* ProgressUpdatePage.swift in Sources */,
@@ -2178,6 +2185,7 @@
 				7A06A7342B2C382E0014033E /* SectionsTableViewPage.swift in Sources */,
 				7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */,
 				7A62A1F7245CAD890090D128 /* WindowPage.swift in Sources */,
+				7A997EC82B57C7D900001608 /* OptionSheet.swift in Sources */,
 				7A2161282389868500D5A93A /* TestVC.swift in Sources */,
 				7A216155238986AF00D5A93A /* ScrollViewPage.swift in Sources */,
 				7A216156238986AF00D5A93A /* SwitchPage.swift in Sources */,
