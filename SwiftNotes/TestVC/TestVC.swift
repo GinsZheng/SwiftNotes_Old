@@ -35,7 +35,7 @@ extension ViewController {
         updateButton.setStyleSolid17ptThemeWhiteButton(title: "更新")
         updateButton.setFrame(left: kEdgeMargin, top: addButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         updateButton.setEvent {
-            let lastId = SQLiteManager.shared.getLastId(tableName: DBTable.project)
+            let lastId = DB.shared.getLastId(tableName: DBTable.project)
             self.projectsTable.updateProject(projectId: lastId, name: "更新后的项目名", resume: nil, progress: 75, color: nil)
         }
         
@@ -43,7 +43,7 @@ extension ViewController {
         deleteButton.setStyleSolid17ptFgWhiteRedButton(title: "删除")
         deleteButton.setFrame(left: kEdgeMargin, top: updateButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         deleteButton.setEvent {
-            let lastId = SQLiteManager.shared.getLastId(tableName: DBTable.project)
+            let lastId = DB.shared.getLastId(tableName: DBTable.project)
             self.projectsTable.deleteProject(projectId: lastId)
         }
         
@@ -70,7 +70,7 @@ extension ViewController {
         deleteTableButton.setStyleSolid17ptFgWhiteRedButton(title: "删除一张表")
         deleteTableButton.setFrame(left: kEdgeMargin, top: createTableButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         deleteTableButton.setEvent {
-            SQLiteManager.shared.deleteTable(tableName: DBTable.project)
+            DB.shared.deleteTable(tableName: DBTable.project)
         }
         
     }
@@ -82,7 +82,7 @@ extension ViewController {
 // MARK: - 表
 class ProjectsTable {
     // 定义表名与字段
-    private let tableName = DBTable.project
+    private let tableName: String = DBTable.project
     private let id = Expression<Int>("id")
     private let itemName = Expression<String>("itemName")
     private let resume = Expression<String>("resume")
@@ -99,7 +99,7 @@ class ProjectsTable {
     }
     
     func addProject(name: String, resume: String, progress: Int, color: Int) {
-        SQLiteManager.shared.insert(table: table, values: [
+        DB.shared.insert(table: table, values: [
             self.itemName <- name,
             self.resume <- resume,
             self.totalProgress <- progress,
@@ -108,7 +108,7 @@ class ProjectsTable {
     }
     
     func deleteProject(projectId: Int) {
-        SQLiteManager.shared.delete(table: table, id: projectId)
+        DB.shared.delete(table: table, id: projectId)
     }
     
     func updateProject(projectId: Int, name: String?, resume: String?, progress: Int?, color: Int?) {
@@ -117,11 +117,11 @@ class ProjectsTable {
         if let resume = resume { setters.append(self.resume <- resume) }
         if let progress = progress { setters.append(self.totalProgress <- progress) }
         if let color = color { setters.append(self.color <- color) }
-        SQLiteManager.shared.update(table: table, id: projectId, values: setters)
+        DB.shared.update(table: table, id: projectId, values: setters)
     }
     
     func getAllProjects() -> [Project] {
-        let rows = SQLiteManager.shared.query(table: table)
+        let rows = DB.shared.query(table: table)
         var projects = [Project]()
         for row in rows {
             let project = Project(id: row[id],
@@ -139,7 +139,7 @@ class ProjectsTable {
 // MARK: - 私有方法
 extension ProjectsTable {
     private func createTable() {
-        guard let db = SQLiteManager.shared.database else { return }
+        guard let db = DB.shared.database else { return }
         do {
             try db.run(table.create(ifNotExists: true) { t in
                 t.column(id, primaryKey: .autoincrement)
@@ -157,8 +157,8 @@ extension ProjectsTable {
     // 新增字段
     private func addNewColumnIfNeeded() {
         // 检查字段“startDate”是否存在，不存在时添加此字段
-        if !SQLiteManager.shared.isColumnExists(in: tableName, columnName: "startDate") {
-            SQLiteManager.shared.addColumn(to: tableName, columnName: "startDate", dataType: "TEXT")
+        if !DB.shared.isColumnExists(in: tableName, columnName: "startDate") {
+            DB.shared.addColumn(to: tableName, columnName: "startDate", dataType: "TEXT")
         }
     }
 }

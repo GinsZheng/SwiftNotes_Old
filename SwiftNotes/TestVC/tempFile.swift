@@ -1,16 +1,16 @@
-// 新 SQLiteManager
+// 通用的DBManager
 
 import Foundation
 import SQLite
 
-class SQLiteManager {
-    static let shared = SQLiteManager()
+class DB {
+    static let shared = DB()
     
     var database: Connection? { // 子类可以通过database访问只读的db
         return db
     }
     
-    private var db: Connection? // 将db设为private，以只db只能在SQLiteManager 类内部被访问和修改 🐾1
+    private var db: Connection? // 将db设为private，以只db只能在DB 类内部被访问和修改 🐾1
     
     init() {
         do {
@@ -133,7 +133,7 @@ class SQLiteManager {
 
 
 // MARK: - 私有方法
-extension SQLiteManager {
+extension DB {
     private func getDatabaseConnection() -> Connection? {
         guard let db = db else {
             print("连接数据库失败")
@@ -146,7 +146,7 @@ extension SQLiteManager {
 
 /*
  为什么不直接将 db 声明为 internal（默认访问级别）而是使用私有属性和公开计算属性，原因在于封装和数据隐藏：
- 1. 封装：通过使 db 私有，您确保了 SQLiteManager 类的所有数据库操作都通过类的方法来执行。这意味着您可以在这些方法中添加额外的逻辑，如错误处理、日志记录等，而不必担心外部代码会绕过这些逻辑直接操作数据库。
+ 1. 封装：通过使 db 私有，您确保了 DB 类的所有数据库操作都通过类的方法来执行。这意味着您可以在这些方法中添加额外的逻辑，如错误处理、日志记录等，而不必担心外部代码会绕过这些逻辑直接操作数据库。
  2. 数据隐藏：通过提供一个只读的计算属性 database，您允许外部代码读取数据库连接，但不能修改它。这可以防止外部代码意外地改变数据库的状态，可能导致数据损坏或不一致。
  总结：这种设计模式提高了代码的安全性和健壮性
  */
