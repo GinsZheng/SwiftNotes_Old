@@ -31,7 +31,7 @@ class CSTryPage: UIViewController {
 
 
 // example
-class TryTable: SQLiteManager {
+class TryTable: SQLiteManager2 {
     
     private var tbl: Table?
     let rowid = Expression<Int>("id")

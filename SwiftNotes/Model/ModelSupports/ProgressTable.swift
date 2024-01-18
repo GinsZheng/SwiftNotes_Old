@@ -17,7 +17,7 @@
 import SQLite
 import SwiftyJSON
 
-class ProgressTable: SQLiteManager {
+class ProgressTable: SQLiteManager2 {
     // 模型只需修改字段名、数据类型，及表名
     let tableName = "progress"
     let id = Expression<Int>("id")

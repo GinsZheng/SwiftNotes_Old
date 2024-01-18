@@ -9,7 +9,7 @@
 import SQLite
 import SwiftyJSON
 
-class ItemTable: SQLiteManager {
+class ItemTable: SQLiteManager2 {
     // 模型只需修改字段名、数据类型，及表名
     let tableName = "item"
     let id = Expression<Int>("id")

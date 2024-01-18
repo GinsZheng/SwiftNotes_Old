@@ -9,7 +9,7 @@
 import SQLite
 import SwiftyJSON
 
-class ReloadDataTable: SQLiteManager {
+class ReloadDataTable: SQLiteManager2 {
     // 模型只需修改字段名及数据类型，及表名
     let tableName = "reloadData"
     let id = Expression<Int>("id")
