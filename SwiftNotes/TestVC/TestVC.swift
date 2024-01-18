@@ -35,7 +35,7 @@ extension ViewController {
         updateButton.setStyleSolid17ptThemeWhiteButton(title: "更新")
         updateButton.setFrame(left: kEdgeMargin, top: addButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         updateButton.setEvent {
-            let lastId = SQLiteManager.shared.getLastInsertedId(tableName: DBTable.project)
+            let lastId = SQLiteManager.shared.getLastId(tableName: DBTable.project)
             self.projectsTable.updateProject(projectId: lastId, name: "更新后的项目名", resume: nil, progress: 75, color: nil)
         }
         
@@ -43,7 +43,7 @@ extension ViewController {
         deleteButton.setStyleSolid17ptFgWhiteRedButton(title: "删除")
         deleteButton.setFrame(left: kEdgeMargin, top: updateButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         deleteButton.setEvent {
-            let lastId = Int(SQLiteManager.shared.getLastInsertedId(tableName: DBTable.project) ?? 1)
+            let lastId = SQLiteManager.shared.getLastId(tableName: DBTable.project)
             self.projectsTable.deleteProject(projectId: lastId)
         }
         

@@ -73,7 +73,7 @@ class SQLiteManager {
     }
     
     // 获取最新数据的id
-    func getLastInsertedId(tableName: String) -> Int {
+    func getLastId(tableName: String) -> Int {
         guard let db = getDatabaseConnection() else { return 0 }
         let queryStatement = "SELECT MAX(id) FROM \(tableName)"
         do {

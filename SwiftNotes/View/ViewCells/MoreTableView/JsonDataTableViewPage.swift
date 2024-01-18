@@ -34,9 +34,10 @@ class JsonDataTableViewPage: UIViewController {
     
     func fetchTableData() {
         let url = "https://gotest.ginkgeek.com/returnJson"
-        AF.request(url).responseDecodable(of: DefaultTableResponse.self) { response in
+//        AF.request(url).responseDecodable(of: DefaultTableResponse.self) { response in
+        AF.request(url).responseDecodable(of: ApiResponse<[Models.DefaultCell]>.self) { response in
             if let value = response.value {
-                self.tableData.updateItems(with: value.items)  // 2. 调用 updateItems 函数为 tableData 更新值
+                self.tableData.updateItems(with: value.data)  // 2. 调用 updateItems 函数为 tableData 更新值
             } else {
                 print(response.error!)
             }
