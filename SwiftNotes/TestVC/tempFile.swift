@@ -87,7 +87,7 @@ class SQLiteManager {
         }
         return 0
     }
-
+    
     // 添加字段
     func addColumn(to tableName: String, columnName: String, dataType: String) {
         guard let db = getDatabaseConnection() else { return }

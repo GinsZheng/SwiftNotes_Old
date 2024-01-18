@@ -78,10 +78,10 @@
             filePath = "../SwiftGeneral/Global/DefaultCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
-            landmarkName = "DefaultCell"
-            landmarkType = "3">
+            startingLineNumber = "414"
+            endingLineNumber = "414"
+            landmarkName = "init(style:reuseIdentifier:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "6EBB9369-EB1B-4C5E-ACD3-EC3BBC16ACF3 - 8bf41d54e4d00e37"
