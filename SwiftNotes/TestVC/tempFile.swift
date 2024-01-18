@@ -3,6 +3,13 @@
 import Foundation
 import SQLite
 
+protocol TableProtocol {
+    associatedtype ModelType
+    var tableName: String { get }
+    func toSetters(model: ModelType) -> [Setter]
+}
+
+
 class DB {
     static let shared = DB()
     
@@ -21,6 +28,18 @@ class DB {
         }
     }
     
+    // 通用插入方法
+    func insert<T: TableProtocol>(table: T, model: T.ModelType) {
+        guard let db = getDatabaseConnection() else { return }
+        let insert = Table(table.tableName).insert(table.toSetters(model: model))
+        do {
+            let id = try db.run(insert)
+            print("插入成功, id：\(id)")
+        } catch {
+            print("插入失败: \(error)")
+        }
+    }
+    
     func insert(table: Table, values: [Setter]) {
         guard let db = getDatabaseConnection() else { return }
         do {
@@ -29,6 +48,21 @@ class DB {
             print("插入成功, id：\(id)")
         } catch {
             print("插入失败: \(error)")
+        }
+    }
+    
+    // 通用删除方法
+    func delete<T: TableProtocol>(table: T, id: Int) {
+        guard let db = getDatabaseConnection() else { return }
+        let delete = Table(table.tableName).filter(Expression<Int>("id") == id).delete()
+        do {
+            if try db.run(delete) > 0 {
+                print("删除成功, id: \(id)")
+            } else {
+                print("未找到id为 \(id) 的数据")
+            }
+        } catch {
+            print("删除失败: \(error)")
         }
     }
     
@@ -47,6 +81,21 @@ class DB {
         }
     }
     
+    // 通用更新方法
+    func update<T: TableProtocol>(table: T, id: Int, model: T.ModelType) {
+        guard let db = getDatabaseConnection() else { return }
+        let update = Table(table.tableName).filter(Expression<Int>("id") == id).update(table.toSetters(model: model))
+        do {
+            if try db.run(update) > 0 {
+                print("更新成功, id: \(id)")
+            } else {
+                print("未找到id为 \(id) 的数据")
+            }
+        } catch {
+            print("更新失败: \(error)")
+        }
+    }
+    
     func update(table: Table, id: Int, values: [Setter]) {
         guard let db = getDatabaseConnection() else { return }
         do {
@@ -59,6 +108,17 @@ class DB {
             }
         } catch {
             print("更新失败: \(error)")
+        }
+    }
+    
+    // 通用查询方法
+    func query<T: TableProtocol>(table: T) -> [Row] {
+        guard let db = getDatabaseConnection() else { return [] }
+        do {
+            return Array(try db.prepare(Table(table.tableName)))
+        } catch {
+            print("查询失败: \(error)")
+            return []
         }
     }
     
@@ -134,6 +194,7 @@ class DB {
 
 // MARK: - 私有方法
 extension DB {
+    // 获取数据库连接
     private func getDatabaseConnection() -> Connection? {
         guard let db = db else {
             print("连接数据库失败")
@@ -142,6 +203,8 @@ extension DB {
         return db
     }
 }
+
+
 
 
 /*
