@@ -111,6 +111,28 @@ class DB {
         }
     }
     
+    // 查询：使用SQL (并将每一行转换为模型对象)
+    func executeQuery(with sql: String) -> [[String: Any?]] {
+        guard let db = getDatabaseConnection() else { return [] }
+        var result: [[String: Any?]] = []
+
+        do {
+            let statement = try db.prepare(sql)
+            let columnNames = Array(statement.columnNames)
+            for row in statement {
+                var rowData: [String: Any?] = [:]
+                for (index, columnName) in columnNames.enumerated() {
+                    rowData[columnName] = row[index] as Any?
+                }
+                result.append(rowData)
+            }
+        } catch {
+            print("执行查询失败: \(error)")
+        }
+
+        return result
+    }
+    
     // 获取最新数据的id
     func getLastId(tableName: String) -> Int {
         guard let db = getDatabaseConnection() else { return 0 }
