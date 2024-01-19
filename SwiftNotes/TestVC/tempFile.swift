@@ -160,6 +160,12 @@ class DB {
 }
 
 
+// MARK: - 通用查询
+extension DB {
+    
+}
+
+
 // MARK: - 私有方法
 extension DB {
     // 获取数据库连接

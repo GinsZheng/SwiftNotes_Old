@@ -57,7 +57,7 @@ extension ViewController {
         queryButton.setEvent {
             let projects = self.projectsTable.getAllProjects()
             for project in projects {
-                print("项目 ID: \(project.id ?? 0), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
+                print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
             }
         }
         
@@ -83,7 +83,7 @@ extension ViewController {
 // MARK: - 模型
 extension Models {
     struct Project {
-        var id: Int? // 设为可选，以便新增时无需输入id
+        var id: Int = 0
         var itemName: String
         var resume: String
         var totalProgress: Int
@@ -130,8 +130,8 @@ class ProjectsTable: TableProtocol {
             color <- model.color,
             startDate <- model.startDate
         ]
-        // 如果有 id，则包含在更新语句中
-        if let idValue = model.id { setters.append(id <- idValue) }
+        // 如果 id 非默认值，则添加
+        if model.id != 0 { setters.append(id <- model.id) }
         return setters
     }
 }
