@@ -9,6 +9,7 @@ class ViewController: UIViewController {
     let updateButton = UIButton(type: .custom)
     let deleteButton = UIButton(type: .custom)
     let queryButton = UIButton(type: .custom)
+    let getAllButton = UIButton(type: .custom)
     let createTableButton = UIButton(type: .custom)
     let deleteTableButton = UIButton(type: .custom)
     
@@ -61,9 +62,20 @@ extension ViewController {
             }
         }
         
+        // 使用DB类的通用查询
+        getAllButton.setup(superview: view)
+        getAllButton.setStyleGhost17ptThemeThemeButton(title: "查询所有")
+        getAllButton.setFrame(left: kEdgeMargin, top: queryButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
+        getAllButton.setEvent {
+            let projects = DB.shared.getAll(of: ProjectsTable.self)
+            for project in projects {
+                print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
+            }
+        }
+        
         createTableButton.setup(superview: view)
         createTableButton.setStyleSolid17ptFgWhiteThemeButton(title: "创建一张表")
-        createTableButton.setFrame(left: kEdgeMargin, top: queryButton.bottom + 44, right: kEdgeMargin, height: kButtonHeight)
+        createTableButton.setFrame(left: kEdgeMargin, top: getAllButton.bottom + 44, right: kEdgeMargin, height: kButtonHeight)
         createTableButton.setEvent {
             self.projectsTable = ProjectsTable()
         }
@@ -109,7 +121,7 @@ class ProjectsTable: TableProtocol {
     private let color = Expression<Int>("color")
     private let startDate = Expression<Int?>("startDate")
     
-    init() {
+    required init() {
         DB.shared.createTable(self)
     }
     
@@ -169,3 +181,15 @@ extension ProjectsTable {
 }
 
 
+extension ProjectsTable {
+    func rowToModel(_ row: Row) -> Models.Project? {
+        return Models.Project(
+            id: row[id],
+            itemName: row[itemName],
+            resume: row[resume],
+            totalProgress: row[totalProgress],
+            color: row[color],
+            startDate: row[startDate]
+        )
+    }
+}

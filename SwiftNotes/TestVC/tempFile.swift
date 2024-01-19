@@ -9,6 +9,16 @@ protocol TableProtocol {
     var tableName: String { get }
     func defineTable(t: TableBuilder) -> Void
     func modelToSetters(model: ModelType) -> [Setter]
+    func rowToModel(_ row: Row) -> ModelType? // 可选，功能是将数据库中的一行（Row）转换为具体的模型，主要用于查询所有数据
+    
+    init() // 定义了子类一定有构造函数，一定可实例化
+}
+
+extension TableProtocol {
+    func rowToModel(_ row: Row) -> ModelType? {
+        // 默认实现可以返回 nil 或抛出错误
+        return nil
+    }
 }
 
 
@@ -162,7 +172,21 @@ class DB {
 
 // MARK: - 通用查询
 extension DB {
-    
+    func getAll<T: TableProtocol>(of type: T.Type) -> [T.ModelType] where T.ModelType: Any {
+        guard let db = getDatabaseConnection() else { return [] }
+        var models: [T.ModelType] = []
+        let table = T() // 创建 T 的实例
+        do {
+            for row in try db.prepare(Table(table.tableName)) {
+                if let model = table.rowToModel(row) {
+                    models.append(model)
+                }
+            }
+        } catch {
+            print("查询失败: \(error)")
+        }
+        return models
+    }
 }
 
 
@@ -177,6 +201,8 @@ extension DB {
         return db
     }
 }
+
+
 
 
 /*
