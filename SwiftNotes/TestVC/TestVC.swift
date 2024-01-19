@@ -9,6 +9,8 @@ class ViewController: UIViewController {
     let updateButton = UIButton(type: .custom)
     let deleteButton = UIButton(type: .custom)
     let queryButton = UIButton(type: .custom)
+    let createTableButton = UIButton(type: .custom)
+    let deleteTableButton = UIButton(type: .custom)
     
     // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
@@ -28,8 +30,7 @@ extension ViewController {
         addButton.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
         addButton.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: kButtonHeight)
         addButton.setEvent {
-            let lastId = DB.shared.getLastId(tableName: DBTable.project)
-            let newProject = Project(id: lastId+1, itemName: "项目1", resume: "项目简介", totalProgress: 50, color: 0, startDate: "2024-01-18")
+            let newProject = Models.Project(itemName: "项目1", resume: "项目简介", totalProgress: 50, color: 0, startDate: 1596124800)
             DB.shared.insert(table: self.projectsTable, model: newProject)
         }
         
@@ -38,7 +39,7 @@ extension ViewController {
         updateButton.setFrame(left: kEdgeMargin, top: addButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         updateButton.setEvent {
             let lastId = DB.shared.getLastId(tableName: DBTable.project)
-            let updatedProject = Project(id: lastId, itemName: "项目1", resume: "项目简介", totalProgress: 50, color: 0, startDate: "2024-01-18")
+            let updatedProject = Models.Project(id: lastId, itemName: "项目1", resume: "项目简介", totalProgress: 50, color: 0, startDate: 1596124800)
             DB.shared.update(table: self.projectsTable, id: lastId, model: updatedProject)
         }
         
@@ -56,11 +57,10 @@ extension ViewController {
         queryButton.setEvent {
             let projects = self.projectsTable.getAllProjects()
             for project in projects {
-                print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color)")
+                print("项目 ID: \(project.id ?? 0), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color)")
             }
         }
         
-        let createTableButton = UIButton(type: .custom)
         createTableButton.setup(superview: view)
         createTableButton.setStyleSolid17ptFgWhiteThemeButton(title: "创建一张表")
         createTableButton.setFrame(left: kEdgeMargin, top: queryButton.bottom + 44, right: kEdgeMargin, height: kButtonHeight)
@@ -68,7 +68,6 @@ extension ViewController {
             self.projectsTable = ProjectsTable()
         }
         
-        let deleteTableButton = UIButton(type: .custom)
         deleteTableButton.setup(superview: view)
         deleteTableButton.setStyleSolid17ptFgWhiteRedButton(title: "删除一张表")
         deleteTableButton.setFrame(left: kEdgeMargin, top: createTableButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
@@ -84,7 +83,7 @@ extension ViewController {
 
 // MARK: - 表
 class ProjectsTable: TableProtocol {
-    typealias ModelType = Project
+    typealias ModelType = Models.Project
     
     var tableName: String {
         return "project"
@@ -96,32 +95,48 @@ class ProjectsTable: TableProtocol {
     private let resume = Expression<String>("resume")
     private let totalProgress = Expression<Int>("totalProgress")
     private let color = Expression<Int>("color")
-    private let startDate = Expression<String?>("startDate")
+    private let startDate = Expression<Int?>("startDate")
     
-    func toSetters(model: Project) -> [Setter] {
-        return [
+    init() {
+        DB.shared.createTable(self)
+    }
+    
+    func defineTable(t: TableBuilder) {
+        t.column(id, primaryKey: .autoincrement)
+        t.column(itemName)
+        t.column(resume)
+        t.column(totalProgress)
+        t.column(color)
+        t.column(startDate) // startDate 可能是可选的
+    }
+    
+    func modelToSetters(model: Models.Project) -> [Setter] {
+        var setters: [Setter] = [
             itemName <- model.itemName,
             resume <- model.resume,
             totalProgress <- model.totalProgress,
             color <- model.color,
             startDate <- model.startDate
         ]
+        // 如果有 id，则包含在更新语句中
+        if let idValue = model.id { setters.append(id <- idValue) }
+        return setters
     }
 }
 
 
 extension ProjectsTable {
-    func getAllProjects() -> [Project] {
+    func getAllProjects() -> [Models.Project] {
         let rows = DB.shared.query(table: self)
-        var projects = [Project]()
+        var projects = [Models.Project]()
         for row in rows {
-            let project = Project(
-                id: row[id], // id 应该是 Int 类型
-                itemName: row[itemName], // itemName 应该是 String 类型
-                resume: row[resume], // resume 应该是 String 类型
-                totalProgress: row[totalProgress], // totalProgress 应该是 Int 类型
-                color: row[color], // color 应该是 Int 类型
-                startDate: row[startDate] // startDate 可能是 String? 类型
+            let project = Models.Project(
+                id: row[id],
+                itemName: row[itemName],
+                resume: row[resume],
+                totalProgress: row[totalProgress],
+                color: row[color],
+                startDate: row[startDate]
             )
             projects.append(project)
         }
@@ -143,12 +158,13 @@ extension ProjectsTable {
 
 
 // MARK: - Project 模型
-struct Project {
-    var id: Int
-    var itemName: String
-    var resume: String
-    var totalProgress: Int
-    var color: Int
-    var startDate: String?
+extension Models {
+    struct Project {
+        var id: Int? // 设为可选，以便新增时无需输入id
+        var itemName: String
+        var resume: String
+        var totalProgress: Int
+        var color: Int
+        var startDate: Int?
+    }
 }
-

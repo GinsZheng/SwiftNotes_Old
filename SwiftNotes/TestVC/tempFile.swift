@@ -3,16 +3,17 @@
 import Foundation
 import SQLite
 
+// 所有表的类(如ProjectTable)都遵循此协议，以实现使用超类"DB"中的函数来增删改查表
 protocol TableProtocol {
     associatedtype ModelType
     var tableName: String { get }
-    func toSetters(model: ModelType) -> [Setter]
+    func defineTable(t: TableBuilder) -> Void
+    func modelToSetters(model: ModelType) -> [Setter]
 }
 
 
 class DB {
     static let shared = DB()
-    
     var database: Connection? { // 子类可以通过database访问只读的db
         return db
     }
@@ -28,22 +29,30 @@ class DB {
         }
     }
     
-    // 通用插入方法
-    func insert<T: TableProtocol>(table: T, model: T.ModelType) {
+    // 创建表
+    func createTable<T: TableProtocol>(_ table: T) {
         guard let db = getDatabaseConnection() else { return }
-        let insert = Table(table.tableName).insert(table.toSetters(model: model))
-        do {
-            let id = try db.run(insert)
-            print("插入成功, id：\(id)")
-        } catch {
-            print("插入失败: \(error)")
+        // 检查表是否已经存在
+        let tableExists = (try? db.scalar("SELECT EXISTS(SELECT name FROM sqlite_master WHERE type='table' AND name='\(table.tableName)')") as? Int64) ?? 0
+        
+        // 如果表不存在，则创建表
+        if tableExists == 0 {
+            do {
+                try db.run(Table(table.tableName).create(ifNotExists: true) { t in
+                    table.defineTable(t: t)
+                })
+                print("表 \(table.tableName) 创建成功")
+            } catch {
+                print("创建表 \(table.tableName) 失败: \(error)")
+            }
         }
     }
     
-    func insert(table: Table, values: [Setter]) {
+    // 通用插入方法
+    func insert<T: TableProtocol>(table: T, model: T.ModelType) {
         guard let db = getDatabaseConnection() else { return }
+        let insert = Table(table.tableName).insert(table.modelToSetters(model: model))
         do {
-            let insert = table.insert(values)
             let id = try db.run(insert)
             print("插入成功, id：\(id)")
         } catch {
@@ -66,41 +75,11 @@ class DB {
         }
     }
     
-    func delete(table: Table, id: Int) {
-        guard let db = getDatabaseConnection() else { return }
-        do {
-            let row = table.filter(Expression<Int>("id") == id)
-            let delete = row.delete()
-            if try db.run(delete) > 0 {
-                print("删除成功, id: \(id)")
-            } else {
-                print("未找到id为 \(id) 的数据")
-            }
-        } catch {
-            print("删除失败: \(error)")
-        }
-    }
-    
     // 通用更新方法
     func update<T: TableProtocol>(table: T, id: Int, model: T.ModelType) {
         guard let db = getDatabaseConnection() else { return }
-        let update = Table(table.tableName).filter(Expression<Int>("id") == id).update(table.toSetters(model: model))
+        let update = Table(table.tableName).filter(Expression<Int>("id") == id).update(table.modelToSetters(model: model))
         do {
-            if try db.run(update) > 0 {
-                print("更新成功, id: \(id)")
-            } else {
-                print("未找到id为 \(id) 的数据")
-            }
-        } catch {
-            print("更新失败: \(error)")
-        }
-    }
-    
-    func update(table: Table, id: Int, values: [Setter]) {
-        guard let db = getDatabaseConnection() else { return }
-        do {
-            let row = table.filter(Expression<Int>("id") == id)
-            let update = row.update(values)
             if try db.run(update) > 0 {
                 print("更新成功, id: \(id)")
             } else {
@@ -116,16 +95,6 @@ class DB {
         guard let db = getDatabaseConnection() else { return [] }
         do {
             return Array(try db.prepare(Table(table.tableName)))
-        } catch {
-            print("查询失败: \(error)")
-            return []
-        }
-    }
-    
-    func query(table: Table) -> [Row] {
-        guard let db = getDatabaseConnection() else { return [] }
-        do {
-            return Array(try db.prepare(table))
         } catch {
             print("查询失败: \(error)")
             return []
@@ -179,7 +148,6 @@ class DB {
     // 删除一张表 (谨慎使用)
     func deleteTable(tableName: String) {
         guard let db = getDatabaseConnection() else { return }
-        
         let dropTableStatement = "DROP TABLE IF EXISTS \(tableName)"
         do {
             try db.run(dropTableStatement)
@@ -203,8 +171,6 @@ extension DB {
         return db
     }
 }
-
-
 
 
 /*
