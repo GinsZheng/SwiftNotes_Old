@@ -48,7 +48,7 @@ class DB {
         }
     }
     
-    // 通用插入方法
+    // 新增
     func insert<T: TableProtocol>(table: T, model: T.ModelType) {
         guard let db = getDatabaseConnection() else { return }
         let insert = Table(table.tableName).insert(table.modelToSetters(model: model))
@@ -60,7 +60,7 @@ class DB {
         }
     }
     
-    // 通用删除方法
+    // 删除
     func delete<T: TableProtocol>(table: T, id: Int) {
         guard let db = getDatabaseConnection() else { return }
         let delete = Table(table.tableName).filter(Expression<Int>("id") == id).delete()
@@ -75,7 +75,7 @@ class DB {
         }
     }
     
-    // 通用更新方法
+    // 更新
     func update<T: TableProtocol>(table: T, id: Int, model: T.ModelType) {
         guard let db = getDatabaseConnection() else { return }
         let update = Table(table.tableName).filter(Expression<Int>("id") == id).update(table.modelToSetters(model: model))
@@ -90,7 +90,7 @@ class DB {
         }
     }
     
-    // 通用查询方法
+    // 查询
     func query<T: TableProtocol>(table: T) -> [Row] {
         guard let db = getDatabaseConnection() else { return [] }
         do {
@@ -174,7 +174,7 @@ extension DB {
 
 
 /*
- 为什么不直接将 db 声明为 internal（默认访问级别）而是使用私有属性和公开计算属性，原因在于封装和数据隐藏：
+ 🐾1：为什么不直接将 db 声明为 internal（默认访问级别）而是使用私有属性和公开计算属性，原因在于封装和数据隐藏：
  1. 封装：通过使 db 私有，您确保了 DB 类的所有数据库操作都通过类的方法来执行。这意味着您可以在这些方法中添加额外的逻辑，如错误处理、日志记录等，而不必担心外部代码会绕过这些逻辑直接操作数据库。
  2. 数据隐藏：通过提供一个只读的计算属性 database，您允许外部代码读取数据库连接，但不能修改它。这可以防止外部代码意外地改变数据库的状态，可能导致数据损坏或不一致。
  总结：这种设计模式提高了代码的安全性和健壮性

@@ -39,7 +39,7 @@ extension ViewController {
         updateButton.setFrame(left: kEdgeMargin, top: addButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         updateButton.setEvent {
             let lastId = DB.shared.getLastId(tableName: DBTable.project)
-            let updatedProject = Models.Project(id: lastId, itemName: "项目1", resume: "项目简介", totalProgress: 50, color: 0, startDate: 1596124800)
+            let updatedProject = Models.Project(id: lastId, itemName: "项目1", resume: "项目简介", totalProgress: 80, color: 1, startDate: 1596124801)
             DB.shared.update(table: self.projectsTable, id: lastId, model: updatedProject)
         }
         
@@ -57,7 +57,7 @@ extension ViewController {
         queryButton.setEvent {
             let projects = self.projectsTable.getAllProjects()
             for project in projects {
-                print("项目 ID: \(project.id ?? 0), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color)")
+                print("项目 ID: \(project.id ?? 0), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
             }
         }
         
@@ -80,13 +80,25 @@ extension ViewController {
 }
 
 
+// MARK: - 模型
+extension Models {
+    struct Project {
+        var id: Int? // 设为可选，以便新增时无需输入id
+        var itemName: String
+        var resume: String
+        var totalProgress: Int
+        var color: Int
+        var startDate: Int?
+    }
+}
+
 
 // MARK: - 表
 class ProjectsTable: TableProtocol {
     typealias ModelType = Models.Project
     
     var tableName: String {
-        return "project"
+        return DBTable.project
     }
     
     // 定义与数据库字段对应的表达式
@@ -107,7 +119,7 @@ class ProjectsTable: TableProtocol {
         t.column(resume)
         t.column(totalProgress)
         t.column(color)
-        t.column(startDate) // startDate 可能是可选的
+        t.column(startDate)
     }
     
     func modelToSetters(model: Models.Project) -> [Setter] {
@@ -157,14 +169,3 @@ extension ProjectsTable {
 }
 
 
-// MARK: - Project 模型
-extension Models {
-    struct Project {
-        var id: Int? // 设为可选，以便新增时无需输入id
-        var itemName: String
-        var resume: String
-        var totalProgress: Int
-        var color: Int
-        var startDate: Int?
-    }
-}
