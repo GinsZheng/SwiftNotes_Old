@@ -150,6 +150,19 @@ class ProjectsTable: TableProtocol {
 
 
 extension ProjectsTable {
+    // 查询所有行：通过DB实现
+    func rowToModel(_ row: Row) -> Models.Project? {
+        return Models.Project(
+            id: row[id],
+            itemName: row[itemName],
+            resume: row[resume],
+            totalProgress: row[totalProgress],
+            color: row[color],
+            startDate: row[startDate]
+        )
+    }
+    
+    // 查询所有行：在表内实现
     func getAllProjects() -> [Models.Project] {
         let rows = DB.shared.query(table: self)
         var projects = [Models.Project]()
@@ -166,6 +179,7 @@ extension ProjectsTable {
         }
         return projects
     }
+    
 }
 
 
@@ -181,15 +195,3 @@ extension ProjectsTable {
 }
 
 
-extension ProjectsTable {
-    func rowToModel(_ row: Row) -> Models.Project? {
-        return Models.Project(
-            id: row[id],
-            itemName: row[itemName],
-            resume: row[resume],
-            totalProgress: row[totalProgress],
-            color: row[color],
-            startDate: row[startDate]
-        )
-    }
-}
