@@ -22,15 +22,11 @@ extension Models {
 }
 
 
-// MARK: - 表
+// MARK: - 表类
 class ProjectsTable: TableProtocol {
     typealias ModelType = Models.Project
+    var tableName: String { return DBTable.project }
     
-    var tableName: String {
-        return DBTable.project
-    }
-    
-    // 定义与数据库字段对应的表达式
     private let id = Expression<Int>("id")
     private let itemName = Expression<String>("itemName")
     private let resume = Expression<String>("resume")
@@ -38,10 +34,12 @@ class ProjectsTable: TableProtocol {
     private let color = Expression<Int>("color")
     private let startDate = Expression<Int?>("startDate")
     
+    // MARK: - 初始化与通用协议方法
     required init() {
         DB.shared.createTable(self)
     }
     
+    // 定义字段
     func defineTable(t: TableBuilder) {
         t.column(id, primaryKey: .autoincrement)
         t.column(itemName)
@@ -51,6 +49,7 @@ class ProjectsTable: TableProtocol {
         t.column(startDate)
     }
     
+    // 定义Setter
     func modelToSetters(model: Models.Project) -> [Setter] {
         var setters: [Setter] = [
             itemName <- model.itemName,
@@ -59,13 +58,15 @@ class ProjectsTable: TableProtocol {
             color <- model.color,
             startDate <- model.startDate
         ]
-        // 如果 id 非默认值，则添加
+        // 如果 id 非默认值(编辑时)，则添加
         if model.id != 0 { setters.append(id <- model.id) }
         return setters
     }
+    
 }
 
 
+// MARK: - 查询方法
 extension ProjectsTable {
     // 查询所有行
     func getAll() -> [Models.Project] {
@@ -97,15 +98,6 @@ extension ProjectsTable {
         }
     }
     
-}
-
-
-// MARK: - 私有方法
-extension ProjectsTable {
-    // 新增字段
-    private func addNewColumnIfNeeded() {
-        DB.shared.addColumnIfNeeded(tableName: self.tableName, columnName: "startDate", dataType: "INT")
-    }
 }
 
 
