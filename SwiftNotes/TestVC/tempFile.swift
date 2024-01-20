@@ -112,17 +112,23 @@ class DB {
     }
     
     // 查询：使用SQL (并将每一行转换为模型对象)
-    func executeQuery(with sql: String) -> [[String: Any?]] {
+    func executeQuery(with sql: String) -> [[String: Any]] {
         guard let db = getDatabaseConnection() else { return [] }
-        var result: [[String: Any?]] = []
+        var result: [[String: Any]] = []
 
         do {
             let statement = try db.prepare(sql)
             let columnNames = Array(statement.columnNames)
             for row in statement {
-                var rowData: [String: Any?] = [:]
+                var rowData: [String: Any] = [:]
                 for (index, columnName) in columnNames.enumerated() {
-                    rowData[columnName] = row[index] as Any?
+                    let value = row[index]
+                    // 如果是 Int64 类型，转换为 Int
+                    if let intValue = value as? Int64 {
+                        rowData[columnName] = Int(intValue)
+                    } else {
+                        rowData[columnName] = value
+                    }
                 }
                 result.append(rowData)
             }

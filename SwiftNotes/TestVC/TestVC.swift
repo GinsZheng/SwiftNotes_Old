@@ -197,22 +197,22 @@ extension ProjectsTable {
         var projects: [Models.Project] = []
         
         for row in rows {
-            guard let id = row["id"] as? Int64,
+            guard let id = row["id"] as? Int,
                   let itemName = row["itemName"] as? String,
                   let resume = row["resume"] as? String,
-                  let totalProgress = row["totalProgress"] as? Int64,
-                  let color = row["color"] as? Int64 else {
+                  let totalProgress = row["totalProgress"] as? Int,
+                  let color = row["color"] as? Int else {
                 continue // 如果任何必需字段缺失或类型不匹配，跳过这行
             }
             
             let startDate = row["startDate"] as? Int // startDate 是可选的
             
             let project = Models.Project(
-                id: Int(id),
+                id: id,
                 itemName: itemName,
                 resume: resume,
-                totalProgress: Int(totalProgress),
-                color: Int(color),
+                totalProgress: totalProgress,
+                color: color,
                 startDate: startDate
             )
             projects.append(project)
