@@ -21,8 +21,8 @@ class CSVPage: UIViewController {
         
         // MARK: -读取CSV文件
         
-        let itemTable = ItemTable()
-        itemTable.getTable()
+//        let itemTable = ItemTable()
+//        itemTable.getTable()
         let progressTable = ProgressTable()
         progressTable.getTable()
         

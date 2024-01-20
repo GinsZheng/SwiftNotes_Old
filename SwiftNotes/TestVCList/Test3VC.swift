@@ -12,7 +12,7 @@ extension Models {
 
 
 // MARK: - 表类
-class ItemTable2: TableProtocol {
+class ItemTable: TableProtocol {
     typealias ModelType = Models.Item
     var tableName: String { return DBTable.item }
     
@@ -53,7 +53,7 @@ class ItemTable2: TableProtocol {
 
 
 // MARK: - 查询方法
-extension ItemTable2 {
+extension ItemTable {
     // 查询所有行
     func getAll() -> [Models.Item] {
         return DB.shared.query(table: self).compactMap { row in

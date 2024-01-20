@@ -43,7 +43,6 @@ extension DBPage {
             let newProject = Models.Project(itemName: "项目1", resume: "项目简介", totalProgress: 50, color: 0, startDate: 1596124800)
             DB.shared.insert(table: self.projectTable, model: newProject)
         }
-        
 
         deleteButton.setup(superview: view)
         deleteButton.setStyleSolid17ptFgWhiteRedButton(title: "删除")
@@ -56,7 +55,7 @@ extension DBPage {
         
         updateButton.setup(superview: view)
         updateButton.setStyleGhost17ptThemeThemeButton(title: "更新")
-        updateButton.setFrame(left: kEdgeMargin, top: updateButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
+        updateButton.setFrame(left: kEdgeMargin, top: deleteButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         updateButton.setEvent {
             // 2C：更新
             let lastId = DB.shared.getLastId(tableName: DBTable.project)
@@ -66,7 +65,7 @@ extension DBPage {
 
         queryButton.setup(superview: view)
         queryButton.setStyleSolid17ptThemeWhiteButton(title: "查询 (表)")
-        queryButton.setFrame(left: kEdgeMargin, top: deleteButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
+        queryButton.setFrame(left: kEdgeMargin, top: updateButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         queryButton.setEvent {
             // 2D：查询(表)
             let projects = self.projectTable.getAll()

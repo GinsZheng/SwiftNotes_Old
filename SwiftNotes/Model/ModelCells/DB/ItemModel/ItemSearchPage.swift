@@ -11,12 +11,12 @@ import SQLite
 import SwiftyJSON
 
 private class DataManager: DefaultCellDataManager {
-    init() {
-        super.init(initialItems: [
-            .titleNextVC(title: "Animation", viewController: CSGeneralSubpage()),
-            .titleNextVC(title: "Button", viewController: CSGeneralSubpage())
-        ])
-    }
+//    init() {
+//        super.init(initialItems: [
+//            .titleNextVC(title: "Animation", viewController: CSGeneralSubpage()),
+//            .titleNextVC(title: "Button", viewController: CSGeneralSubpage())
+//        ])
+//    }
 }
 
 
@@ -46,7 +46,7 @@ class CSItemSearchPage: UIViewController {
 extension CSItemSearchPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableData[indexPath.row].pushViewControllerOnTap(from: self)
+        self.push(targetVC: CSGeneralSubpage())
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -76,10 +76,13 @@ extension CSItemSearchPage: CSReloadDelegate {
     // 委托的事
     func reloadData() {
         // 如果不需要把已加载的清除，则不用把itemName清空，直接再遍历
-        let json = table.getJSON()
-        let model = CSItemModel.init(jsonData: json)
-        ids = model.id
-        names = model.itemName
+//        let json = table.getJSON()
+//        let model = CSItemModel.init(jsonData: json)
+//        ids = model.id
+//        names = model.itemName
+        
+        let items = table.getAll()
+        tableData.items = items.map { .titleNext(title: $0.itemName) }
         
         // 关键：reloadData()，刷新页面数据
         tableView.reloadData()
@@ -91,11 +94,8 @@ extension CSItemSearchPage: CSReloadDelegate {
 // MARK: - 私有方法
 extension CSItemSearchPage {
     private func initializeData() {
-        // 从本地数据库获取JSON数据、建模、赋值
-        let json = table.getJSON()
-        let model = CSItemModel.init(jsonData: json)
-        ids = model.id
-        names = model.itemName
+        let items = table.getAll()
+        tableData.items = items.map { .titleNext(title: $0.itemName) }
     }
     
     private func setupUI() {
@@ -114,12 +114,12 @@ extension CSItemSearchPage {
         deleteAllButton.setStyleIconButton(imageName: "delete")
         deleteAllButton.setShadow(y: 2, radius: 16)
         deleteAllButton.setFrame(right: 20, bottom: 20 + kNavBarHeight + kHomeBarHeight, width: 44, height: 44)
-        deleteAllButton.setEvent {
-            self.table.delete()
-            self.ids = []
-            self.names = []
-            self.tableView.reloadData()
-        }
+//        deleteAllButton.setEvent {
+//            self.table.delete()
+//            self.ids = []
+//            self.names = []
+//            self.tableView.reloadData()
+//        }
     }
     
 }

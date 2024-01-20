@@ -65,21 +65,21 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
     
     // 建立委托
     @objc func addItem() {
-        let id = itemTable.getNextId()
-        let insertValue: [String: Any] = [
-            "id": id,
-            "itemName": nameTextField.text ?? "",
-            "resume": resumeTextField.text ?? "",
-            "totalProgress": Int(totalProgressTextField.text ?? "") ?? 100,
-            "color": Int(colorTextField.text ?? "") ?? 0
-        ]
-        itemTable.insert(item: JSON(insertValue))
-        
-        if delegate != nil {
-            delegate!.reloadData()
-        }
-        
-        self.dismiss()
+//        let id = itemTable.getNextId()
+//        let insertValue: [String: Any] = [
+//            "id": id,
+//            "itemName": nameTextField.text ?? "",
+//            "resume": resumeTextField.text ?? "",
+//            "totalProgress": Int(totalProgressTextField.text ?? "") ?? 100,
+//            "color": Int(colorTextField.text ?? "") ?? 0
+//        ]
+//        itemTable.insert(item: JSON(insertValue))
+//        
+//        if delegate != nil {
+//            delegate!.reloadData()
+//        }
+//        
+//        self.dismiss()
     }
 
 }

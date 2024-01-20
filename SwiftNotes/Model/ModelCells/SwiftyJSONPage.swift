@@ -61,11 +61,11 @@ class CSSwiftyJSONPage: UIViewController {
         
 
         // 解析本地数据库的JSON
-        let itemTable = ItemTable()
-        let result = itemTable.getJSONOneRow(id: 10)
-        print(result)
-        let model4 = CSSwiftyModel4(jsonData: result)
-        print("CSSwiftyModel4 itemName \(model4.itemName)")
+//        let itemTable = ItemTable()
+//        let result = itemTable.getJSONOneRow(id: 10)
+//        print(result)
+//        let model4 = CSSwiftyModel4(jsonData: result)
+//        print("CSSwiftyModel4 itemName \(model4.itemName)")
         
         
         
