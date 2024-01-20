@@ -10,7 +10,7 @@ import UIKit
 import SQLite
 
 class DBPage: UIViewController {
-    var projectTable = ProjectTable()
+    var projectTable = ProjectTable() // 1.初始化
     
     let addButton = UIButton(type: .custom)
     let updateButton = UIButton(type: .custom)
@@ -39,31 +39,36 @@ extension DBPage {
         addButton.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
         addButton.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: kButtonHeight)
         addButton.setEvent {
+            // 2A：新增
             let newProject = Models.Project(itemName: "项目1", resume: "项目简介", totalProgress: 50, color: 0, startDate: 1596124800)
             DB.shared.insert(table: self.projectTable, model: newProject)
         }
         
-        updateButton.setup(superview: view)
-        updateButton.setStyleGhost17ptThemeThemeButton(title: "更新")
-        updateButton.setFrame(left: kEdgeMargin, top: addButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
-        updateButton.setEvent {
-            let lastId = DB.shared.getLastId(tableName: DBTable.project)
-            let updatedProject = Models.Project(id: lastId, itemName: "项目2", resume: "项目简介", totalProgress: 80, color: 1, startDate: 1596124801)
-            DB.shared.update(table: self.projectTable, id: lastId, model: updatedProject)
-        }
-        
+
         deleteButton.setup(superview: view)
         deleteButton.setStyleSolid17ptFgWhiteRedButton(title: "删除")
-        deleteButton.setFrame(left: kEdgeMargin, top: updateButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
+        deleteButton.setFrame(left: kEdgeMargin, top: addButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         deleteButton.setEvent {
+            // 2B：删除
             let lastId = DB.shared.getLastId(tableName: DBTable.project)
             DB.shared.delete(table: self.projectTable, id: lastId)
         }
         
+        updateButton.setup(superview: view)
+        updateButton.setStyleGhost17ptThemeThemeButton(title: "更新")
+        updateButton.setFrame(left: kEdgeMargin, top: updateButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
+        updateButton.setEvent {
+            // 2C：更新
+            let lastId = DB.shared.getLastId(tableName: DBTable.project)
+            let updatedProject = Models.Project(id: lastId, itemName: "项目2", resume: "项目简介", totalProgress: 80, color: 1, startDate: 1596124801)
+            DB.shared.update(table: self.projectTable, id: lastId, model: updatedProject)
+        }
+
         queryButton.setup(superview: view)
         queryButton.setStyleSolid17ptThemeWhiteButton(title: "查询 (表)")
         queryButton.setFrame(left: kEdgeMargin, top: deleteButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         queryButton.setEvent {
+            // 2D：查询(表)
             let projects = self.projectTable.getAll()
             for project in projects {
                 print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
@@ -74,6 +79,7 @@ extension DBPage {
         queryFromSQLButton.setStyleSolid17ptThemeWhiteButton(title: "查询 (SQL)")
         queryFromSQLButton.setFrame(left: kEdgeMargin, top: queryButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         queryFromSQLButton.setEvent {
+            // 2E：查询(SQL)
             let projects = self.projectTable.getAllWithSQL()
             for project in projects {
                 print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")

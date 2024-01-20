@@ -1,99 +1,86 @@
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var rightMargin: CGFloat = 0
+import SQLite
 
-//        let cell = UITableViewCell()
-//        cell.setBackgroundColor(color: cF2F3F6)
-//        cell.setFrame(left: 0, top: 0, width: kScreenWidth, height: 48)
+extension Models {
+    struct Item {
+        var id: Int = 0
+        var itemName: String
+        var resume: String
+        var totalProgress: Int
+        var color: Int
+    }
+}
 
-//        let bgView = UIView()
-//        bgView.setup(superview: cell, backgroundColor: cFFF)
-//        bgView.setFrame(left: 10, top: 0, right: 10, height: 48)
-//        bgView.setCellCornerRadius(radius: 10, index: indexPath.row, maxIndex: titleArray.count - 1)
-//        bgView.setSeparator(left: 42, right: 12)
 
-//        let checkboxButton = UIButton()
-//        checkboxButton.setup(superview: bgView, target: self, action: #selector(check))
-//        checkboxButton.setStyleIconButton(imageName: "oval")
-//        checkboxButton.setFrame(left: 12, centerY: bgView.centerY, width: 20, height: 20)
+// MARK: - 表类
+class ItemTable2: TableProtocol {
+    typealias ModelType = Models.Item
+    var tableName: String { return DBTable.item }
+    
+    private let id = Expression<Int>("id")
+    private let itemName = Expression<String>("itemName")
+    private let resume = Expression<String>("resume")
+    private let totalProgress = Expression<Int>("totalProgress")
+    private let color = Expression<Int>("color")
+    
+    // MARK: - 初始化与通用协议方法
+    required init() {
+        DB.shared.createTable(self)
+    }
+    
+    // 定义字段
+    func defineTable(t: TableBuilder) {
+        t.column(id, primaryKey: .autoincrement)
+        t.column(itemName)
+        t.column(resume)
+        t.column(totalProgress)
+        t.column(color)
+    }
+    
+    // 定义Setter
+    func modelToSetters(model: Models.Item) -> [Setter] {
+        var setters: [Setter] = [
+            itemName <- model.itemName,
+            resume <- model.resume,
+            totalProgress <- model.totalProgress,
+            color <- model.color,
+        ]
+        // 如果 id 非默认值(编辑时)，则添加
+        if model.id != 0 { setters.append(id <- model.id) }
+        return setters
+    }
+    
+}
 
-//        let priorityIcon = UIImageView()
-//        switch priorityArray[indexPath.row] {
-//        case 3:
-//            priorityIcon.setup(superview: bgView, imageName: "priority3")
-//            priorityIcon.setFrame(left: 42, centerY: bgView.centerY, width: 16, height: 24)
-//        case 2:
-//            priorityIcon.setup(superview: bgView, imageName: "priority2")
-//            priorityIcon.setFrame(left: 42, centerY: bgView.centerY, width: 11, height: 24)
-//        case 1:
-//            priorityIcon.setup(superview: bgView, imageName: "priority1")
-//            priorityIcon.setFrame(left: 42, centerY: bgView.centerY, width: 6, height: 24)
-//        default: // case 0
-//            priorityIcon.setup(superview: bgView)
-//            priorityIcon.setFrame(left: 42, centerY: bgView.centerY, width: 0, height: 24)
-//        }
 
-//        let timerButton = UIButton()
-//        timerButton.setup(superview: bgView, target: self, action: #selector(check))
-//        timerButton.setStyleIconButton(imageName: "task_timer")
-//        timerButton.setFrame(right: 12, centerY: bgView.centerY, width: 20, height: 26)
-//
-//        let dateAndTimeButton = UIButton(type: .custom)
-//        dateAndTimeButton.setup(superview: bgView)
-//
-//        if hasRemindArray[indexPath.row] == 1 { // 有提醒(至少有日期)
-//            if remindTimeArray[indexPath.row] != 0  {
-//                // 有时间 & 无重复
-//                dateAndTimeButton.setStyleWordButton(title: "11:00\n12月30日", titleSize: 12, titleColor: c888)
-//                dateAndTimeButton.titleLabel?.numberOfLines = 2
-//                dateAndTimeButton.titleLabel?.setLineHeight(multiple: 15/12)
-//                dateAndTimeButton.setFrame(right: 44, centerY: bgView.centerY, width: dateAndTimeButton.titleLabel?.getLabelWidth() ?? 100, height: 48)
-//
-//
-//                if isRepeatingArray[indexPath.row] == 1 {
-//                    // 有时间 & 有重复
-//                    let repeatIcon = UIImageView()
-//                    repeatIcon.setup(superview: dateAndTimeButton, imageName: "task_repeat_future")
-//                    repeatIcon.setFrame(right: 2, top: 11.5, width: 10, height: 10)
-//                }
-//            }
-//            else if remindTimeArray[indexPath.row] == 0 && isRepeatingArray[indexPath.row] == 1 {
-//                // 无时间 & 有重复
-//                dateAndTimeButton.setStyleWordIconButton(title: "12月30日", titleSize: 12, titleColor: c888, imageName: "task_repeat_future", imageLocation: .right, interval: 1)
-//                let labelWidth = dateAndTimeButton.titleLabel?.getLabelWidth() ?? 0
-//                dateAndTimeButton.setFrame(right: 44, centerY: bgView.centerY, width: labelWidth + 12, height: 48)
-//            }
-//            else if remindTimeArray[indexPath.row] == 0 && isRepeatingArray[indexPath.row] == 0 {
-//                // 无时间 & 无重复
-//                dateAndTimeButton.setStyleWordButton(title: "12月30日", titleSize: 12, titleColor: c888)
-//                dateAndTimeButton.setFrame(right: 44, centerY: bgView.centerY, width: dateAndTimeButton.titleLabel?.getLabelWidth() ?? 100, height: 48)
-//            }
-//            rightMargin = CGFloat(dateAndTimeButton.width) + 44 + 8
-//
-//        } else { // hasRemindArray == 0, 即无提醒
-//            rightMargin = 44
-//        }
-//
+// MARK: - 查询方法
+extension ItemTable2 {
+    // 查询所有行
+    func getAll() -> [Models.Item] {
+        return DB.shared.query(table: self).compactMap { row in
+            Models.Item(
+                id: row[id],
+                itemName: row[itemName],
+                resume: row[resume],
+                totalProgress: row[totalProgress],
+                color: row[color]
+            )
+        }
+    }
 
-//        if hasProgressArray[indexPath.row] == 1 {
-//            let progressBg = UIImageView()
-//            progressBg.setup(superview: bgView, imageName: "progressBg")
-//            progressBg.setFrame(right: rightMargin, centerY: bgView.centerY, width: 24, height: 24)
-//            rightMargin = rightMargin + 24 + 4
-//
-//            let progressLabel = UILabel()
-//            progressLabel.setup(superview: progressBg, text: "0")
-//            progressLabel.setStyle12pt999MedCent()
-//            progressLabel.setFrame(center: progressBg)
-//        }
-//
-//
-//        let cellTitle = UILabel()
-//        cellTitle.setup(superview: bgView, text: titleArray[indexPath.row])
-//        cellTitle.setFrame(left: priorityIcon.right, centerY: cell.centerY, right: rightMargin)
-//        // kScreenWidth - 20 得到cell全长。 (progressBg.left - 4)为标题的right坐标。前后相减，得到标题右边距
-//        cellTitle.setStyle17pt222Med()
-//
-//        return cell
-//
-//    }
+    // 查询
+    func getAllWithSQL() -> [Models.Item] {
+        let sql = "SELECT * FROM \(tableName)"
+        return DB.shared.query(withSQL: sql) { row -> Models.Item? in
+            guard let id = row["id"] as? Int,
+                  let itemName = row["itemName"] as? String,
+                    let resume = row["resume"] as? String,
+                    let totalProgress = row["totalProgress"] as? Int,
+                    let color = row["color"] as? Int
+            else { return nil }
+            
+            return Models.Item(id: id, itemName: itemName, resume: resume, totalProgress: totalProgress, color: color)
+        }
+    }
+    
+}
+
