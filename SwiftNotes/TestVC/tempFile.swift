@@ -100,46 +100,6 @@ class DB {
         }
     }
     
-    // 查询：使用Table查询所有内容(Select *)
-    func query<T: TableProtocol>(table: T) -> [Row] {
-        // 参数 table： 一般填self，因为一般是表类调用些函数
-        guard let db = getDatabaseConnection() else { return [] }
-        do {
-            return Array(try db.prepare(Table(table.tableName)))
-        } catch {
-            print("查询失败: \(error)")
-            return []
-        }
-    }
-    
-    // 查询：使用SQL (并将每一行转换为模型对象)
-    func query(withSQL sql: String) -> [[String: Any]] {
-        guard let db = getDatabaseConnection() else { return [] }
-        var result: [[String: Any]] = []
-        
-        do {
-            let statement = try db.prepare(sql)
-            let columnNames = Array(statement.columnNames)
-            for row in statement {
-                var rowData: [String: Any] = [:]
-                for (index, columnName) in columnNames.enumerated() {
-                    let value = row[index]
-                    // 如果是 Int64 类型，转换为 Int
-                    if let intValue = value as? Int64 {
-                        rowData[columnName] = Int(intValue)
-                    } else {
-                        rowData[columnName] = value
-                    }
-                }
-                result.append(rowData)
-            }
-        } catch {
-            print("执行查询失败: \(error)")
-        }
-        
-        return result
-    }
-    
     // 获取最新数据的id
     func getLastId(tableName: String) -> Int {
         guard let db = getDatabaseConnection() else { return 0 }
@@ -199,8 +159,57 @@ class DB {
 }
 
 
-// MARK: - 通用查询
+// MARK: - 查询
 extension DB {
+    // 使用Table查询所有内容(Select *)
+    func query<T: TableProtocol>(table: T) -> [Row] {
+        // 参数 table： 一般填self，因为一般是表类调用些函数
+        guard let db = getDatabaseConnection() else { return [] }
+        do {
+            return Array(try db.prepare(Table(table.tableName)))
+        } catch {
+            print("查询失败: \(error)")
+            return []
+        }
+    }
+    
+    // 使用SQL查询，并输出字典
+    func query(withSQL sql: String) -> [[String: Any]] {
+        guard let db = getDatabaseConnection() else { return [] }
+        var result: [[String: Any]] = []
+        
+        do {
+            let statement = try db.prepare(sql)
+            let columnNames = Array(statement.columnNames)
+            for row in statement {
+                var rowData: [String: Any] = [:]
+                for (index, columnName) in columnNames.enumerated() {
+                    let value = row[index]
+                    // 如果是 Int64 类型，转换为 Int
+                    if let intValue = value as? Int64 {
+                        rowData[columnName] = Int(intValue)
+                    } else {
+                        rowData[columnName] = value
+                    }
+                }
+                result.append(rowData)
+            }
+        } catch {
+            print("执行查询失败: \(error)")
+        }
+        
+        return result
+    }
+    
+    // 使用SQL查询，并输出模型
+    
+
+}
+
+
+// MARK: - 常用查询实例
+extension DB {
+    // 查询所有 (Select *)
     func getAll<T: TableProtocol>(of type: T.Type) -> [T.ModelType] where T.ModelType: Any {
         guard let db = getDatabaseConnection() else { return [] }
         var models: [T.ModelType] = []

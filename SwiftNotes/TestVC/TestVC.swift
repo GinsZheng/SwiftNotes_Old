@@ -57,7 +57,7 @@ extension ViewController {
         queryButton.setStyleGhost17ptThemeThemeButton(title: "查询 (表特有方法)")
         queryButton.setFrame(left: kEdgeMargin, top: deleteButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         queryButton.setEvent {
-            let projects = self.projectsTable.getAllProjects()
+            let projects = self.projectsTable.getAllWithTable()
             for project in projects {
                 print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
             }
@@ -78,7 +78,7 @@ extension ViewController {
         queryFromSQLButton.setStyleGhost17ptThemeThemeButton(title: "查询 (SQL)")
         queryFromSQLButton.setFrame(left: kEdgeMargin, top: queryFromDBButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         queryFromSQLButton.setEvent {
-            let projects = self.projectsTable.getAllProjectsUsingRawQuery()
+            let projects = self.projectsTable.getAllWithSQL()
             for project in projects {
                 print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
             }
@@ -174,7 +174,7 @@ extension ProjectsTable {
     }
     
     // 查询所有行：在表内实现
-    func getAllProjects() -> [Models.Project] {
+    func getAllWithTable() -> [Models.Project] {
         let rows = DB.shared.query(table: self)
         var projects: [Models.Project] = []
         for row in rows {
@@ -191,11 +191,45 @@ extension ProjectsTable {
         return projects
     }
     
-    func getAllProjectsUsingRawQuery() -> [Models.Project] {
+    // ⚠️保留这个函数
+//    func getAllWithSQL() -> [Models.Project] {
+//        let sql = "SELECT * FROM \(tableName)"
+//        let rows = DB.shared.query(withSQL: sql)
+//        var projects: [Models.Project] = []
+//
+//        for row in rows {
+//            // 必填字段放入guard中：
+//            guard let id = row["id"] as? Int,
+//                  let itemName = row["itemName"] as? String,
+//                  let resume = row["resume"] as? String,
+//                  let totalProgress = row["totalProgress"] as? Int,
+//                  let color = row["color"] as? Int else {
+//                continue // 如果任何必需字段缺失或类型不匹配，跳过这行
+//            }
+//            // 选填字段：
+//            let startDate = row["startDate"] as? Int
+//            
+//            let project = Models.Project(
+//                id: id,
+//                itemName: itemName,
+//                resume: resume,
+//                totalProgress: totalProgress,
+//                color: color,
+//                startDate: startDate
+//            )
+//            projects.append(project)
+//            
+//        }
+//        
+//        return projects
+//    }
+    
+    // ⚠️修改这个函数
+    func getAllWithSQL() -> [Models.Project] {
         let sql = "SELECT * FROM \(tableName)"
         let rows = DB.shared.query(withSQL: sql)
         var projects: [Models.Project] = []
-        
+
         for row in rows {
             // 必填字段放入guard中：
             guard let id = row["id"] as? Int,
@@ -223,7 +257,6 @@ extension ProjectsTable {
         return projects
     }
 
-    
     
 }
 
