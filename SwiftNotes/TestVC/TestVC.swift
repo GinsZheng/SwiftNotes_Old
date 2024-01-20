@@ -187,10 +187,7 @@ extension ProjectsTable {
 extension ProjectsTable {
     // 新增字段
     private func addNewColumnIfNeeded() {
-        // 检查字段“startDate”是否存在，不存在时添加此字段
-        if !DB.shared.isColumnExists(in: tableName, columnName: "startDate") {
-            DB.shared.addColumn(to: tableName, columnName: "startDate", dataType: "TEXT")
-        }
+        DB.shared.addColumnIfNeeded(tableName: self.tableName, columnName: "startDate", dataType: "INT")
     }
 }
 

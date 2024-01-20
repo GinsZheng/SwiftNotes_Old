@@ -115,33 +115,15 @@ class DB {
         return 0
     }
     
-    // 添加字段
-    func addColumn(to tableName: String, columnName: String, dataType: String) {
-        guard let db = getDatabaseConnection() else { return }
-        let alterTableStatement = "ALTER TABLE \(tableName) ADD COLUMN \(columnName) \(dataType)"
-        do {
-            try db.run(alterTableStatement)
-            print("已成功添加字段: \(columnName)")
-        } catch {
-            print("添加字段失败: \(error)")
+    // 添加字段 (当字段不存在时)
+    func addColumnIfNeeded(tableName: String, columnName: String, dataType: String) {
+        // 检查字段是否存在，不存在时添加此字段
+        if !isColumnExists(in: tableName, columnName: columnName) {
+            addColumn(to: tableName, columnName: columnName, dataType: dataType)
         }
     }
     
-    // 检查字段是否存在
-    func isColumnExists(in tableName: String, columnName: String) -> Bool {
-        guard let db = getDatabaseConnection() else { return false }
-        do {
-            let pragmaStatement = "PRAGMA table_info(\(tableName))"
-            for row in try db.prepare(pragmaStatement) {
-                if row[1] as? String == columnName {
-                    return true
-                }
-            }
-        } catch {
-            print("检查字段存在失败: \(error)")
-        }
-        return false
-    }
+
     
     // 删除一张表 (谨慎使用)
     func deleteTable(tableName: String) {
@@ -220,6 +202,34 @@ extension DB {
         return result
     }
     
+    // 检查字段是否存在
+    private func isColumnExists(in tableName: String, columnName: String) -> Bool {
+        guard let db = getDatabaseConnection() else { return false }
+        do {
+            let pragmaStatement = "PRAGMA table_info(\(tableName))"
+            for row in try db.prepare(pragmaStatement) {
+                if row[1] as? String == columnName {
+                    return true
+                }
+            }
+        } catch {
+            print("检查字段存在失败: \(error)")
+        }
+        return false
+    }
+    
+    // 添加字段
+    private func addColumn(to tableName: String, columnName: String, dataType: String) {
+        guard let db = getDatabaseConnection() else { return }
+        let alterTableStatement = "ALTER TABLE \(tableName) ADD COLUMN \(columnName) \(dataType)"
+        do {
+            try db.run(alterTableStatement)
+            print("已成功添加字段: \(columnName)")
+        } catch {
+            print("添加字段失败: \(error)")
+        }
+    }
+
 }
 
 
