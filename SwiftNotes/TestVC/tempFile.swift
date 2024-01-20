@@ -9,7 +9,6 @@ protocol TableProtocol {
     var tableName: String { get }
     func defineTable(t: TableBuilder) -> Void
     func modelToSetters(model: ModelType) -> [Setter]
-    func rowToModel(_ row: Row) -> ModelType? // 可选，功能是将数据库中的一行（Row）转换为具体的模型，主要用于方法 getAll
     
     init() // 定义了子类一定有构造函数，一定可实例化
 }
@@ -173,8 +172,28 @@ extension DB {
         }
     }
     
+    // 使用SQL查询，并输出模型
+    func query<T>(withSQL sql: String, transform: ([String: Any]) -> T?) -> [T] {
+        let rows = self.query(withSQL: sql)
+        return rows.compactMap(transform)
+    }
+    
+}
+
+
+// MARK: - 私有方法
+extension DB {
+    // 获取数据库连接
+    private func getDatabaseConnection() -> Connection? {
+        guard let db = db else {
+            print("连接数据库失败")
+            return nil
+        }
+        return db
+    }
+    
     // 使用SQL查询，并输出字典
-    func query(withSQL sql: String) -> [[String: Any]] {
+    private func query(withSQL sql: String) -> [[String: Any]] {
         guard let db = getDatabaseConnection() else { return [] }
         var result: [[String: Any]] = []
         
@@ -195,46 +214,12 @@ extension DB {
                 result.append(rowData)
             }
         } catch {
-            print("执行查询失败: \(error)")
+            print("查询失败: \(error)")
         }
         
         return result
     }
     
-}
-
-
-// MARK: - 常用查询实例
-extension DB {
-    // 查询所有 (Select *)
-    func getAll<T: TableProtocol>(of type: T.Type) -> [T.ModelType] where T.ModelType: Any {
-        guard let db = getDatabaseConnection() else { return [] }
-        var models: [T.ModelType] = []
-        let table = T() // 创建 T 的实例
-        do {
-            for row in try db.prepare(Table(table.tableName)) {
-                if let model = table.rowToModel(row) {
-                    models.append(model)
-                }
-            }
-        } catch {
-            print("查询失败: \(error)")
-        }
-        return models
-    }
-}
-
-
-// MARK: - 私有方法
-extension DB {
-    // 获取数据库连接
-    private func getDatabaseConnection() -> Connection? {
-        guard let db = db else {
-            print("连接数据库失败")
-            return nil
-        }
-        return db
-    }
 }
 
 
@@ -245,4 +230,9 @@ extension DB {
  1. 封装：通过使 db 私有，您确保了 DB 类的所有数据库操作都通过类的方法来执行。这意味着您可以在这些方法中添加额外的逻辑，如错误处理、日志记录等，而不必担心外部代码会绕过这些逻辑直接操作数据库。
  2. 数据隐藏：通过提供一个只读的计算属性 database，您允许外部代码读取数据库连接，但不能修改它。这可以防止外部代码意外地改变数据库的状态，可能导致数据损坏或不一致。
  总结：这种设计模式提高了代码的安全性和健壮性
+ */
+
+/*
+ 为什么使用sql查询的函数func query<T>(withSQL…) 不能像func query<T: TableProtocol>(table: T) 那样返回 [Row]？
+ 因为 query<T: TableProtocol>(table: T) 查询的结果就是返回所有内容，所以可以肯定Row中含有各个字段的属性，就查以使用如project.id来访问id字段。而用SQL查询的结果可能返回的都不是一个字段内容(比如返回一个计算结果)，所以无法转换为Row
  */

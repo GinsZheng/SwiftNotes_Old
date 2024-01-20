@@ -54,21 +54,10 @@ extension ViewController {
         }
         
         queryButton.setup(superview: view)
-        queryButton.setStyleGhost17ptThemeThemeButton(title: "查询 (表特有方法)")
+        queryButton.setStyleGhost17ptThemeThemeButton(title: "查询 (表)")
         queryButton.setFrame(left: kEdgeMargin, top: deleteButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         queryButton.setEvent {
-            let projects = self.projectsTable.getAllWithTable()
-            for project in projects {
-                print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
-            }
-        }
-        
-        // 使用DB类的通用查询
-        queryFromDBButton.setup(superview: view)
-        queryFromDBButton.setStyleGhost17ptThemeThemeButton(title: "查询 (DB通用方法)")
-        queryFromDBButton.setFrame(left: kEdgeMargin, top: queryButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
-        queryFromDBButton.setEvent {
-            let projects = DB.shared.getAll(of: ProjectsTable.self)
+            let projects = self.projectsTable.getAll()
             for project in projects {
                 print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
             }
@@ -76,7 +65,7 @@ extension ViewController {
         
         queryFromSQLButton.setup(superview: view)
         queryFromSQLButton.setStyleGhost17ptThemeThemeButton(title: "查询 (SQL)")
-        queryFromSQLButton.setFrame(left: kEdgeMargin, top: queryFromDBButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
+        queryFromSQLButton.setFrame(left: kEdgeMargin, top: queryButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         queryFromSQLButton.setEvent {
             let projects = self.projectsTable.getAllWithSQL()
             for project in projects {
@@ -161,10 +150,9 @@ class ProjectsTable: TableProtocol {
 
 
 extension ProjectsTable {
-    // 查询所有行：在表内实现
-    func getAllWithTable() -> [Models.Project] {
-        let rows = DB.shared.query(table: self)
-        return rows.compactMap { row in
+    // 查询所有行
+    func getAll() -> [Models.Project] {
+        return DB.shared.query(table: self).compactMap { row in
             Models.Project(
                 id: row[id],
                 itemName: row[itemName],
@@ -175,43 +163,20 @@ extension ProjectsTable {
             )
         }
     }
-    
-    // 查询所有行：把模型传给DB，通过DB的getAll方法实现查询
-    func rowToModel(_ row: Row) -> Models.Project? {
-        return Models.Project(
-            id: row[id],
-            itemName: row[itemName],
-            resume: row[resume],
-            totalProgress: row[totalProgress],
-            color: row[color],
-            startDate: row[startDate]
-        )
-    }
-    
-    // SQL查询
+
+    // 查询
     func getAllWithSQL() -> [Models.Project] {
         let sql = "SELECT * FROM \(tableName)"
-        let rows = DB.shared.query(withSQL: sql)
-        return rows.compactMap { row in
-            // 必填字段放入guard中来避免使用强制解包，以让失败时不会崩溃
+        return DB.shared.query(withSQL: sql) { row -> Models.Project? in
             guard let id = row["id"] as? Int,
                   let itemName = row["itemName"] as? String,
                   let resume = row["resume"] as? String,
                   let totalProgress = row["totalProgress"] as? Int,
-                  let color = row["color"] as? Int else {
-                return nil
-            }
-            
+                  let color = row["color"] as? Int 
+            else { return nil }
             let startDate = row["startDate"] as? Int
             
-            return Models.Project(
-                id: id,
-                itemName: itemName,
-                resume: resume,
-                totalProgress: totalProgress,
-                color: color,
-                startDate: startDate
-            )
+            return Models.Project(id: id, itemName: itemName, resume: resume, totalProgress: totalProgress, color: color, startDate: startDate)
         }
     }
     
@@ -234,4 +199,17 @@ extension ProjectsTable {
  以compactMap为例，这个函数遍历数组中的每个元素，对每个元素执行闭包中的代码，然后收集return返回的值组成一个新的数组。如果闭包中的return返回了nil，那么这个元素会被compactMap忽略，不会出现在新数组中。
  在guard语句中，如果任何条件不满足（即无法成功提取出所有必要的字段），则返回nil。这意味着当前的迭代会被compactMap忽略。
  如果成功提取了所有字段，那么会创建一个Models.Project实例，并用return返回这个实例。这个返回值将会被包含在compactMap生成的新数组中。
+ */
+
+/*
+ getAllWithSQL中使用guard的说明：
+ // 必填字段放入guard中来避免使用强制解包，以让失败时不会崩溃
+ guard let id = row["id"] as? Int,
+       let itemName = row["itemName"] as? String,
+       let resume = row["resume"] as? String,
+       let totalProgress = row["totalProgress"] as? Int,
+       let color = row["color"] as? Int else {
+     return nil
+ }
+ let startDate = row["startDate"] as? Int // 可选字段
  */
