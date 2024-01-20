@@ -9,7 +9,8 @@ class ViewController: UIViewController {
     let updateButton = UIButton(type: .custom)
     let deleteButton = UIButton(type: .custom)
     let queryButton = UIButton(type: .custom)
-    let getAllButton = UIButton(type: .custom)
+    let queryFromDBButton = UIButton(type: .custom)
+    let queryFromSQLButton = UIButton(type: .custom)
     let createTableButton = UIButton(type: .custom)
     let deleteTableButton = UIButton(type: .custom)
     
@@ -53,22 +54,31 @@ extension ViewController {
         }
         
         queryButton.setup(superview: view)
-        queryButton.setStyleGhost17ptThemeThemeButton(title: "查询")
+        queryButton.setStyleGhost17ptThemeThemeButton(title: "查询 (表特有方法)")
         queryButton.setFrame(left: kEdgeMargin, top: deleteButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         queryButton.setEvent {
-            let projects = self.projectsTable.getAllProjectsUsingRawQuery()
-//            let projects = self.projectsTable.getAllProjects()
+            let projects = self.projectsTable.getAllProjects()
             for project in projects {
                 print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
             }
         }
         
         // 使用DB类的通用查询
-        getAllButton.setup(superview: view)
-        getAllButton.setStyleGhost17ptThemeThemeButton(title: "查询所有")
-        getAllButton.setFrame(left: kEdgeMargin, top: queryButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
-        getAllButton.setEvent {
+        queryFromDBButton.setup(superview: view)
+        queryFromDBButton.setStyleGhost17ptThemeThemeButton(title: "查询 (DB通用方法)")
+        queryFromDBButton.setFrame(left: kEdgeMargin, top: queryButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
+        queryFromDBButton.setEvent {
             let projects = DB.shared.getAll(of: ProjectsTable.self)
+            for project in projects {
+                print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
+            }
+        }
+        
+        queryFromSQLButton.setup(superview: view)
+        queryFromSQLButton.setStyleGhost17ptThemeThemeButton(title: "查询 (SQL)")
+        queryFromSQLButton.setFrame(left: kEdgeMargin, top: queryFromDBButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
+        queryFromSQLButton.setEvent {
+            let projects = self.projectsTable.getAllProjectsUsingRawQuery()
             for project in projects {
                 print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate ?? 0)")
             }
@@ -76,7 +86,7 @@ extension ViewController {
         
         createTableButton.setup(superview: view)
         createTableButton.setStyleSolid17ptFgWhiteThemeButton(title: "创建一张表")
-        createTableButton.setFrame(left: kEdgeMargin, top: getAllButton.bottom + 44, right: kEdgeMargin, height: kButtonHeight)
+        createTableButton.setFrame(left: kEdgeMargin, top: queryFromSQLButton.bottom + 44, right: kEdgeMargin, height: kButtonHeight)
         createTableButton.setEvent {
             self.projectsTable = ProjectsTable()
         }
@@ -185,62 +195,63 @@ extension ProjectsTable {
         let sql = "SELECT * FROM \(tableName)"
         let rows = DB.shared.executeQuery(with: sql)
         var projects: [Models.Project] = []
-
+        
         for row in rows {
-            guard let id = row["id"] as? Int,
+            guard let id = row["id"] as? Int64,
                   let itemName = row["itemName"] as? String,
                   let resume = row["resume"] as? String,
-                  let totalProgress = row["totalProgress"] as? Int,
-                  let color = row["color"] as? Int else {
-                      continue // 如果任何必需字段缺失或类型不匹配，跳过这行
-                  }
+                  let totalProgress = row["totalProgress"] as? Int64,
+                  let color = row["color"] as? Int64 else {
+                continue // 如果任何必需字段缺失或类型不匹配，跳过这行
+            }
             
             let startDate = row["startDate"] as? Int // startDate 是可选的
-
+            
             let project = Models.Project(
-                id: id,
+                id: Int(id),
                 itemName: itemName,
                 resume: resume,
-                totalProgress: totalProgress,
-                color: color,
+                totalProgress: Int(totalProgress),
+                color: Int(color),
                 startDate: startDate
             )
             projects.append(project)
+            
         }
-
+        
         return projects
     }
     
-//    func getAllProjectsUsingRawQuery() -> [Models.Project] {
-//        let sql = "SELECT * FROM \(tableName)"
-//        let rows = DB.shared.executeQuery(with: sql)
-//        var projects: [Models.Project] = []
-//        
-//        for row in rows {
-//            // 处理每个字段，确保类型匹配和正确处理 Optional
-//            if let id = row["id"] as? Int64, // id 通常是 Int64
-//               let itemName = row["itemName"] as? String,
-//               let resume = row["resume"] as? String,
-//               let totalProgress = row["totalProgress"] as? Int64, // 假设 totalProgress 也是 Int64
-//               let color = row["color"] as? Int64 { // 假设 color 也是 Int64
-//                
-//                let startDateValue = row["startDate"] as? Int64
-//                let startDate = startDateValue != nil ? Int(startDateValue!) : nil // 处理可选的 startDate
-//                
-//                let project = Models.Project(
-//                    id: Int(id),
-//                    itemName: itemName,
-//                    resume: resume,
-//                    totalProgress: Int(totalProgress),
-//                    color: Int(color),
-//                    startDate: startDate
-//                )
-//                projects.append(project)
-//            }
-//        }
-//        return projects
-//    }
-    
+    //    func getAllProjectsUsingRawQuery() -> [Models.Project] {
+    //        let sql = "SELECT * FROM \(tableName)"
+    //        let rows = DB.shared.executeQuery(with: sql)
+    //        var projects: [Models.Project] = []
+    //
+    //        for row in rows {
+    //            // 处理每个字段，确保类型匹配和正确处理 Optional
+    //            if let id = row["id"] as? Int64, // id 通常是 Int64
+    //               let itemName = row["itemName"] as? String,
+    //               let resume = row["resume"] as? String,
+    //               let totalProgress = row["totalProgress"] as? Int64, // 假设 totalProgress 也是 Int64
+    //               let color = row["color"] as? Int64 { // 假设 color 也是 Int64
+    //
+    //                let startDateValue = row["startDate"] as? Int64
+    //                let startDate = startDateValue != nil ? Int(startDateValue!) : nil // 处理可选的 startDate
+    //
+    //                let project = Models.Project(
+    //                    id: Int(id),
+    //                    itemName: itemName,
+    //                    resume: resume,
+    //                    totalProgress: Int(totalProgress),
+    //                    color: Int(color),
+    //                    startDate: startDate
+    //                )
+    //                projects.append(project)
+    //            }
+    //        }
+    //        return projects
+    //    }
+    //
     
     
 }
