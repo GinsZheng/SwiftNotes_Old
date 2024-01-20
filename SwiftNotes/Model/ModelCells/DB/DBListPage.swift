@@ -1,22 +1,29 @@
+//
+//  DBLiastPage.swift
+//  SwiftNotes
+//
+//  Created by GinsMac on 2024/1/20.
+//  Copyright © 2024 GinsMac. All rights reserved.
+//
+
 import UIKit
 
 private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
-            .titleNextVC(title: "Test1", viewController: Test1VC()),
-            .titleNextVC(title: "Table View", viewController: TableViewPage()),
-            .titleNextVC(title: "MoreTableViewListPage", viewController: MoreTableViewListPage()),
-            .titleNextVC(title: "DBListPage", viewController: DBListPage()),
+            .titleNextVC(title: "DB", viewController: DBPage()),
+            .titleNextVC(title: "Item Model (Basic)", viewController: CSItemSearchPage()),
+            .titleNextVC(title: "Progress Model (Joined)", viewController: CSProgressSearchPage()),
         ])
     }
 }
 
 
 // MARK: - 视图控制器
-class TestVCListPage: UIViewController {
+class DBListPage: UIViewController {
     private let tableData = DataManager()
     
-    let tableView = UITableView()
+    private let tableView = UITableView()
     
     // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
@@ -28,7 +35,7 @@ class TestVCListPage: UIViewController {
 
 
 // MARK: - tableView 代理方法
-extension TestVCListPage: UITableViewDelegate, UITableViewDataSource {
+extension DBListPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableData[indexPath.row].pushViewControllerOnTap(from: self)
@@ -57,7 +64,7 @@ extension TestVCListPage: UITableViewDelegate, UITableViewDataSource {
 
 
 // MARK: - 私有方法
-extension TestVCListPage {
+extension DBListPage {
     private func setupUI() {
         view.setBackgroundColor(color: cBgGray)
         setupDefaultTableView(tableView)
