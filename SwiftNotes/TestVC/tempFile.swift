@@ -9,7 +9,7 @@ protocol TableProtocol {
     var tableName: String { get }
     func defineTable(t: TableBuilder) -> Void
     func modelToSetters(model: ModelType) -> [Setter]
-    func rowToModel(_ row: Row) -> ModelType? // 可选，功能是将数据库中的一行（Row）转换为具体的模型，主要用于查询所有数据
+    func rowToModel(_ row: Row) -> ModelType? // 可选，功能是将数据库中的一行（Row）转换为具体的模型，主要用于方法 getAll
     
     init() // 定义了子类一定有构造函数，一定可实例化
 }
@@ -201,9 +201,6 @@ extension DB {
         return result
     }
     
-    // 使用SQL查询，并输出模型
-    
-
 }
 
 
