@@ -1227,6 +1227,7 @@
 				7A3647F4238AB287000BBECD /* ItemSearchPage.swift */,
 				7A7D1C39241CB9F100E08EA1 /* ItemInsertPage.swift */,
 				7AA3C2B0241CCC6000F77711 /* ItemUpdatePage.swift */,
+				7A3647F8238AD062000BBECD /* ItemTable.swift */,
 			);
 			path = ItemModel;
 			sourceTree = "<group>";
@@ -1237,6 +1238,7 @@
 				7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */,
 				7A7F97E4241DF213000F1E31 /* ProgressInsertPage.swift */,
 				7A7F97E6241DF290000F1E31 /* ProgressUpdatePage.swift */,
+				7A94609023D1A6AB00936DE7 /* ProgressTable.swift */,
 			);
 			path = ProgressModel;
 			sourceTree = "<group>";
@@ -1394,8 +1396,6 @@
 				7A3C6B302884131200C1D7AC /* CSV File */,
 				7AEA78B424C32F0F00909C62 /* index.html */,
 				7AA789BC28CE0D9800B58537 /* myPlist.plist */,
-				7A3647F8238AD062000BBECD /* ItemTable.swift */,
-				7A94609023D1A6AB00936DE7 /* ProgressTable.swift */,
 				7AC3B73F23CA05B3004DB044 /* TestJSON.json */,
 			);
 			path = ModelSupports;

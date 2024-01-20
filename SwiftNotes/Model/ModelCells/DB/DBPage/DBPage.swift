@@ -44,7 +44,7 @@ extension DBPage {
         }
         
         updateButton.setup(superview: view)
-        updateButton.setStyleSolid17ptThemeWhiteButton(title: "更新")
+        updateButton.setStyleGhost17ptThemeThemeButton(title: "更新")
         updateButton.setFrame(left: kEdgeMargin, top: addButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         updateButton.setEvent {
             let lastId = DB.shared.getLastId(tableName: DBTable.project)
@@ -61,7 +61,7 @@ extension DBPage {
         }
         
         queryButton.setup(superview: view)
-        queryButton.setStyleGhost17ptThemeThemeButton(title: "查询 (表)")
+        queryButton.setStyleSolid17ptThemeWhiteButton(title: "查询 (表)")
         queryButton.setFrame(left: kEdgeMargin, top: deleteButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         queryButton.setEvent {
             let projects = self.projectsTable.getAll()
@@ -71,7 +71,7 @@ extension DBPage {
         }
         
         queryFromSQLButton.setup(superview: view)
-        queryFromSQLButton.setStyleGhost17ptThemeThemeButton(title: "查询 (SQL)")
+        queryFromSQLButton.setStyleSolid17ptThemeWhiteButton(title: "查询 (SQL)")
         queryFromSQLButton.setFrame(left: kEdgeMargin, top: queryButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
         queryFromSQLButton.setEvent {
             let projects = self.projectsTable.getAllWithSQL()
