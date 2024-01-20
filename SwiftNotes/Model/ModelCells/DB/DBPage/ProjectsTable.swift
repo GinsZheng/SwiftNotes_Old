@@ -1,5 +1,5 @@
 //
-//  ProjectsTablePage.swift
+//  ProjectTable.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2024/1/20.
@@ -23,7 +23,7 @@ extension Models {
 
 
 // MARK: - 表类
-class ProjectsTable: TableProtocol {
+class ProjectTable: TableProtocol {
     typealias ModelType = Models.Project
     var tableName: String { return DBTable.project }
     
@@ -67,7 +67,7 @@ class ProjectsTable: TableProtocol {
 
 
 // MARK: - 查询方法
-extension ProjectsTable {
+extension ProjectTable {
     // 查询所有行
     func getAll() -> [Models.Project] {
         return DB.shared.query(table: self).compactMap { row in
