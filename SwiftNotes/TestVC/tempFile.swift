@@ -100,8 +100,9 @@ class DB {
         }
     }
     
-    // 查询
+    // 查询：使用Table查询所有内容(Select *)
     func query<T: TableProtocol>(table: T) -> [Row] {
+        // 参数 table： 一般填self，因为一般是表类调用些函数
         guard let db = getDatabaseConnection() else { return [] }
         do {
             return Array(try db.prepare(Table(table.tableName)))
@@ -112,10 +113,10 @@ class DB {
     }
     
     // 查询：使用SQL (并将每一行转换为模型对象)
-    func executeQuery(with sql: String) -> [[String: Any]] {
+    func query(withSQL sql: String) -> [[String: Any]] {
         guard let db = getDatabaseConnection() else { return [] }
         var result: [[String: Any]] = []
-
+        
         do {
             let statement = try db.prepare(sql)
             let columnNames = Array(statement.columnNames)
@@ -135,7 +136,7 @@ class DB {
         } catch {
             print("执行查询失败: \(error)")
         }
-
+        
         return result
     }
     

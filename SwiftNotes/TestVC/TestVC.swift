@@ -176,7 +176,7 @@ extension ProjectsTable {
     // 查询所有行：在表内实现
     func getAllProjects() -> [Models.Project] {
         let rows = DB.shared.query(table: self)
-        var projects = [Models.Project]()
+        var projects: [Models.Project] = []
         for row in rows {
             let project = Models.Project(
                 id: row[id],
@@ -193,10 +193,11 @@ extension ProjectsTable {
     
     func getAllProjectsUsingRawQuery() -> [Models.Project] {
         let sql = "SELECT * FROM \(tableName)"
-        let rows = DB.shared.executeQuery(with: sql)
+        let rows = DB.shared.query(withSQL: sql)
         var projects: [Models.Project] = []
         
         for row in rows {
+            // 必填字段放入guard中：
             guard let id = row["id"] as? Int,
                   let itemName = row["itemName"] as? String,
                   let resume = row["resume"] as? String,
@@ -204,8 +205,8 @@ extension ProjectsTable {
                   let color = row["color"] as? Int else {
                 continue // 如果任何必需字段缺失或类型不匹配，跳过这行
             }
-            
-            let startDate = row["startDate"] as? Int // startDate 是可选的
+            // 选填字段：
+            let startDate = row["startDate"] as? Int
             
             let project = Models.Project(
                 id: id,
@@ -221,37 +222,7 @@ extension ProjectsTable {
         
         return projects
     }
-    
-    //    func getAllProjectsUsingRawQuery() -> [Models.Project] {
-    //        let sql = "SELECT * FROM \(tableName)"
-    //        let rows = DB.shared.executeQuery(with: sql)
-    //        var projects: [Models.Project] = []
-    //
-    //        for row in rows {
-    //            // 处理每个字段，确保类型匹配和正确处理 Optional
-    //            if let id = row["id"] as? Int64, // id 通常是 Int64
-    //               let itemName = row["itemName"] as? String,
-    //               let resume = row["resume"] as? String,
-    //               let totalProgress = row["totalProgress"] as? Int64, // 假设 totalProgress 也是 Int64
-    //               let color = row["color"] as? Int64 { // 假设 color 也是 Int64
-    //
-    //                let startDateValue = row["startDate"] as? Int64
-    //                let startDate = startDateValue != nil ? Int(startDateValue!) : nil // 处理可选的 startDate
-    //
-    //                let project = Models.Project(
-    //                    id: Int(id),
-    //                    itemName: itemName,
-    //                    resume: resume,
-    //                    totalProgress: Int(totalProgress),
-    //                    color: Int(color),
-    //                    startDate: startDate
-    //                )
-    //                projects.append(project)
-    //            }
-    //        }
-    //        return projects
-    //    }
-    //
+
     
     
 }
