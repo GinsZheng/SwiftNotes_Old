@@ -15,7 +15,7 @@
 //    // 从父页面获取编辑数据的id
 //    public var updatedId = 0
 //    
-//    let navPresent = CSPresentNav()
+//    let navPresent = CSPresentNavView()
 //    
 //    let nameTextField = UITextField()
 //    let resumeTextField = UITextField()

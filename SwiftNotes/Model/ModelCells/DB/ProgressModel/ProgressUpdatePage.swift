@@ -18,7 +18,7 @@ class CSProgressUpdatePage: UIViewController, UITextFieldDelegate {
     
     let table = ProgressTable()
     
-    let navPresent = CSPresentNav()
+    let navView = CSPresentNavView()
     
     let currentProgressTextField = UITextField()
     let startTimeTextField = UITextField()
@@ -45,12 +45,12 @@ class CSProgressUpdatePage: UIViewController, UITextFieldDelegate {
         print("currentProgressNum \(currentProgressNum)")
         print(startTimeNum)
         
-        navPresent.setTitleLabel(superview: view, title: "Update")
-        navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
+        navView.setup(superview: view, title: "Insert")
+        navView.onCloseButtonTap = { self.dismiss() }
         
         currentProgressTextField.setup(superview: view, placeholder: "currentProgress", delegate: self, text: String(currentProgressNum))
         currentProgressTextField.setStyleOneLineTextField()
-        currentProgressTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
+        currentProgressTextField.setFrame(left: 20, top: navView.bottom + 20, right: 20, height: 48)
         
         startTimeTextField.setup(superview: view, placeholder: "startTime", delegate: self, text: String(startTimeNum))
         startTimeTextField.setStyleOneLineTextField()
@@ -72,11 +72,6 @@ class CSProgressUpdatePage: UIViewController, UITextFieldDelegate {
         deleteButton.setup(superview: view, target: self, action: #selector(deleteProgress))
         deleteButton.setStyleWord17ptRedButton(title: "Delete")
         deleteButton.setFrame(centerX: view.centerX, top: updateButton.bottom + 10, width: 80, height: 44)
-    }
-    
-    
-    @objc func dismissPage() {
-        self.dismiss()
     }
     
     @objc func updateProgress() {

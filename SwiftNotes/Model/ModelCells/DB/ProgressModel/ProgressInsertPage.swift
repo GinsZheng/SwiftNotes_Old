@@ -14,7 +14,7 @@ class CSProgressInsertPage: UIViewController, UITextFieldDelegate {
     
     let table = ProgressTable()
     
-    let navPresent = CSPresentNav()
+    let navView = CSPresentNavView()
     let currentProgressTextField = UITextField()
     let startTimeTextField = UITextField()
     let endTimeTextField = UITextField()
@@ -28,12 +28,12 @@ class CSProgressInsertPage: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.setBackgroundColor(color: cFFF)
         
-        navPresent.setTitleLabel(superview: view, title: "Insert")
-        navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
+        navView.setup(superview: view, title: "Insert")
+        navView.onCloseButtonTap = { self.dismiss() }
         
         currentProgressTextField.setup(superview: view, placeholder: "currentProgress", delegate: self)
         currentProgressTextField.setStyleOneLineTextField()
-        currentProgressTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
+        currentProgressTextField.setFrame(left: 20, top: navView.bottom + 20, right: 20, height: 48)
         
         startTimeTextField.setup(superview: view, placeholder: "startTime", delegate: self)
         startTimeTextField.setStyleOneLineTextField()

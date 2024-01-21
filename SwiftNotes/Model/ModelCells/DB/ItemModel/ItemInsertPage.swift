@@ -10,10 +10,10 @@ import UIKit
 import SwiftyJSON
 import SQLite
 
-class CSItemInsertPage: UIViewController, UITextFieldDelegate {
+class CSItemInsertPage: UIViewController {
+    var onInserted: (() -> Void)?
     
-    let navPresent = CSPresentNav()
-    
+    let navView = CSPresentNavView()
     let nameTextField = UITextField()
     let resumeTextField = UITextField()
     let totalProgressTextField = UITextField()
@@ -22,65 +22,54 @@ class CSItemInsertPage: UIViewController, UITextFieldDelegate {
     
     let itemTable = ItemTable()
     
-    weak var delegate: CSReloadDelegate?
-    
     // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
-    // MARK: - func
-    func setupUI() {
+}
+
+
+// MARK: - 私有方法
+extension CSItemInsertPage: UITextFieldDelegate {
+    private func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
-        navPresent.setTitleLabel(superview: view, title: "Insert")
-        navPresent.setCloseButton(superview: view, target: self, action: #selector(dismissPage))
+        navView.setup(superview: view, title: "Insert")
+        navView.onCloseButtonTap = { self.dismiss() }
         
         nameTextField.setup(superview: view, placeholder: "itemName", delegate: self)
         nameTextField.setStyleOneLineTextField()
-        nameTextField.setFrame(left: 20, top: navPresent.titleLabel.bottom + 20, right: 20, height: 48)
+        nameTextField.setFrame(left: kEdgeMargin, top: navView.bottom, right: kEdgeMargin, height: kCellHeight)
         
         resumeTextField.setup(superview: view, placeholder: "resume", delegate: self)
         resumeTextField.setStyleOneLineTextField()
-        resumeTextField.setFrame(left: 20, top: nameTextField.bottom + 20, right: 20, height: 48)
+        resumeTextField.setFrame(left: kEdgeMargin, top: nameTextField.bottom + kVertMargin, right: kEdgeMargin, height: kCellHeight)
         
         totalProgressTextField.setup(superview: view, placeholder: "totalProgress", delegate: self)
         totalProgressTextField.setStyleOneLineTextField()
-        totalProgressTextField.setFrame(left: 20, top: resumeTextField.bottom + 20, right: 20, height: 48)
+        totalProgressTextField.setFrame(left: kEdgeMargin, top: resumeTextField.bottom + kVertMargin, right: kEdgeMargin, height: kCellHeight)
         
         colorTextField.setup(superview: view, placeholder: "color(Int)", delegate: self)
         colorTextField.setStyleOneLineTextField()
-        colorTextField.setFrame(left: 20, top: totalProgressTextField.bottom + 20, right: 20, height: 48)
+        colorTextField.setFrame(left: kEdgeMargin, top: totalProgressTextField.bottom + kVertMargin, right: kEdgeMargin, height: kCellHeight)
         
-        addingButton.setup(superview: view, target: self, action: #selector(addItem))
+        addingButton.setup(superview: view)
         addingButton.setStyleSolid17ptFgWhiteThemeButton(title: "Insert")
-        addingButton.setFrame(left: 20, top: colorTextField.bottom + 20, right: 20, height: 48)
+        addingButton.setFrame(left: kEdgeMargin, top: colorTextField.bottom + kVertMargin, right: kEdgeMargin, height: kCellHeight)
+        addingButton.setEvent {
+            let newRow = Models.Item(
+                itemName: self.nameTextField.text ?? "",
+                resume: self.resumeTextField.text ?? "",
+                totalProgress: Int(self.totalProgressTextField.text ?? "") ?? 100,
+                color: Int(self.colorTextField.text ?? "") ?? 0
+            )
+            DB.shared.insert(table: self.itemTable, model: newRow)
+            self.onInserted?()
+            self.dismiss()
+        }
+        
     }
     
-    // MARK: - @objc func
-    @objc func dismissPage() {
-        self.dismiss()
-    }
-    
-    // 建立委托
-    @objc func addItem() {
-//        let id = itemTable.getNextId()
-//        let insertValue: [String: Any] = [
-//            "id": id,
-//            "itemName": nameTextField.text ?? "",
-//            "resume": resumeTextField.text ?? "",
-//            "totalProgress": Int(totalProgressTextField.text ?? "") ?? 100,
-//            "color": Int(colorTextField.text ?? "") ?? 0
-//        ]
-//        itemTable.insert(item: JSON(insertValue))
-//        
-//        if delegate != nil {
-//            delegate!.reloadData()
-//        }
-//        
-//        self.dismiss()
-    }
-
 }
-

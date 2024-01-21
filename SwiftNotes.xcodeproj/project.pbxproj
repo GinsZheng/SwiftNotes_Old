@@ -172,7 +172,7 @@
 		7A88C7432A8929E400D61E33 /* SetColorInHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7302A8929E400D61E33 /* SetColorInHex.swift */; };
 		7A88C7442A8929E400D61E33 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7312A8929E400D61E33 /* DatePicker.swift */; };
 		7A88C7452A8929E400D61E33 /* LabelStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7322A8929E400D61E33 /* LabelStyles.swift */; };
-		7A88C7462A8929E400D61E33 /* CustomControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7332A8929E400D61E33 /* CustomControl.swift */; };
+		7A88C7462A8929E400D61E33 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7332A8929E400D61E33 /* CustomView.swift */; };
 		7A88C7472A8929E400D61E33 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7342A8929E400D61E33 /* Functions.swift */; };
 		7A88C7492A8929E400D61E33 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7362A8929E400D61E33 /* FileManager.swift */; };
 		7A88C74A2A8929E400D61E33 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7372A8929E400D61E33 /* Timer.swift */; };
@@ -727,7 +727,7 @@
 		7A88C7302A8929E400D61E33 /* SetColorInHex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetColorInHex.swift; sourceTree = "<group>"; };
 		7A88C7312A8929E400D61E33 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 		7A88C7322A8929E400D61E33 /* LabelStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStyles.swift; sourceTree = "<group>"; };
-		7A88C7332A8929E400D61E33 /* CustomControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomControl.swift; sourceTree = "<group>"; };
+		7A88C7332A8929E400D61E33 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		7A88C7342A8929E400D61E33 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		7A88C7362A8929E400D61E33 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		7A88C7372A8929E400D61E33 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
@@ -1263,7 +1263,7 @@
 			children = (
 				7A88C7402A8929E400D61E33 /* Colors.swift */,
 				7A88C72F2A8929E400D61E33 /* Constant.swift */,
-				7A88C7332A8929E400D61E33 /* CustomControl.swift */,
+				7A88C7332A8929E400D61E33 /* CustomView.swift */,
 				7ACF48512B27052700759E0A /* DataManager.swift */,
 				7ACF48532B270DB800759E0A /* DataStruct.swift */,
 				7A88C7312A8929E400D61E33 /* DatePicker.swift */,
@@ -2328,7 +2328,7 @@
 				7AADC69E2B5BF8D700E42FA8 /* TemplateTable.swift in Sources */,
 				7AADC6972B5BDFE800E42FA8 /* DBPage.swift in Sources */,
 				7A04CB802A9482B80021B9DF /* EqualDivisionCollectionViewPage.swift in Sources */,
-				7A88C7462A8929E400D61E33 /* CustomControl.swift in Sources */,
+				7A88C7462A8929E400D61E33 /* CustomView.swift in Sources */,
 				7A9219542B00BEFD00FE65FC /* SwitchViewListPage.swift in Sources */,
 				7A244E9E24C7EFE500D072FB /* IntPage.swift in Sources */,
 				7A393AFE2B492D91001F3FCB /* DefaultSection.swift in Sources */,

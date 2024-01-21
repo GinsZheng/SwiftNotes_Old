@@ -7,6 +7,7 @@ private class DataManager: DefaultCellDataManager {
             .titleNextVC(title: "Table View", viewController: TableViewPage()),
             .titleNextVC(title: "MoreTableViewListPage", viewController: MoreTableViewListPage()),
             .titleNextVC(title: "DBListPage", viewController: DBListPage()),
+            .titleNextVC(title: "Item Model (Basic)", viewController: ItemSearchPage()),
         ])
     }
 }

@@ -10,32 +10,19 @@ import UIKit
 import SQLite
 import SwiftyJSON
 
-private class DataManager: DefaultCellDataManager {
-//    init() {
-//        super.init(initialItems: [
-//            .titleNextVC(title: "Animation", viewController: CSGeneralSubpage()),
-//            .titleNextVC(title: "Button", viewController: CSGeneralSubpage())
-//        ])
-//    }
-}
-
 
 // MARK: - 视图控制器
-class CSItemSearchPage: UIViewController {
-    private let tableData = DataManager()
-    
-    let table = ItemTable()
-    
-    private var ids = [Int]()
-    private var names = [String]()
+class ItemSearchPage: UIViewController {
+    private let tableData = DefaultCellDataManager()
+    private let table = ItemTable()
     
     private let tableView = UITableView()
-    private let deleteAllButton = UIButton(type: .custom)
+    private let deleteButton = UIButton(type: .custom)
     
     // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeData()
+        updateData()
         setupUI()
     }
     
@@ -43,10 +30,10 @@ class CSItemSearchPage: UIViewController {
 
 
 // MARK: - tableView 代理方法
-extension CSItemSearchPage: UITableViewDelegate, UITableViewDataSource {
+extension ItemSearchPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.push(targetVC: CSGeneralSubpage())
+        self.present(targetVC: CSItemInsertPage())
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -71,66 +58,40 @@ extension CSItemSearchPage: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-extension CSItemSearchPage: CSReloadDelegate {
-    // MARK: - CSReloadDelegate 代理方法
-    // 委托的事
-    func reloadData() {
-        // 如果不需要把已加载的清除，则不用把itemName清空，直接再遍历
-//        let json = table.getJSON()
-//        let model = CSItemModel.init(jsonData: json)
-//        ids = model.id
-//        names = model.itemName
-        
-        let items = table.getAll()
-        tableData.items = items.map { .titleNext(title: $0.itemName) }
-        
-        // 关键：reloadData()，刷新页面数据
-        tableView.reloadData()
-    }
-    
-}
-
-
 // MARK: - 私有方法
-extension CSItemSearchPage {
-    private func initializeData() {
+extension ItemSearchPage {
+    private func updateData() {
         let items = table.getAll()
         tableData.items = items.map { .titleNext(title: $0.itemName) }
+        tableView.reloadData()
     }
     
     private func setupUI() {
         view.setBackgroundColor(color: cBgGray)
-        let editButton = UIBarButtonItem(image: UIImage(named: "adding"), style: .plain, target: self, action: #selector(presentToInsertPage))
-        editButton.tintColor = .hex(cRed_FF635A)
-        self.navigationItem.rightBarButtonItem = editButton
-        
+        setupNavButton()
         setupDefaultTableView(tableView)
-        // 数据更新时刷新列表
-        tableData.onItemsUpdated = { [weak self] in
-            self?.tableView.reloadData()
-        }
-        
-        deleteAllButton.setup(superview: view)
-        deleteAllButton.setStyleIconButton(imageName: "delete")
-        deleteAllButton.setShadow(y: 2, radius: 16)
-        deleteAllButton.setFrame(right: 20, bottom: 20 + kNavBarHeight + kHomeBarHeight, width: 44, height: 44)
-//        deleteAllButton.setEvent {
-//            self.table.delete()
-//            self.ids = []
-//            self.names = []
-//            self.tableView.reloadData()
-//        }
+        setupDeleteButton()
     }
     
-}
-
-
-// MARK: - @objc方法
-extension CSItemSearchPage {
-    // 建立委托
-    @objc func presentToInsertPage() {
-        let insertPage = CSItemInsertPage()
-        insertPage.delegate = self
-        self.present(targetVC: insertPage)
+    private func setupNavButton() {
+        let navButton = CSNavBarButton(imageName: "adding", viewController: self)
+        navButton.onTap = { [weak self] in
+            guard let self = self else { return }
+            let insertPage = CSItemInsertPage()
+            insertPage.onInserted = { self.updateData() }
+            self.present(targetVC: insertPage)
+        }
     }
+    
+    private func setupDeleteButton() {
+        deleteButton.setup(superview: view)
+        deleteButton.setStyleIconButton(imageName: "delete")
+        deleteButton.setShadow(y: 2, radius: 16)
+        deleteButton.setFrame(right: 20, bottom: 20 + kHomeBarHeight, width: 44, height: 44)
+        deleteButton.setEvent {
+            DB.shared.delete(table: self.table, id: DB.shared.getLastId(tableName: self.table.tableName))
+            self.updateData()
+        }
+    }
+    
 }

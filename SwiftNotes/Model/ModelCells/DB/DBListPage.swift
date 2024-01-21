@@ -12,7 +12,7 @@ private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
             .titleNextVC(title: "DB", viewController: DBPage()),
-            .titleNextVC(title: "Item Model (Basic)", viewController: CSItemSearchPage()),
+            .titleNextVC(title: "Item Model (Basic)", viewController: ItemSearchPage()),
             .titleNextVC(title: "Progress Model (Joined)", viewController: CSProgressSearchPage()),
         ])
     }
