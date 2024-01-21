@@ -15,6 +15,7 @@ import SwiftyJSON
 class ItemSearchPage: UIViewController {
     private let tableData = DefaultCellDataManager()
     private let table = ItemTable()
+    private var ids: [Int] = []
     
     private let tableView = UITableView()
     private let deleteButton = UIButton(type: .custom)
@@ -33,7 +34,10 @@ class ItemSearchPage: UIViewController {
 extension ItemSearchPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.present(targetVC: CSItemInsertPage())
+        let targetVC = ItemEditPage()
+        print(ids[indexPath.row])
+        targetVC.id = ids[indexPath.row]
+        self.present(targetVC: targetVC)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -62,6 +66,7 @@ extension ItemSearchPage: UITableViewDelegate, UITableViewDataSource {
 extension ItemSearchPage {
     private func updateData() {
         let items = table.getAll()
+        ids = items.map { $0.id }
         tableData.items = items.map { .titleNext(title: $0.itemName) }
         tableView.reloadData()
     }
@@ -77,8 +82,8 @@ extension ItemSearchPage {
         let navButton = CSNavBarButton(imageName: "adding", viewController: self)
         navButton.onTap = { [weak self] in
             guard let self = self else { return }
-            let insertPage = CSItemInsertPage()
-            insertPage.onInserted = { self.updateData() }
+            let insertPage = ItemInsertPage()
+            insertPage.onCompleted = { self.updateData() }
             self.present(targetVC: insertPage)
         }
     }

@@ -161,7 +161,7 @@
 		7A74D10D28D4868300FB4FB3 /* UploadDataPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74D10C28D4868300FB4FB3 /* UploadDataPage.swift */; };
 		7A77BDFC2AE285DA009F9185 /* SwitchView1Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77BDFB2AE285DA009F9185 /* SwitchView1Page.swift */; };
 		7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B5D3B23C05A150079A931 /* ArraysPage.swift */; };
-		7A7D1C3A241CB9F100E08EA1 /* ItemInsertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D1C39241CB9F100E08EA1 /* ItemInsertPage.swift */; };
+		7A7D1C3A241CB9F100E08EA1 /* ItemBasePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D1C39241CB9F100E08EA1 /* ItemBasePage.swift */; };
 		7A7F97E5241DF213000F1E31 /* ProgressInsertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F97E4241DF213000F1E31 /* ProgressInsertPage.swift */; };
 		7A7F97E7241DF290000F1E31 /* ProgressUpdatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F97E6241DF290000F1E31 /* ProgressUpdatePage.swift */; };
 		7A8006A62B28A9B4004FA72B /* DefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8006A52B28A9B4004FA72B /* DefaultCell.swift */; };
@@ -215,6 +215,7 @@
 		7AADC6992B5BDFF600E42FA8 /* DBListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC6982B5BDFF600E42FA8 /* DBListPage.swift */; };
 		7AADC69B2B5BE12E00E42FA8 /* ProjectsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */; };
 		7AADC69E2B5BF8D700E42FA8 /* TemplateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69D2B5BF8D700E42FA8 /* TemplateTable.swift */; };
+		7AADC6A02B5D682A00E42FA8 /* ItemInsertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */; };
 		7ABEFC5C2B4BEA58002C5A19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
 		7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */; };
@@ -716,7 +717,7 @@
 		7A74D10C28D4868300FB4FB3 /* UploadDataPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadDataPage.swift; sourceTree = "<group>"; };
 		7A77BDFB2AE285DA009F9185 /* SwitchView1Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView1Page.swift; sourceTree = "<group>"; };
 		7A7B5D3B23C05A150079A931 /* ArraysPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysPage.swift; sourceTree = "<group>"; };
-		7A7D1C39241CB9F100E08EA1 /* ItemInsertPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInsertPage.swift; sourceTree = "<group>"; };
+		7A7D1C39241CB9F100E08EA1 /* ItemBasePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBasePage.swift; sourceTree = "<group>"; };
 		7A7F97E4241DF213000F1E31 /* ProgressInsertPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressInsertPage.swift; sourceTree = "<group>"; };
 		7A7F97E6241DF290000F1E31 /* ProgressUpdatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressUpdatePage.swift; sourceTree = "<group>"; };
 		7A8006A52B28A9B4004FA72B /* DefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCell.swift; sourceTree = "<group>"; };
@@ -770,6 +771,7 @@
 		7AADC6982B5BDFF600E42FA8 /* DBListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBListPage.swift; sourceTree = "<group>"; };
 		7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTable.swift; sourceTree = "<group>"; };
 		7AADC69D2B5BF8D700E42FA8 /* TemplateTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTable.swift; sourceTree = "<group>"; };
+		7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInsertPage.swift; sourceTree = "<group>"; };
 		7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
 		7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataNote.swift; sourceTree = "<group>"; };
@@ -1227,7 +1229,8 @@
 			isa = PBXGroup;
 			children = (
 				7A3647F4238AB287000BBECD /* ItemSearchPage.swift */,
-				7A7D1C39241CB9F100E08EA1 /* ItemInsertPage.swift */,
+				7A7D1C39241CB9F100E08EA1 /* ItemBasePage.swift */,
+				7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */,
 				7AA3C2B0241CCC6000F77711 /* ItemUpdatePage.swift */,
 				7A3647F8238AD062000BBECD /* ItemTable.swift */,
 			);
@@ -2161,6 +2164,7 @@
 				7A61FDCF28A8D04000AA3FFC /* ViewControllerPage.swift in Sources */,
 				7A21615B238986AF00D5A93A /* WebViewPage.swift in Sources */,
 				7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */,
+				7AADC6A02B5D682A00E42FA8 /* ItemInsertPage.swift in Sources */,
 				7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */,
 				7ACF48542B270DB800759E0A /* DataStruct.swift in Sources */,
 				7A0258AA2434EF58006D4AB5 /* DismissAllPage.swift in Sources */,
@@ -2260,7 +2264,7 @@
 				7A62A180244C92670090D128 /* GestureListPage.swift in Sources */,
 				7A28833A2448BB9700591C29 /* AlertOneBtnPage.swift in Sources */,
 				7A4736D0246DA0AA0071115F /* TestPresentVC.swift in Sources */,
-				7A7D1C3A241CB9F100E08EA1 /* ItemInsertPage.swift in Sources */,
+				7A7D1C3A241CB9F100E08EA1 /* ItemBasePage.swift in Sources */,
 				7A88C7492A8929E400D61E33 /* FileManager.swift in Sources */,
 				7ACF488C2B283C0700759E0A /* EqualSizeCollectionViewPage.swift in Sources */,
 				7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */,

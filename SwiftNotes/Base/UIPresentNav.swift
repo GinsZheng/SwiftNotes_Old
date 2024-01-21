@@ -32,26 +32,3 @@ class CSPresentNavView: UIView {
     }
     
 }
-
-
-
-//class CSPresentNavView {
-//
-//    let closeButton = UIButton(type: .custom)
-//    let titleLabel = UILabel()
-//
-//    func setCloseButton(superview: UIView, target: Any?, action: Selector) {
-//        closeButton.setup(superview: superview, target: target, action: action)
-//        closeButton.setFrame(right: 20, top: 19, width: 18, height: 18)
-//        closeButton.setImage(UIImage(named: "nav_close"), for: .normal)
-//        closeButton.setImage(UIImage(named: "nav_close")?.withAlpha(0.6), for: .highlighted)
-//        closeButton.extendTouchArea()
-//    }
-//
-//    func setTitleLabel(superview: UIView, title: String) {
-//        titleLabel.setup(superview: superview, text: title)
-//        titleLabel.setStyle24pt222Med()
-//        titleLabel.setFrame(left: 20, top: 44)
-//    }
-//
-//}
