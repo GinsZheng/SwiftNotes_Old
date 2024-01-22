@@ -11,7 +11,7 @@ import SwiftyJSON
 import SQLite
 
 class ItemBasePage: UIViewController {
-    var onCompleted: (() -> Void)?
+    var onCompleted: (() -> Void)? // 新删改完成时(刷新列表)
     
     let navView = CSPresentNavView()
     let nameTextField = UITextField()
@@ -19,12 +19,12 @@ class ItemBasePage: UIViewController {
     let totalProgressTextField = UITextField()
     let colorTextField = UITextField()
     let actionButton = UIButton()
+    let deleteButton = UIButton(type: .custom)
     
     let itemTable = ItemTable()
     
-    var id = 0 // 编辑模时的id
     var isEditMode = false
-    var itemData: Models.Item? // 用于编辑时填充数据的模型
+    var itemModel: Models.Item? // 用于编辑时填充数据的模型
     
     // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ extension ItemBasePage: UITextFieldDelegate {
         setupTextField(colorTextField, placeholder: "color(Int)", top: totalProgressTextField.bottom + kVertMargin)
         
         // 如果是编辑模式，填充文本字段
-        if isEditMode, let data = itemData {
+        if isEditMode, let data = itemModel {
             nameTextField.text = data.itemName
             resumeTextField.text = data.resume
             totalProgressTextField.text = String(data.totalProgress)
@@ -72,6 +72,20 @@ extension ItemBasePage: UITextFieldDelegate {
             self?.handleAction()
         }
         
+        // 设置删除按钮
+        if isEditMode {
+            deleteButton.setup(superview: view)
+            deleteButton.setStyleIconButton(imageName: "delete")
+            deleteButton.setShadow(y: 2, radius: 16)
+            deleteButton.setFrame(centerX: view.centerX, bottom: 20, width: 44, height: 44)
+            deleteButton.setEvent { [weak self] in
+                guard let self = self else { return }
+                DB.shared.delete(table: self.itemTable, id: self.itemModel?.id ?? 0)
+                self.onCompleted?()
+                self.dismiss()
+            }
+        }
+
     }
     
     // 输入框通用设置

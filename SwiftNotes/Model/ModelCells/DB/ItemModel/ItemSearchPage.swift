@@ -13,12 +13,11 @@ import SwiftyJSON
 
 // MARK: - 视图控制器
 class ItemSearchPage: UIViewController {
-    private let tableData = DefaultCellDataManager()
-    private let table = ItemTable()
-    private var ids: [Int] = []
+    private let tableData = DefaultCellDataManager() // 用于tableView的数据，与下面items不同
+    private let itemTable = ItemTable()
+    private var itemModels: [Models.Item] = [] // 用于保存查出的各字段的数据
     
     private let tableView = UITableView()
-    private let deleteButton = UIButton(type: .custom)
     
     // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
@@ -35,8 +34,8 @@ extension ItemSearchPage: UITableViewDelegate, UITableViewDataSource {
     // 点击
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let targetVC = ItemEditPage()
-        print(ids[indexPath.row])
-        targetVC.id = ids[indexPath.row]
+        targetVC.itemModel = itemModels[indexPath.row]
+        targetVC.onCompleted = { self.updateData() }
         self.present(targetVC: targetVC)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -65,9 +64,8 @@ extension ItemSearchPage: UITableViewDelegate, UITableViewDataSource {
 // MARK: - 私有方法
 extension ItemSearchPage {
     private func updateData() {
-        let items = table.getAll()
-        ids = items.map { $0.id }
-        tableData.items = items.map { .titleNext(title: $0.itemName) }
+        itemModels = itemTable.getAll()
+        tableData.items = itemModels.map { .titleDescNext(title: $0.itemName, description: "简述：\($0.resume)，进度：\($0.totalProgress), 颜色：\($0.color)") }
         tableView.reloadData()
     }
     
@@ -75,7 +73,6 @@ extension ItemSearchPage {
         view.setBackgroundColor(color: cBgGray)
         setupNavButton()
         setupDefaultTableView(tableView)
-        setupDeleteButton()
     }
     
     private func setupNavButton() {
@@ -85,17 +82,6 @@ extension ItemSearchPage {
             let insertPage = ItemInsertPage()
             insertPage.onCompleted = { self.updateData() }
             self.present(targetVC: insertPage)
-        }
-    }
-    
-    private func setupDeleteButton() {
-        deleteButton.setup(superview: view)
-        deleteButton.setStyleIconButton(imageName: "delete")
-        deleteButton.setShadow(y: 2, radius: 16)
-        deleteButton.setFrame(right: 20, bottom: 20 + kHomeBarHeight, width: 44, height: 44)
-        deleteButton.setEvent {
-            DB.shared.delete(table: self.table, id: DB.shared.getLastId(tableName: self.table.tableName))
-            self.updateData()
         }
     }
     

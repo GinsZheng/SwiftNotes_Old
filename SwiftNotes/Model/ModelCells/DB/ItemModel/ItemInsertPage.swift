@@ -7,7 +7,6 @@
 //
 
 class ItemInsertPage: ItemBasePage {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         isEditMode = false

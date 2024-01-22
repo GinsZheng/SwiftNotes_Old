@@ -79,7 +79,7 @@
 		7A31324F2392A6680008298C /* ClassPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A31324E2392A6680008298C /* ClassPage.swift */; };
 		7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A33086823CC48A30021BA5B /* RequestPage.swift */; };
 		7A3647F5238AB287000BBECD /* ItemSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F4238AB287000BBECD /* ItemSearchPage.swift */; };
-		7A3647F9238AD062000BBECD /* ItemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* ItemTable.swift */; };
+		7A3647F9238AD062000BBECD /* OldItemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647F8238AD062000BBECD /* OldItemTable.swift */; };
 		7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */; };
 		7A36487623926CC8000BBECD /* StylesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A36487523926CC8000BBECD /* StylesPage.swift */; };
 		7A393AFA2B48E352001F3FCB /* FoldableTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A393AF92B48E352001F3FCB /* FoldableTableViewPage.swift */; };
@@ -216,6 +216,7 @@
 		7AADC69B2B5BE12E00E42FA8 /* ProjectsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */; };
 		7AADC69E2B5BF8D700E42FA8 /* TemplateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69D2B5BF8D700E42FA8 /* TemplateTable.swift */; };
 		7AADC6A02B5D682A00E42FA8 /* ItemInsertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */; };
+		7AAE8B532B5E397D003F67B0 /* ItemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAE8B522B5E397D003F67B0 /* ItemTable.swift */; };
 		7ABEFC5C2B4BEA58002C5A19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
 		7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */; };
@@ -648,7 +649,7 @@
 		7A31324E2392A6680008298C /* ClassPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPage.swift; sourceTree = "<group>"; };
 		7A33086823CC48A30021BA5B /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
 		7A3647F4238AB287000BBECD /* ItemSearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchPage.swift; sourceTree = "<group>"; };
-		7A3647F8238AD062000BBECD /* ItemTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTable.swift; sourceTree = "<group>"; };
+		7A3647F8238AD062000BBECD /* OldItemTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldItemTable.swift; sourceTree = "<group>"; };
 		7A3647FC238C33ED000BBECD /* SwiftyJSONPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyJSONPage.swift; sourceTree = "<group>"; };
 		7A36487523926CC8000BBECD /* StylesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesPage.swift; sourceTree = "<group>"; };
 		7A393AF92B48E352001F3FCB /* FoldableTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldableTableViewPage.swift; sourceTree = "<group>"; };
@@ -772,6 +773,7 @@
 		7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTable.swift; sourceTree = "<group>"; };
 		7AADC69D2B5BF8D700E42FA8 /* TemplateTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTable.swift; sourceTree = "<group>"; };
 		7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInsertPage.swift; sourceTree = "<group>"; };
+		7AAE8B522B5E397D003F67B0 /* ItemTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTable.swift; sourceTree = "<group>"; };
 		7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
 		7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataNote.swift; sourceTree = "<group>"; };
@@ -1232,7 +1234,8 @@
 				7A7D1C39241CB9F100E08EA1 /* ItemBasePage.swift */,
 				7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */,
 				7AA3C2B0241CCC6000F77711 /* ItemUpdatePage.swift */,
-				7A3647F8238AD062000BBECD /* ItemTable.swift */,
+				7AAE8B522B5E397D003F67B0 /* ItemTable.swift */,
+				7A3647F8238AD062000BBECD /* OldItemTable.swift */,
 			);
 			path = ItemModel;
 			sourceTree = "<group>";
@@ -2241,6 +2244,7 @@
 				7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */,
 				7A25A5532B355883001C47B9 /* MultiCellTypeTableViewPage.swift in Sources */,
 				7A27506622ABA25600C8A474 /* AppDelegate.swift in Sources */,
+				7AAE8B532B5E397D003F67B0 /* ItemTable.swift in Sources */,
 				7A88C6372A8925C500D61E33 /* VariablesInApp.swift in Sources */,
 				7AC4F56128B7615600F18E2F /* DeviceInfoPage.swift in Sources */,
 				7AF7B16F2436351800738C65 /* TimerPage.swift in Sources */,
@@ -2296,7 +2300,7 @@
 				7A1EF03E23FAF0E100BDEEBF /* ReloadDataTable.swift in Sources */,
 				7A06A7362B2C43AD0014033E /* Test4VC.swift in Sources */,
 				7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */,
-				7A3647F9238AD062000BBECD /* ItemTable.swift in Sources */,
+				7A3647F9238AD062000BBECD /* OldItemTable.swift in Sources */,
 				7A92194F2B00BD3B00FE65FC /* Enum.swift in Sources */,
 				7A1EF03C23FAEF4B00BDEEBF /* ReloadDataPage.swift in Sources */,
 				7A4B162E24C750CA004367F9 /* DisabledDismissPage.swift in Sources */,
