@@ -16,20 +16,16 @@ class ViewController: UIViewController {
 extension ViewController {
     private func setupUI() {
         view.setBackgroundColor(color: cBgGray)
-        
-        let item = Models.Item(id: 1, itemName: "Example", resume: "This is a resume", totalProgress: 100, color: 0xFFFFFF)
-        item.printProperties()
+
+//        let updateButton = UIButton(type: .custom)
+//        updateButton.setup(superview: view, target: self, action: #selector(handleUpdate))
+//        updateButton.setStyleSolid14pt666GrayButton(title: <#T##String#>)
+//        updateButton.setFrame(left: 0, top: 0, right: 0, height: 33)
+//        
+//        @objc func handleUpdate() {
+//            
+//        }
         
     }
     
-}
-
-extension Models.Item {
-    func printProperties() {
-        let mirror = Mirror(reflecting: self)
-        for child in mirror.children {
-            guard let propertyName = child.label else { continue }
-            print("\(propertyName): \(child.value)")
-        }
-    }
 }

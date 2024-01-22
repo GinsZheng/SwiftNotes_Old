@@ -30,6 +30,7 @@ private class OptionDataManager: DefaultSectionAndCellDataManager {
     }
 }
 
+
 class OptionSheetPage: UIViewController {
     private let optionData = OptionDataManager()
     
@@ -53,20 +54,25 @@ extension OptionSheetPage {
         bgView.setup(superview: view, backgroundColor: cFgWhite)
         bgView.setFrame(left: 30, top: 300, right: 30, height: 200)
 
-        button.setup(superview: bgView)
+        button.setup(superview: bgView, target: self, action: #selector(handleAction))
         button.setStyleSolid17ptFgWhiteThemeButton(title: "点击出现小选项表")
         button.setFrame(left: 10, top: 30, right: 10, height: kButtonHeight)
-        button.setEvent {
-            let optionSheet = OptionSheet(optionData: self.optionData, senderFrameInWindow: self.button.getFrameInWindow())
-            optionSheet.onTap = { [weak self] indexPath in
-                guard let self = self else { return }
-                let item = self.optionData.cellData(for: indexPath)
-                item.pushViewControllerOnTap(from: self)
-            }
-            self.present(targetVC: optionSheet)
-        }
         
     }
     
 }
 
+
+// MARK: - @objc方法
+extension OptionSheetPage {
+    @objc func handleAction() {
+        let optionSheet = OptionSheet(optionData: self.optionData, senderFrameInWindow: self.button.getFrameInWindow())
+        optionSheet.onTap = { [weak self] indexPath in
+            guard let self = self else { return }
+            let item = self.optionData.cellData(for: indexPath)
+            item.pushViewControllerOnTap(from: self)
+        }
+        self.present(targetVC: optionSheet)
+    }
+
+}

@@ -22,13 +22,18 @@ class CSPresentNavView: UIView {
         titleLabel.setStyle24pt222Med()
         titleLabel.setFrame(left: 20, centerY: self.centerY)
         
-        closeButton.setup(superview: self)
+        closeButton.setup(superview: self, target: self, action: #selector(handleClose))
         closeButton.setStyleIconButton(imageName: "nav_close")
         closeButton.setFrame(right: 20, centerY: self.centerY, width: 18, height: 18)
         closeButton.extendTouchArea()
-        closeButton.setEvent {
-            self.onCloseButtonTap?()
-        }
     }
     
+}
+
+
+// MARK: - @objc方法
+extension CSPresentNavView {
+    @objc func handleClose() {
+        self.onCloseButtonTap?()
+    }
 }

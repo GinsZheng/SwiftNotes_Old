@@ -26,12 +26,9 @@ class ButtonPage: UIViewController {
         print("当前机型的逻辑分辨率：\(kScreenWidth) * \(kScreenHeight)")
         
         let wordButton = UIButton(type: .custom)
-        wordButton.setup(superview: view)
+        wordButton.setup(superview: view, target: self, action: #selector(changeSetting))
         wordButton.setFrame(left: 20, top: 20, right: 20, height: 44)
         wordButton.setStyleWord17ptThemeButton(title: "纯文")
-        wordButton.setEvent {
-            self.push(targetVC: CSGeneralSubpage())
-        }
 
         let IconButton = UIButton(type: .custom)
         IconButton.setup(superview: view, target: self, action: #selector(changeSetting))

@@ -10,6 +10,25 @@ import UIKit
 import SwiftyJSON
 import SQLite
 
+private class ItemDataManager {
+    private let itemTable = ItemTable()
+    
+    func insertItem(model: Models.Item) {
+        DB.shared.insert(table: itemTable, model: model)
+    }
+    
+    func updateItem(id: Int, model: Models.Item) {
+        DB.shared.update(table: itemTable, id: id, model: model)
+    }
+    
+    func deleteItem(id: Int) {
+        DB.shared.delete(table: itemTable, id: id)
+    }
+    
+}
+
+
+// MARK: - 视图控制器
 class ItemBasePage: UIViewController {
     var onCompleted: (() -> Void)? // 新删改完成时(刷新列表)
     
@@ -21,19 +40,15 @@ class ItemBasePage: UIViewController {
     let actionButton = UIButton(type: .custom)
     let deleteButton = UIButton(type: .custom)
     
-    let itemTable = ItemTable()
-    
-    var isEditMode = false
+    var isInsertMode = true
     var itemModel: Models.Item? // 用于编辑时填充数据的模型
+    
+    private let itemData = ItemDataManager()
     
     // MARK: - 初始化与生命周期方法
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-    }
-    
-    // 供重写的方法：处理添加或更新操作
-    func handleAction() {
     }
     
 }
@@ -45,7 +60,7 @@ extension ItemBasePage {
         view.setBackgroundColor(color: cFFF)
         
         // 设置导航视图
-        let navTitle = isEditMode ? "Update" : "Insert"
+        let navTitle = isInsertMode ? "Insert" : "Update"
         navView.setup(superview: view, title: navTitle)
         navView.onCloseButtonTap = { self.dismiss() }
         
@@ -56,7 +71,7 @@ extension ItemBasePage {
         setupTextField(colorTextField, placeholder: "color(Int)", top: totalProgressTextField.bottom + kVertMargin)
         
         // 如果是编辑模式，填充文本字段
-        if isEditMode, let data = itemModel {
+        if !isInsertMode, let data = itemModel {
             nameTextField.text = data.itemName
             resumeTextField.text = data.resume
             totalProgressTextField.text = String(data.totalProgress)
@@ -64,28 +79,19 @@ extension ItemBasePage {
         }
         
         // 设置操作按钮
-        let buttonTitle = isEditMode ? "Update" : "Insert"
-        actionButton.setup(superview: view)
+        let buttonTitle = isInsertMode ? "Insert" : "Update"
+        actionButton.setup(superview: view, target: self, action: #selector(handleAction))
         actionButton.setStyleSolid17ptFgWhiteThemeButton(title: buttonTitle)
         actionButton.setFrame(left: kEdgeMargin, top: colorTextField.bottom + kVertMargin, right: kEdgeMargin, height: kCellHeight)
-        actionButton.setEvent { [weak self] in
-            self?.handleAction()
-        }
         
         // 设置删除按钮
-        if isEditMode {
-            deleteButton.setup(superview: view)
+        if !isInsertMode {
+            deleteButton.setup(superview: view, target: self, action: #selector(handleDelete))
             deleteButton.setStyleIconButton(imageName: "delete")
             deleteButton.setShadow(y: 2, radius: 16)
             deleteButton.setFrame(centerX: view.centerX, bottom: 20, width: 44, height: 44)
-            deleteButton.setEvent { [weak self] in
-                guard let self = self else { return }
-                DB.shared.delete(table: self.itemTable, id: self.itemModel?.id ?? 0)
-                self.onCompleted?()
-                self.dismiss()
-            }
         }
-
+        
     }
     
     // 输入框通用设置
@@ -95,4 +101,26 @@ extension ItemBasePage {
         textField.setFrame(left: kEdgeMargin, top: top, right: kEdgeMargin, height: kCellHeight)
     }
     
+}
+
+
+// MARK: - @objc方法
+extension ItemBasePage {
+    @objc func handleDelete() {
+        itemData.deleteItem(id: itemModel?.id ?? 0)
+        onCompleted?()
+        dismiss()
+    }
+    
+    @objc func handleAction() {
+        let newItem = Models.Item(
+            itemName: self.nameTextField.text ?? "",
+            resume: self.resumeTextField.text ?? "",
+            totalProgress: Int(self.totalProgressTextField.text ?? "") ?? 100,
+            color: Int(self.colorTextField.text ?? "") ?? 0
+        )
+        isInsertMode ? itemData.insertItem(model: newItem) : itemData.updateItem(id: itemModel?.id ?? 0, model: newItem)
+        onCompleted?()
+        dismiss()
+    }
 }

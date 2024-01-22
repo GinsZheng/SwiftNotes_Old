@@ -10,12 +10,22 @@ import UIKit
 import SQLite
 import SwiftyJSON
 
+private class ItemDataManager {
+    private let itemTable = ItemTable()
+    
+    // 获取所有数据
+    func getAllItems() -> [Models.Item] {
+        return itemTable.getAll()
+    }
+    
+}
+
 
 // MARK: - 视图控制器
 class ItemSearchPage: UIViewController {
-    private let tableData = DefaultCellDataManager() // 用于tableView的数据，与下面items不同
-    private let itemTable = ItemTable()
-    private var itemModels: [Models.Item] = [] // 用于保存查出的各字段的数据
+    private let tableData = DefaultCellDataManager()
+    private let itemData = ItemDataManager()
+    private var itemModels: [Models.Item] = []
     
     private let tableView = UITableView()
     
@@ -61,14 +71,18 @@ extension ItemSearchPage: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-// MARK: - 私有方法 UI Setup
+// MARK: - 私有方法：控制
 extension ItemSearchPage {
     private func updateData() {
-        itemModels = itemTable.getAll()
+        itemModels = itemData.getAllItems()
         tableData.items = itemModels.map { .titleDescNext(title: $0.itemName, description: "简述：\($0.resume)，进度：\($0.totalProgress), 颜色：\($0.color)") }
         tableView.reloadData()
     }
-    
+}
+
+
+// MARK: - 私有方法：设置UI
+extension ItemSearchPage {
     private func setupUI() {
         view.setBackgroundColor(color: cBgGray)
         setupNavButton()
@@ -77,8 +91,7 @@ extension ItemSearchPage {
     
     private func setupNavButton() {
         let navButton = CSNavBarButton(imageName: "adding", viewController: self)
-        navButton.onTap = { [weak self] in
-            guard let self = self else { return }
+        navButton.onTap = { [unowned self] in
             let insertPage = ItemInsertPage()
             insertPage.onCompleted = { self.updateData() }
             self.present(targetVC: insertPage)
