@@ -74,16 +74,16 @@ extension ItemTable {
             )
         }
     }
-
+    
     // 查询
     func getAllWithSQL() -> [Models.Item] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.query(withSQL: sql) { row -> Models.Item? in
             guard let id = row["id"] as? Int,
                   let itemName = row["itemName"] as? String,
-                    let resume = row["resume"] as? String,
-                    let totalProgress = row["totalProgress"] as? Int,
-                    let color = row["color"] as? Int
+                  let resume = row["resume"] as? String,
+                  let totalProgress = row["totalProgress"] as? Int,
+                  let color = row["color"] as? Int
             else { return nil }
             
             return Models.Item(id: id, itemName: itemName, resume: resume, totalProgress: totalProgress, color: color)

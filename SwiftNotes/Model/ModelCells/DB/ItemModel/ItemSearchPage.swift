@@ -61,7 +61,7 @@ extension ItemSearchPage: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-// MARK: - 私有方法
+// MARK: - 私有方法 UI Setup
 extension ItemSearchPage {
     private func updateData() {
         itemModels = itemTable.getAll()

@@ -18,7 +18,7 @@ class ItemBasePage: UIViewController {
     let resumeTextField = UITextField()
     let totalProgressTextField = UITextField()
     let colorTextField = UITextField()
-    let actionButton = UIButton()
+    let actionButton = UIButton(type: .custom)
     let deleteButton = UIButton(type: .custom)
     
     let itemTable = ItemTable()
@@ -40,7 +40,7 @@ class ItemBasePage: UIViewController {
 
 
 // MARK: - 私有方法
-extension ItemBasePage: UITextFieldDelegate {
+extension ItemBasePage {
     private func setupUI() {
         view.setBackgroundColor(color: cFFF)
         
@@ -90,7 +90,7 @@ extension ItemBasePage: UITextFieldDelegate {
     
     // 输入框通用设置
     private func setupTextField(_ textField: UITextField, placeholder: String, top: CGFloat) {
-        textField.setup(superview: view, placeholder: placeholder, delegate: self)
+        textField.setup(superview: view, placeholder: placeholder, delegate: nil)
         textField.setStyleOneLineTextField()
         textField.setFrame(left: kEdgeMargin, top: top, right: kEdgeMargin, height: kCellHeight)
     }
