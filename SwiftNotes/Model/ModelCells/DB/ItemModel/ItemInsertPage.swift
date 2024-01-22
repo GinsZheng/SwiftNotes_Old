@@ -8,8 +8,8 @@
 
 class ItemInsertPage: ItemBasePage {
     override func viewDidLoad() {
-        super.viewDidLoad()
         isInsertMode = true
+        super.viewDidLoad()
     }
 
 }

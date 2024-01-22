@@ -13,15 +13,15 @@ import SQLite
 private class ItemDataManager {
     private let itemTable = ItemTable()
     
-    func insertItem(model: Models.Item) {
+    func insert(model: Models.Item) {
         DB.shared.insert(table: itemTable, model: model)
     }
     
-    func updateItem(id: Int, model: Models.Item) {
+    func update(id: Int, model: Models.Item) {
         DB.shared.update(table: itemTable, id: id, model: model)
     }
     
-    func deleteItem(id: Int) {
+    func delete(id: Int) {
         DB.shared.delete(table: itemTable, id: id)
     }
     
@@ -64,7 +64,7 @@ extension ItemBasePage {
         navView.setup(superview: view, title: navTitle)
         navView.onCloseButtonTap = { self.dismiss() }
         
-        // 配置各输入框
+        // 设置各输入框
         setupTextField(nameTextField, placeholder: "itemName", top: navView.bottom)
         setupTextField(resumeTextField, placeholder: "resume", top: nameTextField.bottom + kVertMargin)
         setupTextField(totalProgressTextField, placeholder: "totalProgress", top: resumeTextField.bottom + kVertMargin)
@@ -94,7 +94,7 @@ extension ItemBasePage {
         
     }
     
-    // 输入框通用设置
+    // 输入框设置
     private func setupTextField(_ textField: UITextField, placeholder: String, top: CGFloat) {
         textField.setup(superview: view, placeholder: placeholder, delegate: nil)
         textField.setStyleOneLineTextField()
@@ -107,7 +107,7 @@ extension ItemBasePage {
 // MARK: - @objc方法
 extension ItemBasePage {
     @objc func handleDelete() {
-        itemData.deleteItem(id: itemModel?.id ?? 0)
+        itemData.delete(id: itemModel?.id ?? 0)
         onCompleted?()
         dismiss()
     }
@@ -119,8 +119,14 @@ extension ItemBasePage {
             totalProgress: Int(self.totalProgressTextField.text ?? "") ?? 100,
             color: Int(self.colorTextField.text ?? "") ?? 0
         )
-        isInsertMode ? itemData.insertItem(model: newItem) : itemData.updateItem(id: itemModel?.id ?? 0, model: newItem)
+        isInsertMode ? itemData.insert(model: newItem) : itemData.update(id: itemModel?.id ?? 0, model: newItem)
         onCompleted?()
         dismiss()
     }
 }
+
+
+// ————
+
+
+

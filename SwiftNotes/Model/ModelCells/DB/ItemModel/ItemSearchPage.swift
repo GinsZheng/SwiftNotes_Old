@@ -10,12 +10,12 @@ import UIKit
 import SQLite
 import SwiftyJSON
 
-private class ItemDataManager {
-    private let itemTable = ItemTable()
+private class DataManager {
+    private let table = ItemTable()
     
     // 获取所有数据
     func getAllItems() -> [Models.Item] {
-        return itemTable.getAll()
+        return table.getAll()
     }
     
 }
@@ -24,7 +24,7 @@ private class ItemDataManager {
 // MARK: - 视图控制器
 class ItemSearchPage: UIViewController {
     private let tableData = DefaultCellDataManager()
-    private let itemData = ItemDataManager()
+    private let itemData = DataManager()
     private var itemModels: [Models.Item] = []
     
     private let tableView = UITableView()

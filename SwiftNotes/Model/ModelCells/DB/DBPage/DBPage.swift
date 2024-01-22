@@ -9,6 +9,12 @@
 import UIKit
 import SQLite
 
+private class DataManager {
+    private let table = ProjectTable()
+    
+    
+}
+
 class DBPage: UIViewController {
     var projectTable = ProjectTable() // 1.初始化
     
