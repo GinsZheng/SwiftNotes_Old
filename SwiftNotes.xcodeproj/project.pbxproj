@@ -214,7 +214,6 @@
 		7AADC6972B5BDFE800E42FA8 /* DBPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC6962B5BDFE800E42FA8 /* DBPage.swift */; };
 		7AADC6992B5BDFF600E42FA8 /* DBListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC6982B5BDFF600E42FA8 /* DBListPage.swift */; };
 		7AADC69B2B5BE12E00E42FA8 /* ProjectsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */; };
-		7AADC69E2B5BF8D700E42FA8 /* TemplateTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69D2B5BF8D700E42FA8 /* TemplateTable.swift */; };
 		7AADC6A02B5D682A00E42FA8 /* ItemInsertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */; };
 		7AAE8B532B5E397D003F67B0 /* ItemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAE8B522B5E397D003F67B0 /* ItemTable.swift */; };
 		7ABEFC5C2B4BEA58002C5A19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */; };
@@ -771,7 +770,6 @@
 		7AADC6962B5BDFE800E42FA8 /* DBPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBPage.swift; sourceTree = "<group>"; };
 		7AADC6982B5BDFF600E42FA8 /* DBListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBListPage.swift; sourceTree = "<group>"; };
 		7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTable.swift; sourceTree = "<group>"; };
-		7AADC69D2B5BF8D700E42FA8 /* TemplateTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateTable.swift; sourceTree = "<group>"; };
 		7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInsertPage.swift; sourceTree = "<group>"; };
 		7AAE8B522B5E397D003F67B0 /* ItemTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTable.swift; sourceTree = "<group>"; };
 		7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1357,7 +1355,6 @@
 			children = (
 				7AADC6962B5BDFE800E42FA8 /* DBPage.swift */,
 				7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */,
-				7AADC69D2B5BF8D700E42FA8 /* TemplateTable.swift */,
 			);
 			path = DBPage;
 			sourceTree = "<group>";
@@ -2333,7 +2330,6 @@
 				7A216160238986AF00D5A93A /* ViewPage.swift in Sources */,
 				7A216162238986AF00D5A93A /* StepperPage.swift in Sources */,
 				7AADC6992B5BDFF600E42FA8 /* DBListPage.swift in Sources */,
-				7AADC69E2B5BF8D700E42FA8 /* TemplateTable.swift in Sources */,
 				7AADC6972B5BDFE800E42FA8 /* DBPage.swift in Sources */,
 				7A04CB802A9482B80021B9DF /* EqualDivisionCollectionViewPage.swift in Sources */,
 				7A88C7462A8929E400D61E33 /* CustomView.swift in Sources */,

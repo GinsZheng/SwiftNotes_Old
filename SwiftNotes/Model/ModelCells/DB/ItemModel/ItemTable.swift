@@ -57,26 +57,8 @@ class ItemTable: TableProtocol {
         return setters
     }
     
-}
-
-
-// MARK: - 查询方法
-extension ItemTable {
     // 查询所有行
     func getAll() -> [Models.Item] {
-        return DB.shared.query(table: self).compactMap { row in
-            Models.Item(
-                id: row[id],
-                itemName: row[itemName],
-                resume: row[resume],
-                totalProgress: row[totalProgress],
-                color: row[color]
-            )
-        }
-    }
-    
-    // 查询
-    func getAllWithSQL() -> [Models.Item] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.query(withSQL: sql) { row -> Models.Item? in
             guard let id = row["id"] as? Int,
@@ -89,6 +71,11 @@ extension ItemTable {
             return Models.Item(id: id, itemName: itemName, resume: resume, totalProgress: totalProgress, color: color)
         }
     }
+}
+
+
+// MARK: - 查询方法
+extension ItemTable {
     
 }
 
