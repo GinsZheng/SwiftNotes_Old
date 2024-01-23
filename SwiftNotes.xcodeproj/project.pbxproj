@@ -1233,6 +1233,7 @@
 				7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */,
 				7AA3C2B0241CCC6000F77711 /* ItemUpdatePage.swift */,
 				7AAE8B522B5E397D003F67B0 /* ItemTable.swift */,
+				7AADC7012B600D0400E42FA8 /* New Group */,
 				7A3647F8238AD062000BBECD /* OldItemTable.swift */,
 			);
 			path = ItemModel;
@@ -1357,6 +1358,13 @@
 				7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */,
 			);
 			path = DBPage;
+			sourceTree = "<group>";
+		};
+		7AADC7012B600D0400E42FA8 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		7ABB91552B4EA0BC008ACA65 /* SwitchScrollAndCollectionView */ = {
