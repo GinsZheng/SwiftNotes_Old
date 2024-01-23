@@ -10,13 +10,32 @@ import UIKit
 import SQLite
 
 private class DataManager {
-    private let table = ProjectTable()
+    private var projectTable = ProjectTable()
     
-    // ⚠️下一步
+    func insertProject(model: Models.Project) {
+        DB.shared.insert(table: projectTable, model: model)
+    }
+    
+    func deleteProject(id: Int) {
+        DB.shared.delete(table: projectTable, id: id)
+    }
+    
+    func updateProject(id: Int, model: Models.Project) {
+        DB.shared.update(table: projectTable, id: id, model: model)
+    }
+    
+    // 获取所有数据
+    func getAllProjects() -> [Models.Project] {
+        return projectTable.getAll()
+    }
+    
 }
 
+
+// MARK: - 视图控制器
 class DBPage: UIViewController {
     var projectTable = ProjectTable() // 1.初始化
+    private let dataManager = DataManager()
     
     let insertButton = UIButton(type: .custom)
     let updateButton = UIButton(type: .custom)
@@ -44,7 +63,7 @@ extension DBPage {
         insertButton.setup(superview: view, target: self, action: #selector(handleAdding))
         insertButton.setStyleSolid17ptFgWhiteThemeButton(title: "添加")
         insertButton.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: kButtonHeight)
-
+        
         deleteButton.setup(superview: view, target: self, action: #selector(handleDelete))
         deleteButton.setStyleSolid17ptFgWhiteRedButton(title: "删除")
         deleteButton.setFrame(left: kEdgeMargin, top: insertButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
@@ -52,7 +71,7 @@ extension DBPage {
         updateButton.setup(superview: view, target: self, action: #selector(handleUpdate))
         updateButton.setStyleGhost17ptThemeThemeButton(title: "更新")
         updateButton.setFrame(left: kEdgeMargin, top: deleteButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
-
+        
         queryButton.setup(superview: view, target: self, action: #selector(handleQuery))
         queryButton.setStyleSolid17ptThemeWhiteButton(title: "查询")
         queryButton.setFrame(left: kEdgeMargin, top: updateButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
@@ -75,35 +94,50 @@ extension DBPage {
     // 2A：新增
     @objc func handleAdding() {
         let newProject = Models.Project(itemName: "项目1", totalProgress: 50)
-        DB.shared.insert(table: projectTable, model: newProject)
+        dataManager.insertProject(model: newProject)
     }
     
     // 2B：删除
     @objc func handleDelete() {
         let lastId = DB.shared.getLastId(tableName: DBTable.project)
-        DB.shared.delete(table: projectTable, id: lastId)
+        dataManager.deleteProject(id: lastId)
     }
     
     // 2C：更新
     @objc func handleUpdate() {
         let lastId = DB.shared.getLastId(tableName: DBTable.project)
         let updatedProject = Models.Project(id: lastId, itemName: "项目2", totalProgress: 80)
-        DB.shared.update(table: projectTable, id: lastId, model: updatedProject)
+        dataManager.updateProject(id: lastId, model: updatedProject)
     }
-
+    
     // 2D：查询(SQL)
     @objc func handleQuery() {
-        let projects = projectTable.getAll()
+        let projects = dataManager.getAllProjects()
         for project in projects {
             print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress)")
         }
     }
     
     @objc func handleCreateTable() {
-        projectTable = ProjectTable()
+        dataManager.createTable()
     }
     
     @objc func handleDeleteTable() {
+        dataManager.deleteTable()
+    }
+    
+}
+
+
+// MARK: - 不常见的逻辑，为方便测试而写
+extension DataManager {
+    // 创建表
+    func createTable() {
+        projectTable = ProjectTable()
+    }
+    
+    // 删除表
+    func deleteTable() {
         DB.shared.deleteTable(tableName: DBTable.project)
     }
     
