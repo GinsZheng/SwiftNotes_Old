@@ -11,11 +11,23 @@ import SQLite
 import SwiftyJSON
 
 private class DataManager {
-    private let table = ItemTable()
+    private let itemTable = ItemTable()
+
+    func insertItem(model: Models.Item) {
+        DB.shared.insert(table: itemTable, model: model)
+    }
+    
+    func deleteItem(id: Int) {
+        DB.shared.delete(table: itemTable, id: id)
+    }
+    
+    func updateItem(id: Int, model: Models.Item) {
+        DB.shared.update(table: itemTable, id: id, model: model)
+    }
     
     // 获取所有数据
     func getAllItems() -> [Models.Item] {
-        return table.getAll()
+        return itemTable.getAll()
     }
     
 }
