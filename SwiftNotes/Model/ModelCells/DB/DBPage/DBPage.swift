@@ -74,7 +74,7 @@ extension DBPage {
 extension DBPage {
     // 2A：新增
     @objc func handleAdding() {
-        let newProject = Models.Project(itemName: "项目1", resume: "项目简介", totalProgress: 50, color: 0, startDate: 1596124800)
+        let newProject = Models.Project(itemName: "项目1", totalProgress: 50)
         DB.shared.insert(table: projectTable, model: newProject)
     }
     
@@ -87,7 +87,7 @@ extension DBPage {
     // 2C：更新
     @objc func handleUpdate() {
         let lastId = DB.shared.getLastId(tableName: DBTable.project)
-        let updatedProject = Models.Project(id: lastId, itemName: "项目2", resume: "项目简介", totalProgress: 80, color: 1, startDate: 1596124801)
+        let updatedProject = Models.Project(id: lastId, itemName: "项目2", totalProgress: 80)
         DB.shared.update(table: projectTable, id: lastId, model: updatedProject)
     }
 
@@ -95,7 +95,7 @@ extension DBPage {
     @objc func handleQuery() {
         let projects = projectTable.getAll()
         for project in projects {
-            print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress), 颜色: \(project.color), 时间：\(project.startDate)")
+            print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress)")
         }
     }
     
