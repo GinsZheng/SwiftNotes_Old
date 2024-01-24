@@ -58,7 +58,7 @@ class ProgressTable: TableProtocol {
     }
     
     // 查询所有行
-    func getAll() -> [Models.Progress] {
+    func fetchAllData() -> [Models.Progress] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchModels(withSQL: sql) { row -> Models.Progress? in
             guard let id = row["id"] as? Int,
@@ -77,6 +77,10 @@ class ProgressTable: TableProtocol {
 
 // MARK: - 查询方法
 extension ProgressTable {
-    
+    func fetchDuration(id: Int) -> Int {
+        let sql = "SELECT SUM(endTime) - SUM(startTime) FROM \(tableName) WHERE id = \(id)"
+        guard let duration: Int = DB.shared.fetchScalar(sql) else { return 0 }
+        return duration
+    }
 }
 

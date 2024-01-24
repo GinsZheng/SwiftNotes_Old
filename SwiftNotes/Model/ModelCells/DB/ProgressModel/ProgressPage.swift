@@ -25,8 +25,12 @@ private class DataManager {
     }
     
     // 获取所有数据
-    func getAllProgresses() -> [Models.Progress] {
-        return progressTable.getAll()
+    func fetchAllProgresses() -> [Models.Progress] {
+        return progressTable.fetchAllData()
+    }
+    
+    func fetchDuration(id: Int) -> Int {
+        return progressTable.fetchDuration(id: id)
     }
     
 }
@@ -47,6 +51,7 @@ class ProgressPage: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        printSQLResult()
     }
     
 }
@@ -82,6 +87,10 @@ extension ProgressPage {
         deleteTableButton.setFrame(left: kEdgeMargin, top: createTableButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
     }
     
+    private func printSQLResult() {
+        print("fetchDuration:", dataManager.fetchDuration(id: 1))
+    }
+    
 }
 
 
@@ -108,7 +117,7 @@ extension ProgressPage {
     
     // 2D：查询(SQL)
     @objc func handleQuery() {
-        let progresses = dataManager.getAllProgresses()
+        let progresses = dataManager.fetchAllProgresses()
         for progress in progresses {
             print("ID: \(progress.id), 进度: \(progress.currentProgress), 项目 ID: \(progress.id)")
         }

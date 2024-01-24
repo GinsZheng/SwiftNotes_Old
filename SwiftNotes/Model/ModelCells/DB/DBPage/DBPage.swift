@@ -25,8 +25,8 @@ private class DataManager {
     }
     
     // 获取所有数据
-    func getAllProjects() -> [Models.Project] {
-        return projectTable.getAll()
+    func fetchAllProjects() -> [Models.Project] {
+        return projectTable.fetchAllData()
     }
     
 }
@@ -111,7 +111,7 @@ extension DBPage {
     
     // 2D：查询(SQL)
     @objc func handleQuery() {
-        let projects = dataManager.getAllProjects()
+        let projects = dataManager.fetchAllProjects()
         for project in projects {
             print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress)")
         }

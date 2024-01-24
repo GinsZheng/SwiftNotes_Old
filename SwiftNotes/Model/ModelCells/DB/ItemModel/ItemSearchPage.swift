@@ -26,12 +26,16 @@ private class DataManager {
     }
     
     // 获取所有数据
-    func getAllItems() -> [Models.Item] {
-        return itemTable.getAll()
+    func fetchAllItems() -> [Models.Item] {
+        return itemTable.fetchAllData()
     }
     
-    func fetchSingleItem() -> Models.Item {
-        return itemTable.fetchSingleItem(id: 8)
+    func fetchSingleItem(id: Int) -> Models.Item {
+        return itemTable.fetchSingleItem(id: id)
+    }
+    
+    func fetchFirstItemName() -> String {
+        return itemTable.fetchFirstItemName()
     }
     
     func count() -> Int {
@@ -44,7 +48,7 @@ private class DataManager {
 // MARK: - 视图控制器
 class ItemSearchPage: UIViewController {
     private let tableData = DefaultCellDataManager()
-    private let itemData = DataManager()
+    private let dataManager = DataManager()
     private var itemModels: [Models.Item] = []
     
     private let tableView = UITableView()
@@ -54,6 +58,7 @@ class ItemSearchPage: UIViewController {
         super.viewDidLoad()
         updateData()
         setupUI()
+        printSQLResult()
     }
     
 }
@@ -94,7 +99,7 @@ extension ItemSearchPage: UITableViewDelegate, UITableViewDataSource {
 // MARK: - 私有方法：控制
 extension ItemSearchPage {
     private func updateData() {
-        itemModels = itemData.getAllItems()
+        itemModels = dataManager.fetchAllItems()
         tableData.items = itemModels.map { .titleDescNext(title: $0.itemName, description: "简述：\($0.resume)，进度：\($0.totalProgress), 颜色：\($0.color)") }
         tableView.reloadData()
     }
@@ -116,6 +121,12 @@ extension ItemSearchPage {
             insertPage.onCompleted = { self.updateData() }
             self.present(targetVC: insertPage)
         }
+    }
+    
+    private func printSQLResult() {
+        print("fetchSingleItem：", dataManager.fetchSingleItem(id: 1))
+        print("fetchFirstItemName：", dataManager.fetchFirstItemName())
+        
     }
     
 }

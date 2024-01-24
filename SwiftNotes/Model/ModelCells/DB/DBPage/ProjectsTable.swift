@@ -42,7 +42,7 @@ class ProjectTable: TableProtocol {
     }
     
     // 查询所有行
-    func getAll() -> [Models.Project] {
+    func fetchAllData() -> [Models.Project] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchModels(withSQL: sql) { row -> Models.Project? in
             guard let id = row["id"] as? Int,

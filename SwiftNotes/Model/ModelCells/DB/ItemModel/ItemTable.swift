@@ -58,7 +58,7 @@ class ItemTable: TableProtocol {
     }
     
     // 查询所有行
-    func getAll() -> [Models.Item] {
+    func fetchAllData() -> [Models.Item] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchModels(withSQL: sql) { row -> Models.Item? in
             guard let id = row["id"] as? Int,
@@ -90,10 +90,12 @@ extension ItemTable {
         }
     }
     
-//    func fetchFirstItemName() -> String {
-//        let sql = "SELECT itemName FROM item, progress ORDER BY progress.startTime DESC LIMIT 1"
-//        
-//    }
+    func fetchFirstItemName() -> String {
+        let sql = "SELECT itemName FROM item, progress ORDER BY progress.startTime DESC LIMIT 1"
+        guard let firstName: String = DB.shared.fetchScalar(sql) else { return "" }
+        return firstName
+    }
     
+//    func fetch
 }
 
