@@ -138,6 +138,7 @@
 		7A4737172472DA7D0071115F /* PresentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4737162472DA7D0071115F /* PresentPage.swift */; };
 		7A4B162E24C750CA004367F9 /* DisabledDismissPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4B162D24C750CA004367F9 /* DisabledDismissPage.swift */; };
 		7A5507442A83E4290019F17F /* ScrollViewHorizonalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5507432A83E4290019F17F /* ScrollViewHorizonalPage.swift */; };
+		7A57AE082B60D5A9001E8EC8 /* ProgressTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57AE072B60D5A9001E8EC8 /* ProgressTable.swift */; };
 		7A58D58224169DF900CBF18D /* UIListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58124169DF900CBF18D /* UIListPage.swift */; };
 		7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D58324169F2D00CBF18D /* MaskPage.swift */; };
 		7A58D5862416A06400CBF18D /* DissolvePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A58D5852416A06400CBF18D /* DissolvePage.swift */; };
@@ -162,8 +163,6 @@
 		7A77BDFC2AE285DA009F9185 /* SwitchView1Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A77BDFB2AE285DA009F9185 /* SwitchView1Page.swift */; };
 		7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7B5D3B23C05A150079A931 /* ArraysPage.swift */; };
 		7A7D1C3A241CB9F100E08EA1 /* ItemBasePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7D1C39241CB9F100E08EA1 /* ItemBasePage.swift */; };
-		7A7F97E5241DF213000F1E31 /* ProgressInsertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F97E4241DF213000F1E31 /* ProgressInsertPage.swift */; };
-		7A7F97E7241DF290000F1E31 /* ProgressUpdatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7F97E6241DF290000F1E31 /* ProgressUpdatePage.swift */; };
 		7A8006A62B28A9B4004FA72B /* DefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8006A52B28A9B4004FA72B /* DefaultCell.swift */; };
 		7A871E7A23CE122A007CCA90 /* TryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A871E7923CE122A007CCA90 /* TryPage.swift */; };
 		7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */; };
@@ -189,7 +188,7 @@
 		7A88C78D2A8A62A800D61E33 /* StylesInApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C78C2A8A62A800D61E33 /* StylesInApp.swift */; };
 		7A88C78E2A8A630800D61E33 /* UIPresentNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C78B2A8A626300D61E33 /* UIPresentNav.swift */; };
 		7A89B2D9240AB9B6004688FD /* MagicMovePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */; };
-		7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */; };
+		7A8A7EAF23D1A7F50067D9C3 /* ProgressPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* ProgressPage.swift */; };
 		7A8DF6072A9B9EB80048146F /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DF6062A9B9EB80048146F /* Variables.swift */; };
 		7A8DF66A2A9F8D5C0048146F /* Delegate3Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DF6692A9F8D5C0048146F /* Delegate3Page.swift */; };
 		7A8DF69B2AA378000048146F /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DF69A2AA378000048146F /* Protocol.swift */; };
@@ -198,7 +197,7 @@
 		7A9219522B00BED200FE65FC /* SwitchView2Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9219512B00BED200FE65FC /* SwitchView2Page.swift */; };
 		7A9219542B00BEFD00FE65FC /* SwitchViewListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9219532B00BEFD00FE65FC /* SwitchViewListPage.swift */; };
 		7A9219872B0118FE00FE65FC /* CollectionViewCellAndLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9219862B0118FE00FE65FC /* CollectionViewCellAndLayout.swift */; };
-		7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* ProgressTable.swift */; };
+		7A94609123D1A6AB00936DE7 /* OldProgressTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* OldProgressTable.swift */; };
 		7A95F4112AB5567C00900E39 /* Modeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95F4102AB5567C00900E39 /* Modeling.swift */; };
 		7A997EC62B57C73D00001608 /* OptionSheetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC52B57C73D00001608 /* OptionSheetPage.swift */; };
 		7A997EC82B57C7D900001608 /* OptionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC72B57C7D900001608 /* OptionSheet.swift */; };
@@ -694,6 +693,7 @@
 		7A4737162472DA7D0071115F /* PresentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentPage.swift; sourceTree = "<group>"; };
 		7A4B162D24C750CA004367F9 /* DisabledDismissPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledDismissPage.swift; sourceTree = "<group>"; };
 		7A5507432A83E4290019F17F /* ScrollViewHorizonalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewHorizonalPage.swift; sourceTree = "<group>"; };
+		7A57AE072B60D5A9001E8EC8 /* ProgressTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTable.swift; sourceTree = "<group>"; };
 		7A58D58124169DF900CBF18D /* UIListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIListPage.swift; sourceTree = "<group>"; };
 		7A58D58324169F2D00CBF18D /* MaskPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskPage.swift; sourceTree = "<group>"; };
 		7A58D5852416A06400CBF18D /* DissolvePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolvePage.swift; sourceTree = "<group>"; };
@@ -718,8 +718,6 @@
 		7A77BDFB2AE285DA009F9185 /* SwitchView1Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView1Page.swift; sourceTree = "<group>"; };
 		7A7B5D3B23C05A150079A931 /* ArraysPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArraysPage.swift; sourceTree = "<group>"; };
 		7A7D1C39241CB9F100E08EA1 /* ItemBasePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBasePage.swift; sourceTree = "<group>"; };
-		7A7F97E4241DF213000F1E31 /* ProgressInsertPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressInsertPage.swift; sourceTree = "<group>"; };
-		7A7F97E6241DF290000F1E31 /* ProgressUpdatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressUpdatePage.swift; sourceTree = "<group>"; };
 		7A8006A52B28A9B4004FA72B /* DefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCell.swift; sourceTree = "<group>"; };
 		7A871E7923CE122A007CCA90 /* TryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryPage.swift; sourceTree = "<group>"; };
 		7A88A6EB24227CA300BF1611 /* ForWhilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForWhilePage.swift; sourceTree = "<group>"; };
@@ -745,7 +743,7 @@
 		7A88C78B2A8A626300D61E33 /* UIPresentNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPresentNav.swift; sourceTree = "<group>"; };
 		7A88C78C2A8A62A800D61E33 /* StylesInApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylesInApp.swift; sourceTree = "<group>"; };
 		7A89B2D8240AB9B6004688FD /* MagicMovePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMovePage.swift; sourceTree = "<group>"; };
-		7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSearchPage.swift; sourceTree = "<group>"; };
+		7A8A7EAE23D1A7F50067D9C3 /* ProgressPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPage.swift; sourceTree = "<group>"; };
 		7A8DF6062A9B9EB80048146F /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		7A8DF6692A9F8D5C0048146F /* Delegate3Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate3Page.swift; sourceTree = "<group>"; };
 		7A8DF69A2AA378000048146F /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
@@ -754,7 +752,7 @@
 		7A9219512B00BED200FE65FC /* SwitchView2Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView2Page.swift; sourceTree = "<group>"; };
 		7A9219532B00BEFD00FE65FC /* SwitchViewListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewListPage.swift; sourceTree = "<group>"; };
 		7A9219862B0118FE00FE65FC /* CollectionViewCellAndLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellAndLayout.swift; sourceTree = "<group>"; };
-		7A94609023D1A6AB00936DE7 /* ProgressTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTable.swift; sourceTree = "<group>"; };
+		7A94609023D1A6AB00936DE7 /* OldProgressTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProgressTable.swift; sourceTree = "<group>"; };
 		7A95F4102AB5567C00900E39 /* Modeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modeling.swift; sourceTree = "<group>"; };
 		7A997EC52B57C73D00001608 /* OptionSheetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSheetPage.swift; sourceTree = "<group>"; };
 		7A997EC72B57C7D900001608 /* OptionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSheet.swift; sourceTree = "<group>"; };
@@ -1233,7 +1231,6 @@
 				7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */,
 				7AA3C2B0241CCC6000F77711 /* ItemUpdatePage.swift */,
 				7AAE8B522B5E397D003F67B0 /* ItemTable.swift */,
-				7AADC7012B600D0400E42FA8 /* New Group */,
 				7A3647F8238AD062000BBECD /* OldItemTable.swift */,
 			);
 			path = ItemModel;
@@ -1242,10 +1239,9 @@
 		7A7F97C5241DF1B8000F1E31 /* ProgressModel */ = {
 			isa = PBXGroup;
 			children = (
-				7A8A7EAE23D1A7F50067D9C3 /* ProgressSearchPage.swift */,
-				7A7F97E4241DF213000F1E31 /* ProgressInsertPage.swift */,
-				7A7F97E6241DF290000F1E31 /* ProgressUpdatePage.swift */,
-				7A94609023D1A6AB00936DE7 /* ProgressTable.swift */,
+				7A8A7EAE23D1A7F50067D9C3 /* ProgressPage.swift */,
+				7A57AE072B60D5A9001E8EC8 /* ProgressTable.swift */,
+				7A94609023D1A6AB00936DE7 /* OldProgressTable.swift */,
 			);
 			path = ProgressModel;
 			sourceTree = "<group>";
@@ -1358,13 +1354,6 @@
 				7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */,
 			);
 			path = DBPage;
-			sourceTree = "<group>";
-		};
-		7AADC7012B600D0400E42FA8 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		7ABB91552B4EA0BC008ACA65 /* SwitchScrollAndCollectionView */ = {
@@ -2181,7 +2170,6 @@
 				7A997EC62B57C73D00001608 /* OptionSheetPage.swift in Sources */,
 				7A62A1A5244CA9790090D128 /* PinchGesturePage.swift in Sources */,
 				7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */,
-				7A7F97E7241DF290000F1E31 /* ProgressUpdatePage.swift in Sources */,
 				7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */,
 				7A88C7472A8929E400D61E33 /* Functions.swift in Sources */,
 				7A88C74E2A8929E400D61E33 /* Extension.swift in Sources */,
@@ -2193,6 +2181,7 @@
 				7A74D10D28D4868300FB4FB3 /* UploadDataPage.swift in Sources */,
 				7A25A885249A67FC006D9F05 /* TuplePage.swift in Sources */,
 				7A216153238986AF00D5A93A /* ButtonPage.swift in Sources */,
+				7A57AE082B60D5A9001E8EC8 /* ProgressTable.swift in Sources */,
 				7A88C7432A8929E400D61E33 /* SetColorInHex.swift in Sources */,
 				7A2161362389869D00D5A93A /* DelegatePage.swift in Sources */,
 				7A216159238986AF00D5A93A /* StackViewPage.swift in Sources */,
@@ -2231,7 +2220,7 @@
 				7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */,
 				7ACF48522B27052700759E0A /* DataManager.swift in Sources */,
 				7A06A7342B2C382E0014033E /* SectionsTableViewPage.swift in Sources */,
-				7A94609123D1A6AB00936DE7 /* ProgressTable.swift in Sources */,
+				7A94609123D1A6AB00936DE7 /* OldProgressTable.swift in Sources */,
 				7A62A1F7245CAD890090D128 /* WindowPage.swift in Sources */,
 				7A997EC82B57C7D900001608 /* OptionSheet.swift in Sources */,
 				7A2161282389868500D5A93A /* TestVC.swift in Sources */,
@@ -2294,7 +2283,7 @@
 				7A02AEA62B182DD700E9E6D7 /* ClosureListVC.swift in Sources */,
 				7A0258A82434EF42006D4AB5 /* PopToSpecificPage.swift in Sources */,
 				7A62A1F92461AB980090D128 /* CustomPopupWindow.swift in Sources */,
-				7A8A7EAF23D1A7F50067D9C3 /* ProgressSearchPage.swift in Sources */,
+				7A8A7EAF23D1A7F50067D9C3 /* ProgressPage.swift in Sources */,
 				7A473715247199200071115F /* TapGesturePage.swift in Sources */,
 				7A88C7522A8929E400D61E33 /* NavViewController.swift in Sources */,
 				7A4736AC246AFDCC0071115F /* DictionaryPage.swift in Sources */,
@@ -2312,7 +2301,6 @@
 				7A62A1FC24645CD90090D128 /* UserDefaultsPage.swift in Sources */,
 				7A88C74A2A8929E400D61E33 /* Timer.swift in Sources */,
 				7A58D58424169F2D00CBF18D /* MaskPage.swift in Sources */,
-				7A7F97E5241DF213000F1E31 /* ProgressInsertPage.swift in Sources */,
 				7A2161372389869D00D5A93A /* PlistPage.swift in Sources */,
 				7A2883142448AD7D00591C29 /* AlertListPage.swift in Sources */,
 				7A88C74B2A8929E400D61E33 /* Mix.swift in Sources */,

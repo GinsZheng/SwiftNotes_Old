@@ -1,39 +1,37 @@
 //
-//  DBPage.swift
+//  SQLiteJoinTablesPage.swift
 //  SwiftNotes
 //
-//  Created by GinsMac on 2024/1/20.
-//  Copyright © 2024 GinsMac. All rights reserved.
+//  Created by GinsMac on 2020/1/17.
+//  Copyright © 2020 GinsMac. All rights reserved.
 //
 
 import UIKit
 import SQLite
 
 private class DataManager {
-    private var projectTable = ProjectTable()
+    private var progressTable = ProgressTable()
     
-    func insertProject(model: Models.Project) {
-        DB.shared.insert(table: projectTable, model: model)
+    func insertProgress(model: Models.Progress) {
+        DB.shared.insert(table: progressTable, model: model)
     }
     
-    func deleteProject(id: Int) {
-        DB.shared.delete(table: projectTable, id: id)
+    func deleteProgress(id: Int) {
+        DB.shared.delete(table: progressTable, id: id)
     }
     
-    func updateProject(id: Int, model: Models.Project) {
-        DB.shared.update(table: projectTable, id: id, model: model)
+    func updateProgress(id: Int, model: Models.Progress) {
+        DB.shared.update(table: progressTable, id: id, model: model)
     }
     
     // 获取所有数据
-    func getAllProjects() -> [Models.Project] {
-        return projectTable.getAll()
+    func getAllProgresses() -> [Models.Progress] {
+        return progressTable.getAll()
     }
     
 }
 
-
-// MARK: - 视图控制器
-class DBPage: UIViewController {
+class ProgressPage: UIViewController {
     private let dataManager = DataManager()
     
     let insertButton = UIButton(type: .custom)
@@ -55,7 +53,7 @@ class DBPage: UIViewController {
 
 
 // MARK: - 私有方法
-extension DBPage {
+extension ProgressPage {
     private func setupUI() {
         view.setBackgroundColor(color: cBgGray)
         
@@ -82,38 +80,37 @@ extension DBPage {
         deleteTableButton.setup(superview: view, target: self, action: #selector(handleDeleteTable))
         deleteTableButton.setStyleSolid17ptFgWhiteRedButton(title: "删除一张表")
         deleteTableButton.setFrame(left: kEdgeMargin, top: createTableButton.bottom + kVertMargin, right: kEdgeMargin, height: kButtonHeight)
-        
     }
     
 }
 
 
 // MARK: - @objc方法
-extension DBPage {
+extension ProgressPage {
     // 2A：新增
     @objc func handleAdding() {
-        let newProject = Models.Project(itemName: "项目1", totalProgress: 50)
-        dataManager.insertProject(model: newProject)
+        let newProgress = Models.Progress(currentProgress: 7, startTime: 1596122800, endTime: 1596124800, itemId: 1)
+        dataManager.insertProgress(model: newProgress)
     }
     
     // 2B：删除
     @objc func handleDelete() {
-        let lastId = DB.shared.getLastId(tableName: DBTable.project)
-        dataManager.deleteProject(id: lastId)
+        let lastId = DB.shared.getLastId(tableName: DBTable.progress)
+        dataManager.deleteProgress(id: lastId)
     }
     
     // 2C：更新
     @objc func handleUpdate() {
-        let lastId = DB.shared.getLastId(tableName: DBTable.project)
-        let updatedProject = Models.Project(id: lastId, itemName: "项目2", totalProgress: 80)
-        dataManager.updateProject(id: lastId, model: updatedProject)
+        let lastId = DB.shared.getLastId(tableName: DBTable.progress)
+        let updatedProgress = Models.Progress(id: lastId, currentProgress: 20, startTime: 1596122800, endTime: 1596124800, itemId: 2)
+        dataManager.updateProgress(id: lastId, model: updatedProgress)
     }
     
     // 2D：查询(SQL)
     @objc func handleQuery() {
-        let projects = dataManager.getAllProjects()
-        for project in projects {
-            print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress)")
+        let progresses = dataManager.getAllProgresses()
+        for progress in progresses {
+            print("ID: \(progress.id), 进度: \(progress.currentProgress), 项目 ID: \(progress.id)")
         }
     }
     
@@ -132,12 +129,13 @@ extension DBPage {
 extension DataManager {
     // 创建表
     func createTable() {
-        projectTable = ProjectTable()
+        progressTable = ProgressTable()
     }
     
     // 删除表
     func deleteTable() {
-        DB.shared.deleteTable(tableName: DBTable.project)
+        DB.shared.deleteTable(tableName: DBTable.progress)
     }
     
 }
+

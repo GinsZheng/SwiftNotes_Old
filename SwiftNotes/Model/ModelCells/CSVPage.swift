@@ -23,8 +23,8 @@ class CSVPage: UIViewController {
         
 //        let itemTable = ItemTable()
 //        itemTable.getTable()
-        let progressTable = ProgressTable()
-        progressTable.getTable()
+//        let progressTable = ProgressTable()
+//        progressTable.getTable()
         
         // 读取csv文件⌜item⌟。⌜item.csv⌟在项目中即可，不能有重名的文件
 //        let itemCsv = CSFileManager.readFileAsCsv(fileNameStr: "item", type: "csv")!

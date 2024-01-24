@@ -17,14 +17,9 @@ extension ViewController {
     private func setupUI() {
         view.setBackgroundColor(color: cBgGray)
 
-//        let updateButton = UIButton(type: .custom)
-//        updateButton.setup(superview: view, target: self, action: #selector(handleUpdate))
-//        updateButton.setStyleSolid14pt666GrayButton(title: <#T##String#>)
-//        updateButton.setFrame(left: 0, top: 0, right: 0, height: 33)
-//        
-//        @objc func handleUpdate() {
-//            
-//        }
+        if let count: Int = DB.shared.fetchScalar("SELECT COUNT(*) FROM project") {
+            print("行数: \(count)")
+        }
         
     }
     

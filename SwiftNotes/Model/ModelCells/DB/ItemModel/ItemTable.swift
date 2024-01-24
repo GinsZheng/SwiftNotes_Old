@@ -60,7 +60,7 @@ class ItemTable: TableProtocol {
     // 查询所有行
     func getAll() -> [Models.Item] {
         let sql = "SELECT * FROM \(tableName)"
-        return DB.shared.query(withSQL: sql) { row -> Models.Item? in
+        return DB.shared.fetchModels(withSQL: sql) { row -> Models.Item? in
             guard let id = row["id"] as? Int,
                   let itemName = row["itemName"] as? String,
                   let resume = row["resume"] as? String,
@@ -76,9 +76,24 @@ class ItemTable: TableProtocol {
 
 // MARK: - 查询方法
 extension ItemTable {
-//    func getOneLine(id: Int) -> Models.Item {
-//        let sql = "SELECT * FROM \(tableName) WHERE id = \(id)"
-//        // ⚠️下一步，写单行数据
+    func fetchSingleItem(id: Int) -> Models.Item {
+        let sql = "SELECT * FROM \(tableName) WHERE id = \(id)"
+        return DB.shared.fetchModel(withSQL: sql) { row -> Models.Item in
+            if row["id"] == nil { print("错误：未找到指定的 ID")}
+            let id = row["id"] as? Int ?? 0
+            let itemName = row["itemName"] as? String ?? ""
+            let resume = row["resume"] as? String ?? ""
+            let totalProgress = row["totalProgress"] as? Int ?? 0
+            let color = row["color"] as? Int ?? 0
+            
+            return Models.Item(id: id, itemName: itemName, resume: resume, totalProgress: totalProgress, color: color)
+        }
+    }
+    
+//    func fetchFirstItemName() -> String {
+//        let sql = "SELECT itemName FROM item, progress ORDER BY progress.startTime DESC LIMIT 1"
+//        
 //    }
+    
 }
 

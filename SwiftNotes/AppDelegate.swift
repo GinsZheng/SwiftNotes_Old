@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
 //        ItemTable().getTable()
-        ProgressTable().getTable()
+//        ProgressTable().getTable()
         ReloadDataTable().getTable()
         
         //是否第一次启动（两个都是第一次则以这个为准）

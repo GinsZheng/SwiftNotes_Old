@@ -30,6 +30,10 @@ private class DataManager {
         return itemTable.getAll()
     }
     
+    func fetchSingleItem() -> Models.Item {
+        return itemTable.fetchSingleItem(id: 8)
+    }
+    
     func count() -> Int {
         DB.shared.countRows(inTable: DBTable.item)
     }
