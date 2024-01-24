@@ -119,7 +119,7 @@ extension ProgressPage {
     @objc func handleQuery() {
         let progresses = dataManager.fetchAllProgresses()
         for progress in progresses {
-            print("ID: \(progress.id), 进度: \(progress.currentProgress), 项目 ID: \(progress.id)")
+            print("ID: \(progress.id), 进度: \(progress.currentProgress), 项目 ID: \(progress.itemId)")
         }
     }
     

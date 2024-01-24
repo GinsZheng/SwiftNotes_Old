@@ -60,7 +60,7 @@ class ItemTable: TableProtocol {
     // 查询所有行
     func fetchAllData() -> [Models.Item] {
         let sql = "SELECT * FROM \(tableName)"
-        return DB.shared.fetchModels(withSQL: sql) { row -> Models.Item? in
+        return DB.shared.fetchArray(withSQL: sql) { row -> Models.Item? in
             guard let id = row["id"] as? Int,
                   let itemName = row["itemName"] as? String,
                   let resume = row["resume"] as? String,
@@ -78,7 +78,7 @@ class ItemTable: TableProtocol {
 extension ItemTable {
     func fetchSingleItem(id: Int) -> Models.Item {
         let sql = "SELECT * FROM \(tableName) WHERE id = \(id)"
-        return DB.shared.fetchModel(withSQL: sql) { row -> Models.Item in
+        return DB.shared.fetchSingle(withSQL: sql) { row -> Models.Item in
             if row["id"] == nil { print("错误：未找到指定的 ID")}
             let id = row["id"] as? Int ?? 0
             let itemName = row["itemName"] as? String ?? ""

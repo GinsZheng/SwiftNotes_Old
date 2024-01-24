@@ -60,7 +60,7 @@ class ProgressTable: TableProtocol {
     // 查询所有行
     func fetchAllData() -> [Models.Progress] {
         let sql = "SELECT * FROM \(tableName)"
-        return DB.shared.fetchModels(withSQL: sql) { row -> Models.Progress? in
+        return DB.shared.fetchArray(withSQL: sql) { row -> Models.Progress? in
             guard let id = row["id"] as? Int,
                   let currentProgress = row["currentProgress"] as? Int,
                   let startTime = row["startTime"] as? Int,
@@ -82,5 +82,6 @@ extension ProgressTable {
         guard let duration: Int = DB.shared.fetchScalar(sql) else { return 0 }
         return duration
     }
+    
 }
 

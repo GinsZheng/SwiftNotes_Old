@@ -196,7 +196,6 @@
 		7A9219522B00BED200FE65FC /* SwitchView2Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9219512B00BED200FE65FC /* SwitchView2Page.swift */; };
 		7A9219542B00BEFD00FE65FC /* SwitchViewListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9219532B00BEFD00FE65FC /* SwitchViewListPage.swift */; };
 		7A9219872B0118FE00FE65FC /* CollectionViewCellAndLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9219862B0118FE00FE65FC /* CollectionViewCellAndLayout.swift */; };
-		7A94609123D1A6AB00936DE7 /* OldProgressTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A94609023D1A6AB00936DE7 /* OldProgressTable.swift */; };
 		7A95F4112AB5567C00900E39 /* Modeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95F4102AB5567C00900E39 /* Modeling.swift */; };
 		7A997EC62B57C73D00001608 /* OptionSheetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC52B57C73D00001608 /* OptionSheetPage.swift */; };
 		7A997EC82B57C7D900001608 /* OptionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC72B57C7D900001608 /* OptionSheet.swift */; };
@@ -750,7 +749,6 @@
 		7A9219512B00BED200FE65FC /* SwitchView2Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView2Page.swift; sourceTree = "<group>"; };
 		7A9219532B00BEFD00FE65FC /* SwitchViewListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewListPage.swift; sourceTree = "<group>"; };
 		7A9219862B0118FE00FE65FC /* CollectionViewCellAndLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellAndLayout.swift; sourceTree = "<group>"; };
-		7A94609023D1A6AB00936DE7 /* OldProgressTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldProgressTable.swift; sourceTree = "<group>"; };
 		7A95F4102AB5567C00900E39 /* Modeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modeling.swift; sourceTree = "<group>"; };
 		7A997EC52B57C73D00001608 /* OptionSheetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSheetPage.swift; sourceTree = "<group>"; };
 		7A997EC72B57C7D900001608 /* OptionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSheet.swift; sourceTree = "<group>"; };
@@ -1238,7 +1236,6 @@
 			children = (
 				7A8A7EAE23D1A7F50067D9C3 /* ProgressPage.swift */,
 				7A57AE072B60D5A9001E8EC8 /* ProgressTable.swift */,
-				7A94609023D1A6AB00936DE7 /* OldProgressTable.swift */,
 			);
 			path = ProgressModel;
 			sourceTree = "<group>";
@@ -2217,7 +2214,6 @@
 				7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */,
 				7ACF48522B27052700759E0A /* DataManager.swift in Sources */,
 				7A06A7342B2C382E0014033E /* SectionsTableViewPage.swift in Sources */,
-				7A94609123D1A6AB00936DE7 /* OldProgressTable.swift in Sources */,
 				7A62A1F7245CAD890090D128 /* WindowPage.swift in Sources */,
 				7A997EC82B57C7D900001608 /* OptionSheet.swift in Sources */,
 				7A2161282389868500D5A93A /* TestVC.swift in Sources */,
