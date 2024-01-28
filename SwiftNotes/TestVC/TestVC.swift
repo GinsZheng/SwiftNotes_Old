@@ -1,6 +1,5 @@
 import UIKit
 
-
 struct HomeCellItems {
     var id: Int
     var taskType: Int                       // 0：任务，1：子任务
@@ -47,6 +46,7 @@ extension ViewController {
 }
 
 
+// MARK: - 字段表
 struct AllTaskItems {
     var id: Int
     var taskType: Int                       // 0：任务，1：子任务
@@ -57,7 +57,7 @@ struct AllTaskItems {
     var isTimeSet: Bool?
     var nextReminderTimestamp: Int?
     var reminderOccasions: [Int]?           // 时间
-    var isRepeating: Bool
+    var isRepeating: Bool?
     var repeatCycle: Int?                   // 0:天 | 1:周 | 2:月 | 3:年
     var repeatInterval: Int?                // 如：每n天提醒一次，间隔就是这里的n
     var repeatDays: [Int]?                  // 0:周日 | 1:周一 | …(周二~周五依次) | 6:周六 (7个枚举值)
@@ -65,7 +65,7 @@ struct AllTaskItems {
     var repeatDates: [Int]?                 // 数据范围：1-31
     var whichWeek: Int?                     // 0:第一个星期 | …(依次) | 4:第五个星期 | 5:最后一个星期
     var dayOfWeek: Int?                     // 0:周日 | 1:周一 | …(周二~周五依次) | 6:周六 | 7:自然日 | 8:工作日 | 9:周末
-    var months: Int?                    // 1:1月 | (2月-11月依次) | 12:12月
+    var months: [Int]?                        // 1:1月 | (2月-11月依次) | 12:12月
     var endRepeatTimestamp: Int?
     var hasProgress: Bool
     var progressType: Int?                  // 0:手动进度 | 1:时长进度 | 2:计时进度
@@ -74,7 +74,7 @@ struct AllTaskItems {
     var priority: Int                       // 0:无 | 1:低 | 2:中 | 3:高
     var subtaskIds: [Int]?
     var creationTimestamp: Int
-    var updateTimestamp: Int
+    var updateTimestamp: Int?
     var groupId: Int
     var isProgressDescriptionHidden: Bool
     var manualSorting: Int
