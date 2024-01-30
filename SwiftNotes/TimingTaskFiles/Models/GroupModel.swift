@@ -7,7 +7,7 @@
 //
 
 extension Models {
-    struct Group {
+    struct GroupView {
         var id: Int
         var groupName: String
         var groupType: Int
