@@ -893,6 +893,22 @@
 			path = SwiftNotesModels;
 			sourceTree = "<group>";
 		};
+		7A11A05C2B68A49000F8456E /* TimingTaskModels */ = {
+			isa = PBXGroup;
+			children = (
+				7A65610F2B6656F000F239EB /* GroupModel.swift */,
+				7A65610D2B6656DC00F239EB /* HomeTableModel.swift */,
+				7A6561112B66933800F239EB /* UpsertTaskModel.swift */,
+				7A6561132B6693B100F239EB /* TaskDetailsModel.swift */,
+				7A6561162B6693FF00F239EB /* TimingHistoryModel.swift */,
+				7A6561182B66948800F239EB /* UpsertTimingModel.swift */,
+				7A65611A2B6694D100F239EB /* TimingModel.swift */,
+				7A65611C2B66950000F239EB /* TimingAlertModel.swift */,
+				7A65611E2B66952D00F239EB /* SelectTaskModel.swift */,
+			);
+			path = TimingTaskModels;
+			sourceTree = "<group>";
+		};
 		7A21612A2389869D00D5A93A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -956,7 +972,6 @@
 				7A3986D52B4D5422004E0721 /* TestVC */,
 				7AD3C6142B104ED000B9A752 /* TestVCList */,
 				7A65610C2B664B7800F239EB /* Models */,
-				7A11A0532B68A0FA00F8456E /* SwiftNotesModels */,
 				7A88C78A2A8A624E00D61E33 /* Base */,
 				7A216140238986AF00D5A93A /* View */,
 				7A21612A2389869D00D5A93A /* Controller */,
@@ -1236,15 +1251,8 @@
 		7A65610C2B664B7800F239EB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7A65610F2B6656F000F239EB /* GroupModel.swift */,
-				7A65610D2B6656DC00F239EB /* HomeTableModel.swift */,
-				7A6561112B66933800F239EB /* UpsertTaskModel.swift */,
-				7A6561132B6693B100F239EB /* TaskDetailsModel.swift */,
-				7A6561162B6693FF00F239EB /* TimingHistoryModel.swift */,
-				7A6561182B66948800F239EB /* UpsertTimingModel.swift */,
-				7A65611A2B6694D100F239EB /* TimingModel.swift */,
-				7A65611C2B66950000F239EB /* TimingAlertModel.swift */,
-				7A65611E2B66952D00F239EB /* SelectTaskModel.swift */,
+				7A11A05C2B68A49000F8456E /* TimingTaskModels */,
+				7A11A0532B68A0FA00F8456E /* SwiftNotesModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
