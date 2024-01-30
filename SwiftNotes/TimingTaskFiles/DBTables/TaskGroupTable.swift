@@ -1,5 +1,5 @@
 //
-//  GroupTable.swift
+//  TaskGroupTable.swift
 //  SwiftNotes
 //
 //  Created by GinsMac on 2024/1/30.
@@ -9,7 +9,7 @@
 import SQLite
 
 extension Models {
-    struct Group {
+    struct TaskGroup {
         var id: Int = 0
         var groupName: String
         var groupType: Int
@@ -22,9 +22,9 @@ extension Models {
 
 
 // MARK: - 表类
-class GroupTable: TableProtocol {
-    typealias ModelType = Models.Group
-    var tableName: String { return DBTable.group }
+class TaskGroupTable: TableProtocol {
+    typealias ModelType = Models.TaskGroup
+    var tableName: String { return DBTable.taskGroup }
     
     private let id = Expression<Int>("id")
     private let groupName = Expression<String>("groupName")
@@ -51,7 +51,7 @@ class GroupTable: TableProtocol {
     }
     
     // 定义Setter
-    func modelToSetters(model: Models.Group) -> [Setter] {
+    func modelToSetters(model: Models.TaskGroup) -> [Setter] {
         var setters: [Setter] = [
             groupName <- model.groupName,
             groupType <- model.groupType,
@@ -66,19 +66,18 @@ class GroupTable: TableProtocol {
     }
     
     // 查询所有行
-    func fetchAllData() -> [Models.Group] {
+    func fetchAllData() -> [Models.TaskGroup] {
         let sql = "SELECT * FROM \(tableName)"
-        return DB.shared.fetchArray(withSQL: sql) { row -> Models.Group? in
+        return DB.shared.fetchArray(withSQL: sql) { row -> Models.TaskGroup? in
             guard let id = row["id"] as? Int,
                   let groupName = row["groupName"] as? String,
                   let groupType = row["groupType"] as? Int,
-                  let groupSorting = row["groupSorting"] as? Int,
-                  let hideInSmartGroup = row["hideInSmartGroup"] as? Bool?,
-                  let hideGroup = row["hideGroup"] as? Bool?,
-                  let smartGroupPreset = row["smartGroupPreset"] as? Int?
+                  let groupSorting = row["groupSorting"] as? Int
             else { return nil }
-            
-            return Models.Group(id: id, groupName: groupName, groupType: groupType, groupSorting: groupSorting, hideInSmartGroup: hideInSmartGroup, hideGroup: hideGroup, smartGroupPreset: smartGroupPreset)
+            let hideInSmartGroup = row["hideInSmartGroup"] as? Bool
+            let hideGroup = row["hideGroup"] as? Bool
+            let smartGroupPreset = row["smartGroupPreset"] as? Int
+            return Models.TaskGroup(id: id, groupName: groupName, groupType: groupType, groupSorting: groupSorting, hideInSmartGroup: hideInSmartGroup, hideGroup: hideGroup, smartGroupPreset: smartGroupPreset)
         }
     }
     
@@ -86,7 +85,7 @@ class GroupTable: TableProtocol {
 
 
 // MARK: - 查询方法
-extension GroupTable {
+extension TaskGroupTable {
     
 }
 

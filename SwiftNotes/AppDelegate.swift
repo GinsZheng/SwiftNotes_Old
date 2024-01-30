@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // 创建表，用于填充初始数据
             _ = ItemTable()
             _ = ProgressTable()
+            _ = TaskGroupTable()
         } else {
             print("非也")
         }
