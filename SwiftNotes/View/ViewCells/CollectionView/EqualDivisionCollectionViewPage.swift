@@ -8,31 +8,25 @@
 
 import UIKit
 
-// collectionView数据的结构体
-private struct Item {
-    let title: String
-    let bgColor: String
-}
-
-private class DataManager: BaseDataManager<Item> {
+private class DataManager: BaseDataManager<Models.CollectionItem> {
     init() {
         super.init(initialItems: [
-            Item(title: "0 Swift", bgColor: cBlue_5393FF),
-            Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
-            Item(title: "2 Java", bgColor: cMagenta_FC5AAE),
-            Item(title: "3 PHP", bgColor: cRed_FF635A),
-            Item(title: "4 JS", bgColor: cOrange_F9AD18),
-            Item(title: "5 React", bgColor: cGreen_25BE3C),
-            Item(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
-            Item(title: "7 HTML", bgColor: cBlue_5393FF),
-            Item(title: "8 C#", bgColor: cPurple_BF62F8),
-            Item(title: "9 C++", bgColor: cPurple_BF62F8),
+            .init(title: "0 Swift", bgColor: cBlue_5393FF),
+            .init(title: "1 Xcode", bgColor: cPurple_BF62F8),
+            .init(title: "2 Java", bgColor: cMagenta_FC5AAE),
+            .init(title: "3 PHP", bgColor: cRed_FF635A),
+            .init(title: "4 JS", bgColor: cOrange_F9AD18),
+            .init(title: "5 React", bgColor: cGreen_25BE3C),
+            .init(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
+            .init(title: "7 HTML", bgColor: cBlue_5393FF),
+            .init(title: "8 C#", bgColor: cPurple_BF62F8),
+            .init(title: "9 C++", bgColor: cPurple_BF62F8),
         ])
     }
 }
 
 // 输入参数
-struct CollectionViewEqualDivisionStyles {
+private struct CollectionStyles {
     static let eachLineCount: CGFloat = 3
     static let itemHeight: CGFloat = 200
 }
@@ -63,18 +57,18 @@ class EqualDivisionCollectionViewPage: UIViewController {
 
 // MARK: - CollectionView 代理方法
 extension EqualDivisionCollectionViewPage: UICollectionViewDelegate, UICollectionViewDataSource {
-    // 设置点击事件
+    // 点击
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.push(targetVC: CSGeneralSubpage())
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
-    // 设置数量
+    // 数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionData.count
     }
     
-    // 设置 cell 逻辑
+    // cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EqualDivisionCollectionViewCell.identifier, for: indexPath) as? EqualDivisionCollectionViewCell else { return UICollectionViewCell() }
         // 把UI逻辑放在自定义的 EqualDivisionCollectionViewCell，把数据放在此
@@ -87,8 +81,6 @@ extension EqualDivisionCollectionViewPage: UICollectionViewDelegate, UICollectio
 
 // MARK: - 创建一个 EqualDivisionCollectionViewCell，方便复用
 class EqualDivisionCollectionViewCell: UICollectionViewCell {
-    typealias Styles = CollectionViewEqualDivisionStyles
-    
     static let identifier = String(describing: EqualDivisionCollectionViewCell.self)
     
     let titleLabel = UILabel()
@@ -107,11 +99,11 @@ class EqualDivisionCollectionViewCell: UICollectionViewCell {
     // MARK: - func
     func setupUI() {
         imageView.setup(superview: self, cornerRadius: 0)
-        imageView.setFrame(left: 0, top: 0, width: ceil(kScreenWidth/Styles.eachLineCount), height: Styles.itemHeight)
+        imageView.setFrame(left: 0, top: 0, width: ceil(kScreenWidth/CollectionStyles.eachLineCount), height: CollectionStyles.itemHeight)
         
         titleLabel.setup(superview: self)
         titleLabel.self.setStyle17ptFgWhiteMedCenter()
-        titleLabel.setFrame(left: 0, centerY: imageView.centerY, width: ceil(kScreenWidth/Styles.eachLineCount), height: 20)
+        titleLabel.setFrame(left: 0, centerY: imageView.centerY, width: ceil(kScreenWidth/CollectionStyles.eachLineCount), height: 20)
     }
     
     func configure(title: String, bgColor: String) {
@@ -124,8 +116,6 @@ class EqualDivisionCollectionViewCell: UICollectionViewCell {
 
 // MARK: - 创建一个 EqualDivisionCollectionViewLayout，用于设置布局
 class EqualDivisionCollectionViewLayout: UICollectionViewLayout {
-    typealias Styles = CollectionViewEqualDivisionStyles
-    
     var itemCount = 0
     var itemWidth: CGFloat = 0
     var contentHeight: CGFloat = 0
@@ -139,8 +129,8 @@ class EqualDivisionCollectionViewLayout: UICollectionViewLayout {
         guard let collectionView = collectionView else { return }
         
         itemCount = collectionView.numberOfItems(inSection: 0)
-        itemWidth = (collectionView.bounds.width) / Styles.eachLineCount
-        contentHeight = CGFloat(ceil(Double(itemCount) / Styles.eachLineCount)) * Styles.itemHeight
+        itemWidth = (collectionView.bounds.width) / CollectionStyles.eachLineCount
+        contentHeight = CGFloat(ceil(Double(itemCount) / CollectionStyles.eachLineCount)) * CollectionStyles.itemHeight
         
         // 设置所有单元格的位置属性
         layoutAttributes.removeAll()
@@ -164,7 +154,7 @@ class EqualDivisionCollectionViewLayout: UICollectionViewLayout {
     
     // (维持不变)设置单个单元格的位置属性
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-        return createEqualDivisionLayoutAttributes(indexPath: indexPath, eachLineCount: Styles.eachLineCount, itemWidth: itemWidth, itemHeight: Styles.itemHeight)
+        return createEqualDivisionLayoutAttributes(indexPath: indexPath, eachLineCount: CollectionStyles.eachLineCount, itemWidth: itemWidth, itemHeight: CollectionStyles.itemHeight)
     }
     
 }

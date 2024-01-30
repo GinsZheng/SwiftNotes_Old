@@ -1,15 +1,6 @@
-//
-//  PickerViewPage.swift
-//  SwiftNotes
-//
-//  Created by GinsMac on 2019/6/19.
-//  Copyright © 2019 GinsMac. All rights reserved.
-//
-
 import UIKit
 
-class PickerViewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
+class PickerViewPage: UIViewController {
     let pickerData = ["今天", "昨天", "前天"]
     
     let pickerView = UIPickerView()
@@ -19,17 +10,13 @@ class PickerViewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         super.viewDidLoad()
         setupUI()
     }
-    
-    // MARK: - func
-    func setupUI() {
-        view.setBackgroundColor(color: cFFF)
-        
-        pickerView.setup(superview: view, delegate: self, dataSource: self)
-        pickerView.setFrame(left: 10, top: 100, width: kScreenWidth - 20, height: 215)
-    }
-    
-    
-    // MARK: - PickerView 代理
+
+}
+
+
+// MARK: - 代理方法：PickerView
+extension PickerViewPage: UIPickerViewDelegate, UIPickerViewDataSource {
+    // 列数
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -46,7 +33,19 @@ class PickerViewPage: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     // 行高
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 32
+        return kPickerViewRowHeight
     }
     
+}
+
+
+// MARK: - 私有方法
+extension PickerViewPage {
+    private func setupUI() {
+        view.setBackgroundColor(color: cFFF)
+        
+        pickerView.setup(superview: view, delegate: self, dataSource: self)
+        pickerView.setFrame(left: kEdgeMargin, top: 100, right: kEdgeMargin, height: kPickerViewHeight)
+    }
+
 }

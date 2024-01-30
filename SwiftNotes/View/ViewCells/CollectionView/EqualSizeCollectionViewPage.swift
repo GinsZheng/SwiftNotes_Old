@@ -1,44 +1,35 @@
-//
-//  EqualSizeCollectionViewPage.swift
-//  SwiftNotes
-//
-//  Created by GinsMac on 2023/12/12.
-//  Copyright © 2023 GinsMac. All rights reserved.
-//
-
 import UIKit
 
-// collectionView数据的结构体
-private struct Item {
-    let title: String
-    let bgColor: String
-}
-
-private class DataManager: BaseDataManager<Item> {
+private class DataManager: BaseDataManager<Models.CollectionItem> {
     init() {
         super.init(initialItems: [
-            Item(title: "0 Swift", bgColor: cBlue_5393FF),
-            Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
-            Item(title: "2 Java", bgColor: cMagenta_FC5AAE),
-            Item(title: "3 PHP", bgColor: cRed_FF635A),
-            Item(title: "4 JS", bgColor: cOrange_F9AD18),
-            Item(title: "5 React", bgColor: cGreen_25BE3C),
-            Item(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
-            Item(title: "7 HTML", bgColor: cBlue_5393FF),
-            Item(title: "8 C#", bgColor: cPurple_BF62F8),
-            Item(title: "9 C++", bgColor: cPurple_BF62F8),
+            .init(title: "0 Swift", bgColor: cBlue_5393FF),
+            .init(title: "1 Xcode", bgColor: cPurple_BF62F8),
+            .init(title: "2 Java", bgColor: cMagenta_FC5AAE),
+            .init(title: "3 PHP", bgColor: cRed_FF635A),
+            .init(title: "4 JS", bgColor: cOrange_F9AD18),
+            .init(title: "5 React", bgColor: cGreen_25BE3C),
+            .init(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
+            .init(title: "7 HTML", bgColor: cBlue_5393FF),
+            .init(title: "8 C#", bgColor: cPurple_BF62F8),
+            .init(title: "9 C++", bgColor: cPurple_BF62F8),
         ])
     }
 }
 
+
 // 输入参数
-struct CollectionViewEqualSizeStyles {
+private struct CollectionStyles {
     static let eachLineCount: CGFloat = 3
     static let itemHeight: CGFloat = 200
+    static let itemLineSpacing: CGFloat = 0 // 行间距 (默认的item行距不为0)
+    static let interitemSpacing: CGFloat = 0 // item左右间距 (默认的item左右间距不为0)
+    static let sectionInset: UIEdgeInsets = .init(top: 6, left: 0, bottom: 6, right: 0) // section的内边距，默认为0
 }
 
+
+// MARK: - 视图控制器
 class EqualSizeCollectionViewPage: UIViewController {
-    
     private let collectionData = DataManager()
     
     var collectionView: UICollectionView!
@@ -49,51 +40,57 @@ class EqualSizeCollectionViewPage: UIViewController {
         setupUI()
     }
     
-    // MARK: - func
-    func setupUI() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: floor(kScreenWidth / 3), height: 200) // 每行3个item
-        layout.minimumLineSpacing = 0 // 行间距 (注意，默认的item行距不为0)
-        layout.minimumInteritemSpacing = 0 // item间距 (注意，默认的item左右间距不为0)
-        layout.sectionInset = UIEdgeInsets(top: 6, left: 0, bottom: 6, right: 0) // section的内边距，默认为0🐾
-        
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(EqualSizeCollectionViewCell.self, forCellWithReuseIdentifier: EqualSizeCollectionViewCell.identifier)
-        collectionView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
-        collectionView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
-    }
-
 }
 
 
 // MARK: - CollectionView 代理方法
 extension EqualSizeCollectionViewPage: UICollectionViewDelegate, UICollectionViewDataSource {
-    // 设置点击事件
+    // 点击
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.push(targetVC: CSGeneralSubpage())
         collectionView.deselectItem(at: indexPath, animated: true)
     }
-
-    // 设置数量
+    
+    // 数量
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionData.count
     }
     
-    // 设置 cell 逻辑
+    // cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EqualSizeCollectionViewCell.identifier, for: indexPath) as? EqualSizeCollectionViewCell else { return UICollectionViewCell() }
-        // 把UI逻辑放在自定义的 EqualSizeCollectionViewCell，把数据放在此
         let item = collectionData[indexPath.row]
         cell.configure(title: item.title, bgColor: item.bgColor)
         return cell
     }
+    
 }
 
 
-// MARK: - 创建一个 EqualSizeCollectionViewCell，方便复用
-class EqualSizeCollectionViewCell: UICollectionViewCell {
-    typealias Styles = CollectionViewEqualSizeStyles
+// MARK: - 私有方法
+extension EqualSizeCollectionViewPage {
+    private func setupUI() {
+        let layout = createLayout() // 定义collectionViewLayout
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(EqualSizeCollectionViewCell.self, forCellWithReuseIdentifier: EqualSizeCollectionViewCell.identifier)
+        collectionView.setup(superview: view, delegate: self, dataSource: self, viewController: self)
+        collectionView.setFrame(left: 0, top: 0, right: 0, height: kWithoutNavBarHeight)
+    }
     
+    private func createLayout() -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: floor(kScreenWidth / CollectionStyles.eachLineCount), height: CollectionStyles.itemHeight)
+        layout.minimumLineSpacing = CollectionStyles.itemLineSpacing // 行间距 (注意，默认的item行距不为0)
+        layout.minimumInteritemSpacing = CollectionStyles.interitemSpacing // item左右间距 (注意，默认的item左右间距不为0)
+        layout.sectionInset = CollectionStyles.sectionInset // section的内边距，默认为0🐾
+        return layout
+    }
+    
+}
+
+
+// MARK: - 自定义cell：EqualSizeCollectionViewCell
+class EqualSizeCollectionViewCell: UICollectionViewCell {
     static let identifier = String(describing: EqualSizeCollectionViewCell.self)
     
     let titleLabel = UILabel()
@@ -109,14 +106,14 @@ class EqualSizeCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - func
+    // MARK: - 公共方法
     func setupUI() {
         imageView.setup(superview: self, cornerRadius: 0)
-        imageView.setFrame(left: 0, top: 0, width: ceil(kScreenWidth/Styles.eachLineCount), height: Styles.itemHeight)
+        imageView.setFrame(left: 0, top: 0, width: ceil(kScreenWidth/CollectionStyles.eachLineCount), height: CollectionStyles.itemHeight)
         
         titleLabel.setup(superview: self)
-        titleLabel.self.setStyle17ptFgWhiteMedCenter()
-        titleLabel.setFrame(left: 0, centerY: imageView.centerY, width: ceil(kScreenWidth/Styles.eachLineCount), height: 20)
+        titleLabel.setStyle17ptFgWhiteMedCenter()
+        titleLabel.setFrame(left: 0, centerY: imageView.centerY, width: ceil(kScreenWidth/CollectionStyles.eachLineCount))
     }
     
     func configure(title: String, bgColor: String) {
@@ -125,6 +122,7 @@ class EqualSizeCollectionViewCell: UICollectionViewCell {
     }
     
 }
+
 
 
 /*

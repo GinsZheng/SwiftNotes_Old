@@ -20,7 +20,6 @@ private class DataManager: DefaultCellDataManager {
 
 
 class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     private let tableData = DataManager()
 
     let tableView = UITableView()
@@ -64,6 +63,7 @@ class CollectionViewListPage: UIViewController, UITableViewDelegate, UITableView
     }
     
 }
+
 
 /*
  EqualSizeCollectionViewPage：使用了内置布局 UICollectionViewFlowLayout()，好处是简单易懂，适用于宽高一致的布局
