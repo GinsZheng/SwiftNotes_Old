@@ -33,7 +33,6 @@ private class DataManager: DefaultCellDataManager {
             .titleNextVC(title: "Menu Controller", viewController: CSMenuControllerPage()),
             .titleNextVC(title: "Operator @", viewController: CSOperatorAtPage()),
             .titleNextVC(title: "Protocol", viewController: CSProtocolPage()),
-            .titleNextVC(title: "Reload Data", viewController: CSReloadDataPage()),
             .titleNextVC(title: "Switch View", viewController: SwitchViewListPage()),
             .titleNextVC(title: "Timer", viewController: CSTimerPage()),
             .titleNextVC(title: "Transfer Data", viewController: TransferDataListVC()),

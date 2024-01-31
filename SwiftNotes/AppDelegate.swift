@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
-        ReloadDataTable().getTable()
         
         //是否第一次启动（两个都是第一次则以这个为准）
         if UserDefaults.isFirstLaunch() {
