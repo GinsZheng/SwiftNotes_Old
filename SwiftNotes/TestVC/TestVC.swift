@@ -26,11 +26,16 @@ extension ViewController {
 //            print("row", row)
 //        }
         
-        let myImageView = UIImageView()
-        myImageView.setup(superview: view, imageName: "iPhone7")
-//        myImageView.setFrame<#T##String#>
-        let height = myImageView.getScaledHeight(forWidth: 100)
-        print("iphone7", height)
+//        let myImageView = UIImageView()
+//        myImageView.setup(superview: view, imageName: "iPhone7")
+////        myImageView.setFrame<#T##String#>
+//        let height = myImageView.getScaledHeight(forWidth: 100)
+//        print("iphone7", height)
+//
+//        let str = "1,3,4,6"
+//        let parsedArray = str.split(separator: ",").compactMap { Int($0) }
+//        print(parsedArray)
+//        
 
     }
     

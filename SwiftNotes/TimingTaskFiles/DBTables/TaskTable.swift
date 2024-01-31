@@ -1,7 +1,15 @@
+//
+//  TaskTable.swift
+//  SwiftNotes
+//
+//  Created by GinsMac on 2024/1/31.
+//  Copyright © 2024 GinsMac. All rights reserved.
+//
+
 import SQLite
 
 extension Models {
-    struct User {
+    struct Task {
         var id: Int = 0
         var taskType: Int
         var taskTitle: String
@@ -38,9 +46,9 @@ extension Models {
 
 
 // MARK: - 表类
-class UserTable: TableProtocol {
-    typealias ModelType = Models.User
-    var tableName: String { return DBTable.user }
+class TaskTable: TableProtocol {
+    typealias ModelType = Models.Task
+    var tableName: String { return DBTable.task }
     
     private let id = Expression<Int>("id")
     private let taskType = Expression<Int>("taskType")
@@ -115,7 +123,7 @@ class UserTable: TableProtocol {
     }
     
     // 定义Setter
-    func modelToSetters(model: Models.User) -> [Setter] {
+    func modelToSetters(model: Models.Task) -> [Setter] {
         var setters: [Setter] = [
             taskType <- model.taskType,
             taskTitle <- model.taskTitle,
@@ -154,9 +162,9 @@ class UserTable: TableProtocol {
     }
     
     // 查询所有行
-    func fetchAllData() -> [Models.User] {
+    func fetchAllData() -> [Models.Task] {
         let sql = "SELECT * FROM \(tableName)"
-        return DB.shared.fetchArray(withSQL: sql) { row -> Models.User? in
+        return DB.shared.fetchArray(withSQL: sql) { row -> Models.Task? in
             guard let id = row["id"] as? Int else { return nil }
             let taskType = row["taskType"] as? Int ?? 0
             let taskTitle = row["taskTitle"] as? String ?? ""
@@ -189,7 +197,7 @@ class UserTable: TableProtocol {
             let manualSorting = row["manualSorting"] as? Int ?? 0
             let isInTrash = row["isInTrash"] as? Bool ?? false
 
-            return Models.User(id: id, taskType: taskType, taskTitle: taskTitle, taskContent: taskContent, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, reminderOccasions: reminderOccasions, isRepeating: isRepeating, repeatCycle: repeatCycle, repeatInterval: repeatInterval, repeatDays: repeatDays, repeatType: repeatType, repeatDates: repeatDates, whichWeek: whichWeek, dayOfWeek: dayOfWeek, months: months, endRepeatTimestamp: endRepeatTimestamp, hasProgress: hasProgress, progressType: progressType, totalProgress: totalProgress, color: color, priority: priority, subtaskIds: subtaskIds, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, groupId: groupId, isProgressSummaryHidden: isProgressSummaryHidden, manualSorting: manualSorting, isInTrash: isInTrash)
+            return Models.Task(id: id, taskType: taskType, taskTitle: taskTitle, taskContent: taskContent, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, reminderOccasions: reminderOccasions, isRepeating: isRepeating, repeatCycle: repeatCycle, repeatInterval: repeatInterval, repeatDays: repeatDays, repeatType: repeatType, repeatDates: repeatDates, whichWeek: whichWeek, dayOfWeek: dayOfWeek, months: months, endRepeatTimestamp: endRepeatTimestamp, hasProgress: hasProgress, progressType: progressType, totalProgress: totalProgress, color: color, priority: priority, subtaskIds: subtaskIds, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, groupId: groupId, isProgressSummaryHidden: isProgressSummaryHidden, manualSorting: manualSorting, isInTrash: isInTrash)
         }
     }
     
@@ -197,7 +205,6 @@ class UserTable: TableProtocol {
 
 
 // MARK: - 查询方法
-extension UserTable {
+extension TaskTable {
     
 }
-

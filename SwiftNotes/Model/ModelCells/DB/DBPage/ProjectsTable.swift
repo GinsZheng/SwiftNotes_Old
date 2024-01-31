@@ -45,11 +45,9 @@ class ProjectTable: TableProtocol {
     func fetchAllData() -> [Models.Project] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchArray(withSQL: sql) { row -> Models.Project? in
-            guard let id = row["id"] as? Int,
-                  let itemName = row["itemName"] as? String,
-                  let totalProgress = row["totalProgress"] as? Int
-            else { return nil }
-            
+            guard let id = row["id"] as? Int else { return nil }
+            let itemName = row["itemName"] as? String ?? ""
+            let totalProgress = row["totalProgress"] as? Int ?? 0
             return Models.Project(id: id, itemName: itemName, totalProgress: totalProgress)
         }
     }
@@ -61,3 +59,4 @@ class ProjectTable: TableProtocol {
 extension ProjectTable {
     
 }
+

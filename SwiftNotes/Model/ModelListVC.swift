@@ -13,6 +13,7 @@ private class DataManager: DefaultCellDataManager {
     init() {
         super.init(initialItems: [
             .titleNextVC(title: "Array", viewController: CSArrayPage()),
+            .titleNextVC(title: "Convert Type", viewController: ConvertTypePage()),
             .titleNextVC(title: "CSV", viewController: CSVPage()),
             .titleNextVC(title: "Data Operate", viewController: CSDataOperate()),
             .titleNextVC(title: "Data Save List", viewController: CSDataSaveListVC()),

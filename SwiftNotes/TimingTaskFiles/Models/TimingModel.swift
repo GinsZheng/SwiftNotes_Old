@@ -7,7 +7,7 @@
 //
 
 extension Models {
-    struct Timing {
+    struct TimingView {
         var id: Int
         var taskTitle: String?
     }
