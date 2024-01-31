@@ -10,7 +10,7 @@ import UIKit
 import SQLite
 
 private class DataManager {
-    private var projectTable = ProjectTable()
+    private let projectTable = ProjectTable()
     
     func insertProject(model: Models.Project) {
         DB.shared.insert(table: projectTable, model: model)
@@ -132,7 +132,7 @@ extension DBPage {
 extension DataManager {
     // 创建表
     func createTable() {
-        projectTable = ProjectTable()
+        DB.shared.createTable(ProjectTable())
     }
     
     // 删除表

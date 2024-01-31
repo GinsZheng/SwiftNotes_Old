@@ -17,6 +17,7 @@ private class DataManager: DefaultCellDataManager {
             .titleNextVC(title: "CSV", viewController: CSVPage()),
             .titleNextVC(title: "Data Operate", viewController: CSDataOperate()),
             .titleNextVC(title: "Data Save List", viewController: CSDataSaveListVC()),
+            .titleNextVC(title: "DB List", viewController: DBListPage()),
             .titleNextVC(title: "设备信息", viewController: CSDeviceInfoPage()),
             .titleNextVC(title: "Dictionary", viewController: CSDictionaryPage()),
             .titleNextVC(title: "Double", viewController: DoublePage()),

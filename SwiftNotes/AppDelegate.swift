@@ -22,10 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //是否第一次启动（两个都是第一次则以这个为准）
         if UserDefaults.isFirstLaunch() {
             print("应用第一次启动")
-            // 创建表，用于填充初始数据
-            _ = ItemTable()
-            _ = ProgressTable()
-            _ = TaskGroupTable()
+            createTable() // 创建表，用于填充初始数据
+            importDefaultData()
         } else {
             print("非也")
         }
@@ -109,3 +107,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+// MARK: - 私有方法
+extension AppDelegate {
+    private func createTable() {
+        _ = ProjectTable()
+        _ = ItemTable()
+        _ = ProgressTable()
+        // timingTask的表
+        _ = TaskGroupTable()
+        _ = HistoryTable()
+        _ = TimingTable()
+        _ = TaskTable()
+    }
+    
+    private func importDefaultData() {
+        // ⚠️下一步
+    }
+}
