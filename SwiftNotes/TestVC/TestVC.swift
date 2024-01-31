@@ -19,12 +19,19 @@ extension ViewController {
     private func setupUI() {
         view.setBackgroundColor(color: cBgGray)
 
-        CSFileManager.importCSVToSQLite(csvFileName: "taskGroup", tableName: "taskGroup")
+//        CSFileManager.importCSVToSQLite(csvFileName: "taskGroup", tableName: "taskGroup")
 
-        let data = taskGroupTable.fetchAllData()
-        for row in data {
-            print("row", row)
-        }
+//        let data = taskGroupTable.fetchAllData()
+//        for row in data {
+//            print("row", row)
+//        }
+        
+        let myImageView = UIImageView()
+        myImageView.setup(superview: view, imageName: "iPhone7")
+//        myImageView.setFrame<#T##String#>
+        let height = myImageView.getScaledHeight(forWidth: 100)
+        print("iphone7", height)
+
     }
     
 }

@@ -11,4 +11,10 @@ extension Models {
         let title: String
         let bgColor: String
     }
+    
+    struct CollectionImageItem {
+        let title: String
+        let imageName: String
+    }
 }
+
