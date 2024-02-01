@@ -204,7 +204,68 @@ class TaskTable: TableProtocol {
 }
 
 
-// MARK: - 查询方法
+
+//
+//// MARK: - 查询方法
 extension TaskTable {
+    func fetchHomeCellData() -> [Models.HomeCell] {
+        let sql = """
+        SELECT task.id, task.taskType, task.taskTitle, task.isDone, task.isReminded, task.isTimeSet,
+               task.nextReminderTimestamp, task.isRepeating, task.hasProgress, task.totalProgress,
+               task.color, task.priority, task.creationTimestamp, task.updateTimestamp, task.manualSorting,
+               IFNULL(ss.progressRecord, 0) as currentProgress
+        FROM task
+        LEFT JOIN (
+            SELECT taskId, progressRecord
+            FROM (
+                SELECT ROW_NUMBER() OVER (PARTITION BY taskId ORDER BY startTimestamp DESC) AS rownum, timing.*
+                FROM timing
+            ) T
+            WHERE T.rownum = 1
+        ) ss ON task.id = ss.taskId
+        ORDER BY task.updateTimestamp DESC
+        """
+
+        let taskRows = DB.shared.fetchArray(withSQL: sql) { row in
+            let id = row["id"] as? Int ?? 0
+            let taskType = row["taskType"] as? Int ?? 0
+            let taskTitle = row["taskTitle"] as? String ?? ""
+            let isDone = row["isDone"] as? Bool ?? false
+            let isReminded = row["isReminded"] as? Bool ?? false
+            let isTimeSet = row["isTimeSet"] as? Bool
+            let nextReminderTimestamp = row["nextReminderTimestamp"] as? Int
+            let isRepeating = row["isRepeating"] as? Bool
+            let hasProgress = row["hasProgress"] as? Bool ?? false
+            let totalProgress = row["totalProgress"] as? Int ?? 0
+            let color = row["color"] as? Int ?? 0
+            let priority = row["priority"] as? Int ?? 0
+            let creationTimestamp = row["creationTimestamp"] as? Int ?? 0
+            let updateTimestamp = row["updateTimestamp"] as? Int ?? 0
+            let manualSorting = row["manualSorting"] as? Int ?? 0
+            let currentProgress = row["currentProgress"] as? Int ?? 0
+            let progressPercentage = totalProgress != 0 ? (currentProgress * 100 / totalProgress) : 0
+            
+            return Models.HomeCell(
+                id: id,
+                taskType: taskType,
+                taskTitle: taskTitle,
+                isDone: isDone,
+                isReminded: isReminded,
+                isTimeSet: isTimeSet,
+                nextReminderTimestamp: nextReminderTimestamp,
+                isRepeating: isRepeating,
+                hasProgress: hasProgress,
+                color: color,
+                priority: priority,
+                creationTimestamp: creationTimestamp,
+                updateTimestamp: updateTimestamp,
+                manualSorting: manualSorting,
+                progressPercentage: progressPercentage
+            )
+        }
+        
+        return taskRows.compactMap { $0 }
+    }
     
 }
+
