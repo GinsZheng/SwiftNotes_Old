@@ -165,7 +165,7 @@ class TaskTable: TableProtocol {
     func fetchAllData() -> [Models.Task] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchArray(withSQL: sql) { row -> Models.Task? in
-            guard let id: Int = extractValue(from: row, key: "id") else { return nil }
+            guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
             let taskType: Int = extractValue(from: row, key: "taskType")
             let taskTitle: String = extractValue(from: row, key: "taskTitle")
             let taskContent: String? = extractOptValue(from: row, key: "taskContent")
@@ -225,7 +225,7 @@ extension TaskTable {
         """
         
         return DB.shared.fetchArray(withSQL: sql) { row in
-            guard let id: Int = extractValue(from: row, key: "id") else { return nil }
+            guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
             let taskType: Int = extractValue(from: row, key: "taskType")
             let taskTitle: String = extractValue(from: row, key: "taskTitle")
             let isDone: Bool = extractValue(from: row, key: "isDone")
