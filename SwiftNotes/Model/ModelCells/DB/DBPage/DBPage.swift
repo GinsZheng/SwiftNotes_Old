@@ -113,7 +113,7 @@ extension DBPage {
     @objc func handleQuery() {
         let projects = dataManager.fetchAllProjects()
         for project in projects {
-            print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress)")
+            print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress ?? 0)")
         }
     }
     

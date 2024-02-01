@@ -81,7 +81,7 @@ class TaskTable: TableProtocol {
     private let isProgressSummaryHidden = Expression<Bool>("isProgressSummaryHidden")
     private let manualSorting = Expression<Int>("manualSorting")
     private let isInTrash = Expression<Bool>("isInTrash")
-
+    
     // MARK: - 初始化与通用协议方法
     required init() {
         DB.shared.createTable(self)
@@ -165,38 +165,38 @@ class TaskTable: TableProtocol {
     func fetchAllData() -> [Models.Task] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchArray(withSQL: sql) { row -> Models.Task? in
-            guard let id = row["id"] as? Int else { return nil }
-            let taskType = row["taskType"] as? Int ?? 0
-            let taskTitle = row["taskTitle"] as? String ?? ""
-            let taskContent = row["taskContent"] as? String
-            let isDone = row["isDone"] as? Bool ?? false
-            let isReminded = row["isReminded"] as? Bool ?? false
-            let isTimeSet = row["isTimeSet"] as? Bool
-            let nextReminderTimestamp = row["nextReminderTimestamp"] as? Int
-            let reminderOccasions = stringToArray(row["reminderOccasions"] as? String, type: Int.self)
-            let isRepeating = row["isRepeating"] as? Bool
-            let repeatCycle = row["repeatCycle"] as? Int
-            let repeatInterval = row["repeatInterval"] as? Int
-            let repeatDays = stringToArray(row["repeatDays"] as? String, type: Int.self)
-            let repeatType = row["repeatType"] as? Int
-            let repeatDates = stringToArray(row["repeatDates"] as? String, type: Int.self)
-            let whichWeek = row["whichWeek"] as? Int
-            let dayOfWeek = row["dayOfWeek"] as? Int
-            let months = stringToArray(row["months"] as? String, type: Int.self)
-            let endRepeatTimestamp = row["endRepeatTimestamp"] as? Int
-            let hasProgress = row["hasProgress"] as? Bool ?? false
-            let progressType = row["progressType"] as? Int
-            let totalProgress = row["totalProgress"] as? Int
-            let color = row["color"] as? Int ?? 0
-            let priority = row["priority"] as? Int ?? 0
-            let subtaskIds = stringToArray(row["subtaskIds"] as? String, type: Int.self)
-            let creationTimestamp = row["creationTimestamp"] as? Int ?? 0
-            let updateTimestamp = row["updateTimestamp"] as? Int ?? 0
-            let groupId = row["groupId"] as? Int ?? 0
-            let isProgressSummaryHidden = row["isProgressSummaryHidden"] as? Bool ?? false
-            let manualSorting = row["manualSorting"] as? Int ?? 0
-            let isInTrash = row["isInTrash"] as? Bool ?? false
-
+            guard let id: Int = extractValue(from: row, key: "id") else { return nil }
+            let taskType: Int = extractValue(from: row, key: "taskType")
+            let taskTitle: String = extractValue(from: row, key: "taskTitle")
+            let taskContent: String? = extractOptValue(from: row, key: "taskContent")
+            let isDone: Bool = extractValue(from: row, key: "isDone")
+            let isReminded: Bool = extractValue(from: row, key: "isReminded")
+            let isTimeSet: Bool? = extractOptValue(from: row, key: "isTimeSet")
+            let nextReminderTimestamp: Int? = extractOptValue(from: row, key: "nextReminderTimestamp")
+            let reminderOccasions: [Int] = extractArray(from: row, key: "reminderOccasions")
+            let isRepeating: Bool? = extractOptValue(from: row, key: "isRepeating")
+            let repeatCycle: Int? = extractOptValue(from: row, key: "repeatCycle")
+            let repeatInterval: Int? = extractOptValue(from: row, key: "repeatInterval")
+            let repeatDays: [Int] = extractArray(from: row, key: "repeatDays")
+            let repeatType: Int? = extractOptValue(from: row, key: "repeatType")
+            let repeatDates: [Int] = extractArray(from: row, key: "repeatDates")
+            let whichWeek: Int? = extractOptValue(from: row, key: "whichWeek")
+            let dayOfWeek: Int? = extractOptValue(from: row, key: "dayOfWeek")
+            let months: [Int] = extractArray(from: row, key: "months")
+            let endRepeatTimestamp: Int? = extractOptValue(from: row, key: "endRepeatTimestamp")
+            let hasProgress: Bool = extractValue(from: row, key: "hasProgress")
+            let progressType: Int? = extractOptValue(from: row, key: "progressType")
+            let totalProgress: Int? = extractOptValue(from: row, key: "totalProgress")
+            let color: Int = extractValue(from: row, key: "color")
+            let priority: Int = extractValue(from: row, key: "priority")
+            let subtaskIds: [Int] = extractArray(from: row, key: "subtaskIds")
+            let creationTimestamp: Int = extractValue(from: row, key: "creationTimestamp")
+            let updateTimestamp: Int = extractValue(from: row, key: "updateTimestamp")
+            let groupId: Int = extractValue(from: row, key: "groupId")
+            let isProgressSummaryHidden: Bool = extractValue(from: row, key: "isProgressSummaryHidden")
+            let manualSorting: Int = extractValue(from: row, key: "manualSorting")
+            let isInTrash: Bool = extractValue(from: row, key: "isInTrash")
+            
             return Models.Task(id: id, taskType: taskType, taskTitle: taskTitle, taskContent: taskContent, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, reminderOccasions: reminderOccasions, isRepeating: isRepeating, repeatCycle: repeatCycle, repeatInterval: repeatInterval, repeatDays: repeatDays, repeatType: repeatType, repeatDates: repeatDates, whichWeek: whichWeek, dayOfWeek: dayOfWeek, months: months, endRepeatTimestamp: endRepeatTimestamp, hasProgress: hasProgress, progressType: progressType, totalProgress: totalProgress, color: color, priority: priority, subtaskIds: subtaskIds, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, groupId: groupId, isProgressSummaryHidden: isProgressSummaryHidden, manualSorting: manualSorting, isInTrash: isInTrash)
         }
     }
@@ -204,9 +204,7 @@ class TaskTable: TableProtocol {
 }
 
 
-
-//
-//// MARK: - 查询方法
+// MARK: - 查询方法
 extension TaskTable {
     func fetchHomeCellData() -> [Models.HomeCell] {
         let sql = """
@@ -225,47 +223,31 @@ extension TaskTable {
         ) ss ON task.id = ss.taskId
         ORDER BY task.updateTimestamp DESC
         """
-
-        let taskRows = DB.shared.fetchArray(withSQL: sql) { row in
-            let id = row["id"] as? Int ?? 0
-            let taskType = row["taskType"] as? Int ?? 0
-            let taskTitle = row["taskTitle"] as? String ?? ""
-            let isDone = row["isDone"] as? Bool ?? false
-            let isReminded = row["isReminded"] as? Bool ?? false
-            let isTimeSet = row["isTimeSet"] as? Bool
-            let nextReminderTimestamp = row["nextReminderTimestamp"] as? Int
-            let isRepeating = row["isRepeating"] as? Bool
-            let hasProgress = row["hasProgress"] as? Bool ?? false
-            let totalProgress = row["totalProgress"] as? Int ?? 0
-            let color = row["color"] as? Int ?? 0
-            let priority = row["priority"] as? Int ?? 0
-            let creationTimestamp = row["creationTimestamp"] as? Int ?? 0
-            let updateTimestamp = row["updateTimestamp"] as? Int ?? 0
-            let manualSorting = row["manualSorting"] as? Int ?? 0
-            let currentProgress = row["currentProgress"] as? Int ?? 0
-            let progressPercentage = totalProgress != 0 ? (currentProgress * 100 / totalProgress) : 0
+        
+        return DB.shared.fetchArray(withSQL: sql) { row in
+            guard let id: Int = extractValue(from: row, key: "id") else { return nil }
+            let taskType: Int = extractValue(from: row, key: "taskType")
+            let taskTitle: String = extractValue(from: row, key: "taskTitle")
+            let isDone: Bool = extractValue(from: row, key: "isDone")
+            let isReminded: Bool = extractValue(from: row, key: "isReminded")
+            let isTimeSet: Bool? = extractOptValue(from: row, key: "isTimeSet")
+            let nextReminderTimestamp: Int? = extractOptValue(from: row, key: "nextReminderTimestamp")
+            let isRepeating: Bool? = extractOptValue(from: row, key: "isRepeating")
+            let hasProgress: Bool = extractValue(from: row, key: "hasProgress")
+            let totalProgress: Int = extractValue(from: row, key: "totalProgress")
+            let color: Int = extractValue(from: row, key: "color")
+            let priority: Int = extractValue(from: row, key: "priority")
+            let creationTimestamp: Int = extractValue(from: row, key: "creationTimestamp")
+            let updateTimestamp: Int = extractValue(from: row, key: "updateTimestamp")
+            let manualSorting: Int = extractValue(from: row, key: "manualSorting")
+            let currentProgress: Int = extractValue(from: row, key: "currentProgress")
+            let progressPercentage: Int = totalProgress != 0 ? (currentProgress * 100 / totalProgress) : 0
             
-            return Models.HomeCell(
-                id: id,
-                taskType: taskType,
-                taskTitle: taskTitle,
-                isDone: isDone,
-                isReminded: isReminded,
-                isTimeSet: isTimeSet,
-                nextReminderTimestamp: nextReminderTimestamp,
-                isRepeating: isRepeating,
-                hasProgress: hasProgress,
-                color: color,
-                priority: priority,
-                creationTimestamp: creationTimestamp,
-                updateTimestamp: updateTimestamp,
-                manualSorting: manualSorting,
-                progressPercentage: progressPercentage
-            )
+            return Models.HomeCell(id: id, taskType: taskType, taskTitle: taskTitle, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, isRepeating: isRepeating, hasProgress: hasProgress, color: color, priority: priority, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, manualSorting: manualSorting, progressPercentage: progressPercentage)
         }
         
-        return taskRows.compactMap { $0 }
     }
     
 }
+
 
