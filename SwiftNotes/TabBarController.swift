@@ -19,15 +19,15 @@ class TabBarController {
         let v1 = ViewListVC()
         let v2 = CSControllerListVC()
         let v3 = CSModelListVC()
-        let v4 = ViewController()
-//        let v4 = SwitchScrollAndCollectionViewPage()
+//        let v4 = ViewController()
+        let v4 = TaskListVC()
         let v5 = TestVCListPage()
         
         v1.tabBarItem = ESTabBarItem.init(title: "View", image: UIImage(named: "tab_discovery"), selectedImage: UIImage(named: "tab_discovery_s"))
         v2.tabBarItem = ESTabBarItem.init(title: "Controller", image: UIImage(named: "tab_saved"), selectedImage: UIImage(named: "tab_saved_s"))
         v3.tabBarItem = ESTabBarItem.init(title: "Model", image: UIImage(named: "tab_tickets"), selectedImage: UIImage(named: "tab_tickets_s"))
         v4.tabBarItem = ESTabBarItem.init(title: "Test", image: UIImage(named: "tab_mine"), selectedImage: UIImage(named: "tab_mine_s"))
-        v5.tabBarItem = ESTabBarItem.init(title: "TestList", image: UIImage(named: "tab_tickets"), selectedImage: UIImage(named: "tab_service"))
+        v5.tabBarItem = ESTabBarItem.init(title: "TestList", image: UIImage(named: "tab_tickets"), selectedImage: UIImage(named: "tab_tickets_s"))
         
         // tabBarController.tabBar.shadowImage = nil
         

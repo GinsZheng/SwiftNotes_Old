@@ -219,6 +219,9 @@
 		7A997EC82B57C7D900001608 /* OptionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC72B57C7D900001608 /* OptionSheet.swift */; };
 		7A997ECA2B590F7800001608 /* DBTableInAPP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC92B590F7800001608 /* DBTableInAPP.swift */; };
 		7A9B2A2C28E843620027C41D /* imageFlask.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A9B2A0228E843620027C41D /* imageFlask.png */; };
+		7AA094612B6B303A00DE8127 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA094602B6B303A00DE8127 /* HomeCell.swift */; };
+		7AA094632B6B303E00DE8127 /* TaskListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA094622B6B303E00DE8127 /* TaskListVC.swift */; };
+		7AA094972B6B318400DE8127 /* AppExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA094962B6B318400DE8127 /* AppExtension.swift */; };
 		7AA3259C243B6FC000D5308D /* StringPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3259B243B6FC000D5308D /* StringPage.swift */; };
 		7AA325BD243CDB6A00D5308D /* LayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA325BC243CDB6A00D5308D /* LayerView.swift */; };
 		7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA3C290241CCA5800F77711 /* NavControllerPage.swift */; };
@@ -790,6 +793,9 @@
 		7A997EC72B57C7D900001608 /* OptionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSheet.swift; sourceTree = "<group>"; };
 		7A997EC92B590F7800001608 /* DBTableInAPP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBTableInAPP.swift; sourceTree = "<group>"; };
 		7A9B2A0228E843620027C41D /* imageFlask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imageFlask.png; sourceTree = "<group>"; };
+		7AA094602B6B303A00DE8127 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCell.swift; path = ../../../../TimingTask/TimingTask/Base/HomeCell.swift; sourceTree = "<group>"; };
+		7AA094622B6B303E00DE8127 /* TaskListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskListVC.swift; path = ../../../../TimingTask/TimingTask/Task/TaskListVC.swift; sourceTree = "<group>"; };
+		7AA094962B6B318400DE8127 /* AppExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppExtension.swift; path = ../../../../TimingTask/TimingTask/Base/AppExtension.swift; sourceTree = "<group>"; };
 		7AA3259B243B6FC000D5308D /* StringPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringPage.swift; sourceTree = "<group>"; };
 		7AA325BC243CDB6A00D5308D /* LayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerView.swift; sourceTree = "<group>"; };
 		7AA3C290241CCA5800F77711 /* NavControllerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerPage.swift; sourceTree = "<group>"; };
@@ -931,9 +937,10 @@
 		7A11A0662B68DCC800F8456E /* TimingTaskFiles */ = {
 			isa = PBXGroup;
 			children = (
-				7A11A05D2B68BC5400F8456E /* CsvFiles */,
-				7A11A0672B68DD1600F8456E /* DBTables */,
+				7AA0945F2B6B301100DE8127 /* Quote */,
 				7A11A05C2B68A49000F8456E /* Models */,
+				7A11A0672B68DD1600F8456E /* DBTables */,
+				7A11A05D2B68BC5400F8456E /* CsvFiles */,
 			);
 			path = TimingTaskFiles;
 			sourceTree = "<group>";
@@ -1423,6 +1430,16 @@
 				7A9219512B00BED200FE65FC /* SwitchView2Page.swift */,
 			);
 			path = SwitchViewList;
+			sourceTree = "<group>";
+		};
+		7AA0945F2B6B301100DE8127 /* Quote */ = {
+			isa = PBXGroup;
+			children = (
+				7AA094622B6B303E00DE8127 /* TaskListVC.swift */,
+				7AA094602B6B303A00DE8127 /* HomeCell.swift */,
+				7AA094962B6B318400DE8127 /* AppExtension.swift */,
+			);
+			path = Quote;
 			sourceTree = "<group>";
 		};
 		7AADC6952B5BDFA800E42FA8 /* DB */ = {
@@ -2382,6 +2399,7 @@
 				7A3986A42B4D2E33004E0721 /* GroupListView.swift in Sources */,
 				7A31324F2392A6680008298C /* ClassPage.swift in Sources */,
 				7A02AEA62B182DD700E9E6D7 /* ClosureListVC.swift in Sources */,
+				7AA094612B6B303A00DE8127 /* HomeCell.swift in Sources */,
 				7A0258A82434EF42006D4AB5 /* PopToSpecificPage.swift in Sources */,
 				7A62A1F92461AB980090D128 /* CustomPopupWindow.swift in Sources */,
 				7A8A7EAF23D1A7F50067D9C3 /* ProgressPage.swift in Sources */,
@@ -2391,6 +2409,7 @@
 				7A4736AC246AFDCC0071115F /* DictionaryPage.swift in Sources */,
 				7A88C74D2A8929E400D61E33 /* SQLiteManager.swift in Sources */,
 				7A2161342389869D00D5A93A /* NumberFormatterPage.swift in Sources */,
+				7AA094632B6B303E00DE8127 /* TaskListVC.swift in Sources */,
 				7A33086923CC48A30021BA5B /* RequestPage.swift in Sources */,
 				7A6561192B66948800F239EB /* UpsertTimingModel.swift in Sources */,
 				7A21615A238986AF00D5A93A /* AnimationPage.swift in Sources */,
@@ -2418,6 +2437,7 @@
 				7A65611D2B66950000F239EB /* TimingAlertModel.swift in Sources */,
 				7A02AEA82B182E3A00E9E6D7 /* Closure2VC.swift in Sources */,
 				7A88C74C2A8929E400D61E33 /* SetFrame.swift in Sources */,
+				7AA094972B6B318400DE8127 /* AppExtension.swift in Sources */,
 				7A88C7422A8929E400D61E33 /* Constant.swift in Sources */,
 				7A02AEAD2B18826C00E9E6D7 /* ClosureEnumVC.swift in Sources */,
 				7A89B2D9240AB9B6004688FD /* MagicMovePage.swift in Sources */,

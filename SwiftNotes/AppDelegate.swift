@@ -24,15 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("应用第一次启动")
             createTable() // 创建表，用于填充初始数据
             importDefaultData()
-        } else {
-            print("非也")
         }
         
         //当前版本是否第一次启动
         if UserDefaults.isFirstLaunchOfNewVersion() {
             print("当前版本第一次启动")
-        } else {
-            print("非也")
         }
         
         // MARK: - 设置长按图标出现快捷功能列表
@@ -122,6 +118,10 @@ extension AppDelegate {
     }
     
     private func importDefaultData() {
-        // ⚠️下一步
+        CSFileManager.importCSVToSQLite(csvFileName: CSVFile.taskGroup, tableName: DBTable.taskGroup)
+        CSFileManager.importCSVToSQLite(csvFileName: CSVFile.history, tableName: DBTable.history)
+        CSFileManager.importCSVToSQLite(csvFileName: CSVFile.task, tableName: DBTable.task)
+        CSFileManager.importCSVToSQLite(csvFileName: CSVFile.timing, tableName: DBTable.timing)
     }
+    
 }
