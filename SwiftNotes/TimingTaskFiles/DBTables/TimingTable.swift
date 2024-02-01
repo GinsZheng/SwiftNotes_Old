@@ -69,15 +69,14 @@ class TimingTable: TableProtocol {
     func fetchAllData() -> [Models.Timing] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchArray(withSQL: sql) { row -> Models.Timing? in
-            guard let id = row["id"] as? Int,
-                  let progressRecord = row["progressRecord"] as? Int?,
-                  let progressSummary = row["progressSummary"] as? String?,
-                  let startTimestamp = row["startTimestamp"] as? Int,
-                  let endTimestamp = row["endTimestamp"] as? Int,
-                  let pauseDuration = row["pauseDuration"] as? Int?,
-                  let taskId = row["taskId"] as? Int
-            else { return nil }
-            
+            guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
+            let progressRecord: Int? = extractOptValue(from: row, key: "progressRecord")
+            let progressSummary: String? = extractOptValue(from: row, key: "progressSummary")
+            let startTimestamp: Int = extractValue(from: row, key: "startTimestamp")
+            let endTimestamp: Int = extractValue(from: row, key: "endTimestamp")
+            let pauseDuration: Int? = extractOptValue(from: row, key: "pauseDuration")
+            let taskId: Int = extractValue(from: row, key: "taskId")
+
             return Models.Timing(id: id, progressRecord: progressRecord, progressSummary: progressSummary, startTimestamp: startTimestamp, endTimestamp: endTimestamp, pauseDuration: pauseDuration, taskId: taskId)
         }
     }
@@ -89,4 +88,5 @@ class TimingTable: TableProtocol {
 extension TimingTable {
     
 }
+
 

@@ -81,7 +81,7 @@ class TaskTable: TableProtocol {
     private let isProgressSummaryHidden = Expression<Bool>("isProgressSummaryHidden")
     private let manualSorting = Expression<Int>("manualSorting")
     private let isInTrash = Expression<Bool>("isInTrash")
-    
+
     // MARK: - 初始化与通用协议方法
     required init() {
         DB.shared.createTable(self)
@@ -196,7 +196,7 @@ class TaskTable: TableProtocol {
             let isProgressSummaryHidden: Bool = extractValue(from: row, key: "isProgressSummaryHidden")
             let manualSorting: Int = extractValue(from: row, key: "manualSorting")
             let isInTrash: Bool = extractValue(from: row, key: "isInTrash")
-            
+
             return Models.Task(id: id, taskType: taskType, taskTitle: taskTitle, taskContent: taskContent, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, reminderOccasions: reminderOccasions, isRepeating: isRepeating, repeatCycle: repeatCycle, repeatInterval: repeatInterval, repeatDays: repeatDays, repeatType: repeatType, repeatDates: repeatDates, whichWeek: whichWeek, dayOfWeek: dayOfWeek, months: months, endRepeatTimestamp: endRepeatTimestamp, hasProgress: hasProgress, progressType: progressType, totalProgress: totalProgress, color: color, priority: priority, subtaskIds: subtaskIds, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, groupId: groupId, isProgressSummaryHidden: isProgressSummaryHidden, manualSorting: manualSorting, isInTrash: isInTrash)
         }
     }

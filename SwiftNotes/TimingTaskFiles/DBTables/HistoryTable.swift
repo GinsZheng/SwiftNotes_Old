@@ -57,12 +57,11 @@ class HistoryTable: TableProtocol {
     func fetchAllData() -> [Models.History] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchArray(withSQL: sql) { row -> Models.History? in
-            guard let id = row["id"] as? Int,
-                  let reminderTimestamp = row["reminderTimestamp"] as? Int,
-                  let isTimeSet = row["isTimeSet"] as? Bool,
-                  let taskId = row["taskId"] as? Int
-            else { return nil }
-            
+            guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
+            let reminderTimestamp: Int = extractValue(from: row, key: "reminderTimestamp")
+            let isTimeSet: Bool = extractValue(from: row, key: "isTimeSet")
+            let taskId: Int = extractValue(from: row, key: "taskId")
+
             return Models.History(id: id, reminderTimestamp: reminderTimestamp, isTimeSet: isTimeSet, taskId: taskId)
         }
     }
@@ -74,4 +73,5 @@ class HistoryTable: TableProtocol {
 extension HistoryTable {
     
 }
+
 

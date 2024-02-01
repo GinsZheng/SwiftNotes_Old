@@ -69,14 +69,14 @@ class TaskGroupTable: TableProtocol {
     func fetchAllData() -> [Models.TaskGroup] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchArray(withSQL: sql) { row -> Models.TaskGroup? in
-            guard let id = row["id"] as? Int,
-                  let groupName = row["groupName"] as? String,
-                  let groupType = row["groupType"] as? Int,
-                  let groupSorting = row["groupSorting"] as? Int
-            else { return nil }
-            let hideInSmartGroup = row["hideInSmartGroup"] as? Bool
-            let hideGroup = row["hideGroup"] as? Bool
-            let smartGroupPreset = row["smartGroupPreset"] as? Int
+            guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
+            let groupName: String = extractValue(from: row, key: "groupName")
+            let groupType: Int = extractValue(from: row, key: "groupType")
+            let groupSorting: Int = extractValue(from: row, key: "groupSorting")
+            let hideInSmartGroup: Bool? = extractOptValue(from: row, key: "hideInSmartGroup")
+            let hideGroup: Bool? = extractOptValue(from: row, key: "hideGroup")
+            let smartGroupPreset: Int? = extractOptValue(from: row, key: "smartGroupPreset")
+
             return Models.TaskGroup(id: id, groupName: groupName, groupType: groupType, groupSorting: groupSorting, hideInSmartGroup: hideInSmartGroup, hideGroup: hideGroup, smartGroupPreset: smartGroupPreset)
         }
     }
@@ -88,4 +88,5 @@ class TaskGroupTable: TableProtocol {
 extension TaskGroupTable {
     
 }
+
 
