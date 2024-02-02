@@ -7,6 +7,9 @@
 //
 
 extension Models {
+    class HomeSection: BaseSection<Models.HomeCell> {
+    }
+    
     struct HomeCell {
         var id: Int
         var taskType: Int                       // 0：任务，1：子任务

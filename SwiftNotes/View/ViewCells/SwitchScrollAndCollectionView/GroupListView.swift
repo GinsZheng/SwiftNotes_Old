@@ -1,5 +1,13 @@
 import UIKit
 
+private class DataManager: BaseDataManager<Models.TaskGroup> {
+    let taskGroupTable = TaskGroupTable()
+    
+    init() {
+        super.init(initialItems: taskGroupTable.fetchAllData())
+    }
+}
+
 // CollectionView的参数
 struct GroupCollectionViewStyles {
     static let fontSize: CGFloat = 14
@@ -7,30 +15,6 @@ struct GroupCollectionViewStyles {
     static let buttonPadding: CGFloat = 24
     static let itemInterval: CGFloat = 6
     static let itemHeight: CGFloat = 40
-}
-
-// collectionView数据的结构体
-private struct Item {
-    let title: String
-    let bgColor: String
-}
-
-// 数据
-private class DataManager: BaseDataManager<Item> {
-    init() {
-        super.init(initialItems: [
-            Item(title: "0 Swift", bgColor: cBlue_5393FF),
-            Item(title: "1 Xcode", bgColor: cPurple_BF62F8),
-            Item(title: "2 Java", bgColor: cMagenta_FC5AAE),
-            Item(title: "3 PHP", bgColor: cRed_FF635A),
-            Item(title: "4 JS", bgColor: cOrange_F9AD18),
-            Item(title: "5 React", bgColor: cGreen_25BE3C),
-            Item(title: "6 Ruby", bgColor: cBluishGreen_01C7BD),
-            Item(title: "7 HTML", bgColor: cBlue_5393FF),
-            Item(title: "8 C#", bgColor: cPurple_BF62F8),
-            Item(title: "9 C++", bgColor: cPurple_BF62F8),
-        ])
-    }
 }
 
 
@@ -45,7 +29,7 @@ class GroupListView: UIView {
     }
     
     private let groupData = DataManager()
-    lazy var titles: [String] = groupData.map { $0.title }
+    lazy var titles: [String] = groupData.map { $0.groupName }
     
     var currentUIForm: UIForm = .form0
     var collectionViewContentHeight: CGFloat = 0
@@ -131,7 +115,7 @@ extension GroupListView {
         layout.fetchTitleWidths = { [weak self] in
             guard let self = self else { return [] }
             return groupData.map {
-                getLabelWidth(withMaxWidth: 136, text: $0.title, fontSize: Styles.fontSize, weight: Styles.weight)
+                getLabelWidth(withMaxWidth: 136, text: $0.groupName, fontSize: Styles.fontSize, weight: Styles.weight)
             }
         }
         

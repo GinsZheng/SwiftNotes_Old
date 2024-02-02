@@ -265,10 +265,18 @@ extension TaskTable {
             let manualSorting: Int = extractValue(from: row, key: "manualSorting")
             let currentProgress: Int = extractValue(from: row, key: "currentProgress")
             let progressPercentage: Int = totalProgress != 0 ? (currentProgress * 100 / totalProgress) : 0
-            
-            print(Models.HomeCell(id: id, taskType: taskType, taskTitle: taskTitle, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, isRepeating: isRepeating, hasProgress: hasProgress, color: color, priority: priority, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, manualSorting: manualSorting, progressPercentage: progressPercentage))
-            
+
             return Models.HomeCell(id: id, taskType: taskType, taskTitle: taskTitle, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, isRepeating: isRepeating, hasProgress: hasProgress, color: color, priority: priority, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, manualSorting: manualSorting, progressPercentage: progressPercentage)
+        }
+        
+    }
+    
+    // 返回未完成和已完成的cell数量
+    func fetchTaskCountsByIsDone() -> [Int] {
+        let sql = "SELECT COUNT(*) FROM task GROUP BY isDone ORDER BY isDone"
+        return DB.shared.fetchArray(withSQL: sql) { row in
+            let count: Int = extractValue(from: row, key: "COUNT(*)")
+            return count
         }
         
     }
@@ -276,6 +284,8 @@ extension TaskTable {
     func fetchHomeSectionsData() -> [Models.HomeSection] {
         // 获取所有任务数据
         let allTasks = fetchHomeCellsData()
+        // 获取每个section任务数量
+        let taskCounts = fetchTaskCountsByIsDone()
 
         // 分类任务：isDone 为 0 和 1
         let tasksIsDone0 = allTasks.filter { !$0.isDone }
@@ -283,12 +293,11 @@ extension TaskTable {
 
         // 创建两个 section
         let sectionForIsDone0 = Models.HomeSection(cells: tasksIsDone0)
-        let sectionForIsDone1 = Models.HomeSection(header: .titleBg(title: "已完成", titleType: .small), cells: tasksIsDone1)
+        let sectionForIsDone1 = Models.HomeSection(header: .titleDescBg(title: "已完成", titleType: .small, description: "\(taskCounts[1])"), cells: tasksIsDone1)
 
         // 返回包含这两个 section 的数组
         return [sectionForIsDone0, sectionForIsDone1]
-        
     }
+    
 }
-
 
