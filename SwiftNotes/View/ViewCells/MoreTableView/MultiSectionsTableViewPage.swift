@@ -12,8 +12,8 @@
 
 import UIKit
 
-// 1. DataManager 遵循 DefaultSectionAndCellDataManager 以实现cellData方法
-private class DataManager: DefaultSectionAndCellDataManager {
+// 1. DataManager 遵循 DefaultSectionDataManager 以实现cellData方法
+private class DataManager: DefaultSectionDataManager {
     init() {
         super.init(initialItems: [
             DefaultSection(

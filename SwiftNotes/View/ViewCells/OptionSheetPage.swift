@@ -8,7 +8,7 @@
 
 import UIKit
 
-private class OptionDataManager: DefaultSectionAndCellDataManager {
+private class OptionDataManager: DefaultSectionDataManager {
     init() {
         super.init(initialItems: [
             DefaultSection(

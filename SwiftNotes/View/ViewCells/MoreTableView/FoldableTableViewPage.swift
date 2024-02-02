@@ -8,8 +8,8 @@
 
 import UIKit
 
-// A. DataManager 遵循 SectionedDataManager 以实现cellData方法
-private class DataManager: DefaultSectionAndCellDataManager {
+// A. DataManager 遵循 SectionHandlerProtocol 以实现cellData方法
+private class DataManager: DefaultSectionDataManager {
     init() {
         super.init(initialItems: [
             DefaultSection(

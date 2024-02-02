@@ -1,6 +1,6 @@
 import UIKit
 
-private class DataManager: DefaultSectionAndCellDataManager {
+private class DataManager: DefaultSectionDataManager {
     init() {
         super.init(initialItems: [
             DefaultSection(
