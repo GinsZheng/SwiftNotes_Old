@@ -12,23 +12,6 @@ import SQLite
 private class DataManager {
     private var progressTable = ProgressTable()
     
-    func insertProgress(model: Models.Progress) {
-        DB.shared.insert(table: progressTable, model: model)
-    }
-    
-    func deleteProgress(id: Int) {
-        DB.shared.delete(table: progressTable, id: id)
-    }
-    
-    func updateProgress(id: Int, model: Models.Progress) {
-        DB.shared.update(table: progressTable, id: id, model: model)
-    }
-    
-    // 获取所有数据
-    func fetchAllProgresses() -> [Models.Progress] {
-        return progressTable.fetchAllData()
-    }
-    
     func fetchDuration(id: Int) -> Int {
         return progressTable.fetchDuration(id: id)
     }
@@ -37,6 +20,7 @@ private class DataManager {
 
 class ProgressPage: UIViewController {
     private let dataManager = DataManager()
+    private let progressDataManager = ProgressDataManager()
     
     let insertButton = UIButton(type: .custom)
     let updateButton = UIButton(type: .custom)
@@ -99,25 +83,25 @@ extension ProgressPage {
     // 2A：新增
     @objc func handleAdding() {
         let newProgress = Models.Progress(currentProgress: 7, startTime: 1596122800, endTime: 1596124800, itemId: 1)
-        dataManager.insertProgress(model: newProgress)
+        progressDataManager.insertProgress(model: newProgress)
     }
     
     // 2B：删除
     @objc func handleDelete() {
         let lastId = DB.shared.getLastId(tableName: DBTable.progress)
-        dataManager.deleteProgress(id: lastId)
+        progressDataManager.deleteProgress(id: lastId)
     }
     
     // 2C：更新
     @objc func handleUpdate() {
         let lastId = DB.shared.getLastId(tableName: DBTable.progress)
         let updatedProgress = Models.Progress(id: lastId, currentProgress: 20, startTime: 1596122800, endTime: 1596124800, itemId: 2)
-        dataManager.updateProgress(id: lastId, model: updatedProgress)
+        progressDataManager.updateProgress(id: lastId, model: updatedProgress)
     }
     
     // 2D：查询(SQL)
     @objc func handleQuery() {
-        let progresses = dataManager.fetchAllProgresses()
+        let progresses = progressDataManager.fetchAllProgresses()
         for progress in progresses {
             print("ID: \(progress.id), 进度: \(progress.currentProgress), 项目 ID: \(progress.itemId)")
         }

@@ -1322,7 +1322,6 @@
 				7A7D1C39241CB9F100E08EA1 /* ItemBasePage.swift */,
 				7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */,
 				7AA3C2B0241CCC6000F77711 /* ItemUpdatePage.swift */,
-				7AAE8B522B5E397D003F67B0 /* ItemTable.swift */,
 			);
 			path = ItemModel;
 			sourceTree = "<group>";
@@ -1331,7 +1330,6 @@
 			isa = PBXGroup;
 			children = (
 				7A8A7EAE23D1A7F50067D9C3 /* ProgressPage.swift */,
-				7A57AE072B60D5A9001E8EC8 /* ProgressTable.swift */,
 			);
 			path = ProgressModel;
 			sourceTree = "<group>";
@@ -1392,6 +1390,7 @@
 		7A88C78A2A8A624E00D61E33 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				7AA094F82B6CBCC600DE8127 /* Tables */,
 				7A65610C2B664B7800F239EB /* Models */,
 				7AD3C6172B10A09400B9A752 /* Localization */,
 				7A88C78B2A8A626300D61E33 /* UIPresentNav.swift */,
@@ -1436,24 +1435,25 @@
 			path = Quote;
 			sourceTree = "<group>";
 		};
+		7AA094F82B6CBCC600DE8127 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */,
+				7A57AE072B60D5A9001E8EC8 /* ProgressTable.swift */,
+				7AAE8B522B5E397D003F67B0 /* ItemTable.swift */,
+			);
+			path = Tables;
+			sourceTree = "<group>";
+		};
 		7AADC6952B5BDFA800E42FA8 /* DB */ = {
 			isa = PBXGroup;
 			children = (
 				7AADC6982B5BDFF600E42FA8 /* DBListPage.swift */,
-				7AADC69C2B5BE26500E42FA8 /* DBPage */,
+				7AADC6962B5BDFE800E42FA8 /* DBPage.swift */,
 				7A7D1C5B241CC4C900E08EA1 /* ItemModel */,
 				7A7F97C5241DF1B8000F1E31 /* ProgressModel */,
 			);
 			path = DB;
-			sourceTree = "<group>";
-		};
-		7AADC69C2B5BE26500E42FA8 /* DBPage */ = {
-			isa = PBXGroup;
-			children = (
-				7AADC6962B5BDFE800E42FA8 /* DBPage.swift */,
-				7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */,
-			);
-			path = DBPage;
 			sourceTree = "<group>";
 		};
 		7ABB91552B4EA0BC008ACA65 /* SwitchScrollAndCollectionView */ = {

@@ -9,24 +9,13 @@
 import UIKit
 import SwiftyJSON
 import SQLite
+import Foundation
 
-private class ItemDataManager {
-    private let itemTable = ItemTable()
-    
-    func insert(model: Models.Item) {
-        DB.shared.insert(table: itemTable, model: model)
+private class DataManager {
+    func getLastId() -> Int {
+        return DB.shared.getLastId(tableName: DBTable.item)
     }
-    
-    func update(id: Int, model: Models.Item) {
-        DB.shared.update(table: itemTable, id: id, model: model)
-    }
-    
-    func delete(id: Int) {
-        DB.shared.delete(table: itemTable, id: id)
-    }
-    
 }
-
 
 // MARK: - 视图控制器
 class ItemBasePage: UIViewController {
@@ -39,10 +28,12 @@ class ItemBasePage: UIViewController {
     let colorTextField = UITextField()
     let actionButton = UIButton(type: .custom)
     let deleteButton = UIButton(type: .custom)
+    let quickInsertButton = UIButton(type: .custom)
     
     var isInsertMode = true
     var itemModel: Models.Item? // 用于编辑时填充数据的模型
     
+    private let dataManager = DataManager()
     private let itemData = ItemDataManager()
     
     // MARK: - 初始化与生命周期方法
@@ -84,6 +75,12 @@ extension ItemBasePage {
         actionButton.setStyleSolid17ptFgWhiteThemeButton(title: buttonTitle)
         actionButton.setFrame(left: kEdgeMargin, top: colorTextField.bottom + kVertMargin, right: kEdgeMargin, height: kCellHeight)
         
+        // 设置快捷添加按钮
+        let quickInsertButton = UIButton(type: .custom)
+        quickInsertButton.setup(superview: view, target: self, action: #selector(handleQuickInsert))
+        quickInsertButton.setStyleSolid17ptThemeGrayButton(title: "Quick Insert")
+        quickInsertButton.setFrame(left: kEdgeMargin, top: actionButton.bottom + kVertMargin, right: kEdgeMargin, height: kCellHeight)
+        
         // 设置删除按钮
         if !isInsertMode {
             deleteButton.setup(superview: view, target: self, action: #selector(handleDelete))
@@ -107,7 +104,7 @@ extension ItemBasePage {
 // MARK: - @objc方法
 extension ItemBasePage {
     @objc func handleDelete() {
-        itemData.delete(id: itemModel?.id ?? 0)
+        itemData.deleteItem(id: itemModel?.id ?? 0)
         onCompleted?()
         dismiss()
     }
@@ -119,9 +116,15 @@ extension ItemBasePage {
             totalProgress: Int(self.totalProgressTextField.text ?? "") ?? 100,
             color: Int(self.colorTextField.text ?? "") ?? 0
         )
-        isInsertMode ? itemData.insert(model: newItem) : itemData.update(id: itemModel?.id ?? 0, model: newItem)
-        onCompleted?()
+        isInsertMode ? itemData.insertItem(model: newItem) : itemData.updateItem(id: itemModel?.id ?? 0, model: newItem)
         dismiss()
+    }
+    
+    @objc func handleQuickInsert() {
+        let newId = dataManager.getLastId()
+        let newItem = Models.Item(itemName: "标题\(newId)", resume: "heyhey", totalProgress: Int(arc4random_uniform(100)) + 1, color: Int(arc4random_uniform(6)))
+        itemData.insertItem(model: newItem)
+        onCompleted?()
     }
 }
 

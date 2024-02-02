@@ -9,31 +9,9 @@
 import UIKit
 import SQLite
 
-private class DataManager {
-    private let projectTable = ProjectTable()
-    
-    func insertProject(model: Models.Project) {
-        DB.shared.insert(table: projectTable, model: model)
-    }
-    
-    func deleteProject(id: Int) {
-        DB.shared.delete(table: projectTable, id: id)
-    }
-    
-    func updateProject(id: Int, model: Models.Project) {
-        DB.shared.update(table: projectTable, id: id, model: model)
-    }
-    
-    // 获取所有数据
-    func fetchAllProjects() -> [Models.Project] {
-        return projectTable.fetchAllData()
-    }
-    
-}
-
-
 // MARK: - 视图控制器
 class DBPage: UIViewController {
+    private let projectDataManager = ProjectDataManager()
     private let dataManager = DataManager()
     
     let insertButton = UIButton(type: .custom)
@@ -93,27 +71,27 @@ extension DBPage {
     // 2A：新增
     @objc func handleAdding() {
         let newProject = Models.Project(itemName: "项目1", totalProgress: 50)
-        dataManager.insertProject(model: newProject)
+        projectDataManager.insertProject(model: newProject)
     }
     
     // 2B：删除
     @objc func handleDelete() {
         let lastId = DB.shared.getLastId(tableName: DBTable.project)
-        dataManager.deleteProject(id: lastId)
+        projectDataManager.deleteProject(id: lastId)
     }
     
     // 2C：更新
     @objc func handleUpdate() {
         let lastId = DB.shared.getLastId(tableName: DBTable.project)
         let updatedProject = Models.Project(id: lastId, itemName: "项目2", totalProgress: 80)
-        dataManager.updateProject(id: lastId, model: updatedProject)
+        projectDataManager.updateProject(id: lastId, model: updatedProject)
     }
     
     // 2D：查询(SQL)
     @objc func handleQuery() {
-        let projects = dataManager.fetchAllProjects()
+        let projects = projectDataManager.fetchAllProjects()
         for project in projects {
-            print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress ?? 0)")
+            print("项目 ID: \(project.id), 名称: \(project.itemName), 进度: \(project.totalProgress)")
         }
     }
     
@@ -129,7 +107,7 @@ extension DBPage {
 
 
 // MARK: - 不常见的逻辑，为方便测试而写
-extension DataManager {
+private class DataManager {
     // 创建表
     func createTable() {
         DB.shared.createTable(ProjectTable())

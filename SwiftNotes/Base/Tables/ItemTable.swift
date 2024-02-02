@@ -19,6 +19,29 @@ extension Models {
 }
 
 
+class ItemDataManager {
+    private let itemTable = ItemTable()
+    
+    func insertItem(model: Models.Item) {
+        DB.shared.insert(table: itemTable, model: model)
+    }
+    
+    func deleteItem(id: Int) {
+        DB.shared.delete(table: itemTable, id: id)
+    }
+    
+    func updateItem(id: Int, model: Models.Item) {
+        DB.shared.update(table: itemTable, id: id, model: model)
+    }
+    
+    // 获取所有数据
+    func fetchAllItems() -> [Models.Item] {
+        return itemTable.fetchAllData()
+    }
+    
+}
+
+
 // MARK: - 表类
 class ItemTable: TableProtocol {
     typealias ModelType = Models.Item
@@ -29,7 +52,7 @@ class ItemTable: TableProtocol {
     private let resume = Expression<String>("resume")
     private let totalProgress = Expression<Int>("totalProgress")
     private let color = Expression<Int>("color")
-    
+
     // MARK: - 初始化与通用协议方法
     required init() {
         DB.shared.createTable(self)
@@ -50,7 +73,7 @@ class ItemTable: TableProtocol {
             itemName <- model.itemName,
             resume <- model.resume,
             totalProgress <- model.totalProgress,
-            color <- model.color,
+            color <- model.color
         ]
         // 如果 id 非默认值(编辑时)，则添加
         if model.id != 0 { setters.append(id <- model.id) }
@@ -61,16 +84,16 @@ class ItemTable: TableProtocol {
     func fetchAllData() -> [Models.Item] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchArray(withSQL: sql) { row -> Models.Item? in
-            guard let id = row["id"] as? Int,
-                  let itemName = row["itemName"] as? String,
-                  let resume = row["resume"] as? String,
-                  let totalProgress = row["totalProgress"] as? Int,
-                  let color = row["color"] as? Int
-            else { return nil }
-            
+            guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
+            let itemName: String = extractValue(from: row, key: "itemName")
+            let resume: String = extractValue(from: row, key: "resume")
+            let totalProgress: Int = extractValue(from: row, key: "totalProgress")
+            let color: Int = extractValue(from: row, key: "color")
+
             return Models.Item(id: id, itemName: itemName, resume: resume, totalProgress: totalProgress, color: color)
         }
     }
+    
 }
 
 
@@ -96,6 +119,5 @@ extension ItemTable {
         return firstName
     }
     
-//    func fetch
 }
 

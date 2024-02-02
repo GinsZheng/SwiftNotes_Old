@@ -12,23 +12,6 @@ import SwiftyJSON
 
 private class DataManager {
     private let itemTable = ItemTable()
-
-    func insertItem(model: Models.Item) {
-        DB.shared.insert(table: itemTable, model: model)
-    }
-    
-    func deleteItem(id: Int) {
-        DB.shared.delete(table: itemTable, id: id)
-    }
-    
-    func updateItem(id: Int, model: Models.Item) {
-        DB.shared.update(table: itemTable, id: id, model: model)
-    }
-    
-    // 获取所有数据
-    func fetchAllItems() -> [Models.Item] {
-        return itemTable.fetchAllData()
-    }
     
     func fetchSingleItem(id: Int) -> Models.Item {
         return itemTable.fetchSingleItem(id: id)
@@ -49,6 +32,7 @@ private class DataManager {
 class ItemSearchPage: UIViewController {
     private let tableData = DefaultCellDataManager()
     private let dataManager = DataManager()
+    private let itemDataManager = ItemDataManager()
     private var itemModels: [Models.Item] = []
     
     private let tableView = UITableView()
@@ -99,7 +83,7 @@ extension ItemSearchPage: UITableViewDelegate, UITableViewDataSource {
 // MARK: - 私有方法：控制
 extension ItemSearchPage {
     private func updateData() {
-        itemModels = dataManager.fetchAllItems()
+        itemModels = itemDataManager.fetchAllItems()
         tableData.items = itemModels.map { .titleDescNext(title: $0.itemName, description: "简述：\($0.resume)，进度：\($0.totalProgress), 颜色：\($0.color)") }
         tableView.reloadData()
     }

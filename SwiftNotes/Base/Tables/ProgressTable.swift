@@ -19,6 +19,29 @@ extension Models {
 }
 
 
+class ProgressDataManager {
+    private let progressTable = ProgressTable()
+    
+    func insertProgress(model: Models.Progress) {
+        DB.shared.insert(table: progressTable, model: model)
+    }
+    
+    func deleteProgress(id: Int) {
+        DB.shared.delete(table: progressTable, id: id)
+    }
+    
+    func updateProgress(id: Int, model: Models.Progress) {
+        DB.shared.update(table: progressTable, id: id, model: model)
+    }
+    
+    // 获取所有数据
+    func fetchAllProgresses() -> [Models.Progress] {
+        return progressTable.fetchAllData()
+    }
+    
+}
+
+
 // MARK: - 表类
 class ProgressTable: TableProtocol {
     typealias ModelType = Models.Progress
@@ -29,7 +52,7 @@ class ProgressTable: TableProtocol {
     private let startTime = Expression<Int>("startTime")
     private let endTime = Expression<Int>("endTime")
     private let itemId = Expression<Int>("itemId")
-    
+
     // MARK: - 初始化与通用协议方法
     required init() {
         DB.shared.createTable(self)
@@ -61,13 +84,12 @@ class ProgressTable: TableProtocol {
     func fetchAllData() -> [Models.Progress] {
         let sql = "SELECT * FROM \(tableName)"
         return DB.shared.fetchArray(withSQL: sql) { row -> Models.Progress? in
-            guard let id = row["id"] as? Int,
-                  let currentProgress = row["currentProgress"] as? Int,
-                  let startTime = row["startTime"] as? Int,
-                  let endTime = row["endTime"] as? Int,
-                  let itemId = row["itemId"] as? Int
-            else { return nil }
-            
+            guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
+            let currentProgress: Int = extractValue(from: row, key: "currentProgress")
+            let startTime: Int = extractValue(from: row, key: "startTime")
+            let endTime: Int = extractValue(from: row, key: "endTime")
+            let itemId: Int = extractValue(from: row, key: "itemId")
+
             return Models.Progress(id: id, currentProgress: currentProgress, startTime: startTime, endTime: endTime, itemId: itemId)
         }
     }
