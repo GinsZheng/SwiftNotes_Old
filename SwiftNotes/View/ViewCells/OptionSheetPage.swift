@@ -11,13 +11,13 @@ import UIKit
 private class OptionDataManager: DefaultSectionDataManager {
     init() {
         super.init(initialItems: [
-            DefaultSection(
+            Models.DefaultSection(
                 cells: [
                     .titleNextVC(title: "标题1", viewController: ButtonPage()),
                     .titleNextVC(title: "标题2", viewController: AnimationPage()),
                 ]
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 cells: [
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage()),
                     .titleDesc(title: "标题4", description: "hey"),

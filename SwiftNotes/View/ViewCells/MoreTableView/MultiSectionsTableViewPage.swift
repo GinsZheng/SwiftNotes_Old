@@ -16,14 +16,14 @@ import UIKit
 private class DataManager: DefaultSectionDataManager {
     init() {
         super.init(initialItems: [
-            DefaultSection(
+            Models.DefaultSection(
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题2", viewController: CSGeneralSubpage()),
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage())
                 ]
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 header: .noheader,
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
@@ -32,7 +32,7 @@ private class DataManager: DefaultSectionDataManager {
                 ],
                 footer: .title(title: "title标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题")
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 header: .title(title: "title标题"),
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
@@ -41,7 +41,7 @@ private class DataManager: DefaultSectionDataManager {
                 ],
                 footer: .titleBg(title: "titleBg", titleType: .small)
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 header: .title(title: "title标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标"),
                 cells: [
                     .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
@@ -49,7 +49,7 @@ private class DataManager: DefaultSectionDataManager {
                 ],
                 footer: .nofooter
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 header: .titleBg(title: "titleBg", titleType: .small),
                 cells: [
                     .titleNextVC(title: "标题6", viewController: CSGeneralSubpage()),
@@ -59,27 +59,27 @@ private class DataManager: DefaultSectionDataManager {
                 ],
                 footer: .title(title: "title")
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 header: .titleDescBg(title: "titleDescBg", titleType: .medium, description: "hey"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 header: .titleDescRightIcon(title: "titleDescRightIcon", titleType: .large, description: "hey", rightIconName: "checkmark"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 header: .titleNext(title: "titleNext", titleType: .small),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 header: .titleDescNext(title: "titleDescNext", titleType: .small, description: "hey"),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 header: .titleFoldBg(title: "titleFoldBg", titleType: .small, isFolded: false),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
-            DefaultSection(
+            Models.DefaultSection(
                 header: .titleDescFoldBg(title: "titleDescFoldBg", titleType: .small, description: "hey", isFolded: false),
                 cells: [.titleNextVC(title: "Hey", viewController: CSGeneralSubpage()),]
             ),
