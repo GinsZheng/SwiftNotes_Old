@@ -193,7 +193,7 @@
 		7A88C7472A8929E400D61E33 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7342A8929E400D61E33 /* Functions.swift */; };
 		7A88C7492A8929E400D61E33 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7362A8929E400D61E33 /* FileManager.swift */; };
 		7A88C74A2A8929E400D61E33 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7372A8929E400D61E33 /* Timer.swift */; };
-		7A88C74B2A8929E400D61E33 /* Mix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7382A8929E400D61E33 /* Mix.swift */; };
+		7A88C74B2A8929E400D61E33 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7382A8929E400D61E33 /* Regex.swift */; };
 		7A88C74C2A8929E400D61E33 /* SetFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C7392A8929E400D61E33 /* SetFrame.swift */; };
 		7A88C74D2A8929E400D61E33 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C73A2A8929E400D61E33 /* SQLiteManager.swift */; };
 		7A88C74E2A8929E400D61E33 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A88C73B2A8929E400D61E33 /* Extension.swift */; };
@@ -209,12 +209,10 @@
 		7A8A7EAF23D1A7F50067D9C3 /* ProgressPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A7EAE23D1A7F50067D9C3 /* ProgressPage.swift */; };
 		7A8DF6072A9B9EB80048146F /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DF6062A9B9EB80048146F /* Variables.swift */; };
 		7A8DF66A2A9F8D5C0048146F /* Delegate3Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DF6692A9F8D5C0048146F /* Delegate3Page.swift */; };
-		7A8DF69B2AA378000048146F /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DF69A2AA378000048146F /* Protocol.swift */; };
 		7A9034B22B50E9D1002C83F8 /* DefaultViewOfCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9034B12B50E9D1002C83F8 /* DefaultViewOfCell.swift */; };
 		7A92194F2B00BD3B00FE65FC /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92194E2B00BD3B00FE65FC /* Enum.swift */; };
 		7A9219522B00BED200FE65FC /* SwitchView2Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9219512B00BED200FE65FC /* SwitchView2Page.swift */; };
 		7A9219542B00BEFD00FE65FC /* SwitchViewListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9219532B00BEFD00FE65FC /* SwitchViewListPage.swift */; };
-		7A95F4112AB5567C00900E39 /* Modeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95F4102AB5567C00900E39 /* Modeling.swift */; };
 		7A997EC62B57C73D00001608 /* OptionSheetPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC52B57C73D00001608 /* OptionSheetPage.swift */; };
 		7A997EC82B57C7D900001608 /* OptionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC72B57C7D900001608 /* OptionSheet.swift */; };
 		7A997ECA2B590F7800001608 /* DBTableInAPP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A997EC92B590F7800001608 /* DBTableInAPP.swift */; };
@@ -242,7 +240,7 @@
 		7AC7986A2A98B5AB00C17D11 /* tempFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC798692A98B5AB00C17D11 /* tempFile.swift */; };
 		7ACD300124042A5100D300A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACD300024042A5100D300A6 /* TabBarController.swift */; };
 		7ACF48522B27052700759E0A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF48512B27052700759E0A /* DataManager.swift */; };
-		7ACF48542B270DB800759E0A /* DataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF48532B270DB800759E0A /* DataStruct.swift */; };
+		7ACF48542B270DB800759E0A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF48532B270DB800759E0A /* Model.swift */; };
 		7ACF48562B270FBF00759E0A /* Test2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF48552B270FBF00759E0A /* Test2VC.swift */; };
 		7ACF48582B28067F00759E0A /* SwitchScrollAndCollectionViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF48572B28067F00759E0A /* SwitchScrollAndCollectionViewPage.swift */; };
 		7ACF488C2B283C0700759E0A /* EqualSizeCollectionViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF488B2B283C0700759E0A /* EqualSizeCollectionViewPage.swift */; };
@@ -767,7 +765,7 @@
 		7A88C7342A8929E400D61E33 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		7A88C7362A8929E400D61E33 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		7A88C7372A8929E400D61E33 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
-		7A88C7382A8929E400D61E33 /* Mix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mix.swift; sourceTree = "<group>"; };
+		7A88C7382A8929E400D61E33 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		7A88C7392A8929E400D61E33 /* SetFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetFrame.swift; sourceTree = "<group>"; };
 		7A88C73A2A8929E400D61E33 /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		7A88C73B2A8929E400D61E33 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
@@ -783,12 +781,10 @@
 		7A8A7EAE23D1A7F50067D9C3 /* ProgressPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPage.swift; sourceTree = "<group>"; };
 		7A8DF6062A9B9EB80048146F /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		7A8DF6692A9F8D5C0048146F /* Delegate3Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegate3Page.swift; sourceTree = "<group>"; };
-		7A8DF69A2AA378000048146F /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		7A9034B12B50E9D1002C83F8 /* DefaultViewOfCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultViewOfCell.swift; sourceTree = "<group>"; };
 		7A92194E2B00BD3B00FE65FC /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		7A9219512B00BED200FE65FC /* SwitchView2Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchView2Page.swift; sourceTree = "<group>"; };
 		7A9219532B00BEFD00FE65FC /* SwitchViewListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewListPage.swift; sourceTree = "<group>"; };
-		7A95F4102AB5567C00900E39 /* Modeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modeling.swift; sourceTree = "<group>"; };
 		7A997EC52B57C73D00001608 /* OptionSheetPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSheetPage.swift; sourceTree = "<group>"; };
 		7A997EC72B57C7D900001608 /* OptionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionSheet.swift; sourceTree = "<group>"; };
 		7A997EC92B590F7800001608 /* DBTableInAPP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBTableInAPP.swift; sourceTree = "<group>"; };
@@ -816,7 +812,7 @@
 		7AC798692A98B5AB00C17D11 /* tempFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempFile.swift; sourceTree = "<group>"; };
 		7ACD300024042A5100D300A6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7ACF48512B27052700759E0A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		7ACF48532B270DB800759E0A /* DataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStruct.swift; sourceTree = "<group>"; };
+		7ACF48532B270DB800759E0A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		7ACF48552B270FBF00759E0A /* Test2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2VC.swift; sourceTree = "<group>"; };
 		7ACF48572B28067F00759E0A /* SwitchScrollAndCollectionViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchScrollAndCollectionViewPage.swift; sourceTree = "<group>"; };
 		7ACF488B2B283C0700759E0A /* EqualSizeCollectionViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EqualSizeCollectionViewPage.swift; sourceTree = "<group>"; };
@@ -939,13 +935,13 @@
 			children = (
 				7AA0945F2B6B301100DE8127 /* Quote */,
 				7A11A05C2B68A49000F8456E /* Models */,
-				7A11A0672B68DD1600F8456E /* DBTables */,
+				7A11A0672B68DD1600F8456E /* Tables */,
 				7A11A05D2B68BC5400F8456E /* CsvFiles */,
 			);
 			path = TimingTaskFiles;
 			sourceTree = "<group>";
 		};
-		7A11A0672B68DD1600F8456E /* DBTables */ = {
+		7A11A0672B68DD1600F8456E /* Tables */ = {
 			isa = PBXGroup;
 			children = (
 				7A11A0682B68DD3F00F8456E /* TaskGroupTable.swift */,
@@ -953,7 +949,7 @@
 				7A730BC22B6A191900751E67 /* TimingTable.swift */,
 				7A730BC42B6A196E00751E67 /* TaskTable.swift */,
 			);
-			path = DBTables;
+			path = Tables;
 			sourceTree = "<group>";
 		};
 		7A21612A2389869D00D5A93A /* Controller */ = {
@@ -1361,7 +1357,7 @@
 				7A88C72F2A8929E400D61E33 /* Constant.swift */,
 				7A88C7332A8929E400D61E33 /* CustomView.swift */,
 				7ACF48512B27052700759E0A /* DataManager.swift */,
-				7ACF48532B270DB800759E0A /* DataStruct.swift */,
+				7ACF48532B270DB800759E0A /* Model.swift */,
 				7A88C7312A8929E400D61E33 /* DatePicker.swift */,
 				7AADC6932B5BDF0F00E42FA8 /* DBManager.swift */,
 				7A92194E2B00BD3B00FE65FC /* Enum.swift */,
@@ -1370,10 +1366,8 @@
 				7A88C73D2A8929E400D61E33 /* Formatter.swift */,
 				7A88C7342A8929E400D61E33 /* Functions.swift */,
 				7A730BC62B6A1D3E00751E67 /* UIKitFunctions.swift */,
-				7A88C7382A8929E400D61E33 /* Mix.swift */,
-				7A95F4102AB5567C00900E39 /* Modeling.swift */,
+				7A88C7382A8929E400D61E33 /* Regex.swift */,
 				7A88C73F2A8929E400D61E33 /* NavViewController.swift */,
-				7A8DF69A2AA378000048146F /* Protocol.swift */,
 				7A997EC72B57C7D900001608 /* OptionSheet.swift */,
 				7A88C7302A8929E400D61E33 /* SetColorInHex.swift */,
 				7A88C7392A8929E400D61E33 /* SetFrame.swift */,
@@ -2274,7 +2268,7 @@
 				7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */,
 				7AADC6A02B5D682A00E42FA8 /* ItemInsertPage.swift in Sources */,
 				7A65113B23D6A332005E4FD4 /* UIClass.swift in Sources */,
-				7ACF48542B270DB800759E0A /* DataStruct.swift in Sources */,
+				7ACF48542B270DB800759E0A /* Model.swift in Sources */,
 				7A0258AA2434EF58006D4AB5 /* DismissAllPage.swift in Sources */,
 				7A88C78D2A8A62A800D61E33 /* StylesInApp.swift in Sources */,
 				7A11A06B2B69053C00F8456E /* FileNameInApp.swift in Sources */,
@@ -2312,7 +2306,6 @@
 				7A216161238986AF00D5A93A /* SegmentControlPage.swift in Sources */,
 				7AE5EF512B149DA000ECD038 /* LocalizationPage.swift in Sources */,
 				7A02AEA32B18272500E9E6D7 /* Closure1VC.swift in Sources */,
-				7A8DF69B2AA378000048146F /* Protocol.swift in Sources */,
 				7A0258AC2434F0D8006D4AB5 /* PopAndDismissPage.swift in Sources */,
 				7AA325BD243CDB6A00D5308D /* LayerView.swift in Sources */,
 				7A21615F238986AF00D5A93A /* TextFieldPage.swift in Sources */,
@@ -2423,7 +2416,7 @@
 				7A2161372389869D00D5A93A /* PlistPage.swift in Sources */,
 				7A730BC72B6A1D3E00751E67 /* UIKitFunctions.swift in Sources */,
 				7A2883142448AD7D00591C29 /* AlertListPage.swift in Sources */,
-				7A88C74B2A8929E400D61E33 /* Mix.swift in Sources */,
+				7A88C74B2A8929E400D61E33 /* Regex.swift in Sources */,
 				7A3647FD238C33ED000BBECD /* SwiftyJSONPage.swift in Sources */,
 				7A702DA82434E99600EB1FF3 /* JumpListPage.swift in Sources */,
 				7A4736D62470371F0071115F /* TouchesMovedGesturePage.swift in Sources */,
@@ -2443,7 +2436,6 @@
 				7A89B2D9240AB9B6004688FD /* MagicMovePage.swift in Sources */,
 				7A216157238986AF00D5A93A /* SliderPage.swift in Sources */,
 				7A2161262389868500D5A93A /* ViewListVC.swift in Sources */,
-				7A95F4112AB5567C00900E39 /* Modeling.swift in Sources */,
 				7A64874023FAE319006B6FC1 /* LoadingPage.swift in Sources */,
 				7A2161322389869D00D5A93A /* DecoratorPage.swift in Sources */,
 				7A21613E238986AA00D5A93A /* TestPage.swift in Sources */,

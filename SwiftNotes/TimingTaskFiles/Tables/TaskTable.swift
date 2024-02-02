@@ -45,6 +45,29 @@ extension Models {
 }
 
 
+class TaskDataManager {
+    private let taskTable = TaskTable()
+    
+    func insertTask(model: Models.Task) {
+        DB.shared.insert(table: taskTable, model: model)
+    }
+    
+    func deleteTask(id: Int) {
+        DB.shared.delete(table: taskTable, id: id)
+    }
+    
+    func updateTask(id: Int, model: Models.Task) {
+        DB.shared.update(table: taskTable, id: id, model: model)
+    }
+    
+    // 获取所有数据
+    func fetchAllTasks() -> [Models.Task] {
+        return taskTable.fetchAllData()
+    }
+    
+}
+
+
 // MARK: - 表类
 class TaskTable: TableProtocol {
     typealias ModelType = Models.Task
@@ -206,7 +229,7 @@ class TaskTable: TableProtocol {
 
 // MARK: - 查询方法
 extension TaskTable {
-    func fetchHomeCellData() -> [Models.HomeCell] {
+    func fetchHomeCellsData() -> [Models.HomeCell] {
         let sql = """
         SELECT task.id, task.taskType, task.taskTitle, task.isDone, task.isReminded, task.isTimeSet,
                task.nextReminderTimestamp, task.isRepeating, task.hasProgress, task.totalProgress,
@@ -243,11 +266,29 @@ extension TaskTable {
             let currentProgress: Int = extractValue(from: row, key: "currentProgress")
             let progressPercentage: Int = totalProgress != 0 ? (currentProgress * 100 / totalProgress) : 0
             
+            print(Models.HomeCell(id: id, taskType: taskType, taskTitle: taskTitle, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, isRepeating: isRepeating, hasProgress: hasProgress, color: color, priority: priority, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, manualSorting: manualSorting, progressPercentage: progressPercentage))
+            
             return Models.HomeCell(id: id, taskType: taskType, taskTitle: taskTitle, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, isRepeating: isRepeating, hasProgress: hasProgress, color: color, priority: priority, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, manualSorting: manualSorting, progressPercentage: progressPercentage)
         }
         
     }
     
+    func fetchHomeSectionsData() -> [Models.HomeSection] {
+        // 获取所有任务数据
+        let allTasks = fetchHomeCellsData()
+
+        // 分类任务：isDone 为 0 和 1
+        let tasksIsDone0 = allTasks.filter { !$0.isDone }
+        let tasksIsDone1 = allTasks.filter { $0.isDone }
+
+        // 创建两个 section
+        let sectionForIsDone0 = Models.HomeSection(cells: tasksIsDone0)
+        let sectionForIsDone1 = Models.HomeSection(header: .titleBg(title: "已完成", titleType: .small), cells: tasksIsDone1)
+
+        // 返回包含这两个 section 的数组
+        return [sectionForIsDone0, sectionForIsDone1]
+        
+    }
 }
 
 

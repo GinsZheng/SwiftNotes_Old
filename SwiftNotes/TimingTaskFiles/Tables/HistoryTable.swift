@@ -18,6 +18,29 @@ extension Models {
 }
 
 
+class HistoryDataManager {
+    private let historyTable = HistoryTable()
+    
+    func insertHistory(model: Models.History) {
+        DB.shared.insert(table: historyTable, model: model)
+    }
+    
+    func deleteHistory(id: Int) {
+        DB.shared.delete(table: historyTable, id: id)
+    }
+    
+    func updateHistory(id: Int, model: Models.History) {
+        DB.shared.update(table: historyTable, id: id, model: model)
+    }
+    
+    // 获取所有数据
+    func fetchAllHistorys() -> [Models.History] {
+        return historyTable.fetchAllData()
+    }
+    
+}
+
+
 // MARK: - 表类
 class HistoryTable: TableProtocol {
     typealias ModelType = Models.History
@@ -73,5 +96,4 @@ class HistoryTable: TableProtocol {
 extension HistoryTable {
     
 }
-
 

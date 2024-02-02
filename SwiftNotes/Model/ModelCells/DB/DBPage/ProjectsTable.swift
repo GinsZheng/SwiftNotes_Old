@@ -9,6 +9,29 @@ extension Models {
 }
 
 
+class ProjectDataManager {
+    private let projectTable = ProjectTable()
+    
+    func insertProject(model: Models.Project) {
+        DB.shared.insert(table: projectTable, model: model)
+    }
+    
+    func deleteProject(id: Int) {
+        DB.shared.delete(table: projectTable, id: id)
+    }
+    
+    func updateProject(id: Int, model: Models.Project) {
+        DB.shared.update(table: projectTable, id: id, model: model)
+    }
+    
+    // 获取所有数据
+    func fetchAllProjects() -> [Models.Project] {
+        return projectTable.fetchAllData()
+    }
+    
+}
+
+
 // MARK: - 表类
 class ProjectTable: TableProtocol {
     typealias ModelType = Models.Project
@@ -60,4 +83,3 @@ class ProjectTable: TableProtocol {
 extension ProjectTable {
     
 }
-

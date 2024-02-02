@@ -21,6 +21,29 @@ extension Models {
 }
 
 
+class TimingDataManager {
+    private let timingTable = TimingTable()
+    
+    func insertTiming(model: Models.Timing) {
+        DB.shared.insert(table: timingTable, model: model)
+    }
+    
+    func deleteTiming(id: Int) {
+        DB.shared.delete(table: timingTable, id: id)
+    }
+    
+    func updateTiming(id: Int, model: Models.Timing) {
+        DB.shared.update(table: timingTable, id: id, model: model)
+    }
+    
+    // 获取所有数据
+    func fetchAllTimings() -> [Models.Timing] {
+        return timingTable.fetchAllData()
+    }
+    
+}
+
+
 // MARK: - 表类
 class TimingTable: TableProtocol {
     typealias ModelType = Models.Timing
@@ -88,5 +111,4 @@ class TimingTable: TableProtocol {
 extension TimingTable {
     
 }
-
 

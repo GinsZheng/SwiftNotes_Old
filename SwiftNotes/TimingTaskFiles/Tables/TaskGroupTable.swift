@@ -21,6 +21,29 @@ extension Models {
 }
 
 
+class TaskGroupDataManager {
+    private let taskGroupTable = TaskGroupTable()
+    
+    func insertTaskGroup(model: Models.TaskGroup) {
+        DB.shared.insert(table: taskGroupTable, model: model)
+    }
+    
+    func deleteTaskGroup(id: Int) {
+        DB.shared.delete(table: taskGroupTable, id: id)
+    }
+    
+    func updateTaskGroup(id: Int, model: Models.TaskGroup) {
+        DB.shared.update(table: taskGroupTable, id: id, model: model)
+    }
+    
+    // 获取所有数据
+    func fetchAllTaskGroups() -> [Models.TaskGroup] {
+        return taskGroupTable.fetchAllData()
+    }
+    
+}
+
+
 // MARK: - 表类
 class TaskGroupTable: TableProtocol {
     typealias ModelType = Models.TaskGroup
@@ -88,5 +111,3 @@ class TaskGroupTable: TableProtocol {
 extension TaskGroupTable {
     
 }
-
-
