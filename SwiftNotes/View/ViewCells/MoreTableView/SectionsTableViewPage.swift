@@ -3,7 +3,7 @@ import UIKit
 private class DataManager: DefaultSectionDataManager {
     init() {
         super.init(initialItems: [
-            Models.DefaultSection(
+            .init(
                 header: .title(title: "分组1"),
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
@@ -11,7 +11,7 @@ private class DataManager: DefaultSectionDataManager {
                 ],
                 footer: .title(title: "表尾内容")
             ),
-            Models.DefaultSection(
+            .init(
                 header: .titleBg(title: "分组2", titleType: .small),
                 cells: [
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage()),

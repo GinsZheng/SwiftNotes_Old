@@ -12,7 +12,7 @@ import UIKit
 private class DataManager: DefaultSectionDataManager {
     init() {
         super.init(initialItems: [
-            Models.DefaultSection(
+            .init(
                 header: .titleFoldBg(title: "titleFoldBg", titleType: .small, isFolded: false),
                 cells: [
                     .titleNextVC(title: "标题1", viewController: CSGeneralSubpage()),
@@ -20,7 +20,7 @@ private class DataManager: DefaultSectionDataManager {
                     .titleNextVC(title: "标题3", viewController: CSGeneralSubpage())
                 ]
             ),
-            Models.DefaultSection(
+            .init(
                 header: .titleDescFoldBg(title: "titleDescFoldBg", titleType: .small, description: "hey", isFolded: true),
                 cells: [
                     .titleNextVC(title: "标题4", viewController: CSGeneralSubpage()),
