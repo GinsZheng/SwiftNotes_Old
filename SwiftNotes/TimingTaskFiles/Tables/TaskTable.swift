@@ -229,7 +229,32 @@ class TaskTable: TableProtocol {
 
 // MARK: - 查询方法
 extension TaskTable {
-    func fetchHomeCellsData() -> [Models.HomeCell] {
+    // 返回首页Section数据
+    func fetchHomeSectionsData() -> [Models.HomeSection] {
+        // 获取所有任务数据
+        let allTasks = fetchHomeCellsData()
+        // 获取每个section任务数量
+        let taskCounts = fetchTaskCountsByIsDone()
+
+        // 分类任务：isDone 为 0 和 1
+        let tasksIsDone0 = allTasks.filter { !$0.isDone }
+        let tasksIsDone1 = allTasks.filter { $0.isDone }
+        
+        // 创建两个 section
+        let sectionForIsDone0 = Models.HomeSection(cells: tasksIsDone0)
+        let sectionForIsDone1 = Models.HomeSection(header: .titleDescFoldBg(title: "已完成", titleType: .small, description: "\(taskCounts[true, default: 0])", isFolded: false), cells: tasksIsDone1)
+        
+        // 返回包含这两个 section 的数组
+        return [sectionForIsDone0, sectionForIsDone1]
+    }
+    
+}
+
+
+// MARK: - 私有方法
+extension TaskTable {
+    // 返回首页cell数据
+    private func fetchHomeCellsData() -> [Models.HomeCell] {
         let sql = """
         SELECT task.id, task.taskType, task.taskTitle, task.isDone, task.isReminded, task.isTimeSet,
                task.nextReminderTimestamp, task.isRepeating, task.hasProgress, task.totalProgress,
@@ -272,32 +297,13 @@ extension TaskTable {
     }
     
     // 返回未完成和已完成的cell数量
-    func fetchTaskCountsByIsDone() -> [Int] {
-        let sql = "SELECT COUNT(*) FROM task GROUP BY isDone ORDER BY isDone"
-        return DB.shared.fetchArray(withSQL: sql) { row in
+    private func fetchTaskCountsByIsDone() -> [Bool: Int] {
+        let sql = "SELECT isDone, COUNT(*) as count FROM task GROUP BY isDone ORDER BY isDone"
+        return DB.shared.fetchDictionary(withSQL: sql) { row in
+            let isDone: Bool = extractValue(from: row, key: "isDone")
             let count: Int = extractValue(from: row, key: "COUNT(*)")
-            return count
+            return (isDone, count)
         }
-        
-    }
-    
-    func fetchHomeSectionsData() -> [Models.HomeSection] {
-        // 获取所有任务数据
-        let allTasks = fetchHomeCellsData()
-        // 获取每个section任务数量
-        let taskCounts = fetchTaskCountsByIsDone()
-
-        // 分类任务：isDone 为 0 和 1
-        let tasksIsDone0 = allTasks.filter { !$0.isDone }
-        let tasksIsDone1 = allTasks.filter { $0.isDone }
-
-        // 创建两个 section
-        let sectionForIsDone0 = Models.HomeSection(cells: tasksIsDone0)
-        let sectionForIsDone1 = Models.HomeSection(header: .titleDescBg(title: "已完成", titleType: .small, description: "\(taskCounts[1])"), cells: tasksIsDone1)
-
-        // 返回包含这两个 section 的数组
-        return [sectionForIsDone0, sectionForIsDone1]
     }
     
 }
-
