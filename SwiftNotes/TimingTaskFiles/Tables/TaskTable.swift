@@ -230,9 +230,9 @@ class TaskTable: TableProtocol {
 // MARK: - 查询方法
 extension TaskTable {
     // 返回首页Section数据
-    func fetchHomeSectionsData(isInTrash: Bool) -> [Models.HomeSection] {
+    func fetchHomeSectionsData(isInTrash: Bool, groupId: Int? = nil) -> [Models.HomeSection] {
         // 获取所有任务数据
-        let allTasks = fetchHomeCellsData(isInTrash: isInTrash)
+        let allTasks = fetchHomeCellsData(isInTrash: isInTrash, groupId: groupId)
         // 获取每个section任务数量
         let taskCounts = fetchTaskCountsByIsDone()
 
@@ -272,15 +272,13 @@ extension TaskTable {
         WHERE task.isInTrash = \(isInTrash ? 1 : 0)
         """
         
-        if let groupId = groupId {
+        if let groupId = groupId, isInTrash == false {
             sql += " AND task.groupId = \(groupId)"
         }
         
         // 添加排序逻辑
-        let sortingType = Preferences.tasksSortingType
-        
         var orderByClause = ""
-        switch sortingType {
+        switch Preferences.tasksSortingType {
         case 0: // 手动
             orderByClause = " ORDER BY task.manualSorting ASC"
         case 1: // 更新日期
@@ -294,7 +292,7 @@ extension TaskTable {
         default:
             orderByClause = " ORDER BY task.manualSorting ASC"
         }
-
+        
         sql += orderByClause
         
         return DB.shared.fetchArray(withSQL: sql) { row in

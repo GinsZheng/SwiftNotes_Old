@@ -20,8 +20,9 @@ struct GroupCollectionViewStyles {
 
 // MARK: - 分组控件(含单行/多行形态)
 class GroupListView: UIView {
-    // 模仿 TaskListVC 中的属性
     typealias Styles = GroupCollectionViewStyles
+    
+    var onGroupSelected: (() -> Void)? // 用于处理按钮点击事件
     
     enum UIForm {
         case form0
@@ -52,16 +53,25 @@ class GroupListView: UIView {
     }
     
     // MARK: - func
-    open func setupView() {
+    func setupView() {
         setupFormViewUI()
         groupData.onItemsUpdated = { [weak self] in
             self?.collectionView.reloadData()
         }
     }
+    
+    func handleButtonsTap(buttonIndex: Int) {
+        Preferences.isTrashSelected = false
+        Preferences.selectedGroupId = groupData[buttonIndex].id
+        Preferences.selectedGroupIndex = buttonIndex
+        onGroupSelected?()
+    }
+    
+    
 }
 
 
-// MARK: - setupView 中的私有函数
+// MARK: - 私有方法
 extension GroupListView {
     private func setupFormViewUI() {
         switch currentUIForm {
@@ -85,13 +95,14 @@ extension GroupListView {
         buttons.setup(superview: bgView)
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupView(showsHorizontalScrollIndicator: false, showTrashButton: true)
-        buttons.onButtonsTapped = { [unowned self] _ in
-            self.parentVC.push(targetVC: CSGeneralSubpage())
+        buttons.onButtonsTapped = { [unowned self] tag in
+            self.handleButtonsTap(buttonIndex: tag)
         }
         buttons.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
         }
         buttons.onTrashButtonTapped = { [unowned self] in
+            Preferences.isTrashSelected = true
             self.parentVC.push(targetVC: CSGeneralSubpage())
         }
     }
@@ -175,7 +186,8 @@ extension GroupListView: UICollectionViewDelegate, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCollectionViewCell.identifier, for: indexPath) as? GroupCollectionViewCell else { return UICollectionViewCell() }
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
         cell.configure(withTitle: titles[indexPath.row]) { [unowned self] in
-            self.parentVC.push(targetVC: CSGeneralSubpage())
+            self.handleButtonsTap(buttonIndex: tag)
+            
         }
         return cell
     }
@@ -216,8 +228,8 @@ class HorizonalScrollingGroupButtonsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - func
-    open func setupView(showsHorizontalScrollIndicator: Bool, showTrashButton: Bool) {
+    // MARK: - 公共方法
+    func setupView(showsHorizontalScrollIndicator: Bool, showTrashButton: Bool) {
         setupScrollView(showsHorizontalScrollIndicator: showsHorizontalScrollIndicator)
         createButtons()
         addSwitchButton()
@@ -226,6 +238,15 @@ class HorizonalScrollingGroupButtonsView: UIView {
         }
         addSettingsButton()
     }
+    
+    // 更新按钮选中状态UI
+    func updateButtonStatus() {
+        for button in buttons {
+            button.isSelected = false
+        }
+        buttons[Preferences.selectedGroupIndex].isSelected = true
+    }
+    
 }
 
 // 以上类的私有方法
@@ -244,6 +265,7 @@ extension HorizonalScrollingGroupButtonsView {
             button.setup(superview: scrollView, target: self, action: #selector(buttonsTapped), forEvent: .touchUpInside)
             button.height = buttonHeight
             button.setStyleSolid14pt666GrayRoundedButton(title: title)
+            button.setTitleColor(.hex(cBlue_5393FF), for: .selected)
             
             // 计算按钮frame的参数
             let labelWidth = button.titleLabel?.getLabelWidth() ?? 0
@@ -256,7 +278,7 @@ extension HorizonalScrollingGroupButtonsView {
             buttonLeft = button.right + itemInterval
             buttons.append(button)
         }
-        
+        updateButtonStatus()
         scrollView.contentSize.width = buttonLeft + tailPadding
     }
     
@@ -297,6 +319,7 @@ extension HorizonalScrollingGroupButtonsView {
     // MARK: - @objc func
     @objc private func buttonsTapped(_ button: UIButton) {
         onButtonsTapped?(button.tag)
+        updateButtonStatus() // 要放onButtonsTapped，因为onButtonsTapped会更新Preferences
     }
     
     @objc private func switchButtonTapped() {
@@ -344,13 +367,19 @@ class GroupCollectionViewCell: UICollectionViewCell {
         let bottomWidth = (button.titleLabel?.getLabelWidth() ?? 0) + Styles.buttonPadding
         button.setFrame(left: 0, top: 10, width: bottomWidth, height: 28)
         buttonAction = action // 存储闭包
-        button.addTarget(self, action: #selector(buttonsTapped), for: forEvent)
+        button.addTarget(self, action: #selector(buttonsTapped(_:)), for: forEvent)
         button.extendTouchArea()
     }
     
+    // 🔴 完善collectionView的选中逻辑
+    func updateButtonStatus(sender: UIButton) {
+        sender.isSelected = true
+    }
+    
     // MARK: - @objc func
-    @objc func buttonsTapped() {
+    @objc func buttonsTapped(_ sender: UIButton) {
         buttonAction?()
+        updateButtonStatus(sender: sender)
     }
     
 }

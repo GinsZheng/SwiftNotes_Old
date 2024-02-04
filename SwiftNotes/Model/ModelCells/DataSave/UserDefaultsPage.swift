@@ -31,15 +31,3 @@ class CSUserDefaultsPage: UIViewController {
 }
 
 
-/*
- 使用 UserDefaults 读取时，如果key不存在，则会返回一个默认值：
-
- integer(forKey:): 不存在则返回 0
- bool(forKey:): 不存在则返回 false
- String：不存在返回 nil
- float(forKey:) | double(forKey:): 如果不存在则返回 0.0
- object(forKey): 会返回 AnyObject?, 因此你需要自定义转换为你想要的返回类型，比如上面的 kUserDefaults.object(forKey: "INFO"), 自定义返回类型为 [String: String], 如果 INFO key 不存在，则给一个默认的空字符串字典 [String:String]()
-
- ⚠️不知为啥，在模拟器中，切换UserDefaults的值时，如果在较短时间内杀进程，会出现不保存的情况。在正常设备中又不会
- */
-

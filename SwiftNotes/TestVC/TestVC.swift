@@ -19,7 +19,6 @@ extension ViewController {
     private func setupUI() {
         view.setBackgroundColor(color: cBgGray)
         
-
 //        CSFileManager.importCSVToSQLite(csvFileName: "taskGroup", tableName: "taskGroup")
 
 //        let data = taskGroupTable.fetchAllData()
@@ -36,8 +35,8 @@ extension ViewController {
 //        let str = "1,3,4,6"
 //        let parsedArray = str.split(separator: ",").compactMap { Int($0) }
 //        print(parsedArray)
-//        
-
+        
+        
     }
     
 }
