@@ -230,9 +230,9 @@ class TaskTable: TableProtocol {
 // MARK: - 查询方法
 extension TaskTable {
     // 返回首页Section数据
-    func fetchHomeSectionsData() -> [Models.HomeSection] {
+    func fetchHomeSectionsData(isInTrash: Bool) -> [Models.HomeSection] {
         // 获取所有任务数据
-        let allTasks = fetchHomeCellsData()
+        let allTasks = fetchHomeCellsData(isInTrash: isInTrash)
         // 获取每个section任务数量
         let taskCounts = fetchTaskCountsByIsDone()
 
@@ -254,8 +254,8 @@ extension TaskTable {
 // MARK: - 私有方法
 extension TaskTable {
     // 返回首页cell数据
-    private func fetchHomeCellsData() -> [Models.HomeCell] {
-        let sql = """
+    private func fetchHomeCellsData(isInTrash: Bool, groupId: Int? = nil) -> [Models.HomeCell] {
+        var sql = """
         SELECT task.id, task.taskType, task.taskTitle, task.isDone, task.isReminded, task.isTimeSet,
                task.nextReminderTimestamp, task.isRepeating, task.hasProgress, task.totalProgress,
                task.color, task.priority, task.creationTimestamp, task.updateTimestamp, task.manualSorting,
@@ -269,8 +269,33 @@ extension TaskTable {
             ) T
             WHERE T.rownum = 1
         ) ss ON task.id = ss.taskId
-        ORDER BY task.updateTimestamp DESC
+        WHERE task.isInTrash = \(isInTrash ? 1 : 0)
         """
+        
+        if let groupId = groupId {
+            sql += " AND task.groupId = \(groupId)"
+        }
+        
+        // 添加排序逻辑
+        let sortingType = Preferences.tasksSortingType
+        
+        var orderByClause = ""
+        switch sortingType {
+        case 0: // 手动
+            orderByClause = " ORDER BY task.manualSorting ASC"
+        case 1: // 更新日期
+            orderByClause = " ORDER BY task.updateTimestamp DESC"
+        case 2: // 创建日期
+            orderByClause = " ORDER BY task.creationTimestamp DESC"
+        case 3: // 标题
+            orderByClause = " ORDER BY task.taskTitle ASC"
+        case 4: // 优先级
+            orderByClause = " ORDER BY task.priority DESC, task.updateTimestamp DESC"
+        default:
+            orderByClause = " ORDER BY task.manualSorting ASC"
+        }
+
+        sql += orderByClause
         
         return DB.shared.fetchArray(withSQL: sql) { row in
             guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
