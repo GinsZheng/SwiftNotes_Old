@@ -67,7 +67,6 @@ class GroupListView: UIView {
         onGroupSelected?()
     }
     
-    
 }
 
 
@@ -185,9 +184,10 @@ extension GroupListView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCollectionViewCell.identifier, for: indexPath) as? GroupCollectionViewCell else { return UICollectionViewCell() }
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
-        cell.configure(withTitle: titles[indexPath.row]) { [unowned self] in
-            self.handleButtonsTap(buttonIndex: tag)
-            
+        let isSelected = indexPath.row == Preferences.selectedGroupIndex
+        cell.configure(withTitle: titles[indexPath.row], isSelected: isSelected) {
+            self.handleButtonsTap(buttonIndex: indexPath.row)
+            collectionView.reloadData()
         }
         return cell
     }
@@ -360,26 +360,22 @@ class GroupCollectionViewCell: UICollectionViewCell {
     private func setupViews() {
         button.setup(superview: contentView)
         button.setStyleSolidButton(title: "", titleSize: Styles.fontSize, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
+        button.setTitleColor(.hex(cBlue_5393FF), for: .selected)
     }
     
-    func configure(withTitle title: String, action: (() -> Void)?, forEvent: UIControl.Event = UIControl.Event.touchUpInside) {
+    func configure(withTitle title: String, isSelected: Bool, action: (() -> Void)?, forEvent: UIControl.Event = UIControl.Event.touchUpInside) {
         button.setTitle(title, for: .normal)
-        let bottomWidth = (button.titleLabel?.getLabelWidth() ?? 0) + Styles.buttonPadding
-        button.setFrame(left: 0, top: 10, width: bottomWidth, height: 28)
-        buttonAction = action // 存储闭包
+        button.isSelected = isSelected
+        let buttonWidth = (button.titleLabel?.getLabelWidth() ?? 0) + Styles.buttonPadding
+        button.setFrame(left: 0, top: 10, width: buttonWidth, height: 28)
+        buttonAction = action // 存储参数中的闭包，然后在buttonsTapped中执行
         button.addTarget(self, action: #selector(buttonsTapped(_:)), for: forEvent)
         button.extendTouchArea()
-    }
-    
-    // 🔴 完善collectionView的选中逻辑
-    func updateButtonStatus(sender: UIButton) {
-        sender.isSelected = true
     }
     
     // MARK: - @objc func
     @objc func buttonsTapped(_ sender: UIButton) {
         buttonAction?()
-        updateButtonStatus(sender: sender)
     }
     
 }
