@@ -65,6 +65,8 @@
 		7A216162238986AF00D5A93A /* StepperPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A216150238986AF00D5A93A /* StepperPage.swift */; };
 		7A216163238986AF00D5A93A /* PickerViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A216151238986AF00D5A93A /* PickerViewPage.swift */; };
 		7A216164238986AF00D5A93A /* ImageViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A216152238986AF00D5A93A /* ImageViewPage.swift */; };
+		7A21B8542B6F2AD700203297 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21B8532B6F2AD700203297 /* UserDefaultsManager.swift */; };
+		7A21B8562B6F2B1900203297 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A21B8552B6F2B1900203297 /* Preferences.swift */; };
 		7A244E9E24C7EFE500D072FB /* IntPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A244E9D24C7EFE400D072FB /* IntPage.swift */; };
 		7A25A5532B355883001C47B9 /* MultiCellTypeTableViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A25A5522B355883001C47B9 /* MultiCellTypeTableViewPage.swift */; };
 		7A25A885249A67FC006D9F05 /* TuplePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A25A884249A67FC006D9F05 /* TuplePage.swift */; };
@@ -644,6 +646,8 @@
 		7A216151238986AF00D5A93A /* PickerViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewPage.swift; sourceTree = "<group>"; };
 		7A216152238986AF00D5A93A /* ImageViewPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewPage.swift; sourceTree = "<group>"; };
 		7A216165238986E800D5A93A /* SwiftNotes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftNotes-Bridging-Header.h"; sourceTree = "<group>"; };
+		7A21B8532B6F2AD700203297 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		7A21B8552B6F2B1900203297 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		7A244E9D24C7EFE400D072FB /* IntPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntPage.swift; sourceTree = "<group>"; };
 		7A25A5522B355883001C47B9 /* MultiCellTypeTableViewPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiCellTypeTableViewPage.swift; sourceTree = "<group>"; };
 		7A25A884249A67FC006D9F05 /* TuplePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuplePage.swift; sourceTree = "<group>"; };
@@ -1343,6 +1347,7 @@
 				7A11A06A2B69053C00F8456E /* FileNameInApp.swift */,
 				7A997EC92B590F7800001608 /* DBTableInAPP.swift */,
 				7AE8EB6D2B3AA1AF003AF47D /* ViewControllerManager.swift */,
+				7A21B8552B6F2B1900203297 /* Preferences.swift */,
 			);
 			name = InApp;
 			path = ../SwiftGeneral/InApp;
@@ -1355,6 +1360,7 @@
 				7A88C72F2A8929E400D61E33 /* Constant.swift */,
 				7A88C7332A8929E400D61E33 /* CustomView.swift */,
 				7ACF48512B27052700759E0A /* DataManager.swift */,
+				7A21B8532B6F2AD700203297 /* UserDefaultsManager.swift */,
 				7ACF48532B270DB800759E0A /* Model.swift */,
 				7A88C7312A8929E400D61E33 /* DatePicker.swift */,
 				7AADC6932B5BDF0F00E42FA8 /* DBManager.swift */,
@@ -2276,6 +2282,7 @@
 				7A997EC62B57C73D00001608 /* OptionSheetPage.swift in Sources */,
 				7A62A1A5244CA9790090D128 /* PinchGesturePage.swift in Sources */,
 				7A88A6EC24227CA300BF1611 /* ForWhilePage.swift in Sources */,
+				7A21B8562B6F2B1900203297 /* Preferences.swift in Sources */,
 				7A7B5D3C23C05A150079A931 /* ArraysPage.swift in Sources */,
 				7A730BC32B6A191900751E67 /* TimingTable.swift in Sources */,
 				7A88C7472A8929E400D61E33 /* Functions.swift in Sources */,
@@ -2322,6 +2329,7 @@
 				7AD3C6162B104F0F00B9A752 /* TestVCListPage.swift in Sources */,
 				7A3E8E642AB1D26F00E50925 /* FormatterListPage.swift in Sources */,
 				7A2AC398240A791300B95E43 /* TransitionPage.swift in Sources */,
+				7A21B8542B6F2AD700203297 /* UserDefaultsManager.swift in Sources */,
 				7A997ECA2B590F7800001608 /* DBTableInAPP.swift in Sources */,
 				7A8DF66A2A9F8D5C0048146F /* Delegate3Page.swift in Sources */,
 				7AA3C291241CCA5800F77711 /* NavControllerPage.swift in Sources */,

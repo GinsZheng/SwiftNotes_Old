@@ -242,7 +242,7 @@ extension TaskTable {
         
         // 创建两个 section
         let sectionForIsDone0 = Models.HomeSection(cells: tasksIsDone0)
-        let sectionForIsDone1 = Models.HomeSection(header: .titleDescFoldBg(title: "已完成", titleType: .small, description: "\(taskCounts[true, default: 0])", isFolded: false), cells: tasksIsDone1)
+        let sectionForIsDone1 = Models.HomeSection(header: .titleDescFoldBg(title: "已完成", titleType: .small, description: "\(taskCounts[true, default: 0])", isFolded: Preferences.isDoneListFolded), cells: tasksIsDone1)
         
         // 返回包含这两个 section 的数组
         return [sectionForIsDone0, sectionForIsDone1]
