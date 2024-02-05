@@ -286,11 +286,11 @@ extension TaskTable {
             case 0: // 非预设
                 break
             case 1: // 今天
-                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: 1)) AND tg.hideInSmartGroup = 0"
+                sql += generateSmartGroupPresetSQL(days: 1)
             case 2: // 近3天
-                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: 3)) AND tg.hideInSmartGroup = 0"
+                sql += generateSmartGroupPresetSQL(days: 3)
             case 3: // 近7天
-                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: 7)) AND tg.hideInSmartGroup = 0"
+                sql += generateSmartGroupPresetSQL(days: 7)
             case 4: // 已完成
                 sql += " AND task.isDone = 1 AND tg.hideInSmartGroup = 0"
             case 5: // 全部
@@ -370,7 +370,7 @@ extension TaskTable {
 //         OR (task.isDone = 0 AND task.nextReminderTimestamp < \(startOfTodayTimestamp()))) \
 //         AND tg.hideInSmartGroup = 0
 //        """
-        let sql = ""
+        let sql = " AND tg.hideInSmartGroup = 0 AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: days))"
         return sql
     }
 }
