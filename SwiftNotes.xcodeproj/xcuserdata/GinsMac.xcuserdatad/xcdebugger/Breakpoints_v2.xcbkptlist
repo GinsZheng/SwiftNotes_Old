@@ -132,53 +132,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CB039D7F-F544-40CC-A6FE-DF031A3962C2"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../TimingTask/TimingTask/Task/TaskListVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "setupUI()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "CB039D7F-F544-40CC-A6FE-DF031A3962C2 - de88933a0a6c85fb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwiftNotes.TaskListVC.setupUI() -&gt; ()"
-                  moduleName = "SwiftNotes"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/GinsMac/Downloads/Gins/Software/Library/lib_Xcode/TimingTask/TimingTask/Task/TaskListVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "476">
-               </Location>
-               <Location
-                  uuid = "CB039D7F-F544-40CC-A6FE-DF031A3962C2 - de88933a0a6c85fb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "SwiftNotes.TaskListVC.setupUI() -&gt; ()"
-                  moduleName = "SwiftNotes"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/GinsMac/Downloads/Gins/Software/Library/lib_Xcode/TimingTask/TimingTask/Task/TaskListVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "124"
-                  endingLineNumber = "124"
-                  offsetFromSymbolStart = "456">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
