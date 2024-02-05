@@ -63,13 +63,13 @@ class GroupListView: UIView {
     
     // 分组按钮按下
     func handleButtonsTap(buttonIndex: Int) {
-        Preferences.setGroupSelection(groupType: 1, groupId: groupData[buttonIndex].id, groupIndex: buttonIndex)
+        Preferences.setGroupSelection(isTrashSelected: false, groupId: groupData[buttonIndex].id, groupIndex: buttonIndex)
         onGroupSelected?()
     }
     
     // 废纸蒌按钮按下
     func handleTrashButtonTap() {
-        Preferences.groupType = 1
+        Preferences.isTrashSelected = true
         onGroupSelected?()
     }
     
@@ -192,18 +192,18 @@ extension GroupListView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCollectionViewCell.identifier, for: indexPath) as? GroupCollectionViewCell else { return UICollectionViewCell() }
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
-        let isSelected = Preferences.groupType == 1 ? false : indexPath.row == Preferences.selectedGroupIndex
+        let isSelected = Preferences.isTrashSelected ? false : indexPath.row == Preferences.selectedGroupIndex
         cell.configure(withTitle: titles[indexPath.row], isSelected: isSelected) {
             // 定义cell点击事件
             self.handleButtonsTap(buttonIndex: indexPath.row)
-            self.updateButtonStatus()
+            self.updateButtonStatus() 
             collectionView.reloadData()
         }
         return cell
     }
     
     private func updateButtonStatus() {
-        bottomView.trashButton.isSelected = Preferences.groupType == 1
+        bottomView.trashButton.isSelected = Preferences.isTrashSelected
         // 在这里不能放 collectionView.reloadData() ，不然在willDisplay代理函数中会引发无限循环。(因为willDisplay方法会内部调用reloadData)
     }
     
@@ -262,7 +262,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
         buttons.forEach { $0.isSelected = false }
         trashButton.isSelected = false
         
-        if Preferences.groupType == 1 {
+        if Preferences.isTrashSelected {
             trashButton.isSelected = true
         } else {
             buttons[Preferences.selectedGroupIndex].isSelected = true
