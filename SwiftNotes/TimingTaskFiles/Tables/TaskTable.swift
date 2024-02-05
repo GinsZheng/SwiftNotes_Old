@@ -272,31 +272,33 @@ extension TaskTable {
         LEFT JOIN taskGroup tg ON task.groupId = tg.id
         WHERE task.isInTrash = \(groupType == 1 ? 1 : 0)
         """
-//
-//        // 所有分组的筛选都有是否处于废纸蒌的判断，如果是，就无筛选
-//        if !isInTrash {
-//            // 添加分组筛选，如果groupId为nil，则不限制groupId
-//            if let groupId = groupId, isInTrash == false {
-//                sql += " AND task.groupId = \(groupId)"
-//            }
-//            
-//            // 智能分组预设
-//            switch smartGroupPreset {
-//            case .notSmartGroup:
-//                break
-//            case .today:
-//                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 1)) AND tg.hideInSmartGroup = 0"
-//            case .nearly3Days:
-//                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 3)) AND tg.hideInSmartGroup = 0"
-//            case .nearly7Days:
-//                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 7)) AND tg.hideInSmartGroup = 0"
-//            case .all:
-//                break
-//            case .done:
-//                sql += " AND task.isDone = 1"
-//            }
-//            
-//        }
+
+        // 所有分组的筛选都有是否处于废纸蒌的判断，如果是，就无筛选
+        switch groupType {
+        case 0, 2: // 默认、普通分组
+            if let groupId = groupId {
+                sql += " AND task.groupId = \(groupId)"
+            }
+        case 1: // 废纸蒌
+            break
+        case 3: // 预设智能分组
+            switch smartGroupPreset {
+            case .notSmartGroup:
+                break
+            case .today:
+                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 1)) AND tg.hideInSmartGroup = 0"
+            case .nearly3Days:
+                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 3)) AND tg.hideInSmartGroup = 0"
+            case .nearly7Days:
+                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 7)) AND tg.hideInSmartGroup = 0"
+            case .all:
+                break
+            case .done:
+                sql += " AND task.isDone = 1"
+            }
+        default:
+            print("分组类型错误")
+        }
         
         print("sql", sql)
         
