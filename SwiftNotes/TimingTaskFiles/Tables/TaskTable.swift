@@ -230,9 +230,9 @@ class TaskTable: TableProtocol {
 // MARK: - 查询方法
 extension TaskTable {
     // 返回首页Section数据
-    func fetchHomeSectionsData(isInTrash: Bool, groupId: Int? = nil) -> [Models.HomeSection] {
+    func fetchHomeSectionsData(isInTrash: Bool, groupId: Int? = nil, smartGroupPreset: SmartGroupPreset) -> [Models.HomeSection] {
         // 获取所有任务数据
-        let allTasks = fetchHomeCellsData(isInTrash: isInTrash, groupId: groupId)
+        let allTasks = fetchHomeCellsData(isInTrash: isInTrash, groupId: groupId, smartGroupPreset: smartGroupPreset)
         // 获取每个section任务数量
         let taskCounts = fetchTaskCountsByIsDone()
 
@@ -254,7 +254,7 @@ extension TaskTable {
 // MARK: - 私有方法
 extension TaskTable {
     // 返回首页cell数据
-    private func fetchHomeCellsData(isInTrash: Bool, groupId: Int? = nil) -> [Models.HomeCell] {
+    func fetchHomeCellsData(isInTrash: Bool, groupId: Int? = nil, smartGroupPreset: SmartGroupPreset) -> [Models.HomeCell] {
         var sql = """
         SELECT task.id, task.taskType, task.taskTitle, task.isDone, task.isReminded, task.isTimeSet,
                task.nextReminderTimestamp, task.isRepeating, task.hasProgress, task.totalProgress,
@@ -269,33 +269,55 @@ extension TaskTable {
             ) T
             WHERE T.rownum = 1
         ) ss ON task.id = ss.taskId
+        LEFT JOIN taskGroup tg ON task.groupId = tg.id
         WHERE task.isInTrash = \(isInTrash ? 1 : 0)
         """
-        
-        if let groupId = groupId, isInTrash == false {
-            sql += " AND task.groupId = \(groupId)"
+
+        // 所有分组的筛选都有是否处于废纸蒌的判断，如果是，就无筛选
+        if !isInTrash {
+            // 添加分组筛选，如果groupId为nil，则不限制groupId
+            if let groupId = groupId, isInTrash == false {
+                sql += " AND task.groupId = \(groupId)"
+            }
+            
+            // 智能分组预设
+            switch smartGroupPreset {
+            case .notSmartGroup:
+                break
+            case .today:
+                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 1)) AND tg.hideInSmartGroup = 0"
+            case .nearly3Days:
+                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 3)) AND tg.hideInSmartGroup = 0"
+            case .nearly7Days:
+                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 7)) AND tg.hideInSmartGroup = 0"
+            case .all:
+                break
+            case .done:
+                sql += " AND task.isDone = 1"
+            }
+            
         }
+        
+        print("sql", sql)
         
         // 添加排序逻辑
-        var orderByClause = ""
         switch Preferences.tasksSortingType {
         case 0: // 手动
-            orderByClause = " ORDER BY task.manualSorting ASC"
+            sql += " ORDER BY task.manualSorting ASC"
         case 1: // 更新日期
-            orderByClause = " ORDER BY task.updateTimestamp DESC"
+            sql += " ORDER BY task.updateTimestamp DESC"
         case 2: // 创建日期
-            orderByClause = " ORDER BY task.creationTimestamp DESC"
+            sql += " ORDER BY task.creationTimestamp DESC"
         case 3: // 标题
-            orderByClause = " ORDER BY task.taskTitle ASC"
+            sql += " ORDER BY task.taskTitle ASC"
         case 4: // 优先级
-            orderByClause = " ORDER BY task.priority DESC, task.updateTimestamp DESC"
+            sql += " ORDER BY task.priority DESC, task.updateTimestamp DESC"
         default:
-            orderByClause = " ORDER BY task.manualSorting ASC"
+            sql += " ORDER BY task.manualSorting ASC"
         }
         
-        sql += orderByClause
-        
         return DB.shared.fetchArray(withSQL: sql) { row in
+//            print("row", row)
             guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
             let taskType: Int = extractValue(from: row, key: "taskType")
             let taskTitle: String = extractValue(from: row, key: "taskTitle")
@@ -313,8 +335,10 @@ extension TaskTable {
             let manualSorting: Int = extractValue(from: row, key: "manualSorting")
             let currentProgress: Int = extractValue(from: row, key: "currentProgress")
             let progressPercentage: Int = totalProgress != 0 ? (currentProgress * 100 / totalProgress) : 0
-
-            return Models.HomeCell(id: id, taskType: taskType, taskTitle: taskTitle, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, isRepeating: isRepeating, hasProgress: hasProgress, color: color, priority: priority, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, manualSorting: manualSorting, progressPercentage: progressPercentage)
+            
+            let result = Models.HomeCell(id: id, taskType: taskType, taskTitle: taskTitle, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, isRepeating: isRepeating, hasProgress: hasProgress, color: color, priority: priority, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, manualSorting: manualSorting, progressPercentage: progressPercentage)
+//            print("查询结果", result)
+            return result
         }
         
     }
@@ -329,4 +353,26 @@ extension TaskTable {
         }
     }
     
+}
+
+enum SmartGroupPreset {
+    case notSmartGroup
+    case today
+    case nearly3Days
+    case nearly7Days
+    case done
+    case all
+}
+
+
+func startOfTodayTimestamp() -> Int {
+    let startOfDay = Calendar.current.startOfDay(for: Date())
+    return Int(startOfDay.timeIntervalSince1970)
+}
+
+func endOfTodayTimestamp(days: Int) -> Int {
+    let startOfDay = Calendar.current.startOfDay(for: Date())
+    guard let endDay = Calendar.current.date(byAdding: .day, value: days - 1, to: startOfDay) else { return Int(startOfDay.timeIntervalSince1970) }
+    let endOfDay = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: endDay)!
+    return Int(endOfDay.timeIntervalSince1970)
 }

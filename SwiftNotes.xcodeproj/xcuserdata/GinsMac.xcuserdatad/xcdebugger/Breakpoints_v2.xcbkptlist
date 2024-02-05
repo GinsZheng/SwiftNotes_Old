@@ -119,22 +119,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A62BB3C2-CB46-444B-BF8A-99D524ACFCC7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SwiftNotes/View/ViewCells/SwitchScrollAndCollectionView/GroupListView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
-            landmarkName = "buttonsTapped(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4C34CE73-8D3F-4872-8119-857604CFCAA6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -142,10 +126,58 @@
             filePath = "SwiftNotes/View/ViewCells/SwitchScrollAndCollectionView/GroupListView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CB039D7F-F544-40CC-A6FE-DF031A3962C2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../TimingTask/TimingTask/Task/TaskListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "setupUI()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CB039D7F-F544-40CC-A6FE-DF031A3962C2 - de88933a0a6c85fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftNotes.TaskListVC.setupUI() -&gt; ()"
+                  moduleName = "SwiftNotes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/GinsMac/Downloads/Gins/Software/Library/lib_Xcode/TimingTask/TimingTask/Task/TaskListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "476">
+               </Location>
+               <Location
+                  uuid = "CB039D7F-F544-40CC-A6FE-DF031A3962C2 - de88933a0a6c85fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SwiftNotes.TaskListVC.setupUI() -&gt; ()"
+                  moduleName = "SwiftNotes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/GinsMac/Downloads/Gins/Software/Library/lib_Xcode/TimingTask/TimingTask/Task/TaskListVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "456">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

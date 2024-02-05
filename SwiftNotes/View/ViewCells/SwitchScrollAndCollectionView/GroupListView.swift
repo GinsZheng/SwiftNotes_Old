@@ -40,8 +40,9 @@ class GroupListView: UIView {
     let showTrashButton: Bool
     var collectionView: UICollectionView!
     let bgView = UIView()
+    let bottomView = GroupBottomButtonsView()
     
-    // 初始化方法
+    // MARK: - 初始化与生命周期方法
     init(frame: CGRect, viewController: UIViewController, showTrashButton: Bool) {
         self.parentVC = viewController
         self.showTrashButton = showTrashButton
@@ -52,7 +53,7 @@ class GroupListView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - func
+    // MARK: - 公共方法
     func setupView() {
         setupFormViewUI()
         groupData.onItemsUpdated = { [weak self] in
@@ -60,13 +61,19 @@ class GroupListView: UIView {
         }
     }
     
+    // 分组按钮按下
     func handleButtonsTap(buttonIndex: Int) {
-        Preferences.isTrashSelected = false
-        Preferences.selectedGroupId = groupData[buttonIndex].id
-        Preferences.selectedGroupIndex = buttonIndex
+        Preferences.setGroupSelection(isTrashSelected: false, groupId: groupData[buttonIndex].id, groupIndex: buttonIndex)
         onGroupSelected?()
     }
     
+    // 废纸蒌按钮按下
+    func handleTrashButtonTap() {
+        Preferences.isTrashSelected = true
+        onGroupSelected?()
+    }
+    
+
 }
 
 
@@ -101,8 +108,7 @@ extension GroupListView {
             self?.switchView()
         }
         buttons.onTrashButtonTapped = { [unowned self] in
-            Preferences.isTrashSelected = true
-            self.parentVC.push(targetVC: CSGeneralSubpage())
+            self.handleTrashButtonTap()
         }
     }
     
@@ -165,12 +171,14 @@ extension GroupListView: UICollectionViewDelegate, UICollectionViewDataSource {
         bgView.setEachCornerRadiusWithMask(radius: kRadius, corners: [.topLeft, .topRight])
         collectionView.setFrame(left: kEdgeMargin, top: 0, right: kEdgeMargin, height: collectionViewHeight)
         
-        let bottomView = GroupBottomButtonsView()
         bottomView.setup(superview: bgView)
         bottomView.setFrame(left: 0, bottom: 0, right: 0, height: bottomLineHeight)
         bottomView.setupView(showTrashButton: showTrashButton)
+        updateButtonStatus() // 初始化废纸蒌状态
         bottomView.onTrashButtonTapped = { [unowned self] in
-            self.parentVC.push(targetVC: CSGeneralSubpage())
+            handleTrashButtonTap()
+            updateButtonStatus()
+            self.collectionView.reloadData()
         }
         bottomView.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
@@ -184,13 +192,21 @@ extension GroupListView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GroupCollectionViewCell.identifier, for: indexPath) as? GroupCollectionViewCell else { return UICollectionViewCell() }
         // 把UI逻辑放在自定义的 CollectionViewCell，把数据放在此
-        let isSelected = indexPath.row == Preferences.selectedGroupIndex
+        let isSelected = Preferences.isTrashSelected ? false : indexPath.row == Preferences.selectedGroupIndex
         cell.configure(withTitle: titles[indexPath.row], isSelected: isSelected) {
+            // 定义cell点击事件
             self.handleButtonsTap(buttonIndex: indexPath.row)
+            self.updateButtonStatus()
             collectionView.reloadData()
         }
         return cell
     }
+    
+    private func updateButtonStatus() {
+        bottomView.trashButton.isSelected = Preferences.isTrashSelected
+        // 在这里不能放 collectionView.reloadData() ，不然在willDisplay代理函数中会引发无限循环。(因为willDisplay方法会内部调用reloadData)
+    }
+    
 }
 
 
@@ -208,6 +224,7 @@ class HorizonalScrollingGroupButtonsView: UIView {
     
     let scrollView = UIScrollView()
     var buttons: [UIButton] = []
+    let trashButton = UIButton(type: .custom)
     
     // 定义闭包属性
     var onButtonsTapped: ((Int) -> Void)?
@@ -240,11 +257,17 @@ class HorizonalScrollingGroupButtonsView: UIView {
     }
     
     // 更新按钮选中状态UI
-    func updateButtonStatus() {
-        for button in buttons {
-            button.isSelected = false
+    private func updateButtonStatus() {
+        // 先清除所有选中状态
+        buttons.forEach { $0.isSelected = false }
+        trashButton.isSelected = false
+        
+        if Preferences.isTrashSelected {
+            trashButton.isSelected = true
+        } else {
+            buttons[Preferences.selectedGroupIndex].isSelected = true
         }
-        buttons[Preferences.selectedGroupIndex].isSelected = true
+        
     }
     
 }
@@ -295,11 +318,12 @@ extension HorizonalScrollingGroupButtonsView {
     }
     
     private func addTrashButton() {
-        let trashButton = UIButton(type: .custom)
         trashButton.setup(superview: scrollView, target: self, action: #selector(trashButtonTapped))
         trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
+        trashButton.setTitleColor(.hex(cBlue_5393FF), for: .selected)
         trashButton.setFrame(left: buttonLeft, bottom: 10, width: (trashButton.titleLabel?.getLabelWidth() ?? 0) + 24, height: 28)
         trashButton.extendTouchArea()
+        updateButtonStatus()
         
         buttonLeft = trashButton.right + itemInterval
         scrollView.contentSize.width = buttonLeft + tailPadding
@@ -319,7 +343,7 @@ extension HorizonalScrollingGroupButtonsView {
     // MARK: - @objc func
     @objc private func buttonsTapped(_ button: UIButton) {
         onButtonsTapped?(button.tag)
-        updateButtonStatus() // 要放onButtonsTapped，因为onButtonsTapped会更新Preferences
+        updateButtonStatus() // 要放onButtonsTapped后，因为onButtonsTapped会更新Preferences
     }
     
     @objc private func switchButtonTapped() {
@@ -328,6 +352,7 @@ extension HorizonalScrollingGroupButtonsView {
     
     @objc private func trashButtonTapped() {
         onTrashButtonTapped?()
+        updateButtonStatus()
     }
     
     @objc private func settingsButtonTapped() {
@@ -471,6 +496,7 @@ extension GroupBottomButtonsView {
     private func addTrashButton() {
         trashButton.setup(superview: self, target: self, action: #selector(trashButtonTapped))
         trashButton.setStyleSolidButton(title: "废纸蒌", titleSize: 14, titleColor: c666, bgImage: getImageWithColor(color: cF0F1F3), radius: 14)
+        trashButton.setTitleColor(.hex(cBlue_5393FF), for: .selected)
         trashButton.setFrame(left: 10, bottom: 10, width: getLabelWidth(text: "废纸蒌", fontSize: 14, weight: .medium) + 24, height: 28)
         trashButton.extendTouchArea()
     }

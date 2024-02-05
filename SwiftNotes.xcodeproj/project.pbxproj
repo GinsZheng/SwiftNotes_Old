@@ -26,10 +26,6 @@
 		7A0FBCDC2A725B7E00AC7BCA /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7A0FBCDA2A7253BB00AC7BCA /* testVideo.mp4 */; };
 		7A109AF82421302E0034C624 /* ModelBasicNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A109AF72421302E0034C624 /* ModelBasicNote.swift */; };
 		7A11A0552B68A11E00F8456E /* CollectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11A0542B68A11D00F8456E /* CollectionViewModels.swift */; };
-		7A11A0622B68BCB700F8456E /* task.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A11A05E2B68BCB700F8456E /* task.csv */; };
-		7A11A0632B68BCB700F8456E /* taskGroup.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A11A05F2B68BCB700F8456E /* taskGroup.csv */; };
-		7A11A0642B68BCB700F8456E /* timing.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A11A0602B68BCB700F8456E /* timing.csv */; };
-		7A11A0652B68BCB700F8456E /* history.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7A11A0612B68BCB700F8456E /* history.csv */; };
 		7A11A0692B68DD3F00F8456E /* TaskGroupTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11A0682B68DD3F00F8456E /* TaskGroupTable.swift */; };
 		7A11A06B2B69053C00F8456E /* FileNameInApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11A06A2B69053C00F8456E /* FileNameInApp.swift */; };
 		7A11A06D2B69070800F8456E /* HistoryTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A11A06C2B69070800F8456E /* HistoryTable.swift */; };
@@ -234,6 +230,10 @@
 		7AADC69B2B5BE12E00E42FA8 /* ProjectsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */; };
 		7AADC6A02B5D682A00E42FA8 /* ItemInsertPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */; };
 		7AAE8B532B5E397D003F67B0 /* ItemTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAE8B522B5E397D003F67B0 /* ItemTable.swift */; };
+		7AB437472B707A5600530A3B /* task.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AB437432B707A5600530A3B /* task.csv */; };
+		7AB437482B707A5600530A3B /* timing.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AB437442B707A5600530A3B /* timing.csv */; };
+		7AB437492B707A5600530A3B /* history.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AB437452B707A5600530A3B /* history.csv */; };
+		7AB4374A2B707A5600530A3B /* taskGroup.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AB437462B707A5600530A3B /* taskGroup.csv */; };
 		7ABEFC5C2B4BEA58002C5A19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */; };
 		7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 7AC3B73F23CA05B3004DB044 /* TestJSON.json */; };
 		7AC3B74523CA21D1004DB044 /* ReadDataNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */; };
@@ -606,10 +606,6 @@
 		7A0FBCDA2A7253BB00AC7BCA /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
 		7A109AF72421302E0034C624 /* ModelBasicNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelBasicNote.swift; sourceTree = "<group>"; };
 		7A11A0542B68A11D00F8456E /* CollectionViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModels.swift; sourceTree = "<group>"; };
-		7A11A05E2B68BCB700F8456E /* task.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = task.csv; sourceTree = "<group>"; };
-		7A11A05F2B68BCB700F8456E /* taskGroup.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = taskGroup.csv; sourceTree = "<group>"; };
-		7A11A0602B68BCB700F8456E /* timing.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = timing.csv; sourceTree = "<group>"; };
-		7A11A0612B68BCB700F8456E /* history.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = history.csv; sourceTree = "<group>"; };
 		7A11A0682B68DD3F00F8456E /* TaskGroupTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGroupTable.swift; sourceTree = "<group>"; };
 		7A11A06A2B69053C00F8456E /* FileNameInApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameInApp.swift; sourceTree = "<group>"; };
 		7A11A06C2B69070800F8456E /* HistoryTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTable.swift; sourceTree = "<group>"; };
@@ -808,6 +804,10 @@
 		7AADC69A2B5BE12E00E42FA8 /* ProjectsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsTable.swift; sourceTree = "<group>"; };
 		7AADC69F2B5D682A00E42FA8 /* ItemInsertPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemInsertPage.swift; sourceTree = "<group>"; };
 		7AAE8B522B5E397D003F67B0 /* ItemTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTable.swift; sourceTree = "<group>"; };
+		7AB437432B707A5600530A3B /* task.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = task.csv; path = "../../../../../../../../pd_tt_ 计时任务测试数据/task.csv"; sourceTree = "<group>"; };
+		7AB437442B707A5600530A3B /* timing.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = timing.csv; path = "../../../../../../../../pd_tt_ 计时任务测试数据/timing.csv"; sourceTree = "<group>"; };
+		7AB437452B707A5600530A3B /* history.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = history.csv; path = "../../../../../../../../pd_tt_ 计时任务测试数据/history.csv"; sourceTree = "<group>"; };
+		7AB437462B707A5600530A3B /* taskGroup.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = taskGroup.csv; path = "../../../../../../../../pd_tt_ 计时任务测试数据/taskGroup.csv"; sourceTree = "<group>"; };
 		7ABEFC5B2B4BEA58002C5A19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7AC3B73F23CA05B3004DB044 /* TestJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
 		7AC3B74423CA21D1004DB044 /* ReadDataNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadDataNote.swift; sourceTree = "<group>"; };
@@ -926,10 +926,10 @@
 		7A11A05D2B68BC5400F8456E /* CsvFiles */ = {
 			isa = PBXGroup;
 			children = (
-				7A11A05F2B68BCB700F8456E /* taskGroup.csv */,
-				7A11A0612B68BCB700F8456E /* history.csv */,
-				7A11A05E2B68BCB700F8456E /* task.csv */,
-				7A11A0602B68BCB700F8456E /* timing.csv */,
+				7AB437452B707A5600530A3B /* history.csv */,
+				7AB437432B707A5600530A3B /* task.csv */,
+				7AB437462B707A5600530A3B /* taskGroup.csv */,
+				7AB437442B707A5600530A3B /* timing.csv */,
 			);
 			path = CsvFiles;
 			sourceTree = "<group>";
@@ -2206,9 +2206,11 @@
 				7AC3B74323CA2043004DB044 /* TestJSON.json in Resources */,
 				7A3F57692B10AE520098482B /* Localizable.strings in Resources */,
 				7A27507022ABA25A00C8A474 /* LaunchScreen.storyboard in Resources */,
+				7AB4374A2B707A5600530A3B /* taskGroup.csv in Resources */,
 				7A21613A238986A400D5A93A /* Images.xcassets in Resources */,
 				7A3F57622B10AE520098482B /* Localizable.strings in Resources */,
 				7AD5C3B728BDFF530002CCE1 /* ViewCellList.plist in Resources */,
+				7AB437472B707A5600530A3B /* task.csv in Resources */,
 				7AA789BD28CE0D9800B58537 /* myPlist.plist in Resources */,
 				7A3F57682B10AE520098482B /* Localizable.strings in Resources */,
 				7A27506D22ABA25A00C8A474 /* Assets.xcassets in Resources */,
@@ -2217,24 +2219,22 @@
 				7A3C6B402884135900C1D7AC /* progress.csv in Resources */,
 				7A3F57632B10AE520098482B /* Localizable.strings in Resources */,
 				7A0FBCDC2A725B7E00AC7BCA /* testVideo.mp4 in Resources */,
-				7A11A0622B68BCB700F8456E /* task.csv in Resources */,
 				7A3F576D2B10AE520098482B /* Localizable.strings in Resources */,
 				7A3F57662B10AE520098482B /* Localizable.strings in Resources */,
 				7A3F576A2B10AE520098482B /* Localizable.strings in Resources */,
 				7AEA78B524C32F0F00909C62 /* index.html in Resources */,
-				7A11A0632B68BCB700F8456E /* taskGroup.csv in Resources */,
 				7A3F57642B10AE520098482B /* Localizable.strings in Resources */,
 				7A27506B22ABA25600C8A474 /* Main.storyboard in Resources */,
 				7A2161332389869D00D5A93A /* Books.plist in Resources */,
 				7A3F576B2B10AE520098482B /* Localizable.strings in Resources */,
-				7A11A0652B68BCB700F8456E /* history.csv in Resources */,
+				7AB437492B707A5600530A3B /* history.csv in Resources */,
 				7A3F57602B10AE520098482B /* Localizable.strings in Resources */,
 				7A6822CD28EAEBFC0005EEFB /* StarryNight.jpg in Resources */,
 				7A3F576C2B10AE520098482B /* Localizable.strings in Resources */,
 				7A3F575E2B10AE520098482B /* Localizable.strings in Resources */,
 				7A3F57612B10AE520098482B /* Localizable.strings in Resources */,
 				7A9B2A2C28E843620027C41D /* imageFlask.png in Resources */,
-				7A11A0642B68BCB700F8456E /* timing.csv in Resources */,
+				7AB437482B707A5600530A3B /* timing.csv in Resources */,
 				7A3C6B3F2884135900C1D7AC /* item.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
