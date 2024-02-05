@@ -286,13 +286,13 @@ extension TaskTable {
             case 0: // 非预设
                 break
             case 1: // 今天
-                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 1)) AND tg.hideInSmartGroup = 0"
+                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: 1)) AND tg.hideInSmartGroup = 0"
             case 2: // 近3天
-                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 3)) AND tg.hideInSmartGroup = 0"
+                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: 3)) AND tg.hideInSmartGroup = 0"
             case 3: // 近7天
-                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 7)) AND tg.hideInSmartGroup = 0"
+                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: 7)) AND tg.hideInSmartGroup = 0"
             case 4: // 已完成
-                sql += " AND task.isDone = 1"
+                sql += " AND task.isDone = 1 AND tg.hideInSmartGroup = 0"
             case 5: // 全部
                 break
             default:
@@ -301,8 +301,6 @@ extension TaskTable {
         default:
             print("分组类型参数错误")
         }
-        
-        print("sql", sql)
         
         // 添加排序逻辑
         switch Preferences.tasksSortingType {
@@ -320,8 +318,9 @@ extension TaskTable {
             sql += " ORDER BY task.manualSorting ASC"
         }
         
+//        print("sql", sql)
+        
         return DB.shared.fetchArray(withSQL: sql) { row in
-//            print("row", row)
             guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
             let taskType: Int = extractValue(from: row, key: "taskType")
             let taskTitle: String = extractValue(from: row, key: "taskTitle")
@@ -347,6 +346,13 @@ extension TaskTable {
         
     }
     
+
+    
+}
+
+
+// MARK: - 私有方法
+extension TaskTable {
     // 返回未完成和已完成的cell数量
     private func fetchTaskCountsByIsDone() -> [Bool: Int] {
         let sql = "SELECT isDone, COUNT(*) as count FROM task GROUP BY isDone ORDER BY isDone"
@@ -357,7 +363,18 @@ extension TaskTable {
         }
     }
     
+    // 生成今天/近3天等智能分组预设的条件sql
+    private func generateSmartGroupPresetSQL(days: Int) -> String {
+//        let sql = """
+//         AND ((task.isDone = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: days))) \
+//         OR (task.isDone = 0 AND task.nextReminderTimestamp < \(startOfTodayTimestamp()))) \
+//         AND tg.hideInSmartGroup = 0
+//        """
+        let sql = ""
+        return sql
+    }
 }
+
 
 enum SmartGroupPreset {
     case notSmartGroup
@@ -369,14 +386,3 @@ enum SmartGroupPreset {
 }
 
 
-func startOfTodayTimestamp() -> Int {
-    let startOfDay = Calendar.current.startOfDay(for: Date())
-    return Int(startOfDay.timeIntervalSince1970)
-}
-
-func endOfTodayTimestamp(days: Int) -> Int {
-    let startOfDay = Calendar.current.startOfDay(for: Date())
-    guard let endDay = Calendar.current.date(byAdding: .day, value: days - 1, to: startOfDay) else { return Int(startOfDay.timeIntervalSince1970) }
-    let endOfDay = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: endDay)!
-    return Int(endOfDay.timeIntervalSince1970)
-}

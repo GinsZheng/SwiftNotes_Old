@@ -63,7 +63,6 @@ class GroupListView: UIView {
     
     // 分组按钮按下
     func handleButtonsTap(index: Int) {
-        // 🔴不同的按钮设置不同的值
         // 🔴特别注意：思考userDefaults的是否设默认值，以及是否和模型的可选与否统一
         let item = groupData[index]
         Preferences.setGroupSelection(groupType: item.groupType, smartGroupPreset: item.smartGroupPreset ?? 0, groupIndex: index, groupId: item.id)
