@@ -318,7 +318,7 @@ extension TaskTable {
             sql += " ORDER BY task.manualSorting ASC"
         }
         
-//        print("sql", sql)
+        print("sql", sql)
         
         return DB.shared.fetchArray(withSQL: sql) { row in
             guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
@@ -365,12 +365,8 @@ extension TaskTable {
     
     // 生成今天/近3天等智能分组预设的条件sql
     private func generateSmartGroupPresetSQL(days: Int) -> String {
-//        let sql = """
-//         AND ((task.isDone = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: days))) \
-//         OR (task.isDone = 0 AND task.nextReminderTimestamp < \(startOfTodayTimestamp()))) \
-//         AND tg.hideInSmartGroup = 0
-//        """
-        let sql = " AND tg.hideInSmartGroup = 0 AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: days))"
+        // let sql = " AND tg.hideInSmartGroup = 0 AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: days))"
+        let sql = " AND tg.hideInSmartGroup = 0 AND task.isReminded = 1 AND ((task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: days))) OR (task.nextReminderTimestamp < \(startOfTodayTimestamp()) AND task.isDone = 0))"
         return sql
     }
 }
