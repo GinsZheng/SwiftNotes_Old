@@ -62,8 +62,11 @@ class GroupListView: UIView {
     }
     
     // 分组按钮按下
-    func handleButtonsTap(buttonIndex: Int) {
-        Preferences.setGroupSelection(groupType: 0, groupId: groupData[buttonIndex].id, groupIndex: buttonIndex)
+    func handleButtonsTap(index: Int) {
+        // 🔴不同的按钮设置不同的值
+        // 🔴特别注意：思考userDefaults的是否设默认值，以及是否和模型的可选与否统一
+        let item = groupData[index]
+        Preferences.setGroupSelection(groupType: item.groupType, smartGroupPreset: item.smartGroupPreset ?? 0, groupIndex: index, groupId: item.id)
         onGroupSelected?()
     }
     
@@ -102,7 +105,7 @@ extension GroupListView {
         buttons.setFrame(left: 0, top: 0, right: 0, height: 48)
         buttons.setupView(showsHorizontalScrollIndicator: false, showTrashButton: true)
         buttons.onButtonsTapped = { [unowned self] tag in
-            self.handleButtonsTap(buttonIndex: tag)
+            self.handleButtonsTap(index: tag)
         }
         buttons.onSwitchButtonTapped = { [weak self] in
             self?.switchView()
@@ -195,7 +198,7 @@ extension GroupListView: UICollectionViewDelegate, UICollectionViewDataSource {
         let isSelected = Preferences.groupType == 1 ? false : indexPath.row == Preferences.selectedGroupIndex
         cell.configure(withTitle: titles[indexPath.row], isSelected: isSelected) {
             // 定义cell点击事件
-            self.handleButtonsTap(buttonIndex: indexPath.row)
+            self.handleButtonsTap(index: indexPath.row)
             self.updateButtonStatus() 
             collectionView.reloadData()
         }
