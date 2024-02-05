@@ -230,9 +230,9 @@ class TaskTable: TableProtocol {
 // MARK: - 查询方法
 extension TaskTable {
     // 返回首页Section数据
-    func fetchHomeSectionsData(isInTrash: Bool, groupId: Int? = nil, smartGroupPreset: SmartGroupPreset) -> [Models.HomeSection] {
+    func fetchHomeSectionsData(groupType: Int, groupId: Int? = nil, smartGroupPreset: SmartGroupPreset) -> [Models.HomeSection] {
         // 获取所有任务数据
-        let allTasks = fetchHomeCellsData(isInTrash: isInTrash, groupId: groupId, smartGroupPreset: smartGroupPreset)
+        let allTasks = fetchHomeCellsData(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
         // 获取每个section任务数量
         let taskCounts = fetchTaskCountsByIsDone()
 
@@ -254,7 +254,7 @@ extension TaskTable {
 // MARK: - 私有方法
 extension TaskTable {
     // 返回首页cell数据
-    func fetchHomeCellsData(isInTrash: Bool, groupId: Int? = nil, smartGroupPreset: SmartGroupPreset) -> [Models.HomeCell] {
+    func fetchHomeCellsData(groupType: Int, groupId: Int? = nil, smartGroupPreset: SmartGroupPreset) -> [Models.HomeCell] {
         var sql = """
         SELECT task.id, task.taskType, task.taskTitle, task.isDone, task.isReminded, task.isTimeSet,
                task.nextReminderTimestamp, task.isRepeating, task.hasProgress, task.totalProgress,
@@ -270,33 +270,33 @@ extension TaskTable {
             WHERE T.rownum = 1
         ) ss ON task.id = ss.taskId
         LEFT JOIN taskGroup tg ON task.groupId = tg.id
-        WHERE task.isInTrash = \(isInTrash ? 1 : 0)
+        WHERE task.isInTrash = \(groupType == 1 ? 1 : 0)
         """
-
-        // 所有分组的筛选都有是否处于废纸蒌的判断，如果是，就无筛选
-        if !isInTrash {
-            // 添加分组筛选，如果groupId为nil，则不限制groupId
-            if let groupId = groupId, isInTrash == false {
-                sql += " AND task.groupId = \(groupId)"
-            }
-            
-            // 智能分组预设
-            switch smartGroupPreset {
-            case .notSmartGroup:
-                break
-            case .today:
-                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 1)) AND tg.hideInSmartGroup = 0"
-            case .nearly3Days:
-                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 3)) AND tg.hideInSmartGroup = 0"
-            case .nearly7Days:
-                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 7)) AND tg.hideInSmartGroup = 0"
-            case .all:
-                break
-            case .done:
-                sql += " AND task.isDone = 1"
-            }
-            
-        }
+//
+//        // 所有分组的筛选都有是否处于废纸蒌的判断，如果是，就无筛选
+//        if !isInTrash {
+//            // 添加分组筛选，如果groupId为nil，则不限制groupId
+//            if let groupId = groupId, isInTrash == false {
+//                sql += " AND task.groupId = \(groupId)"
+//            }
+//            
+//            // 智能分组预设
+//            switch smartGroupPreset {
+//            case .notSmartGroup:
+//                break
+//            case .today:
+//                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 1)) AND tg.hideInSmartGroup = 0"
+//            case .nearly3Days:
+//                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 3)) AND tg.hideInSmartGroup = 0"
+//            case .nearly7Days:
+//                sql += " AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfTodayTimestamp(days: 7)) AND tg.hideInSmartGroup = 0"
+//            case .all:
+//                break
+//            case .done:
+//                sql += " AND task.isDone = 1"
+//            }
+//            
+//        }
         
         print("sql", sql)
         
