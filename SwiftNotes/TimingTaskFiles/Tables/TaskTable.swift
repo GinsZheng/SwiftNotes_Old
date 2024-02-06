@@ -229,34 +229,35 @@ class TaskTable: TableProtocol {
 
 // MARK: - 查询方法
 extension TaskTable {
-    // 返回根据智能分组预设的首页Section数据
+    // 返回首页Section数据
     func fetchHomeSectionsData(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Models.HomeSection] {
         let allTasks = fetchHomeCellsData(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
         var sections: [Models.HomeSection] = []
 
         // 智能分组逻辑：今天/近3天/近7天
         if smartGroupPreset == 1 || smartGroupPreset == 2 || smartGroupPreset == 3 {
+            let taskCounts = fetchCountsForSmartGroupPreset(smartGroupPreset: smartGroupPreset)
             let expiredTasks = allTasks.filter { task in
                 task.isReminded && task.nextReminderTimestamp ?? 0 < startOfTodayTimestamp() && !task.isDone
             }
             if !expiredTasks.isEmpty {
-                sections.append(Models.HomeSection(header: .titleDescFoldBg(title: "已过期", titleType: .small, description: "🔴", isFolded: Preferences.isDayTypeSectionFolded[0]), cells: expiredTasks))
+                sections.append(Models.HomeSection(header: .titleDescFoldBg(title: "已过期", titleType: .small, description: "\(taskCounts["Expired", default: 0])", isFolded: Preferences.isDayTypeSectionFolded[0]), cells: expiredTasks))
             }
-
+            
             let endTimestamp = endOfFutureDayTimestamp(days: determineDaysFromPreset(smartGroupPreset))
             let upcomingTasks = allTasks.filter { task in
                 task.isReminded && (task.nextReminderTimestamp ?? 0) >= startOfTodayTimestamp() && (task.nextReminderTimestamp ?? 0) <= endTimestamp && !task.isDone
             }
             if !upcomingTasks.isEmpty {
                 let title = sectionTitleForPreset(smartGroupPreset)
-                sections.append(Models.HomeSection(header: .titleDescFoldBg(title: title, titleType: .small, description: "🔴", isFolded: Preferences.isDayTypeSectionFolded[1]), cells: upcomingTasks))
+                sections.append(Models.HomeSection(header: .titleDescFoldBg(title: title, titleType: .small, description: "\(taskCounts["Upcoming", default: 0])", isFolded: Preferences.isDayTypeSectionFolded[1]), cells: upcomingTasks))
             }
 
             let completedTasks = allTasks.filter { task in
                 task.isReminded && (task.nextReminderTimestamp ?? 0) >= startOfTodayTimestamp() && (task.nextReminderTimestamp ?? 0) <= endTimestamp && task.isDone
             }
             if !completedTasks.isEmpty {
-                sections.append(Models.HomeSection(header: .titleDescFoldBg(title: "已完成", titleType: .small, description: "🔴", isFolded: Preferences.isDayTypeSectionFolded[2]), cells: completedTasks))
+                sections.append(Models.HomeSection(header: .titleDescFoldBg(title: "已完成", titleType: .small, description: "\(taskCounts["Done", default: 0])", isFolded: Preferences.isDayTypeSectionFolded[2]), cells: completedTasks))
             }
         }
         // 普通分组逻辑
@@ -329,7 +330,7 @@ extension TaskTable {
         }
     }
     
-    // 返回根据筛选条件未完成和已完成的cell数量，
+    // 返回未完成和已完成的cell数量
     func fetchTaskCountsByIsDone(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Bool: Int] {
         var sql = """
         SELECT isDone, COUNT(*) FROM task
@@ -347,6 +348,35 @@ extension TaskTable {
             let isDone: Bool = extractValue(from: row, key: "isDone")
             let count: Int = extractValue(from: row, key: "COUNT(*)")
             return (isDone, count)
+        }
+    }
+    
+    // 返回今天/近3天/近7天的3个section的数量
+    func fetchCountsForSmartGroupPreset(smartGroupPreset: Int) -> [String: Int] {
+        guard smartGroupPreset == 1 || smartGroupPreset == 2 || smartGroupPreset == 3 else {
+            return [:]
+        }
+        
+        let startTimestamp = startOfTodayTimestamp()
+        let endTimestamp = endOfFutureDayTimestamp(days: determineDaysFromPreset(smartGroupPreset))
+        let sql = """
+        SELECT
+            CASE
+                WHEN nextReminderTimestamp < \(startTimestamp) AND isDone = 0 THEN 'Expired'
+                WHEN nextReminderTimestamp >= \(startTimestamp) AND nextReminderTimestamp <= \(endTimestamp) AND isDone = 0 THEN 'Upcoming'
+                WHEN nextReminderTimestamp >= \(startTimestamp) AND nextReminderTimestamp <= \(endTimestamp) AND isDone = 1 THEN 'Done'
+                ELSE 'Other'
+            END as Section,
+            COUNT(*)
+        FROM task
+        WHERE isReminded = 1 AND isInTrash = 0
+        GROUP BY Section
+        """
+
+        return DB.shared.fetchDictionary(withSQL: sql) { row in
+            let section: String = extractValue(from: row, key: "Section")
+            let count: Int = extractValue(from: row, key: "COUNT(*)")
+            return (section, count)
         }
     }
     
@@ -448,4 +478,7 @@ extension TaskTable {
         }
     }
 
+    private func isDayTypeSection() -> Bool {
+        return 
+    }
 }
