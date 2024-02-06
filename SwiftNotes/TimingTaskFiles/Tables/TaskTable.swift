@@ -229,61 +229,48 @@ class TaskTable: TableProtocol {
 
 // MARK: - 查询方法
 extension TaskTable {
-    // 返回首页Section数据
+    // 返回根据智能分组预设的首页Section数据
     func fetchHomeSectionsData(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Models.HomeSection] {
-        // 获取所有任务数据
-        let allTasks = fetchHomeCellsData(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
-        // 获取每个section任务数量
-        let taskCounts = fetchTaskCountsByIsDone(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
-        print("all", taskCounts)
-
-        // 分类任务：isDone 为 0 和 1
-        let tasksIsDone0 = allTasks.filter { !$0.isDone }
-        let tasksIsDone1 = allTasks.filter { $0.isDone }
-        
-        // 创建两个 section
-        let sectionForIsDone0 = Models.HomeSection(cells: tasksIsDone0)
-        let sectionForIsDone1 = Models.HomeSection(header: .titleDescFoldBg(title: "已完成", titleType: .small, description: "\(taskCounts[true, default: 0])", isFolded: Preferences.isDoneListFolded), cells: tasksIsDone1)
-        
-        // 返回包含这两个 section 的数组
-        return [sectionForIsDone0, sectionForIsDone1]
-    }
-    
-    //
-    func fetchHomeSectionsData2(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Models.HomeSection] {
-        // 获取所有任务数据
         let allTasks = fetchHomeCellsData(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
         var sections: [Models.HomeSection] = []
 
-        // "已过期" section
-        let expiredTasks = allTasks.filter { task in
-            task.isReminded && task.nextReminderTimestamp ?? 0 < startOfTodayTimestamp() && !task.isDone
-        }
-        if !expiredTasks.isEmpty {
-            sections.append(Models.HomeSection(header: .title(title: "已过期"), cells: expiredTasks))
-        }
+        // 智能分组逻辑：今天/近3天/近7天
+        if smartGroupPreset == 1 || smartGroupPreset == 2 || smartGroupPreset == 3 {
+            let expiredTasks = allTasks.filter { task in
+                task.isReminded && task.nextReminderTimestamp ?? 0 < startOfTodayTimestamp() && !task.isDone
+            }
+            if !expiredTasks.isEmpty {
+                sections.append(Models.HomeSection(header: .titleDescFoldBg(title: "已过期", titleType: .small, description: "🔴", isFolded: Preferences.isDayTypeSectionFolded[0]), cells: expiredTasks))
+            }
 
-        // "今天/近3天/近7天" section
-        let endTimestamp = endOfFutureDayTimestamp(days: determineDaysFromPreset(smartGroupPreset))
-        let upcomingTasks = allTasks.filter { task in
-            task.isReminded && (task.nextReminderTimestamp ?? 0) >= startOfTodayTimestamp() && (task.nextReminderTimestamp ?? 0) <= endTimestamp && !task.isDone
-        }
-        if !upcomingTasks.isEmpty {
-            let title = sectionTitleForPreset(smartGroupPreset)
-            sections.append(Models.HomeSection(header: .title(title: title), cells: upcomingTasks))
-        }
+            let endTimestamp = endOfFutureDayTimestamp(days: determineDaysFromPreset(smartGroupPreset))
+            let upcomingTasks = allTasks.filter { task in
+                task.isReminded && (task.nextReminderTimestamp ?? 0) >= startOfTodayTimestamp() && (task.nextReminderTimestamp ?? 0) <= endTimestamp && !task.isDone
+            }
+            if !upcomingTasks.isEmpty {
+                let title = sectionTitleForPreset(smartGroupPreset)
+                sections.append(Models.HomeSection(header: .titleDescFoldBg(title: title, titleType: .small, description: "🔴", isFolded: Preferences.isDayTypeSectionFolded[1]), cells: upcomingTasks))
+            }
 
-        // "已完成" section
-        let completedTasks = allTasks.filter { task in
-            task.isReminded && (task.nextReminderTimestamp ?? 0) >= startOfTodayTimestamp() && (task.nextReminderTimestamp ?? 0) <= endTimestamp && task.isDone
+            let completedTasks = allTasks.filter { task in
+                task.isReminded && (task.nextReminderTimestamp ?? 0) >= startOfTodayTimestamp() && (task.nextReminderTimestamp ?? 0) <= endTimestamp && task.isDone
+            }
+            if !completedTasks.isEmpty {
+                sections.append(Models.HomeSection(header: .titleDescFoldBg(title: "已完成", titleType: .small, description: "🔴", isFolded: Preferences.isDayTypeSectionFolded[2]), cells: completedTasks))
+            }
         }
-        if !completedTasks.isEmpty {
-            sections.append(Models.HomeSection(header: .title(title: "已完成"), cells: completedTasks))
+        // 普通分组逻辑
+        else {
+            let tasksIsDone0 = allTasks.filter { !$0.isDone }
+            let tasksIsDone1 = allTasks.filter { $0.isDone }
+            let taskCounts = fetchTaskCountsByIsDone(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
+
+            sections.append(Models.HomeSection(cells: tasksIsDone0))
+            sections.append(Models.HomeSection(header: .titleDescFoldBg(title: "已完成", titleType: .small, description: "\(taskCounts[true, default: 0])", isFolded: Preferences.isDoneListFolded[1]), cells: tasksIsDone1))
         }
 
         return sections
     }
-
     
 }
 
