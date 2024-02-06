@@ -449,7 +449,6 @@ extension TaskTable {
         }
     }
     
-    
     // 今天/近3天/近7天分组的辅助方法：根据 smartGroupPreset 确定天数
     private func determineDaysFromPreset(_ preset: Int) -> Int {
         switch preset {
@@ -481,4 +480,5 @@ extension TaskTable {
     private func isDayTypePreset(smartGroupPreset: Int) -> Bool {
         return smartGroupPreset == 1 || smartGroupPreset == 2 || smartGroupPreset == 3
     }
+    
 }
