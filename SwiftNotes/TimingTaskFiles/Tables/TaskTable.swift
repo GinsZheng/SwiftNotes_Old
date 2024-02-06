@@ -235,6 +235,7 @@ extension TaskTable {
         let allTasks = fetchHomeCellsData(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
         // 获取每个section任务数量
         let taskCounts = fetchTaskCountsByIsDone()
+        print("all", taskCounts)
 
         // 分类任务：isDone 为 0 和 1
         let tasksIsDone0 = allTasks.filter { !$0.isDone }
@@ -318,7 +319,7 @@ extension TaskTable {
             sql += " ORDER BY task.manualSorting ASC"
         }
         
-        print("sql", sql)
+//        print("sql", sql)
         
         return DB.shared.fetchArray(withSQL: sql) { row in
             guard let id: Int = extractOptValue(from: row, key: "id") else { return nil }
@@ -355,7 +356,7 @@ extension TaskTable {
 extension TaskTable {
     // 返回未完成和已完成的cell数量
     private func fetchTaskCountsByIsDone() -> [Bool: Int] {
-        let sql = "SELECT isDone, COUNT(*) as count FROM task GROUP BY isDone ORDER BY isDone"
+        let sql = "SELECT isDone, COUNT(*) FROM task GROUP BY isDone ORDER BY isDone"
         return DB.shared.fetchDictionary(withSQL: sql) { row in
             let isDone: Bool = extractValue(from: row, key: "isDone")
             let count: Int = extractValue(from: row, key: "COUNT(*)")
