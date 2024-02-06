@@ -356,35 +356,36 @@ extension TaskTable {
 extension TaskTable {
     // 返回根据筛选条件未完成和已完成的cell数量，
     private func fetchTaskCountsByIsDone(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Bool: Int] {
-        var sql = "SELECT isDone, COUNT(*) FROM task WHERE "
+        var sql = "SELECT isDone, COUNT(*) FROM task WHERE isInTrash = \(groupType == 1 ? 1 : 0)"
 
         // 根据 groupType 添加条件
-        if groupType == 1 {
-            sql += "isInTrash = 1"
-        } else {
-            sql += "isInTrash = 0"
-
-            if let groupId = groupId, (groupType == 0 || groupType == 2) {
+        switch groupType {
+        case 0, 2: // 默认、普通分组
+            if let groupId = groupId {
                 sql += " AND groupId = \(groupId)"
             }
-
-            if groupType == 3 {
-                switch smartGroupPreset {
-                case 1: // 今天
-                    sql += generateSmartGroupPresetSQL(days: 1)
-                case 2: // 近3天
-                    sql += generateSmartGroupPresetSQL(days: 3)
-                case 3: // 近7天
-                    sql += generateSmartGroupPresetSQL(days: 7)
-                case 4: // 已完成
-                    sql += " AND isDone = 1"
-                // ... 其他条件
-                default:
-                    break
-                }
+        case 1: // 废纸篓，不需要额外条件
+            break
+        case 3: // 预设智能分组
+            switch smartGroupPreset {
+            case 1: // 今天
+                sql += generateSmartGroupPresetSQL(days: 1)
+            case 2: // 近3天
+                sql += generateSmartGroupPresetSQL(days: 3)
+            case 3: // 近7天
+                sql += generateSmartGroupPresetSQL(days: 7)
+            case 4: // 已完成
+                sql += " AND task.isDone = 1 AND tg.hideInSmartGroup = 0"
+            case 5: // 全部
+                break
+            default:
+                print("预设智能分组参数错误")
             }
+        default:
+            print("分组类型参数错误")
         }
 
+        // 添加 GROUP BY 和 ORDER BY
         sql += " GROUP BY isDone ORDER BY isDone"
 
         return DB.shared.fetchDictionary(withSQL: sql) { row in
@@ -393,6 +394,7 @@ extension TaskTable {
             return (isDone, count)
         }
     }
+
 
 
 
