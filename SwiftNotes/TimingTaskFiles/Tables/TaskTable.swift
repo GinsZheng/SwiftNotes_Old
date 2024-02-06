@@ -219,7 +219,7 @@ class TaskTable: TableProtocol {
             let isProgressSummaryHidden: Bool = extractValue(from: row, key: "isProgressSummaryHidden")
             let manualSorting: Int = extractValue(from: row, key: "manualSorting")
             let isInTrash: Bool = extractValue(from: row, key: "isInTrash")
-
+            
             return Models.Task(id: id, taskType: taskType, taskTitle: taskTitle, taskContent: taskContent, isDone: isDone, isReminded: isReminded, isTimeSet: isTimeSet, nextReminderTimestamp: nextReminderTimestamp, reminderOccasions: reminderOccasions, isRepeating: isRepeating, repeatCycle: repeatCycle, repeatInterval: repeatInterval, repeatDays: repeatDays, repeatType: repeatType, repeatDates: repeatDates, whichWeek: whichWeek, dayOfWeek: dayOfWeek, months: months, endRepeatTimestamp: endRepeatTimestamp, hasProgress: hasProgress, progressType: progressType, totalProgress: totalProgress, color: color, priority: priority, subtaskIds: subtaskIds, creationTimestamp: creationTimestamp, updateTimestamp: updateTimestamp, groupId: groupId, isProgressSummaryHidden: isProgressSummaryHidden, manualSorting: manualSorting, isInTrash: isInTrash)
         }
     }
@@ -252,7 +252,7 @@ extension TaskTable {
 }
 
 
-// MARK: - 私有方法
+// MARK: - 中间件
 extension TaskTable {
     // 返回首页cell数据
     func fetchHomeCellsData(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Models.HomeCell] {
@@ -274,36 +274,11 @@ extension TaskTable {
         WHERE task.isInTrash = \(groupType == 1 ? 1 : 0)
         """
         
-        // 所有分组的筛选都有是否处于废纸蒌的判断，如果是，就无筛选
-        switch groupType {
-        case 0, 2: // 默认、普通分组
-            if let groupId = groupId {
-                sql += " AND task.groupId = \(groupId)"
-            }
-        case 1: // 废纸蒌
-            break
-        case 3: // 预设智能分组
-            sql += smartGroupPresetConditionSQL(smartGroupPreset: smartGroupPreset)
-        default:
-            print("分组类型参数错误")
-        }
+        // 根据 groupType 添加条件
+        sql += groupTypeConditionSQL(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
         
-        // 添加排序逻辑
-        switch Preferences.tasksSortingType {
-        case 0: // 手动
-            sql += " ORDER BY task.manualSorting ASC"
-        case 1: // 更新日期
-            sql += " ORDER BY task.updateTimestamp DESC"
-        case 2: // 创建日期
-            sql += " ORDER BY task.creationTimestamp DESC"
-        case 3: // 标题
-            sql += " ORDER BY task.taskTitle ASC"
-        case 4: // 优先级
-            sql += " ORDER BY task.priority DESC, task.updateTimestamp DESC"
-        default:
-            sql += " ORDER BY task.manualSorting ASC"
-        }
-        
+        // 根据Preferences.tasksSortingType添加排序逻辑
+        sql += sortingSQL()
 //        print("sql", sql)
         
         return DB.shared.fetchArray(withSQL: sql) { row in
@@ -329,37 +304,18 @@ extension TaskTable {
 //            print("查询结果", result)
             return result
         }
-        
     }
     
-
-    
-}
-
-
-// MARK: - 私有方法
-extension TaskTable {
     // 返回根据筛选条件未完成和已完成的cell数量，
-    private func fetchTaskCountsByIsDone(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Bool: Int] {
+    func fetchTaskCountsByIsDone(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Bool: Int] {
         var sql = """
-        SELECT isDone, COUNT(*) FROM task 
+        SELECT isDone, COUNT(*) FROM task
         LEFT JOIN taskGroup tg ON task.groupId = tg.id
         WHERE isInTrash = \(groupType == 1 ? 1 : 0)
         """
         
         // 根据 groupType 添加条件
-        switch groupType {
-        case 0, 2: // 默认、普通分组
-            if let groupId = groupId {
-                sql += " AND groupId = \(groupId)"
-            }
-        case 1: // 废纸篓，不需要额外条件
-            break
-        case 3: // 预设智能分组
-            sql += smartGroupPresetConditionSQL(smartGroupPreset: smartGroupPreset)
-        default:
-            print("分组类型参数错误")
-        }
+        sql += groupTypeConditionSQL(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
         
         // 添加 GROUP BY 和 ORDER BY
         sql += " GROUP BY isDone ORDER BY isDone"
@@ -369,6 +325,28 @@ extension TaskTable {
             let count: Int = extractValue(from: row, key: "COUNT(*)")
             return (isDone, count)
         }
+    }
+    
+}
+
+
+// MARK: - 私有方法
+extension TaskTable {
+    private func groupTypeConditionSQL(groupType: Int, groupId: Int?, smartGroupPreset: Int) -> String {
+        var condition = ""
+        switch groupType {
+        case 0, 2: // 默认、普通分组
+            if let groupId = groupId {
+                condition = " AND task.groupId = \(groupId)"
+            }
+        case 1: // 废纸蒌
+            break
+        case 3: // 预设智能分组
+            condition = smartGroupPresetConditionSQL(smartGroupPreset: smartGroupPreset)
+        default:
+            print("分组类型参数错误")
+        }
+        return condition
     }
 
     // 智能分组预设的条件sql
@@ -399,16 +377,23 @@ extension TaskTable {
         let sql = " AND tg.hideInSmartGroup = 0 AND task.isReminded = 1 AND ((task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: days))) OR (task.nextReminderTimestamp < \(startOfTodayTimestamp()) AND task.isDone = 0))"
         return sql
     }
+    
+    // 根据Preferences.tasksSortingType添加排序sql
+    private func sortingSQL() -> String {
+        switch Preferences.tasksSortingType {
+        case 0: // 手动
+            return " ORDER BY task.manualSorting ASC"
+        case 1: // 更新日期
+            return " ORDER BY task.updateTimestamp DESC"
+        case 2: // 创建日期
+            return " ORDER BY task.creationTimestamp DESC"
+        case 3: // 标题
+            return " ORDER BY task.taskTitle ASC"
+        case 4: // 优先级
+            return " ORDER BY task.priority DESC, task.updateTimestamp DESC"
+        default:
+            return " ORDER BY task.manualSorting ASC"
+        }
+    }
+    
 }
-
-
-enum SmartGroupPreset {
-    case notSmartGroup
-    case today
-    case nearly3Days
-    case nearly7Days
-    case done
-    case all
-}
-
-
