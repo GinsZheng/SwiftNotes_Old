@@ -249,6 +249,42 @@ extension TaskTable {
         return [sectionForIsDone0, sectionForIsDone1]
     }
     
+    //
+    func fetchHomeSectionsData2(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Models.HomeSection] {
+        // 获取所有任务数据
+        let allTasks = fetchHomeCellsData(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
+        var sections: [Models.HomeSection] = []
+
+        // "已过期" section
+        let expiredTasks = allTasks.filter { task in
+            task.isReminded && task.nextReminderTimestamp ?? 0 < startOfTodayTimestamp() && !task.isDone
+        }
+        if !expiredTasks.isEmpty {
+            sections.append(Models.HomeSection(header: .title(title: "已过期"), cells: expiredTasks))
+        }
+
+        // "今天/近3天/近7天" section
+        let endTimestamp = endOfFutureDayTimestamp(days: determineDaysFromPreset(smartGroupPreset))
+        let upcomingTasks = allTasks.filter { task in
+            task.isReminded && (task.nextReminderTimestamp ?? 0) >= startOfTodayTimestamp() && (task.nextReminderTimestamp ?? 0) <= endTimestamp && !task.isDone
+        }
+        if !upcomingTasks.isEmpty {
+            let title = sectionTitleForPreset(smartGroupPreset)
+            sections.append(Models.HomeSection(header: .title(title: title), cells: upcomingTasks))
+        }
+
+        // "已完成" section
+        let completedTasks = allTasks.filter { task in
+            task.isReminded && (task.nextReminderTimestamp ?? 0) >= startOfTodayTimestamp() && (task.nextReminderTimestamp ?? 0) <= endTimestamp && task.isDone
+        }
+        if !completedTasks.isEmpty {
+            sections.append(Models.HomeSection(header: .title(title: "已完成"), cells: completedTasks))
+        }
+
+        return sections
+    }
+
+    
 }
 
 
@@ -396,4 +432,33 @@ extension TaskTable {
         }
     }
     
+    
+    // 今天/近3天/近7天分组的辅助方法：根据 smartGroupPreset 确定天数
+    private func determineDaysFromPreset(_ preset: Int) -> Int {
+        switch preset {
+        case 1:
+            return 1
+        case 2:
+            return 3
+        case 3:
+            return 7
+        default:
+            return 0
+        }
+    }
+    
+    // 今天/近3天/近7天分组的辅助方法：根据 smartGroupPreset 获取 section 标题
+    private func sectionTitleForPreset(_ preset: Int) -> String {
+        switch preset {
+        case 1:
+            return "今天"
+        case 2:
+            return "近3天"
+        case 3:
+            return "近7天"
+        default:
+            return "未知"
+        }
+    }
+
 }
