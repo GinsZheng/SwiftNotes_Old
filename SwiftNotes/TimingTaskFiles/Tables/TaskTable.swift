@@ -234,7 +234,7 @@ extension TaskTable {
         // 获取所有任务数据
         let allTasks = fetchHomeCellsData(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
         // 获取每个section任务数量
-        let taskCounts = fetchTaskCountsByIsDone()
+        let taskCounts = fetchTaskCountsByIsDone(groupType: groupType, groupId: groupId, smartGroupPreset: smartGroupPreset)
         print("all", taskCounts)
 
         // 分类任务：isDone 为 0 和 1
@@ -354,15 +354,48 @@ extension TaskTable {
 
 // MARK: - 私有方法
 extension TaskTable {
-    // 返回未完成和已完成的cell数量
-    private func fetchTaskCountsByIsDone() -> [Bool: Int] {
-        let sql = "SELECT isDone, COUNT(*) FROM task GROUP BY isDone ORDER BY isDone"
+    // 返回根据筛选条件未完成和已完成的cell数量，
+    private func fetchTaskCountsByIsDone(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Bool: Int] {
+        var sql = "SELECT isDone, COUNT(*) FROM task WHERE "
+
+        // 根据 groupType 添加条件
+        if groupType == 1 {
+            sql += "isInTrash = 1"
+        } else {
+            sql += "isInTrash = 0"
+
+            if let groupId = groupId, (groupType == 0 || groupType == 2) {
+                sql += " AND groupId = \(groupId)"
+            }
+
+            if groupType == 3 {
+                switch smartGroupPreset {
+                case 1: // 今天
+                    sql += generateSmartGroupPresetSQL(days: 1)
+                case 2: // 近3天
+                    sql += generateSmartGroupPresetSQL(days: 3)
+                case 3: // 近7天
+                    sql += generateSmartGroupPresetSQL(days: 7)
+                case 4: // 已完成
+                    sql += " AND isDone = 1"
+                // ... 其他条件
+                default:
+                    break
+                }
+            }
+        }
+
+        sql += " GROUP BY isDone ORDER BY isDone"
+
         return DB.shared.fetchDictionary(withSQL: sql) { row in
             let isDone: Bool = extractValue(from: row, key: "isDone")
             let count: Int = extractValue(from: row, key: "COUNT(*)")
             return (isDone, count)
         }
     }
+
+
+
     
     // 生成今天/近3天等智能分组预设的条件sql
     private func generateSmartGroupPresetSQL(days: Int) -> String {
