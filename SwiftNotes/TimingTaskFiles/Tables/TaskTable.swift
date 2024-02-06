@@ -235,7 +235,7 @@ extension TaskTable {
         var sections: [Models.HomeSection] = []
 
         // 智能分组逻辑：今天/近3天/近7天
-        if smartGroupPreset == 1 || smartGroupPreset == 2 || smartGroupPreset == 3 {
+        if isDayTypePreset(smartGroupPreset: smartGroupPreset) {
             let taskCounts = fetchCountsForSmartGroupPreset(smartGroupPreset: smartGroupPreset)
             let expiredTasks = allTasks.filter { task in
                 task.isReminded && task.nextReminderTimestamp ?? 0 < startOfTodayTimestamp() && !task.isDone
@@ -353,7 +353,7 @@ extension TaskTable {
     
     // 返回今天/近3天/近7天的3个section的数量
     func fetchCountsForSmartGroupPreset(smartGroupPreset: Int) -> [String: Int] {
-        guard smartGroupPreset == 1 || smartGroupPreset == 2 || smartGroupPreset == 3 else {
+        guard isDayTypePreset(smartGroupPreset: smartGroupPreset) else {
             return [:]
         }
         
@@ -478,7 +478,7 @@ extension TaskTable {
         }
     }
 
-    private func isDayTypeSection() -> Bool {
-        return 
+    private func isDayTypePreset(smartGroupPreset: Int) -> Bool {
+        return smartGroupPreset == 1 || smartGroupPreset == 2 || smartGroupPreset == 3
     }
 }
