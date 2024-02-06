@@ -283,22 +283,7 @@ extension TaskTable {
         case 1: // 废纸蒌
             break
         case 3: // 预设智能分组
-            switch smartGroupPreset {
-            case 0: // 非预设
-                break
-            case 1: // 今天
-                sql += generateSmartGroupPresetSQL(days: 1)
-            case 2: // 近3天
-                sql += generateSmartGroupPresetSQL(days: 3)
-            case 3: // 近7天
-                sql += generateSmartGroupPresetSQL(days: 7)
-            case 4: // 已完成
-                sql += " AND task.isDone = 1 AND tg.hideInSmartGroup = 0"
-            case 5: // 全部
-                break
-            default:
-                print("预设智能分组参数错误")
-            }
+            sql += smartGroupPresetConditionSQL(smartGroupPreset: smartGroupPreset)
         default:
             print("分组类型参数错误")
         }
@@ -356,8 +341,12 @@ extension TaskTable {
 extension TaskTable {
     // 返回根据筛选条件未完成和已完成的cell数量，
     private func fetchTaskCountsByIsDone(groupType: Int, groupId: Int? = nil, smartGroupPreset: Int) -> [Bool: Int] {
-        var sql = "SELECT isDone, COUNT(*) FROM task WHERE isInTrash = \(groupType == 1 ? 1 : 0)"
-
+        var sql = """
+        SELECT isDone, COUNT(*) FROM task 
+        LEFT JOIN taskGroup tg ON task.groupId = tg.id
+        WHERE isInTrash = \(groupType == 1 ? 1 : 0)
+        """
+        
         // 根据 groupType 添加条件
         switch groupType {
         case 0, 2: // 默认、普通分组
@@ -367,27 +356,14 @@ extension TaskTable {
         case 1: // 废纸篓，不需要额外条件
             break
         case 3: // 预设智能分组
-            switch smartGroupPreset {
-            case 1: // 今天
-                sql += generateSmartGroupPresetSQL(days: 1)
-            case 2: // 近3天
-                sql += generateSmartGroupPresetSQL(days: 3)
-            case 3: // 近7天
-                sql += generateSmartGroupPresetSQL(days: 7)
-            case 4: // 已完成
-                sql += " AND task.isDone = 1 AND tg.hideInSmartGroup = 0"
-            case 5: // 全部
-                break
-            default:
-                print("预设智能分组参数错误")
-            }
+            sql += smartGroupPresetConditionSQL(smartGroupPreset: smartGroupPreset)
         default:
             print("分组类型参数错误")
         }
-
+        
         // 添加 GROUP BY 和 ORDER BY
         sql += " GROUP BY isDone ORDER BY isDone"
-
+        
         return DB.shared.fetchDictionary(withSQL: sql) { row in
             let isDone: Bool = extractValue(from: row, key: "isDone")
             let count: Int = extractValue(from: row, key: "COUNT(*)")
@@ -395,12 +371,30 @@ extension TaskTable {
         }
     }
 
-
-
-
+    // 智能分组预设的条件sql
+    private func smartGroupPresetConditionSQL(smartGroupPreset: Int) -> String {
+        var condition = ""
+        switch smartGroupPreset {
+        case 0: // 非预设
+            break
+        case 1: // 今天
+            condition = generateDayTypePresetSQL(days: 1)
+        case 2: // 近3天
+            condition = generateDayTypePresetSQL(days: 3)
+        case 3: // 近7天
+            condition = generateDayTypePresetSQL(days: 7)
+        case 4: // 已完成
+            condition = " AND task.isDone = 1 AND tg.hideInSmartGroup = 0"
+        case 5: // 全部
+            break
+        default:
+            print("预设智能分组参数错误")
+        }
+        return condition
+    }
     
     // 生成今天/近3天等智能分组预设的条件sql
-    private func generateSmartGroupPresetSQL(days: Int) -> String {
+    private func generateDayTypePresetSQL(days: Int) -> String {
         // let sql = " AND tg.hideInSmartGroup = 0 AND task.isReminded = 1 AND task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: days))"
         let sql = " AND tg.hideInSmartGroup = 0 AND task.isReminded = 1 AND ((task.nextReminderTimestamp BETWEEN \(startOfTodayTimestamp()) AND \(endOfFutureDayTimestamp(days: days))) OR (task.nextReminderTimestamp < \(startOfTodayTimestamp()) AND task.isDone = 0))"
         return sql
